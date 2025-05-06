@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Privacy Policy
 
-The protection of personal data and the responsible handling of information that you entrust to us is an important and special concern for us. Chirp processes personal data only in accordance with the statutory regulations, in particular Regulation (EU) 2016/679 (General Data Protection Regulation, "GDPR") and the German Federal Data Protection Act (BDSG).
+The protection of personal data and the responsible handling of information that you entrust to us is an important and special concern for us. Kilo IoT processes personal data only in accordance with the statutory regulations, in particular Regulation (EU) 2016/679 (General Data Protection Regulation, "GDPR") and the German Federal Data Protection Act (BDSG).
 
 Below you will find the legally required information in accordance with Art. 13 GDPR as well as explanations of your rights as a data subject of such data processing in accordance with Art. 12 et seq. GDPR in conjunction with §§ 32ff. BDSG. We also inform you here about the protection of your privacy on the terminal equipment you use within the meaning of Section 25 TTDSG.
 
@@ -12,7 +12,7 @@ Below you will find the legally required information in accordance with Art. 13 
 ### a)	Responsible person
 Responsible for the data processing described below is the 
 
-Chirp USA LLC\
+Kilo IoT USA LLC\
 336 E. College Ave, Suite 301\
 Tallahassee, FL 32301\
 USA
@@ -40,7 +40,7 @@ If the processing is based on consent within the meaning of Art. 6 sentence 1 pa
 
 You have the right to contact the competent data protection supervisory authority (Art. 77 GDPR).
 
-If you have any questions or complaints about data protection at of Chirp, you can contact our external data protection officer at any time using the contact details given above.
+If you have any questions or complaints about data protection at of Kilo IoT, you can contact our external data protection officer at any time using the contact details given above.
 
 ### d)	Storage period and deletion of your personal data
 We delete your personal data,
@@ -71,7 +71,7 @@ Trackers transmit the device ID and current GPS coordinates. We process this inf
 ### c)	Smartphones
 Smartphones transmit the device ID and current GPS coordinates via our app. We process this information and store it in the account to which the smartphone is linked. We also process the IP address that the gateway installed on your device automatically transmits to our server. We need this information to enable you to use our services.
 
-The customer also grants the installed Chirp app access to the smartphone's BLE functionality. BLE is used to form a BLE mesh network that relays information about BLE devices that are registered on the Chirp network and are within signal range. If a device is within range of a smartphone, it will use that smartphone to transmit information about that device to the customer. Only the customer of the device can see the information; the smartphone that forwards the data has no information about the device.
+The customer also grants the installed Kilo IoT app access to the smartphone's BLE functionality. BLE is used to form a BLE mesh network that relays information about BLE devices that are registered on the Kilo IoT network and are within signal range. If a device is within range of a smartphone, it will use that smartphone to transmit information about that device to the customer. Only the customer of the device can see the information; the smartphone that forwards the data has no information about the device.
 
 The legal basis for this data processing is the fulfillment of the contract for our services, Art. 6 para. 1 lit. b GDPR. We store the relevant personal data permanently until new GPS coordinates are received. They are automatically deleted after a period of six months.
 
