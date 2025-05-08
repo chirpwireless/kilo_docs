@@ -6,4 +6,6 @@ Kilo IoT's main objective is to simplify IoT deployments for its clients. By pro
 
 Kilo IoT offers its own visualization platform, empowering clients to effortlessly implement IoT devices and visualize data with a simple click. The gateways provided by Kilo IoT come pre-provisioned, ensuring a plug-and-play experience. Users only need to connect the power source, enabling them to immediately begin automating processes and leveraging the benefits of Kilo IoT's wireless network.
 
-With a commitment to simplifying IoT connectivity, Kilo IoT aims to be a trusted partner for businesses, offering a comprehensive range of services and solutions. Our diverse connectivity options and user-friendly platform allow clients to focus on their core operations while Kilo IoT takes care of their IoT connectivity needs.
+With a commitment to simplifying IoT connectivity, Kilo IoT aims to be a trusted partner for businesses, offering a comprehensive range of services and solutions. Our diverse connectivity options and user-friendly platform allow clients to focus on their core operations while Kilo IoT takes care of their IoT connectivity needs.\
+\
+linkedIn link: [https://www.linkedin.com/company/kiloiot/about/](https://www.linkedin.com/company/kiloiot/about/)
