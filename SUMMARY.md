@@ -21,6 +21,7 @@
   * [RAK 7268 V2](iot-platform/adding-gateways-to-kilo-network/rak7268v2.md)
 * [Cellular IoT](iot-platform/cellular-iot/README.md)
   * [SIM Cards Types](iot-platform/cellular-iot/simcardtypes.md)
+* [Adding Device](iot-platform/adding-device.md)
 
 ## Legal
 
