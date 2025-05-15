@@ -23,8 +23,14 @@
   * [SIM Cards Types](iot-platform/cellular-iot/simcardtypes.md)
 * [Adding Device](iot-platform/adding-device.md)
 
-## Legal
+## ?? Legal
 
 * [Security](legal/security.md)
 * [Privacy Policy](legal/privacy-policy.md)
 * [Terms of Use](legal/terms-of-use.md)
+
+## ? FAQ
+
+* [Official Links](faq/official-links.md)
+* [Help and FAQ](faq/help-and-faq.md)
+* [Changelog](faq/changelog.md)
