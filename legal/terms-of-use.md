@@ -10,7 +10,7 @@ BY CLICKING ON THE "I ACCEPT" BUTTON, COMPLETING THE REGISTRATION PROCESS, BROWS
 
 ## Section 1: Definitions/General Intro
 
-**1.1** "Kilo IoT" means Kilo IoT USA, LLC.
+**1.1** "Kilo IoT" means Kilo IoT GmbH.
 
 **1.2** "Service" means any service and/or hosted software application provided by Kilo IoT via the Website, including but not limited to, the Kilo IoT API, the Kilo IoT Cloud, connectivity services, and any other software services offered by Kilo IoT via the Website.
 
@@ -114,11 +114,11 @@ BY CLICKING ON THE "I ACCEPT" BUTTON, COMPLETING THE REGISTRATION PROCESS, BROWS
 
 ## Section 7: Warranty; Warranty Disclaimer
 
-**7.1** Except as set forth below in Section 7.4, Kilo IoT does NOT warrant that:
-(i) Services and Products will meet your specific requirements,
-(ii) Services and Products will be uninterrupted, timely, secure, or error-free,
-(iii) the results that may be obtained from the use of Services and Products will be accurate or reliable,
-(iv) the quality of any Services, Products, information, or other material purchased or obtained through Kilo IoT will meet your expectations, and
+**7.1** Except as set forth below in Section 7.4, Kilo IoT does NOT warrant that:\
+(i) Services and Products will meet your specific requirements,\
+(ii) Services and Products will be uninterrupted, timely, secure, or error-free,\
+(iii) the results that may be obtained from the use of Services and Products will be accurate or reliable,\
+(iv) the quality of any Services, Products, information, or other material purchased or obtained through Kilo IoT will meet your expectations, and\
 (v) any errors in the Service or Products will be corrected.
 
 **7.2** Services may be subject to sporadic interruptions and failures for a variety of reasons beyond Kilo IoT's control, including, but not limited to, network intermittency, service provider uptime, mobile notifications and carriers, among others. You acknowledge these limitations and agree that Kilo IoT is not responsible for any damages allegedly caused by the failure or delay of the Services.
@@ -129,12 +129,12 @@ BY CLICKING ON THE "I ACCEPT" BUTTON, COMPLETING THE REGISTRATION PROCESS, BROWS
 
 ## Section 8: Limitation of Liability
 
-**8.1** You expressly understand and agree that neither Kilo IoT nor its suppliers shall be liable for any indirect, incidental, special, consequential, or exemplary damages, including but not limited to, damages for loss of profits, goodwill, use, data, or other intangible losses (even if Kilo IoT has been advised of the possibility of such damages) resulting from:
-(i) the cost of procurement for substitute products or services,
-(ii) the interruption of use or loss or corruption of data,
-(iii) actions or choices by any third parties using Services or Products,
-(iv) the interruption of access to or inability to access Services,
-(v) access, authorized or unauthorized, to your data or your devices (Kilo IoT Products or otherwise) making use of Services,
+**8.1** You expressly understand and agree that neither Kilo IoT nor its suppliers shall be liable for any indirect, incidental, special, consequential, or exemplary damages, including but not limited to, damages for loss of profits, goodwill, use, data, or other intangible losses (even if Kilo IoT has been advised of the possibility of such damages) resulting from:\
+(i) the cost of procurement for substitute products or services,\
+(ii) the interruption of use or loss or corruption of data,\
+(iii) actions or choices by any third parties using Services or Products,\
+(iv) the interruption of access to or inability to access Services,\
+(v) access, authorized or unauthorized, to your data or your devices (Kilo IoT Products or otherwise) making use of Services,\
 (vi) your use of the Services (including the APIs or Third-Party Products that access data via the APIs) or Products.
 
 In no event shall Kilo IoT or its suppliers' aggregate liability to you exceed an amount equal to the amounts paid by you during the six (6) month period immediately preceding the event(s) giving rise to liability hereunder.
@@ -149,11 +149,11 @@ You agree to indemnify, defend, and hold the Kilo IoT Parties harmless from and 
 
 ## Section 10: Termination
 
-**10.1** If Kilo IoT becomes aware of any possible violations by you of the Terms, Kilo IoT reserves the right to investigate such violations. If, as a result of the investigation, Kilo IoT believes that criminal activity has occurred, Kilo IoT reserves the right to refer the matter to, and to cooperate with, any and all applicable legal authorities. Kilo IoT is entitled, except to the extent prohibited by applicable law, to disclose any information or materials on or in the Website or Services, including your data, in Kilo IoT's possession in connection with your use of the Website or Services, to:
-(1) comply with applicable laws, legal process, or governmental requests,
-(2) enforce the Terms,
-(3) respond to any claims that your data violates the rights of third parties,
-(4) respond to your requests for customer service, or
+**10.1** If Kilo IoT becomes aware of any possible violations by you of the Terms, Kilo IoT reserves the right to investigate such violations. If, as a result of the investigation, Kilo IoT believes that criminal activity has occurred, Kilo IoT reserves the right to refer the matter to, and to cooperate with, any and all applicable legal authorities. Kilo IoT is entitled, except to the extent prohibited by applicable law, to disclose any information or materials on or in the Website or Services, including your data, in Kilo IoT's possession in connection with your use of the Website or Services, to:\
+(1) comply with applicable laws, legal process, or governmental requests,\
+(2) enforce the Terms,\
+(3) respond to any claims that your data violates the rights of third parties,\
+(4) respond to your requests for customer service, or\
 (5) protect the rights, property, or personal safety of Kilo IoT, its users, or the public, and all enforcement or other government officials, as Kilo IoT, in its sole discretion, believes to be necessary or appropriate.
 
 **10.2** In the event Kilo IoT determines, in its sole discretion, that you have breached any portion of these Terms or have otherwise conducted yourself inappropriately for the Website and/or Services, Kilo IoT reserves the right to:
