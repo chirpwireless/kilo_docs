@@ -1,11 +1,27 @@
-# Intro to Kilo IoT
+# Intro to Kilo
 
-Kilo IoT is a leading global wireless network provider that offers reliable and extensive IoT connectivity solutions, both outdoors and indoors. Leveraging Semtech's SX1303 chip and Time Difference of Arrival (TDOA) technology, Kilo IoT enables long-range outdoor IoT connectivity and geo-positioning without the need for GPS. Additionally, Kilo IoT provides businesses and Mobile Virtual Network Operators (MVNOs) the opportunity to integrate with our global Radio Access Network (RAN), offering white-label solutions and software that handle IoT and connectivity, allowing businesses to focus on sales and automation.
+**Kilo** is a full-stack IoT company that provides the foundational tools and infrastructure needed to build scalable, connected systems. Our focus is IoT—pure and simple.
 
-Kilo IoT's main objective is to simplify IoT deployments for its clients. By providing multiple connectivity options and offering White Label business-specific modules such as Fleet Management and Home Security to name a few, Kilo IoT eliminates the need for multiple networks, platforms, and billing systems. Our goal is to provide a unified experience by offering ONE Platform, ONE Global partner, and ONE bill to streamline operations.
+We operate across three core pillars:
 
-Kilo IoT offers its own visualization platform, empowering clients to effortlessly implement IoT devices and visualize data with a simple click. The gateways provided by Kilo IoT come pre-provisioned, ensuring a plug-and-play experience. Users only need to connect the power source, enabling them to immediately begin automating processes and leveraging the benefits of Kilo IoT's wireless network.
+* **Software-as-a-Service (SaaS):**\
+  **Kilo IoT** is a cloud-based platform for device management, data visualization, and automation.\
+  **Kilo Fleet** is a fleet management platform tailored for scalable asset tracking and control.
+* **Kilo Connectivity:**\
+  We deliver robust IoT connectivity through LoRaWAN and global Cellular IoT networks, ensuring reliable long-range communication across a wide range of deployment environments.
+* **Electronics Distribution:**\
+  Through our device distribution at [shop.kiloiot.de](https://shop.kiloiot.de), we supply high-quality sensors, gateways, and electronics—built to meet real-world demands and simplify your IoT project deployment.
 
-With a commitment to simplifying IoT connectivity, Kilo IoT aims to be a trusted partner for businesses, offering a comprehensive range of services and solutions. Our diverse connectivity options and user-friendly platform allow clients to focus on their core operations while Kilo IoT takes care of their IoT connectivity needs.\
+Kilo is built for flexibility. Whether you're a system integrator, hardware developer, or a business deploying thousands of devices, Kilo provides the infrastructure to bring your IoT applications to life.\
 \
 linkedIn link: [https://www.linkedin.com/company/kiloiot/about/](https://www.linkedin.com/company/kiloiot/about/)
+
+### Simplifying IoT at Every Layer
+
+Building an IoT system used to require sourcing multiple components from different vendors—network servers, connectivity providers, visualization platforms, and device hardware—then stitching them together manually. This fragmented approach made IoT unnecessarily complex and hard to scale.
+
+**Kilo changes that.**
+
+With Kilo, you get an integrated platform that removes complexity, eliminates vendor lock-in, and supports growth—whether you're just starting or deploying at scale. We provide everything you need, while still giving you the freedom to choose your own hardware and connectivity options.
+
+IoT doesn’t have to be complicated. Kilo delivers a clean, flexible foundation designed to grow with you—with the future in mind.
