@@ -20,27 +20,12 @@
 
 
 
-#### Video Feed Integration for TTN Conference
-
-<figure><img src="../.gitbook/assets/Kilo_Cam_Screenshot (1).png" alt=""><figcaption></figcaption></figure>
-
-* Added Camera section on the platform with live video previews.
-
-- Integrated with Lens Hub API to fetch and display connected cameras.
-- Subscribed frontend to MQTT feed for real-time video frames.
-- Implemented image decoding via hubPrivateKey for secure display.
-- Enabled handling of multiple camera streams in parallel.
-- Infrastructure: deployed MQTT broker, verified Lens in production, and provided required tokens/keys.\
-
-
 ## Minor Changes
 
 #### Notification Icon Display Fix
 
 * Fixed an issue where the Notification icon was not fully displayed when a user had more than 10 notifications.
 * The icon now displays correctly regardless of the number of notifications.
-
-
 
 #### Gateway Submission Fix
 
@@ -50,6 +35,6 @@
 
 #### Error Message Fix
 
-Fixed an incorrect error message when adding gateways.
+* Fixed an incorrect error message when adding gateways.
 
 </details>
