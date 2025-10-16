@@ -50,16 +50,26 @@ This role is automatically assigned to the account that created the organization
 
 ### User
 
-A **User** is anyone invited to join an organization by the Owner.\
+A **User** is anyone invited to join an organization by the **Owner**.\
 Users can have either **Editor** or **Viewer** access, depending on the permissions assigned to them.
+
+It’s important to note that a user may already have their **own Kilo account** that contains personal devices, data, or even their own organizations.\
+For example, you might have created and used your own Kilo account to manage devices. Later, someone else can invite you to **their organization** — where you’ll have **limited rights** based on the permissions they assign (for example, _View-only_ or _Edit access_ for certain pages).
+
+This design enables seamless collaboration between organizations and users across the platform.\
+A single user can:
+
+* Manage their own devices and organizations.
+* Be a member of multiple organizations.
+* Have different permissions in each organization (for example, Owner in one, Viewer in another).
 
 Once the invited user accepts the email invitation:
 
-* They appear in the organization’s **user list**
-* They gain access only to the pages specified by the Owner or Editor
-* Their permissions can later be updated or revoked by the Owner or an authorized Editor
+* They appear in the organization’s **user list**.
+* They gain access only to the pages specified by the **Owner** or **Editor**.
+* Their permissions can later be updated or revoked by the **Owner** or an authorized **Editor**.
 
-This ensures that each employee, contractor, or partner sees exactly what they need—and nothing more.
+This ensures that each employee, contractor, or partner sees exactly what they need — and nothing more.
 
 ***
 

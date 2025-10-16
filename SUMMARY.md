@@ -9,6 +9,7 @@
   * [Attribute Based Access Control (ABAC)](iot-platform/dashboard/attribute-based-access-control-abac/README.md)
     * [Why ABAC Instead of RBAC](iot-platform/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
     * [Permission Levels Explained](iot-platform/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
+    * [Creating an Organization](iot-platform/dashboard/attribute-based-access-control-abac/creating-an-organization.md)
     * [Adding and Managing Users](iot-platform/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
     * [Editing or Removing Users](iot-platform/dashboard/attribute-based-access-control-abac/editing-or-removing-users.md)
 
