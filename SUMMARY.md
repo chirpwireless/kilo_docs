@@ -6,7 +6,11 @@
 
 * [Kilo IoT Platform](iot-platform/dashboard/README.md)
   * [Features](iot-platform/dashboard/features.md)
-  * [Role-based Access Control](iot-platform/dashboard/role-based-access-control.md)
+  * [Attribute Based Access Control (ABAC)](iot-platform/dashboard/attribute-based-access-control-abac/README.md)
+    * [Why ABAC Instead of RBAC](iot-platform/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
+    * [Adding and Managing Users](iot-platform/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
+    * [Editing or Removing Users](iot-platform/dashboard/attribute-based-access-control-abac/editing-or-removing-users.md)
+    * [Permission Levels Explained](iot-platform/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
 
 ## LoRaWAN / LR-FHSS
 
