@@ -14,7 +14,6 @@
   * [Custom Dashboards](iot-platform/dashboard/custom-dashboards/README.md)
     * [Overview](iot-platform/dashboard/custom-dashboards/overview.md)
     * [Create a dashboard](iot-platform/dashboard/custom-dashboards/create-a-dashboard.md)
-* [Customizeable Dashboards](iot-platform/customizeable-dashboards.md)
 
 ## LoRaWAN / LR-FHSS
 
