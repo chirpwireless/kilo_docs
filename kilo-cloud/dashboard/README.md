@@ -12,6 +12,6 @@ Designed for organizations and individuals who want to automate, scale, and opti
 * Don’t have internal technical resources to manage your own servers
 * Need enterprise-grade reliability and uptime
 
-If you don’t want to coordinate with multiple vendors for visualization, LPWAN servers, connectivity, or the device supply chain, Kilo provides everything in one place for your convenience—while still giving you the freedom to choose other suppliers for devices, connectivity, and more.
+If you don’t want to coordinate with multiple vendors for visualization, LPWAN servers, connectivity, or the device supply chain, Kilo provides everything in one place for your convenience—while still giving you the freedom to choose other suppliers for devices, connectivity, and more.ensuring long-term flexibility and scalability without vendor lock-ins.
 
 ###
