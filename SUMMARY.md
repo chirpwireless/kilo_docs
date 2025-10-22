@@ -11,6 +11,10 @@
     * [Permission Levels Explained](iot-platform/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
     * [Creating an Organization](iot-platform/dashboard/attribute-based-access-control-abac/creating-an-organization.md)
     * [Adding and Managing Users](iot-platform/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
+  * [Custom Dashboards](iot-platform/dashboard/custom-dashboards/README.md)
+    * [Overview](iot-platform/dashboard/custom-dashboards/overview.md)
+    * [Create a dashboard](iot-platform/dashboard/custom-dashboards/create-a-dashboard.md)
+* [Customizeable Dashboards](iot-platform/customizeable-dashboards.md)
 
 ## LoRaWAN / LR-FHSS
 
