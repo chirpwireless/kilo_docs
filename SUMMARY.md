@@ -2,18 +2,18 @@
 
 * [Intro to Kilo](README.md)
 
-## IoT Platform
+## Kilo Cloud
 
-* [Kilo IoT Platform](iot-platform/dashboard/README.md)
-  * [Features](iot-platform/dashboard/features.md)
-  * [Custom Dashboards](iot-platform/dashboard/custom-dashboards/README.md)
-    * [Overview](iot-platform/dashboard/custom-dashboards/overview.md)
-    * [Create a dashboard](iot-platform/dashboard/custom-dashboards/create-a-dashboard.md)
-  * [Attribute Based Access Control (ABAC)](iot-platform/dashboard/attribute-based-access-control-abac/README.md)
-    * [Why ABAC Instead of RBAC](iot-platform/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
-    * [Permission Levels Explained](iot-platform/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
-    * [Creating an Organization](iot-platform/dashboard/attribute-based-access-control-abac/creating-an-organization.md)
-    * [Adding and Managing Users](iot-platform/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
+* [Kilo IoT Platform](kilo-cloud/dashboard/README.md)
+  * [Features](kilo-cloud/dashboard/features.md)
+  * [Custom Dashboards](kilo-cloud/dashboard/custom-dashboards/README.md)
+    * [Overview](kilo-cloud/dashboard/custom-dashboards/overview.md)
+    * [Create a dashboard](kilo-cloud/dashboard/custom-dashboards/create-a-dashboard.md)
+  * [Attribute Based Access Control (ABAC)](kilo-cloud/dashboard/attribute-based-access-control-abac/README.md)
+    * [Why ABAC Instead of RBAC](kilo-cloud/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
+    * [Permission Levels Explained](kilo-cloud/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
+    * [Creating an Organization](kilo-cloud/dashboard/attribute-based-access-control-abac/creating-an-organization.md)
+    * [Adding and Managing Users](kilo-cloud/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
 
 ## LoRaWAN / LR-FHSS
 

@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Kilo IoT Platform
 
-**Kilo Cloud IoT** is a fully managed, scalable, and fault-tolerant IoT platform built to power your applications—from prototype to production.
+**Kilo Cloud IoT** is a fully managed, scalable, and fault-tolerant IoT platform built to power your IoT deployments —from prototype to production.
 
 Designed for organizations and individuals who want to automate, scale, and optimize their connected systems without the overhead of maintaining infrastructure, **Kilo IoT** is the ideal choice if you:
 
