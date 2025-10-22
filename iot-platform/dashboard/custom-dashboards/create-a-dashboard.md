@@ -16,14 +16,31 @@
 
 4. Select the device that is available to you from the dropdown and click chose.
 
-<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+
+<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 
 
-5. Select a **parameter** that the device reports — for example, temperature, humidity, voltage, motion, or signal strength.\
-   \
-   Widgets can display any metric available from any connected device.\
-   You’re not limited to one type of sensor — you can mix temperature, humidity, or motion data across devices on a single dashboard.
+5. Select a **parameter** that the device reports — for example, temperature, humidity, voltage, motion, or signal strength.&#x20;
+
+
+
+<figure><img src="../../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+
+6. Here you can resize or rearrange the widgets.
+
+<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+
+7. on the saved dashboard widgets will not move in order to move them click edit dashboard. \
+
+
+<figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+
+\
+\
+Widgets can display any metric available from any connected device.\
+You’re not limited to one type of sensor — you can mix temperature, humidity, or motion data across devices on a single dashboard.
 
 
 
