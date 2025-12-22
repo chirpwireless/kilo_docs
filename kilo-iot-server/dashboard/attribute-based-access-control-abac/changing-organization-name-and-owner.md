@@ -20,6 +20,8 @@ Organization Owners can update key organization-level settings, including changi
 
 ***
 
+<figure><img src="../../../.gitbook/assets/Add leave dates.png" alt=""><figcaption></figcaption></figure>
+
 #### Changing the Organization Name
 
 Once the **Organization Settings** widget opens:
