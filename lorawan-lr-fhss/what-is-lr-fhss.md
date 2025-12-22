@@ -1,6 +1,6 @@
 # What is LR-FHSS?
 
-### LR-FHSS over LoraWAN 
+### LR-FHSS over LoraWAN<br>
 
 #### Significantly Higher Network Capacity
 

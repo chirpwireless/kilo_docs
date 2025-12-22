@@ -3,8 +3,7 @@
 The **Dashboard** section now appears in the left navigation menu of the platform.\
 From here, users can build custom dashboards by adding widgets that display live data from any connected device.
 
-Each dashboard is fully customizable — you can choose which parameters to display, group multiple devices in one view, and arrange widgets to fit your workflow.\
-
+Each dashboard is fully customizable — you can choose which parameters to display, group multiple devices in one view, and arrange widgets to fit your workflow.<br>
 
 <div data-full-width="false"><figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure></div>
 

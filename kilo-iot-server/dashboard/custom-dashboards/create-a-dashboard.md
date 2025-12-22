@@ -6,8 +6,7 @@
 
 1. Click **Add widget** to begin creating your first dashboard.
 2. A **Choose a widget** window appears.
-3.  Select **Device data**, then click **Choose**.\
-
+3.  Select **Device data**, then click **Choose**.<br>
 
 
 
@@ -32,8 +31,7 @@
 
 <figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
-7. on the saved dashboard widgets will not move in order to move them click edit dashboard. \
-
+7. on the saved dashboard widgets will not move in order to move them click edit dashboard. <br>
 
 <figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
@@ -44,4 +42,4 @@ You’re not limited to one type of sensor — you can mix temperature, humidity
 
 
 
-\
+<br>

@@ -2,18 +2,19 @@
 
 * [Intro to Kilo](README.md)
 
-## Kilo Cloud
+## Kilo IoT Server
 
-* [Kilo IoT Platform](kilo-cloud/dashboard/README.md)
-  * [Features](kilo-cloud/dashboard/features.md)
-  * [Custom Dashboards](kilo-cloud/dashboard/custom-dashboards/README.md)
-    * [Overview](kilo-cloud/dashboard/custom-dashboards/overview.md)
-    * [Create a dashboard](kilo-cloud/dashboard/custom-dashboards/create-a-dashboard.md)
-  * [Attribute Based Access Control (ABAC)](kilo-cloud/dashboard/attribute-based-access-control-abac/README.md)
-    * [Why ABAC Instead of RBAC](kilo-cloud/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
-    * [Permission Levels Explained](kilo-cloud/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
-    * [Creating an Organization](kilo-cloud/dashboard/attribute-based-access-control-abac/creating-an-organization.md)
-    * [Adding and Managing Users](kilo-cloud/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
+* [Kilo IoT Server](kilo-iot-server/dashboard/README.md)
+  * [Features](kilo-iot-server/dashboard/features.md)
+  * [Custom Dashboards](kilo-iot-server/dashboard/custom-dashboards/README.md)
+    * [Overview](kilo-iot-server/dashboard/custom-dashboards/overview.md)
+    * [Create a dashboard](kilo-iot-server/dashboard/custom-dashboards/create-a-dashboard.md)
+  * [Attribute Based Access Control (ABAC)](kilo-iot-server/dashboard/attribute-based-access-control-abac/README.md)
+    * [Why ABAC Instead of RBAC](kilo-iot-server/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
+    * [Permission Levels Explained](kilo-iot-server/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
+    * [Creating an Organization](kilo-iot-server/dashboard/attribute-based-access-control-abac/creating-an-organization.md)
+    * [Changing organization name and owner](kilo-iot-server/dashboard/attribute-based-access-control-abac/changing-organization-name-and-owner.md)
+    * [Adding and Managing Users](kilo-iot-server/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
 
 ## LoRaWAN / LR-FHSS
 
