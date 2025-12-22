@@ -4,7 +4,9 @@ sidebar_position: 3
 
 # Kilo IoT Server
 
-**Kilo Cloud** is a fully managed, scalable, and fault-tolerant IoT platform built to power your IoT deployments —from prototype to production.
+**Kilo Cloud** - is an IoT server for **device management, data collection, processing, and visualization**, built to support IoT deployments from prototype to production.\
+\
+It is a fully managed, scalable, and fault-tolerant IoT platform built to power your IoT deployments —from prototype to production.
 
 Designed for organizations and individuals who want to automate, scale, and optimize their connected systems without the overhead of maintaining infrastructure, **Kilo IoT** is the ideal choice if you:
 
