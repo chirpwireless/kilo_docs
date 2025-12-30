@@ -12,6 +12,8 @@ Notification rules define **when** an alert should be triggered based on device 
 
 A multi-step configuration modal will open.
 
+<figure><img src="../../../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ### Step 1: Choose a Device
@@ -55,6 +57,8 @@ For this example, select:
 
 **Metric:** `temperature`
 
+<figure><img src="../../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ### Defining the Condition (Thresholds)
@@ -67,6 +71,8 @@ Once a metric is selected, define the condition using comparison operators:
 * Less than or equal
 * Greater than
 * Greater than or equal
+
+<figure><img src="../../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
 
 #### Example Temperature Rule
 
@@ -90,6 +96,8 @@ AND conditions are useful when:
 * Avoiding false positives
 * Creating precise alert logic
 
+<figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ### Using “Remain True For” (Time-Based Conditions)
@@ -102,6 +110,8 @@ Instead of alerting immediately:
 
 * Set **Remain true for**
 * `30 minutes`
+
+<figure><img src="../../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
 This means:
 
@@ -154,12 +164,6 @@ The rule will now appear in the **Rules list** and begin evaluating incoming dev
 * Use **Critical** severity only for events requiring immediate action
 * Name rules clearly (e.g. _“Lab Fridge – Temperature High”_)
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
-
 <figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
