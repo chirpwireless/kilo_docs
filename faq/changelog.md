@@ -48,11 +48,11 @@ This update enables users to receive critical alerts directly via SMS, increasin
 
 #### New Feature: SMS Credit Purchase (Stripe)
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Kilo now supports purchasing SMS credits directly inside the platform. This allows teams to scale SMS alerting without additional operational overhead and makes usage predictable through a simple balance system.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### SMS Purchase Feature Highlights
 
@@ -74,7 +74,7 @@ Kilo now supports purchasing SMS credits directly inside the platform. This allo
 
 ### Subscription & Billing Updates
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### Free Subscription Default Plan
 
@@ -94,7 +94,7 @@ KILO 2.2.0 improves subscription handling so onboarding and plan upgrades are cl
 
 #### Organization Management Enhancements
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 Organization owners now have improved control over organization settings and ownership, making it easier to manage long-running deployments and team transitions.
 
@@ -114,7 +114,7 @@ Organization owners now have improved control over organization settings and own
 
 #### Enhanced Dashboard Management and Display
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Change Log 2.2.0 introduces a new dashboard structure designed for users managing multiple deployments or operational views.
 

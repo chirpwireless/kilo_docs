@@ -15,7 +15,7 @@ You can configure each notification type to be:
 2. In the Notification Center, click **Notification type settings** in the top-right corner.
 3. A modal window will open where you can configure notification intervals.
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -58,7 +58,7 @@ To repeat notifications at a defined interval:
 3. Set the interval value (for example `1`)
 4. Select the time unit (for example **hours or** days)
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 1. Save your changes
 
