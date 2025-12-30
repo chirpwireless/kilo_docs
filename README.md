@@ -29,7 +29,7 @@ Kilo provides IoT connectivity through LoRaWAN and a global Cellular IoT network
 
 #### IoT Platform — Kilo Cloud
 
-Kilo Cloud is the platform where device data becomes actionable. It is an IoT server that enables device management, dashboards, automation, and alerting through two products: **Kilo Cloud**, the core IoT platform, and **Kilo Fleet**, a platform tailored for scalable asset tracking, fleet operations, and management.
+Kilo Cloud is the platform where device data becomes actionable. It is an IoT server that enables device management, dashboards, automation, and alerting through two products: [**Kilo Cloud**,](https://app.kiloiot.io/) the core IoT platform, and **Kilo Fleet**, a platform tailored for scalable asset tracking, fleet operations, and management.
 
 ***
 
