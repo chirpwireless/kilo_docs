@@ -21,7 +21,7 @@ Kilo is also modular by design. You can use the full Kilo stack for simplicity, 
 
 #### Devices — Kilo Electronics
 
-Kilo Electronics is the fastest-growing electronics distributor in the Kilo ecosystem. It is our German subsidiary operating out of Germany under **Kilo IoT, GmbH**. Kilo Electronics supplies sensors, gateways, and other IoT hardware to support real deployments.
+Kilo Electronics is the fastest-growing electronics distributor in the Kilo ecosystem. It is our German subsidiary operating out of Germany under **Kilo IoT, GmbH**. [Kilo Electronics](https://kiloelectronics.com/) supplies sensors, gateways, and other IoT hardware to support real deployments.
 
 #### Connectivity — Kilo Connectivity
 
