@@ -1,27 +1,40 @@
 # Intro to Kilo
 
-**Kilo** is a full-stack IoT company that provides the foundational tools and infrastructure needed to build scalable, connected systems. Our focus is IoT—pure and simple.
+## What Is Kilo?
 
-We operate across three core pillars:
+Every IoT project follows the same fundamental path:\
+**Devices → Connectivity → IoT Platform.**
 
-* **Software-as-a-Service (SaaS):**\
-  **Kilo IoT** is a cloud-based platform for device management, data visualization, and automation.\
-  **Kilo Fleet** is a fleet management platform tailored for scalable asset tracking and control.
-* **Kilo Connectivity:**\
-  We deliver robust IoT connectivity through LoRaWAN and global Cellular IoT networks, ensuring reliable long-range communication across a wide range of deployment environments.
-* **Electronics Distribution:**\
-  Through our device distribution at [shop.kiloiot.de](https://shop.kiloiot.de), we supply high-quality sensors, gateways, and electronics—built to meet real-world demands and simplify your IoT project deployment.
+Kilo supports the entire journey — from sourcing hardware, to connecting it, to managing it in the cloud.
 
-Kilo is built for flexibility. Whether you're a system integrator, hardware developer, or a business deploying thousands of devices, Kilo provides the infrastructure to bring your IoT applications to life.\
-\
-linkedIn link: [https://www.linkedin.com/company/kiloiot/about/](https://www.linkedin.com/company/kiloiot/about/)
+Kilo is a full-stack IoT company that provides the tools and infrastructure needed to build scalable, connected systems. Our focus is IoT — pure and simple.
 
-### Simplifying IoT at Every Layer
+Kilo is built around **three core pillars**, which together cover the entire IoT stack:
 
-Building an IoT system used to require sourcing multiple components from different vendors—network servers, connectivity providers, visualization platforms, and device hardware—then stitching them together manually. This fragmented approach made IoT unnecessarily complex and hard to scale.
+1. **Kilo Electronics** (Devices)
+2. **Kilo Connectivity** (Connectivity)
+3. **Kilo Cloud** (IoT Platform)
 
-**Kilo changes that.**
+Kilo is also modular by design. You can use the full Kilo stack for simplicity, or choose only the services you need. For example, you can use Kilo Cloud as your IoT platform while bringing your own devices, or you can source hardware through Kilo Electronics while using your existing platform.
 
-With Kilo, you get an integrated platform that removes complexity, eliminates vendor lock-in, and supports growth—whether you're just starting or deploying at scale. We provide everything you need, while still giving you the freedom to choose your own hardware and connectivity options.
+***
 
-IoT doesn’t have to be complicated. Kilo delivers a clean, flexible foundation designed to grow with you—with the future in mind.
+### How Kilo Fits the IoT Stack
+
+#### Devices — Kilo Electronics
+
+Kilo Electronics is the fastest-growing electronics distributor in the Kilo ecosystem. It is our German subsidiary operating out of Germany under **Kilo IoT, GmbH**. Kilo Electronics supplies sensors, gateways, and other IoT hardware to support real deployments.
+
+#### Connectivity — Kilo Connectivity
+
+Kilo provides IoT connectivity through LoRaWAN and a global Cellular IoT network. We are one of the largest cellular IoT connectivity providers, with more than **800 global connectivity partners**. Our global IoT SIM cards operate in **every country worldwide** without requiring SIM swaps or separate contracts for different regions.
+
+#### IoT Platform — Kilo Cloud
+
+Kilo Cloud is the platform where device data becomes actionable. It is an IoT server that enables device management, dashboards, automation, and alerting through two products: **Kilo Cloud**, the core IoT platform, and **Kilo Fleet**, a platform tailored for scalable asset tracking, fleet operations, and management.
+
+***
+
+### Who Kilo Is Built For
+
+Kilo is designed for flexibility and scale. Whether you are a system integrator building solutions for customers, a hardware developer deploying connected products, or a business operating hundreds or thousands of devices, Kilo provides the infrastructure needed to bring IoT systems to life.
