@@ -143,17 +143,217 @@ Example:
 
 This allows one rule to trigger from multiple independent conditions.
 
+<figure><img src="../../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+
 ***
 
-### Continuing Rule Setup
+## Step 3: Set Up Alerting Message (Notification Rule)
 
-Once conditions are configured:
+After defining your device conditions, click **Continue** to configure **how the alert will be delivered and displayed**. In this step, you can customize:
+
+* The notification subject and message
+* The notification severity type (Critical / Important / Information)
+* How often the notification repeats (custom frequency)
+* When the rule is active (rule timer / work hours)
+
+***
+
+### Alert Subject and Message
+
+At the top of the screen you can define what the alert will look like when it is delivered.
+
+#### Subject
+
+The **Subject** is the title of the notification. This is what users will see first in the Inbox, email, or SMS notification list.
+
+Example:
+
+* **Lab Fridge 1**
+
+#### Message
+
+The **Message** is the full alert text that is sent when the rule is triggered.
+
+Example:
+
+* **WARNING! Lab Fridge 1 temperature is above 7 degrees!**
+
+It’s recommended to include:
+
+* the device name or location
+* what condition was triggered
+* what action should be taken (optional)
+
+<figure><img src="../../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+
+***
+
+### Notification Type (Severity)
+
+Select a **Notification type** for this rule:
+
+* **Critical**
+* **Important**
+* **Information**
+
+The selected type affects how the alert is categorized in the Inbox and may follow a default interval configured under **Notification Type Settings**.
+
+***
+
+### Custom Notification Frequency
+
+By default, notifications follow the interval configured globally for their notification type (for example, Critical notifications may repeat every hour).
+
+If you want a different behavior for this specific rule, enable **Custom Notification frequency**.
+
+<figure><img src="../../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+
+#### Enable Custom Frequency
+
+1. Toggle **Custom Notification frequency** to **On**
+2. Choose one of the following options:
+
+**Option 1: Once (send a single alert)**
+
+Use this when you only want one notification when the condition is triggered.
+
+Example use cases:
+
+* a one-time warning
+* low-priority informational events
+* alerts where repeat messages create noise
+
+**Option 2: Repeat every (custom interval)**
+
+Use this when you want the alert to repeat on a schedule.
+
+1. Select **Repeat every**
+2. Enter the interval value (example: `1`)
+3. Choose the time unit (minutes / hours)
+
+Example:
+
+* Repeat every **1 hour**
+* Repeat every **15 minutes**
+
+This is recommended for:
+
+* equipment failures
+* safety events
+* incidents that require immediate attention until resolved
+
+***
+
+### Rule Timer (Run the Rule Only During Specific Hours)
+
+The **Rule timer** allows you to control _when_ the notification rule is active. This is useful for after-hours monitoring, when nobody is on-site to check equipment manually.
+
+#### Example: Alert Only During Non-Work Hours
+
+If the refrigerator is monitored during the day by staff, but needs alerting during nights/weekends:
+
+1. Toggle **Rule timer** to **On**
+2. Set the active time range:
+   * **Start** (example: `18:00`)
+   * **Finish** (example: `09:00`)
+3. Select the correct **Time Zone**
+4. Choose the **Start Rule execution from date** (optional)
+
+<figure><img src="../../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+
+This ensures that notifications are only triggered during the hours when the rule is allowed to run.
+
+***
+
+### Restrict Rule to Specific Days (Optional)
+
+If you only want the rule to execute on certain days (for example weekdays only, or weekends only):
+
+1. Enable **Execute Rule on specific days only**
+2. Select the days when the rule should be active
+
+***
+
+## Step 4: Select Notification Recipients
+
+After configuring the alert message and rule behavior, click **Continue** to choose **how you want to receive notifications** when this rule is triggered.
+
+In this step, you select the notification method(s) and the recipient(s) who should receive the alert.
+
+***
+
+<figure><img src="../../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+
+### Notification Methods
+
+Kilo supports the following notification delivery methods:
+
+* **SMS Notifications**
+* **Email Notifications**
+
+Each method can be enabled or disabled independently for this rule.
+
+***
+
+### SMS Notifications
+
+To receive notifications by SMS:
+
+1. Toggle **SMS Notifications** to **On**
+2. Select the phone number(s) that should receive this alert
+
+If a phone number is available, you will see it listed under **Send SMS to**, and you can select it using the checkbox.
+
+#### Adding Phone Numbers
+
+If no phone numbers are available, Kilo will prompt you to add them in **Notification Settings**.
+
+To add a phone number:
+
+1. Open **Notifications**
+2. Go to **Settings**
+3. Add a mobile number under **SMS**
+4. Return to the rule creation flow and select it here
+
+***
+
+### Email Notifications
+
+To receive notifications by email:
+
+1. Toggle **Email Notifications** to **On**
+2. Select the email address(es) that should receive the alert
+
+If no email address is available, you will be prompted to add one in **Notification Settings**.
+
+To add an email address:
+
+1. Open **Notifications**
+2. Go to **Settings**
+3. Add an email address under **Email**
+4. Return to this step and select it here
+
+***
+
+### Continue to Final Step
+
+Once you have selected your notification method(s) and recipients:
 
 1. Click **Continue**
-2. Complete the remaining steps (rule name, description, severity type, notification delivery)
-3. Save the rule
+2. Review the final settings and save the rule
 
-The rule will now appear in the **Rules list** and begin evaluating incoming device data.
+***
+
+### Best Practice: Use Multiple Methods for Critical Alerts
+
+For **Critical** notifications, it is recommended to enable both:
+
+* **SMS** (fast, immediate delivery)
+* **Email** (recordkeeping and team visibility)
+
+This increases the chance that important alerts are seen quickly.
+
+
 
 ***
 
@@ -163,7 +363,3 @@ The rule will now appear in the **Rules list** and begin evaluating incoming dev
 * Keep thresholds realistic and aligned with operational limits
 * Use **Critical** severity only for events requiring immediate action
 * Name rules clearly (e.g. _“Lab Fridge – Temperature High”_)
-
-<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
