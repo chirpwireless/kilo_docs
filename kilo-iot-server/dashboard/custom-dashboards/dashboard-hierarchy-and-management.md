@@ -8,7 +8,9 @@ This structure helps you group dashboards by site, building, department, or any 
 
 ***
 
-### Dashboard Hierarchy (Folders → Dashboards)
+### Dashboard Hierarchy&#x20;
+
+### Folders → Dashboards
 
 Dashboards in Kilo can be organized into **folders**, where:
 
@@ -31,30 +33,84 @@ To create a folder:
 2. Click the **Settings icon** next to **Add dashboard**
 3. Select **Create Folder**
 4. Name your folder (e.g., building name, location name, department)
-5. Save
+
+<figure><img src="../../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+
+1. Save
 
 Folders act as the **top-level containers** for dashboards.
 
 ***
 
-### Example Folder Use Case
+### Example Folder Use Cases
 
-Folders are ideal for organizing dashboards by physical location.
+Folders can be used to organize dashboards in many different ways — depending on how your operation is structured. While location-based organization is common, folders can also represent **equipment categories, systems, departments, workflows, or any grouping that makes dashboards easier to navigate.**
 
-Example:
+#### Organizing by Location&#x20;
 
-You operate and automate multiple buildings. You can create folders like:
+If you manage multiple buildings or sites, folders can represent each location:
 
 * **Rockville Pike 9**
 * **Main Street 108**
 
-Each folder then contains dashboards relevant to that building.
+Each folder then contains dashboards relevant to that site (for example floor overviews, device lists, HVAC status, energy dashboards, etc.).
+
+***
+
+#### Organizing by Equipment Type (Factory / Industrial Use Case)
+
+In industrial environments, it often makes more sense to group dashboards by **equipment category** rather than geography.
+
+Example folders might include:
+
+* **Boilers**
+* **Compressors**
+* **Cooling Towers**
+
+Inside the **Boilers** folder, you could create dashboards such as:
+
+* **Boiler Temperature Monitoring**\
+  A dashboard showing temperature readings and trends for all boilers in operation.
+
+This makes it easy for maintenance or operations teams to access dashboards by system type — especially when the same equipment exists across different areas.
+
+***
+
+#### Organizing by Equipment Group (Lab / Facility Use Case)
+
+In labs and controlled environments, folders can represent equipment groups that require continuous monitoring.
+
+Example folders might include:
+
+* **Refrigerators**
+* **Freezers**
+* **Incubators**
+
+Inside the **Refrigerators** folder, you could create dashboards such as:
+
+* **Temperature & Humidity Overview**\
+  A dashboard showing temperature and humidity readings across all monitored refrigerators.
+
+This structure keeps monitoring dashboards grouped by purpose and makes it easier to spot anomalies quickly.
 
 ***
 
 ### Dashboard Management Within Folders
 
-Once folders exist, dashboards can be created, edited, deleted, and updated inside them.
+Once folders exist, dashboards can be **created, edited, deleted, and updated** within them.
+
+To create a new dashboard:
+
+1. In the left navigation menu, click **Add Dashboard**.
+2. A configuration panel will appear.
+
+<figure><img src="../../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+
+1. Enter a **dashboard name** (for example: _“Lab Refrigerators”_).
+2. Select an existing **folder** from the **Folder dropdown** to place the dashboard in.
+3. Save to create the dashboard.
+
+This allows you to build dashboards quickly while keeping them organized within your folder structure.
 
 #### Common Dashboard Examples
 
