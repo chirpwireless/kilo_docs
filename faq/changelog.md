@@ -2,6 +2,146 @@
 
 <details>
 
+<summary>Scale Log. Release 2.2.0</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.0.png" alt=""><figcaption></figcaption></figure>
+
+### **Weight Log 2.2.0 is one of the biggest releases of the year — and this Weightlog is a great way to close it out strong.**
+
+
+
+This update introduces several major platform capabilities that move Kilo into a new phase of scalability — giving teams more reliable alerting, better dashboard organization, and stronger tools for managing multi-user deployments.
+
+Most importantly, **KILO 2.2.0 improves the day-to-day operations of real deployments**: users can now receive critical alerts via **SMS**, organize dashboards into a **folder hierarchy**, and manage organizations with more control through ownership transfers and editable settings. These changes make Kilo more reliable in the field, easier to operate across teams, and easier to scale as deployments grow.\
+\
+Major Changes
+
+***
+
+### Add SMS as a Notification Channel
+
+#### New Feature: SMS Notification Support
+
+The Notification Center now supports **SMS alerts**, enabling users to receive important notifications directly on their phone. This improves reliability for time-sensitive events and gives teams another channel when email is delayed or missed.
+
+#### SMS Notification Capabilities
+
+* SMS notification channel with phone verification flow
+* Phone number input and verification code interface
+* Toggle control for enabling/disabling SMS notifications
+* Error messages for invalid or expired verification codes
+* Duplicate phone number detection
+
+#### How to Use
+
+1. Navigate to **Notifications → Settings**
+2. In the **SMS Notifications** section, click **“+ Add phone number”**
+3. Enter your phone number and click **Save**
+4. Enter the verification code sent to your phone
+5. Toggle SMS notifications **on/off** as needed
+
+This update enables users to receive critical alerts directly via SMS, increasing reliability and flexibility across deployments.
+
+***
+
+### SMS Add-On
+
+#### New Feature: SMS Credit Purchase (Stripe)
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+Kilo now supports purchasing SMS credits directly inside the platform. This allows teams to scale SMS alerting without additional operational overhead and makes usage predictable through a simple balance system.
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+#### SMS Purchase Feature Highlights
+
+* **Flexible quantity selection** — choose the exact number of SMS messages to purchase
+* **Transparent costing** — per-SMS price and total cost displayed before purchase
+* **Secure transactions** — payments are processed via Stripe
+* **Immediate confirmation** — confirmation modal appears after successful payment
+* **Live balance updates** — SMS balance updates in real time
+
+#### How to Use
+
+1. Navigate to **Notifications → SMS Settings**
+2. Select the number of SMS credits you want to purchase
+3. Review the unit price and total cost
+4. Complete payment via Stripe
+5. View the confirmation and updated SMS balance
+
+***
+
+### Subscription & Billing Updates
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+#### Free Subscription Default Plan
+
+KILO 2.2.0 improves subscription handling so onboarding and plan upgrades are clearer and more predictable.
+
+#### Subscription Improvements
+
+* New users are automatically assigned the **default Free Plan** upon registration
+* Free plan details are now visible in the **Billing / Subscription** area
+* Users can upgrade from the free plan to a paid subscription at any time
+* Upon expiration of a paid subscription, users are automatically downgraded to the free plan
+* Feature limitations are applied based on the free plan after downgrade
+
+***
+
+### Change Organization Settings
+
+#### Organization Management Enhancements
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+Organization owners now have improved control over organization settings and ownership, making it easier to manage long-running deployments and team transitions.
+
+#### New Capabilities
+
+* **Organization name editing** directly in Organization Settings
+* **Ownership transfer** to another user via the organization member list
+* **Email invitation workflow** for ownership transfer acceptance
+* Ownership transfer invitation expires after **1 week**
+* **Re-authentication required** for the new owner during acceptance
+* Upon acceptance, the new owner is granted the **Editor role** with full administrative rights
+* Organization name and ownership changes must be explicitly **saved** to take effect
+
+***
+
+### Dashboard Hierarchy
+
+#### Enhanced Dashboard Management and Display
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+Change Log 2.2.0 introduces a new dashboard structure designed for users managing multiple deployments or operational views.
+
+#### Dashboard Improvements
+
+* Dashboards can now be organized into a **two-level hierarchy** (folder → dashboards)
+* Folders are created via the **Settings** icon next to the “Add dashboard” button in the left menu
+* Dashboards can be added, deleted, and modified inside the folder structure
+* Reordering and restructuring dashboards is possible using the **Edit** button
+* Widgets can be placed on any dashboard regardless of its folder location
+
+This update makes it significantly easier to scale dashboard usage and keep operational views organized as deployments grow.
+
+***
+
+### Minor Changes
+
+#### Admin Contacts Information
+
+* Permissions tooltips now display **admin contact details**, helping users quickly request access or assistance when permissions are required.
+
+
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 2.0.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.0.0.png" alt=""><figcaption></figcaption></figure>

@@ -2,7 +2,7 @@
 
 1. Navigate to **Dashboard** from the left-hand menu.
 
-<div data-full-width="false"><figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure></div>
+<div data-full-width="false"><figure><img src="../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure></div>
 
 1. Click **Add widget** to begin creating your first dashboard.
 2. A **Choose a widget** window appears.
@@ -10,7 +10,7 @@
 
 
 
-    <figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 4. Select the device that is available to you from the dropdown and click chose.

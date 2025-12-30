@@ -26,7 +26,7 @@ This structure allows dealers to **receive credit for client devices** while mai
 
 
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Enter the **Organization Name** (for example, “Kilo Org” or “Clients organization”).
 * Enter the **email address** of the person who will be the **Owner** of this organization.
