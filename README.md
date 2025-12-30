@@ -1,7 +1,5 @@
 # Intro to Kilo
 
-## What Is Kilo?
-
 Every IoT project follows the same fundamental path:\
 **Devices → Connectivity → IoT Platform.**
 
