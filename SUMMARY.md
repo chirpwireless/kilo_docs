@@ -9,7 +9,7 @@
   * [Custom Dashboards](kilo-iot-server/dashboard/custom-dashboards/README.md)
     * [Overview](kilo-iot-server/dashboard/custom-dashboards/overview.md)
     * [Dashboard Hierarchy & Management](kilo-iot-server/dashboard/custom-dashboards/dashboard-hierarchy-and-management.md)
-    * [Create a dashboard](kilo-iot-server/dashboard/custom-dashboards/create-a-dashboard.md)
+    * [Adding widgets to a dashboard](kilo-iot-server/dashboard/custom-dashboards/adding-widgets-to-a-dashboard.md)
   * [Attribute Based Access Control (ABAC)](kilo-iot-server/dashboard/attribute-based-access-control-abac/README.md)
     * [Why ABAC Instead of RBAC](kilo-iot-server/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
     * [Permission Levels Explained](kilo-iot-server/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
