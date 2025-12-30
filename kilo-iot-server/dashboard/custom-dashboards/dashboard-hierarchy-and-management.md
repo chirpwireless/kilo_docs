@@ -141,15 +141,17 @@ These are only examples — the same folder/dashboard logic can apply to any use
 
 ### Reordering Dashboards & Folders
 
-To restructure your dashboard hierarchy or change the order of dashboards, use the **Edit** button in the Dashboards menu.
+To restructure your dashboard hierarchy or change the order of dashboards, click the **Settings icon** next to **Add Dashboard** in the left navigation menu.
+
+When the modal opens, you can **drag and drop folders and dashboards** to organize them in the order that best fits your workflow.
 
 Users can:
 
 * Change the order dashboards appear in
 * Move dashboards between folders
-* Adjust folder order for faster navigation
+* Reorder folders for faster navigation
 
-This is useful when deployments expand and you want the UI hierarchy to reflect real operational priorities.
+This is especially useful as deployments grow and you want the dashboard structure to reflect real operational priorities.
 
 ***
 
