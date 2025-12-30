@@ -19,7 +19,7 @@ This section is your main hub for:
 
 ### Notification Center Layout
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 At the top-left of the Notification Center, you will see three tabs:
 

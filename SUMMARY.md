@@ -14,6 +14,8 @@
     * [Inbox](kilo-iot-server/dashboard/notification-center/inbox.md)
     * [Rules](kilo-iot-server/dashboard/notification-center/rules.md)
     * [Settings](kilo-iot-server/dashboard/notification-center/settings.md)
+    * [Setting Notifications](kilo-iot-server/dashboard/notification-center/setting-notifications.md)
+    * [Setting Notification Intervals](kilo-iot-server/dashboard/notification-center/setting-notification-intervals.md)
   * [Attribute Based Access Control (ABAC)](kilo-iot-server/dashboard/attribute-based-access-control-abac/README.md)
     * [Why ABAC Instead of RBAC](kilo-iot-server/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
     * [Permission Levels Explained](kilo-iot-server/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)

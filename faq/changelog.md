@@ -48,7 +48,7 @@ This update enables users to receive critical alerts directly via SMS, increasin
 
 #### New Feature: SMS Credit Purchase (Stripe)
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Kilo now supports purchasing SMS credits directly inside the platform. This allows teams to scale SMS alerting without additional operational overhead and makes usage predictable through a simple balance system.
 
@@ -74,7 +74,7 @@ Kilo now supports purchasing SMS credits directly inside the platform. This allo
 
 ### Subscription & Billing Updates
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### Free Subscription Default Plan
 
