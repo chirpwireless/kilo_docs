@@ -12,6 +12,7 @@
     * [Dashboard Hierarchy & Management](kilo-iot-server/dashboard/custom-dashboards/dashboard-hierarchy-and-management.md)
     * [Adding widgets to a dashboard](kilo-iot-server/dashboard/custom-dashboards/adding-widgets-to-a-dashboard.md)
   * [Devices](kilo-iot-server/dashboard/devices.md)
+  * [Gateways](kilo-iot-server/dashboard/gateways.md)
   * [Notification Center](kilo-iot-server/dashboard/notification-center/README.md)
     * [Inbox](kilo-iot-server/dashboard/notification-center/inbox.md)
     * [Rules](kilo-iot-server/dashboard/notification-center/rules.md)
