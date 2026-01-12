@@ -7,25 +7,25 @@ Adding a gateway is straightforward and can be completed in just a few simple st
 1. Log in to your account.
 2. Click **Gateways** from the left-hand menu.
 
-<figure><img src="../.gitbook/assets/leftmenu.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/leftmenu.png" alt=""><figcaption></figcaption></figure>
 
 In the top-right corner, click **Add Gateway**.
 
-<figure><img src="../.gitbook/assets/addgateway.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/addgateway.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2: Configure Gateway Details
 
 **Name your gateway** (e.g., `London Office Gateway 1`).
 
-<figure><img src="../.gitbook/assets/name.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/name.png" alt=""><figcaption></figcaption></figure>
 
 **Select the appropriate LoRaWAN frequency** for your country:
 
 * For Europe: `EU868`
 * For the United States: `US915`
-* You can verify your country's frequency band [here](lorawan/subg/frequencies.md).
+* You can verify your country's frequency band [here](../../../lorawan-lr-fhss/lorawan/subg/frequencies.md).
 
-<figure><img src="../.gitbook/assets/region.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/region.png" alt=""><figcaption></figcaption></figure>
 
 1. **Enter the Gateway EUI** – typically printed on a sticker from the manufacturer.
 2. Click **Continue**.
@@ -34,15 +34,15 @@ In the top-right corner, click **Add Gateway**.
 
 Copy the **LNS (LoRa Network Server) address** – you’ll need this in the next steps.
 
-<figure><img src="../.gitbook/assets/savelink.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/savelink.png" alt=""><figcaption></figcaption></figure>
 
 Download the **certificates** for secure gateway authentication and click continue
 
-<figure><img src="../.gitbook/assets/downloadcerts.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/downloadcerts.png" alt=""><figcaption></figcaption></figure>
 
 Click continue
 
-<figure><img src="../.gitbook/assets/gatewayadded.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/gatewayadded.png" alt=""><figcaption></figcaption></figure>
 
 Congratulations you added your gateway to Kilos platform. Now you need to log into the gateway and point it to Kilo.
 
@@ -72,11 +72,11 @@ _(Replace `192.168.2.0/24` with your actual subnet)_
 
 1. Select **Basics™ Station** mode.
 
-<figure><img src="../.gitbook/assets/basicsstation.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/basicsstation.jpg" alt=""><figcaption></figcaption></figure>
 
 1. Paste the **LNS address** copied from the Kilo platform.
 
-<figure><img src="../.gitbook/assets/lnsaddress.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/lnsaddress.jpg" alt=""><figcaption></figcaption></figure>
 
 1. Upload the **certificates** you downloaded earlier.
 2. Click **Save** to apply the configuration.
@@ -85,15 +85,15 @@ _(Replace `192.168.2.0/24` with your actual subnet)_
 
 1. Go back to the **Kilo platform**.
 
-<figure><img src="../.gitbook/assets/yourgateway.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/yourgateway.png" alt=""><figcaption></figcaption></figure>
 
 1. Your gateway should now appear **online** . You may need to click **Refresh** in your browser a few times.
 
-<figure><img src="../.gitbook/assets/sceen.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/sceen.png" alt=""><figcaption></figcaption></figure>
 
 and Should be **transferring packets**
 
-<figure><img src="../.gitbook/assets/transmitting.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/transmitting.png" alt=""><figcaption></figcaption></figure>
 
 Congratulations you are all set. You are now ready to add your your devices.
 
