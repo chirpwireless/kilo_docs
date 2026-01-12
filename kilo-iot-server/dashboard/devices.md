@@ -1,15 +1,13 @@
 # Devices
 
-### Devices Page
-
 The Devices page shows all devices connected to your Kilo IoT account.
 
-#### Accessing the Devices Page
+### Accessing the Devices Page
 
 1. Click **Devices** in the left-hand navigation menu.
 2. The page displays all your devices in a table format.
 
-#### Understanding the Device Table
+### Understanding the Device Table
 
 The device table includes the following columns:
 
@@ -22,7 +20,7 @@ The device table includes the following columns:
 | **Data**        | Real-time data from the device (e.g., temperature, humidity)     |
 | **Favorite**    | Star icon to mark/unmark the device as a favorite                |
 
-#### Filtering Devices
+### Filtering Devices
 
 You can filter your devices in two ways:
 
@@ -44,7 +42,7 @@ Use the search field to find specific devices:
 
 Tip: You can combine location filter and search to narrow down results further.
 
-#### Marking Devices as Favorites
+### Marking Devices as Favorites
 
 Favorite devices appear in your Overview page for quick access.
 
@@ -56,7 +54,7 @@ To mark a device as a favorite:
 
 To remove a device from favorites, click the filled star icon again.
 
-#### Adding a New Device
+### Adding a New Device
 
 To add a new device:
 
@@ -65,11 +63,11 @@ To add a new device:
 
 For detailed instructions, see: [Adding a LoRaWAN Device](https://docs.kiloiot.io/lorawan-lr-fhss/adding-device)
 
-#### Device Limit Warning
+### Device Limit Warning
 
 If you reach your subscription's device limit, a warning banner appears at the top of the page. You'll need to upgrade your subscription or remove unused devices to add more.
 
-#### Viewing Device Details
+### Viewing Device Details
 
 Click on any row in the device table to open the device detail page, where you can:
 
