@@ -6,6 +6,7 @@
 
 * [Kilo IoT Server](kilo-iot-server/dashboard/README.md)
   * [Features](kilo-iot-server/dashboard/features.md)
+  * [Navigation Menu](kilo-iot-server/dashboard/navigation-menu.md)
   * [Overview Page](kilo-iot-server/dashboard/overview-page.md)
   * [Custom Dashboards](kilo-iot-server/dashboard/custom-dashboards/README.md)
     * [Overview](kilo-iot-server/dashboard/custom-dashboards/overview.md)
