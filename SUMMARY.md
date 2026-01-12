@@ -45,11 +45,6 @@
 * [Connectivity Platform](kilo-connectivity/connectivity-platform.md)
 * [IoT Security](kilo-connectivity/iot-security.md)
 
-## Legal
-
-* [Privacy Policy](legal/privacy-policy.md)
-* [Terms of Use](legal/terms-of-use.md)
-
 ## FAQ
 
 * [Official Links](faq/official-links.md)
