@@ -30,6 +30,10 @@
     * [Creating an Organization](kilo-iot-server/dashboard/attribute-based-access-control-abac/creating-an-organization.md)
     * [Changing organization name and owner](kilo-iot-server/dashboard/attribute-based-access-control-abac/changing-organization-name-and-owner.md)
     * [Adding and Managing Users](kilo-iot-server/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
+  * [IoT AI Assistant](kilo-iot-server/dashboard/iot-ai-assistant/README.md)
+    * [Assistant How To](kilo-iot-server/dashboard/iot-ai-assistant/assistant-how-to.md)
+    * [Assistant data sources](kilo-iot-server/dashboard/iot-ai-assistant/assistant-data-sources.md)
+    * [Assistant privacy](kilo-iot-server/dashboard/iot-ai-assistant/assistant-privacy.md)
 
 ## LoRaWAN / LR-FHSS
 
