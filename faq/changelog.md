@@ -2,6 +2,70 @@
 
 <details>
 
+<summary>Scale Log. Release 2.2.1</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.1.png" alt=""><figcaption></figcaption></figure>
+
+## Major Changes
+
+### Stripe Bank Card Integration
+
+#### Features
+
+* Card Linking: Users can now connect their bank card through Stripe to activate free trial subscriptions
+* Card Management: Users can view and manage linked cards in their Stripe account
+* Card Removal: Users have the option to unlink/remove their bank card at any time
+
+#### Security
+
+* All payment data is processed securely through Stripe's PCI-compliant infrastructure
+
+\
+Minor Changes
+-------------
+
+### Stripe Subscription Management Fix
+
+#### Fixed
+
+* Users now have only one active order after upgrading subscription plan
+* Corrected order replacement logic to ensure previous subscription order is properly canceled when upgrading
+
+#### Improved
+
+* Enhanced subscription upgrade flow to properly transition between tariff plans
+* Improved Stripe order management to ensure clean subscription changes
+* Updated order lifecycle handling during tariff plan upgrades
+
+#### Technical Changes
+
+* Implemented proper order cancellation/replacement logic during subscription upgrades
+* Added validation to prevent duplicate active orders for same user
+
+### Frontend Technical Debt Cleanup
+
+#### Refactored
+
+* Core UI components: Button, Tab, Text Field, Select, Typography
+* Improved consistency and maintainability across component library
+
+#### Removed
+
+* Deprecated legacy components
+* Unused translation keys
+
+#### Improved
+
+* Enhanced component reusability and type safety
+* Reduced bundle size
+* Cleaner component APIs
+
+
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 2.2.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.0.png" alt=""><figcaption></figcaption></figure>
