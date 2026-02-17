@@ -35,6 +35,10 @@
     * [Assistant data sources](kilo-iot-server/dashboard/iot-ai-assistant/assistant-data-sources.md)
     * [Assistant privacy](kilo-iot-server/dashboard/iot-ai-assistant/assistant-privacy.md)
 
+## Kilo Center
+
+* [Intro](kilo-center/intro.md)
+
 ## LoRaWAN / LR-FHSS
 
 * [What is LoRaWAN?](lorawan-lr-fhss/lorawan/README.md)
