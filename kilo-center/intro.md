@@ -1,7 +1,5 @@
 # Intro
 
-### Overview
-
 KiloCenter is an open-source, production-ready MIOTY Service Center.
 
 It is built for organizations that need to run MIOTY networks with confidence, whether for private deployments, public infrastructure, or hybrid operating models. KiloCenter gives operators and product teams a single platform to manage network operations, connect applications, and scale from pilot to production.
