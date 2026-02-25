@@ -37,7 +37,8 @@
 
 ## Kilo Center
 
-* [Intro](kilo-center/intro.md)
+* [Intro](kilo-center/intro/README.md)
+  * [Page 1](kilo-center/intro/page-1.md)
 
 ## LoRaWAN / LR-FHSS
 
