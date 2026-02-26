@@ -37,9 +37,9 @@
 
 ## Kilo Center
 
-* [Kilo Service Center](kilo-center/kilo-service-center/README.md)
+* [Kilo Service Center](kilo-center/intro/README.md)
   * [Project Overview](kilo-center/kilo-service-center/project-overview.md)
-  * [Getting Started](kilo-center/kilo-service-center/getting-started/README.md)
+  * [Getting Started](kilo-center/intro/project-overview.md)
     * [Architecture and Components](kilo-center/kilo-service-center/getting-started/architecture-and-components.md)
     * [Prerequisites](kilo-center/kilo-service-center/getting-started/prerequisites.md)
     * [Installation: Docker Compose](kilo-center/kilo-service-center/getting-started/installation-docker-compose.md)
@@ -51,6 +51,13 @@
     * [Register an Endpoint](kilo-center/kilo-service-center/onboarding/register-an-endpoint.md)
     * [Verify the First Uplink](kilo-center/kilo-service-center/onboarding/verify-the-first-uplink.md)
     * [Verify the First Downlink](kilo-center/kilo-service-center/onboarding/verify-the-first-downlink.md)
+  * [Integrations](kilo-center/kilo-service-center/integrations/README.md)
+    * [gRPC First Steps](kilo-center/kilo-service-center/integrations/grpc-first-steps.md)
+    * [MQTT First Steps](kilo-center/kilo-service-center/integrations/mqtt-first-steps.md)
+  * [Security](kilo-center/kilo-service-center/security/README.md)
+    * [Security Basics](kilo-center/kilo-service-center/security/security-basics.md)
+  * [Operations](kilo-center/kilo-service-center/operations/README.md)
+    * [Operations and Troubleshooting](kilo-center/kilo-service-center/operations/operations-and-troubleshooting.md)
 
 ## LoRaWAN / LR-FHSS
 
