@@ -38,7 +38,8 @@
 ## Kilo Center
 
 * [Intro](kilo-center/intro/README.md)
-  * [What is MIOTY?](kilo-center/intro/what-is-mioty.md)
+  * [What is MIOTY?](kilo-center/intro/page-1.md)
+  * [Project Overview](kilo-center/intro/project-overview.md)
 
 ## LoRaWAN / LR-FHSS
 
