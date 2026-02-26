@@ -8,11 +8,10 @@ Establish a secure baseline for KiloCenter deployments.
 
 Local development includes convenience credentials that must be changed for any shared or production environment:
 
-| Service          | Default                                | Notes                                        |
-| ---------------- | -------------------------------------- | -------------------------------------------- |
-| PostgreSQL       | user `kilocenter`, password `changeme` | Change in `config.yaml` and Docker Compose   |
-| MQTT broker      | user `admin`, password `KiloCenter`    | Change in Mosquitto config and `config.yaml` |
-| AVA base station | user `ubuntu`, password `123456`       | Factory default, change after first access   |
+| Service     | Default                                | Notes                                        |
+| ----------- | -------------------------------------- | -------------------------------------------- |
+| PostgreSQL  | user `kilocenter`, password `changeme` | Change in `config.yaml` and Docker Compose   |
+| MQTT broker | user `admin`, password `KiloCenter`    | Change in Mosquitto config and `config.yaml` |
 
 ### TLS for Base Station Communication
 
