@@ -51,7 +51,6 @@ Limit which ports are accessible from outside your local network:
 
 * [ ] Rotate all default credentials listed above
 * [ ] Restrict network access to management ports (50051, 5433, 6379)
-* [ ] Verify TLS is active on all base station connections
 * [ ] Store certificate private keys with restricted file permissions
 * [ ] Enable audit-level logging in production environments
 * [ ] Review `config.yaml` for any remaining development defaults
@@ -63,6 +62,5 @@ The Enterprise Edition adds multi-tenant security features:
 * User authentication with JWT validation
 * Organization-scoped data isolation
 * Role-based access control
-* API key management
 
 These features are not available in the Community Edition.
