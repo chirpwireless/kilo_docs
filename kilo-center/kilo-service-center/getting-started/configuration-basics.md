@@ -1,7 +1,5 @@
 # Configuration Basics
 
-### Goal
-
 Understand and verify baseline runtime configuration for a local deployment.
 
 ### Configuration Files
