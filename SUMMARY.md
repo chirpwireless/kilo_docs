@@ -37,9 +37,20 @@
 
 ## Kilo Center
 
-* [Intro](kilo-center/intro/README.md)
-  * [What is MIOTY?](kilo-center/intro/page-1.md)
-  * [Project Overview](kilo-center/intro/project-overview.md)
+* [Kilo Service Center](kilo-center/kilo-service-center/README.md)
+  * [Project Overview](kilo-center/kilo-service-center/project-overview.md)
+  * [Getting Started](kilo-center/kilo-service-center/getting-started/README.md)
+    * [Architecture and Components](kilo-center/kilo-service-center/getting-started/architecture-and-components.md)
+    * [Prerequisites](kilo-center/kilo-service-center/getting-started/prerequisites.md)
+    * [Installation: Docker Compose](kilo-center/kilo-service-center/getting-started/installation-docker-compose.md)
+    * [Installation: Linux Host](kilo-center/kilo-service-center/getting-started/installation-linux-host.md)
+    * [Installation: Local VM and Automation](kilo-center/kilo-service-center/getting-started/installation-local-vm-and-automation.md)
+    * [Configuration Basics](kilo-center/kilo-service-center/getting-started/configuration-basics.md)
+  * [Onboarding](kilo-center/kilo-service-center/onboarding/README.md)
+    * [Connect a Base Station](kilo-center/kilo-service-center/onboarding/connect-a-base-station.md)
+    * [Register an Endpoint](kilo-center/kilo-service-center/onboarding/register-an-endpoint.md)
+    * [Verify the First Uplink](kilo-center/kilo-service-center/onboarding/verify-the-first-uplink.md)
+    * [Verify the First Downlink](kilo-center/kilo-service-center/onboarding/verify-the-first-downlink.md)
 
 ## LoRaWAN / LR-FHSS
 
