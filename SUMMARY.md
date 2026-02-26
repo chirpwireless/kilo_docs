@@ -54,6 +54,7 @@
   * [Integrations](kilo-center/kilo-service-center/integrations/README.md)
     * [gRPC First Steps](kilo-center/kilo-service-center/integrations/grpc-first-steps.md)
     * [MQTT First Steps](kilo-center/kilo-service-center/integrations/mqtt-first-steps.md)
+    * [API Reference](kilo-center/kilo-service-center/integrations/api-reference.md)
   * [Security](kilo-center/kilo-service-center/security/README.md)
     * [Security Basics](kilo-center/kilo-service-center/security/security-basics.md)
   * [Operations](kilo-center/kilo-service-center/operations/README.md)
