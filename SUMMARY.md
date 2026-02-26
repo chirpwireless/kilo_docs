@@ -22,6 +22,8 @@
     * [Settings](kilo-iot-server/dashboard/notification-center/settings.md)
     * [Setting Alert Rules](kilo-iot-server/dashboard/notification-center/setting-alert-rules.md)
     * [Setting Notification Intervals](kilo-iot-server/dashboard/notification-center/setting-notification-intervals.md)
+  * [Reporting](kilo-iot-server/dashboard/reporting/README.md)
+    * [Audit Trail](kilo-iot-server/dashboard/reporting/audit-trail.md)
   * [Display & Language Settings](kilo-iot-server/dashboard/display-and-language-settings.md)
   * [Get Help](kilo-iot-server/dashboard/get-help.md)
   * [Attribute Based Access Control (ABAC)](kilo-iot-server/dashboard/attribute-based-access-control-abac/README.md)
@@ -34,6 +36,8 @@
     * [Assistant How To](kilo-iot-server/dashboard/iot-ai-assistant/assistant-how-to.md)
     * [Assistant data sources](kilo-iot-server/dashboard/iot-ai-assistant/assistant-data-sources.md)
     * [Assistant privacy](kilo-iot-server/dashboard/iot-ai-assistant/assistant-privacy.md)
+  * [Integrations](kilo-iot-server/dashboard/integrations/README.md)
+    * [API Keys](kilo-iot-server/dashboard/integrations/api-keys.md)
 
 ## Kilo Center
 
