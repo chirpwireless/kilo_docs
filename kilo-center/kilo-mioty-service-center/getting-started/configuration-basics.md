@@ -1,5 +1,7 @@
 # Configuration Basics
 
+### Goal
+
 Understand and verify baseline runtime configuration for a local deployment.
 
 ### Configuration Files
@@ -24,6 +26,22 @@ Understand and verify baseline runtime configuration for a local deployment.
 * **KC-Gateway health**: port `8087`
 * **BSSCI**: port `5000`, TLS certificate paths
 * **MQTT**: broker host, port, and credentials
+
+### TLS Certificate Paths
+
+BSSCI and SCACI TLS certificate paths are configured under the `protocol` section in `KC-Core/config.yaml`:
+
+```yaml
+protocol:
+  bsci_tls:
+    enabled: true
+    cert_file: "certificates/server.crt"
+    key_file: "certificates/server.key"
+    ca_file: "certificates/ca.crt"
+    min_version: "1.2"
+```
+
+These paths are relative to the KC-Core working directory. Generate certificates before first start -- see Docker Compose Installation or Linux Host Installation.
 
 ### Default Credentials
 

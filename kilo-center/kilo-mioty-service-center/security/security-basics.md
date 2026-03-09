@@ -17,20 +17,117 @@ Local development includes convenience credentials that must be changed for any 
 
 BSSCI requires TLS 1.2 or higher. Every base station connection to KC-Core uses TLS encryption.
 
-#### Certificate Setup
+#### CA Trust Model
 
-1. KC-Core loads its TLS certificate and key from paths configured in `KC-Core/config.yaml` under the `bssci` section.
-2. The CA certificate (`KC-Core/certificates/ca.crt`) must be imported into each base station's trust store.
-3. Monitor `logs/runtime/kc-core.log` for TLS handshake errors after connecting a base station.
+KiloCenter uses a self-signed Certificate Authority (CA) to issue all certificates:
+
+| Certificate        | Purpose                                     | Default Validity | Location                  |
+| ------------------ | ------------------------------------------- | ---------------- | ------------------------- |
+| CA certificate     | Root of trust; distributed to base stations | 20 years         | `certificates/ca.crt`     |
+| CA private key     | Signs server and client certificates        | --               | `certificates/ca.key`     |
+| Server certificate | KC-Core BSSCI/SCACI TLS listeners           | 1 year           | `certificates/server.crt` |
+| Server private key | TLS handshake                               | --               | `certificates/server.key` |
+| Client certificate | Per-base-station mutual TLS (optional)      | 1 year           | Generated on demand       |
+
+Base stations trust the **CA certificate**, not individual server certificates. This means server certificates can be renewed without touching base stations, as long as the same CA signs them.
+
+If you regenerate the CA, all existing server and client certificates become invalid and must be reissued. Back up `ca.key` securely.
+
+#### Generating Certificates
+
+**Step 1: Build certgen**
+
+From `kilocenter-modules/`:
+
+```bash
+go build -o KC-Core/certgen KC-Core/cmd/certgen/main.go
+```
+
+**Step 2: Generate CA + Server Certificates**
+
+```bash
+KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com
+```
+
+Replace `bssci.example.com` with the hostname or IP address that base stations use to reach KC-Core. For local development, use `localhost`.
+
+This creates four files in `KC-Core/certificates/`:
+
+* `ca.crt` and `ca.key` -- CA certificate and private key
+* `server.crt` and `server.key` -- server certificate and private key
+
+The server certificate automatically includes `localhost`, `127.0.0.1`, `0.0.0.0`, and all local network IPs as Subject Alternative Names (SANs).
+
+**certgen Reference**
+
+| Flag           | Default     | Description                                                  |
+| -------------- | ----------- | ------------------------------------------------------------ |
+| `-dir`         | `certs`     | Output directory for certificate files                       |
+| `-server`      | `localhost` | Server hostname (used as CN and SAN)                         |
+| `-days`        | `365`       | Server/client certificate validity in days                   |
+| `-ca-years`    | `20`        | CA certificate validity in years                             |
+| `-ca-only`     | `false`     | Generate only the CA certificate                             |
+| `-server-only` | `false`     | Generate only the server certificate (CA must already exist) |
+| `-client-only` | `false`     | Generate only a client certificate (CA must already exist)   |
+| `-client`      | (empty)     | Client name for client certificate (e.g., base station EUI)  |
+
+**Common Scenarios**
+
+**Generate everything (first-time setup):**
+
+```bash
+KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com
+```
+
+**Renew server certificate only (CA already exists):**
+
+```bash
+KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com -server-only
+```
+
+**Generate a client certificate for a base station:**
+
+```bash
+KC-Core/certgen -dir /tmp/bs-certs -client 70-B3-D5-9C-D0-00-09-E6 -client-only
+```
+
+The `-client-only` and `-server-only` flags load the existing CA from the `-dir` directory instead of generating a new one.
 
 #### Certificate Rotation
 
-When rotating certificates:
+**Via CLI** (recommended for automation):
 
-1. Generate new certificates signed by the same CA (or distribute the new CA to all base stations).
-2. Update the certificate paths in `config.yaml`.
-3. Restart KC-Core.
-4. Verify base station reconnections succeed.
+```bash
+KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com -server-only
+```
+
+**Via GUI** (post-install renewal):
+
+1. Open KC-Web and navigate to **Certificates**.
+2. Click **Renew Server Certificates** and confirm.
+3. Restart KC-Core to load the new certificates.
+
+**After rotation:**
+
+1. Restart KC-Core to load the new certificates.
+2. Verify base station reconnections succeed.
+3. If the CA was changed, redistribute `ca.crt` to all base stations.
+
+#### Certificate Configuration
+
+KC-Core loads certificates from paths configured in `config.yaml`:
+
+```yaml
+protocol:
+  bsci_tls:
+    enabled: true
+    cert_file: "certificates/server.crt"
+    key_file: "certificates/server.key"
+    ca_file: "certificates/ca.crt"
+    min_version: "1.2"
+```
+
+Paths are relative to the KC-Core working directory. KC-Core will fail to start if these files are missing.
 
 ### Network Exposure
 

@@ -1,5 +1,7 @@
 # Connect a Base Station
 
+## Connect a Base Station
+
 ### Goal
 
 Connect a MIOTY base station to your local KiloCenter instance and confirm it is online.
@@ -7,6 +9,7 @@ Connect a MIOTY base station to your local KiloCenter instance and confirm it is
 ### Prerequisites
 
 * KC-Core, KC-Gateway, and KC-Web running (see Installation)
+* TLS certificates generated (see the certificate bootstrap step in your installation guide)
 * BSSCI reachable on port `5000`
 * Server CA certificate available at `kilocenter-modules/KC-Core/certificates/ca.crt`
 

@@ -13,6 +13,7 @@ Provision a Linux VM, clone the repository, and follow the steps from Installati
 Keep these stable across VM environments:
 
 * Docker Compose service set (`postgres`, `redis`, `mosquitto`)
+* TLS certificate generation (run `certgen` before first start -- see Docker Compose Installation)
 * KC-Core, KC-Gateway, and KC-Web startup flow via `start-dev.sh`
 * Port mappings and health check endpoints
 

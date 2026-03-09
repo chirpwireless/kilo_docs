@@ -47,6 +47,10 @@ Ensure these ports are available before starting:
 | 6379  | Redis             | Cache                       |
 | 1883  | MQTT              | Mosquitto broker            |
 
+### TLS Certificates
+
+KiloCenter requires TLS certificates for base station communication (BSSCI) and application center communication (SCACI). You must generate these certificates before starting KC-Core for the first time. See the certificate bootstrap steps in Docker Compose Installation or Linux Host Installation.
+
 ### Repository Layout
 
 Clone the repository and work from the `kilocenter-modules/` directory:

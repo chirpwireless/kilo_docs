@@ -82,15 +82,16 @@ docker compose stop postgres redis mosquitto
 
 ### Common Issues
 
-| Symptom                                  | Cause                                             | Fix                                                |
-| ---------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
-| `dial tcp ...5432: connection refused`   | PostgreSQL port mismatch                          | Use `5433` for Docker, `5432` for host install     |
-| KC-Web shows gRPC errors                 | KC-Gateway not running or wrong port              | Verify KC-Gateway on port 9090                     |
-| `permission denied /var/run/docker.sock` | Docker group membership                           | Run `sudo usermod -aG docker $USER` and re-login   |
-| Base station not connecting              | BSSCI port 5000 not listening                     | Check KC-Core started and TLS certs are configured |
-| `start-dev.sh` fails                     | Dependencies not running                          | Start `docker compose up -d` first                 |
-| Bun not found                            | Bun runtime not installed                         | Install Bun: \`curl -fsSL https://bun.sh/install   |
-| KC-Web loads but shows no data           | KC-Core not running or no base stations connected | Check health endpoints and base station status     |
+| Symptom                                  | Cause                                             | Fix                                                        |
+| ---------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------- |
+| `dial tcp ...5432: connection refused`   | PostgreSQL port mismatch                          | Use `5433` for Docker, `5432` for host install             |
+| KC-Web shows gRPC errors                 | KC-Gateway not running or wrong port              | Verify KC-Gateway on port 9090                             |
+| `permission denied /var/run/docker.sock` | Docker group membership                           | Run `sudo usermod -aG docker $USER` and re-login           |
+| `failed to load TLS certificate`         | Missing or invalid certificate files              | Run `certgen` to generate certificates -- see Installation |
+| Base station not connecting              | BSSCI port 5000 not listening                     | Check KC-Core started and TLS certs are configured         |
+| `start-dev.sh` fails                     | Dependencies not running                          | Start `docker compose up -d` first                         |
+| Bun not found                            | Bun runtime not installed                         | Install Bun: \`curl -fsSL https://bun.sh/install           |
+| KC-Web loads but shows no data           | KC-Core not running or no base stations connected | Check health endpoints and base station status             |
 
 ### Recovery Sequence
 
