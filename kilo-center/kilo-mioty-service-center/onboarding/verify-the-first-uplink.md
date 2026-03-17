@@ -12,7 +12,7 @@ Confirm that uplink data travels end-to-end from an endpoint through a base stat
 
 ### Check Uplinks in KC-Web
 
-1. Open KC-Web at [http://localhost:5173](http://localhost:5173).
+1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
 2. Navigate to **Endpoints** and select your endpoint.
 3. Open the **Messages** tab.
 4. Look for uplink entries showing received payload data, timestamp, RSSI, and SNR values.

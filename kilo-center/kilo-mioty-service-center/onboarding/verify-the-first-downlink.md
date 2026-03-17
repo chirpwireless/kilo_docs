@@ -14,7 +14,7 @@ Both the endpoint and the base station must have bidirectional capability for do
 
 ### Send a Downlink via KC-Web
 
-1. Open KC-Web at [http://localhost:5173](http://localhost:5173).
+1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
 2. Navigate to **Endpoints** and select your bidirectional endpoint.
 3. Use the downlink interface to queue a message:
    * **Payload**: base64-encoded data (e.g., `AQIDBA==` for bytes `01 02 03 04`)

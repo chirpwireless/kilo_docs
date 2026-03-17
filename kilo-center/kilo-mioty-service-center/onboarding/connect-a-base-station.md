@@ -1,7 +1,5 @@
 # Connect a Base Station
 
-## Connect a Base Station
-
 ### Goal
 
 Connect a MIOTY base station to your local KiloCenter instance and confirm it is online.
@@ -17,7 +15,7 @@ Connect a MIOTY base station to your local KiloCenter instance and confirm it is
 
 Before the hardware can connect, the base station must exist in KiloCenter.
 
-1. Open KC-Web at [http://localhost:5173](http://localhost:5173).
+1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
 2. Navigate to **Base Stations** in the sidebar.
 3. Click **Add Base Station**.
 4. Enter the base station **EUI** (16-character hex string matching the hardware identity) and a **name**.

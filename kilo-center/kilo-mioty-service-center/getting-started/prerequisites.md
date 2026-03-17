@@ -9,7 +9,7 @@
 
 If you are building KC-Core, KC-Gateway, or KC-Web from source (development or contribution):
 
-* Go 1.25+
+* Go 1.24.4+
 * Bun runtime (for KC-Web build and dev server)
 
 ### Optional Tools
@@ -34,22 +34,32 @@ In the recommended setup, all three run via Docker Compose. Mosquitto is include
 
 Ensure these ports are available before starting:
 
-| Port  | Service           | Notes                       |
-| ----- | ----------------- | --------------------------- |
-| 5173  | KC-Web            | Vite dev server             |
-| 9090  | KC-Gateway        | External gRPC-web API       |
-| 8086  | KC-Core health    | Health and Prometheus       |
-| 8087  | KC-Gateway health | Gateway health endpoint     |
-| 5000  | BSSCI             | Base station protocol (TLS) |
-| 5001  | SCACI             | Application center protocol |
-| 50051 | KC-Core gRPC      | Internal, loopback only     |
-| 5433  | PostgreSQL        | Docker host port mapping    |
-| 6379  | Redis             | Cache                       |
-| 1883  | MQTT              | Mosquitto broker            |
+| Port  | Service            | Notes                        |
+| ----- | ------------------ | ---------------------------- |
+| 80    | KC-Web (container) | nginx — SPA + gRPC-web proxy |
+| 9090  | KC-Gateway         | External gRPC-web API        |
+| 8086  | KC-Core health     | Health and Prometheus        |
+| 8087  | KC-Gateway health  | Gateway health endpoint      |
+| 5000  | BSSCI              | Base station protocol (TLS)  |
+| 5001  | SCACI              | Application center protocol  |
+| 50051 | KC-Core gRPC       | Internal, loopback only      |
+| 5433  | PostgreSQL         | Docker host port mapping     |
+| 6379  | Redis              | Cache                        |
+| 1883  | MQTT               | Mosquitto broker             |
+
+Port 5173 is used only in source dev mode (Vite dev server).
 
 ### TLS Certificates
 
-KiloCenter requires TLS certificates for base station communication (BSSCI) and application center communication (SCACI). You must generate these certificates before starting KC-Core for the first time. See the certificate bootstrap steps in Docker Compose Installation or Linux Host Installation.
+KiloCenter requires TLS certificates for base station communication (BSSCI) and application center communication (SCACI). Generate them using the `certgen` compose service before starting KC-Core for the first time:
+
+```bash
+docker compose run --rm certgen
+```
+
+> **File ownership (Linux):** If generated files are owned by root, rerun with `UID=$(id -u) GID=$(id -g)` prefixed.
+
+See the certificate bootstrap steps in Docker Compose Installation.
 
 ### Repository Layout
 

@@ -36,7 +36,7 @@ KiloCenter
     ├── KC-MQTT/            - MQTT topic and dispatch integration
     ├── config/             - Runtime configuration files
     ├── docker-compose.yml  - Container runtime definitions
-    └── deployments/docker/ - Mosquitto and Docker support assets
+    └── deployments/docker/ - Mosquitto, nginx, and Docker support assets
 ```
 
 ### Data Path
@@ -45,25 +45,28 @@ KiloCenter
 2. Base stations receive radio frames and connect to KC-Core over BSSCI (TCP with TLS on port 5000).
 3. KC-Core validates protocol frames, manages sessions, and persists messages through KC-DB.
 4. KC-Gateway exposes the gRPC-web API on port 9090, proxying requests to KC-Core.
-5. KC-Web connects to KC-Gateway for all operator workflows.
+5. KC-Web connects to KC-Gateway for all operator workflows (container mode: nginx on port 80 proxies gRPC-web to KC-Gateway).
 6. External systems consume data through gRPC (via KC-Gateway) or MQTT (via Mosquitto).
 
 ### Service Ports
 
-| Service             | Port  | Protocol | Description                    |
-| ------------------- | ----- | -------- | ------------------------------ |
-| KC-Core (internal)  | 50051 | gRPC     | Internal API (KC-Gateway only) |
-| KC-Core (health)    | 8086  | HTTP     | Health and Prometheus metrics  |
-| KC-Core (BSSCI)     | 5000  | TCP/TLS  | Base station protocol ingress  |
-| KC-Core (SCACI)     | 5001  | TCP/TLS  | Application center protocol    |
-| KC-Gateway          | 9090  | gRPC-web | External API ingress           |
-| KC-Gateway (health) | 8087  | HTTP     | Gateway health endpoint        |
-| KC-Web              | 5173  | HTTP     | Vite dev server                |
-| PostgreSQL          | 5433  | TCP      | Database (Docker host mapping) |
-| Redis               | 6379  | TCP      | Cache                          |
-| Mosquitto           | 1883  | TCP      | MQTT broker                    |
+| Service              | Port  | Protocol | Description                      |
+| -------------------- | ----- | -------- | -------------------------------- |
+| KC-Core (internal)   | 50051 | gRPC     | Internal API (KC-Gateway only)   |
+| KC-Core (health)     | 8086  | HTTP     | Health and Prometheus metrics    |
+| KC-Core (BSSCI)      | 5000  | TCP/TLS  | Base station protocol ingress    |
+| KC-Core (SCACI)      | 5001  | TCP/TLS  | Application center protocol      |
+| KC-Identity (gRPC)   | 50052 | gRPC     | Internal only (KC-Core/Gateway)  |
+| KC-Identity (health) | 8088  | HTTP     | Identity service health          |
+| KC-Gateway           | 9090  | gRPC-web | External API ingress             |
+| KC-Gateway (health)  | 8087  | HTTP     | Gateway health endpoint          |
+| KC-Web (container)   | 80    | HTTP     | nginx — serves SPA, proxies gRPC |
+| KC-Web (source dev)  | 5173  | HTTP     | Vite dev server                  |
+| PostgreSQL           | 5433  | TCP      | Database (Docker host mapping)   |
+| Redis                | 6379  | TCP      | Cache                            |
+| Mosquitto            | 1883  | TCP      | MQTT broker                      |
 
 ### Local Deployment Modes
 
-* **Source mode** (recommended): Docker for infrastructure dependencies, KC-Core, KC-Gateway, and KC-Web built and run from source.
-* **Container mode**: `docker compose up -d` runs all services in containers. KC-Web is not included in the default compose stack and must be started separately.
+* **Container mode** (recommended): `docker compose up --build -d` runs all services in containers. KC-Web is served by nginx at `http://localhost/`. No host toolchain required beyond Docker.
+* **Source dev mode**: Docker for infrastructure dependencies (postgres, redis, mosquitto); KC-Core, KC-Gateway, and KC-Web built and run from source. KC-Web available at `http://localhost:5173`.

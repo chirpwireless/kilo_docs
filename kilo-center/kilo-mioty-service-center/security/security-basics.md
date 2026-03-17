@@ -13,9 +13,9 @@ Local development includes convenience credentials that must be changed for any 
 | PostgreSQL  | user `kilocenter`, password `changeme` | Change in `config.yaml` and Docker Compose   |
 | MQTT broker | user `admin`, password `KiloCenter`    | Change in Mosquitto config and `config.yaml` |
 
-### TLS for Base Station Communication
+### TLS for Base Station and Application Center Communication
 
-BSSCI requires TLS 1.2 or higher. Every base station connection to KC-Core uses TLS encryption.
+BSSCI requires TLS 1.2 or higher. SCACI requires TLS 1.3 or higher. Every connection to KC-Core uses TLS encryption.
 
 #### CA Trust Model
 
@@ -35,21 +35,21 @@ If you regenerate the CA, all existing server and client certificates become inv
 
 #### Generating Certificates
 
-**Step 1: Build certgen**
+**Generate CA + Server Certificates (first-time setup)**
 
-From `kilocenter-modules/`:
-
-```bash
-go build -o KC-Core/certgen KC-Core/cmd/certgen/main.go
-```
-
-**Step 2: Generate CA + Server Certificates**
+No host Go toolchain required — use the `certgen` compose service:
 
 ```bash
-KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com
+docker compose run --rm certgen
 ```
 
-Replace `bssci.example.com` with the hostname or IP address that base stations use to reach KC-Core. For local development, use `localhost`.
+> **File ownership (Linux):** If generated files are owned by root, rerun with `UID=$(id -u) GID=$(id -g)` prefixed.
+
+For a production FQDN:
+
+```bash
+docker compose run --rm certgen -dir /app/certificates -days 365 -server bssci.example.com
+```
 
 This creates four files in `KC-Core/certificates/`:
 
@@ -57,6 +57,13 @@ This creates four files in `KC-Core/certificates/`:
 * `server.crt` and `server.key` -- server certificate and private key
 
 The server certificate automatically includes `localhost`, `127.0.0.1`, `0.0.0.0`, and all local network IPs as Subject Alternative Names (SANs).
+
+**Generate a Client Certificate**
+
+```bash
+docker compose run --rm certgen \
+    -dir /app/certificates -client-only -client 70-B3-D5-9C-D0-00-09-E6
+```
 
 **certgen Reference**
 
@@ -73,32 +80,21 @@ The server certificate automatically includes `localhost`, `127.0.0.1`, `0.0.0.0
 
 **Common Scenarios**
 
-**Generate everything (first-time setup):**
-
-```bash
-KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com
-```
-
 **Renew server certificate only (CA already exists):**
 
 ```bash
-KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com -server-only
+docker compose run --rm certgen \
+    -dir /app/certificates -server bssci.example.com -server-only
 ```
-
-**Generate a client certificate for a base station:**
-
-```bash
-KC-Core/certgen -dir /tmp/bs-certs -client 70-B3-D5-9C-D0-00-09-E6 -client-only
-```
-
-The `-client-only` and `-server-only` flags load the existing CA from the `-dir` directory instead of generating a new one.
 
 #### Certificate Rotation
 
-**Via CLI** (recommended for automation):
+**Via compose** (recommended for automation):
 
 ```bash
-KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com -server-only
+docker compose run --rm certgen \
+    -dir /app/certificates -server bssci.example.com -server-only
+docker compose restart kilocenter
 ```
 
 **Via GUI** (post-install renewal):
@@ -115,7 +111,7 @@ KC-Core/certgen -dir KC-Core/certificates -days 365 -server bssci.example.com -s
 
 #### Certificate Configuration
 
-KC-Core loads certificates from paths configured in `config.yaml`:
+KC-Core loads certificates from paths configured in `config.yaml` (source dev) or `config/config.docker.yaml` (container):
 
 ```yaml
 protocol:
@@ -125,9 +121,15 @@ protocol:
     key_file: "certificates/server.key"
     ca_file: "certificates/ca.crt"
     min_version: "1.2"
+  scaci_tls:
+    enabled: true
+    cert_file: "certificates/server.crt"
+    key_file: "certificates/server.key"
+    ca_file: "certificates/ca.crt"
+    min_version: "1.3"
 ```
 
-Paths are relative to the KC-Core working directory. KC-Core will fail to start if these files are missing.
+Paths in source dev mode are relative to the KC-Core working directory. KC-Core will fail to start if these files are missing.
 
 ### Network Exposure
 
@@ -138,7 +140,7 @@ Limit which ports are accessible from outside your local network:
 | 5000  | BSSCI                 | Only base station networks             |
 | 5001  | SCACI                 | Only application center hosts          |
 | 9090  | KC-Gateway (gRPC-web) | Operator and API consumer networks     |
-| 5173  | KC-Web                | Operator networks only                 |
+| 80    | KC-Web (container)    | Operator networks only                 |
 | 50051 | KC-Core internal gRPC | Loopback only, never expose externally |
 | 5433  | PostgreSQL            | Loopback only                          |
 | 6379  | Redis                 | Loopback only                          |

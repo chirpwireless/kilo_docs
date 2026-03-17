@@ -22,7 +22,7 @@ These values come from the endpoint provisioning process. The EUI and network se
 
 ### Register Through KC-Web
 
-1. Open KC-Web at [http://localhost:5173](http://localhost:5173).
+1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
 2. Navigate to **Endpoints** in the sidebar.
 3. Click **Add Endpoint**.
 4. Fill in the required fields:

@@ -6,12 +6,16 @@ Understand and verify baseline runtime configuration for a local deployment.
 
 ### Configuration Files
 
-* `kilocenter-modules/KC-Core/config.yaml` -- KC-Core configuration (source mode)
-* `kilocenter-modules/KC-Gateway/config.yaml` -- KC-Gateway configuration (source mode)
 * `kilocenter-modules/config/config.docker.yaml` -- KC-Core configuration (container mode)
-* `kilocenter-modules/docker-compose.yml` -- infrastructure and container service definitions
+* `kilocenter-modules/KC-Core/config.yaml` -- KC-Core configuration (source dev mode)
+* `kilocenter-modules/KC-Gateway/config.yaml` -- KC-Gateway configuration (source dev mode)
+* `kilocenter-modules/docker-compose.yml` -- service definitions and port mappings
 
-### Startup Script Defaults
+### Container Mode Defaults
+
+In container mode, KC-Core reads `config/config.docker.yaml`. All service addresses use Docker service DNS names (e.g., `postgres`, `redis`, `mosquitto`). Environment variables in `.env` override the compose defaults.
+
+### Source Dev Mode Defaults
 
 `kilocenter-modules/start-dev.sh` exports environment variables and auto-detects the PostgreSQL port:
 
@@ -25,11 +29,12 @@ Understand and verify baseline runtime configuration for a local deployment.
 * **KC-Gateway gRPC-web**: port `9090`
 * **KC-Gateway health**: port `8087`
 * **BSSCI**: port `5000`, TLS certificate paths
+* **SCACI**: port `5001`, TLS certificate paths
 * **MQTT**: broker host, port, and credentials
 
 ### TLS Certificate Paths
 
-BSSCI and SCACI TLS certificate paths are configured under the `protocol` section in `KC-Core/config.yaml`:
+BSSCI and SCACI TLS certificate paths are configured under the `protocol` section in `KC-Core/config.yaml` (source dev) or `config/config.docker.yaml` (container):
 
 ```yaml
 protocol:
@@ -39,9 +44,15 @@ protocol:
     key_file: "certificates/server.key"
     ca_file: "certificates/ca.crt"
     min_version: "1.2"
+  scaci_tls:
+    enabled: true
+    cert_file: "certificates/server.crt"
+    key_file: "certificates/server.key"
+    ca_file: "certificates/ca.crt"
+    min_version: "1.3"
 ```
 
-These paths are relative to the KC-Core working directory. Generate certificates before first start -- see Docker Compose Installation or Linux Host Installation.
+Paths in the source dev config are relative to the KC-Core working directory. Container config uses absolute paths (`/app/certificates/`). Generate certificates before first start — see Docker Compose Installation.
 
 ### Default Credentials
 
@@ -70,5 +81,6 @@ To enable MQTT, set `enabled: true` and restart KC-Core. The Mosquitto broker mu
 
 * KC-Core starts without errors and `/health` responds on port `8086`
 * KC-Gateway starts and `/health` responds on port `8087`
-* KC-Web loads at `http://localhost:5173`
+* **Container mode**: KC-Web loads at `http://localhost/`
+* **Source dev mode**: KC-Web loads at `http://localhost:5173`
 * KC-Web can reach KC-Gateway on port `9090` (gRPC-web requests succeed in browser console)
