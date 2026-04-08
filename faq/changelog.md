@@ -286,7 +286,7 @@ Minor Changes
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.0.png" alt=""><figcaption></figcaption></figure>
 
-### **Weight Log 2.2.0 is one of the biggest releases of the year — and this Weightlog is a great way to close it out strong.**
+### **Scale Log 2.2.0 is one of the biggest releases of the year — and this Weightlog is a great way to close it out strong.**
 
 
 
