@@ -1,0 +1,55 @@
+# Connectors
+
+Each connector establishes an organization-level connection to a specific device protocol or data source. Connectors do not create devices — device registration is a separate workflow. A connector enables the server to accept data from devices of that type once they are registered.
+
+Without at least one connector, the server has no protocol binding to receive device data through. Every data path — whether LoRaWAN, vehicle tracker, or a future protocol — starts with a connector.
+
+## Connector types
+
+Kilo IoT Server supports the following connector types:
+
+| Type | Protocol | Status | What it connects |
+|------|----------|--------|------------------|
+| **LNS** | LoRaWAN | GA | The server's built-in LoRaWAN Network Server. Manages LoRaWAN device communication automatically. |
+| **Tracker** | OBD2 / CAN bus / GPS | GA | Vehicle trackers — OBD2, CAN bus, and standalone GPS vehicle tracking devices. Includes preconfigured templates for over 2,000 vehicle tracker models. |
+| **MQTT** | MQTT | Preview | Direct MQTT device connections. Currently in preview — not yet available for selection in the Add connector dialog. |
+
+Each organization can have **one LNS connector** and **one Tracker connector**. Once both are added, the **Add connector** button is disabled until one is removed.
+
+## The Connectors page
+
+Navigate to **Connectors** in the sidebar to see the connectors table. The table shows all connectors configured for your organization with the following columns:
+
+| Column | Description |
+|--------|-------------|
+| **Name** | The connector name (assigned automatically during creation) |
+| **Last data received** | When the connector last received data from a device |
+| **Connected devices** | Number of devices registered through this connector |
+| **Creation date** | When the connector was added |
+
+### Row actions
+
+Each connector row has action buttons:
+
+- **Add device** — Opens the device registration dialog with this connector preselected — a shortcut into the shared registration flow.
+- **Remove connector** — Removes the connector from the organization. A confirmation dialog appears before deletion.
+
+Click anywhere on a connector row to open that connector's detail page, where you can manage gateways (for LNS) or view and manage connected devices.
+
+## Adding a connector
+
+1. From the **Connectors** page, click **Add connector** in the top-right corner.
+2. In the dialog, select a **Connector type** from the dropdown:
+   - **LNS** — if your organization does not already have an LNS connector
+   - **Tracker** — if your organization does not already have a Tracker connector
+3. Click **Add**.
+
+The connector is created immediately. For LNS and Tracker connectors, no additional configuration is required during creation — the server handles the integration automatically.
+
+## What's next
+
+Once a connector is in place, you can:
+
+- **Configure the LNS connector** — manage LoRaWAN gateways and connected devices. See [LNS Connector](lns-connector.md).
+- **Configure the Tracker connector** — onboard vehicle trackers (OBD2, CAN bus, standalone GPS). See [Tracker Connector](tracker-connector.md).
+- **Register devices** — add devices through any connector and configure their Digital Twin. See [Registering Devices](../devices/registering-devices.md).

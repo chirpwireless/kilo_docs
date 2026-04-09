@@ -4,40 +4,111 @@
 
 ## Kilo IoT Server
 
-* [Kilo IoT Server](kilo-iot-server/dashboard/README.md)
-  * [Features](kilo-iot-server/dashboard/features.md)
-  * [Navigation Menu](kilo-iot-server/dashboard/navigation-menu.md)
-  * [Overview Page](kilo-iot-server/dashboard/overview-page.md)
-  * [Custom Dashboards](kilo-iot-server/dashboard/custom-dashboards/README.md)
-    * [Overview](kilo-iot-server/dashboard/custom-dashboards/overview.md)
-    * [Dashboard Hierarchy & Management](kilo-iot-server/dashboard/custom-dashboards/dashboard-hierarchy-and-management.md)
-    * [Adding widgets to a dashboard](kilo-iot-server/dashboard/custom-dashboards/adding-widgets-to-a-dashboard.md)
-  * [Devices](kilo-iot-server/dashboard/devices/README.md)
-    * [Adding a LoRaWAN Device](kilo-iot-server/dashboard/devices/adding-device.md)
-  * [Gateways](kilo-iot-server/dashboard/gateways/README.md)
-    * [Adding LoRaWAN gateway](kilo-iot-server/dashboard/gateways/adding-gateways-to-kilo-network.md)
-  * [Notification Center](kilo-iot-server/dashboard/notification-center/README.md)
-    * [Inbox](kilo-iot-server/dashboard/notification-center/inbox.md)
-    * [Rules](kilo-iot-server/dashboard/notification-center/rules.md)
-    * [Settings](kilo-iot-server/dashboard/notification-center/settings.md)
-    * [Setting Alert Rules](kilo-iot-server/dashboard/notification-center/setting-alert-rules.md)
-    * [Setting Notification Intervals](kilo-iot-server/dashboard/notification-center/setting-notification-intervals.md)
-  * [Reporting](kilo-iot-server/dashboard/reporting/README.md)
-    * [Audit Trail](kilo-iot-server/dashboard/reporting/audit-trail.md)
-  * [Display & Language Settings](kilo-iot-server/dashboard/display-and-language-settings.md)
-  * [Get Help](kilo-iot-server/dashboard/get-help.md)
-  * [Attribute Based Access Control (ABAC)](kilo-iot-server/dashboard/attribute-based-access-control-abac/README.md)
-    * [Why ABAC Instead of RBAC](kilo-iot-server/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac.md)
-    * [Permission Levels Explained](kilo-iot-server/dashboard/attribute-based-access-control-abac/permission-levels-explained.md)
-    * [Creating an Organization](kilo-iot-server/dashboard/attribute-based-access-control-abac/creating-an-organization.md)
-    * [Changing organization name and owner](kilo-iot-server/dashboard/attribute-based-access-control-abac/changing-organization-name-and-owner.md)
-    * [Adding and Managing Users](kilo-iot-server/dashboard/attribute-based-access-control-abac/adding-and-managing-users.md)
-  * [IoT AI Assistant](kilo-iot-server/dashboard/iot-ai-assistant/README.md)
-    * [Assistant How To](kilo-iot-server/dashboard/iot-ai-assistant/assistant-how-to.md)
-    * [Assistant data sources](kilo-iot-server/dashboard/iot-ai-assistant/assistant-data-sources.md)
-    * [Assistant privacy](kilo-iot-server/dashboard/iot-ai-assistant/assistant-privacy.md)
-  * [Integrations](kilo-iot-server/dashboard/integrations/README.md)
-    * [API Keys](kilo-iot-server/dashboard/integrations/api-keys.md)
+* [Kilo IoT Server](kilo-iot-server/README.md)
+
+### Getting Started
+
+* [First Steps](kilo-iot-server/getting-started/README.md)
+  * [Navigating the Interface](kilo-iot-server/getting-started/navigating-the-interface.md)
+  * [Your First Deployment](kilo-iot-server/getting-started/your-first-deployment.md)
+
+### Overview
+
+* [Overview](kilo-iot-server/overview.md)
+
+### Dashboards
+
+* [Dashboards](kilo-iot-server/dashboards/README.md)
+  * [Creating Dashboards](kilo-iot-server/dashboards/creating-dashboards.md)
+  * [Adding Widgets](kilo-iot-server/dashboards/adding-widgets.md)
+  * [Organizing Dashboards](kilo-iot-server/dashboards/organizing-dashboards.md)
+  * [Widget Reference](kilo-iot-server/dashboards/widget-reference.md)
+  * [Maps and Tracking](kilo-iot-server/dashboards/maps-and-tracking/README.md)
+    * [Device Maps](kilo-iot-server/dashboards/maps-and-tracking/device-maps.md)
+    * [GPS Tracking](kilo-iot-server/dashboards/maps-and-tracking/gps-tracking.md)
+  * [Real-Time Data](kilo-iot-server/dashboards/real-time-data.md)
+
+### Connectors
+
+* [Connectors](kilo-iot-server/connectors/README.md)
+  * [LNS Connector](kilo-iot-server/connectors/lns-connector.md)
+  * [Tracker Connector](kilo-iot-server/connectors/tracker-connector.md)
+
+### Devices
+
+* [Devices](kilo-iot-server/devices/README.md)
+  * [Registering Devices](kilo-iot-server/devices/registering-devices.md)
+  * [Device Management](kilo-iot-server/devices/device-management.md)
+  * [Metric Templates](kilo-iot-server/devices/metric-templates.md)
+
+### Gateways
+
+* [Gateways](kilo-iot-server/gateways/README.md)
+  * [Deploying a Gateway](kilo-iot-server/gateways/deploying-a-lorawan-gateway.md)
+  * [Gateway Monitoring](kilo-iot-server/gateways/lorawan-gateway-monitoring.md)
+  * [Supported Gateways](kilo-iot-server/gateways/supported-lorawan-gateways.md)
+
+### Alarm
+
+* [Alarm](kilo-iot-server/alarm/README.md)
+  * [Your First Alert](kilo-iot-server/alarm/first-operational-alert.md)
+  * [Notification Rules](kilo-iot-server/alarm/notification-rules.md)
+  * [Inbox and Resolution](kilo-iot-server/alarm/inbox-and-resolution.md)
+  * [Delivery Settings](kilo-iot-server/alarm/notification-delivery-settings.md)
+  * [Notification Channels](kilo-iot-server/alarm/notification-channels.md)
+
+### Rules engine
+
+* [Rules engine](kilo-iot-server/rules-engine/README.md)
+  * [Rules List](kilo-iot-server/rules-engine/rules-list-and-navigation.md)
+  * [Creating Rules](kilo-iot-server/rules-engine/creating-rules.md)
+  * [Visual Editor](kilo-iot-server/rules-engine/visual-editor.md)
+  * [Node Reference](kilo-iot-server/rules-engine/node-reference.md)
+  * [CEL Reference](kilo-iot-server/rules-engine/cel-reference.md)
+  * [Edit Locks](kilo-iot-server/rules-engine/edit-locks-and-team-handoffs.md)
+  * [Version History](kilo-iot-server/rules-engine/version-history-and-restore.md)
+  * [Builds and Deployment](kilo-iot-server/rules-engine/builds-artifacts-and-deployment.md)
+  * [Trash and Recovery](kilo-iot-server/rules-engine/trash-and-recovery.md)
+  * [Automation Patterns](kilo-iot-server/rules-engine/automation-patterns.md)
+  * [Troubleshooting](kilo-iot-server/rules-engine/troubleshooting.md)
+
+### AI Assistant
+
+* [IoT AI Assistant](kilo-iot-server/ai-assistant/README.md)
+  * [Querying Your Data](kilo-iot-server/ai-assistant/querying-your-data.md)
+  * [What It Can Access](kilo-iot-server/ai-assistant/data-sources.md)
+  * [Privacy and Security](kilo-iot-server/ai-assistant/privacy.md)
+
+### Reports
+
+* [Reports](kilo-iot-server/reports/README.md)
+  * [Audit Trail](kilo-iot-server/reports/audit-trail.md)
+
+### Settings
+
+* [Settings](kilo-iot-server/settings/README.md)
+  * [Profile Settings](kilo-iot-server/settings/profile-settings.md)
+  * [Subscription](kilo-iot-server/settings/subscription.md)
+  * [Locations](kilo-iot-server/settings/locations.md)
+  * [API Keys](kilo-iot-server/settings/api-keys.md)
+  * [Device Sharing](kilo-iot-server/settings/device-sharing.md)
+  * [New Device Request](kilo-iot-server/settings/new-device-request.md)
+
+### Help
+
+* [Get Help](kilo-iot-server/help/get-help.md)
+
+### Account
+
+* [Account](kilo-iot-server/account/README.md)
+  * [How Organizations Start](kilo-iot-server/account/how-organizations-start.md)
+  * [Organization Settings](kilo-iot-server/account/organization-settings.md)
+  * [Switching Organizations](kilo-iot-server/account/switching-organizations.md)
+  * [Users and Permissions](kilo-iot-server/account/users-and-permissions.md)
+  * [Inviting Users](kilo-iot-server/account/inviting-users.md)
+  * [Accepting Invitations](kilo-iot-server/account/accepting-invitations.md)
+  * [Roles and Page Access](kilo-iot-server/account/roles-and-page-access.md)
+  * [Managing Access](kilo-iot-server/account/managing-access.md)
 
 ## Kilo Center
 
