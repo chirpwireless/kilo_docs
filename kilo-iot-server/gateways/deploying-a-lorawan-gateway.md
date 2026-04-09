@@ -74,7 +74,9 @@ The exact steps vary by gateway manufacturer — refer to your gateway's documen
 
 Once the gateway establishes its Basics Station connection, it will appear in the **Gateways** list with an online status.
 
-<figure><img src="../../.gitbook/assets/yourgateway.png" alt="The gateway appears in the Gateways list"><figcaption></figcaption></figure> This typically takes a few minutes after configuration.
+This typically takes a few minutes after configuration.
+
+<figure><img src="../../.gitbook/assets/yourgateway.png" alt="The gateway appears in the Gateways list"><figcaption></figcaption></figure>
 
 If the gateway does not come online:
 - Verify the LNS Address was entered correctly (no extra spaces or characters)

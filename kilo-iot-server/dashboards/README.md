@@ -4,7 +4,9 @@ Dashboards are customizable monitoring views that you assemble from widgets. Eac
 
 Unlike the [overview page](../overview.md), which provides a fixed summary of your deployment, dashboards give you full control over what is displayed and how.
 
-<figure><img src="../../.gitbook/assets/photo_2025-10-22_18-05-33.jpg" alt="A custom dashboard with temperature and humidity widgets"><figcaption></figcaption></figure> You choose the devices, select the metrics, set the value ranges and thresholds, and organize everything into folders that match your operational structure.
+You choose the devices, select the metrics, set the value ranges and thresholds, and organize everything into folders that match your operational structure.
+
+<figure><img src="../../.gitbook/assets/photo_2025-10-22_18-05-33.jpg" alt="A custom dashboard with temperature and humidity widgets"><figcaption></figcaption></figure>
 
 The dashboard system supports folder-based hierarchy, so a multi-site deployment can maintain separate dashboard groups per building, region, or team — all accessible from the sidebar.
 
