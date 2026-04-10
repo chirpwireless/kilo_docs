@@ -8,8 +8,6 @@ Configure your Kilo IoT Server environment. The Settings section in the sidebar 
 - [Subscription](subscription.md) — Plan tiers, billing, and SMS credit top-ups
 - [Locations](locations.md) — Define a site and sub-location hierarchy for organizing devices
 - [API Keys](api-keys.md) — Create scoped keys for external system integrations
-- [Device Sharing](device-sharing.md) — View and manage devices shared with other users
-- [New Device Request](new-device-request.md) — Request support for device models not yet in the platform library
 
 ## What is NOT here
 

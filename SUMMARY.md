@@ -58,8 +58,6 @@
   * [Subscription](kilo-iot-server/settings/subscription.md)
   * [Locations](kilo-iot-server/settings/locations.md)
   * [API Keys](kilo-iot-server/settings/api-keys.md)
-  * [Device Sharing](kilo-iot-server/settings/device-sharing.md)
-  * [New Device Request](kilo-iot-server/settings/new-device-request.md)
 * [Get Help](kilo-iot-server/help/get-help.md)
 * [Account](kilo-iot-server/account/README.md)
   * [How Organizations Start](kilo-iot-server/account/how-organizations-start.md)
