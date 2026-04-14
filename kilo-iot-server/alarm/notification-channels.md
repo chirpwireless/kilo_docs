@@ -1,71 +1,43 @@
-# Notification Channels
+# Delivery Channels
 
-Notification rules fire alarms and send notifications — but those notifications need somewhere to go. The **Settings** tab in the Notification Center is where you manage the delivery channels and contact addresses that receive your operational alerts.
+Alarm definitions fire notifications, but those notifications need verified delivery endpoints. The **Settings** tab on the Alarm page is where you manage the contacts and channels that receive your operational alerts.
 
-Open the Settings tab at `/notifications/settings`.
+## Email
 
-## Email Notifications
+Email is the baseline delivery channel — it is available for every account.
 
-Email is the primary notification channel.
+### Adding contacts
 
-### Enabling or Disabling Email
+Click the add button to enter a new email address. A verification email is sent immediately. The contact appears in your list with an unverified indicator until the recipient completes verification.
 
-The **EMAIL NOTIFICATIONS** section has an On/Off toggle at the top. When email is enabled, notifications from all active rules are delivered to the email addresses you have configured and selected as recipients.
+### Verification
 
-To disable email notifications entirely, flip the toggle to Off. A confirmation dialog asks:
+Every email address must be verified before it receives alarm notifications. Unverified contacts display a warning indicator. Verification can be resent if the original email was not received.
 
-> *"Are you sure you want to turn off e-mail?"*
-> *"You will not receive any e-mail."*
+### Removing contacts
 
-Click **Yes, turn off** to confirm, or **No, cancel** to keep email active.
+Click the remove button next to a contact. A confirmation dialog appears before removal. The primary email contact (the first entry in the list) cannot be removed.
 
-Disabling the channel stops all email delivery — no rules will send email notifications until you re-enable it, regardless of per-rule recipient settings.
+Contacts cannot be edited after creation. To update an email address, remove the existing contact and add the new one.
 
-### How Contacts Are Organized
+## SMS
 
-Your first email address is treated as the **primary contact**. It appears as the default *"Send e-mail to [address]"* destination and does not have the same edit and remove controls as additional contacts.
+SMS delivery is available when enabled for the account. When available, the SMS section appears in the Settings tab with the same add, verify, and remove workflow as email.
 
-Additional contacts (up to **4 total**) appear below the primary and each has edit and remove actions.
+For operations teams, SMS provides a high-reliability delivery path that reaches recipients even when email is inaccessible — for example, field technicians or on-call engineers without continuous email access.
 
-### Adding Email Addresses
+## Push notifications
 
-Click **Add e-mail address** (or **Add one more e-mail address** if you already have contacts) to add a new address.
+Push notifications are available when enabled for the account. When available, a push notification section appears at the top of the Settings tab with device-specific setup instructions.
 
-After adding an address, the Settings tab shows an **"E-mail verification required"** warning with a note that a verification link was sent. The recipient must click the link in the verification email to confirm ownership. Until verified, the address shows a warning indicator.
+Push provides immediate device-level alerts, making it suitable for time-sensitive escalation tiers where the recipient needs to be notified within seconds.
 
-If the verification email does not arrive, click the **Resend link** action in the verification warning to send it again.
+## Connecting channels to escalation
 
-### Removing an Email Address
+The contacts configured here populate the **Choose recipients** dropdown in [escalation chain steps](escalation-and-response.md). Each step in the escalation chain can select different recipients and different channels:
 
-Click the remove action next to a secondary contact. A confirmation dialog appears:
+- **Tier 1 (Immediate):** On-call engineer via email and push.
+- **Tier 2 (After delay):** Shift supervisor via email and SMS.
+- **Tier 3 (After further delay):** Site operations manager via SMS.
 
-> *"Remove e-mail address"*
-> *"Are you sure you want to remove [address]? This e-mail address will no longer receive notifications."*
-
-Click **Yes, remove** to confirm, or **No, cancel** to keep it.
-
-The primary contact does not have a remove button — only additional contacts can be removed this way.
-
-## SMS Notifications
-
-{% hint style="info" %}
-**SMS notifications are not generally available.** When this feature is not enabled for your account, the SMS section displays a **"Coming soon..."** badge and the toggle is inactive. Contact support if you are interested in SMS notification capabilities.
-{% endhint %}
-
-When available, the **SMS NOTIFICATIONS** section works similarly to email:
-
-- An On/Off toggle controls whether SMS delivery is active.
-- You can add up to **2 phone numbers**.
-- Each number must be verified before it can receive notifications.
-- Phone numbers can be removed with the same confirmation flow as email.
-
-## Selecting Recipients in Notification Rules
-
-The contacts you manage here become available when creating or editing notification rules. For the full recipient selection flow, see step 4 in [Notification Rules](notification-rules.md).
-
-## Practical Guidelines
-
-- **Complete verification promptly.** An unverified address shows a warning state in the Settings tab. Notifications may not reach unverified addresses as expected. If the verification email does not arrive, use the **Resend link** action.
-- **Use distinct contacts for distinct roles.** Rather than sending every notification to a single shared inbox, assign email addresses by operational responsibility. The on-call engineer, the facility manager, and the compliance team may each need different rules routed to their specific addresses.
-- **Review contacts when team members change.** When someone leaves a role or the organization, remove their email address from the Settings tab.
-- **Keep email enabled unless you have a specific reason to disable it.** Disabling the email channel silently stops all email notification delivery across all rules — there is no per-rule fallback. If you need to stop notifications temporarily, disabling individual rules is more targeted than disabling the entire channel.
+This allows you to build targeted response chains where each tier uses the channel most likely to reach the intended recipient in their operational context.

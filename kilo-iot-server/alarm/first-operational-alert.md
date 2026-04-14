@@ -1,87 +1,63 @@
-# Your First Operational Alert
+# Your First Alert
 
-This walkthrough takes you from zero to a working notification rule. By the end, you will have created a rule that monitors a device, fires an alarm when a condition is met, and delivers a notification to your email. You will also resolve the alarm to complete the full lifecycle.
+This walkthrough takes you from zero to a working operational alarm. By the end, you will have created an alarm definition, connected it to a rule in the Rules Engine, seen it fire in the Inbox, and resolved the event. This is the happy path — one alarm, one rule, one device.
 
-This is the happy path — one rule, one device, one condition. For editing rules, managing multiple rules, and advanced configuration, see [Notification Rules](notification-rules.md).
+For full reference on all alarm definition fields, see [Alarm Definitions](notification-rules.md).
 
 ## Prerequisites
 
-Before you start, make sure you have:
+- At least one device registered and reporting sensor data.
+- A verified email contact in the [Delivery Channels](notification-channels.md) settings.
 
-- At least one device registered and sending data. If you have not set one up yet, follow [Your First Deployment](../getting-started/your-first-deployment.md).
-- A verified email address in your notification channels. Check the **Settings** tab in the Notification Center at `/notifications/settings` — if no email is listed, see [Notification Channels](notification-channels.md) to add one.
+## Step 1 — Create the alarm definition
 
-## Step 1 — Open the Notification Center
+1. Open **Alarm** from the sidebar.
+2. Switch to the **Alarm definitions** tab.
+3. Click **Add alarm rule**.
+4. Fill in the form:
+   - **Alarm name:** "Cold Storage Alert" (or whatever describes the condition you are monitoring).
+   - **Severity:** Choose **High** for this test. You can change it later.
+   - **Escalation chain:** In the first (Immediate) step, select yourself as the recipient under **Notify**, and select **Email** under **Via**.
+   - **Theme:** "Temperature exceedance in cold storage."
+   - **Message body:** "Sensor reading has exceeded the operational threshold. Check the facility."
+5. Leave Schedule, Custom Notification interval, and Suppress duplicates at their defaults for now.
+6. Click **Add new alarm rule**.
 
-Click **Notifications** in the sidebar. The Notification Center opens at `/notifications`, showing the **Inbox** tab.
+Your alarm definition is created and appears in the **Alarm definitions** list.
 
-Switch to the **Rules** tab.
+## Step 2 — Connect it to a rule in the Rules Engine
 
-## Step 2 — Start Creating a Rule
+The alarm definition you just created does not monitor sensors on its own — it defines the response. You need a rule in the [Rules Engine](../rules-engine/README.md) to evaluate sensor data and fire the alarm when conditions are met.
 
-Click **Add Rule** at the top of the page. A guided modal opens.
+1. Open **Rules engine** from the sidebar.
+2. Create a new rule (or edit an existing one).
+3. In the visual editor, add a **Set Alarm** node to the automation canvas.
+4. In the Set Alarm node's properties, select your "Cold Storage Alert" definition from the **Choose Alarm** dropdown.
+5. Fill in the **Motivation Message** — this is a CEL expression that produces the notification text. For a simple test: `"Temperature reading exceeded threshold"`.
+6. Connect the Set Alarm node into your automation flow (after a gateway condition that checks the sensor threshold).
+7. **Save**, then **Build**, then **Deploy** the automation.
 
-## Step 3 — Choose a Device
+The rule is now running and will fire the alarm when the sensor data matches your conditions.
 
-The first modal step is titled **"1 / Choose a device"**. Select the device you want to monitor from the list — for this walkthrough, pick a device that is actively reporting data so you can see the alert fire.
+## Step 3 — See the alarm in the Inbox
 
-Click **Choose**.
+Once the rule fires (either from real sensor data or a test condition), the alarm event appears in the **Inbox** tab on the Alarm page:
 
-## Step 4 — Set a Condition
+- The event shows with **Active** status (warning triangle).
+- Severity is color-coded as **High**.
+- The message matches what you configured in the definition.
 
-The modal advances to **"2 / Add conditions to the device"**. Define the condition that should trigger the alert. For example, if you are monitoring a temperature sensor, set the condition so it triggers at a threshold the device is likely to hit — this way you can verify the rule works.
+## Step 4 — Resolve the alarm
 
-Click **Continue**.
+Click **Resolve** on the alarm event. The status changes to **Resolved** (checkmark). Any remaining escalation steps are cancelled — since this was a single-step chain, there was nothing to cancel, but in production you would typically have multiple steps.
 
-## Step 5 — Compose the Alert Message
+The resolved event stays in the Inbox as a historical record.
 
-The modal shows **"3 / Set up alerting message"**.
+## What's next
 
-Fill in:
-
-- **Subject** — a short description, e.g., *"Temperature threshold exceeded"*
-- **Message** — enough context to act on, e.g., *"Sensor reading has crossed the configured threshold. Verify the device and surrounding environment."*
-- **Notification type** — select **Information** for this test. Information alerts repeat once per day by default, which avoids notification overload while you are testing.
-
-Leave the Custom Notification interval toggle off for now.
-
-Click **Continue**.
-
-## Step 6 — Select Recipients
-
-The modal shows **"Select notification recipients"**. Your email channel should appear with your verified email address shown as the default recipient. Make sure the email toggle is **On**. If this is your only email contact, it is automatically used — no checkbox selection is needed.
-
-Click **Continue**.
-
-## Step 7 — Name the Rule
-
-The final step shows **"4 / Set up rule name and description"**. Give it a recognizable name — e.g., *"Test alert – temperature threshold"*.
-
-Click **Create rule**.
-
-You are returned to the Rules list. Your new rule appears with its toggle enabled — it is now actively monitoring the device.
-
-## Step 8 — Wait for the Alarm
-
-When the device data meets the condition you defined, the system fires an alarm and sends a notification to the email address you selected. You will receive an email with the subject and message you wrote.
-
-The alarm also appears in the **Inbox** tab of the Notification Center.
-
-## Step 9 — Review and Resolve the Alarm
-
-Switch to the **Inbox** tab at `/notifications`. You should see your alarm in the list with status **Alarm**.
-
-On desktop, you can see the alarm's subject, status, type, message, and timestamp directly in the table row. On mobile, tap the chevron on the alarm row to open its detail page.
-
-Click **Mark as resolved** on the alarm's row to change the status to **Resolved**. Once resolved, the button label changes to **Resolved** and the system stops sending repeat notifications. The alarm stays in the Inbox for reference.
-
-You have completed the full cycle: rule creation → alarm → notification → resolution.
-
-## What to Do Next
-
-| Next step | Where to go |
+| Goal | Where to go |
 |---|---|
-| Create rules with custom intervals or edit existing rules | [Notification Rules](notification-rules.md) |
-| Learn how to triage alarms at scale — bulk resolve, search, delete | [Inbox and Resolution](inbox-and-resolution.md) |
-| Control how often each notification type repeats | [Notification Delivery Settings](notification-delivery-settings.md) |
-| Add more email addresses or manage delivery channels | [Notification Channels](notification-channels.md) |
+| Add escalation steps for unresolved alarms | [Escalation and Response](escalation-and-response.md) |
+| Configure severity-level repeat timing | [Notification Severity](notification-delivery-settings.md) |
+| Full reference for alarm definition fields | [Alarm Definitions](notification-rules.md) |
+| Set up SMS or push delivery | [Delivery Channels](notification-channels.md) |

@@ -1,141 +1,91 @@
-# Notification Rules
+# Alarm Definitions
 
-A notification rule defines what the Kilo IoT Server watches for and who it tells when something happens. Each rule connects to a device, evaluates conditions against live sensor data, and sends notifications through the channels you configure. Rules run continuously — once enabled, they monitor around the clock without manual intervention.
+An alarm definition configures the operational response when the [Rules Engine](../rules-engine/README.md) triggers an alarm — severity classification, escalation chain, repeat cadence, delivery channels, scheduling, suppression, and the notification message. Alarm definitions are managed from the **Alarm definitions** tab on the Alarm page.
 
-Rules are managed from the **Rules** tab in the Notification Center at `/notifications/rules`.
+Click **Add alarm rule** to create a new definition, or click **Edit** on an existing one to modify it.
 
-## The Rules List
+## Definition form fields
 
-The Rules tab shows all your notification rules in a table with these columns:
+### Alarm name
 
-| Column | What it shows |
+| Field | Detail |
 |---|---|
-| **Name** | The rule name you assigned during creation. |
-| **Description** | The description you provided. |
-| **Connected devices** | The device this rule monitors. |
-| **Type** | The notification type: Critical, Important, or Information. |
-| **Status** | An enable/disable toggle. Enabled rules are actively monitoring. |
-| **Actions** | Edit and Delete options. |
+| **Alarm name** | Text field. Placeholder: *Enter name*. Required. This name appears in the Inbox when the alarm fires and in notification subject lines. |
 
-Use the **search input** at the top to filter rules by name.
+### Severity
 
-If you have not created any rules yet, the page shows: *"There is no rule yet"* with a prompt *"Let's add your first rule."*
-
-## Creating a Notification Rule
-
-Click the **Add Rule** button at the top of the Rules tab. A guided modal opens and walks you through five steps.
-
-### Step 1 — Choose a Device
-
-The modal opens with the title **"1 / Choose a device"** and the subtitle *"Select the device you want to apply the rule to."* You see a list of devices registered on your account. Select the device you want this rule to monitor, then click **Choose**.
-
-### Step 2 — Add Conditions
-
-The modal title updates to **"2 / Add conditions to the device"** with the subtitle *"Select the conditions under which the trigger should occur."*
-
-This is where you define what must happen on the device for the rule to fire. The condition builder lets you select device metrics and define thresholds — for example, temperature above 30°C, or humidity below 20%.
-
-When you are satisfied with the conditions, click **Continue**. To go back, click **Back**.
-
-### Step 3 — Set Up the Alerting Message
-
-The modal title shows **"3 / Set up alerting message"**. This step defines what the notification says and how urgent it is.
-
-**Fields:**
-
-| Field | Required | Description |
-|---|---|---|
-| **Subject** | Yes | The notification subject line. Use something descriptive that identifies the situation at a glance — e.g., *"Cold storage temperature exceeded threshold."* |
-| **Message** | Yes | The notification body. Provide enough context for the recipient to understand what happened and what to do — e.g., *"Warehouse B freezer unit 3 has been above -18°C for more than 10 minutes. Check the compressor status."* |
-| **Notification type** | Yes | A dropdown with three options: **Critical**, **Important**, or **Information**. This controls the default repeat interval for this rule's notifications. |
-
-**Notification type defaults:**
-
-| Type | Default repeat interval |
+| Field | Detail |
 |---|---|
-| Critical | Every 1 hour |
-| Important | Every 4 hours |
-| Information | Every 1 day |
+| **Choose severity** | Dropdown. Options: Critical, High, Medium, Low, Info. Required. |
 
-These defaults can be changed globally in the [Notification Delivery Settings](notification-delivery-settings.md) modal.
+Severity determines the notification repeat cadence (configured in [Notification Severity](notification-delivery-settings.md)) and the visual priority in the Inbox. After selecting a severity, the form displays the current repeat policy for that level. Per-alarm overrides are available via the Custom Notification interval section below.
 
-**Custom interval (optional):**
+### Custom Notification interval
 
-Below the notification type, you can toggle **Custom Notification interval** to override the default for this specific rule. When enabled, two additional fields appear:
+Override the global repeat policy for this specific alarm.
 
-- **Interval value** — a number field.
-- **Interval unit** — a dropdown with **Hours** or **Days**.
+| Field | Detail |
+|---|---|
+| **Custom Notification interval** | Toggle (Off by default). When On, reveals interval and one-time controls. |
+| **Interval** | Number + unit (Hours or Days). Controls how frequently notifications re-send while the alarm remains active. |
+| **One-time notification** | Toggle. When On, one notification is sent and no repeats follow. |
 
-You can also toggle **One-time notification** if the rule should only notify once when the condition is first met, rather than repeating.
+### Escalation chain
 
-Click **Continue** to proceed.
+Multi-step escalation for unresolved alarms. The first step is **Immediate** and cannot be removed. Additional steps fire after configurable delays if the alarm remains unresolved.
 
-### Step 4 — Select Notification Recipients
+For a detailed walkthrough, see [Escalation and Response](escalation-and-response.md). In brief:
 
-The modal title shows **"Select notification recipients"**.
+- Each step specifies: **Notify** (recipients from the organization), **Via** (delivery channels).
+- Click **Add step** to append escalation tiers with configurable delays.
+- Resolution at any point halts further escalation.
 
-This step shows your configured notification channels (email and, when available, SMS) with the contacts you have added in [Notification Channels](notification-channels.md).
+### Schedule
 
-- **Email** and **SMS** sections each have an On/Off toggle.
-- If you have one email contact, it is shown as your default recipient without a checkbox. To select from multiple contacts, click **"Add email"** — this switches to multi-select mode where all your email contacts appear with checkboxes. (The first contact is auto-selected.)
-- Once in multi-select mode, click **"Add recipients"** to add a new email address directly from this step. For SMS, the pattern is reversed: **"Add recipients"** enters multi-select mode, and **"Add phone number"** adds a new contact.
-- Verified contacts have active checkboxes. Unverified contacts appear with a disabled checkbox and cannot be selected until verified.
+| Field | Detail |
+|---|---|
+| **Schedule** | Displays the current schedule or "24/7 by default". |
+| **Change schedule** | Opens a popover with day-of-week toggles and a From / To time range. |
 
-Click **Continue** to proceed.
+Use scheduling to scope alarms to business hours, shift windows, or after-hours monitoring — for example, a server room temperature alarm that only fires outside of maintenance windows.
 
-### Step 5 — Set Up Rule Name and Description
+### Suppress duplicates
 
-The final modal title shows **"4 / Set up rule name and description"**.
+| Field | Detail |
+|---|---|
+| **Suppress duplicates within this window (in minutes)** | Slider. Range: 1–60 minutes. Prevents the same alarm from firing repeatedly when a sensor reports frequently. |
 
-Give the rule a clear, descriptive name — something your team will recognize immediately in the rules list. For example: *"Warehouse B cold chain – temperature breach"* or *"Server room humidity – critical threshold."*
+### Message
 
-The description field is optional but valuable for documenting the rule's purpose, especially in deployments with many rules.
+| Field | Detail |
+|---|---|
+| **Theme** | Notification subject line. Placeholder: *Fire alarm in the kitchen*. Required. |
+| **Message body** | Notification body (multiline, 3 rows). Placeholder: *Your text here*. Required. |
 
-Click **Create rule** to save the rule. You are returned to the Rules list, where the new rule appears with its status toggle set to enabled.
+Write messages that are immediately actionable — include what happened, where, and what the expected response is.
 
-## Editing a Rule
+## Saving and managing
 
-You do not need to walk through all five steps again to change one thing. Click the actions menu on a rule in the list (or open the rule detail page at `/notifications/rules/:ruleId`) and select **Edit**. A dialog titled **"Edit rule details"** appears with the subtitle *"Select the section you want to edit."*
+Click **Add new alarm rule** to create the definition, or **Save** when editing. Click **Cancel** to discard changes.
 
-Pick the section you want to change:
+The **Alarm definitions** tab lists all definitions with the following columns:
 
-- **Conditions** — opens step 2
-- **Notification details** — opens step 3
-- **Notification recipients** — opens step 4
-- **Name and description** — opens step 5
+| Column | Content |
+|---|---|
+| **Alarm** | Definition name |
+| **Message** | Message body (truncated) |
+| **Severity** | Severity level (color-coded) |
+| **Recipients** | Escalation step recipients |
 
-The modal opens directly at the step you selected. Make your changes and click **Save changes**.
+Each row has:
 
-## Enabling and Disabling Rules
+- **Toggle** — Enable or disable the definition without deleting it. Disabled definitions do not fire even when the Rules Engine triggers them.
+- **Edit** — Reopen the definition form.
 
-Each rule in the list has a **status toggle**. Flip it to disable a rule temporarily without deleting it — useful during maintenance windows or when testing. Flip it back to resume monitoring.
+To delete a definition permanently, open it in Edit mode and click **Delete alarm** at the bottom of the form.
 
-Disabled rules remain in the list and retain all their configuration. They simply stop evaluating conditions and sending notifications until re-enabled.
+## Enterprise examples
 
-## Deleting a Rule
-
-Click the actions menu on a rule and select **Delete**. A confirmation dialog appears:
-
-> *"Are you sure you want to delete the rule?"*
-> *"Once deleted, all connected devices will no longer follow this rule."*
-
-Click **Yes, delete** to confirm, or **Cancel** to keep the rule. Deletion is permanent — the rule and its configuration are removed.
-
-## Rule Detail Page
-
-On mobile, tapping a rule card opens its detail page at `/notifications/rules/:ruleId`. On desktop, the rule detail is not accessible by clicking the table row — use the actions menu on each rule for editing and deletion.
-
-The detail page shows the full rule configuration in a card layout — the same information visible during creation, organized for quick reference.
-
-From the detail page you can:
-
-- **Edit** the rule (same section-picker dialog as the list view)
-- **Delete** the rule
-- **Edit the name and description** directly
-
-## Best Practices for Rule Management
-
-- **Name rules for the situation, not the metric.** *"Cold chain breach – Warehouse B"* is more useful than *"Temperature > -18."* When your team is triaging alarms at scale, the name is the first thing they see.
-- **Use the description field.** Document why the rule exists, which process it protects, and who to escalate to. This context is invaluable when someone unfamiliar with the rule encounters it months later.
-- **Start with Information type for new rules.** This gives you a daily repeat cadence while you validate that the conditions and thresholds are correct. Promote to Important or Critical once the rule is proven.
-- **Disable rather than delete during testing.** If you suspect a rule is firing too often, disable it, adjust the conditions, and re-enable — rather than deleting and recreating.
+- **Cold-chain temperature exceedance:** Severity Critical. Immediate notification to on-call refrigeration technician. Escalate to shift supervisor, then site manager. Schedule: 24/7. Suppression: 10 minutes.
+- **Server room humidity alarm:** Severity High. Immediate notification to data center operations. Theme: "Humidity exceedance in DC-3." Message: "Rack row B humidity has exceeded the operational threshold."
+- **Pump pressure deviation:** Severity Medium. Business hours only (Mon–Fri 06:00–22:00). Notify maintenance team. One-time notification — do not repeat.

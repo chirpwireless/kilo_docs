@@ -1,48 +1,48 @@
-# Operational Alerting
+# Alarm
 
-When a temperature sensor in a cold storage facility drifts above the safe threshold at 3 AM, someone needs to know — immediately, reliably, and through the right channel. The Notification Center in Kilo IoT Server turns raw sensor data into actionable operational alerts so your team can respond before a deviation becomes an incident.
+When a cold-storage sensor reports a temperature exceedance at 3 AM, the right person needs to know — immediately, reliably, and through the right channel. The Alarm section in Kilo IoT Server transforms real-time sensor data into structured operational alerts with multi-step escalation, configurable severity policies, and delivery across email, SMS, and push.
 
-The Notification Center is where you define what conditions matter, who should be told, how often, and through which channels. It is also where your team triages incoming alarms, resolves them, and tracks the history of what happened.
+> **Trigger logic vs response logic:** The [Rules Engine](../rules-engine/README.md) determines _when_ an alarm is raised — it evaluates sensor data against conditions and fires the alarm when those conditions are met. Alarm Definitions control _what happens after_ the alarm fires: severity classification, repeat cadence, recipient selection, delivery channels, weekly schedules, suppression windows, and escalation chains for unresolved events.
 
-## Where to Find It
+## Page structure
 
-Open **Notifications** from the sidebar. The Notification Center opens at `/notifications` and shows the **Inbox** tab by default.
+The Alarm page has three tabs:
 
-You can also check for unread notifications without leaving your current page:
-
-- **On desktop**, click the notification icon next to your avatar in the sidebar user menu area. A right-side drawer opens with your latest unread notifications. Click any notification to mark it as read, or click **Mark all as read** to clear the badge.
-- **On mobile**, tap the bell icon in the top header bar. The same drawer opens. Closing it automatically marks all notifications as read.
-
-The unread badge shows a count whenever there are notifications you have not yet seen.
-
-## How It Is Organized
-
-The Notification Center has three tabs:
-
-| Tab | What it does |
+| Tab | Purpose |
 |---|---|
-| **Inbox** | Lists every alarm that has fired. Search, review details, mark alarms as resolved, delete alarms you no longer need. |
-| **Rules** | Create, edit, enable, disable, and delete notification rules. Each rule watches a device for specific conditions and sends alerts when those conditions are met. |
-| **Settings** | Manage your notification delivery channels — add and verify email addresses, enable or disable channels. |
+| **Inbox** | Lists every alarm event that has been triggered. Filter by severity or status, search by title, resolve events, or navigate to the originating rule for investigation. |
+| **Alarm definitions** | Create and manage alarm configurations. Each definition specifies severity, escalation steps, notification timing, schedule, suppression, and the alert message. Click **Add alarm rule** to create a new definition. |
+| **Settings** | Manage notification delivery contacts — email addresses, SMS numbers, and push notification setup (when enabled for the account). |
 
-There is also a **Notification types settings** button in the page header. This opens a separate modal where you configure how often each notification type (Critical, Important, Information) repeats. This is not the same as the Settings tab — the tab manages contacts, the modal manages timing.
+A **Notification Severity** button in the page header (visible on all tabs) opens a modal for configuring how frequently each severity level re-sends notifications.
 
-## The End-to-End Flow
+## Severity model
 
-A typical operational alerting workflow follows this path:
+Kilo uses five severity levels to classify alarms by operational priority:
 
-1. **Create a notification rule** — pick a device, define conditions, compose the alert message, choose a notification type, select recipients, and name the rule.
-2. **The rule monitors continuously** — when the device data matches the conditions you set, the system fires an alarm and sends notifications to the recipients you chose.
-3. **Notifications arrive** — by email (and by SMS when available on your account). The notification includes the subject and message you defined in the rule.
-4. **Review in the Inbox** — the alarm appears in the Inbox with status **Alarm**. Resolve it directly from the list, use the actions menu to jump to the originating rule, or open the alarm detail page on mobile.
-5. **Resolve the alarm** — once the underlying issue is addressed, mark the alarm as **Resolved**. Resolved alarms remain in the Inbox for historical reference.
+| Level | Operational context |
+|---|---|
+| **Critical** | Production-stopping conditions requiring immediate intervention — equipment failure, safety thresholds, compliance breaches |
+| **High** | Urgent deviations needing prompt response — cold-chain drift, pressure anomalies, environmental exceedances |
+| **Medium** | Non-urgent but operationally significant — scheduled maintenance triggers, capacity thresholds approaching limits |
+| **Low** | Routine operational awareness — minor fluctuations within tolerance, informational device state changes |
+| **Info** | Background reporting — periodic health checks, system status confirmations, operational summaries |
 
-## What to Read Next
+Each level carries its own notification repeat policy, configurable in [Notification Severity](notification-delivery-settings.md).
+
+## Escalation
+
+Unresolved alarms can escalate through multiple steps — notifying additional recipients through additional channels after configurable delays. An on-call engineer who does not respond within the configured window triggers notification to the shift supervisor, who in turn escalates to the site manager if the alarm remains unresolved.
+
+For full details on configuring escalation chains, see [Escalation and Response](escalation-and-response.md).
+
+## What to read next
 
 | Page | When to read it |
 |---|---|
-| [Your First Operational Alert](first-operational-alert.md) | You want a quick walkthrough to create one rule, see it fire, and resolve the alarm. |
-| [Notification Rules](notification-rules.md) | You need the full reference for rule creation, editing, and management. |
-| [Inbox and Resolution](inbox-and-resolution.md) | You need to triage alarms — search, resolve, delete, or trace back to the originating rule. |
-| [Notification Delivery Settings](notification-delivery-settings.md) | You want to control how often each notification type repeats. |
-| [Notification Channels](notification-channels.md) | You need to set up or manage email and SMS delivery. |
+| [Your First Alert](first-operational-alert.md) | Create one alarm definition end-to-end, see it fire, and resolve it. |
+| [Alarm Definitions](notification-rules.md) | Full reference for creating, editing, and managing alarm definitions. |
+| [Escalation and Response](escalation-and-response.md) | Configure multi-step escalation chains for unresolved alarms. |
+| [Notification Severity](notification-delivery-settings.md) | Control repeat intervals and one-time notification behavior per severity level. |
+| [Inbox and Resolution](inbox-and-resolution.md) | Triage incoming alarms — filter, search, resolve, and trace back to originating rules. |
+| [Delivery Channels](notification-channels.md) | Set up and manage email, SMS, and push notification delivery. |
