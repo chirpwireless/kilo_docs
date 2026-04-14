@@ -48,6 +48,3 @@ Once the new owner accepts the transfer (see [Accepting Invitations](accepting-i
 - **No co-ownership.** There is always exactly one owner.
 - **24-hour expiration.** If the new owner does not accept within 24 hours, the invitation expires and you remain the owner.
 
-## Admin Contacts
-
-Admin contacts are not editable in this dialog. They are automatically derived from the organization owner and all members who have **Manage users** permission with Edit access. If you need to change who appears as an admin contact, adjust the relevant user's permissions in [Managing Access](managing-access.md).

@@ -4,11 +4,11 @@ Within each organization, Kilo IoT Server uses attribute-based access control (A
 
 This per-surface model is more flexible than coarse role-only access. A deployment engineer might get Edit access to devices and connectors but No access to billing. An operations manager might have Edit access to dashboards and alerts but View-only access to the rules engine. A stakeholder might see everything but change nothing. And because access is scoped to each organization, the same person can hold completely different permissions in different organizations.
 
-## How Roles Work
+## How Permission Labels Work
 
-The platform defines three predefined permission patterns — **Admin**, **Editor**, and **Viewer** — each with its own set of default surface assignments. When you invite a user, the dialog pre-fills permissions based on these defaults, and you can adjust any surface before sending the invite. There is no explicit "select a role" step — you work directly with per-surface permissions, and the defaults give you a sensible starting point.
+The platform uses per-surface permissions as the primary access model. There is no "select a role" step — when you invite a user, you set each surface individually to Edit, View, or No access. The dialog starts with hardcoded defaults (Edit on most surfaces, with Manage Users and Audit Trail set to No access), and you can adjust every surface before sending.
 
-After permissions are saved, the platform computes a display label by matching the user's permission set against the predefined patterns. If the set matches Admin defaults, the users table shows "Admin." If it matches Editor defaults, it shows "Editor." Custom combinations that do not match any pattern are displayed as-is.
+After permissions are saved, the platform computes a display label by matching the user's actual permission set against three named patterns — **Admin**, **Editor**, and **Viewer**. If the set matches the Admin pattern, the users table shows "Admin." If it matches Editor, it shows "Editor." Custom combinations that do not match any pattern display the individual surface names instead.
 
 **Owner** is not a predefined role in the same sense. It is a property of the organization itself — exactly one member is the owner, and that status grants automatic access across the org (with audit trail limited to read). Owner access cannot be customized or removed; it changes only through ownership transfer.
 

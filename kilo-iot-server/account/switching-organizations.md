@@ -1,6 +1,6 @@
 # Switching Organizations
 
-A single Kilo IoT account can belong to multiple organizations. You might be the owner of your team's primary organization, a viewer in a partner's organization, and an editor in a testing environment — all under one login. Switching between organizations changes the context of the entire interface.
+A single Kilo IoT account can belong to multiple organizations. You might be the owner of your team's primary organization, have view-only access in a partner's organization, and hold edit access in a testing environment — all under one login. Switching between organizations changes the context of the entire interface.
 
 ## Where to Find It
 

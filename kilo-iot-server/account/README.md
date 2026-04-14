@@ -13,7 +13,7 @@ Click your name or avatar in the bottom-left to open the user menu. From there y
 - [How Organizations Start](how-organizations-start.md) — Default organization creation and invitation entry paths
 - [Organization Settings](organization-settings.md) — Rename and ownership transfer
 - [Switching Organizations](switching-organizations.md) — Multi-org membership and context switching
-- [Users and Permissions](users-and-permissions.md) — ABAC permission model, roles, and per-surface access
+- [Users and Permissions](users-and-permissions.md) — Per-surface permission model and access controls
 - [Inviting Users](inviting-users.md) — Send invitations and assign permissions
 - [Accepting Invitations](accepting-invitations.md) — Accept membership and ownership transfer invites
 - [Roles and Page Access](roles-and-page-access.md) — Full permission reference

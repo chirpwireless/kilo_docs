@@ -10,57 +10,62 @@ When you invite a user or edit their permissions, the dialog shows a **Page acce
 - **View** — the user can see the feature but not make changes
 - **No access** — the feature is hidden from the user
 
-The following features are configurable in the current dialog:
+## Configurable Surfaces
 
-| Feature | Edit | View | No access | Notes |
-|---|---|---|---|---|
-| Overview | Yes | Yes | Yes | |
-| Dashboards | Yes | Yes | Yes | |
-| Devices | Yes | Yes | Yes | |
-| Cameras | Yes | Yes | Yes | |
-| SIM Cards | Yes | Yes | Yes | |
-| Notifications | Yes | Yes | Yes | |
-| Rules | Yes | Yes | Yes | |
-| Subscription | Yes | Yes | Yes | |
-| Manage users | Yes | Yes | Yes | |
-| Connectors | Yes | Yes | Yes | |
-| Audit Trail | No | Yes | Yes | Read-only — no Edit option exists |
-| API Keys | Yes | No | Yes | Write-only — no View option exists |
+The following features appear in the invitation and permission dialog. You can set each one independently.
 
-Two features have restricted options:
+| Feature | Allowed levels | Default for new invites | Special rules |
+|---|---|---|---|
+| Overview | Edit / View / No access | Edit | |
+| Dashboards | Edit / View / No access | Edit | |
+| Devices | Edit / View / No access | Edit | |
+| Cameras | Edit / View / No access | Edit | |
+| SIM Cards | Edit / View / No access | Edit | |
+| Notifications | Edit / View / No access | Edit | |
+| Rules | Edit / View / No access | Edit | |
+| Subscription | Edit / View / No access | Edit | |
+| Manage Users | Edit / View / No access | No access | Read access lets the user view the members list and pending invitations. Edit access is required to invite users, change permissions, revoke invitations, and remove members. |
+| Connectors | Edit / View / No access | Edit | |
+| Audit Trail | View / No access | No access | No Edit option exists. The audit trail is read-only for everyone, including the owner. Even if write access is requested through other means, it is automatically downgraded to read at both invitation creation and acceptance. |
+| API Keys | Edit / No access | Edit | No View option exists. API key management is self-service — if a user has access, they can create and manage their own keys. |
 
-- **Audit Trail** offers only View or No access. There is no Edit option because the audit trail is read-only for everyone, including the owner. Even if write access is requested through other means, it is automatically downgraded to read.
-- **API Keys** offers only Edit or No access. There is no View option — API key management is self-service for all organization members who have access.
+## Server-Side Surfaces
 
-## Default Permission Templates
+The underlying permission model includes four additional features that are enforced server-side but do not appear in the dialog: Gateways, Logs, Notification Center, and Geofencing. These cannot be configured through the Users interface and are not relevant to day-to-day access management.
 
-For new invitations, the dialog pre-fills defaults: Edit on most features, with **Manage users** and **Audit Trail** set to No access. You can adjust any feature individually before sending the invite.
+## Defaults for New Invitations
 
-The platform defines three named default templates that provide different starting points:
+When you open the invite dialog, permissions are pre-filled with hardcoded defaults — not from a template. The starting point for every new invitation is:
 
-| Template | Default access |
-|---|---|
-| **Admin** | Edit on all features, including Subscription and Manage users |
-| **Editor** | Edit on most features; No access to Subscription and Manage users |
-| **Viewer** | View on most features; same exclusions as Editor |
+- **Edit** on all surfaces except Manage Users and Audit Trail
+- **No access** on Manage Users
+- **No access** on Audit Trail
 
-These templates pre-fill the dialog as a convenience — they are not fixed roles. Every permission can be adjusted individually before sending the invite, and permissions can be changed at any time after the user joins.
+You can adjust every surface individually before sending the invite. These defaults are designed to give a new team member broad access to operational features while keeping administrative and audit capabilities restricted until explicitly granted.
 
-## Display Labels in the Users Table
+## Display Labels and Matching
 
-The users table shows **Edit access** and **View access** columns. These are computed display labels, not stored roles. The platform matches each user's actual permissions against the three default templates:
+The users table shows **Edit access** and **View access** columns. These display computed labels — not stored roles. The platform defines three named permission patterns and matches each user's actual permissions against them:
 
-- If the permission set matches the Admin template → the column displays **Admin**
-- If it matches the Editor template → **Editor**
-- If it matches the Viewer template → **Viewer**
-- If the set does not match any template → the column displays the individual feature names instead
+| Pattern | What it includes | What it excludes |
+|---|---|---|
+| **Admin** | Edit on all configurable surfaces. Audit Trail = View. API Keys = Edit. Includes Subscription and Manage Users. | Nothing excluded |
+| **Editor** | Edit on most surfaces. Audit Trail = View. API Keys = Edit. | No access to Subscription and Manage Users |
+| **Viewer** | View on most surfaces. Audit Trail = View. API Keys = Edit (self-service exception). | No access to Subscription and Manage Users |
+
+After permissions are saved, the platform compares the user's actual permission set against these patterns:
+
+- If the set matches the Admin pattern → the column displays **Admin**
+- If it matches the Editor pattern → **Editor**
+- If it matches the Viewer pattern → **Viewer**
+- If the set does not match any pattern → the column displays the individual feature names instead
 - The owner always displays **Owner**
 
-These labels help you see at a glance what kind of access each member has, but the underlying model is always per-feature.
+These labels help you see at a glance what kind of access each member has, but the underlying model is always per-feature. The patterns are not assigned as roles and do not pre-fill the dialog — they exist only to compute the display labels in the users table.
 
 ## Owner Access
 
-Owner is not a default template or a permission pattern. It is a property of the organization itself — exactly one member is the owner, and that status is stored as part of the organization record.
+Owner is not a permission pattern. It is a property of the organization itself — exactly one member is the owner, and that status is stored as part of the organization record.
 
 The owner gets automatic access to all features, with one exception: the audit trail is always read-only, even for the owner. This is enforced at two levels — owner permissions are generated with audit trail set to read, and a separate enforcement layer hard-denies audit trail write for every user.
 
@@ -73,10 +78,8 @@ When you do not have Edit access to a feature, the platform disables the relevan
 - If no other administrators exist in the organization: *"You don't have the required permissions. Please contact your organization owner."*
 - If administrators exist: *"Contact your administrators: Maria Schmidt (maria@example.com), ..."*
 
-The administrators listed in the tooltip are automatically derived from the organization owner and all members who have **Manage users** set to Edit. These are the same contacts shown in [Organization Settings](organization-settings.md) — they are not manually configured.
+The administrators listed in the tooltip are automatically derived from the organization owner and all members who have **Manage Users** set to Edit. These contacts are computed automatically — not configured manually.
 
 ## Access Evaluation
 
 Access is checked per-feature: does this user have read or write permission for this feature in this organization? If no matching permission exists, access is denied. The owner is the only exception — the owner has automatic access to every feature, with audit trail limited to read.
-
-The underlying permission model includes additional features not shown in the current dialog. These are enforced server-side but cannot be configured through the Users interface.
