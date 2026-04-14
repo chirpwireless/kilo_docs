@@ -15,9 +15,9 @@ After permissions are saved, the platform computes a display label by matching t
 | Display label | What it means | Customizable? |
 |---|---|---|
 | **Owner** | Org ownership status. Automatic access across the org. Audit trail is read-only. | No — implicit in ownership |
-| **Admin** | Default: Edit on all surfaces, including Subscription and Manage users. | Yes — per surface |
-| **Editor** | Default: Edit on most surfaces. No access to Subscription or Manage users. | Yes — per surface |
-| **Viewer** | Default: View on most surfaces. Same exclusions as Editor. | Yes — per surface |
+| **Admin** | Edit on all surfaces, including Subscription and Manage Users. Audit Trail is always View. API Keys is always Edit. | Yes — per surface |
+| **Editor** | Edit on most surfaces. Audit Trail = View. API Keys = Edit. No access to Subscription or Manage Users. | Yes — per surface |
+| **Viewer** | View on most surfaces. Audit Trail = View. API Keys = Edit (self-service exception). No access to Subscription or Manage Users. | Yes — per surface |
 
 ## In This Section
 
