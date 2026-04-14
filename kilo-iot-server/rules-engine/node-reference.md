@@ -378,13 +378,11 @@ Drag a Boundary Error Event from the palette and drop it onto an existing task n
 | **Error code** | A text field. Placeholder: *Specify error code here*. Used for labeling and annotation in the editor — see the caveat below. |
 | **Message** | A multiline text field (3 rows). Placeholder: *Type error message here*. Used for labeling and annotation in the editor — see the caveat below. |
 
-**Inputs** — A list of input parameters. Each entry has a name, a type indicator (locked to "Expression"), and a CEL expression field. Add entries with **+ Add input**. Remove with the delete button.
-
-**Outputs** — Same structure as Inputs, with its own **+ Add output** button.
+**Inputs / Outputs** — The properties panel may display Input and Output fields on the Boundary Error Event. However, the automation engine does not process Inputs or Outputs on this node type. If you need to transform data or publish values on the error path, add Inputs and Outputs to the **downstream node** that the boundary event's outgoing flow connects to — for example, the fallback Script Task, Set Alarm, or End Event.
 
 **Save / Cancel** — At the bottom of the panel.
 
-**Important caveat:** The Error code and Message fields are labeling and annotation fields within the editor. They do not enable selective runtime matching by error code. The executor routes **all** errors from the attached task through the boundary event regardless of the code entered. The core supported behavior is the fallback route itself: when the attached task fails for any reason, the error path runs instead of silently stopping that branch.
+**Important caveat:** The Error code and Message fields are labeling and annotation fields within the editor. They do not enable selective runtime matching by error code. The engine routes **all** errors from the attached task through the boundary event regardless of the code entered. The core supported behavior is the fallback route itself: when the attached task fails for any reason, the error path runs instead of silently stopping that branch.
 
 ### Example
 

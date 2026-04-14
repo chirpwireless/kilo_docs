@@ -12,6 +12,16 @@ Most Kilo rules use only a few short expressions. The workflow structure remains
 
 Every expression in the Rules Engine has access to process variables through the `vars` object. The data available depends on where in the rule the expression runs.
 
+Fields in `vars` can be accessed with **dot notation** or **bracket notation**:
+
+```cel
+vars.temperature        // dot notation — works for simple identifiers
+vars["sensor_id"]       // bracket notation — works for any name
+vars["my-sensor"]       // bracket notation required — hyphen in name
+```
+
+Dot notation is convenient for most field names. Bracket notation is required when a field name contains hyphens, spaces, or other special characters, or when the field name is computed dynamically from another expression.
+
 ### Always available (after Start Event)
 
 | Variable | Type | Description |
@@ -131,6 +141,31 @@ vars.value > 80 ? "critical" : vars.value > 50 ? "warning" : "normal"
 | Contains | `contains()` | `vars.status.contains("error")` |
 | Starts with | `startsWith()` | `vars.zone.startsWith("warehouse")` |
 | Ends with | `endsWith()` | `vars.device_id.endsWith("-prod")` |
+| Regex match | `matches()` | `vars.device_id.matches("^WH-[0-9]+$")` |
+
+### Collection functions
+
+| Function | Description | Example |
+|---|---|---|
+| `x in list` | Membership check | `vars.zone in ["A", "B", "C"]` |
+| `key in map` | Key exists in map | `"humidity" in vars` |
+| `list.exists(x, expr)` | True if any element satisfies the expression | `[10, 25, 40].exists(t, t > 30)` |
+| `list.all(x, expr)` | True if all elements satisfy the expression | `[10, 25, 40].all(t, t > 0)` |
+| `list.filter(x, expr)` | Returns elements that satisfy the expression | `[10, 25, 40].filter(t, t > 20)` → `[25, 40]` |
+| `list.map(x, expr)` | Transforms each element | `[1, 2, 3].map(x, x * 10)` → `[10, 20, 30]` |
+| `list.exists_one(x, expr)` | True if exactly one element satisfies | `[10, 25, 40].exists_one(t, t > 30)` → `true` |
+
+### Intermediate variables with cel.bind
+
+Use `cel.bind()` to define a temporary variable inside an expression, avoiding redundant computation:
+
+```cel
+cel.bind(delta, vars.value - vars.baseline.value,
+  {"delta": delta, "severity": delta > 20 ? "critical" : delta > 10 ? "warning" : "normal"}
+)
+```
+
+The first argument names the variable, the second computes its value, and the third is the expression that uses it.
 
 ### Existence check
 
@@ -247,6 +282,16 @@ CEL expressions appear in multiple places across the Rules Engine. The context d
 | **Enrichment — Inputs** | Any | Prepare values before the lookup runs. |
 | **Enrichment — Outputs** | Any | Publish values after the enrichment result is available. |
 
+### Inputs and Outputs scope
+
+Inputs and Outputs on a node serve different purposes and have different visibility:
+
+- **Inputs** create **local** variables scoped to the current node only. They do not modify the shared workflow context. Input expressions evaluate against the current `vars` state. Use them to prepare helper values or precompute intermediate results before the node's main logic runs.
+
+- **Outputs** write values into the **shared** workflow context (`vars`). Output expressions evaluate against the node's local scope — which includes both the original `vars` and any input-defined locals. Values published by Outputs persist and are accessible to all downstream nodes.
+
+**Practical implication:** If you define an input named `threshold` on an Exclusive Gateway, downstream nodes cannot see `vars.threshold` — it exists only during that gateway's condition evaluation. To make a computed value available downstream, define it as an Output instead.
+
 ---
 
 ## Safety and sandboxing
@@ -260,6 +305,40 @@ CEL is sandboxed by design. Expressions execute in a restricted environment with
 - Mutable state outside the expression's own evaluation
 
 An expression cannot create infinite loops, allocate unbounded memory, or affect other rules. If an expression fails (type error, division by zero, reference to a missing variable without `has()` guard), the node that contains it throws an error. Attach a Boundary Error Event to handle these failures gracefully.
+
+---
+
+## Platform functions
+
+In addition to the standard CEL library, the Rules Engine provides two platform-specific functions.
+
+### error(message)
+
+Takes a string argument and always produces an error value. When a Script Task expression evaluates to an error, the engine checks for an attached Boundary Error Event. If one exists, execution routes through the error path. If not, the error stops the rule.
+
+Use `error()` for deliberate conditional failure — situations where a specific data condition should trigger the error-handling path rather than continue normal execution.
+
+```cel
+vars.temperature > 200 ? error("critical overheat detected") : {"status": "ok"}
+```
+
+In this example, temperatures above 200 deliberately fail the Script Task. If a Boundary Error Event is attached, the error path runs (perhaps triggering an emergency alarm). Below 200, the Script Task outputs `{"status": "ok"}` as normal.
+
+```cel
+has(vars.calibration_date) ? {"calibrated": true} : error("sensor not calibrated")
+```
+
+### random()
+
+Returns a pseudorandom floating-point number in the range [0.0, 1.0). Useful for probabilistic sampling, percentage-based routing, or generating random identifiers.
+
+```cel
+random() < 0.1 ? "sampled" : "skipped"
+```
+
+```cel
+{"random_id": random() * 1000000.0}
+```
 
 ---
 

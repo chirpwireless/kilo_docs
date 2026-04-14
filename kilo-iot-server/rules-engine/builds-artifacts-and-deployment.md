@@ -88,10 +88,12 @@ The artifact status changes to **Running** (green). The rule is now actively eva
 
 ### Deployment constraints
 
-- Only builds that are **not currently running** can be deployed.
-- Only **one build per rule** can be running at a time. If you want to deploy a newer build, stop the currently running one first, then deploy the new one.
+- Only **one build per rule** can be running at a time.
+- If a rule already has a running artifact and you deploy a different build, the platform automatically stops the running artifact and starts the new one in a single operation. There is no need to stop the running artifact first — the transition is handled for you.
 
 ## Stopping a running rule
+
+Stopping is a deliberate pause action — use it when you want a rule to stop evaluating sensor events without deploying a different version.
 
 ### How to stop
 
@@ -101,7 +103,7 @@ The artifact status changes to **Running** (green). The rule is now actively eva
 
 The status changes to **Stopped** (orange). The rule stops processing sensor events immediately. No data is lost — the sensor continues reporting, but the rule no longer evaluates those readings.
 
-A stopped artifact can be redeployed at any time by clicking **Deploy** again.
+A stopped artifact can be restarted at any time by clicking **Deploy** again.
 
 ## Deleting a build artifact
 
