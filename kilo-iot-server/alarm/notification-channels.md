@@ -1,10 +1,14 @@
 # Delivery Channels
 
-Alarm definitions fire notifications, but those notifications need verified delivery endpoints. The **Settings** tab on the Alarm page is where you manage the contacts and channels that receive your operational alerts.
+Alarm definitions fire notifications, but those notifications need verified delivery endpoints and active channels. The **Settings** tab on the Alarm page is where you manage the contacts, enable or disable channels, and control which delivery paths receive your operational alerts.
 
 ## Email
 
-Email is the baseline delivery channel — it is available for every account.
+Email is the baseline delivery channel.
+
+### Enabling and disabling
+
+An **On/Off** toggle at the top of the Email section controls whether email notifications are delivered across all alarm definitions. Turning it **Off** disables ALL email-based alarm delivery — a confirmation dialog appears before this takes effect. Turning it back **On** resumes delivery for every alarm that uses email in its escalation chain. The toggle may be unavailable if no contacts are configured or if the channel is not available in the current account context.
 
 ### Adding contacts
 
@@ -22,15 +26,17 @@ Contacts cannot be edited after creation. To update an email address, remove the
 
 ## SMS
 
-SMS delivery is available when enabled for the account. When available, the SMS section appears in the Settings tab with the same add, verify, and remove workflow as email.
+SMS is present in the Alarm settings and selectable as a delivery channel in [escalation chain steps](escalation-and-response.md). The SMS section follows the same pattern as Email: add contacts, verify them, enable or disable the channel with the On/Off toggle, and remove contacts you no longer need.
 
-For operations teams, SMS provides a high-reliability delivery path that reaches recipients even when email is inaccessible — for example, field technicians or on-call engineers without continuous email access.
+Turning SMS **Off** stops all alarm notifications via SMS across every alarm definition. The same confirmation dialog applies.
+
+For operations teams, SMS provides a high-reliability delivery path that reaches recipients even when email is inaccessible — field technicians, on-call engineers, or facility managers responding from mobile devices.
 
 ## Push notifications
 
 Push notifications are available when enabled for the account. When available, a push notification section appears at the top of the Settings tab with device-specific setup instructions.
 
-Push provides immediate device-level alerts, making it suitable for time-sensitive escalation tiers where the recipient needs to be notified within seconds.
+Push provides device-level mobile alerts, making it suitable for time-sensitive escalation tiers.
 
 ## Connecting channels to escalation
 
@@ -40,4 +46,4 @@ The contacts configured here populate the **Choose recipients** dropdown in [esc
 - **Tier 2 (After delay):** Shift supervisor via email and SMS.
 - **Tier 3 (After further delay):** Site operations manager via SMS.
 
-This allows you to build targeted response chains where each tier uses the channel most likely to reach the intended recipient in their operational context.
+If you turn a channel **Off** in Settings, that channel is disabled for delivery across every alarm definition and every escalation step that references it. This is useful for planned maintenance windows or when a channel is temporarily unreliable — disable it globally, then re-enable once the maintenance is complete.

@@ -21,7 +21,7 @@ The first step is always present and cannot be removed. Its delay is fixed to **
 Each step is configured with:
 
 - **Notify** — One or more organization members selected from the **Choose recipients** dropdown. Recipients are drawn from the current organization's user list.
-- **Via** — Delivery channels. Email is the baseline channel. SMS and push notifications are available when enabled for the account (see [Delivery Channels](notification-channels.md)).
+- **Via** — Delivery channels. Email and SMS are selectable in every step. Push notifications appear when enabled for the account (see [Delivery Channels](notification-channels.md)).
 
 ### Additional steps
 

@@ -32,7 +32,7 @@ On desktop, each alarm event is displayed as a row:
 | **Severity** | Severity level, color-coded by priority. |
 | **First trigger** | Timestamp of the initial alarm event. |
 | **Last update** | Timestamp of the most recent activity. |
-| **Actions** | Resolve button and a link to the originating rule in the Rules Engine. |
+| **Actions** | **Mark as resolved** button and a link to the originating rule in the Rules Engine. |
 
 On mobile, events appear as compact cards with the same information in a condensed layout.
 
@@ -42,7 +42,7 @@ If no alarms have been triggered, the Inbox shows: *"No alarms yet — To see al
 
 ## Resolving an alarm event
 
-Click **Resolve** on an active alarm event. This action:
+Click **Mark as resolved** on an active alarm event. This action:
 
 1. Changes the event status from **Active** to **Resolved**.
 2. Cancels any remaining [escalation steps](escalation-and-response.md) for this event — no further notifications are sent.

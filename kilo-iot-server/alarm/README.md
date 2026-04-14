@@ -12,7 +12,7 @@ The Alarm page has three tabs:
 |---|---|
 | **Inbox** | Lists every alarm event that has been triggered. Filter by severity or status, search by title, resolve events, or navigate to the originating rule for investigation. |
 | **Alarm definitions** | Create and manage alarm configurations. Each definition specifies severity, escalation steps, notification timing, schedule, suppression, and the alert message. Click **Add alarm rule** to create a new definition. |
-| **Settings** | Manage notification delivery contacts — email addresses, SMS numbers, and push notification setup (when enabled for the account). |
+| **Settings** | Manage notification delivery contacts — email and SMS — with per-channel enable/disable toggles. Push notification setup is available when enabled for the account. |
 
 A **Notification Severity** button in the page header (visible on all tabs) opens a modal for configuring how frequently each severity level re-sends notifications.
 

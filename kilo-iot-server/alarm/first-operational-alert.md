@@ -17,7 +17,10 @@ For full reference on all alarm definition fields, see [Alarm Definitions](notif
 4. Fill in the form:
    - **Alarm name:** "Cold Storage Alert" (or whatever describes the condition you are monitoring).
    - **Severity:** Choose **High** for this test. You can change it later.
-   - **Escalation chain:** In the first (Immediate) step, select yourself as the recipient under **Notify**, and select **Email** under **Via**.
+   - **Escalation chain:**
+     - **Step 1 (Immediate):** Select the on-call technician under **Notify**. Select **Email** under **Via**. This person is notified the moment the alarm fires.
+     - Click **Add step** to add a second tier.
+     - **Step 2 (After configurable delay):** Select the shift supervisor under **Notify**. Select **Email** and **SMS** under **Via**. If the technician does not resolve the alarm within the configured window, the supervisor is automatically notified — no manual intervention needed.
    - **Theme:** "Temperature exceedance in cold storage."
    - **Message body:** "Sensor reading has exceeded the operational threshold. Check the facility."
 5. Leave Schedule, Custom Notification interval, and Suppress duplicates at their defaults for now.
@@ -49,7 +52,7 @@ Once the rule fires (either from real sensor data or a test condition), the alar
 
 ## Step 4 — Resolve the alarm
 
-Click **Resolve** on the alarm event. The status changes to **Resolved** (checkmark). Any remaining escalation steps are cancelled — since this was a single-step chain, there was nothing to cancel, but in production you would typically have multiple steps.
+Click **Mark as resolved** on the alarm event. The status changes to **Resolved** (checkmark). If the alarm was still in Step 1 when you resolved it, Step 2 never fires — the supervisor is not notified because the technician handled it. If the alarm had already escalated to Step 2, resolving it stops any further notifications from that event.
 
 The resolved event stays in the Inbox as a historical record.
 
