@@ -12,13 +12,13 @@ All core network server functions are handled transparently:
 
 - **Join requests** — Device authentication and session key generation for over-the-air activation (OTAA)
 - **Uplink processing** — Receiving, deduplicating, and routing data from devices through gateways
-- **Downlink scheduling** — Queuing and delivering commands, configuration updates, and firmware data to devices
+- **Downlink scheduling** — Queuing and delivering commands and configuration updates to devices
 - **Message deduplication** — When multiple gateways receive the same device transmission, the server deduplicates automatically
 
 ## What This Means for Your Deployment
 
 - **No third-party network server required** — no separate LNS to procure, deploy, or maintain
-- **No additional hosting or scaling burden** — the network server scales with your organization's device count automatically
+- **No additional hosting burden** — the network server is managed as part of the platform
 - **Immediate integration** — device data flows directly into dashboards, automation rules, alarm evaluations, and historical queries without additional integration work
 - **Reduced time to deployment** — from gateway registration to live data in minutes, not days
 

@@ -1,6 +1,6 @@
 # Registering Devices
 
-Every physical device registered on the Kilo IoT Server becomes a Digital Twin — a complete digital representation that mirrors the device's current state, configuration, telemetry history, and behavioral patterns. The Digital Twin persists even when the physical device is offline, giving you a continuous operational view of your entire deployment. Because the physical device binding is optional, this architecture also lays the groundwork for device emulation — enabling teams to model an entire deployment with emulated devices first, then commission physical hardware incrementally without losing any configuration or history.
+Every physical device registered on the Kilo IoT Server becomes a Digital Twin — a complete digital representation that mirrors the device's current state, configuration, telemetry history, and behavioral patterns. The Digital Twin persists even when the physical device is offline, giving you a continuous operational view of your entire deployment. Because the physical device binding is optional, you can create and fully configure a device profile before the physical hardware is connected — so setup and hardware commissioning don't have to happen at the same time.
 
 Device registration is the process of creating this Digital Twin and linking it to a physical device through a connector. The registration flow guides you through naming the device, binding it to a connector, configuring its communication profile, and mapping the measurements it reports.
 

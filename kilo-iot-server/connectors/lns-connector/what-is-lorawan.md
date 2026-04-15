@@ -16,7 +16,7 @@ Devices are engineered for energy efficiency. Many LoRaWAN sensors run for years
 
 ### Two-Way Secure Communication
 
-LoRaWAN supports bidirectional communication — data travels both to and from the device. This enables remote configuration, firmware updates, and command delivery. All transmissions are secured with end-to-end encryption, protecting data integrity across the entire communication path.
+LoRaWAN supports bidirectional communication — data travels both to and from the device. This enables remote configuration and command delivery. All transmissions are secured with end-to-end encryption, protecting data integrity across the entire communication path.
 
 ### Scalability
 
@@ -24,7 +24,7 @@ A single LoRaWAN gateway can serve thousands of devices simultaneously. The prot
 
 ### Mobility and Location Awareness
 
-LoRaWAN includes built-in support for basic geolocation and device tracking, which is valuable for asset monitoring, logistics tracking, and fleet management scenarios where devices move between zones or sites.
+The LoRaWAN protocol defines geolocation capabilities that can be leveraged where supported by the network infrastructure — useful for asset monitoring, logistics, and fleet management scenarios where devices move between zones or sites.
 
 ## Ideal Use Cases
 
