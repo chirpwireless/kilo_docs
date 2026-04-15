@@ -107,7 +107,7 @@ The frequency information below is provided for reference purposes. While we hav
 | Cuba (CU) | EU433 AS923-3 |
 | Curacao (CW) | EU433 AS923-1 |
 | Cyprus (CY) | EU433 EU863-870 |
-| Czechia (CZ) | EU433 |
+| Czechia (CZ) | EU433 EU863-870 |
 
 ### D
 
@@ -186,7 +186,7 @@ The frequency information below is provided for reference purposes. While we hav
 | Iraq (IQ) | |
 | Ireland (IE) | EU433 EU863-870 AS923-3 |
 | Isle of Man (IM) | EU433 EU863-870 AS923-3 |
-| Israel (IL) | |
+| Israel (IL) | AS923-4 |
 | Italy (IT) | EU433 EU863-870 |
 
 ### J
@@ -261,7 +261,7 @@ The frequency information below is provided for reference purposes. While we hav
 | Nepal (NP) | |
 | Netherlands (NL) | EU433 EU863-870 |
 | New Caledonia (NC) | EU433 EU863-870 |
-| New Zealand (NZ) | EU433 EU865-867 AU915-928 AS923-1 |
+| New Zealand (NZ) | AU915-928 AS923-1 |
 | Nicaragua (NI) | EU433 EU863-870 |
 | Niger (NE) | IN865-867 |
 | Nigeria (NG) | EU433 EU863-870 |
