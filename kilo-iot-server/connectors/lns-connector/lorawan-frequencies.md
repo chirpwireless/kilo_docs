@@ -19,7 +19,7 @@ In most cases, LoRaWAN devices purchased from suppliers in your country are pre-
 | Asia (Japan, Korea, Vietnam, others) | AS923 | 920–928 MHz (regional variants AS923-1, AS923-2, AS923-3) |
 | South Korea | KR920 | 920–923 MHz |
 | India | IN865 | 865–867 MHz |
-| Russia | RU864 | 864–870 MHz |
+| Russia | RU864 / EU868 | 864–870 MHz |
 | China | CN470 | 470–510 MHz |
 | China (alternate) | CN779 | 779–787 MHz |
 | Global (license-free) | ISM2400 | 2.4 GHz (see [LoRa 2.4 GHz](lora-2g4.md)) |
