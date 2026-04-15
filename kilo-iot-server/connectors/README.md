@@ -50,6 +50,6 @@ The connector is created immediately. For LNS and Tracker connectors, no additio
 
 Once a connector is in place, you can:
 
-- **Configure the LNS connector** — manage LoRaWAN gateways and connected devices. See [LNS Connector](lns-connector.md).
+- **Configure the LNS connector** — manage LoRaWAN gateways and connected devices, and explore LoRaWAN protocol reference material including frequency bands by country. See [LNS Connector](lns-connector/README.md).
 - **Configure the Tracker connector** — onboard vehicle trackers (OBD2, CAN bus, standalone GPS). See [Tracker Connector](tracker-connector.md).
 - **Register devices** — add devices through any connector and configure their Digital Twin. See [Registering Devices](../devices/registering-devices.md).

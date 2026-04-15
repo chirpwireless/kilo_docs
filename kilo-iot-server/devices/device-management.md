@@ -31,9 +31,9 @@ The **Connector type** dropdown shows available connectors in your organization.
 - **Detach physical device** — Click the detach button (X icon) next to the Device EUI to unbind the physical device from this Digital Twin. The Digital Twin and its history are preserved; only the live connection is severed. You can then re-bind a different physical device.
 - **Use device profile templates** — Toggle this checkbox to switch between template-based and manual configuration:
   - **Template mode:** Select **Brand**, **Model**, and **Profile** from dropdowns that filter based on your selections.
-  - **Manual mode:** Enter Brand, Model, and Band as free text, choose **Class A** or **Class C**, and enter the **AppKey** (the LoRaWAN encryption key for over-the-air activation).
-- **Code functions** — An advanced field for device-specific codec logic. This multiline code editor accepts custom functions that control how the device's raw payload is decoded. Most devices using profile templates do not require changes here.
-- **Data sending interval** — Configure the expected reporting interval for this device. This value is used to determine the device's online/offline status in the device list.
+  - **Manual mode:** Enter Brand, Model, and Band as free text, choose **Class A** (battery-powered, uplink-first, power-efficient) or **Class C** (continuous listening, can receive downlinks at any time, typically mains-powered), and enter the **AppKey**. For full details on Class A vs Class C, band options, and the template flow, see [Registering Devices](registering-devices.md).
+- **Code functions** — The device's payload codec: JavaScript logic that decodes raw LoRaWAN uplink data into the named fields that appear as connector keys in the Metrics tab. When a device profile template is selected, this field is pre-filled with the template's codec. If the decoded output is missing fields or producing incorrect values, you can edit the code directly. Alternative codecs can often be found in the device manufacturer's documentation or community repositories. For the full codec explanation, see [Registering Devices](registering-devices.md).
+- **Data sending interval** — The expected reporting frequency for this device. If no message arrives within the configured interval, the device is marked as offline in the device list. Choose a number and a unit (minute, hour, day, week, or month).
 
 ### For vehicle trackers (Tracker connector)
 

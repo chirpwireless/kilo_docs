@@ -59,18 +59,18 @@ Each metric template specifies:
 
 | Field | Options | Description |
 |-------|---------|-------------|
-| **Normalized key** | Select from existing or create new | The standard measurement name this metric maps to |
-| **Unit of measurement** | Select from Units | The unit symbol displayed with values |
-| **Type** (value type) | Integer, Float, String, Boolean | The data type of the measurement value |
-| **Data type** (sensor type) | Telemetry, Device Metadata, User Metadata | How the measurement is classified |
+| **Normalized key** | Select from existing or create new | The standard measurement name this metric maps to (e.g., `temperature`, `humidity`, `battery_level`) |
+| **Unit of measurement** | Select from Units | The unit symbol displayed alongside values (e.g., °C, %, lx, mV) |
+| **Type** (value type) | Integer, Float, String, Boolean | How the measurement value is stored and displayed. **Integer** — whole numbers with no decimal point (e.g., battery percentage: 85, signal strength: -120, packet count: 42). **Float** — numbers with decimal precision (e.g., temperature: 22.5, humidity: 67.3, voltage: 3.28). This is the most common type for sensor readings. **String** — text values (e.g., door status: "open", firmware version: "1.2.3", device mode: "standby"). **Boolean** — true or false (e.g., motion detected: true, alarm active: false). |
+| **Data type** (sensor type) | Telemetry, Device Metadata, User Metadata | How the measurement is classified. **Telemetry** — regular sensor readings that change over time. This is the most common type (temperature, humidity, battery level, pressure). **Device Metadata** — information the device reports about itself that changes infrequently (firmware version, hardware revision, signal strength). **User Metadata** — properties you assign manually, not reported by the device (installation date, location notes, asset tag, maintenance schedule). |
 
 **To add a metric template:**
 
 1. A new row appears at the top of the table when you start editing.
 2. Select or create a **Normalized key**.
 3. Select a **Unit of measurement** from the dropdown.
-4. Select the **Type** (value type): Integer for whole numbers, Float for decimal values, String for text, Boolean for true/false.
-5. Select the **Data type** (sensor type): Telemetry for regular measurements, Device Metadata for device-reported attributes, User Metadata for user-assigned properties.
+4. Select the **Type** (value type): **Integer** for whole numbers (e.g., 85), **Float** for decimal values (e.g., 22.5), **String** for text (e.g., "open"), **Boolean** for true/false. Float is the most common choice for sensor readings.
+5. Select the **Data type** (sensor type): **Telemetry** for regular sensor readings that change over time, **Device Metadata** for information the device reports about itself (firmware version, signal strength), **User Metadata** for properties you assign manually (installation date, asset tag). Telemetry is the most common choice.
 6. Click the save button on the row.
 
 **Filtering:** Use the Type and Data type dropdown filters above the table to narrow the list to specific value types or sensor types.
