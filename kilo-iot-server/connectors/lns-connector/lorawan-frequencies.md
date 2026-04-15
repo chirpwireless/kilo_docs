@@ -1,5 +1,7 @@
 # LoRaWAN Frequencies
 
+> **Reference only.** This page is provided as a general guide. The frequency data may not be 100% accurate or up to date. Always verify the correct frequency band for your country with your local radio regulations authority before deploying devices. Use at your own risk.
+
 LoRaWAN operates in unlicensed sub-gigahertz frequency bands that vary by country and region. These bands are classified as ISM (Industrial, Scientific, and Medical) or SRD (Short Range Device) frequencies — free to use provided that devices comply with regional restrictions on transmission power, duty cycle, and channel access.
 
 When registering a LoRaWAN device on the Kilo IoT Server, you select the frequency band in the **Band** field of the connection configuration. The band must match your gateway's configuration and your region's radio regulations.
