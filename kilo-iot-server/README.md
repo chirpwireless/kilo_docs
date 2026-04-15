@@ -100,6 +100,10 @@ The interface is available in English, German, French, and Spanish. Both light a
 
 Kilo IoT offers multiple plan tiers — from a free tier for evaluation up to enterprise plans for large-scale deployments. Each tier defines limits for devices, automation rules, and access to advanced features. Plans can be viewed and managed from the **Subscription** section in the user menu.
 
+## Access the Platform
+
+Launch the Kilo IoT Server at [app.kiloiot.io](https://app.kiloiot.io).
+
 ## Where to start
 
 If you're new to Kilo IoT, begin with the [Getting Started](getting-started/) guide — it walks you through the interface, explains what makes the server different, and takes you from zero to a working deployment with live data and alerts.
