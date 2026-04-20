@@ -17,7 +17,7 @@ The Device info tab contains the device's identity and visual reference:
 * **Device photos** — Upload, replace, or remove photos of the physical device. Photos help operations teams identify hardware during site visits or troubleshooting.
 * **Device name** — Update the display name at any time. A consistent naming convention (e.g., including location or device type) helps when managing large fleets.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 ## Connection tab
 
