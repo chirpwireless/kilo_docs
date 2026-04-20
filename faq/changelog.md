@@ -10,7 +10,7 @@ Kilo IoT Server 3.0.0 delivers a ground-up rearchitecture of the platform's core
 
 ***
 
-### What's in This Release
+#### What's in This Release
 
 * **Modular Connectivity Framework** — Pluggable protocol adapters with LoRaWAN and OBD2/CAN vehicle tracker support at launch
 * **Device Lifecycle and Data Normalization** — Digital Twin device model with inline payload mapping and sensor template libraries
@@ -21,7 +21,7 @@ Kilo IoT Server 3.0.0 delivers a ground-up rearchitecture of the platform's core
 
 ***
 
-#### Modular Connectivity Framework
+**Modular Connectivity Framework**
 
 Kilo IoT 3.0.0 replaces protocol-specific device onboarding with a unified connectivity model. Every protocol integration is now encapsulated as a Connector — a modular adapter that defines how a particular class of devices communicates with the server.
 
@@ -42,7 +42,7 @@ Under the previous architecture, each new protocol demanded cross-cutting change
 
 ***
 
-#### Device Lifecycle and Data Normalization
+**Device Lifecycle and Data Normalization**
 
 Every device registered on Kilo IoT Server is represented as a Digital Twin — a persistent, composite model that captures the device's identity, physical binding, sensor configuration, measurement history, and operational metadata. The deliberate separation of the logical device model from physical hardware binding lays the groundwork for device emulation — enabling teams to architect and validate a complete deployment using emulated devices before commissioning physical hardware incrementally.
 
@@ -82,7 +82,7 @@ The normalization pipeline is structured as a four-level hierarchy. At the top, 
 
 ***
 
-#### Visualization and Monitoring
+**Visualization and Monitoring**
 
 Kilo IoT 3.0.0 delivers a fully operator-configurable dashboard system. Organize monitoring views into folder hierarchies — by site, building, department, or any operational taxonomy. Every widget supports multiple data sources, custom metric selection, and conditional visual formatting driven by operator-defined rules.
 
@@ -111,7 +111,7 @@ Examine telemetry trends with configurable line and bar charts. Define threshold
 
 ***
 
-#### Production Automation Engine
+**Production Automation Engine**
 
 Kilo IoT 3.0.0 introduces an enterprise-grade automation engine built on BPMN (Business Process Model and Notation). The engine is designed for production reliability — every rule is version-controlled, validated before deployment, and reversible without data loss.
 
@@ -153,7 +153,7 @@ Deleted rules are retained in a recovery queue with configurable retention. Any 
 
 ***
 
-#### Operational Alerting and Escalation
+**Operational Alerting and Escalation**
 
 Kilo IoT 3.0.0 delivers a structured alert management system that routes notifications through configurable escalation chains with multi-channel delivery.
 
@@ -183,7 +183,7 @@ Weekly delivery windows with timezone awareness control when notifications are d
 
 ***
 
-#### Multi-Tenant Governance and Compliance
+**Multi-Tenant Governance and Compliance**
 
 Kilo IoT 3.0.0 implements a comprehensive organizational isolation model with Attribute-Based Access Control and immutable activity logging.
 
@@ -218,61 +218,57 @@ Every organizational membership event is recorded: invitation dispatch, user acc
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.1.png" alt=""><figcaption></figcaption></figure>
 
-## Major Changes
+### Major Changes
 
-### Stripe Bank Card Integration
+#### Stripe Bank Card Integration
 
-#### Features
+**Features**
 
 * Card Linking: Users can now connect their bank card through Stripe to activate free trial subscriptions
 * Card Management: Users can view and manage linked cards in their Stripe account
 * Card Removal: Users have the option to unlink/remove their bank card at any time
 
-#### Security
+**Security**
 
 * All payment data is processed securely through Stripe's PCI-compliant infrastructure
 
-\
-Minor Changes
--------------
+### &#x20;Minor Changes
 
-### Stripe Subscription Management Fix
+#### Stripe Subscription Management Fix
 
-#### Fixed
+**Fixed**
 
 * Users now have only one active order after upgrading subscription plan
 * Corrected order replacement logic to ensure previous subscription order is properly canceled when upgrading
 
-#### Improved
+**Improved**
 
 * Enhanced subscription upgrade flow to properly transition between tariff plans
 * Improved Stripe order management to ensure clean subscription changes
 * Updated order lifecycle handling during tariff plan upgrades
 
-#### Technical Changes
+**Technical Changes**
 
 * Implemented proper order cancellation/replacement logic during subscription upgrades
 * Added validation to prevent duplicate active orders for same user
 
-### Frontend Technical Debt Cleanup
+#### Frontend Technical Debt Cleanup
 
-#### Refactored
+**Refactored**
 
 * Core UI components: Button, Tab, Text Field, Select, Typography
 * Improved consistency and maintainability across component library
 
-#### Removed
+**Removed**
 
 * Deprecated legacy components
 * Unused translation keys
 
-#### Improved
+**Improved**
 
 * Enhanced component reusability and type safety
 * Reduced bundle size
 * Cleaner component APIs
-
-
 
 </details>
 
@@ -282,9 +278,7 @@ Minor Changes
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.0.png" alt=""><figcaption></figcaption></figure>
 
-### **Scale Log 2.2.0 is one of the biggest releases of the year — and this Weightlog is a great way to close it out strong.**
-
-
+#### **Scale Log 2.2.0 is one of the biggest releases of the year — and this Weightlog is a great way to close it out strong.**
 
 This update introduces several major platform capabilities that move Kilo into a new phase of scalability — giving teams more reliable alerting, better dashboard organization, and stronger tools for managing multi-user deployments.
 
@@ -294,13 +288,13 @@ Major Changes
 
 ***
 
-### Add SMS as a Notification Channel
+#### Add SMS as a Notification Channel
 
-#### New Feature: SMS Notification Support
+**New Feature: SMS Notification Support**
 
 The Notification Center now supports **SMS alerts**, enabling users to receive important notifications directly on their phone. This improves reliability for time-sensitive events and gives teams another channel when email is delayed or missed.
 
-#### SMS Notification Capabilities
+**SMS Notification Capabilities**
 
 * SMS notification channel with phone verification flow
 * Phone number input and verification code interface
@@ -308,7 +302,7 @@ The Notification Center now supports **SMS alerts**, enabling users to receive i
 * Error messages for invalid or expired verification codes
 * Duplicate phone number detection
 
-#### How to Use
+**How to Use**
 
 1. Navigate to **Notifications → Settings**
 2. In the **SMS Notifications** section, click **“+ Add phone number”**
@@ -320,17 +314,17 @@ This update enables users to receive critical alerts directly via SMS, increasin
 
 ***
 
-### SMS Add-On
+#### SMS Add-On
 
-#### New Feature: SMS Credit Purchase (Stripe)
+**New Feature: SMS Credit Purchase (Stripe)**
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Kilo now supports purchasing SMS credits directly inside the platform. This allows teams to scale SMS alerting without additional operational overhead and makes usage predictable through a simple balance system.
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-#### SMS Purchase Feature Highlights
+**SMS Purchase Feature Highlights**
 
 * **Flexible quantity selection** — choose the exact number of SMS messages to purchase
 * **Transparent costing** — per-SMS price and total cost displayed before purchase
@@ -338,7 +332,7 @@ Kilo now supports purchasing SMS credits directly inside the platform. This allo
 * **Immediate confirmation** — confirmation modal appears after successful payment
 * **Live balance updates** — SMS balance updates in real time
 
-#### How to Use
+**How to Use**
 
 1. Navigate to **Notifications → SMS Settings**
 2. Select the number of SMS credits you want to purchase
@@ -348,15 +342,15 @@ Kilo now supports purchasing SMS credits directly inside the platform. This allo
 
 ***
 
-### Subscription & Billing Updates
+#### Subscription & Billing Updates
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-#### Free Subscription Default Plan
+**Free Subscription Default Plan**
 
 KILO 2.2.0 improves subscription handling so onboarding and plan upgrades are clearer and more predictable.
 
-#### Subscription Improvements
+**Subscription Improvements**
 
 * New users are automatically assigned the **default Free Plan** upon registration
 * Free plan details are now visible in the **Billing / Subscription** area
@@ -366,15 +360,15 @@ KILO 2.2.0 improves subscription handling so onboarding and plan upgrades are cl
 
 ***
 
-### Change Organization Settings
+#### Change Organization Settings
 
-#### Organization Management Enhancements
+**Organization Management Enhancements**
 
 <figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 Organization owners now have improved control over organization settings and ownership, making it easier to manage long-running deployments and team transitions.
 
-#### New Capabilities
+**New Capabilities**
 
 * **Organization name editing** directly in Organization Settings
 * **Ownership transfer** to another user via the organization member list
@@ -386,15 +380,15 @@ Organization owners now have improved control over organization settings and own
 
 ***
 
-### Dashboard Hierarchy
+#### Dashboard Hierarchy
 
-#### Enhanced Dashboard Management and Display
+**Enhanced Dashboard Management and Display**
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Change Log 2.2.0 introduces a new dashboard structure designed for users managing multiple deployments or operational views.
 
-#### Dashboard Improvements
+**Dashboard Improvements**
 
 * Dashboards can now be organized into a **two-level hierarchy** (folder → dashboards)
 * Folders are created via the **Settings** icon next to the “Add dashboard” button in the left menu
@@ -406,13 +400,11 @@ This update makes it significantly easier to scale dashboard usage and keep oper
 
 ***
 
-### Minor Changes
+#### Minor Changes
 
-#### Admin Contacts Information
+**Admin Contacts Information**
 
 * Permissions tooltips now display **admin contact details**, helping users quickly request access or assistance when permissions are required.
-
-
 
 </details>
 
@@ -422,9 +414,9 @@ This update makes it significantly easier to scale dashboard usage and keep oper
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.0.0.png" alt=""><figcaption></figcaption></figure>
 
-### Major Changes
+#### Major Changes
 
-#### Custom Dashboards
+**Custom Dashboards**
 
 * Added the ability for users to create custom dashboards for personalized data monitoring, overview of multiple devices and parameters on one dashboard.
 
@@ -438,14 +430,14 @@ This update makes it significantly easier to scale dashboard usage and keep oper
 
 <figure><img src="../.gitbook/assets/wid2.gif" alt=""><figcaption></figcaption></figure>
 
-#### Collapsible Menu
+**Collapsible Menu**
 
 * Added a collapsible menu that can be reduced to a narrow strip with icons.
 * Users can expand or collapse the menu using the hover arrow, freeing up more screen space for main content or custom dashboards.
 
 <figure><img src="../.gitbook/assets/wid.gif" alt=""><figcaption></figcaption></figure>
 
-#### Device and Gateway Photo Placeholder & Direct Upload
+**Device and Gateway Photo Placeholder & Direct Upload**
 
 * Added a placeholder image for devices with no photos to indicate that a photo can be uploaded.
 * Users can now upload photos directly from the device or gateway page without navigating to settings.
@@ -453,36 +445,34 @@ This update makes it significantly easier to scale dashboard usage and keep oper
 
 <figure><img src="../.gitbook/assets/placeholder.png" alt=""><figcaption></figcaption></figure>
 
-### Minor Changes
+#### Minor Changes
 
-#### Rule Inactive Status Email Fix
+**Rule Inactive Status Email Fix**
 
 * Fixed an issue where notifications continued to be sent after a rule was set to inactive.
 * Inactive rules now correctly stop email notifications and mark notifications as resolved.
 
-#### Rule Deletion Email Fix
+**Rule Deletion Email Fix**
 
 * Fixed an issue where notifications continued to be sent after a rule was deleted.
 
-#### GPS Tracker URL Fix
+**GPS Tracker URL Fix**
 
 * The device URL now correctly links to the production environment.
 
-#### Widget Pinning Fix
+**Widget Pinning Fix**
 
 * Fixed an issue where widgets could not be pinned on device pages
 
-#### Page Access Restriction for Empty Subscriptions
+**Page Access Restriction for Empty Subscriptions**
 
 * Frontend now disables access to pages if the user has no active subscription or the subscription/data API returns empty.
 * Prevents users from interacting with features that require a valid subscription.
 
-#### Non-LoRa Device Creation Fix
+**Non-LoRa Device Creation Fix**
 
 * Fixed an issue where users could not add non-LoRa devices if isEnabledDevicePhoto was disabled.
 * Users can now add non-LoRa devices regardless of the device photo setting.
-
-
 
 </details>
 
@@ -492,9 +482,9 @@ This update makes it significantly easier to scale dashboard usage and keep oper
 
 <figure><img src="../.gitbook/assets/Scale_Log_Release_1.0.0.png" alt=""><figcaption></figcaption></figure>
 
-## Released features
+### Released features
 
-#### Device & Gateway Photo Uploads
+**Device & Gateway Photo Uploads**
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-10-06 at 18.15.24.png" alt=""><figcaption></figcaption></figure>
 
@@ -504,22 +494,20 @@ This update makes it significantly easier to scale dashboard usage and keep oper
 * Photos can be deleted in settings (delete icon on hover, always visible on mobile).
 * Improved UX: entire device/gateway card can now be expanded or collapsed with a click.
 
+### Minor Changes
 
-
-## Minor Changes
-
-#### Notification Icon Display Fix
+**Notification Icon Display Fix**
 
 * Fixed an issue where the Notification icon was not fully displayed when a user had more than 10 notifications.
 * The icon now displays correctly regardless of the number of notifications.
 
-#### Gateway Submission Fix
+**Gateway Submission Fix**
 
 <figure><img src="../.gitbook/assets/img.png" alt=""><figcaption></figcaption></figure>
 
 * Gateway submission now works correctly without server-side access errors.
 
-#### Error Message Fix
+**Error Message Fix**
 
 * Fixed an incorrect error message when adding gateways.
 
