@@ -1,6 +1,6 @@
 # IoT AI Assistant
 
-Available on **Professional** and **Enterprise** plans.
+Available on **Pro** and **Enterprise** plans.
 
 The AI Assistant is an intelligent analyst that understands your entire deployment — devices, sensor history, operational patterns, and platform capabilities. It is not a general-purpose chatbot. Every answer it gives is grounded in YOUR data, YOUR devices, and YOUR organization's telemetry. If you ask a question unrelated to IoT, it will politely decline.
 

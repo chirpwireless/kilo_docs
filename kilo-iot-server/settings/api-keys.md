@@ -1,59 +1,132 @@
 # API Keys
 
-API keys provide scoped, programmatic access to the Kilo IoT Server for external systems. Use them to connect CI/CD pipelines, synchronize data with warehouse management platforms, feed custom reporting scripts, or integrate with third-party operational systems. Each key carries only the permissions it needs, reducing the blast radius if a key is ever compromised.
+API keys give external systems programmatic access to the Kilo IoT Server. Use them to integrate CI/CD pipelines, synchronize data with warehouse management platforms, feed custom analytics or reporting scripts, connect SCADA systems, or automate configuration through your own tooling. Each key is scoped to exactly the permissions it needs — nothing more. If a key is ever compromised, you revoke or rotate it without affecting any other integration.
 
-## Accessing API Keys
+## Navigation
 
-Navigate to **Settings > API Keys** in the sidebar.
+Go to **Settings → API Keys** in the sidebar.
 
-## Creating a Key
+---
 
-1. Click **Create API Key**.
-2. Enter a **Name** for the key (required). Choose something descriptive — you will identify the key by this name later.
-3. Optionally set an **Expires** date. If left empty, the key remains active indefinitely.
-4. Select **Scopes** by checking the permissions the key should carry (for example, *Devices: Read*, *Devices: Write*). Only grant the scopes the integration actually requires.
-5. Confirm creation.
+## Creating a key
 
-After the key is created, the full key value is displayed **once** alongside a copy button. A warning reads: "Copy this key now. You will not be able to see it again." Store the key in a secure location such as a secrets manager or vault. Once you close this dialog, only the key prefix remains visible.
+1. Click **Create API Key** in the top-right corner.
+2. Enter a **Name** for the key. This is required. Choose a name that describes the integration — for example, "WMS-Sync-Production" or "Analytics-Pipeline-Staging". You will identify and manage this key by its name.
+3. Optionally set an **Expires** date using the date picker. The earliest selectable date is today. If left empty, the key remains active indefinitely. Set an expiry date for contractor access or temporary integrations.
+4. Select **Scopes** — at least one scope is required. Check only the permissions the integration actually needs. See the [Scope reference](#scope-reference) below.
+5. Click the confirm button to create the key.
 
-## Key Management Table
+### One-time display
 
-The API Keys page lists all keys with the following columns:
+After creation, the full key value is shown **once** with a copy button. A warning reads:
+
+> **"Copy this key now. You will not be able to see it again."**
+
+Store the key in a secrets manager or vault immediately. Once you close this dialog, the full key is gone — only the key prefix remains visible in the table. If the key is lost, the only recovery path is rotation.
+
+---
+
+## Scope reference
+
+Scopes control what the key can access. Each scope has a **Read** variant (retrieve data) and a **Write** variant (create, update, or delete). Grant only the minimum set your integration requires.
+
+| Scope | Read grants access to | Write grants access to |
+|-------|----------------------|----------------------|
+| **Connections** | View connector status and configuration | Create and modify connectors |
+| **Dashboards** | View dashboards and widget data | Create, edit, and delete dashboards and widgets |
+| **Devices** | View device list, Digital Twin state, and telemetry | Register devices, update device configuration |
+| **Events** | View device event history | — |
+| **Logs** | View system and device logs | Export logs |
+| **Organizations** | View organization details and membership | Modify organization settings and membership |
+| **Rules** | View rule definitions and deployment status | Create, edit, deploy, and delete rules |
+| **Sensors** | View sensor metric definitions and templates | Create and modify sensor templates |
+| **Users** | View user list and profile data | Invite, update, and remove users |
+
+**Principle of least privilege:** A reporting script that reads device telemetry needs only *Devices: Read* and *Events: Read* — not *Devices: Write* or any organization scope. Scoping tightly limits the impact if a key is ever exposed.
+
+---
+
+## API keys table
+
+The API Keys page lists all keys for your organization. The table columns are:
 
 | Column | Description |
-|---|---|
-| **Name** | The label you assigned during creation |
-| **Key Prefix** | A truncated portion of the key for identification |
-| **Scopes** | Permission chips showing granted access |
-| **Status** | Active, Rotated, or Revoked |
-| **Created** | Timestamp of initial creation |
-| **Expires** | Expiration date, or "Never" if no expiry was set |
-| **Last Used** | Timestamp of the most recent API call using this key |
+|--------|-------------|
+| **Name** | The label assigned at creation. |
+| **Key Prefix** | A short prefix of the key value — enough to confirm you're looking at the right key without exposing the full secret. |
+| **Scopes** | Permission chips showing the scopes granted to this key. |
+| **Status** | **Active** (green), **Rotated** (yellow), or **Revoked** (red). |
+| **Created** | Timestamp when the key was first created. |
+| **Expires** | The expiration date, or "Never" if no expiry was set. |
+| **Last Used** | The timestamp of the most recent authenticated API call using this key. |
 
-Keys are sorted newest first by default.
+Keys are sorted newest first by default. **Rotate** and **Revoke** action buttons appear only on Active keys.
 
-## Rotating a Key
+---
 
-Rotation generates a new key value while marking the previous one as **Rotated**. The old key stops working immediately.
+## Rotating a key
 
-1. Click the **Rotate** button on the key row you want to rotate.
-3. Confirm the dialog: "This will generate a new key and mark the current key as rotated. The old key will stop working."
-4. Copy the new key value — it is shown only once, just like during initial creation.
+Rotation generates a new key value and immediately deactivates the old one. The old key's status changes to **Rotated** and it can no longer authenticate any request.
 
-Use rotation on a regular schedule or whenever a key may have been exposed.
+Use rotation on a regular schedule, or whenever a key may have been exposed — for example, if it was accidentally logged, committed to a repository, or shared through an insecure channel.
 
-## Revoking a Key
+1. Click **Rotate** on the key row you want to rotate.
+2. A confirmation dialog appears:
+   > **"Rotate API Key — This will generate a new key and mark the current key '[name]' as rotated. The old key will stop working."**
+3. Confirm the rotation.
+4. The new key value is displayed **once**. Copy it immediately. Update all systems using the old key before they try to make their next API call.
 
-Revocation permanently disables a key. This cannot be undone.
+The rotated key remains visible in the table with **Rotated** status for audit trail purposes.
 
-1. Click the **Revoke** button on the key row.
-3. Confirm the dialog: "This will permanently revoke the API key. This action cannot be undone."
+---
 
-Revoked keys remain visible in the table for audit purposes but can no longer authenticate any request.
+## Revoking a key
 
-## Best Practices
+Revocation permanently disables a key. The action cannot be undone.
 
-- **Least privilege** — grant only the scopes each integration needs.
-- **Set expiration dates** for keys used by contractors or temporary integrations.
-- **Rotate keys periodically** — treat rotation as routine maintenance, not just incident response.
-- **Name keys descriptively** (e.g., "Warehouse-Sync-Prod" or "CI-Pipeline-Staging") so the team can identify each key's purpose at a glance.
+1. Click **Revoke** on the key row.
+2. A confirmation dialog appears:
+   > **"Revoke API Key — This will permanently revoke the API key '[name]'. This action cannot be undone."**
+3. Confirm the revocation.
+
+The key status changes to **Revoked** (red) and remains visible in the table. Revoked keys cannot authenticate any request. They appear in the audit trail, so you have a complete history of which keys existed and when they were deactivated.
+
+---
+
+## Expected results
+
+After creating a key:
+
+- The key appears immediately in the table with **Active** status.
+- The **Last Used** column shows a dash until the key makes its first authenticated API call, then updates with each subsequent use.
+- Expired keys become inactive automatically on their expiration date — no manual action needed.
+
+---
+
+## Troubleshooting
+
+**No permission to create API keys:**
+API key management requires sufficient access rights in your organization. Contact your organization administrator if the **Create API Key** button is unavailable.
+
+**Key was lost before copying:**
+The full key value cannot be retrieved. Click **Rotate** on the key row to generate a new value. Update all integrations with the new key.
+
+**Integration returning authentication errors:**
+- Confirm the key status is **Active** (not Rotated or Revoked).
+- Check that the key has not passed its expiry date.
+- Verify the integration is using the correct key value — compare the prefix shown in the table against the prefix of the key in use.
+- Confirm the key has the required scope for the operation it is attempting. A *Devices: Read*-only key will fail on write operations.
+
+**Revoked or rotated key still accepting requests:**
+Changes take effect immediately. If an integration appears to still be authenticating after revocation, confirm it is not using a different key or cached session.
+
+---
+
+## Best practices
+
+- **Least privilege** — Grant only the scopes each integration actually uses. Audit regularly.
+- **Named by purpose** — Use names like "Warehouse-Sync-Prod", "Audit-Export-Script", or "CI-Pipeline-Staging" so any team member can identify the key's owner and role at a glance.
+- **Set expiry dates for temporary access** — Contractor integrations, proof-of-concept scripts, and time-limited projects should always have an expiry. Remove the need to remember to revoke manually.
+- **Rotate on a schedule** — Treat rotation as routine maintenance rather than incident response. A quarterly rotation cycle is a reasonable baseline for production keys.
+- **Store in a secrets manager** — Never hardcode keys in source code, configuration files, or environment variables committed to version control. Use a secrets manager or vault and inject at runtime.
+- **One key per integration** — Separate keys mean you can revoke access for one system without disrupting any other. Shared keys multiply the impact of any single compromise.

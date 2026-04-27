@@ -232,8 +232,91 @@ The same temperature metric on an office environment sensor:
 
 Same data type, completely different operational meaning.
 
+---
+
+## Map widget
+
+**Availability:** Available on selected plans (feature-flagged).
+
+The Map widget shows a tracker device's current position together with selected fields transmitted by that tracker. Place it on any dashboard to embed a live-updating map view alongside your other operational data — without leaving the dashboard to visit the device detail page.
+
+Unlike the standalone GPS tracking page, the Map widget is designed for at-a-glance situational awareness: you see where the asset is and its most important reading (speed, battery level, temperature, or any other transmitted metric) on a single marker — all in the context of your other dashboard widgets.
+
+### Settings panel: Datasource tab
+
+**Title:** "Map configuration"
+**Subtitle:** "Configure last data and data sources."
+
+- **Device selector** — Automatically filters to devices with latitude and longitude sensor mappings. The server detects lat/lon fields by name pattern (fields whose names match latitude, longitude, lat, or lon). Only devices with these mappings appear in the selection list.
+- **Additional metrics** — After selecting a device, all non-lat/lon sensors on that device become selectable as additional metrics. These are the fields the device actually transmits. Select one metric to display its value on the map marker.
+- **First selected metric** — The value of the first selected additional metric appears on the map marker. The marker color is driven by any conditions configured on that metric (same conditions system as Last data and Image map widgets). If no conditions are configured, the marker uses the default color.
+
+### Settings panel: Appearance tab
+
+| Field | Required | Details |
+|-------|----------|---------|
+| **Widget name** | Yes | Displayed as the widget header on the dashboard. |
+| **Description** | No | Optional subtitle shown below the widget name. |
+| **Theme** | No | **Light** or **Dark** — sets the map tile color scheme independently of the dashboard theme. |
+| **Display data legend** | No | Toggle — shows a legend identifying the displayed metric. |
+
+Navigation between tabs uses the **Next** button (Datasource → Appearance). **Save** commits the configuration.
+
+### Controls after placing the widget on a dashboard
+
+Once the Map widget is on a dashboard, it provides interactive controls directly on the widget:
+
+- **History menu item** — Opens options to browse historical location data recorded by the tracker. Label: "History".
+- **Date range button** — When a date range is active, the button displays the selected period in **DD.MM.YYYY - DD.MM.YYYY** format.
+- **Clear data range** button — Resets the date filter and returns to the current position view. Label: "Clear data range".
+
+### Historical route display
+
+When a date range is selected:
+
+- The widget plots the tracker's recorded position history for that period as a route on the map.
+- The route is rendered as a **dashed blue line** (color: #678AFB, width: 2px).
+- Up to **500 GPS position points** are rendered per selected range.
+
+### Expected results
+
+After placing the Map widget on a dashboard:
+
+- The map renders immediately with the tracker's last known position.
+- The marker shows the tracker's location with the selected metric value and its condition-based color.
+- As the tracker transmits new positions, the marker updates in real time.
+- Historical routes are visible when a date range is selected using the History control.
+
+### Troubleshooting
+
+**No marker appears on the map:**
+The device does not have latitude and longitude readings mapped. Verify that the device's metric template includes fields named `latitude`/`lat` and `longitude`/`lon`, and that the device is actively transmitting these values. If the device uses different field names, the server will not detect them automatically — align the metric names to the expected patterns.
+
+**Route is empty for the selected date range:**
+The tracker did not transmit any position data during that period, or the device was not active. Try expanding the date range. If the device has never reported position data, no route will be available.
+
+**Selected metric value not showing on the marker:**
+The metric may not have been transmitted yet, or no data has arrived since the widget was configured. Check the device detail page to confirm whether the metric has any recorded values.
+
+### Operational examples
+
+**Fleet vehicle monitoring:**
+A delivery vehicle equipped with a GPS tracker publishes position together with speed and fuel level. The Map widget shows the vehicle's current position on a depot operations dashboard, with speed visible on the marker. The route history lets the operations team review the full day's delivery path.
+
+**Field technician dispatch:**
+A facilities management team tracks service technicians across a building campus. A Map widget on the NOC dashboard shows current technician positions with battery level on each marker, so the coordinator knows who is nearby when a new task comes in.
+
+**Mobile asset with environmental monitoring:**
+A refrigerated transport unit transmits GPS position and cargo temperature. The Map widget shows cargo temperature on the marker with color conditions (green = compliant, red = breach), so dispatchers immediately see whether the load is within spec without drilling into individual device pages.
+
+**Delivery route audit:**
+Using the date range controls, a logistics supervisor reviews a specific vehicle's route for the previous day to verify route compliance and identify unexpected stops.
+
+---
+
 ## Related pages
 
 - [Adding Widgets](adding-widgets.md) — How to enter edit mode and select widget types.
 - [Creating Dashboards](creating-dashboards.md) — Create the dashboard that holds your widgets.
 - [Real-Time Data](real-time-data.md) — How live data reaches your widgets.
+- [GPS Tracking](maps-and-tracking/gps-tracking.md) — Full GPS tracking interface on device detail pages.

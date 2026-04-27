@@ -2,6 +2,154 @@
 
 <details>
 
+<summary>Scale Log. Release 3.1.0</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.1.0.png" alt=""><figcaption></figcaption></figure>
+
+Kilo IoT Server 3.1.0 extends the platform's connectivity model with External MQTT support, completing the connector framework's first expansion since 3.0.0. Programmatic access is now available through a production API key system with granular scope control, rotation, and revocation. The subscription tier structure has been restructured and repriced across the full range — from the free evaluation tier to the Max plan. Alarm management receives targeted precision improvements: one-time notification semantics, mandatory escalation recipient validation, and last-trigger visibility for operational triage. [kiloiot.io](https://kiloiot.io)
+
+***
+
+#### What's in This Release
+
+* **MQTT Connector** — External MQTT broker support added to the connectivity framework; connect any MQTT-publishing device or system without a LoRaWAN gateway
+* **Map Widget** — New dashboard widget type that displays tracker location together with selected transmitted fields such as speed, battery level, or temperature; includes live mode and historical route playback
+* **API Keys** — Scoped programmatic access with key lifecycle management: create, rotate, and revoke credentials for backend integrations
+* **Subscription Plan Restructure** — Revised tier names, pricing, and limits across all plans with a new Individual tier for custom deployments
+* **Alarm System Precision** — One-time notification mode, mandatory recipient validation in escalation chains, and last-trigger timestamps in the alarm definitions table
+
+***
+
+**MQTT Connector**
+
+Kilo IoT 3.1.0 adds External MQTT as the third connector type in the platform's modular connectivity framework, alongside LoRaWAN and Vehicle Tracker.
+
+**Architecture**
+
+The MQTT connector follows the same three-level model established in 3.0.0: **Connector** (protocol type) → **Connection** (organization-scoped instance with broker credentials) → **Device** (registered through the connection with per-device topic routing). Connection-level configuration holds broker credentials and authentication. Topic routing, payload mapping, and metric binding are configured per device — the same normalized measurement pipeline applies regardless of connector type.
+
+**External MQTT Support**
+
+Operators connect the server to any MQTT broker they operate or control. Supported broker URL schemes: `mqtt://`, `mqtts://`, `tcp://`, `ssl://`. Authentication options:
+
+* **Anonymous** — No credentials required
+* **Username / Password** — Standard MQTT credential pair
+* **TLS / Certificate** — Mutual TLS with CA certificate, client certificate, and client key (PEM-encoded)
+* **Token** — JWT-style token authentication
+
+Sensitive fields — passwords, tokens, certificates — are encrypted at rest. GET and LIST responses mask these fields. Authentication credentials are never re-exposed after initial creation.
+
+**Per-Device Topic Routing**
+
+Topic routing is configured per device rather than per connection. The routing model supports two device identification strategies:
+
+* **Topic-based identification** — The device identifier is extracted from a positional segment in the MQTT topic using a `{{deviceId}}` placeholder. Example: `factory/sensors/{{deviceId}}/data`
+* **Payload-based identification** — The device identifier is extracted from a JSON field in the message body, specified by path
+
+Telemetry topics support an additional `{{value}}` placeholder for single-value extraction from topic segments. When no telemetry topics are configured, the server parses the full JSON payload using flattened key paths — compatible with standard automation bridge formats that publish flat JSON device payloads.
+
+**Operational Impact**
+
+The MQTT connector eliminates the requirement for LoRaWAN infrastructure when connecting IP-native devices. Building management systems, industrial PLCs, energy meters, and any device already publishing to an MQTT broker can be onboarded without protocol conversion or gateway deployment. The same Digital Twin model, payload normalization pipeline, and sensor template library that governs LoRaWAN devices applies to MQTT devices without modification.
+
+***
+
+**API Keys**
+
+Kilo IoT 3.1.0 introduces a production-grade API key system enabling controlled programmatic access to the server's data and management APIs.
+
+**Scope-Based Access Control**
+
+Each API key carries an explicit permission set selected at creation. Scopes follow a resource-action model and cover the full operational surface of the platform: connections, dashboards, devices, events, logs, organizations, rules, sensors, and users — each with independent read and write grants. Integration systems receive precisely the access they require with no implicit elevation.
+
+**Key Lifecycle**
+
+API keys follow a three-state lifecycle:
+
+* **Active** — Key is valid and authenticates requests
+* **Rotated** — A replacement key has been issued; this key no longer authenticates
+* **Revoked** — Key is permanently disabled; remains visible in the table for audit continuity
+
+**Rotation** generates a new key and immediately invalidates the predecessor. The new key is displayed once at rotation and never again — consistent with the creation UX. Rotated keys appear in the table with their historical metadata intact.
+
+**Revocation** permanently disables a key. Revoked keys remain in the table — deletion is not supported, preserving the audit record of every key ever issued for the organization.
+
+**Key Display Policy**
+
+The full key value is displayed exactly once: immediately after creation and immediately after rotation. After the dialog is closed, only the key prefix is retained in the interface. This is enforced at the API level — the server does not store or return the full key value after initial issuance.
+
+**Operational Table**
+
+The API keys table surfaces the operational state of every key: name, prefix, active scopes, lifecycle status, creation date, configured expiry, and last-authenticated timestamp. Default sort order is newest first.
+
+***
+
+**Subscription Plan Restructure**
+
+Kilo IoT 3.1.0 introduces a revised subscription tier structure with updated names, pricing, and a new Individual tier for deployments that exceed the fixed plan parameters.
+
+**Kilo IoT Server Plans**
+
+| Tier | Monthly Price |
+|---|---|
+| Free | — |
+| Starter | €25 |
+| Pro | €145 |
+| Business | €379 |
+| Max | €659 |
+| Individual | Custom — contact sales |
+
+The Individual tier replaces the prior Enterprise designation. Organizations with requirements that exceed the Max plan parameters — device count, rule limits, retention period, or support terms — engage directly with the sales team for a scoped agreement.
+
+Plan changes take effect through Stripe-integrated billing. Upgrades are processed immediately. Subscribers on annual terms retain their billing cycle on plan change.
+
+***
+
+**Map Widget**
+
+Kilo IoT 3.1.0 introduces the Map widget as a native dashboard widget type, extending the platform's visualization layer beyond static charts and numeric displays to location-aware, geospatial monitoring.
+
+**Tracker Data on the Dashboard**
+
+The Map widget connects to any tracker-type device registered on the platform and renders its position as a live marker on an interactive map. Unlike the device detail map view, which is scoped to a single device page, the Map widget is a configurable dashboard tile — it participates in the same folder hierarchy, sharing model, and layout system as every other dashboard widget. A single dashboard can carry multiple Map widgets, each tracking a different asset.
+
+**Selected Metric Display**
+
+Location alone is insufficient for operational monitoring. The Map widget resolves this by surfacing selected device metrics alongside the position marker. When configuring the widget, operators select which fields transmitted by the tracker to display — speed, battery level, temperature, signal quality, fuel level, or any mapped metric the device sends. The selected metric's current value appears on the marker, with color derived from the metric's configured conditions. A green marker at 42 km/h and a red marker at 0 km/h with engine running signal operationally different states at a glance.
+
+**Configuration**
+
+The widget is configured through the standard two-tab panel:
+
+* **Datasource tab** — Select the tracker device. The widget identifies the device's latitude and longitude metrics. Select additional fields transmitted by the tracker to display alongside location.
+* **Appearance tab** — Assign a name, description, map theme (Light or Dark), and toggle the data legend.
+
+**Historical Route Mode**
+
+The Map widget supports a date-range history mode accessible from the widget's menu. Selecting a date range queries the device's recorded position history for that period and renders the route as a line connecting sequential GPS points. The map auto-fits to the route extent. Operators can inspect a delivery route, verify a field technician's site coverage, or reconstruct the movement history of any tracked asset without leaving the dashboard. Clearing the date range returns the widget to live tracking mode.
+
+***
+
+**Alarm System Precision**
+
+Kilo IoT 3.1.0 delivers targeted improvements to alarm definition authoring, escalation chain validation, and operational triage visibility.
+
+**One-Time Notification Mode**
+
+Alarm definitions support a one-time delivery option: a single notification is dispatched when the alarm condition becomes active, with no repeat until the alarm resolves and re-triggers. The form surface makes the behavior explicit — when one-time mode is enabled, the form displays the active repeat policy for the selected severity level alongside the override control. Operators see the platform default and the override in the same view, eliminating ambiguity about which cadence governs the alarm.
+
+**Mandatory Escalation Recipients**
+
+The Notify field in each escalation step is now enforced as a required field. Alarm definitions cannot be saved with an escalation step that has no recipients configured. This prevents misconfigured alarms from entering the active rule set with silent escalation chains.
+
+**Last Trigger Visibility**
+
+The alarm definitions table now exposes a Last Trigger timestamp column — the most recent timestamp at which that alarm definition fired. Operations teams can assess alarm activity across the full definition inventory without navigating into individual alarm event history. High-frequency or unexpectedly silent alarms are immediately identifiable from the definitions list.
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 3.0.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.0.0.png" alt=""><figcaption></figcaption></figure>

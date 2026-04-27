@@ -167,7 +167,7 @@ You now have the basics in place for a LoRaWAN deployment: a gateway providing c
 
 From here, you can:
 
-- **Add more devices** — Register additional sensors through your LNS connector, or set up a Tracker connector for vehicle trackers (MQTT connector support is coming soon)
+- **Add more devices** — Register additional sensors through your LNS connector, set up a Tracker connector for vehicle trackers, or use the MQTT connector for PLCs, energy meters, and any MQTT-capable hardware
 - **Build complex automations** — Explore the Rules Engine with CEL expressions, decision tables, and multi-device rules
 - **Invite team members** — Set up Organizations and Access Control for multi-user collaboration
 - **Integrate with external systems** — Generate API keys for programmatic access

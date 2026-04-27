@@ -26,6 +26,7 @@
     * [LR-FHSS](kilo-iot-server/connectors/lns-connector/lr-fhss.md)
     * [Built-in Network Server](kilo-iot-server/connectors/lns-connector/built-in-lns.md)
   * [Tracker Connector](kilo-iot-server/connectors/tracker-connector.md)
+  * [MQTT Connector](kilo-iot-server/connectors/mqtt-connector.md)
 * [Devices](kilo-iot-server/devices/README.md)
   * [Registering Devices](kilo-iot-server/devices/registering-devices.md)
   * [Device Management](kilo-iot-server/devices/device-management.md)
