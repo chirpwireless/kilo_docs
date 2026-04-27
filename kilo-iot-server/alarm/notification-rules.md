@@ -28,7 +28,7 @@ Override the global repeat policy for this specific alarm.
 |---|---|
 | **Custom Notification interval** | Toggle (Off by default). When On, reveals interval and one-time controls. |
 | **Interval** | Number + unit (Hours or Days). Controls how frequently notifications re-send while the alarm remains active. |
-| **One-time notification** | Toggle. When On, one notification is sent and no repeats follow. |
+| **One-time notification** | Toggle. When On, one notification is sent and no repeats follow. A contextual message appears confirming: *"[Severity] notifications are sent once. You can change it below."* — where [Severity] matches the severity level selected for this alarm definition. |
 
 ### Escalation chain
 
@@ -36,7 +36,7 @@ Multi-step escalation for unresolved alarms. The first step is **Immediate** and
 
 For a detailed walkthrough, see [Escalation and Response](escalation-and-response.md). In brief:
 
-- Each step specifies: **Notify** (recipients from the organization), **Via** (delivery channels).
+- Each step specifies: **Notify** (recipients from the organization — **required**, at least one recipient must be selected), **Via** (delivery channels).
 - Click **Add step** to append escalation tiers with configurable delays.
 - Resolution at any point halts further escalation.
 

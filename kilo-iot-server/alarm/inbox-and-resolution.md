@@ -31,7 +31,7 @@ On desktop, each alarm event is displayed as a row:
 | **Message** | The notification message body from the alarm definition. |
 | **Severity** | Severity level, color-coded by priority. |
 | **First trigger** | Timestamp of the initial alarm event. |
-| **Last update** | Timestamp of the most recent activity. |
+| **Last trigger** | Timestamp of the most recent alarm event from this definition. |
 | **Actions** | **Mark as resolved** button and a link to the originating rule in the Rules Engine. |
 
 On mobile, events appear as compact cards with the same information in a condensed layout.

@@ -13,7 +13,7 @@ Kilo IoT Server 3.1.0 extends the platform's connectivity model with External MQ
 #### What's in This Release
 
 * **MQTT Connector** — External MQTT broker support added to the connectivity framework; connect any MQTT-publishing device or system without a LoRaWAN gateway
-* **Map Widget** — New dashboard widget type that displays tracker location together with selected transmitted fields such as speed, battery level, or temperature; includes live mode and historical route playback
+* **Map Widget** — New dashboard widget that plots a tracker's current position on an interactive map and displays the current value of any selected metric the device transmits; includes live view and historical route playback
 * **API Keys** — Scoped programmatic access with key lifecycle management: create, rotate, and revoke credentials for backend integrations
 * **Subscription Plan Restructure** — Revised tier names, pricing, and limits across all plans with a new Individual tier for custom deployments
 * **Alarm System Precision** — One-time notification mode, mandatory recipient validation in escalation chains, and last-trigger timestamps in the alarm definitions table

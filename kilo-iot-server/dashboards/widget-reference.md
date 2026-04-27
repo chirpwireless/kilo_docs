@@ -240,7 +240,7 @@ Same data type, completely different operational meaning.
 
 The Map widget shows a tracker device's current position together with selected fields transmitted by that tracker. Place it on any dashboard to embed a live-updating map view alongside your other operational data — without leaving the dashboard to visit the device detail page.
 
-Unlike the standalone GPS tracking page, the Map widget is designed for at-a-glance situational awareness: you see where the asset is and its most important reading (speed, battery level, temperature, or any other transmitted metric) on a single marker — all in the context of your other dashboard widgets.
+Unlike the standalone GPS tracking page, the Map widget is designed for at-a-glance situational awareness: you see where the asset is and the current value of any device metric the tracker transmits on a single marker — all in the context of your other dashboard widgets.
 
 ### Settings panel: Datasource tab
 
