@@ -6,7 +6,7 @@
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.1.0.png" alt=""><figcaption></figcaption></figure>
 
-Kilo IoT Server 3.1.0 extends the platform's connectivity model with External MQTT support, completing the connector framework's first expansion since 3.0.0. Programmatic access is now available through a production API key system with granular scope control, rotation, and revocation. The subscription tier structure has been restructured and repriced across the full range — from the free evaluation tier to the Max plan. Alarm management receives targeted precision improvements: one-time notification semantics, mandatory escalation recipient validation, and last-trigger visibility for operational triage. [kiloiot.io](https://kiloiot.io)
+Kilo IoT Server 3.1.0 extends the platform's connectivity model with External MQTT support, completing the connector framework's first expansion since 3.0.0. Programmatic access is now available through an API key system with granular scope control, rotation, and revocation. The subscription tier structure has been restructured and repriced across the full range — from the free evaluation tier to the Max plan. Alarm management receives targeted precision improvements: one-time notification semantics, mandatory escalation recipient validation, and last-trigger visibility for operational triage. [kiloiot.io](https://kiloiot.io)
 
 ***
 
@@ -21,6 +21,8 @@ Kilo IoT Server 3.1.0 extends the platform's connectivity model with External MQ
 ***
 
 **MQTT Connector**
+
+<figure><img src="../.gitbook/assets/mqtt-connector-type-selector.jpg" alt="Add connector dialog showing External MQTT and Cloud MQTT options"><figcaption></figcaption></figure>
 
 Kilo IoT 3.1.0 adds External MQTT as the third connector type in the platform's modular connectivity framework, alongside LoRaWAN and Vehicle Tracker.
 
@@ -106,6 +108,10 @@ Plan changes take effect through Stripe-integrated billing. Upgrades are process
 ***
 
 **Map Widget**
+
+<figure><img src="../.gitbook/assets/map-widget-configuration.jpg" alt="Map widget configuration showing device and metric selection with live map preview"><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/map-widget-route-history.jpg" alt="Map widget showing historical route playback with dashed route line on the dashboard"><figcaption></figcaption></figure>
 
 Kilo IoT 3.1.0 introduces the Map widget as a native dashboard widget type, extending the platform's visualization layer beyond static charts and numeric displays to location-aware, geospatial monitoring.
 
