@@ -12,7 +12,7 @@ The sidebar can be collapsed to show only icons — hover over the logo area at 
 
 ### Main sections
 
-- **Overview** — Your landing page after login. Summary cards showing device count, gateway status, favorite devices, and recent alarms.
+- **Overview** — Your landing page after login. Summary cards showing device and gateway counts with status indicators, and recent alarms.
 - **Dashboards** — Custom dashboards organized in a folder hierarchy. Create operational views combining widgets from any device and parameter. Dashboards can be grouped by site, building, floor, or any structure that fits your deployment.
 - **Connectors** — Establish protocol-level connections between your infrastructure and the server. Connector types: **LNS** (LoRaWAN), **Tracker** (vehicle trackers — OBD2, CAN bus, standalone GPS), and **MQTT** (direct MQTT device connections using your own broker or the built-in cloud broker). Opening an LNS connector shows **LoRaWAN Gateways** and **Connected Devices** tabs. Each connector shows its name, last data received, and connected device count. Devices are registered through the device management dialog.
 - **Devices** — View all registered devices across all connectors. Browse and search. Click any device to view or edit its details.
@@ -76,10 +76,6 @@ A horizontal row of cards across the top shows:
 - **Devices** — Total device count, with warnings if any devices are not connected or not verified. Clicking the card navigates to the Devices page.
 - **Gateways** — Total gateway count with online/offline indicators. Clicking the card navigates to the Gateways page.
 
-### Favorite devices
-
-The left panel below the summary cards shows gateways you've starred from their detail page. Each entry shows the name, icon, and last seen timestamp.
-
 ### Recent alarms
 
 The right panel shows recent unread alarms. Each entry shows the alarm message, associated device, and timestamp. You can mark all as read, or click an alarm for full details. New alarms appear in real time.
@@ -90,14 +86,14 @@ A **Live Data** indicator in the header confirms the Overview is receiving real-
 
 ## Managing devices
 
-Devices are added and configured through the **Connectors** section. Adding a new device opens the Manage Device dialog in Add mode, where you enter a name and click Save. The dialog then transitions to edit mode with four tabs:
+Devices are added and configured through the **Connectors** section. Adding a new device opens a registration dialog where you enter a name and click Save.
+
+Clicking on an existing device — from **Devices** or a connector's Connected Devices tab — opens the device detail page, where you can view and edit all device properties across four tabs:
 
 - **Device Info** — Device name, photos, and basic identification.
 - **Connection** — Connector selection, Device EUI or Unique ID, device profile template (brand, model, band, device class), or manual credentials (Device EUI, AppKey).
 - **Metrics** — Sensor templates attached to the device, defining what parameters it reports and how they're measured.
 - **Logs** — Device activity and event history.
-
-Clicking on an existing device — from **Devices** or a connector's Connected Devices tab — opens the same dialog directly in edit mode with all four tabs visible.
 
 ## Gateway detail pages
 

@@ -236,8 +236,6 @@ Same data type, completely different operational meaning.
 
 ## Map widget
 
-**Availability:** Available on selected plans (feature-flagged).
-
 The Map widget shows a tracker device's current position together with selected fields transmitted by that tracker. Place it on any dashboard to embed a live-updating map view alongside your other operational data — without leaving the dashboard to visit the device detail page.
 
 Unlike the standalone GPS tracking page, the Map widget is designed for at-a-glance situational awareness: you see where the asset is and the current value of any device metric the tracker transmits on a single marker — all in the context of your other dashboard widgets.
@@ -247,9 +245,9 @@ Unlike the standalone GPS tracking page, the Map widget is designed for at-a-gla
 **Title:** "Map configuration"
 **Subtitle:** "Configure last data and data sources."
 
-- **Device selector** — Automatically filters to devices with latitude and longitude sensor mappings. The server detects lat/lon fields by name pattern (fields whose names match latitude, longitude, lat, or lon). Only devices with these mappings appear in the selection list.
-- **Additional metrics** — After selecting a device, all non-lat/lon sensors on that device become selectable as additional metrics. These are the fields the device actually transmits. Select one metric to display its value on the map marker.
-- **First selected metric** — The value of the first selected additional metric appears on the map marker. The marker color is driven by any conditions configured on that metric (same conditions system as Last data and Image map widgets). If no conditions are configured, the marker uses the default color.
+- **Device selector** — The selector does not pre-filter to devices that already have location metrics. After you select a device, the widget looks for sensors whose names match `lat`/`latitude` and `lon`/`longitude`/`lng`. If no sensors with matching names are found, no marker is shown on the map.
+- **Additional metric** — After selecting a device, all non-lat/lon sensors on that device become selectable. Pick **one** additional metric to display its current value on the map marker. Once a metric is selected, the Add metric button disappears — exactly one additional metric is supported.
+- **Metric display** — The value of the selected metric appears on the map marker. The marker color is driven by any conditions configured on that metric (same conditions system as Last data and Image map widgets). If no conditions are configured, the marker uses the default color.
 
 ### Settings panel: Appearance tab
 
@@ -290,7 +288,7 @@ After placing the Map widget on a dashboard:
 ### Troubleshooting
 
 **No marker appears on the map:**
-The device does not have latitude and longitude readings mapped. Verify that the device's metric template includes fields named `latitude`/`lat` and `longitude`/`lon`, and that the device is actively transmitting these values. If the device uses different field names, the server will not detect them automatically — align the metric names to the expected patterns.
+The widget detects latitude and longitude by looking for sensors whose names match `lat`/`latitude` and `lon`/`longitude`/`lng`. If your device uses different field names, the widget will not find usable location data — align the metric names to the expected patterns and confirm the device is actively transmitting position values.
 
 **Route is empty for the selected date range:**
 The tracker did not transmit any position data during that period, or the device was not active. Try expanding the date range. If the device has never reported position data, no route will be available.

@@ -10,13 +10,14 @@ Navigate to **Settings > Subscription** in the sidebar.
 
 Kilo IoT Server offers several subscription tiers, each available with monthly or annual billing:
 
-| Tier | Designed for |
-|---|---|
-| **Free** | Initial exploration, with a limited device count and feature set |
-| **Pro** | Production environments with advanced features and higher limits |
-| **Business** | Growing operations with larger device counts and team collaboration |
-| **Enterprise** | Large-scale deployments with dedicated support and custom terms |
-| **Individual** | Custom pricing — contact the sales team |
+| Tier | Price | Designed for |
+|---|---|---|
+| **Free** | Free | Initial exploration, with a limited device count and feature set |
+| **Starter** | €25/month | Small deployments getting started with connected devices |
+| **Pro** | €145/month | Production environments with advanced features and higher limits |
+| **Business** | €379/month | Growing operations with larger device counts and team collaboration |
+| **Max** | €659/month | High-scale deployments that need maximum device counts and retention |
+| **Individual** | Custom — contact sales | Custom pricing and terms for unique requirements |
 
 The plan comparison matrix on the Subscription page shows the specific limits for each tier, including maximum rules, dashboards, device log retention days, notification channels, and support level.
 
@@ -36,7 +37,7 @@ Current subscribers see a **Manage my subscription** button. This opens the Stri
 
 To upgrade, click a different plan tier on the comparison matrix. An **Upgrade to [plan name]** option appears, prompting you to confirm the change. Plan changes are processed through Stripe and take effect immediately.
 
-For the **Enterprise** or **Individual** tiers, click **Talk to sales** to connect with the Kilo IoT sales team for custom pricing and terms.
+For the **Individual** tier, click **Talk to sales** to connect with the Kilo IoT sales team for custom pricing and terms.
 
 ## SMS Credits
 

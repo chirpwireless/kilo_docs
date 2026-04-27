@@ -1,6 +1,6 @@
 # Overview
 
-The overview page is the first screen you see after logging into the Kilo IoT Server. It provides a high-level summary of your deployment — device counts, gateway health, favorite devices, and recent notifications — so you can assess operational status without navigating into any specific section.
+The Overview page is the first screen you see after logging into the Kilo IoT Server. It provides a high-level summary of your deployment — device counts, gateway health, and recent notifications — so you can assess operational status at a glance without navigating into any specific section.
 
 ## Where to find it
 
@@ -8,7 +8,7 @@ Click **Overview** in the sidebar. The `/overview` route loads automatically whe
 
 ## Page layout
 
-The overview page is organized into four vertical sections, each designed to surface a different layer of deployment health.
+The Overview page is organized into sections, each designed to surface a different layer of deployment health.
 
 ### Header: "My board" and Live Data
 
@@ -28,15 +28,9 @@ Cards you will see include:
 
 Each card serves as both a status indicator and a quick navigation shortcut. The warning counts (not connected, not verified for devices; offline, inactive for gateways) help you spot issues without opening a dedicated management page.
 
-### Other info: favorites and notifications
+### Notifications
 
-The next section shows two panels side by side on desktop, or stacked vertically on mobile:
-
-- **Favorite devices** — Devices you have pinned as favorites appear here for quick access. If you haven't pinned any devices yet, this area is empty. You can pin devices from the [device management](devices/device-management.md) page.
-
-- **Notifications** — Recent notification cards appear here, providing a summary of the latest alerts and system events without needing to open the full alarm inbox.
-
-On desktop, the section label reads **Other info**. On mobile, it changes to **General info** — the same label as the card section above.
+Below the summary cards, a **Notifications** panel shows recent notification cards — a summary of the latest alerts and system events without needing to open the full alarm inbox.
 
 ### Add device
 
@@ -47,7 +41,6 @@ At the bottom of the page, an **Add Device** widget provides a quick entry point
 When your deployment is new and no devices or gateways have been registered yet:
 
 - The **Devices** and **Gateways** cards show a count of **0** with no warnings.
-- The **Favorite devices** panel is empty.
 - The **Notifications** panel shows no recent events.
 - The **Add Device** widget at the bottom is the natural next step.
 
@@ -55,8 +48,7 @@ As you register devices and gateways, the cards populate automatically. Warning 
 
 ## Tips for operations teams
 
-- **Use the overview as a health check.** Before diving into dashboards or specific devices, the overview tells you whether anything needs attention right now — device disconnections, gateway outages, or new alarms.
-- **Pin high-priority devices as favorites.** The favorites panel provides faster access than searching through the full device list. For multi-site deployments, pin the critical sensors from each location.
+- **Use the Overview as a health check.** Before diving into dashboards or specific devices, the Overview tells you whether anything needs attention right now — device disconnections, gateway outages, or new alarms. Total counts with warning indicators give you an immediate read on deployment state.
 - **Click the Live Data button after deploying changes.** When you've just registered a new device or reconfigured a gateway, clicking the Live Data button forces a data refresh so you can confirm the change is reflected immediately.
 
 ## Related pages

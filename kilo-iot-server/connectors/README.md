@@ -12,9 +12,9 @@ Kilo IoT Server supports the following connector types:
 |------|----------|--------|------------------|
 | **LNS** | LoRaWAN | GA | The server's built-in LoRaWAN Network Server. Manages LoRaWAN device communication automatically. |
 | **Tracker** | OBD2 / CAN bus / GPS | GA | Vehicle trackers — OBD2, CAN bus, and standalone GPS vehicle tracking devices. Includes preconfigured templates for over 2,000 vehicle tracker models. |
-| **MQTT** | MQTT | GA | Direct MQTT device connections. Connect any MQTT-capable device — PLCs, energy meters, building systems, or custom-firmware hardware — using your own broker or the built-in cloud broker. |
+| **MQTT** | MQTT | GA | Direct MQTT device connections. Two variants: **External MQTT** connects to your own broker (up to 10 per organization); **Cloud MQTT** uses a platform-provisioned broker with dedicated credentials per connector (unlimited). |
 
-Each organization can have **one LNS connector**, **one Tracker connector**, and **one MQTT connector**. Once all three are added, the **Add connector** button is disabled until one is removed.
+Each organization can have **one LNS connector** and **one Tracker connector**. MQTT connectors come in two variants with different limits: External MQTT — up to 10 per organization; Cloud MQTT — unlimited.
 
 ## The Connectors page
 
@@ -42,10 +42,11 @@ Click anywhere on a connector row to open that connector's detail page, where yo
 2. In the dialog, select a **Connector type** from the dropdown:
    - **LNS** — if your organization does not already have an LNS connector
    - **Tracker** — if your organization does not already have a Tracker connector
-   - **MQTT** — if your organization does not already have an MQTT connector
+   - **External MQTT** — connects to your own MQTT broker (up to 10 per organization)
+   - **Cloud MQTT** — platform-provisioned broker; each connector gets its own dedicated credentials (unlimited)
 3. Click **Add**.
 
-For LNS and Tracker connectors, no additional configuration is required during creation — the server handles the integration automatically. For the MQTT connector, you will configure the broker connection details on the connector's detail page after creation.
+For LNS and Tracker connectors, no additional configuration is required during creation — the server handles the integration automatically. For External MQTT, configure broker connection details after creation. For Cloud MQTT, the platform generates and displays credentials immediately after creation.
 
 ## What's next
 
@@ -53,5 +54,5 @@ Once a connector is in place, you can:
 
 - **Configure the LNS connector** — manage LoRaWAN gateways and connected devices, and explore LoRaWAN protocol reference material including frequency bands by country. See [LNS Connector](lns-connector/README.md).
 - **Configure the Tracker connector** — onboard vehicle trackers (OBD2, CAN bus, standalone GPS). See [Tracker Connector](tracker-connector.md).
-- **Configure the MQTT connector** — connect PLCs, energy meters, building management systems, or any MQTT-capable hardware using your own broker or the built-in cloud broker. See [MQTT Connector](mqtt-connector.md).
+- **Configure an MQTT connector** — connect PLCs, energy meters, building management systems, or any MQTT-capable hardware. Use External MQTT to connect your own broker, or Cloud MQTT to have the platform provision a broker endpoint for you. See [MQTT Connector](mqtt-connector.md).
 - **Register devices** — add devices through any connector and configure their Digital Twin. See [Registering Devices](../devices/registering-devices.md).

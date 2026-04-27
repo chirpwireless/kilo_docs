@@ -1,14 +1,14 @@
 # Device Management
 
-Once a device is registered, its Digital Twin is a living record that you can update, reconfigure, and inspect at any time. The same Manage Device dialog used during registration serves as the ongoing management interface — every device property, connection setting, metric mapping, and data log is accessible through it.
+Once a device is registered, its Digital Twin is a living record that you can update, reconfigure, and inspect at any time. The device detail page is the ongoing management interface — every device property, connection setting, metric mapping, and data log is accessible from there.
 
-## Opening the Manage Device dialog
+## Opening a device's detail page
 
-There are several ways to open the dialog for an existing device:
+There are several ways to open the detail page for an existing device:
 
-* **From Devices** — Click any device row in the **Devices** list in the sidebar. The dialog opens showing that device's current state.
+* **From Devices** — Click any device row in the **Devices** list in the sidebar. The device detail page opens showing that device's current state.
 * **From a connector's device list** — Open the LNS connector's **Connected Devices** tab or the Tracker connector's device page, then click a device row.
-* **Edit button** — Click the edit icon (pencil) on any device row to go directly into edit mode.
+* **Edit button** — Click the edit icon (pencil) on any device row to go directly to the device detail page.
 
 ## Device info tab
 

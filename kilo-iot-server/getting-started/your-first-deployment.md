@@ -106,7 +106,7 @@ The device appears in the Connected Devices list. Once it performs a LoRaWAN joi
 Once the device has sent its first reading:
 
 1. Click a **device row** in the Connected Devices list (or find it on the **Devices** page in the sidebar).
-2. The device dialog opens to the **Device Info** tab. Click the **Metrics** tab to see sensor data.
+2. The device detail page opens. Click the **Metrics** tab to see sensor data.
 3. The Metrics tab shows the sensor templates attached to the device and their current readings.
 
 You can also view device data through the **Dashboards** section by adding widgets — which is what we'll do next.

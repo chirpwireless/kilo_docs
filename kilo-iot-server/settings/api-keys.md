@@ -60,7 +60,7 @@ The API Keys page lists all keys for your organization. The table columns are:
 | **Expires** | The expiration date, or "Never" if no expiry was set. |
 | **Last Used** | The timestamp of the most recent authenticated API call using this key. |
 
-Keys are sorted newest first by default. **Rotate** and **Revoke** action buttons appear only on Active keys.
+Keys are sorted newest first by default. Rotation and revocation icons appear only on Active keys — a rotation icon to rotate, and a trash icon to revoke.
 
 ---
 
@@ -70,7 +70,7 @@ Rotation generates a new key value and immediately deactivates the old one. The 
 
 Use rotation on a regular schedule, or whenever a key may have been exposed — for example, if it was accidentally logged, committed to a repository, or shared through an insecure channel.
 
-1. Click **Rotate** on the key row you want to rotate.
+1. Click the rotation icon on the key row you want to rotate.
 2. A confirmation dialog appears:
    > **"Rotate API Key — This will generate a new key and mark the current key '[name]' as rotated. The old key will stop working."**
 3. Confirm the rotation.
@@ -84,7 +84,7 @@ The rotated key remains visible in the table with **Rotated** status for audit t
 
 Revocation permanently disables a key. The action cannot be undone.
 
-1. Click **Revoke** on the key row.
+1. Click the trash icon on the key row.
 2. A confirmation dialog appears:
    > **"Revoke API Key — This will permanently revoke the API key '[name]'. This action cannot be undone."**
 3. Confirm the revocation.
@@ -99,7 +99,7 @@ After creating a key:
 
 - The key appears immediately in the table with **Active** status.
 - The **Last Used** column shows a dash until the key makes its first authenticated API call, then updates with each subsequent use.
-- Expired keys become inactive automatically on their expiration date — no manual action needed.
+- Keys display an expiry date set at creation; verify current key status in the **Status** column.
 
 ---
 

@@ -1,148 +1,147 @@
 # MQTT Connector
 
-The MQTT connector lets you bring any MQTT-capable device into the Kilo IoT Server — without going through LoRaWAN. Factory PLCs, HVAC controllers, building energy meters, and custom-firmware sensors that already publish data over MQTT can all be connected directly. Once connected, their data flows through the same normalization pipeline, triggers the same rules engine, and appears in the same dashboards as every other device on the server.
+The MQTT connector lets you bring any MQTT-capable device into the Kilo IoT Server without going through LoRaWAN. Factory PLCs, HVAC controllers, building energy meters, and custom-firmware sensors that already publish data over MQTT can all be connected directly. Once connected, their data flows through the same normalization pipeline, triggers the same rules engine, and appears in the same dashboards as every other device on the server.
 
-Two variants are available. You choose when adding the connector:
+Two variants are available:
 
-| Variant | Broker location | When to use |
-|---------|----------------|-------------|
-| **External MQTT** | Your infrastructure | You already operate an MQTT broker in your facility, cloud, or on-premise environment. Supports anonymous, username/password, and TLS certificate authentication. |
-| **MQTT Cloud** | Kilo-managed | You want to avoid running your own broker. The server provides dedicated broker credentials. Devices publish directly to the cloud endpoint. |
+| Variant | How the broker is provided | Limit | Best for |
+|---------|--------------------------|-------|----------|
+| **External MQTT** | Your own broker — on-premise, cloud, or a local Mosquitto instance | Up to 10 per organization | Connecting existing infrastructure that already publishes to MQTT |
+| **Cloud MQTT** | Platform-provisioned — the server provides a dedicated broker endpoint and credentials per connector | Unlimited | New deployments, pilots, and remote sites where you want MQTT ingestion without operating broker infrastructure yourself |
 
----
-
-## Prerequisites
-
-- An MQTT broker accessible from the internet (External MQTT only) — or no broker at all (MQTT Cloud handles it).
-- Device firmware or gateway software that publishes data to MQTT topics.
-- Device IDs that are either embedded in the MQTT topic path or present in the JSON payload.
-- At least one organization with the MQTT connector not yet added.
+Use External MQTT when you already have a broker running. Use Cloud MQTT when you want the platform to provide one — you give the connector a name, the platform provisions the rest.
 
 ---
 
-## Step 1: Add the MQTT connector
+## Adding an External MQTT connector
 
 1. Navigate to **Connectors** in the sidebar.
-2. Click **Add connector** in the top-right corner.
-3. In the dialog, select **MQTT** from the **Connector type** dropdown.
-4. Click **Add**.
+2. Click **Add connector**.
+3. Select **External MQTT** from the **Connector type** dropdown.
+4. Fill in the configuration form:
 
-The connector is created and appears in the connectors table. Click its row to open the connector detail page, where you configure the broker connection.
+   | Field | Required | Details |
+   |-------|----------|---------|
+   | **Name** | Yes | Display name for this connector |
+   | **Broker URL** | Yes | Full URL with scheme and port. Accepted schemes: `mqtt://`, `mqtts://`, `tcp://`, `ssl://`. Example: `mqtts://broker.facility.example.com:8883` |
 
----
+5. Choose an **authentication method** from the tabs:
 
-## Step 2: Configure the broker connection
+   | Method | What to fill in |
+   |--------|----------------|
+   | **Anonymous** | No credentials required |
+   | **Basic** | Username and Password (password has a show/hide toggle) |
+   | **Certification** | Three file upload buttons: **CA Certificate**, **Client Certificate**, **Private Key**. Upload each file — do not paste PEM content |
+   | **JWT Token** | Token field (show/hide + copy). The token is the required JWT credential. A Certificate upload field appears in the form — it is optional; the platform submits only the token for JWT authentication |
 
-On the MQTT connector detail page, click **Edit** or open the connector settings to configure the broker.
+6. Click **Add**.
 
-### For External MQTT
-
-Fill in the following fields:
-
-| Field | Required | Details |
-|-------|----------|---------|
-| **Broker URL** | Yes | Full URL including scheme and port. Accepted schemes: `mqtt://`, `mqtts://`, `tcp://`, `ssl://`. Example: `mqtts://broker.facility.example.com:8883` |
-| **Authentication method** | Yes | See [Authentication methods](#authentication-methods) below. |
-| **QoS** | No | Quality of Service level (0, 1, or 2). Leave at the default unless your broker requires a specific level. |
-
-#### Authentication methods
-
-| Method | Fields to complete |
-|--------|-------------------|
-| **Anonymous** | No credentials required. |
-| **Username / Password** | **Username** and **Password** fields. |
-| **TLS / Certificate** | **CA Certificate** (PEM), **Client Certificate** (PEM), **Client Key** (PEM). Paste the PEM-encoded content of each file. |
-| **Token / JWT** | **Token** field. Paste the JWT or bearer token issued by your broker. |
-
-### For MQTT Cloud
-
-No broker URL is needed. After creating the connector, the server generates:
-
-- **Broker endpoint** — the managed cloud MQTT endpoint.
-- **Username** — assigned automatically.
-- **Password** — displayed once. **Copy it immediately.** You cannot retrieve this password after closing the dialog. If lost, you must rotate the credentials.
-
-Configure your devices or gateway software to publish to the provided endpoint using the displayed credentials.
-
-Click **Save** once all fields are complete.
+The connector appears in the connectors table. Click its row to open the connector detail page.
 
 ---
 
-## Step 3: Register a device on MQTT
+## Adding a Cloud MQTT connector
 
-Each device that publishes through this connector must be registered individually. The registration dialog maps the MQTT topic structure to the server's device model.
+1. Navigate to **Connectors** in the sidebar.
+2. Click **Add connector**.
+3. Select **Cloud MQTT** from the **Connector type** dropdown.
+4. Enter a **Name** for the connector.
+5. Click **Add**.
+
+The platform provisions a dedicated broker endpoint and displays the generated credentials:
+
+| Credential | Details |
+|-----------|---------|
+| **Broker URL** | The managed MQTT endpoint. Copy it using the copy button. |
+| **Topic prefix** | All messages published to this connector must use this prefix. It keeps your data organized under the connector's assigned namespace. Copy it using the copy button. |
+| **Username** | Assigned automatically. Copy it using the copy button. |
+| **Password** | Shown once. **Copy it immediately.** If lost, rotate the credentials from the connector settings — devices will need to be reconfigured with the new password. In edit mode, a regenerate button is available. |
+
+Configure your devices or gateway software to publish to the provided endpoint using the displayed credentials. No broker configuration on your end is required — the platform manages the broker.
+
+---
+
+## Registering a device on MQTT
+
+Each device that publishes through an MQTT connector must be registered individually. Registration maps the MQTT topic structure and payload format to the server's device model.
 
 1. From the connector detail page, click **Add device** — or navigate to **Devices → Registering Devices** and select this connector.
 2. Complete the standard device fields (name, connector, template).
-3. In the **Connection** tab, configure the MQTT topic routing:
+3. The device opens with two MQTT-specific tabs: **Topic** and **Mapping**.
 
-### Topic routing fields
+### Topic tab
+
+The Topic tab tells the connector where to find the device identifier in each MQTT message, and which topics carry telemetry data.
 
 #### Device ID Topic *(required)*
 
-The topic pattern the device publishes to. Use the `{{deviceId}}` placeholder to mark the segment of the topic that contains the device identifier.
+The MQTT topic pattern this device publishes to. Use `{{deviceId}}` to mark the segment of the topic that contains the device identifier.
 
 **Example:** If your energy meter publishes to `facility/meters/EM-4492/power`, enter:
 ```
 facility/meters/{{deviceId}}/power
 ```
 
-The server extracts the value at that segment (`EM-4492`) as the device ID, and routes all messages from that topic to this device's Digital Twin.
+The server extracts `EM-4492` from that segment and routes all matching messages to this device's Digital Twin.
 
-#### Device ID Source
+#### Where to get the device ID
 
-Determines where the device ID is extracted from:
+- **Topic** *(default)* — The ID is extracted from the `{{deviceId}}` segment of the topic.
+- **Payload** — The ID is taken from a field inside the JSON payload. When selected, the **Device ID Payload Path** field becomes required.
 
-- **Topic** *(default)* — The ID is extracted from the topic segment where `{{deviceId}}` appears, as in the example above.
-- **Payload** — The ID is taken from the JSON payload body instead of the topic. When set to **Payload**, the **Device ID Payload Path** field becomes required.
+#### Device ID Payload Path *(shown when source = Payload)*
 
-#### Device ID Payload Path *(required when source = Payload)*
+A dot-notation path to the device ID field inside the JSON payload.
 
-A dot-notation path into the JSON payload where the device ID value is found.
-
-**Example:** If the payload is `{"device": {"id": "EM-4492"}, "power": 4.2}`, enter:
+**Example:** For a payload `{"device": {"id": "EM-4492"}, "power": 4.2}`, enter:
 ```
 device.id
 ```
 
-### Telemetry topics *(optional)*
+#### Telemetry topics *(optional)*
 
-Telemetry topics define how individual measurements are extracted from MQTT messages. They are optional — if you skip this section, the server automatically parses the full JSON payload by treating each top-level key as a separate metric. This works well for flat JSON payloads in the style used by Zigbee2MQTT and many PLCs.
+Telemetry topic rows define how individual measurements are extracted from MQTT messages. They are optional.
 
-If you need fine-grained control — for example, when the metric name or value is embedded in the topic path, or when you want to rename metrics — add telemetry topic rows:
+For devices that publish a flat JSON payload on a single topic — such as building management systems or PLCs publishing a status object — you can skip this section entirely. The server parses all top-level keys from the JSON payload automatically. Only add telemetry topic rows when you need explicit per-topic control: for example, when metric values are embedded in the topic path rather than the payload, or when you want to rename specific metrics.
 
 | Field | Details |
 |-------|---------|
-| **Topic template** | The topic pattern for this metric. Use `{{deviceId}}` and optionally `{{value}}` as placeholders. |
-| **Connector key** | The metric key under which the value is stored in the server. Required when the topic contains `{{value}}`. |
+| **MQTT Topic for telemetry** | Topic pattern for this metric row, using `{{deviceId}}` placeholder |
+| **Connector Key** | Names the source key arriving from MQTT. This key must match what the device publishes. The Connector Key does not create a platform metric on its own — the Mapping tab is where it is linked to a normalized metric. |
 
-**Example — topic carries the metric name:**
-If your device publishes separate topics for each measurement:
-- `factory/sensors/S-101/temperature` → payload `23.4`
-- `factory/sensors/S-101/humidity` → payload `58`
+**Add new topic** — adds a telemetry topic row.
 
-Add two telemetry topic rows:
-```
-Topic: factory/sensors/{{deviceId}}/temperature   Key: temperature
-Topic: factory/sensors/{{deviceId}}/humidity      Key: humidity
-```
+**Apply all** — uses the device ID topic pattern as a prefix to generate telemetry topic templates for rows that already have a Connector Key filled in. It generates per-topic patterns based on the device ID topic — it does not copy the device ID topic value verbatim.
 
-**Example — topic carries the value itself:**
-If your device publishes metrics where the value is in the topic segment rather than the payload:
-```
-Topic: facility/meters/{{deviceId}}/reading/{{value}}   Key: power_kw
-```
-
-The server extracts the value from the `{{value}}` segment and stores it under the key `power_kw`.
-
-### Placeholder reference
+#### Placeholder reference
 
 | Placeholder | Where used | What it does |
 |-------------|-----------|-------------|
-| `{{deviceId}}` | Device ID Topic, Telemetry topic template | Marks the topic segment containing the device identifier. The segment value is extracted and used as the device ID. |
-| `{{value}}` | Telemetry topic template | Marks a topic segment that contains a measurement value. Requires a **Connector key** to name the resulting metric. |
+| `{{deviceId}}` | Device ID Topic, telemetry topic templates | Marks the topic segment containing the device identifier |
+| `{{value}}` | Telemetry topic templates | Marks a topic segment that carries a measurement value; requires a Connector Key |
 
-4. Click **Next** to advance to the Metrics tab if available, then **Save** to complete registration.
+---
+
+### Mapping tab
+
+The Mapping tab links incoming MQTT data to normalized platform metrics. This is where raw device values become queryable sensor data in the Digital Twin.
+
+The Connector Key in the Mapping tab must match the key published in the MQTT message (or the Connector Key defined in the Topic tab). Without a match, the data is silently ignored — the helper text above the table confirms this: **"If the Connector key is not filled in, the data will be ignored."**
+
+The table has 8 columns:
+
+| Column | Type | Details |
+|--------|------|---------|
+| **Normalized key** | Dropdown | Select from sensor templates; includes a "+ Add new metric" option |
+| **Unit** | Read-only | Derived from the selected template |
+| **Type** | Read-only | Integer, Float, String, or Boolean — derived from template |
+| **Data type** | Dropdown | Telemetry, Reported State, or Device Metadata |
+| **Connector key** | Editable | Must match the key published in the MQTT payload or the Connector Key from the Topic tab |
+| **Value** | Read-only | Current live value received from the broker |
+| **Last update** | Read-only | Timestamp of the most recently received value |
+| **Actions** | Icon | Trash icon removes the row |
+
+**Add key** — adds a new empty mapping row.
 
 ---
 
@@ -159,36 +158,38 @@ After the connector is configured and devices are registered:
 
 ## Troubleshooting
 
-**Connector status shows disconnected or no data arrives:**
-- Verify the broker URL scheme is one of: `mqtt://`, `mqtts://`, `tcp://`, `ssl://`.
-- Confirm the broker is reachable from the internet (for External MQTT). Check firewall rules and that the port is open.
-- Double-check credentials — authentication failures typically prevent connection entirely.
-- For TLS: verify the CA certificate matches the broker's certificate chain, and that the client certificate and key are a matching pair.
+**No data arrives after connection:**
+- For External MQTT: verify the broker URL scheme (`mqtt://`, `mqtts://`, `tcp://`, or `ssl://`), confirm the broker is reachable from the internet, and double-check credentials.
+- For TLS (Certification auth): verify the CA certificate matches the broker's certificate chain, and that the client certificate and private key are a matching pair.
+- For Cloud MQTT: confirm that your devices are publishing to the correct Broker URL and Topic prefix, and that the username and password are correct. If the password was lost, rotate it from the connector settings.
 
 **Device is registered but no data appears:**
-- Compare the registered Device ID Topic against the exact topic the device publishes to. Topics are case-sensitive and exact-match.
-- Confirm the device ID segment lines up with the `{{deviceId}}` placeholder position.
-- If using Payload source: verify the Device ID Payload Path matches the exact key path in the payload. Test with a JSON parser to confirm the path resolves correctly.
+- Compare the registered Device ID Topic against the exact topic the device publishes to. Topics are case-sensitive and must match exactly.
+- Confirm the `{{deviceId}}` placeholder position lines up with the actual device ID segment in the topic.
+- If using Payload source: verify the Device ID Payload Path resolves correctly against the actual payload structure.
 
 **Metric values missing or showing wrong keys:**
-- If using telemetry topics: verify the connector key spelling matches what the template references.
-- If relying on automatic flat-JSON parsing (no telemetry topics): verify the payload is a flat JSON object. Nested objects are not automatically expanded — add explicit telemetry topic rows for nested values.
+- Check that the Connector Key in the Mapping tab matches the key in the MQTT payload exactly (case-sensitive).
+- If relying on automatic flat-JSON parsing (no telemetry topics defined): verify the payload is a flat JSON object. Nested objects are not automatically expanded — add explicit telemetry topic rows for nested values.
 
-**MQTT Cloud password lost:**
-- The password cannot be retrieved. Rotate the credentials from the connector settings. Devices will need to be reconfigured with the new password.
+**Cloud MQTT password lost:**
+The password cannot be retrieved after creation. Rotate the credentials from the connector settings and reconfigure devices with the new password.
 
 ---
 
 ## Operational examples
 
 **Factory PLC — per-topic telemetry:**
-A Siemens PLC publishes discrete measurements to separate MQTT topics on a plant-floor broker (`mqtts://plc-broker.plant.example.com:8883`). Device ID Topic: `plant/line-a/{{deviceId}}/data`. Auth: username/password. Telemetry topics: one row per measurement (cycle_time, reject_count, temperature).
+A PLC publishes discrete measurements to separate MQTT topics on a plant-floor broker (`mqtts://plc-broker.plant.example.com:8883`). External MQTT connector, username/password auth. Device ID Topic: `plant/line-a/{{deviceId}}/data`. One telemetry topic row per measurement (cycle_time, reject_count, temperature). Each row maps to a normalized platform metric in the Mapping tab.
 
-**Building HVAC system:**
-A building management system publishes JSON payloads with multiple zone readings to a single topic per device. The payload is flat JSON, so no telemetry topics are needed — all keys are automatically mapped. Device ID is in the topic segment.
+**Building HVAC system — flat JSON payload:**
+A building management system publishes a JSON status object per device on a single topic. The payload is flat JSON, so no telemetry topic rows are needed — all keys are automatically parsed. Device ID is in the topic segment. Mapping tab maps each JSON key to the appropriate normalized metric.
+
+**New site deployment — Cloud MQTT:**
+A remote facility site needs MQTT ingestion but the team doesn't want to operate a broker. A Cloud MQTT connector is created; the platform provisions a broker endpoint. Energy meters and environmental sensors are configured to publish to the provided endpoint and topic prefix. No broker infrastructure to manage — the platform handles it.
 
 **Sub-metering energy system:**
-Energy meters publish individual readings (kWh, kW, voltage, current) to separate topics. Telemetry topic rows map each topic to a named connector key. The MQTT connector aggregates all readings into a single device Digital Twin.
+Energy meters publish individual readings (kWh, kW, voltage, current) to separate topics. Telemetry topic rows map each topic to a named Connector Key. The Mapping tab links each Connector Key to normalized platform metrics. All readings aggregate into a single device Digital Twin.
 
 ---
 
