@@ -6,7 +6,7 @@ Two variants are available:
 
 | Variant | How the broker is provided | Limit | Best for |
 |---------|--------------------------|-------|----------|
-| **External MQTT** | Your own broker — on-premise, cloud, or a local Mosquitto instance | Up to 10 per organization | Connecting existing infrastructure that already publishes to MQTT |
+| **External MQTT** | Your own broker — cloud-hosted, on-premise, or in a facility network, as long as it is reachable by the platform | Up to 10 per organization | Connecting existing infrastructure that already publishes to MQTT |
 | **Cloud MQTT** | Platform-provisioned — the server provides a dedicated broker endpoint and credentials per connector | Unlimited | New deployments, pilots, and remote sites where you want MQTT ingestion without operating broker infrastructure yourself |
 
 Use External MQTT when you already have a broker running. Use Cloud MQTT when you want the platform to provide one — you give the connector a name, the platform provisions the rest.
@@ -23,7 +23,7 @@ Use External MQTT when you already have a broker running. Use Cloud MQTT when yo
    | Field | Required | Details |
    |-------|----------|---------|
    | **Name** | Yes | Display name for this connector |
-   | **Broker URL** | Yes | Full URL with scheme and port. Accepted schemes: `mqtt://`, `mqtts://`, `tcp://`, `ssl://`. Example: `mqtts://broker.facility.example.com:8883` |
+   | **Broker URL** | Yes | Full URL with scheme and port. The broker must be network-reachable from the platform — a broker accessible only on an isolated local network will not connect. Accepted schemes: `mqtt://`, `mqtts://`, `tcp://`, `ssl://`. Example: `mqtts://broker.facility.example.com:8883` |
 
 5. Choose an **authentication method** from the tabs:
 
