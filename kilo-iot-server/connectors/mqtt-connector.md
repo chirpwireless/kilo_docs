@@ -57,7 +57,15 @@ The platform provisions a dedicated broker endpoint and displays the generated c
 | **Username** | Assigned automatically. Copy it using the copy button. |
 | **Password** | Shown once. **Copy it immediately.** If lost, rotate the credentials from the connector settings — devices will need to be reconfigured with the new password. In edit mode, a regenerate button is available. |
 
-Configure your devices or gateway software to publish to the provided endpoint using the displayed credentials. No broker configuration on your end is required — the platform manages the broker.
+#### Connecting devices to Cloud MQTT
+
+Configure your devices or gateway software to publish to the provided endpoint. Key details before connecting:
+
+- **The Broker URL is the complete endpoint** — copy it exactly as shown. It uses MQTTS (TLS) on port 1884. Configure your devices accordingly; this is not the standard port 1883.
+- **All published topics must start with the Topic prefix.** The full topic your device publishes to is `{Topic prefix}/{device topic}` — for example, if the prefix is `iot/abc123/xyz789` and your device publishes power readings, you might publish to `iot/abc123/xyz789/EM-4492/power`.
+- **Routing templates on the device do not include the prefix.** When configuring the Device ID Topic in the Topic tab, enter only the device-level portion — for example `{{deviceId}}/power`. The platform strips the prefix before routing.
+
+No broker infrastructure on your end is required — the platform manages the broker.
 
 ---
 
@@ -102,7 +110,7 @@ device.id
 
 Telemetry topic rows define how individual measurements are extracted from MQTT messages. They are optional.
 
-For devices that publish a flat JSON payload on a single topic — such as building management systems or PLCs publishing a status object — you can skip this section entirely. The server parses all top-level keys from the JSON payload automatically. Only add telemetry topic rows when you need explicit per-topic control: for example, when metric values are embedded in the topic path rather than the payload, or when you want to rename specific metrics.
+For devices that publish a flat JSON payload on a single topic — such as building management systems or PLCs publishing a status object — you can skip this section entirely. The server parses all keys from the JSON payload automatically, including nested objects, which are flattened into dot-notation paths (for example, `{"device": {"temperature": 22.5}}` becomes accessible as `device.temperature`). The Mapping tab is still required — each payload key needs a corresponding row with a matching Connector Key to become a normalized platform metric. Only add telemetry topic rows when you need explicit per-topic control: for example, when metric values are embedded in the topic path rather than the payload, or when you want to rename specific metrics.
 
 | Field | Details |
 |-------|---------|
@@ -118,7 +126,7 @@ For devices that publish a flat JSON payload on a single topic — such as build
 | Placeholder | Where used | What it does |
 |-------------|-----------|-------------|
 | `{{deviceId}}` | Device ID Topic, telemetry topic templates | Marks the topic segment containing the device identifier |
-| `{{value}}` | Telemetry topic templates | Marks a topic segment that carries a measurement value; requires a Connector Key |
+| `{{value}}` | Telemetry topic templates | Marks a topic segment whose content is the measurement value itself — for example, `meters/EM-4492/230.5` where `230.5` is the reading. Do not use `{{value}}` for topic segments that name the metric (like `power` or `voltage`) — if the segment is a label rather than a value, use the payload-style approach instead |
 
 ---
 
@@ -170,10 +178,13 @@ After the connector is configured and devices are registered:
 
 **Metric values missing or showing wrong keys:**
 - Check that the Connector Key in the Mapping tab matches the key in the MQTT payload exactly (case-sensitive).
-- If relying on automatic flat-JSON parsing (no telemetry topics defined): verify the payload is a flat JSON object. Nested objects are not automatically expanded — add explicit telemetry topic rows for nested values.
+- If relying on automatic JSON parsing (no telemetry topics defined): the platform flattens the entire JSON payload, including nested objects, into dot-notation keys — for example, `{"device": {"temperature": 22.5}}` becomes accessible as `device.temperature`. Use these dot-notation paths in the Connector Key column of the Mapping tab.
 
 **Cloud MQTT password lost:**
 The password cannot be retrieved after creation. Rotate the credentials from the connector settings and reconfigure devices with the new password.
+
+**Device fails to save on a Cloud MQTT connector:**
+If saving a device on a Cloud MQTT connector fails, contact support. Support can help complete the registration through the supported API-assisted path.
 
 ---
 
