@@ -43,3 +43,6 @@ redirects:
   kilo-iot-server/dashboard/integrations: kilo-iot-server/settings/api-keys.md
   kilo-iot-server/dashboard/integrations/api-keys: kilo-iot-server/settings/api-keys.md
   kilo-iot-server/dashboards/widget-reference: kilo-iot-server/dashboards/adding-widgets.md
+  kilo-iot-server/dashboards/maps-and-tracking: kilo-iot-server/dashboards/adding-widgets/map-widget.md
+  kilo-iot-server/dashboards/maps-and-tracking/gps-tracking: kilo-iot-server/dashboards/adding-widgets/map-widget.md
+  kilo-iot-server/dashboards/maps-and-tracking/device-maps: kilo-iot-server/dashboards/adding-widgets/map-widget.md

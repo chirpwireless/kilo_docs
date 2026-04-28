@@ -8,8 +8,6 @@ This is different from the [Image Map widget](image-map-widget.md), which works 
 
 Place the Map widget on an operations dashboard alongside Last data and Chart widgets to give dispatchers and supervisors at-a-glance situational awareness: asset location, current metric status, and recent route history, all in one view. Date range controls let operators review route history without navigating away from the dashboard.
 
-For the full GPS tracking interface on device detail pages, see [GPS Tracking](../maps-and-tracking/gps-tracking.md). For placing stationary devices on a map, see [Device Maps](../maps-and-tracking/device-maps.md).
-
 ## Setting up a Map widget
 
 ### Step 1 — Select Map from the widget picker
@@ -80,7 +78,5 @@ A logistics supervisor uses the date range controls to review a vehicle's route 
 
 ## See also
 
-- [GPS Tracking](../maps-and-tracking/gps-tracking.md) — Full location history, route visualization, and tracker details on device pages
-- [Device Maps](../maps-and-tracking/device-maps.md) — Place stationary devices on a map
 - [Conditions](conditions.md) — Color rules for the marker metric
 - [Adding Widgets](../adding-widgets.md) — Edit mode and widget picker
