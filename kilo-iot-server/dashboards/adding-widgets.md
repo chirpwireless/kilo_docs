@@ -1,8 +1,6 @@
 # Adding Widgets
 
-Widgets are the visual components of a dashboard. Each widget connects to a device, displays one or more metrics, and can be customized with value ranges, thresholds, and conditions that give meaning to the numbers. A temperature reading of 22°C might be perfectly normal in an office but alarming in a cold storage unit — widgets let you encode that context so operators see green or red at a glance.
-
-This page covers how to enter edit mode, select widget types, choose devices and metrics, and understand the customization options available. For a complete field-by-field guide to every widget type, see [Widget Reference](widget-reference.md).
+Widgets are the visual components of a dashboard. Each widget connects to one or more devices, displays metrics, and can be customized with value ranges, thresholds, and conditions that turn numbers into operational meaning. A temperature reading of 22°C is normal in an office but a compliance breach in cold storage — widgets let you encode that context so operators see green or red at a glance without looking up the raw reading.
 
 ## Entering edit mode
 
@@ -14,7 +12,7 @@ Widgets can only be added or modified when the dashboard is in **edit mode**.
 In edit mode, the header changes:
 
 - The **Live Data** indicator is replaced by a small **pencil icon** for editing dashboard metadata.
-- A **plus button** (unlabeled) appears — this opens the widget picker.
+- A **plus button** appears — this opens the widget picker.
 - **Cancel** and **Save** buttons appear on the right.
 
 Any changes you make in edit mode are only saved when you click **Save**. Clicking **Cancel** discards all changes and returns to view mode.
@@ -23,81 +21,79 @@ Any changes you make in edit mode are only saved when you click **Save**. Clicki
 
 Click the **plus button** in the edit mode header (or the **Add widget** button in the empty state) to open the widget picker.
 
-The picker shows the available widget types. Not all types may be visible — some are available only on certain plans.
+The picker shows the available widget types.
 
-| Widget type | Description | Availability |
-|-------------|-------------|-------------|
-| **Device data** | Display a single metric from a specific device as a live-updating card. | Available on all plans. |
-| **Last data** | Show the latest values from one or more devices, with options for number, doughnut, or pie visualization. | Available on selected plans. |
-| **Image map** | Upload floor plan images, organize them as layers, and pin device data onto specific locations. | Available on selected plans. |
-| **Chart** | Plot metric values over time as a line or bar chart, with configurable timeframes, thresholds, and axis controls. | Available on selected plans. |
+| Widget | Use it when | What it shows |
+|--------|------------|---------------|
+| **Last data** | Operators need the current state of a machine, process, or asset | Latest value received — running/stopped, fill level, current temperature |
+| **Chart** | You need to understand how a reading changed — compliance history, drift, or shift-to-shift comparison | Historical graph plus the live current reading |
+| **Image map** | Location context matters — which zone, floor, or component | Your own uploaded image — floor plan, machine diagram, or site layout — with live numeric readings pinned to locations |
+| **Map** | Asset or fleet position needs to be on a dashboard | Current GPS position on an interactive outdoor map, plus one selected sensor value on the marker |
 
-## Adding a Device data widget
+## Choosing a widget type
 
-The Device data widget is the most common widget type. It follows a two-step selection flow:
+**Last data** is your default for displaying current operational state. Use it when you need to show the latest value from one or more devices in a single panel — a plain number for a quick reading, a Doughnut or Pie gauge when the value has a meaningful scale (tank fill, battery level, percentage within a range). Multiple devices can be combined into one widget.
 
-### Step 1: Choose a device
+**Chart** is for trend visibility. It shows a large current reading at the top and the historical graph below — you see where the reading is now and how it got there. Use it when operators need to spot trends, compare shifts, or watch whether a metric is drifting toward a threshold. One data source and one metric per Chart widget.
 
-After selecting **Device data** from the picker, a dialog opens with the title **"Choose a device"** and the subtitle **"Select the device you want to add"**.
+**Image map** puts data in physical context. Upload a floor plan, site diagram, or equipment schematic, then pin live sensor readings to their exact locations. Use it when location matters — warehouse zone monitoring, building HVAC status by floor, server room rack temperatures.
 
-Browse or search for the device you want. Select it and click **Choose** to proceed, or click **Close** to go back to the dashboard.
+**Map** is for asset tracking. Place it on a dashboard to see where a GPS-equipped asset is right now, with one additional metric on the marker. Use it for fleet vehicles, field equipment, or any mobile asset. Date range controls let you review route history without leaving the dashboard.
 
-### Step 2: Choose a metric
+## Adding a widget
 
-The next dialog shows the title **"2 / Choose one or multiply widgets"** and lists the available metrics for the selected device.
+For all four widget types, the setup flow follows the same pattern:
 
-- A dropdown labeled **"Choose widget or widgets"** lets you filter or select specific metrics.
-- Each metric shows a live preview of how the widget will look.
-- Metrics that are already on this dashboard are marked with an **"Already added"** indicator.
+1. Click the **plus button** or **Add widget** button to open the picker.
+2. Select a widget type.
+3. A device selection dialog opens — **"Choose a device"** / **"Select the device you want to add"**. Choose a device and click **Choose**, or click **Close** to cancel.
+4. A settings panel opens with two tabs: **Datasource** and **Appearance**. (Image map opens Appearance first.)
+5. Configure both tabs, then click **Save** to add the widget.
 
-Select the metric you want and click **Choose** to add the widget, or click **Back** to return to the device selection step.
+A **close button** (X icon) in the top right dismisses the panel without saving. The **Next** button navigates from Datasource to Appearance. Settings are not applied until you click **Save** in the panel and then **Save** in the dashboard header.
 
-If the device has no active metrics, an empty state appears: **"The device has no active metrics and is not sending events."**
-
-## Adding Last data, Chart, or Image map widgets
-
-For these widget types, the flow begins with a device selection dialog (**"Choose a device"** / **"Choose"** / **"Close"**), followed by a full settings panel where you configure both the data source and the appearance.
-
-Each widget type's settings panel has two tabs — **Datasource** and **Appearance** (Image map reverses the order). Navigate between them with the **Next** button, and finalize with **Save**. A **close button** (X icon) in the top right dismisses the panel without saving.
-
-For full details on every field in each settings panel, see [Widget Reference](widget-reference.md).
+For full configuration details, see the widget-specific pages linked below.
 
 ## Editing an existing widget
 
-To modify a widget that's already on the dashboard:
+To modify a widget already on the dashboard:
 
 1. Enter edit mode.
 2. Hover over the widget. A **three-dot menu** appears in the top-right corner.
-3. Click the menu to see two options:
+3. Click the menu:
    - **Edit** — Opens the widget's settings panel with current values pre-filled.
-   - **Delete** — Marks the widget for removal. Like all edit mode changes, the deletion is only applied when you click **Save**. If you click **Cancel**, the widget is restored along with all other pre-edit state.
+   - **Delete** — Marks the widget for removal. The deletion is applied only when you click **Save** in the dashboard header. Clicking **Cancel** restores the widget.
 
-The three-dot menu only appears in edit mode. In view mode, widgets display data without any edit controls.
+The three-dot menu only appears in edit mode.
 
 ## The empty dashboard state
 
-If a dashboard has no widgets, the center of the screen displays:
+If a dashboard has no widgets, the center of the screen shows:
 
 - **"You have no widgets here"**
 - **"Add your first widget to build your dashboard"**
 - An **Add widget** button
 
-Clicking the button opens the widget picker, same as the plus button in the header.
-
 ## Customization at a glance
 
-Widgets are configurable display components, not fixed cards. The key customization surfaces include:
+Widgets are configurable, not fixed cards. Key options available across widget types:
 
-- **Appearance settings** — Widget name, description, display type (number, doughnut, pie, line, bar), and toggles for legends, axes, and averages.
-- **Value ranges** — Define min/max boundaries that control chart scales and gauge fill levels. For Last data doughnut and pie widgets, ranges are set per sensor.
-- **Thresholds** — Define labeled bands (e.g., "Normal", "Warning", "Critical") with custom colors, fill, and line visibility. A chart widget might show green below 25°C, yellow between 25–30°C, and red above 30°C.
-- **Conditions** — Per-metric rules that change display color based on the data value. Conditions support number ranges, string matches, and boolean values, each with its own color. The same sensor in different widgets can have completely different condition sets — 20°C might be green in a room widget but red in a cold storage widget.
-- **Metric-level controls** — Each metric in a widget's data source has its own data type, device metric selector, icon, unit, and condition set.
+- **Appearance settings** — Name, description, display type (Number, Doughnut, Pie, Line, Bar), and legend/axis toggles
+- **Value ranges** — Min/max boundaries that set gauge scale or chart Y-axis limits
+- **Thresholds** — Named bands (e.g., "Compliant", "Warning", "Breach") with colors, fills, and lines — Chart widget
+- **Conditions** — Per-metric color rules based on the sensor's current value — Last data and Image map widgets
+- **Metric-level controls** — Data type, device metric selector, icon, and conditions per sensor
 
-These options are covered in detail in the [Widget Reference](widget-reference.md).
+## Widget configuration guides
+
+- [Last Data Widget](adding-widgets/last-data-widget.md) — Latest values, gauge types, value ranges, and conditions
+- [Chart Widget](adding-widgets/chart-widget.md) — Time-series graphs with live current reading and threshold bands
+- [Image Map Widget](adding-widgets/image-map-widget.md) — Floor plans and site diagrams with draggable live-data pins
+- [Map Widget](adding-widgets/map-widget.md) — GPS tracker location with route history controls
+- [Conditions](adding-widgets/conditions.md) — Per-metric color rules for Last data and Image map widgets
 
 ## Related pages
 
-- [Widget Reference](widget-reference.md) — Complete field-by-field configuration for every widget type.
 - [Creating Dashboards](creating-dashboards.md) — Create the dashboard before adding widgets.
 - [Organizing Dashboards](organizing-dashboards.md) — Manage folders and dashboard ordering.
+- [Real-Time Data](real-time-data.md) — How live sensor data reaches your widgets.

@@ -42,3 +42,4 @@ redirects:
   kilo-iot-server/dashboard/iot-ai-assistant/assistant-privacy: kilo-iot-server/ai-assistant/privacy.md
   kilo-iot-server/dashboard/integrations: kilo-iot-server/settings/api-keys.md
   kilo-iot-server/dashboard/integrations/api-keys: kilo-iot-server/settings/api-keys.md
+  kilo-iot-server/dashboards/widget-reference: kilo-iot-server/dashboards/adding-widgets.md

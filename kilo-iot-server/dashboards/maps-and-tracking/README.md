@@ -4,7 +4,7 @@ This section covers the spatial features of the Kilo IoT Server — placing devi
 
 Maps add a physical dimension to your deployment. Instead of scanning a device list, you can see where each sensor or gateway sits within a building, across a campus, or along a delivery route.
 
-You can also embed location data directly into any custom dashboard using the **Map widget**. The Map widget displays a tracker's current position alongside a selected transmitted metric — such as speed, battery level, or cargo temperature — on a single marker. It supports date-range route history and live updates. See the [Map widget section in the Widget Reference](../widget-reference.md#map-widget) for configuration details.
+You can also embed location data directly into any custom dashboard using the **Map widget**. The Map widget displays a tracker's current position alongside a selected transmitted metric — such as speed, battery level, or cargo temperature — on a single marker. It supports date-range route history and live updates. See [Map Widget](../adding-widgets/map-widget.md) for configuration details.
 
 ## In this section
 
