@@ -2,6 +2,12 @@
 
 KiloCenter provides a gRPC API for integrating with or extending the platform. All API definitions are Protocol Buffers hosted in the repository under `KC-Core/api/proto/`.
 
+### Interactive API Reference
+
+A browsable API reference with all RPC endpoints is available at:
+
+[https://servicecenter-api.kiloiot.io/](https://servicecenter-api.kiloiot.io/)
+
 ### gRPC Overview
 
 gRPC is a high-performance RPC framework that uses Protocol Buffers for serialization and HTTP/2 for transport. For background, see [grpc.io](https://grpc.io/).

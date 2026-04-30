@@ -1,20 +1,20 @@
 # Architecture and Components
 
-### Community Edition Components
+### Runtime Services
 
-The Community Edition runtime consists of these services:
+KiloCenter runs as four cooperating services plus infrastructure dependencies:
 
 * **KC-Core** -- MIOTY service center engine. Handles BSSCI (base station protocol) and SCACI (application center protocol), processes uplink/downlink data, and exposes an internal gRPC API.
-* **KC-Gateway** -- External API ingress. Provides gRPC-web access for KC-Web and external clients. Proxies requests to KC-Core.
-* **KC-Web** -- Browser-based operator interface for managing base stations, endpoints, and monitoring traffic.
-* **KC-DB** -- Persistence module used by KC-Core. Contains data models, repository interfaces, and PostgreSQL migrations.
+* **KC-Identity** -- Identity and organization service. Provides user authentication, organization management, API key management, and tenant isolation.
+* **KC-Gateway** -- External API ingress. Provides gRPC and gRPC-web access for KC-Web and external clients. Proxies requests to KC-Core and KC-Identity.
+* **KC-Web** -- Browser-based operator interface for managing base stations, endpoints, and monitoring traffic. Served by nginx in container mode.
+
+### Library Modules
+
+These modules are compiled into the runtime services above and are not deployed as separate containers:
+
+* **KC-DB** -- Persistence module used by KC-Core and KC-Identity. Contains data models, repository interfaces, and PostgreSQL migrations.
 * **KC-MQTT** -- MQTT integration module used by KC-Core. Publishes uplink data and device events to MQTT topics.
-
-### Enterprise Edition Components
-
-The Enterprise Edition adds:
-
-* **KC-Identity** -- Identity and organization service. Provides user authentication, organization management, API key management, and multi-tenant isolation.
 
 ### Infrastructure Dependencies
 
