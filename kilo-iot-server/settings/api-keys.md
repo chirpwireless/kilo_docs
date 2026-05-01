@@ -2,6 +2,18 @@
 
 API keys give external systems programmatic access to the Kilo IoT Server. Use them to integrate CI/CD pipelines, synchronize data with warehouse management platforms, feed custom analytics or reporting scripts, connect SCADA systems, or automate configuration through your own tooling. Each key is scoped to exactly the permissions it needs — nothing more. If a key is ever compromised, you revoke or rotate it without affecting any other integration.
 
+## API reference
+
+The Kilo IoT public API reference is available at **[api.kiloiot.io](https://api.kiloiot.io/#description/protocols)**.
+
+Use it when you are ready to connect external systems with a key created on this page. The reference lists available public endpoints, REST and gRPC protocol notes, required scopes, authentication headers, and response formats.
+
+REST works well for standard HTTP integrations. gRPC is available for service-to-service integrations where typed clients and direct protocol calls are useful, including on-premise Kilo deployments that need to connect internal systems within controlled network boundaries.
+
+Requests authenticate with your API key in the `X-API-Key` header and include the organization context with `X-Organization-Id`.
+
+---
+
 ## Navigation
 
 Go to **Settings → API Keys** in the sidebar.
