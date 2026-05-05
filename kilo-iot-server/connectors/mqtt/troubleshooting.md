@@ -130,4 +130,4 @@ For Basic auth, change the password on the broker side and update the connector'
 
 - [Topics and device routing](topics-and-device-routing.md) — for routing configuration details.
 - [External MQTT](external-mqtt.md) — for broker-side configuration of self-hosted brokers.
-- [MQTT edge gateways](mqtt-edge-gateways.md) — for industrial edge-gateway integration patterns.
+- [MQTT Edge Gateways](../../gateways/mqtt-edge-gateways/README.md) — for industrial edge-gateway integration patterns (under Gateways).

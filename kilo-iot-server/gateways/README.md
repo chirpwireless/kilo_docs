@@ -2,7 +2,7 @@
 
 Gateways are the connectivity infrastructure that brings field devices into the Kilo IoT Server. Different protocols use different gateway architectures, but they share the role of receiving telemetry at the network edge and forwarding it to the platform over an authenticated, encrypted channel.
 
-This section is organized by gateway type. Today the platform supports one gateway category in production use cases, with the structure designed to accommodate additional categories as they are added:
+This section is organized by gateway type. Each category groups the hardware and software that connects a particular field-protocol family into the platform.
 
 ## In this section
 
@@ -14,11 +14,15 @@ Radio infrastructure for LoRaWAN and LR-FHSS deployments. A single gateway cover
 - [Monitoring LoRaWAN gateways](lorawan-gateways/lorawan-gateway-monitoring.md)
 - [Supported LoRaWAN gateways](lorawan-gateways/supported-lorawan-gateways.md)
 
+### [MQTT edge gateways](mqtt-edge-gateways/README.md)
+
+Protocol-bridging hardware and software that publishes MQTT — Modbus-to-MQTT, BACnet-to-MQTT, OPC-UA-to-MQTT, Sparkplug B edge gateways, and Zigbee2MQTT hubs. The infrastructure that lives at the network edge, translates non-MQTT field equipment into MQTT publishes, and feeds the platform's MQTT connector with a uniform topic and payload model.
+
+- [Zigbee2MQTT Hubs](mqtt-edge-gateways/zigbee2mqtt-hubs.md)
+
 ## Choosing the right gateway category
 
-For most commercial Kilo IoT Server deployments, the question is not "which category" but "how many" — the deployment topology is driven by the device fleet's protocol mix, coverage requirements, and operational redundancy needs. For LoRaWAN deployments, gateway placement and density planning are documented under the LoRaWAN gateways sub-section.
-
-For deployments integrating non-LoRaWAN field equipment via MQTT-producing edge gateways (Modbus-to-MQTT, BACnet-to-MQTT, OPC-UA-to-MQTT, Sparkplug B), see the [MQTT edge gateways](../connectors/mqtt/mqtt-edge-gateways.md) page under the MQTT connector — those edge gateways are protocol-bridging hardware that publish into an MQTT broker, and they integrate via the [MQTT connector](../connectors/mqtt-connector.md) rather than as gateway records here.
+For most commercial Kilo IoT Server deployments, the question is not "which category" but "how many" — the deployment topology is driven by the device fleet's protocol mix, coverage requirements, and operational redundancy needs. LoRaWAN gateways handle long-range, low-power radio fleets directly. MQTT edge gateways handle every other protocol family (Modbus, BACnet, OPC-UA, Sparkplug B, Zigbee, vendor-specific) by translating it into MQTT before the platform consumes it. Most multi-protocol deployments use both categories side by side.
 
 ## Secure by design
 

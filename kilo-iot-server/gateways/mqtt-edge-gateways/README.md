@@ -26,7 +26,7 @@ The gateway is typically a small Linux device near the field equipment — an in
 | **Zigbee → MQTT** | Zigbee2MQTT (open source, common in pilots and small commercial deployments) | `zigbee2mqtt/{friendlyName}` | Flat JSON |
 | **Custom bridges** | Hand-rolled Python/Node.js bridges over vendor APIs | Whatever the bridge author chose | Usually JSON |
 
-The platform consumes any of these — the connector is protocol-agnostic. What matters at integration time is matching the gateway's topic shape in the Device ID Topic field and the gateway's payload structure in the Mapping tab. See [Topics and device routing](topics-and-device-routing.md) for the routing details.
+The platform consumes any of these — the connector is protocol-agnostic. What matters at integration time is matching the gateway's topic shape in the Device ID Topic field and the gateway's payload structure in the Mapping tab. See [Topics and device routing](../../connectors/mqtt/topics-and-device-routing.md) for the routing details.
 
 ## Design considerations for new edge-gateway integrations
 
@@ -67,20 +67,12 @@ For mission-relevant telemetry, configure the gateway with:
 - **Retained "online" messages** — published on connect, replaced by LWT on disconnect. Subscribers (including new ones connecting later) see current connectivity state immediately.
 - **Persistent local store** — the gateway buffers telemetry while disconnected from the broker and replays on reconnection. Most commercial edge gateways support this; verify the buffer size against expected disconnection windows.
 
-## Zigbee2MQTT as an MQTT edge gateway
+## In this section
 
-Zigbee2MQTT is one specific example of the MQTT edge gateway pattern, used most often in pilot and small commercial deployments where a Zigbee mesh is preferable to dedicated radios. Z2M runs on a Linux host with a USB Zigbee coordinator, joins devices to its mesh, and publishes each device's state and telemetry as flat JSON on `zigbee2mqtt/{friendlyName}`.
-
-For commercial deployments evaluating Z2M:
-
-- **Capacity and recovery validation required.** Z2M is the active link between the Zigbee mesh and MQTT, so coordinator capacity and recovery behavior should be validated against your specific device count, traffic pattern, and acceptable downtime before committing the design — Z2M redundancy in particular is not trivial and is out of scope for this guide. Restart of the host or container pauses Zigbee mesh routing for the duration of the restart.
-- **Vendor mix.** Zigbee 3.0 interoperability is good but not perfect; specific device models may need firmware-version-specific handling. Validate the planned device set against Z2M's [supported devices list](https://www.zigbee2mqtt.io/supported-devices/) before commitment.
-- **Sparkplug B not native.** Z2M publishes flat JSON, not Sparkplug. For deployments standardized on Sparkplug, an additional Sparkplug-encoding bridge would be required.
-
-For a complete Z2M setup reference, consult the Zigbee2MQTT project's own documentation. The platform's connector consumes Z2M's topic stream identically to any other MQTT edge gateway.
+- **[Zigbee2MQTT Hubs](zigbee2mqtt-hubs.md)** — Zigbee2MQTT as one MQTT edge-gateway pattern: hub topology, deployment fit, capacity-validation guidance, and how the resulting MQTT stream feeds the standard device-routing flow.
 
 ## Where to go next
 
-- [Topics and device routing](topics-and-device-routing.md) — registering devices behind any of these gateways.
-- [Cloud MQTT](cloud-mqtt.md) and [External MQTT](external-mqtt.md) — choosing the broker side.
-- [Troubleshooting](troubleshooting.md) — diagnosing ingestion issues.
+- [Topics and device routing](../../connectors/mqtt/topics-and-device-routing.md) — registering devices behind any of these gateways.
+- [Cloud MQTT](../../connectors/mqtt/cloud-mqtt.md) and [External MQTT](../../connectors/mqtt/external-mqtt.md) — choosing the broker side.
+- [Troubleshooting](../../connectors/mqtt/troubleshooting.md) — diagnosing ingestion issues.

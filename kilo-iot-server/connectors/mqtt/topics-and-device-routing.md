@@ -137,4 +137,4 @@ For fleets of nominally-identical devices, run this refinement on a representati
 ## Where to go next
 
 - [Troubleshooting](troubleshooting.md) — diagnostic recipes for topic-match failures and the empty-Logs-tab pattern.
-- [MQTT edge gateways](mqtt-edge-gateways.md) — patterns for industrial MQTT-producing bridges that feed this routing pipeline.
+- [MQTT Edge Gateways](../../gateways/mqtt-edge-gateways/README.md) — patterns for industrial MQTT-producing bridges that feed this routing pipeline (under Gateways).

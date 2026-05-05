@@ -25,6 +25,7 @@ redirects:
   kilo-iot-server/gateways/deploying-a-lorawan-gateway: kilo-iot-server/gateways/lorawan-gateways/deploying-a-lorawan-gateway.md
   kilo-iot-server/gateways/lorawan-gateway-monitoring: kilo-iot-server/gateways/lorawan-gateways/lorawan-gateway-monitoring.md
   kilo-iot-server/gateways/supported-lorawan-gateways: kilo-iot-server/gateways/lorawan-gateways/supported-lorawan-gateways.md
+  kilo-iot-server/connectors/mqtt/mqtt-edge-gateways: kilo-iot-server/gateways/mqtt-edge-gateways/README.md
   kilo-iot-server/dashboard/notification-center: kilo-iot-server/alarm/README.md
   kilo-iot-server/dashboard/notification-center/inbox: kilo-iot-server/alarm/inbox-and-resolution.md
   kilo-iot-server/dashboard/notification-center/rules: kilo-iot-server/alarm/notification-rules.md

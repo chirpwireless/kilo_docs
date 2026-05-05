@@ -19,8 +19,9 @@ Use External MQTT when you already have a broker running. Use Cloud MQTT when yo
 - [Cloud MQTT](mqtt/cloud-mqtt.md) — Provisioning a platform-managed broker for a connector.
 - [External MQTT](mqtt/external-mqtt.md) — Connecting an existing broker, including network reachability, authentication, and verification.
 - [Topics and device routing](mqtt/topics-and-device-routing.md) — How topic patterns, device-ID extraction, and the Mapping tab work together. Read before registering devices.
-- [MQTT edge gateways](mqtt/mqtt-edge-gateways.md) — Patterns for industrial bridges (Modbus, BACnet, OPC-UA, Zigbee2MQTT) that produce MQTT.
 - [Troubleshooting](mqtt/troubleshooting.md) — Diagnosing connection, topic-match, and Logs-tab issues.
+
+For the hardware/edge-gateway side of the integration — Modbus, BACnet, OPC-UA, Sparkplug B, and Zigbee2MQTT bridges that publish MQTT into the connector — see [MQTT Edge Gateways](../gateways/mqtt-edge-gateways/README.md) under Gateways.
 
 ---
 
