@@ -9,7 +9,7 @@ This page covers Z2M as a gateway pattern. The MQTT-side registration of the res
 A Z2M hub is three things working together:
 
 1. **A host machine** at the network edge — typically a small Linux device (industrial mini-PC, NUC, Raspberry Pi, vendor appliance) with USB or Ethernet to the coordinator and a stable network path to the broker. Operationally it runs as a system service with restart-on-failure semantics.
-2. **A Zigbee coordinator** — a USB radio (e.g. Sonoff ZBDongle-E with EFR32MG24, validated as one working option) or a network-attached coordinator (e.g. SMLIGHT SLZB-06). The coordinator is the radio bridge between the Zigbee mesh and Z2M; it does not itself run MQTT.
+2. **A Zigbee coordinator** — a USB radio (for example, Sonoff ZBDongle-E with EFR32MG24, a commonly used option) or a network-attached coordinator (for example, SMLIGHT SLZB-06). The coordinator is the radio bridge between the Zigbee mesh and Z2M; it does not itself run MQTT.
 3. **The Zigbee2MQTT software** — opens the coordinator's transport, joins Zigbee devices to the mesh, and publishes each device's state and telemetry as flat JSON on `zigbee2mqtt/{friendlyName}`.
 
 The resulting MQTT stream looks like any other JSON-payload edge gateway from the platform's perspective.

@@ -24,11 +24,12 @@ Protocol-bridging hardware and software that publishes MQTT — Modbus-to-MQTT, 
 
 For most commercial Kilo IoT Server deployments, the question is not "which category" but "how many" — the deployment topology is driven by the device fleet's protocol mix, coverage requirements, and operational redundancy needs. LoRaWAN gateways handle long-range, low-power radio fleets directly. MQTT edge gateways handle every other protocol family (Modbus, BACnet, OPC-UA, Sparkplug B, Zigbee, vendor-specific) by translating it into MQTT before the platform consumes it. Most multi-protocol deployments use both categories side by side.
 
-## Secure by design
+## Transport security
 
-All gateway integrations to the Kilo IoT Server use encrypted, authenticated transport:
+Different gateway paths have different transport-security profiles. Match each to the path you actually use:
 
-- **LoRaWAN gateways** use the LoRa Basics Station protocol, with certificate authentication — the legacy UDP Packet Forwarder, which transmits data without encryption, is not supported.
-- **MQTT-producing edge gateways** connect via MQTTS (TLS) on port 1884 with credentials scoped to the connector.
+- **LoRaWAN gateways** — the platform requires the LoRa Basics Station protocol with certificate authentication. The legacy UDP Packet Forwarder, which transmits data without encryption, is not supported.
+- **MQTT edge gateways via Cloud MQTT** — when the platform provisions the broker, the connection uses MQTTS (TLS) on port 1884 with credentials scoped to the connector. Encrypted and authenticated by default.
+- **MQTT edge gateways via External MQTT** — security is determined by the broker you operate. The broker URL can be `mqtt://` or `mqtts://` on any port, and the authentication method (anonymous, basic, certificate, or JWT) is chosen during connector setup. For production deployments, configure your broker for TLS and require authentication before exposing it on the public internet — anonymous brokers reachable from the internet accept publishes and subscriptions from anyone who finds them.
 
-In both cases, on-the-wire traffic is encrypted and unauthorized publishers cannot inject data into your namespace.
+In every case the operator is responsible for verifying that the chosen path matches the deployment's security requirements; the platform does not silently downgrade to plaintext, but it also cannot enforce TLS or authentication on a broker it does not own.
