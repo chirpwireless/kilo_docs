@@ -58,8 +58,8 @@ For one-metric-per-topic schemes (legacy bridges, OPC-UA aliasing patterns), the
 Three protocol features come up enough in industrial deployments to be worth stating explicitly:
 
 - **QoS levels** — 0 (at most once), 1 (at least once), 2 (exactly once). The platform's connector handles whatever QoS the publisher uses; pick the level that matches your operational tolerance for duplicates vs. drops. QoS 2 has the highest broker overhead and is typically reserved for control commands or critical state changes.
-- **Retained messages** — flagged messages that the broker stores and replays to new subscribers on connect. Useful for current-state advertisement (e.g. "online/offline" announcements). The platform consumes retained messages identically to live publishes.
-- **Last-will and testament (LWT)** — a message the broker publishes on the publisher's behalf if it disconnects unexpectedly. Common pattern: a device's LWT publishes `"offline"` to its status topic, so subscribers see disconnection state changes without polling. The platform consumes LWT messages identically to publisher-originated messages.
+- **Retained messages** — flagged messages that the broker stores and replays to new subscribers on connect. Useful for current-state advertisement (e.g. "online/offline" announcements). If the broker delivers retained messages to the platform as standard subscribed publishes, they can be mapped like any other payload — verify against your broker's behavior.
+- **Last-will and testament (LWT)** — a message the broker publishes on the publisher's behalf if it disconnects unexpectedly. Common pattern: a device's LWT publishes `"offline"` to its status topic, so subscribers see disconnection state changes without polling. If your broker delivers LWT messages to the connector as standard MQTT publishes, they can be mapped like any other payload.
 
 These features are configured by the publishing party, not by the connector. The connector accepts whatever the broker delivers.
 

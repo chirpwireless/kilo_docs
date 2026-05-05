@@ -10,7 +10,7 @@ The edge gateway sits between non-MQTT field equipment and the MQTT broker. Its 
 
 1. **Read from the source protocol** — Modbus RTU/TCP polling cycles, BACnet COV subscriptions, OPC-UA subscriptions, Sparkplug B node sessions, Zigbee mesh participation.
 2. **Normalize values** — apply scaling factors, convert units to a consistent set, decode bitfields and enumerations into human-readable values.
-3. **Publish to MQTT** — emit JSON payloads (or Sparkplug B Protocol Buffers, where applicable) to a topic shape consumable by downstream subscribers.
+3. **Publish to MQTT** — emit JSON payloads to a topic shape consumable by downstream subscribers. (Sparkplug B Protocol Buffers must be translated to JSON before publishing to topics the platform's MQTT connector consumes — see "Common gateway categories" below.)
 4. **Optionally accept commands** — subscribe to control topics (`/set`, `/cmd`, vendor-specific) and write back to the source protocol. (The platform's connector consumes telemetry; control flows are gateway-side.)
 
 The gateway is typically a small Linux device near the field equipment — an industrial PC, a DIN-rail computer, a Raspberry Pi, or a vendor appliance. Operationally, it runs as a system service with restart-on-failure semantics.
@@ -63,7 +63,7 @@ Publishing cadence is a deployment-specific decision driven by rules-engine resp
 For mission-relevant telemetry, configure the gateway with:
 
 - **MQTT QoS 1** for telemetry topics — at-least-once delivery; the gateway retries on broker reconnection.
-- **MQTT Last Will and Testament (LWT)** — the gateway's "I disconnected unexpectedly" announcement, typically published as a retained message to a status topic. The platform consumes LWT messages identically to publisher-originated messages; you can map a `status` field that reflects gateway connectivity.
+- **MQTT Last Will and Testament (LWT)** — the gateway's "I disconnected unexpectedly" announcement, typically published as a retained message to a status topic. If your broker delivers the LWT message to the connector as a standard subscribed publish, a `status` field can be mapped to reflect gateway connectivity — validate the path with a deliberate disconnect test before relying on it operationally.
 - **Retained "online" messages** — published on connect, replaced by LWT on disconnect. Subscribers (including new ones connecting later) see current connectivity state immediately.
 - **Persistent local store** — the gateway buffers telemetry while disconnected from the broker and replays on reconnection. Most commercial edge gateways support this; verify the buffer size against expected disconnection windows.
 
@@ -73,8 +73,7 @@ Zigbee2MQTT is one specific example of the MQTT edge gateway pattern, used most 
 
 For commercial deployments evaluating Z2M:
 
-- **Topology limits.** A single Z2M coordinator supports a mesh of up to several hundred devices, with practical limits driven by traffic volume and mesh routing depth.
-- **Restart sensitivity.** Z2M is the active link between the Zigbee mesh and MQTT. If the host or container restarts, Zigbee mesh routing pauses for the duration. Plan for redundant coordinators in deployments where this is operationally unacceptable.
+- **Capacity and recovery validation required.** Z2M is the active link between the Zigbee mesh and MQTT, so coordinator capacity and recovery behavior should be validated against your specific device count, traffic pattern, and acceptable downtime before committing the design — Z2M redundancy in particular is not trivial and is out of scope for this guide. Restart of the host or container pauses Zigbee mesh routing for the duration of the restart.
 - **Vendor mix.** Zigbee 3.0 interoperability is good but not perfect; specific device models may need firmware-version-specific handling. Validate the planned device set against Z2M's [supported devices list](https://www.zigbee2mqtt.io/supported-devices/) before commitment.
 - **Sparkplug B not native.** Z2M publishes flat JSON, not Sparkplug. For deployments standardized on Sparkplug, an additional Sparkplug-encoding bridge would be required.
 

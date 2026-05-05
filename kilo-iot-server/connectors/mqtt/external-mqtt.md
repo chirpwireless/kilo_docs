@@ -41,7 +41,7 @@ For Certification, the three uploaded files form the client side of an mTLS exch
    | Field | Required | Details |
    |-------|----------|---------|
    | **Name** | Yes | Operational label, e.g. `Plant 3 Mosquitto` or `North America Broker Cluster`. |
-   | **Broker URL** | Yes | Full URL with scheme and port. Examples: `mqtts://broker.facility.example.com:8883`, `mqtt://10.x.y.z:1883` (only via private link), `ssl://broker.example.com:8883`. |
+   | **Broker URL** | Yes | Full URL with scheme and port. Examples: `mqtts://broker.facility.example.com:8883`, `ssl://broker.example.com:8883`. |
 
 5. Choose the authentication method and complete its fields.
 6. Click **Add**.
