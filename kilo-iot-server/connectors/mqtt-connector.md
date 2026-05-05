@@ -1,6 +1,6 @@
 # MQTT Connector
 
-The MQTT connector lets you bring any MQTT-capable device into the Kilo IoT Server without going through LoRaWAN. Factory PLCs, HVAC controllers, building energy meters, and custom-firmware sensors that already publish data over MQTT can all be connected directly. Once connected, their data flows through the same normalization pipeline, triggers the same rules engine, and appears in the same dashboards as every other device on the server.
+The MQTT connector lets you bring any MQTT-capable device into the Kilo IoT Server without going through LoRaWAN. Factory PLCs, HVAC controllers, building energy meters, MQTT-producing edge gateways (Modbus-to-MQTT, BACnet-to-MQTT, OPC-UA-to-MQTT bridges), and custom-firmware sensors that already publish data over MQTT can all be connected directly. Once connected, their data flows through the same normalization pipeline, triggers the same rules engine, and appears in the same dashboards as every other device on the server.
 
 Two variants are available:
 
@@ -10,6 +10,17 @@ Two variants are available:
 | **Cloud MQTT** | Platform-provisioned — the server provides a dedicated broker endpoint and credentials per connector | Unlimited | New deployments, pilots, and remote sites where you want MQTT ingestion without operating broker infrastructure yourself |
 
 Use External MQTT when you already have a broker running. Use Cloud MQTT when you want the platform to provide one — you give the connector a name, the platform provisions the rest.
+
+> **Scope.** This documentation covers MQTT telemetry ingestion and device mapping. MQTT command and control through the platform API is not covered here.
+
+## In this section
+
+- [What MQTT is](mqtt/what-is-mqtt.md) — Protocol primer for engineers new to MQTT or refreshing the model.
+- [Cloud MQTT](mqtt/cloud-mqtt.md) — Provisioning a platform-managed broker for a connector.
+- [External MQTT](mqtt/external-mqtt.md) — Connecting an existing broker, including network reachability, authentication, and verification.
+- [Topics and device routing](mqtt/topics-and-device-routing.md) — How topic patterns, device-ID extraction, and the Mapping tab work together. Read before registering devices.
+- [MQTT edge gateways](mqtt/mqtt-edge-gateways.md) — Patterns for industrial bridges (Modbus, BACnet, OPC-UA, Zigbee2MQTT) that produce MQTT.
+- [Troubleshooting](mqtt/troubleshooting.md) — Diagnosing connection, topic-match, and Logs-tab issues.
 
 ---
 
@@ -75,7 +86,10 @@ Each device that publishes through an MQTT connector must be registered individu
 
 1. From the connector detail page, click **Add device** — or navigate to **Devices → Registering Devices** and select this connector.
 2. Complete the standard device fields (name, connector, template).
-3. The device opens with two MQTT-specific tabs: **Topic** and **Mapping**.
+
+> **Device ID = topic segment, byte for byte.** Whatever you enter as the device's identifier must match the device-level topic segment your hardware publishes — exactly. The Device ID input strips whitespace, so identifiers like `EM 4492` will silently fail to match a device publishing on `EM-4492`. Use the same exact string in the device record and on the publishing side; capitalisation is preserved and significant.
+
+3. The device opens with a **Mapping** tab. Inside Mapping there are two sub-tabs: **Topic** (where the platform learns how to find the device in the topic stream) and **Mapping** (where you map payload keys to normalized metrics). Selecting **Mapping** opens the **Topic** sub-tab first; click **Next** or the inner **Mapping** label to reach the per-key rows.
 
 ### Topic tab
 
@@ -143,13 +157,62 @@ The table has 8 columns:
 | **Normalized key** | Dropdown | Select from sensor templates; includes a "+ Add new metric" option |
 | **Unit** | Read-only | Derived from the selected template |
 | **Type** | Read-only | Integer, Float, String, or Boolean — derived from template |
-| **Data type** | Dropdown | Telemetry, Reported State, or Device Metadata |
-| **Connector key** | Editable | Must match the key published in the MQTT payload or the Connector Key from the Topic tab |
+| **Data type** | Dropdown | Reported State, Telemetry, or Device Metadata |
+| **Connector key** | Dropdown | Lists keys received from this device's payload. Empty until at least one publish has arrived |
 | **Value** | Read-only | Current live value received from the broker |
 | **Last update** | Read-only | Timestamp of the most recently received value |
 | **Actions** | Icon | Trash icon removes the row |
 
 **Add key** — adds a new empty mapping row.
+
+#### Reported State vs Telemetry
+
+The **Data type** dropdown distinguishes two operational categories:
+
+- **Reported State** — controllable device properties whose current value the device publishes. The setpoint of an HVAC controller, the on/off state of a smart actuator, the open/closed state of a valve. These are values the device can also be commanded to change.
+- **Telemetry** — read-only measurements. Temperature probes, energy meter readings, vibration RMS values, link quality. These are observations the device makes about itself or its environment.
+
+Pick the type that fits the operational intent of the value. Reported State is appropriate for state-machine fields and configurable setpoints; Telemetry is appropriate for sensor readings and diagnostics.
+
+#### Connector Key dropdown is empty until the device publishes once
+
+The **Connector key** column is a dropdown populated from payload keys actually received from the device — not a free-text input. Before the first publish arrives, the dropdown is empty and the rows cannot be completed.
+
+Registering an MQTT device is therefore a two-pass workflow:
+
+1. Add a row per metric, select the **Normalized key** from the templates dropdown (or use **+ Add new metric** to create one), set the **Data type**, and leave the **Connector key** empty.
+2. Click **Save**. The device record is persisted.
+3. Confirm the device is publishing — for an MQTT-producing edge gateway, that the gateway process is running and the device has emitted at least one message.
+4. Reopen the device. The **Connector key** dropdown now lists keys received from the most recent publishes.
+5. Match a key to each mapping row.
+6. Click **Save** again.
+
+#### Mapping tab Value column vs Logs tab history
+
+The Mapping tab's **Value** column reflects the most recent payload — a live snapshot. Values appear here as soon as topic matching succeeds, even before Connector keys are populated.
+
+The **Logs** tab is per-sensor history. It is populated only by publishes that arrive *after* Connector keys are saved. After the second pass of the workflow above, generate a fresh publish (a wake-on-event from the device, a scheduled report, or for development gateways a poll request) to confirm the Logs tab is receiving records.
+
+#### Payload type → metric Type translation
+
+When a device publishes an enumerated state as a string (for example, an actuator publishing `"OPEN"`/`"CLOSED"`, or a Zigbee `state` field with `"ON"`/`"OFF"`), the value arrives as a string — even though the conceptual type is binary. Map these to the **String** Type in the metric template, not Boolean. Selecting Boolean for a string-encoded enum will result in null values.
+
+For Zigbee2MQTT-bridged devices specifically, the [zigbee2mqtt.io](https://www.zigbee2mqtt.io/supported-devices/) device pages list each feature with a type — translate as follows:
+
+| Z2M feature type | Metric Type | Notes |
+|------------------|-----------|-------|
+| `binary` | **String** | Values are `"ON"`/`"OFF"` strings, not booleans |
+| `numeric` | **Number** | Numeric ranges mapped directly |
+| `enum` | **String** | Enumerated values arrive as strings |
+| `text` | **String** | Free-form text |
+
+#### How to discover what keys a device publishes
+
+The Mapping tab does not auto-detect keys. Three discovery methods, in order of practicality:
+
+1. **The device's documentation or vendor data sheet.** Industrial devices typically ship with a payload schema or topic catalog.
+2. **For Zigbee2MQTT-bridged devices**, the device page at `https://www.zigbee2mqtt.io/devices/{modelId}.html` lists the Exposes set. Note that real payloads may include keys not on the device page — trust the live payload over the documentation when they differ.
+3. **Subscribe to the broker and inspect the live payload** — `mosquitto_sub` against the broker (or the Logs tab once at least one mapping row resolves) shows the JSON payload directly. Every top-level key is a valid Connector Key.
 
 ---
 
@@ -166,15 +229,21 @@ After the connector is configured and devices are registered:
 
 ## Troubleshooting
 
+A short list — see [Troubleshooting](mqtt/troubleshooting.md) for diagnostic recipes covering authentication failures, certificate mismatches, the empty-Logs-tab pattern, and verification tooling.
+
 **No data arrives after connection:**
-- For External MQTT: verify the broker URL scheme (`mqtt://`, `mqtts://`, `tcp://`, or `ssl://`), confirm the broker is reachable from the internet, and double-check credentials.
+- For External MQTT: verify the broker URL scheme (`mqtt://`, `mqtts://`, `tcp://`, or `ssl://`), confirm the broker is reachable from the public internet (Kilo IoT Server connects out to your broker), and double-check credentials.
 - For TLS (Certification auth): verify the CA certificate matches the broker's certificate chain, and that the client certificate and private key are a matching pair.
 - For Cloud MQTT: confirm that your devices are publishing to the correct Broker URL and Topic prefix, and that the username and password are correct. If the password was lost, rotate it from the connector settings.
 
 **Device is registered but no data appears:**
 - Compare the registered Device ID Topic against the exact topic the device publishes to. Topics are case-sensitive and must match exactly.
 - Confirm the `{{deviceId}}` placeholder position lines up with the actual device ID segment in the topic.
+- Confirm the Device ID field is byte-for-byte identical to the device-level segment — whitespace is stripped on input and breaks the match.
 - If using Payload source: verify the Device ID Payload Path resolves correctly against the actual payload structure.
+
+**Mapping tab Value column updates but Logs tab is empty:**
+This is the most common pattern when Connector keys are saved after the most recent publish arrived. The Logs tab is populated only by publishes received *after* Connector keys are saved. Trigger a fresh publish — a device wake-up, a scheduled report, or a `/get` poll for development gateways — and the Logs tab will populate.
 
 **Metric values missing or showing wrong keys:**
 - Check that the Connector Key in the Mapping tab matches the key in the MQTT payload exactly (case-sensitive).

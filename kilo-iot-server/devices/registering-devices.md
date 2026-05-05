@@ -108,6 +108,15 @@ This workflow accepts data from any device the server can receive — including 
 
 For details on setting up metric templates, see [Metric Templates](metric-templates.md).
 
+#### MQTT-specific behavior
+
+For devices ingested through the [MQTT connector](../connectors/mqtt-connector.md), two registration-flow specifics apply:
+
+- **Connector key dropdown is empty until the first publish arrives.** The dropdown is populated from payload keys actually received from the device, not from a free-text input. For a brand-new MQTT device record, this requires a two-pass save: add a row per metric with the normalized key selected and the Data type set, leave Connector key empty, save, confirm the device is publishing, reopen the device record — the Connector key dropdown is now populated, match each row, save again.
+- **Mapping tab Value column vs Logs tab history.** The Value column is a live snapshot of the most recent payload (updates on every accepted publish, regardless of whether Connector keys are populated). The Logs tab is per-sensor history (populated only by publishes that arrive *after* Connector keys are saved). After completing the second pass, generate a fresh publish to populate the Logs tab — older publishes are not retroactively normalized.
+
+See [Topics and device routing](../connectors/mqtt/topics-and-device-routing.md) for the full MQTT-specific registration workflow.
+
 ### Logs tab
 
 The Logs tab is initially empty. After the device begins sending data, this tab displays the raw event log with timestamps and payload details.
