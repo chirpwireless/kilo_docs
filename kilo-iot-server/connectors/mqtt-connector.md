@@ -193,6 +193,19 @@ The Mapping tab's **Value** column reflects the most recent payload — a live s
 
 The **Logs** tab is per-sensor history. It is populated only by publishes that arrive *after* Connector keys are saved. After the second pass of the workflow above, generate a fresh publish (a wake-on-event from the device, a scheduled report, or for development gateways a poll request) to confirm the Logs tab is receiving records.
 
+#### Mapping is iterative — revisit after data arrives
+
+MQTT mapping is not a one-shot operation. Initial registration is often based on the operator's expectation of what the device or edge gateway will publish; the first real payload frequently reveals additional keys — vendor-defined diagnostic fields, undocumented state fields, nested objects with useful sub-paths. Treat the Mapping tab as a place to revisit:
+
+1. After live data has been arriving for a representative period, reopen the device record.
+2. Inspect the **Connector key** dropdown and the **Value** column to see what the device is actually publishing.
+3. Add Mapping rows for fields the deployment now wants to track (a diagnostic field for predictive maintenance, a state field that became operationally relevant, a nested vibration sub-metric, and so on).
+4. Pick the right Normalized key and Data type for each new row.
+5. Save.
+6. Trigger a fresh publish so the Logs tab begins collecting history for the new mappings.
+
+This iterative refinement is the expected workflow, particularly for vendor-mixed fleets where payload schemas vary subtly across firmware revisions of nominally-identical devices.
+
 #### Payload type → metric Type translation
 
 When a device publishes an enumerated state as a string (for example, an actuator publishing `"OPEN"`/`"CLOSED"`, or a Zigbee `state` field with `"ON"`/`"OFF"`), the value arrives as a string — even though the conceptual type is binary. Map these to the **String** Type in the metric template, not Boolean. Selecting Boolean for a string-encoded enum will result in null values.

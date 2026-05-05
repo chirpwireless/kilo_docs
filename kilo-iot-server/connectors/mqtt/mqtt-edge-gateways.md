@@ -21,8 +21,8 @@ The gateway is typically a small Linux device near the field equipment — an in
 |----------|------------------------------|-------------|----------------|
 | **Modbus → MQTT** | Modbus2MQTT, vendor-provided gateways (Advantech, Moxa), custom Node-RED flows | `{site}/{plc}/{deviceId}/data` or per-register topics | JSON object or one-value-per-topic |
 | **BACnet → MQTT** | Vendor BMS bridges, EasyIO, custom integration platforms | `building/{floor}/{ahu-id}/{point}` | JSON with point-to-value mapping |
-| **OPC-UA → MQTT** | OPC Router, FactoryStudio, Sparkplug B edge nodes | Sparkplug `spBv1.0/{group}/DDATA/{node}/{device}` or custom | Sparkplug B Protocol Buffers, or JSON if the gateway translates |
-| **Sparkplug B native** | Inductive Automation Ignition Edge, Cirrus Link edge gateways | `spBv1.0/{group}/DDATA/{node}/{device}` | Protocol Buffers (gateway typically translates to JSON for consumption) |
+| **OPC-UA → MQTT** | OPC Router, FactoryStudio, Sparkplug B edge nodes | Sparkplug `spBv1.0/{group}/DDATA/{node}/{device}` or custom | **Must be JSON for the platform's connector to ingest it.** Sparkplug B Protocol Buffers must be translated to JSON by the edge gateway before publishing. |
+| **Sparkplug B native** | Inductive Automation Ignition Edge, Cirrus Link edge gateways | `spBv1.0/{group}/DDATA/{node}/{device}` | **Must be translated to JSON by the edge gateway before MQTT-connector ingestion.** The platform's MQTT connector does not decode Sparkplug B Protocol Buffers. |
 | **Zigbee → MQTT** | Zigbee2MQTT (open source, common in pilots and small commercial deployments) | `zigbee2mqtt/{friendlyName}` | Flat JSON |
 | **Custom bridges** | Hand-rolled Python/Node.js bridges over vendor APIs | Whatever the bridge author chose | Usually JSON |
 
@@ -52,23 +52,11 @@ Avoid:
 
 Flat or shallowly-nested JSON simplifies the Mapping tab. The platform automatically flattens nested objects to dot-notation paths, so `{"vibration": {"rms": 0.42, "peak": 1.8}}` becomes `vibration.rms` and `vibration.peak` as Connector Key candidates. Deeply-nested hierarchies still work but are less ergonomic for operators reviewing mappings.
 
-Sparkplug B is supported indirectly: the edge gateway must translate Sparkplug B Protocol Buffers to JSON before publishing to a topic the connector consumes. Most commercial Sparkplug-aware edge gateways (Ignition Edge, Cirrus Link MQTT Modules) provide this option as a standard configuration.
+**Sparkplug B requires JSON translation at the edge.** The platform's MQTT connector consumes JSON payloads — it does not decode Sparkplug B Protocol Buffers natively. Edge gateways using Sparkplug B (Inductive Automation Ignition Edge, Cirrus Link MQTT Modules, OPC Router with Sparkplug output) must be configured to translate Protocol Buffers to JSON before publishing to topics the connector subscribes to. Most commercial Sparkplug-aware edge gateways provide this translation as a standard configuration option.
 
 ### Publishing cadence
 
-Publishing too aggressively (sub-second per device) generates load that may not deliver operational value. Publishing too rarely (every 15 minutes) limits the rules engine and dashboards to coarse-grained reactions.
-
-Recommended starting points:
-
-| Use case | Cadence |
-|----------|---------|
-| Real-time process control monitoring | 1–10 Hz, with optional COV (change-of-value) suppression |
-| Building management telemetry | 30–60 seconds for setpoints; on-change for state |
-| Energy metering | 1–15 minutes |
-| Environmental sensors | 1–5 minutes |
-| Battery-powered field devices | On wake (5 minutes – 1 hour, per device firmware) |
-
-Adjust based on rules-engine response-time requirements and broker capacity. The edge gateway's COV / dead-band configuration is the lever for reducing redundant publishes.
+Publishing cadence is a deployment-specific decision driven by rules-engine response-time targets, broker capacity, and device firmware capability. The edge gateway's COV / dead-band configuration is the lever for reducing redundant publishes once a baseline cadence is chosen for a given device class. Verify the cadence the edge gateway can sustain against the rules and dashboards that consume the data, and adjust as the deployment matures.
 
 ### Reliability and disconnection behavior
 

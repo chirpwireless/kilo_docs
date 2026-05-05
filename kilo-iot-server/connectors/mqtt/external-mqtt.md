@@ -14,11 +14,7 @@ For deployments without an existing broker, [Cloud MQTT](cloud-mqtt.md) is the l
 
 Kilo IoT Server connects out to your broker, so the broker must be reachable from the public internet via DDNS, port forwarding, or a dedicated public IP. A broker accessible only on a private VLAN is not reachable from the platform's cloud control plane.
 
-Common production patterns:
-
-- **Public IP / DDNS hostname** with firewall rules limiting source IPs to the platform's egress range.
-- **VPN or private link** to the platform's cloud account (available in select deployment topologies — engage with platform engineering during deployment planning).
-- **Reverse-proxy / TLS terminator** in your DMZ, fronting an internal broker.
+The standard production pattern is a public IP or DDNS hostname for the broker, with firewall rules controlling which sources can connect.
 
 For development or pilot deployments, an exposure tunnel such as ngrok works for short-lived testing — but note that running an exposure tool does not by itself confirm Kilo can reach the broker. After saving the connector, **publish a test message and confirm Last data received updates** in the connector's detail page. This is the only way to verify end-to-end reachability.
 
@@ -73,7 +69,7 @@ mosquitto_pub \
 
 (Substitute scheme/port and credentials for your broker's authentication method.)
 
-If **Last data received** does not update after a successful local publish, see [Troubleshooting](troubleshooting.md). The most common causes are firewall rules between the platform's egress and your broker, IP-allowlist mismatches, expired tunneling sessions in development setups, or wrong TLS configuration on the broker side.
+If **Last data received** does not update after a successful local publish, see [Troubleshooting](troubleshooting.md). The most common causes are firewall rules between the platform's egress and your broker, IP-allowlist mismatches, expired tunneling sessions when using ngrok for testing, or wrong TLS configuration on the broker side.
 
 ## Self-hosted Mosquitto reference deployment
 

@@ -8,8 +8,9 @@ Device registration is the process of creating this Digital Twin and linking it 
 
 Before registering a device, you need:
 
-- **A connector** — at least one LNS or Tracker connector must be set up. See [Connectors](../connectors/).
-- **Device identifiers** — for LoRaWAN devices: the Device EUI and AppKey (typically printed on the device or its packaging). For tracker devices: the Unique ID provided by the manufacturer.
+- **A connector** — at least one LNS, Tracker, or MQTT connector (Cloud or External) must be set up. See [Connectors](../connectors/) and the [MQTT Connector](../connectors/mqtt-connector.md) documentation.
+- **Device identifiers** — for LoRaWAN devices: the Device EUI and AppKey (typically printed on the device or its packaging). For tracker devices: the Unique ID provided by the manufacturer. For MQTT devices: the device-level topic segment the device publishes under, used as the Device ID on the device record; it must match the published segment byte-for-byte (whitespace is stripped on input).
+- **For MQTT devices only — the device must be publishing before mapping can be completed.** The Connector key dropdown in the Mapping tab populates from payload keys actually received from the device. See the [MQTT-specific behavior section](#mqtt-specific-behavior) below for the two-pass workflow.
 
 ## Where to start
 
@@ -114,6 +115,7 @@ For devices ingested through the [MQTT connector](../connectors/mqtt-connector.m
 
 - **Connector key dropdown is empty until the first publish arrives.** The dropdown is populated from payload keys actually received from the device, not from a free-text input. For a brand-new MQTT device record, this requires a two-pass save: add a row per metric with the normalized key selected and the Data type set, leave Connector key empty, save, confirm the device is publishing, reopen the device record — the Connector key dropdown is now populated, match each row, save again.
 - **Mapping tab Value column vs Logs tab history.** The Value column is a live snapshot of the most recent payload (updates on every accepted publish, regardless of whether Connector keys are populated). The Logs tab is per-sensor history (populated only by publishes that arrive *after* Connector keys are saved). After completing the second pass, generate a fresh publish to populate the Logs tab — older publishes are not retroactively normalized.
+- **Mapping is iterative.** Initial registration rarely captures every useful payload key. Once live data has been arriving for a representative period, reopen the device record, review the Connector key dropdown and Value column to see what's actually being published, add Mapping rows for any additional fields you want to track, save, and trigger a fresh publish so the Logs tab starts recording history for the new mappings.
 
 See [Topics and device routing](../connectors/mqtt/topics-and-device-routing.md) for the full MQTT-specific registration workflow.
 

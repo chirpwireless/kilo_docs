@@ -41,7 +41,7 @@ For External MQTT, this is a reachability or subscription mismatch:
     -u {username} -P {password} \
     -t "test/connectivity" -m '{"hello":"world"}'
   ```
-  If **Last data received** still does not update, the platform cannot reach your broker. Investigate firewall rules, IP allowlists, or expired tunneling sessions in development setups.
+  If **Last data received** still does not update, the platform cannot reach your broker. Investigate firewall rules, IP allowlists, or expired tunneling sessions when using ngrok for testing.
 - For brokers behind NAT with port forwarding, verify the external port is open and forwarded to the broker's host port. Common misconfigurations include forwarding to the wrong host IP, blocking the source IP, or having a firewall rule that supersedes the port forward.
 
 ## Phase 3 — Last data received updates but device Mapping tab is empty

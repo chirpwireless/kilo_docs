@@ -94,7 +94,7 @@ The **Data type** dropdown classifies each metric:
 - **Telemetry** — read-only measurements. Process variables, energy meter readings, vibration RMS values, link quality, environmental measurements. The device observes; it does not change these.
 - **Device Metadata** — values that describe the device itself rather than its operational state. Firmware version, hardware model, serial number, calibration date.
 
-Pick the type that matches the operational intent. The platform applies the choice to access patterns: Reported State values can be subjects of command flows in future work; Telemetry values are treated strictly as observations.
+Pick the type that matches the operational intent. Reported State is appropriate for state-machine fields and configurable setpoints; Telemetry is appropriate for sensor readings and diagnostics; Device Metadata is appropriate for static device-identity fields.
 
 ## Payload type → Metric Type translation
 
@@ -121,6 +121,18 @@ After Pass 2 of the save flow:
 - The **Logs** tab is per-sensor history. It is populated only by publishes that arrive *after* Connector keys are saved. Older publishes are not retroactively normalized.
 
 Operationally: after completing Pass 2, generate a fresh publish (a device wake-on-event, a scheduled report, a poll request from the bridge) to confirm the Logs tab is receiving records. If the device only reports on schedule or on state change, plan validation around that cadence.
+
+### Iterative mapping refinement
+
+Initial mapping rarely covers every useful field a device exposes. Operators commonly discover after deployment that the device publishes additional keys — vendor diagnostic fields, undocumented state values, nested sub-objects with operationally-relevant paths. The recommended pattern is to revisit the Mapping tab after data has been arriving for a representative period:
+
+- Inspect the **Connector key** dropdown and the **Value** column to see exactly what the device is publishing in production.
+- Add new Mapping rows for fields the deployment now wants in the Digital Twin.
+- Set the appropriate Normalized key and Data type per row.
+- Save.
+- Generate a fresh publish so the Logs tab begins recording history for the newly-mapped fields.
+
+For fleets of nominally-identical devices, run this refinement on a representative sample before rolling the mapping changes out to the rest of the fleet — firmware revisions can introduce subtle key differences.
 
 ## Where to go next
 
