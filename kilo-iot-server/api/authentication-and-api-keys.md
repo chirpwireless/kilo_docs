@@ -11,7 +11,7 @@ All requests are over TLS.
 
 ## Scopes
 
-Keys are scoped. Each scope has a **Read** and a **Write** variant, and a key grants only what you select when you create it. Grant only the scopes the integration needs. Each endpoint in the [API reference](https://api.kiloiot.io/) lists the scope required to call it.
+Keys are scoped. Most areas have separate **Read** and **Write** scopes; some — such as telemetry and subscription data — are read-only. A key grants only what you select when you create it, so grant only the scopes the integration needs. Each endpoint in the [API reference](https://api.kiloiot.io/) lists the scope it requires.
 
 ## Handling keys safely
 

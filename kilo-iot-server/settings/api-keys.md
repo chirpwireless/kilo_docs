@@ -34,13 +34,13 @@ Store the key in a secrets manager or vault immediately. Once you close this dia
 
 Scopes control what the key can access. Each scope has a **Read** variant (retrieve data) and a **Write** variant (create, update, or delete). Grant only the minimum set your integration requires.
 
-Available scopes may depend on your organization and plan. For API calls, check the [API reference](../api/README.md) for the scope each endpoint requires.
+Available scopes may depend on your organization and plan. Sensor **history** and **last-seen** calls use a separate telemetry scope rather than *Devices: Read* — check the [API reference](../api/README.md) for the exact scope each endpoint requires.
 
 | Scope | Read grants access to | Write grants access to |
 |-------|----------------------|----------------------|
-| **Connections** | View connector status and configuration | Create and modify connectors |
+| **Connections** | View connection status and configuration | Create and modify connections |
 | **Dashboards** | View dashboards and widget data | Create, edit, and delete dashboards and widgets |
-| **Devices** | View device list, Digital Twin state, and telemetry | Register devices, update device configuration |
+| **Devices** | View device list and Digital Twin state | Register devices, update device configuration |
 | **Events** | View device event history | — |
 | **Logs** | View system and device logs | Export logs |
 | **Organizations** | View organization details and membership | Modify organization settings and membership |
