@@ -16,7 +16,7 @@ curl -sS https://api.kiloiot.io/api/v2/devs \
 
 ## gRPC
 
-gRPC uses the same `X-API-Key` and organization context. Generate a client from the service definitions published in the [reference](https://api.kiloiot.io/#description/protocols), then call the method you need. The reference lists the available gRPC services and methods; not every REST operation has a gRPC equivalent.
+gRPC uses the same `X-API-Key` and organization context. The [reference](https://api.kiloiot.io/#description/protocols) lists the available gRPC services and methods — use it as the catalog of what to call. Client stubs and protocol definitions are not published from the reference; obtain them from your integration package, your on-premise deployment, or support, then call the method you need. Not every REST operation has a gRPC equivalent, and vice-versa.
 
 ## Good practice
 

@@ -34,6 +34,8 @@ Store the key in a secrets manager or vault immediately. Once you close this dia
 
 Scopes control what the key can access. Each scope has a **Read** variant (retrieve data) and a **Write** variant (create, update, or delete). Grant only the minimum set your integration requires.
 
+The scopes offered in the creation dialog depend on your organization and plan, and the public API is the authoritative contract for which scope each operation needs — some operations (for example historical telemetry, alarms, and notifications) use scopes beyond those shown here. Check the [API](../api/README.md) section and the reference it links to for the scope a given operation requires.
+
 | Scope | Read grants access to | Write grants access to |
 |-------|----------------------|----------------------|
 | **Connections** | View connector status and configuration | Create and modify connectors |

@@ -11,7 +11,7 @@ All requests are over TLS.
 
 ## Scopes
 
-Keys are scoped. Each scope has a **Read** variant and a **Write** variant, and a key only grants what you select when you create it. Grant the minimum a given integration needs. The full scope list and exactly what each one grants is documented with the key-creation workflow in [API Keys](../settings/api-keys.md).
+Keys are scoped. Each scope typically has a **Read** and a **Write** variant, and a key only grants what you select when you create it. Grant the minimum an integration needs. You choose a key's scopes in [Settings → API Keys](../settings/api-keys.md); the [reference portal](https://api.kiloiot.io/) is the source of truth for which scope each operation requires — grant exactly those. The scopes offered when creating a key depend on your organization and plan, so confirm the operation you need against the reference.
 
 ## Handling keys safely
 

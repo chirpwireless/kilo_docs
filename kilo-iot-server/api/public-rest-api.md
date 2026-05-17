@@ -13,17 +13,18 @@ Requests go to the secured production endpoint and carry two headers:
 
 All traffic is over TLS. Treat the key like a credential — see [Authentication & API keys](authentication-and-api-keys.md).
 
-## What you can do with it
+## What the API can do
 
-At a concept level, and subject to the scopes granted to the key, REST lets integrations:
+The public API spans REST **and** gRPC, and the two do not cover the same operations. At a concept level — and subject to the scopes granted to the key — the API as a whole lets integrations:
 
-- read devices and their Digital Twin state, and read sensor metric definitions;
-- read latest values and historical telemetry;
-- read dashboards, rules, organizations, and logs;
-- create or modify resources (devices, connectors, dashboards, rules, users) where a Write scope is granted;
-- send device commands where the operation and scope allow.
+- read the user/account profile and list devices;
+- read sensor history and last-seen values;
+- read dashboards, automation rules, alarms, notifications, and organization data;
+- create or modify resources (rules, dashboards, devices, sensor templates, connections, and similar) where a Write scope is granted.
 
-Which specific endpoint backs each of these — and whether a given operation is REST, gRPC, or both — is defined in the reference portal. Do not assume parity between protocols.
+Today the **REST** surface centers on the user profile, device listing, and automation rules; the remaining operations above are exposed as **gRPC** methods (see [gRPC API](grpc-api.md)). There is **no** device-command or downlink operation in the public API.
+
+The [reference portal](https://api.kiloiot.io/) is the single source of truth for which operations exist and whether each is REST or gRPC. Do not assume an endpoint exists, or that REST and gRPC have the same coverage.
 
 ## Workflow
 
