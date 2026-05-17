@@ -7,16 +7,16 @@ These examples show how to authenticate. They deliberately do not reproduce the 
 Replace the placeholders with your key and organization ID:
 
 ```bash
-curl -sS https://api.kiloiot.io/api/v2/devs \
+curl -sS https://api.kiloiot.io/api/v2/devices \
   -H "X-API-Key: $KILO_API_KEY" \
   -H "X-Organization-Id: $KILO_ORG_ID"
 ```
 
-`GET /api/v2/devs` returns the devices the key is allowed to see (it requires a Devices **Read** scope). For any other operation — latest values, history, sending a command, managing a resource — find its exact path or gRPC method in the [reference portal](https://api.kiloiot.io/) and call it with the same two headers. Do not guess a path or assume an endpoint exists; the portal lists exactly what is available under REST and under gRPC.
+`GET /api/v2/devices` returns the devices the key is allowed to see (it requires a Devices **Read** scope). For any other operation — latest values, history, or managing a resource — find its exact path and required scope in the [reference portal](https://api.kiloiot.io/) and call it with the same two headers. Do not guess a path or assume an endpoint exists; the portal lists exactly what is available under REST and under gRPC.
 
 ## gRPC
 
-gRPC uses the same `X-API-Key` and organization context. The [reference](https://api.kiloiot.io/#description/protocols) lists the available gRPC services and methods — use it as the catalog of what to call. Client stubs and protocol definitions are not published from the reference; obtain them from your integration package, your on-premise deployment, or support, then call the method you need. Not every REST operation has a gRPC equivalent, and vice-versa.
+gRPC uses the same `X-API-Key` and organization context. The [reference](https://api.kiloiot.io/#description/protocols) lists the available gRPC services and methods and offers an OpenAPI download as the public reference. If your integration needs native gRPC client definitions, use the materials provided with your on-premise / integration package or contact support. Not every REST operation has a gRPC equivalent, and vice-versa — confirm in the reference.
 
 ## Good practice
 

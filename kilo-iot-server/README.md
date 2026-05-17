@@ -85,7 +85,7 @@ All membership and access events within an organization are logged — user invi
 
 ### API access and integrations
 
-Kilo IoT Server exposes a public API for backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications. **REST** is the primary path for standard HTTP integrations; a **gRPC** API is available on the same secured endpoint for strongly typed clients and service-to-service calls, including on-premise and industrial automation. Requests use scoped API keys (`X-API-Key`) that you can limit to specific permissions, expire, and rotate. Real-time data is available via Server-Sent Events (SSE) and WebSocket streams, and device commands can be sent programmatically. See the [API](api/README.md) section for protocols, authentication, and examples, and [API Keys](settings/api-keys.md) to create keys.
+Kilo IoT Server exposes a public API for backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications. **REST** is the primary path for standard cloud and HTTP integrations; a **gRPC** interface is also available as the advanced / on-premise path for typed clients and service-to-service integration — choose REST unless you specifically need gRPC. Requests use scoped API keys (`X-API-Key`) that you can limit to specific permissions, expire, and rotate. Real-time data is also available via Server-Sent Events (SSE) and WebSocket streams. See the [API](api/README.md) section for protocols, authentication, and examples, and [API Keys](settings/api-keys.md) to create keys.
 
 ## Deployment options
 

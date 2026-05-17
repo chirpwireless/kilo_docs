@@ -15,16 +15,9 @@ All traffic is over TLS. Treat the key like a credential — see [Authentication
 
 ## What the API can do
 
-The public API spans REST **and** gRPC, and the two do not cover the same operations. At a concept level — and subject to the scopes granted to the key — the API as a whole lets integrations:
+REST is the broad, primary surface. Subject to the scopes granted to the key, integrations can work across the platform — for example: read the account/user profile; list and manage devices, their sensors, and sensor templates; read sensor **history and last-seen** values; read and manage connections and connectors; read and manage dashboards and widgets; read organization, membership, and subscription data; and read and manage automation rules.
 
-- read the user/account profile and list devices;
-- read sensor history and last-seen values;
-- read dashboards, automation rules, alarms, notifications, and organization data;
-- create or modify resources (rules, dashboards, devices, sensor templates, connections, and similar) where a Write scope is granted.
-
-Today the **REST** surface centers on the user profile, device listing, and automation rules; the remaining operations above are exposed as **gRPC** methods (see [gRPC API](grpc-api.md)). There is **no** device-command or downlink operation in the public API.
-
-The [reference portal](https://api.kiloiot.io/) is the single source of truth for which operations exist and whether each is REST or gRPC. Do not assume an endpoint exists, or that REST and gRPC have the same coverage.
+The exact endpoints, parameters, response schemas, and the scope each one requires are defined in the [reference portal](https://api.kiloiot.io/) — it is the single source of truth and is not reproduced here. There is **no** device-command or downlink operation in the public API. The same capabilities are also offered over gRPC for [advanced / on-premise integrations](grpc-api.md); do not assume an operation exists under both protocols — the reference shows which.
 
 ## Workflow
 

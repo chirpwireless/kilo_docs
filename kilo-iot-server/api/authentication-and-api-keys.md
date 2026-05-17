@@ -4,7 +4,7 @@ Every API request — REST or gRPC — is authenticated with a **scoped API key*
 
 ## How requests authenticate
 
-- **`X-API-Key`** — your API key. Send it on every request.
+- **`X-API-Key`** — your API key (format `kilo_<key>`). Send it on every request.
 - **`X-Organization-Id`** — the organization the request acts in. It must match the organization the key was created in. Some operations also accept the organization as an `organizationId` query parameter; the [reference](https://api.kiloiot.io/) shows which.
 
 All requests are over TLS.
