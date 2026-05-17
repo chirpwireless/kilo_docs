@@ -1,6 +1,6 @@
 # Examples
 
-These examples show how to authenticate. They deliberately do not reproduce the endpoint catalog — pick the operation you need from the interactive reference at [api.kiloiot.io](https://api.kiloiot.io/), which is the source of truth.
+These examples show how to authenticate. For the operations themselves, see the [API reference](https://api.kiloiot.io/).
 
 ## Authenticated REST request
 
@@ -12,11 +12,11 @@ curl -sS https://api.kiloiot.io/api/v2/devices \
   -H "X-Organization-Id: $KILO_ORG_ID"
 ```
 
-`GET /api/v2/devices` returns the devices the key is allowed to see (it requires a Devices **Read** scope). For any other operation — latest values, history, or managing a resource — find its exact path and required scope in the [reference portal](https://api.kiloiot.io/) and call it with the same two headers. Do not guess a path or assume an endpoint exists; the portal lists exactly what is available under REST and under gRPC.
+`GET /api/v2/devices` returns the devices the key is allowed to see (it requires a Devices **Read** scope). Use the same two headers for other calls; check the API reference for the path and the scope each one needs.
 
 ## gRPC
 
-gRPC uses the same `X-API-Key` and organization context. The [reference](https://api.kiloiot.io/#description/protocols) lists the available gRPC services and methods and offers an OpenAPI download as the public reference. If your integration needs native gRPC client definitions, use the materials provided with your on-premise / integration package or contact support. Not every REST operation has a gRPC equivalent, and vice-versa — confirm in the reference.
+gRPC uses the same headers. For native gRPC client definitions, use the materials provided with your on-premise or integration package.
 
 ## Good practice
 

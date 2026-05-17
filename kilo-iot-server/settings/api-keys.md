@@ -34,7 +34,7 @@ Store the key in a secrets manager or vault immediately. Once you close this dia
 
 Scopes control what the key can access. Each scope has a **Read** variant (retrieve data) and a **Write** variant (create, update, or delete). Grant only the minimum set your integration requires.
 
-The scopes offered in the creation dialog depend on your organization and plan, and the public API is the authoritative contract for which scope each operation needs — some operations (for example sensor **history**, which requires a `telemetry:read` scope) need a scope that is not in this table. Check the [API](../api/README.md) section and the reference it links to for the scope a given operation requires.
+Available scopes may depend on your organization and plan. For API calls, check the [API reference](../api/README.md) for the scope each endpoint requires.
 
 | Scope | Read grants access to | Write grants access to |
 |-------|----------------------|----------------------|
@@ -48,7 +48,7 @@ The scopes offered in the creation dialog depend on your organization and plan, 
 | **Sensors** | View sensor metric definitions and templates | Create and modify sensor templates |
 | **Users** | View user list and profile data | Invite, update, and remove users |
 
-**Principle of least privilege:** grant only what an integration uses — a script that reads device configuration needs only *Devices: Read*, not *Devices: Write* or any organization scope. The exact scope each operation requires (for example sensor history needs `telemetry:read`) is listed in the [API reference](../api/README.md) — confirm there rather than assuming. Scoping tightly limits the impact if a key is ever exposed.
+**Principle of least privilege:** grant only the scopes an integration uses — a script that reads device configuration needs only *Devices: Read*, not *Devices: Write* or any organization scope. Scoping tightly limits the impact if a key is ever exposed.
 
 ---
 

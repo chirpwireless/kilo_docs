@@ -2,7 +2,7 @@
 
 Kilo IoT Server exposes programmatic access so external systems can read and act on your deployment — backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications.
 
-The full, interactive API reference lives at **[api.kiloiot.io](https://api.kiloiot.io/)** (protocol notes at [api.kiloiot.io/#description/protocols](https://api.kiloiot.io/#description/protocols)). That portal is the source of truth for the exact operations available. This section explains what the API is, how to choose a protocol, how requests authenticate, and where to manage keys — it does not reproduce the reference.
+Use the **[API reference](https://api.kiloiot.io/)** for the complete list of endpoints, request fields, responses, and required scopes. This section covers what the API is for, how to choose a protocol, how requests authenticate, and where to manage keys.
 
 ## What's available
 
@@ -10,8 +10,6 @@ Two protocols are offered on the same secured endpoint:
 
 - **REST** — the primary path for most integrations. Standard HTTPS and JSON, usable from any HTTP client. Start here unless you have a specific reason not to. See [Public REST API](public-rest-api.md).
 - **gRPC** — the advanced / on-premise path. Choose REST unless you specifically need gRPC for an on-premise or typed service-to-service integration. See [gRPC API](grpc-api.md).
-
-The public reference includes REST endpoints **and** gRPC methods. Not every operation is exposed under both protocols — the reference portal is the single source of truth for which operations exist under each.
 
 ## Authentication
 
