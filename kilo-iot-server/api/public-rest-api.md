@@ -17,7 +17,7 @@ All traffic is over TLS. Treat the key like a credential — see [Authentication
 
 REST is the broad, primary surface. Subject to the scopes granted to the key, integrations can work across the platform — for example: read the account/user profile; list and manage devices, their sensors, and sensor templates; read sensor **history and last-seen** values; read and manage connections and connectors; read and manage dashboards and widgets; read organization, membership, and subscription data; and read and manage automation rules.
 
-The exact endpoints, parameters, response schemas, and the scope each one requires are defined in the [reference portal](https://api.kiloiot.io/) — it is the single source of truth and is not reproduced here. There is **no** device-command or downlink operation in the public API. The same capabilities are also offered over gRPC for [advanced / on-premise integrations](grpc-api.md); do not assume an operation exists under both protocols — the reference shows which.
+The exact endpoints, parameters, response schemas, and the scope each one requires are defined in the [reference portal](https://api.kiloiot.io/) — it is the single source of truth and is not reproduced here. There is **no** device-command or downlink operation in the public API. Selected capabilities are also available over gRPC for [advanced / on-premise integrations](grpc-api.md); do not assume an operation exists under both protocols — the reference shows which.
 
 ## Workflow
 
