@@ -30,3 +30,7 @@ Not every Kilo deployment begins with a gateway. LoRaWAN does. Direct integratio
 Each step builds on the previous one. In the LoRaWAN journey, the gateway provides network coverage, the device sends data through that gateway, the dashboard visualizes the data, and alert rules monitor it for conditions that need your attention.
 
 The [Your First Deployment](your-first-deployment.md) guide walks through this entire sequence.
+
+## After the basics
+
+Once you have live data, integrate Kilo with your own systems through the [API](../api/README.md) — REST for standard integrations, and gRPC for typed, service-to-service, and on-premise/industrial automation.

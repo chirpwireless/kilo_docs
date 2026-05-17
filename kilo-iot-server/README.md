@@ -85,7 +85,7 @@ All membership and access events within an organization are logged — user invi
 
 ### API access and integrations
 
-Secure, scoped API keys let you integrate the server with your existing systems. Each key can be limited to specific permissions, given an expiration date, and rotated on a schedule. Real-time data is available via Server-Sent Events (SSE) and WebSocket streams. Device commands can be sent programmatically via the API.
+Kilo IoT Server exposes a public API for backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications. **REST** is the primary path for standard HTTP integrations; a **gRPC** API is available on the same secured endpoint for strongly typed clients and service-to-service calls, including on-premise and industrial automation. Requests use scoped API keys (`X-API-Key`) that you can limit to specific permissions, expire, and rotate. Real-time data is available via Server-Sent Events (SSE) and WebSocket streams, and device commands can be sent programmatically. See the [API](api/README.md) section for protocols, authentication, and examples, and [API Keys](settings/api-keys.md) to create keys.
 
 ## Deployment options
 

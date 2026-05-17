@@ -7,7 +7,7 @@ Configure your Kilo IoT Server environment. The Settings section in the sidebar 
 - [Profile Settings](profile-settings.md) — Your name, avatar, password, and account management
 - [Subscription](subscription.md) — Plan tiers, billing, and SMS credit top-ups
 - [Locations](locations.md) — Define a site and sub-location hierarchy for organizing devices
-- [API Keys](api-keys.md) — Create scoped keys for external system integrations
+- [API Keys](api-keys.md) — Create scoped keys for external system integrations (the credentials for the [API](../api/README.md) section)
 
 ## What is NOT here
 
