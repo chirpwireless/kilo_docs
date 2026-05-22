@@ -28,7 +28,8 @@ The picker shows the available widget types.
 | **Last data** | Operators need the current state of a machine, process, or asset | Latest value received — running/stopped, fill level, current temperature |
 | **Chart** | You need to understand how a reading changed — compliance history, drift, or shift-to-shift comparison | Historical graph plus the live current reading |
 | **Image map** | Location context matters — which zone, floor, or component | Your own uploaded image — floor plan, machine diagram, or site layout — with live numeric readings pinned to locations |
-| **Map** | Asset or fleet position needs to be on a dashboard | Current GPS position on an interactive outdoor map, plus one selected sensor value on the marker |
+| **Map** | The live location of something that moves matters | Current GPS position on an interactive outdoor map, plus one selected sensor value on the marker |
+| **Digital building twin** | You want a 3D model of a building with sensors mapped to the objects they monitor | A built-in 3D editor that turns a facility into a live scene, recolored by sensor readings |
 
 ## Choosing a widget type
 
@@ -38,11 +39,13 @@ The picker shows the available widget types.
 
 **Image map** puts data in physical context. Upload a floor plan, site diagram, or equipment schematic, then pin live sensor readings to their exact locations. Use it when location matters — warehouse zone monitoring, building HVAC status by floor, server room rack temperatures.
 
-**Map** is for asset tracking. Place it on a dashboard to see where a GPS-equipped asset is right now, with one additional metric on the marker. Use it for fleet vehicles, field equipment, or any mobile asset. Date range controls let you review route history without leaving the dashboard.
+**Map** plots where a GPS-equipped device is right now on an interactive outdoor map, with one additional metric on the marker. Vehicles, field equipment, mobile tools, shipments, livestock — anything that moves and reports its location can go on it. Date range controls let you review route history without leaving the dashboard.
+
+**Digital building twin** is a 3D model of a facility, built and edited right on the dashboard. Draw the building, place objects from a catalog, and bind each one to a sensor — the model then recolors itself in real time, so an operator reads facility state spatially instead of from a list. See [Digital Building Twin](adding-widgets/digital-building-twin/README.md).
 
 ## Adding a widget
 
-For all four widget types, the setup flow follows the same pattern:
+For all five widget types, the setup flow follows the same pattern:
 
 1. Click the **plus button** or **Add widget** button to open the picker.
 2. Select a widget type.

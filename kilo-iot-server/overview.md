@@ -22,11 +22,11 @@ Below the header, a **General info** section displays summary cards that provide
 
 Cards you will see include:
 
-- **Devices** — Shows the total count of registered devices. Warning indicators appear if devices are not connected or not verified. The card links to the **Devices** page for the full list. An add button in the card corner opens the device registration flow directly.
+- **Devices** — Shows the total count of registered devices. A warning indicator appears when the platform cannot confirm a device is reporting — either it has never sent data, or it has not sent anything within its **Data sending interval** — the field where you tell the platform how often the device is configured to transmit (see [Registering Devices](devices/registering-devices.md)). The card links to the **Devices** page for the full list. An add button in the card corner opens the device registration flow directly.
 
 - **Gateways** — Shows the total count of registered gateways. Warning indicators flag gateways that are offline or inactive. The card links to the **Gateways** page. An add button opens the gateway registration flow.
 
-Each card serves as both a status indicator and a quick navigation shortcut. The warning counts (not connected, not verified for devices; offline, inactive for gateways) help you spot issues without opening a dedicated management page.
+Each card serves as both a status indicator and a quick navigation shortcut. The warning counts — devices that are not reporting, gateways that are offline or inactive — help you spot issues without opening a dedicated management page.
 
 ### Notifications
 

@@ -73,7 +73,7 @@ The Overview page — labeled **"My board"** in the interface — is your landin
 
 A horizontal row of cards across the top shows:
 
-- **Devices** — Total device count, with warnings if any devices are not connected or not verified. Clicking the card navigates to the Devices page.
+- **Devices** — Total device count, with a warning if any device has not reported within its expected Data sending interval (or has never reported at all). Clicking the card navigates to the Devices page.
 - **Gateways** — Total gateway count with online/offline indicators. Clicking the card navigates to the Gateways page.
 
 ### Recent alarms

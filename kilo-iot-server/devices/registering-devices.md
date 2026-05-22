@@ -72,7 +72,13 @@ If the decoded output doesn't match what you expect — for example, if fields a
 
 #### Data sending interval
 
-Set the expected reporting frequency for this device. If the server does not receive a message within the configured interval, the device is marked as offline in the device list. Choose a number and a unit: **minute**, **hour**, **day**, **week**, or **month**.
+A device transmits on a fixed schedule — every few minutes, once a day, once a month — and that schedule is configured **on the device itself**. It varies from one manufacturer to the next: some devices ship with the interval already set by the manufacturer, others require you to set it when you commission the device. Either way, the schedule is a property of the device. The **Data sending interval** field is where you tell the platform what that schedule is, so it knows when to expect data.
+
+Set it to match how the device is actually configured to transmit. If the device sends once per day, set this to **1 day**; once per month, set it to **1 month**. The field starts at **1 hour** by default only because the platform needs an initial value — it has no way to read the device's real schedule, so treat that default as a placeholder to replace.
+
+If no message arrives within the configured interval, the device is marked offline in the device list and flagged on the Overview page's Devices card. Setting the interval to match the device is what keeps a healthy, low-frequency device from being marked offline simply because it is quiet between scheduled reports.
+
+Choose a number and a unit: **minute**, **hour**, **day**, **week**, or **month**.
 
 #### For vehicle trackers (Tracker connector)
 

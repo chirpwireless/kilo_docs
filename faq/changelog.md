@@ -2,6 +2,166 @@
 
 <details>
 
+<summary>Scale Log. Release 3.4.0</summary>
+
+Kilo IoT Server 3.4.0 is the release the major-version jump from 3.1 to 3.4 exists for. At its center is the **Digital Building Twin** — a built-in 3D building editor that turns Kilo from a dashboard platform into a spatial sensor-management surface. Draw a building in 2D and 3D, populate it with a library of three-dimensional objects — desks, parking spots, smoke detectors, AC units, water tanks — bind any object to any sensor in your deployment, and watch live readings color the model in real time. Buildings sit on the real-world map, anchored to GPS coordinates. The rules engine ships a production-grade interactive debug mode in the same release, and dashboard authors gain two new single-value visualisations — Tube and Gauge — for the Last Data widget. [kiloiot.io](https://kiloiot.io)
+
+***
+
+#### What's in This Release
+
+* **Digital Building Twin** — A full 3D building editor inside the platform: 2D floor-plan drafting and 3D walk-through editing, multi-floor levels, a catalog of more than 60 ready-to-place 3D objects, DXF (CAD) import, GPS map-trace, sensor-to-object binding, and conditional coloring driven by live sensor values
+* **Rules Engine Debug Mode** — Step-through execution with breakpoints, variables panel, watch expressions, and error inspection for rule chains
+* **Tube Widget** — New display type for the Last Data widget — a vertical filled tube with configurable tick marks and conditional coloring
+* **Gauge Widget** — New display type for the Last Data widget — a horizontal track gauge with condition bands, a position marker, and metric icons
+
+***
+
+**Digital Building Twin**
+
+The Digital Building Twin is a complete 3D building editor that ships inside Kilo IoT Server. There is no separate CAD tool, no external Unity / Unreal exporter, no plugin install. Open a dashboard, add the Digital Building Twin widget, switch to edit mode, and you are drawing a digital replica of a real facility — warehouse, office floor, parking lot, retail store, server room, residential block, industrial site — in the same surface that runs your dashboards.
+
+**Build the model three different ways**
+
+The editor supports three entry paths into a building model, and they compose freely:
+
+* **Draw from scratch in 2D or 3D** — Start with an empty site and place walls, doors, windows, fences, and structural elements. The editor exposes both a 2D floor-plan view and a 3D walk-through view of the same scene, so you can sketch the geometry top-down and then verify it in three dimensions. Undo, redo, and a scene tree give you full editorial control.
+* **Import a DXF (CAD) floor plan** — Bring an existing architectural drawing into the editor as a DXF file. The importer parses the geometry, previews it before commit, and converts the line work into walls automatically. Facilities with existing architectural files don't have to be redrawn.
+* **Trace from the real-world map** — Open the GPS map-trace dialog and sketch a building outline directly onto an aerial map. The editor converts the traced outline into walls and anchors the building to the GPS coordinates of the trace, so the model sits on the planet exactly where the physical building does.
+
+A scene can carry **multiple floors**, switched via the Level selector — a multi-storey warehouse, an office tower, or a layered facility is one model with one set of bindings spread across floors.
+
+**Populate with the 3D object catalog**
+
+The editor ships with a built-in catalog of more than 60 ready-to-place 3D objects across five categories:
+
+* **Furniture** — sofas, armchairs, dining and office chairs, coffee and dining tables, office tables, beds (single, double, bunk), bookshelves, dressers, closets, wall shelves, columns, carpets, plants, trash bins
+* **Kitchen** — stove, fridge, counter, microwave
+* **Bathroom** — toilet, bathtub, sinks (vessel and wall-mount), faucets
+* **Appliance** — ceiling lamps, floor and table lamps, TVs, computers, washing machines, AC units, smoke detectors, water boilers, gas water heaters, water pumps and pump stations, water-softener tanks
+* **Outdoor** — fir trees and bushes, patio umbrellas, **parking spots**, vehicles, AC condensers (residential and rooftop), traffic barriers, gates, public trash bins and dumpsters
+
+Each object is a measured, properly-scaled 3D model. Many attach to walls or ceilings automatically. Drag from the catalog strip, drop onto the scene, position with the placement tool.
+
+**Bind any object to any sensor**
+
+This is what makes the Digital Building Twin a sensor-management surface rather than a 3D model viewer. Every scene element — a placed desk, a parking spot, a smoke detector, an AC unit, a wall of a room, an entire floor — can be bound to an IoT sensor from your deployment. Binding is configured in the Sensors panel: select a data source (any device), pick the sensor metric, then point-and-click the scene element(s) the sensor governs.
+
+Bindings are many-to-many in spirit: one sensor can color a parking spot AND its label; one desk can carry an occupancy binding AND a temperature binding. There is no artificial restriction on which node types accept a binding — bind a sensor to a room by binding it to that room's walls or floor zone, bind a sensor to a vehicle by binding it to the parked car model, bind a sensor to a piece of equipment by binding it to the catalog item that represents it.
+
+**Conditional coloring driven by live values**
+
+Every binding carries a set of **condition rules** — the same condition model used by the Last Data, Chart, and Image Map widgets:
+
+* **Number ranges** — color when the value falls in a range (e.g. 0–25 = green, 25–28 = amber, 28+ = red on a room temperature sensor)
+* **String match** — color when the value equals an exact string (e.g. `occupied` = red, `vacant` = green on a parking sensor)
+* **Boolean** — color when the value is true or false (e.g. door open = red, door closed = green)
+
+Conditions are priority-ordered: the first matching rule wins. A default color applies when no condition matches. As live values flow in, the model recolors in real time — operators see facility state at a glance: every red parking spot is occupied, every green desk is free, every amber AC unit is running outside its setpoint, every red water-softener tank is below threshold.
+
+**Live values overlaid in the scene**
+
+Sensors can also be **pinned** to a specific point in the scene — a drop-pin marker that renders the binding's current value as a label, anchored to whichever floor the pin was placed on. Markers can be toggled globally for clean screenshots and toggled back for operations.
+
+**GPS anchoring — the spatial base**
+
+Buildings can be anchored to GPS coordinates by tracing them on the real-world map at build time, and individual scene points can be anchored to a lat/lng manually from the bindings panel. Together, these anchors create the spatial base for location-aware IoT workflows.
+
+**Where to find it**
+
+Add a Digital Building Twin to any dashboard via the standard Add Widget flow, then open the widget's editor to draw, populate, and bind. Like every other widget, it lives in the dashboard's folder hierarchy, follows organization-level sharing and ABAC permissions, and resizes on the dashboard grid.
+
+[→ Digital Building Twin](../kilo-iot-server/dashboards/adding-widgets/digital-building-twin/README.md)
+
+***
+
+**Rules Engine Debug Mode**
+
+The visual rules editor now supports interactive debugging. Activate debug mode from the top bar, set the input context for the run, then execute the rule chain step by step against your test payload.
+
+Controls cover the full inspection surface:
+
+* **Run, Step over (F9), Step into (F8)** — Execute the rule, advance one node, or descend into a node's internals to inspect its inputs, scripts, and outputs.
+* **Run ignore breakpoints (F11)** — Run the full chain end to end without pausing.
+* **Stop (F12)** — End the debug session.
+* **Breakpoints** — Click any node on the canvas to set a breakpoint. Conditional breakpoints with an expression fire only when their condition evaluates true.
+* **Variables panel** — Inspect every variable in the current execution, with a Changes section highlighting what mutated since the last step. Add, edit, or delete variables mid-execution to probe alternative branches.
+* **Watch expressions** — Add expressions that are re-evaluated automatically at each step.
+* **Error inspection** — When a node fails, an error modal surfaces the node name and the underlying error, with a **Go to…** action that focuses the canvas on the failing node.
+
+Debug mode lets you skip or mock side effects during inspection; if you choose Execute, the real handler runs. Use it to validate logic against representative payloads before building and deploying the rule.
+
+[→ Debugging Rules](../kilo-iot-server/rules-engine/debugging-rules.md)
+
+***
+
+**Tube Widget**
+
+The Last Data widget gains a **Tube** display type — a vertical filled-tube visualisation that maps the current metric value against a configured range. It suits any reading an operator can picture as a level, whether the value filling up or draining down is what matters — storage-tank levels, fuel reserves, water cisterns, pressure indicators, and beyond.
+
+Tube widgets carry the same configuration surface as the rest of the Last Data widget family: multiple data sources per tile, per-metric conditional coloring, custom units, configurable tick-mark density, and an optional legend. Color conditions are priority-ordered — the first matching rule determines the fill color.
+
+[→ Last Data Widget](../kilo-iot-server/dashboards/adding-widgets/last-data-widget.md)
+
+***
+
+**Gauge Widget**
+
+A second new Last Data display type — **Gauge** — renders the current value on a horizontal track, with each condition shown as a color-coded band and a marker that slides to the live reading. Each metric carries an icon that appears alongside the gauge for at-a-glance identification.
+
+Gauges fit single-value dashboards where the threshold matters as much as the reading — temperature ranges in cold storage, RPM bands on industrial equipment, battery levels on field assets, capacity utilisation on connected machinery, and signal-strength indicators for remote installations.
+
+Tube and Gauge are added to the same widget-type selector that previously offered Number, Doughnut, and Pie — choose them from the standard Last Data widget configuration flow.
+
+[→ Last Data Widget](../kilo-iot-server/dashboards/adding-widgets/last-data-widget.md)
+
+</details>
+
+<details>
+
+<summary>Scale Log. Maintenance — Releases 3.2.0 and 3.3.0</summary>
+
+A maintenance window across 3.2.0 and 3.3.0 covering operational reliability of the data-ingestion path and access-control correctness in the management console.
+
+***
+
+#### What's in This Release
+
+* **Connectors sidebar access fix** — The Connectors entry no longer appears in the sidebar for users without permission on the resource
+* **Overview surfaces alarm activity** — The Overview page now lists active alarms and links directly to the Alarm application
+* **Transport layer reliability** — Fail-fast schema readiness and rolling-restart-safe session handling on the data-ingestion transport
+
+***
+
+**Connectors Sidebar Access Fix**
+
+A correctness fix in the access-control rules governing the management console: users without permission on the Connectors resource no longer see the Connectors entry in the sidebar. Visibility of the entry now matches the underlying authorization decision — consistent with every other ABAC-gated page in the platform.
+
+[→ Users and Permissions](../kilo-iot-server/account/users-and-permissions.md)
+
+***
+
+**Overview Surfaces Alarm Activity**
+
+The Overview page receives a dedicated alarm panel that lists active alarms in the current organization and links directly into the Alarm application. Operators no longer need to leave the landing surface to triage incoming alerts — the most-active items are surfaced on entry to the platform.
+
+[→ Inbox and Resolution](../kilo-iot-server/alarm/inbox-and-resolution.md)
+
+***
+
+**Transport Layer Reliability**
+
+Two targeted hardening changes to the data-ingestion transport:
+
+* **Fail-fast schema readiness** — The transport no longer starts in a degraded state when its persistence schema is unavailable at boot. Schema-readiness errors are now surfaced as fast-fail startup errors with the original cause logged, preventing silent failures that previously produced opaque downstream errors at runtime.
+* **Rolling-restart safety** — Each transport instance now claims a unique session identity on the messaging broker and explicitly clears its prior session on connect. Rolling restarts of the broker — and rolling redeploys of the transport itself — proceed without stuck subscriptions or duplicate-client rejections.
+
+Together these changes remove a class of incidents where downstream services were unable to look up device connectivity state because the transport had started in a degraded mode without surfacing the cause.
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 3.1.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.1.0.png" alt=""><figcaption></figcaption></figure>

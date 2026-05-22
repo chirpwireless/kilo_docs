@@ -65,6 +65,14 @@ The entire pipeline — from message queues to caching layers to query storage �
 - The architecture is built to scale as your deployment grows
 - Data is partitioned by time for efficient retention and compressed for long-term storage
 
+### Digital Building Twin — your facility modeled in 3D
+
+The Digital Building Twin is a 3D model of a real facility, built directly into a dashboard. Draw the building yourself — walls, doors, windows, multiple floors — or import an existing CAD floor plan, or trace the outline from an aerial map. Furnish it from a catalog of more than 60 ready-made 3D objects: desks, racks, parking spots, AC units, pumps, vehicles, gates. Then bind any object to a sensor in your deployment and define what its colors mean.
+
+Once it is wired, the model becomes a live operational view. A cold store shades amber as it drifts out of range. An occupied parking bay turns red while a free one stays clear. A pump turns red the moment it faults. Instead of mapping a row in a table to a place in their head, an operator looks at the building and sees exactly where attention is needed. Occupancy, parking availability, equipment health, climate faults, zone conditions — whatever your sensors report, it shows up where it physically belongs.
+
+The building can also be anchored to real GPS coordinates, giving the model a true position in the world. See [Digital Building Twin](dashboards/adding-widgets/digital-building-twin/README.md) for the full guide.
+
 ### Maps, GPS tracking, and spatial views
 
 Place devices on 2D maps for spatial context. For GPS-equipped trackers, review full location history with playback, coordinates tables, and route visualization.
