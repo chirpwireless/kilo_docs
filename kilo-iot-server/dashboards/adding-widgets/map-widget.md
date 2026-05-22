@@ -4,7 +4,7 @@ The Map widget places a GPS-reporting asset on a real outdoor interactive map. T
 
 Any device that transmits GPS coordinates works — a vehicle tracker via the Tracker connector, a LoRaWAN GPS tag via LNS, or an MQTT-connected field device. The widget detects location from sensor fields named `lat`/`latitude` and `lon`/`longitude`/`lng`. If those fields exist on the device, it appears on the map.
 
-This is different from the [Image Map widget](image-map-widget.md), which works with any static 2D image you upload. The Map widget is for assets that move — vehicles, mobile equipment, field devices.
+This is different from the [Image Widget](image-widget.md), which works with any static image you upload. The Map widget is for assets that move — vehicles, mobile equipment, field devices.
 
 Place the Map widget on an operations dashboard alongside Last data and Chart widgets to give dispatchers and supervisors at-a-glance situational awareness: asset location, current metric status, and recent route history, all in one view. Date range controls let operators review route history without navigating away from the dashboard.
 

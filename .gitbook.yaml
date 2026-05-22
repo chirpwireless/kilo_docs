@@ -50,3 +50,4 @@ redirects:
   kilo-iot-server/dashboards/maps-and-tracking: kilo-iot-server/dashboards/adding-widgets/map-widget.md
   kilo-iot-server/dashboards/maps-and-tracking/gps-tracking: kilo-iot-server/dashboards/adding-widgets/map-widget.md
   kilo-iot-server/dashboards/maps-and-tracking/device-maps: kilo-iot-server/dashboards/adding-widgets/map-widget.md
+  kilo-iot-server/dashboards/adding-widgets/image-map-widget: kilo-iot-server/dashboards/adding-widgets/image-widget.md

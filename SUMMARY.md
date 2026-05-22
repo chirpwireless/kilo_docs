@@ -19,7 +19,7 @@
       * [Tube Display](kilo-iot-server/dashboards/adding-widgets/last-data-widget/tube.md)
       * [Gauge Display](kilo-iot-server/dashboards/adding-widgets/last-data-widget/gauge.md)
     * [Chart Widget](kilo-iot-server/dashboards/adding-widgets/chart-widget.md)
-    * [Image Map Widget](kilo-iot-server/dashboards/adding-widgets/image-map-widget.md)
+    * [Image Widget](kilo-iot-server/dashboards/adding-widgets/image-widget.md)
     * [Map Widget](kilo-iot-server/dashboards/adding-widgets/map-widget.md)
     * [Digital Building Twin](kilo-iot-server/dashboards/adding-widgets/digital-building-twin/README.md)
       * [Editor Tour](kilo-iot-server/dashboards/adding-widgets/digital-building-twin/editor-tour.md)

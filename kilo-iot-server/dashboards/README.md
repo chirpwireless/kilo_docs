@@ -25,5 +25,5 @@ For any of these scenarios, collapse the sidebar to give the dashboard full scre
 ## In this section
 
 - [Creating Dashboards](creating-dashboards.md) — Create a dashboard with an icon, name, folder, and description. Edit metadata and delete dashboards.
-- [Adding Widgets](adding-widgets.md) — Widget types, edit mode, and per-widget configuration guides for Last data, Chart, Image map, Map, and Conditions.
+- [Adding Widgets](adding-widgets.md) — Widget types, edit mode, and per-widget configuration guides for Last data, Chart, Image, Map, and Conditions.
 - [Organizing Dashboards](organizing-dashboards.md) — Create folders, reorder dashboards, and structure your views for multi-site management.

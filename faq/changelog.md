@@ -51,7 +51,7 @@ Bindings are many-to-many in spirit: one sensor can color a parking spot AND its
 
 **Conditional coloring driven by live values**
 
-Every binding carries a set of **condition rules** — the same condition model used by the Last Data, Chart, and Image Map widgets:
+Every binding carries a set of **condition rules** — the same condition model used by the Last Data, Chart, and Image widgets:
 
 * **Number ranges** — color when the value falls in a range (e.g. 0–25 = green, 25–28 = amber, 28+ = red on a room temperature sensor)
 * **String match** — color when the value equals an exact string (e.g. `occupied` = red, `vacant` = green on a parking sensor)
@@ -328,7 +328,7 @@ Kilo IoT Server 3.0.0 delivers a ground-up rearchitecture of the platform's core
 
 * **Modular Connectivity Framework** — Pluggable protocol adapters with LoRaWAN and OBD2/CAN vehicle tracker support at launch
 * **Device Lifecycle and Data Normalization** — Digital Twin device model with inline payload mapping and sensor template libraries
-* **Visualization and Monitoring** — Operator-configurable widgets with threshold-driven formatting and a new facility Image Map
+* **Visualization and Monitoring** — Operator-configurable widgets with threshold-driven formatting and a new facility Image Widget
 * **Production Automation Engine** — BPMN workflow designer with CEL expressions, artifact versioning, and managed deployment
 * **Operational Alerting and Escalation** — Severity-based alarm routing with escalation chains and mobile push delivery
 * **Multi-Tenant Governance and Compliance** — Organization isolation with Attribute-Based Access Control and immutable audit logs
@@ -409,11 +409,11 @@ Widgets no longer present data with static styling. Operators define per-metric 
 
 Conditions support numeric ranges, string matching, and boolean evaluation. Multiple conditions per metric are evaluated in priority order — the first match determines the visual state. Operators configure custom units, iconography, and color assignments per metric.
 
-**Facility Image Map (New)**
+**Facility Image Widget (New)**
 
 Deploy a site floor plan or facility layout as an interactive monitoring surface. Position sensor indicators at precise coordinates on the image. Each indicator displays live telemetry and applies conditional formatting in real time — providing immediate spatial awareness of operational conditions across an entire facility.
 
-The Image Map supports multiple layers for multi-floor buildings or segmented facilities. Switch between floors to maintain full situational awareness from a single dashboard widget.
+The Image Widget supports multiple layers for multi-floor buildings or segmented facilities. Switch between floors to maintain full situational awareness from a single dashboard widget.
 
 **Real-Time Value Display**
 

@@ -49,7 +49,7 @@ So a cold-store widget shows green while the reading sits in the Compliant band 
 
 ## Thresholds vs conditions
 
-The Chart widget uses **threshold bands** — colored ranges drawn on the historical graph. The full conditions system — named rules, priority order, per-metric defaults — belongs to the Last Data and Image Map widgets. See [Conditions](conditions.md).
+The Chart widget uses **threshold bands** — colored ranges drawn on the historical graph. The full conditions system — named rules, priority order, per-metric defaults — belongs to the Last Data and Image widgets. See [Conditions](conditions.md).
 
 ## Worked examples
 
@@ -67,5 +67,5 @@ A Chart suits any reading whose history carries meaning — pressure, flow, humi
 ## See also
 
 - [Last Data Widget](last-data-widget.md) — The current value on its own, when you do not need the history
-- [Conditions](conditions.md) — Per-metric color rules for the Last Data and Image Map widgets
+- [Conditions](conditions.md) — Per-metric color rules for the Last Data and Image widgets
 - [Adding Widgets](../adding-widgets.md) — Edit mode and the widget picker

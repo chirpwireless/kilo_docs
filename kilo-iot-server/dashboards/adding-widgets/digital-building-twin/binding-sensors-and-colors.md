@@ -50,7 +50,7 @@ A binding's editor carries the color rules. Two things control what an object sh
     * **String** — a single **Value**. The condition matches when the reading equals it exactly.
     * **Boolean** — a **True** / **False** setting. The condition matches when the reading matches it.
 
-Conditions are evaluated in order, and the **first one that matches wins**. If none match, the object shows the default color. This is the same conditional-color system used by the Last Data, Chart, and Image Map widgets — see [Conditions](../conditions.md) for the full reference.
+Conditions are evaluated in order, and the **first one that matches wins**. If none match, the object shows the default color. This is the same conditional-color system used by the Last Data, Chart, and Image widgets — see [Conditions](../conditions.md) for the full reference.
 
 ## Step 5 — Test it
 
