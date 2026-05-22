@@ -25,7 +25,7 @@ Here is a full setup for one real case — a ring that shows an office's tempera
 5. In the row, set **Data type** to **Telemetry**, choose the temperature reading under **Device metric**, and pick an **Icon**.
 
    > **Can't find your metric?** The **Device metric** list only offers numeric metrics. If a reading you expect is missing, its metric **Type** is set to String or Boolean instead of Integer or Float. Open **Metric Templates** (the **Metrics Templates** button on a connection's Connected Devices list), find the metric on the **Metrics** tab, and set its **Type** to Integer or Float — provided the device actually reports a number. See [Metric Templates](../../../devices/metric-templates.md).
-6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the colour the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), because a house room realistically swings between -5 °C and 40 °C, enter **From** -5 (the coldest you would expect) and **To** 40 (the hottest), and pick a **Color**. Then you can enter the colour levels. For example:
+6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), because a house room realistically swings between -5 °C and 40 °C, enter **From** -5 (the coldest you would expect) and **To** 40 (the hottest), and pick a **Color**. Then you can enter the color levels. For example:
 
    Working up from the coldest:
    - "Too cold" — **From** -5, **To** 15 — red
@@ -38,7 +38,7 @@ Here is a full setup for one real case — a ring that shows an office's tempera
 7. Click **Next** to open the **Appearance** tab.
 8. Enter a **Widget name** — for example "Office temperature" — and an optional **Description**.
 9. Under **Widget type**, choose **Doughnut**. A **Value range** section appears for the metric.
-10. Set **Min value** to **-5** and **Max value** to **40** — the window you chose for a house room. The ring fills to show where the current temperature sits across that -5–40 °C span, and the condition the reading falls in colours it.
+10. Set **Min value** to **-5** and **Max value** to **40** — the window you chose for a house room. The ring fills to show where the current temperature sits across that -5–40 °C span, and the condition the reading falls in colors it.
 11. Switch on **Display data legend** if useful, then click **Save**.
 
 The ring shows the temperature as a position in the chosen range and turns green only inside the comfortable band. The same steps fit any reading with a sensible floor and ceiling — only the device, the **Min value**/**Max value**, and the conditions change. A Doughnut earns its place when "how far through the range" is the question; for a temperature you simply want to read off, a Number or Gauge is often the more natural display.
@@ -49,7 +49,7 @@ The ring shows the temperature as a position in the chosen range and turns green
 A refrigerator uses the *same kind* of temperature sensor as the office above, yet every number is different — because the right window depends on what you are measuring. A fridge's safe band is roughly 0–5 °C, so you set the scale a little wider than that band, so a fridge that fails and warms up still shows on the ring: **Min value** **-5**, **Max value** **15**. Then build three conditions: "Too cold" — From -5, To 0 — blue; "Safe" — From 0, To 5 — green; "Too warm" — From 5, To 15 — red. Identical hardware, identical steps — only the window and the bands change, because "good" means something completely different in a fridge than in an office. That is the heart of conditions: you decide what each reading means in its own context.
 
 **A fill level**
-A Doughnut is a natural fit for a tank or a battery. A level sensor in a 5,000-litre tank reports the contents in litres, so 0 L is an empty tank and 5,000 L is full — **Min value** 0, **Max value** 5000 — with conditions green From 3000 To 5000, yellow From 1000 To 3000, red From 0 To 1000. The ring empties visibly as the tank is drawn down.
+A Doughnut is a natural fit for a tank or a battery. A level sensor in a 5,000-liter tank reports the contents in liters, so 0 L is an empty tank and 5,000 L is full — **Min value** 0, **Max value** 5000 — with conditions green From 3000 To 5000, yellow From 1000 To 3000, red From 0 To 1000. The ring empties visibly as the tank is drawn down.
 
 ## See also
 

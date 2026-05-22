@@ -27,9 +27,9 @@ Here is a full setup for one real case — a tile that shows at a glance whether
 5. In the row, set **Data type** to **Telemetry**, choose the running-state reading under **Device metric**, and pick an **Icon**.
 
    > **Can't find your metric?** The **Device metric** list only offers numeric metrics. If a reading you expect is missing, its metric **Type** is set to String or Boolean instead of Integer or Float. Open **Metric Templates** (the **Metrics Templates** button on a connection's Connected Devices list), find the metric on the **Metrics** tab, and set its **Type** to Integer or Float — provided the device actually reports a number. See [Metric Templates](../../../devices/metric-templates.md).
-6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the colour the reading falls back to whenever none of your conditions match the current value — then for each state click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), because the pump only ever reports 0 or 1, set **From** and **To** to the same number — the value that condition should catch — and pick a **Color**. Then you can enter the two states. For example:
+6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each state click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), because the pump only ever reports 0 or 1, set **From** and **To** to the same number — the value that condition should catch — and pick a **Color**. Then you can enter the two states. For example:
    - "Running" — **From** 1, **To** 1 — blue
-   - "Stopped" — **From** 0, **To** 0 — grey
+   - "Stopped" — **From** 0, **To** 0 — gray
 
    Click **Save** to close the modal.
 7. Click **Next** to move to the **Appearance** tab.
@@ -37,15 +37,15 @@ Here is a full setup for one real case — a tile that shows at a glance whether
 9. Under **Widget type**, choose **Number**. No **Value range** or **Tick marks** fields appear — Number has no scale, because a status reading like 0 or 1 has nothing to fill; the value itself is the message.
 10. Switch on **Display data legend** if you want a labeled legend, then click **Save**.
 
-The tile still shows the number — `1` or `0` — and the condition colour paints it blue when the pump is running and grey when it is stopped, so the state reads at a glance without anyone interpreting the digit. Line up one Number tile per pump and a supervisor takes in the whole fleet at once. The same setup fits any status reading — a valve's open/closed flag, a door contact, a leak sensor — by changing the device and the two conditions.
+The tile still shows the number — `1` or `0` — and the condition color paints it blue when the pump is running and gray when it is stopped, so the state reads at a glance without anyone interpreting the digit. Line up one Number tile per pump and a supervisor takes in the whole fleet at once. The same setup fits any status reading — a valve's open/closed flag, a door contact, a leak sensor — by changing the device and the two conditions.
 
 ## Worked examples
 
 **An exact measured value**
-When the figure itself matters, the Number tile shows it in full. A cold-storage probe reporting in °C needs no scale — the conditions are simply the temperature thresholds that matter. Take three: "Compliant" — From 2, To 8 — green; "Warning" — From 8, To 12 — amber; "Breach" — From 12, To 30 — red (the To value just sits above any temperature the rack would realistically reach). An operator sees the exact reading — `6.4 °C` — and the colour delivers the compliance verdict at the same time. The number is never hidden; the colour is meaning added on top of it. To confirm the rack held temperature across a whole shift, use the [Chart widget](../chart-widget.md).
+When the figure itself matters, the Number tile shows it in full. A cold-storage probe reporting in °C needs no scale — the conditions are simply the temperature thresholds that matter. Take three: "Compliant" — From 2, To 8 — green; "Warning" — From 8, To 12 — amber; "Breach" — From 12, To 30 — red (the To value just sits above any temperature the rack would realistically reach). An operator sees the exact reading — `6.4 °C` — and the color delivers the compliance verdict at the same time. The number is never hidden; the color is meaning added on top of it. To confirm the rack held temperature across a whole shift, use the [Chart widget](../chart-widget.md).
 
 **A multi-metric tile**
-A Number widget can carry several readings at once. Add three metrics from one multi-sensor device — temperature, humidity, CO2 — and each keeps its own icon, conditions, and colour, sitting side by side as one compact panel for the zone.
+A Number widget can carry several readings at once. Add three metrics from one multi-sensor device — temperature, humidity, CO2 — and each keeps its own icon, conditions, and color, sitting side by side as one compact panel for the zone.
 
 ## See also
 

@@ -16,7 +16,7 @@ The Gauge has no fixed "good" end; your condition bands decide what each end of 
 
 ## Configure a Gauge display
 
-Here is a full setup for one real case — watching a sump pit so a pump failure is caught before the basement floods. The pump keeps the water low; the pit is about 100 cm deep, and a level sensor reports the water level in centimetres — so the reading runs from 0 (a dry pit floor) to 100 (water at the overflow point). That 0–100 is the track's scale, and each condition paints one stretch of it. This is one example: a Gauge suits any reading measured against thresholds — only the device and the band edges change.
+Here is a full setup for one real case — watching a sump pit so a pump failure is caught before the basement floods. The pump keeps the water low; the pit is about 100 cm deep, and a level sensor reports the water level in centimeters — so the reading runs from 0 (a dry pit floor) to 100 (water at the overflow point). That 0–100 is the track's scale, and each condition paints one stretch of it. This is one example: a Gauge suits any reading measured against thresholds — only the device and the band edges change.
 
 1. Open the dashboard in edit mode and click **Last data** in the widget picker. The settings panel opens on the **Datasource** tab, with no data sources yet.
 2. Click **Add datasource**. A **Datasource 1** block appears.
@@ -25,14 +25,14 @@ Here is a full setup for one real case — watching a sump pit so a pump failure
 5. In the row, set **Data type** to **Telemetry**, choose the water-level reading under **Device metric**, and pick an **Icon**.
 
    > **Can't find your metric?** The **Device metric** list only offers numeric metrics. If a reading you expect is missing, its metric **Type** is set to String or Boolean instead of Integer or Float. Open **Metric Templates** (the **Metrics Templates** button on a connection's Connected Devices list), find the metric on the **Metrics** tab, and set its **Type** to Integer or Float — provided the device actually reports a number. See [Metric Templates](../../../devices/metric-templates.md).
-6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the colour the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, separate from the metric row's), because the pit is 100 cm deep, enter **From** 0 (the dry floor) and **To** 100 (the overflow point), and pick a **Color**. Then you can enter the colour levels. For example:
+6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, separate from the metric row's), because the pit is 100 cm deep, enter **From** 0 (the dry floor) and **To** 100 (the overflow point), and pick a **Color**. Then you can enter the color levels. For example:
 
    Working up from the dry floor:
    - "Normal" — **From** 0, **To** 30 — green
    - "Rising" — **From** 30, **To** 60 — yellow
    - "Critical" — **From** 60, **To** 100 — red
 
-   On a Gauge these conditions render as coloured bands along the track. Click **Save** to close the modal.
+   On a Gauge these conditions render as colored bands along the track. Click **Save** to close the modal.
 7. Click **Next** to open the **Appearance** tab.
 8. Enter a **Widget name** — for example "Sump pit level" — and an optional **Description**.
 9. Under **Widget type**, choose **Gauge**. A **Value range** section appears for the metric.
