@@ -2,19 +2,22 @@
 
 <details>
 
-<summary>Scale Log. Release 3.4.0</summary>
+<summary>Scale Log. Releases 3.2.0, 3.3.0, 3.4.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.4.0.jpg" alt=""><figcaption></figcaption></figure>
 
-Kilo IoT Server 3.4.0 is the release the major-version jump from 3.1 to 3.4 exists for, and it lands with the feature the whole platform has been building toward: the **Digital Building Twin** — a live IoT digital twin of your real-world property. Bind any sensor in your deployment to any object on a 3D scale model — a parking bay in the lot, a boom barrier at the entrance, an entrance gate, a dumpster on the loading dock, a smoke detector in the server room, an AC unit on the roof, a water tank in the basement — and the scene recolors live as readings flow. Smart-parking lots, perimeter security, waste management, multi-floor building interiors: one model, one set of sensor bindings, one spatial surface to operate from. Draw the property in 2D and 3D, import an existing DXF (CAD) plan, or trace its outline onto an aerial map and anchor everything to its real GPS coordinates. Alongside the Digital Building Twin, dashboard authors gain two new single-value visualisations for the Last Data widget — Tube and Gauge. [kiloiot.io](https://kiloiot.io)
+Kilo IoT Server 3.4.0 is the release the major-version jump from 3.1 to 3.4 exists for, and it lands with the feature the whole platform has been building toward: the **Digital Building Twin** — a live IoT digital twin of your real-world property. Bind any sensor in your deployment to any object on a 3D scale model — a parking bay in the lot, a boom barrier at the entrance, an entrance gate, a dumpster on the loading dock, a smoke detector in the server room, an AC unit on the roof, a water tank in the basement — and the scene recolors live as readings flow. Smart-parking lots, perimeter security, waste management, multi-floor building interiors: one model, one set of sensor bindings, one spatial surface to operate from. Draw the property in 2D and 3D, or trace its outline onto an aerial map and anchor everything to its real GPS coordinates. Alongside the Digital Building Twin, dashboard authors gain two new single-value visualisations for the Last Data widget — Tube and Gauge. 3.2.0 and 3.3.0 shipped along the way as small maintenance releases; their notes are folded into this entry. [kiloiot.io](https://kiloiot.io)
 
 ***
 
 #### What's in This Release
 
-* **Digital Building Twin** — Bind any sensor in your deployment to any object on a live 3D model of your real-world property, and watch the scene recolor as readings flow. Smart-parking bays, boom barriers, entrance gates, dumpsters, AC units, smoke detectors, water tanks, desks — anything in the 60+ object catalog. Multi-floor buildings and outdoor lots in one scene; draw in 2D and 3D, import a DXF (CAD) plan, or trace from an aerial map; the whole property anchored to real GPS coordinates.
+* **Digital Building Twin** — Bind any sensor in your deployment to any object on a live 3D model of your real-world property, and watch the scene recolor as readings flow. Smart-parking bays, boom barriers, entrance gates, dumpsters, AC units, smoke detectors, water tanks, desks — anything in the 60+ object catalog. Multi-floor buildings and outdoor lots in one scene; draw in 2D and 3D, or trace from an aerial map; the whole property anchored to real GPS coordinates.
 * **Tube Widget** — New display type for the Last Data widget — a vertical filled tube with configurable tick marks and conditional coloring
 * **Gauge Widget** — New display type for the Last Data widget — a horizontal track gauge with condition bands, a position marker, and metric icons
+* **Connectors sidebar access fix** — The Connectors entry no longer appears in the sidebar for users without permission on the resource
+* **Overview surfaces alarm activity** — The Overview page now lists active alarms and links directly to the Alarm application
+* **Transport layer reliability** — Fail-fast schema readiness and rolling-restart-safe session handling on the data-ingestion transport
 
 ***
 
@@ -44,12 +47,11 @@ Conditions are priority-ordered: the first matching rule wins. A default color a
 
 Sensors can also be **pinned** to a specific point in the scene — a drop-pin marker that renders the binding's current value as a label, anchored to whichever floor the pin was placed on. Markers can be toggled globally for clean screenshots and toggled back for operations.
 
-**Build the model three different ways**
+**Build the model two ways**
 
-There are three entry paths into a property model, and they compose freely:
+There are two entry paths into a property model, and they compose freely:
 
 * **Draw from scratch in 2D or 3D** — Start with an empty site and place walls, doors, windows, fences, and structural elements. The editor exposes both a 2D floor-plan view and a 3D walk-through view of the same scene, so you can sketch the geometry top-down and then verify it in three dimensions. Undo, redo, and a scene tree give you full editorial control.
-* **Import a DXF (CAD) floor plan** — Bring an existing architectural drawing into the editor as a DXF file. The importer parses the geometry, previews it before commit, and converts the line work into walls automatically. Facilities with existing architectural files don't have to be redrawn.
 * **Trace from the real-world map** — Open the GPS map-trace dialog and sketch a building outline directly onto an aerial map. The editor converts the traced outline into walls and anchors the building to the GPS coordinates of the trace, so the model sits on the planet exactly where the physical property does.
 
 A scene can carry **multiple floors**, switched via the Level selector — a multi-storey warehouse, an office tower, an underground car park stacked beneath a building, or a layered facility is one model with one set of bindings spread across floors.
@@ -111,22 +113,6 @@ Gauges fit single-value dashboards where the threshold matters as much as the re
 Tube and Gauge are added to the same widget-type selector that previously offered Number, Doughnut, and Pie — choose them from the standard Last Data widget configuration flow.
 
 [→ Last Data Widget](../kilo-iot-server/dashboards/adding-widgets/last-data-widget.md)
-
-</details>
-
-<details>
-
-<summary>Scale Log. Maintenance — Releases 3.2.0 and 3.3.0</summary>
-
-A maintenance window across 3.2.0 and 3.3.0 covering operational reliability of the data-ingestion path and access-control correctness in the management console.
-
-***
-
-#### What's in This Release
-
-* **Connectors sidebar access fix** — The Connectors entry no longer appears in the sidebar for users without permission on the resource
-* **Overview surfaces alarm activity** — The Overview page now lists active alarms and links directly to the Alarm application
-* **Transport layer reliability** — Fail-fast schema readiness and rolling-restart-safe session handling on the data-ingestion transport
 
 ***
 
