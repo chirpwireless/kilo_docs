@@ -4,14 +4,15 @@
 
 <summary>Scale Log. Release 3.4.0</summary>
 
-Kilo IoT Server 3.4.0 is the release the major-version jump from 3.1 to 3.4 exists for. At its center is the **Digital Building Twin** — a built-in 3D building editor that turns Kilo from a dashboard platform into a spatial sensor-management surface. Draw a building in 2D and 3D, populate it with a library of three-dimensional objects — desks, parking spots, smoke detectors, AC units, water tanks — bind any object to any sensor in your deployment, and watch live readings color the model in real time. Buildings sit on the real-world map, anchored to GPS coordinates. The rules engine ships a production-grade interactive debug mode in the same release, and dashboard authors gain two new single-value visualisations — Tube and Gauge — for the Last Data widget. [kiloiot.io](https://kiloiot.io)
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.4.0.jpg" alt=""><figcaption></figcaption></figure>
+
+Kilo IoT Server 3.4.0 is the release the major-version jump from 3.1 to 3.4 exists for, and it lands with the feature the whole platform has been building toward: the **Digital Building Twin** — a live IoT digital twin of your real-world property. Bind any sensor in your deployment to any object on a 3D scale model — a parking bay in the lot, a boom barrier at the entrance, an entrance gate, a dumpster on the loading dock, a smoke detector in the server room, an AC unit on the roof, a water tank in the basement — and the scene recolors live as readings flow. Smart-parking lots, perimeter security, waste management, multi-floor building interiors: one model, one set of sensor bindings, one spatial surface to operate from. Draw the property in 2D and 3D, import an existing DXF (CAD) plan, or trace its outline onto an aerial map and anchor everything to its real GPS coordinates. Alongside the Digital Building Twin, dashboard authors gain two new single-value visualisations for the Last Data widget — Tube and Gauge. [kiloiot.io](https://kiloiot.io)
 
 ***
 
 #### What's in This Release
 
-* **Digital Building Twin** — A full 3D building editor inside the platform: 2D floor-plan drafting and 3D walk-through editing, multi-floor levels, a catalog of more than 60 ready-to-place 3D objects, DXF (CAD) import, GPS map-trace, sensor-to-object binding, and conditional coloring driven by live sensor values
-* **Rules Engine Debug Mode** — Step-through execution with breakpoints, variables panel, watch expressions, and error inspection for rule chains
+* **Digital Building Twin** — Bind any sensor in your deployment to any object on a live 3D model of your real-world property, and watch the scene recolor as readings flow. Smart-parking bays, boom barriers, entrance gates, dumpsters, AC units, smoke detectors, water tanks, desks — anything in the 60+ object catalog. Multi-floor buildings and outdoor lots in one scene; draw in 2D and 3D, import a DXF (CAD) plan, or trace from an aerial map; the whole property anchored to real GPS coordinates.
 * **Tube Widget** — New display type for the Last Data widget — a vertical filled tube with configurable tick marks and conditional coloring
 * **Gauge Widget** — New display type for the Last Data widget — a horizontal track gauge with condition bands, a position marker, and metric icons
 
@@ -19,21 +20,45 @@ Kilo IoT Server 3.4.0 is the release the major-version jump from 3.1 to 3.4 exis
 
 **Digital Building Twin**
 
-The Digital Building Twin is a complete 3D building editor that ships inside Kilo IoT Server. There is no separate CAD tool, no external Unity / Unreal exporter, no plugin install. Open a dashboard, add the Digital Building Twin widget, switch to edit mode, and you are drawing a digital replica of a real facility — warehouse, office floor, parking lot, retail store, server room, residential block, industrial site — in the same surface that runs your dashboards.
+<figure><img src="../.gitbook/assets/3d_Scene_Screen.png" alt="Digital Building Twin recoloring live across a facility — parking bay A123 in red (occupied), A124 in green (vacant), color-coded waste containers, and conditional sensor markers across rooms"><figcaption></figcaption></figure>
+
+The Digital Building Twin is Kilo's live IoT digital twin of a real-world property. Sensors from your deployment bind directly to the objects on a 3D scale model — a warehouse, an office floor, a parking lot, a retail site, a server room, a residential block, an industrial yard — and the scene recolors as readings flow in. Open a dashboard, add the Digital Building Twin widget, switch to edit mode, and start drawing — there's no separate CAD program, no external 3D engine, no plugin install.
+
+**Bind any sensor to any real-world object**
+
+This is the centerpiece. Every scene element — a parking bay marked off in the lot, a boom barrier at the entrance, an entrance gate, a public dumpster on the loading dock, a smoke detector mounted to a ceiling, an AC unit on the roof, a water tank in a basement, a desk on a floor, a wall of a room, an entire floor — can be bound to an IoT sensor from your deployment. Open the Sensors panel, pick a data source, select the sensor metric, then point-and-click the scene element(s) that sensor governs.
+
+Bindings are many-to-many in spirit. One sensor can color a parking spot AND its label. One desk can carry an occupancy binding AND a temperature binding. One dumpster can show its fill level on the body and its lid-open state on the label. There is no artificial restriction on which node types accept a binding — bind a sensor to a room by binding it to that room's walls or floor zone, bind a sensor to a vehicle by binding it to the parked car model, bind a sensor to a piece of equipment by binding it to the catalog item that represents it.
+
+**Conditional coloring driven by live values**
+
+Every binding carries a set of **condition rules** — the same condition model used by the Last Data, Chart, and Image widgets:
+
+* **Number ranges** — color when the value falls in a range (e.g. 0–25 = green, 25–28 = amber, 28+ = red on a room temperature sensor; or 0–60% = green, 60–85% = amber, 85+% = red on a dumpster fill sensor)
+* **String match** — color when the value equals an exact string (e.g. `occupied` = red, `vacant` = green on a parking sensor; `raised` = green, `lowered` = red on a boom barrier)
+* **Boolean** — color when the value is true or false (e.g. gate open = red, gate closed = green)
+
+Conditions are priority-ordered: the first matching rule wins. A default color applies when no condition matches. As live values flow in, the model recolors in real time — operators see facility state at a glance: every red parking spot is occupied, every amber dumpster is filling up, every red boom barrier is down, every green desk is free, every amber AC unit is running outside its setpoint.
+
+**Live values overlaid in the scene**
+
+Sensors can also be **pinned** to a specific point in the scene — a drop-pin marker that renders the binding's current value as a label, anchored to whichever floor the pin was placed on. Markers can be toggled globally for clean screenshots and toggled back for operations.
 
 **Build the model three different ways**
 
-The editor supports three entry paths into a building model, and they compose freely:
+There are three entry paths into a property model, and they compose freely:
 
 * **Draw from scratch in 2D or 3D** — Start with an empty site and place walls, doors, windows, fences, and structural elements. The editor exposes both a 2D floor-plan view and a 3D walk-through view of the same scene, so you can sketch the geometry top-down and then verify it in three dimensions. Undo, redo, and a scene tree give you full editorial control.
 * **Import a DXF (CAD) floor plan** — Bring an existing architectural drawing into the editor as a DXF file. The importer parses the geometry, previews it before commit, and converts the line work into walls automatically. Facilities with existing architectural files don't have to be redrawn.
-* **Trace from the real-world map** — Open the GPS map-trace dialog and sketch a building outline directly onto an aerial map. The editor converts the traced outline into walls and anchors the building to the GPS coordinates of the trace, so the model sits on the planet exactly where the physical building does.
+* **Trace from the real-world map** — Open the GPS map-trace dialog and sketch a building outline directly onto an aerial map. The editor converts the traced outline into walls and anchors the building to the GPS coordinates of the trace, so the model sits on the planet exactly where the physical property does.
 
-A scene can carry **multiple floors**, switched via the Level selector — a multi-storey warehouse, an office tower, or a layered facility is one model with one set of bindings spread across floors.
+A scene can carry **multiple floors**, switched via the Level selector — a multi-storey warehouse, an office tower, an underground car park stacked beneath a building, or a layered facility is one model with one set of bindings spread across floors.
 
-**Populate with the 3D object catalog**
+**A library of 60+ objects, indoor and outdoor**
 
-The editor ships with a built-in catalog of more than 60 ready-to-place 3D objects across five categories:
+The editor ships with a built-in catalog of more than 60 ready-to-place 3D objects. The outdoor and infrastructure items are central to the IoT use cases — parking spots, traffic barriers, boom barriers, gates, public trash bins and dumpsters, AC condensers (residential and rooftop), water-softener tanks, vehicles — and the interior items make per-room and per-zone bindings expressive: smoke detectors, AC units, water boilers, water heaters, water pumps and pump stations, ceiling and floor lamps, desks, chairs, sofas, beds, kitchen and bathroom fixtures, plants and decor.
+
+Full catalog at a glance:
 
 * **Furniture** — sofas, armchairs, dining and office chairs, coffee and dining tables, office tables, beds (single, double, bunk), bookshelves, dressers, closets, wall shelves, columns, carpets, plants, trash bins
 * **Kitchen** — stove, fridge, counter, microwave
@@ -43,55 +68,27 @@ The editor ships with a built-in catalog of more than 60 ready-to-place 3D objec
 
 Each object is a measured, properly-scaled 3D model. Many attach to walls or ceilings automatically. Drag from the catalog strip, drop onto the scene, position with the placement tool.
 
-**Bind any object to any sensor**
-
-This is what makes the Digital Building Twin a sensor-management surface rather than a 3D model viewer. Every scene element — a placed desk, a parking spot, a smoke detector, an AC unit, a wall of a room, an entire floor — can be bound to an IoT sensor from your deployment. Binding is configured in the Sensors panel: select a data source (any device), pick the sensor metric, then point-and-click the scene element(s) the sensor governs.
-
-Bindings are many-to-many in spirit: one sensor can color a parking spot AND its label; one desk can carry an occupancy binding AND a temperature binding. There is no artificial restriction on which node types accept a binding — bind a sensor to a room by binding it to that room's walls or floor zone, bind a sensor to a vehicle by binding it to the parked car model, bind a sensor to a piece of equipment by binding it to the catalog item that represents it.
-
-**Conditional coloring driven by live values**
-
-Every binding carries a set of **condition rules** — the same condition model used by the Last Data, Chart, and Image widgets:
-
-* **Number ranges** — color when the value falls in a range (e.g. 0–25 = green, 25–28 = amber, 28+ = red on a room temperature sensor)
-* **String match** — color when the value equals an exact string (e.g. `occupied` = red, `vacant` = green on a parking sensor)
-* **Boolean** — color when the value is true or false (e.g. door open = red, door closed = green)
-
-Conditions are priority-ordered: the first matching rule wins. A default color applies when no condition matches. As live values flow in, the model recolors in real time — operators see facility state at a glance: every red parking spot is occupied, every green desk is free, every amber AC unit is running outside its setpoint, every red water-softener tank is below threshold.
-
-**Live values overlaid in the scene**
-
-Sensors can also be **pinned** to a specific point in the scene — a drop-pin marker that renders the binding's current value as a label, anchored to whichever floor the pin was placed on. Markers can be toggled globally for clean screenshots and toggled back for operations.
-
 **GPS anchoring — the spatial base**
 
 Buildings can be anchored to GPS coordinates by tracing them on the real-world map at build time, and individual scene points can be anchored to a lat/lng manually from the bindings panel. Together, these anchors create the spatial base for location-aware IoT workflows.
+
+**What this unlocks**
+
+A short tour through the kinds of deployments the Digital Building Twin is built for:
+
+* **Smart-parking visibility** — Bind occupancy sensors to individual parking bays in the lot; a glance at the model tells you which bays are taken (red) and which are free (green). Bind the entrance boom barrier's state sensor to the barrier model so its current position colors the same scene.
+* **Perimeter and access monitoring** — Bind open/closed sensors to entrance gates, boom barriers, and doors to see the perimeter state across an entire facility from one surface.
+* **Waste-container fill tracking** — Bind fill-level sensors to dumpsters and public bins placed on the site map; conditional coloring takes each container from green (empty) through amber (filling) to red (ready for pickup).
+* **Building-interior conditions** — Bind temperature, humidity, CO₂, and air-quality sensors to rooms, floors, and AC units to see which zones are inside spec and which need attention. Smoke detectors and water-leak sensors light up the moment they trip.
+* **Critical-asset state** — Bind level sensors to the water tanks, boilers, and softener tanks already in the catalog so the tank model itself reads as a level indicator at facility scale.
+
+The Digital Building Twin shows you what's happening across the property. The rules engine reacts to the same sensor stream when an action is needed — both work against the same bindings.
 
 **Where to find it**
 
 Add a Digital Building Twin to any dashboard via the standard Add Widget flow, then open the widget's editor to draw, populate, and bind. Like every other widget, it lives in the dashboard's folder hierarchy, follows organization-level sharing and ABAC permissions, and resizes on the dashboard grid.
 
 [→ Digital Building Twin](../kilo-iot-server/dashboards/adding-widgets/digital-building-twin/README.md)
-
-***
-
-**Rules Engine Debug Mode**
-
-The visual rules editor now supports interactive debugging. Activate debug mode from the top bar, set the input context for the run, then execute the rule chain step by step against your test payload.
-
-Controls cover the full inspection surface:
-
-* **Run, Step over (F9), Step into (F8)** — Execute the rule, advance one node, or descend into a node's internals to inspect its inputs, scripts, and outputs.
-* **Run ignore breakpoints (F11)** — Run the full chain end to end without pausing.
-* **Stop (F12)** — End the debug session.
-* **Breakpoints** — Click any node on the canvas to set a breakpoint. Conditional breakpoints with an expression fire only when their condition evaluates true.
-* **Variables panel** — Inspect every variable in the current execution, with a Changes section highlighting what mutated since the last step. Add, edit, or delete variables mid-execution to probe alternative branches.
-* **Watch expressions** — Add expressions that are re-evaluated automatically at each step.
-* **Error inspection** — When a node fails, an error modal surfaces the node name and the underlying error, with a **Go to…** action that focuses the canvas on the failing node.
-
-Debug mode lets you skip or mock side effects during inspection; if you choose Execute, the real handler runs. Use it to validate logic against representative payloads before building and deploying the rule.
-
-[→ Debugging Rules](../kilo-iot-server/rules-engine/debugging-rules.md)
 
 ***
 

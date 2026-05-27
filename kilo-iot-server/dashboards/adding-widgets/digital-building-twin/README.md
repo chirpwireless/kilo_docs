@@ -6,6 +6,8 @@ Instead of reading a temperature value in a table and mentally mapping it to "Co
 
 This is a complete building editor built into the platform — no separate modeling tool, no CAD license, no plugin. You draw the structure, place objects from a catalog of more than 60 ready-made 3D models, bind any of them to a sensor, and define the colors that turn raw readings into an at-a-glance operational view.
 
+<figure><img src="../../../../.gitbook/assets/3d_Scene_Screen.png" alt="Digital Building Twin scene with parking bays color-coded by occupancy (A123 red, A124 green), dumpsters indicating fill state, and per-room sensor status markers"><figcaption></figcaption></figure>
+
 ## What you can build with it
 
 * **A scale model of a real building** — draw walls, doors, windows, and fences across multiple floors, in a 2D plan view and a 3D view of the same scene. See [Drawing your building](drawing-your-building.md).
