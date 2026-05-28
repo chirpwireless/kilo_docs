@@ -1,3 +1,7 @@
+---
+description: Visualize a sensor reading as a proportional ring with the Doughnut display in the Kilo IoT Server Last Data widget — ideal for percentages.
+---
+
 # Doughnut Display
 
 <figure><img src="../../../../.gitbook/assets/last-data-doughnut.jpg" alt="Last Data widget using the Doughnut display type"><figcaption></figcaption></figure>

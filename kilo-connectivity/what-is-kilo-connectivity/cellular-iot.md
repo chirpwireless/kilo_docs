@@ -1,3 +1,7 @@
+---
+description: Global IoT SIM cards from Kilo Connectivity — multi-network coverage across 2G/3G/4G/LTE-M/NB-IoT/5G with a single self-service connectivity portal.
+---
+
 # Global IoT SIM Cards
 
 **Global Coverage, One SIM**

@@ -1,3 +1,7 @@
+---
+description: Design automation rules on the Kilo IoT Server visual BPMN canvas — drag nodes, draw flows, and configure each step in the properties panel.
+---
+
 # Visual Editor
 
 The visual editor is where you design automation workflows. It presents a BPMN 2.0 canvas where you place nodes, connect them with flows, and configure each step through a properties panel.

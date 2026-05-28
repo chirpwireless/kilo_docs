@@ -1,3 +1,7 @@
+---
+description: Kilo IoT Server Public REST API — primary integration surface over HTTPS and JSON, with X-API-Key and X-Organization-Id authentication headers.
+---
+
 # Public REST API
 
 The REST API is the primary way to integrate Kilo IoT Server with external systems over standard HTTPS. Any language or tool that can make an authenticated HTTP request can use it — backend services, data pipelines, reporting jobs, and operational tooling.

@@ -1,4 +1,8 @@
-# Troubleshooting
+---
+description: Troubleshoot Kilo IoT Server rule build errors and runtime issues — missing nodes, invalid CEL expressions, boundary event attachment, deploy limits.
+---
+
+# Rules Engine Troubleshooting
 
 This page covers the most common issues you will encounter when building, deploying, and managing automation rules — build validation errors, runtime problems, and platform limits.
 

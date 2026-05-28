@@ -1,3 +1,7 @@
+---
+description: Owner-only Organization settings in Kilo IoT Server — rename the organization or transfer ownership to another verified member.
+---
+
 # Organization Settings
 
 The Organization settings dialog is where you rename your organization and transfer ownership to another member. It contains two fields — the organization name and the organization owner — and nothing else. Only the organization owner can access this dialog.

@@ -1,3 +1,7 @@
+---
+description: Kilo IoT Server gRPC API — advanced typed service-to-service path for on-premise installations, using the same scoped API-key authentication.
+---
+
 # gRPC API
 
 Alongside REST, Kilo IoT Server offers a gRPC interface. **gRPC is the advanced / on-premise path: choose REST unless you specifically need gRPC for an on-premise or typed service-to-service integration.** For standard cloud and SaaS integrations, REST is the recommended default (see [Public REST API](public-rest-api.md)).

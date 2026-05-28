@@ -1,3 +1,7 @@
+---
+description: Draw walls, doors, windows, and fences for a Digital Building Twin in Kilo IoT Server — 2D plan and 3D views of the same scene.
+---
+
 # Drawing Your Building
 
 The structure of a Digital Building Twin — its walls, doors, windows, and fences — is what makes the model recognizable as a specific facility. A few minutes of drawing turns a generic box into *your* warehouse, with the loading dock on the east side and the cold store in the corner where it really is. This page covers drawing that structure from scratch.

@@ -1,3 +1,7 @@
+---
+description: Model multi-storey facilities in a Digital Building Twin — add floors above or below, switch the active level, and view all levels stacked together.
+---
+
 # Floors and Levels
 
 Few facilities are single-storey. An office building has floors stacked on top of each other; a warehouse has a mezzanine; a site has a basement plant room under the ground floor. A Digital Building Twin models all of them in one widget — each floor is its own layer of the same model, with its own walls, objects, and sensor bindings.

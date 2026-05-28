@@ -1,3 +1,7 @@
+---
+description: Create, rename, and delete Kilo IoT Server dashboards — the named containers that hold widgets for device data, charts, and floor plans.
+---
+
 # Creating Dashboards
 
 Every monitoring view in the Kilo IoT Server starts as a dashboard. A dashboard is a named container that holds widgets — the visual components that display device data, charts, and floor plans. Before you can add widgets, you need a dashboard to put them in.

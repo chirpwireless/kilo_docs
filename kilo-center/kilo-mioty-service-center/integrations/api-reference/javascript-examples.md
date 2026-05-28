@@ -1,3 +1,7 @@
+---
+description: Runnable Node.js examples for the KiloCenter gRPC API — install @grpc/grpc-js with dynamic proto loading and call core service methods.
+---
+
 # JavaScript Examples
 
 This page provides runnable Node.js examples for the KiloCenter gRPC API using dynamic proto loading. For the full API reference, see API Reference.

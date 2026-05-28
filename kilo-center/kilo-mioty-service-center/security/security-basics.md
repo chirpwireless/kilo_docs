@@ -1,3 +1,7 @@
+---
+description: KiloCenter security basics — default credentials to change, TLS certificate paths, and the minimum hardening steps for any shared deployment.
+---
+
 # Security Basics
 
 ### Goal

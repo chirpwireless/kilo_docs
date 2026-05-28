@@ -1,3 +1,7 @@
+---
+description: Troubleshoot MQTT integrations with Kilo IoT Server by failure phase — broker connection, TLS, authentication, topic routing, and Last data.
+---
+
 # MQTT Troubleshooting
 
 Diagnostic recipes for MQTT integrations on the Kilo IoT Server, organized by where the failure surfaces. Work through these in order — most issues fall into one of the first three phases, and the diagnostic sequence narrows the root cause efficiently.

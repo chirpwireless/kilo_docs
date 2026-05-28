@@ -1,3 +1,7 @@
+---
+description: Per-feature Page access in Kilo IoT Server ABAC — Edit, View, or No access for every surface, with Admin, Editor, and Viewer display labels.
+---
+
 # Roles and Page Access
 
 Kilo IoT Server uses attribute-based access control (ABAC). Access is evaluated based on three attributes: which organization you belong to, whether you are the owner, and what per-feature permissions you have. Each feature can be set to Edit, View, or No access independently. There is no role selector — you work directly with per-feature permissions.
@@ -76,7 +80,7 @@ Owner access cannot be edited or removed. It changes only through ownership tran
 When you do not have Edit access to a feature, the platform disables the relevant controls — buttons and inputs appear greyed out. Hovering over a disabled control shows a tooltip explaining why and who to contact:
 
 - If no other administrators exist in the organization: *"You don't have the required permissions. Please contact your organization owner."*
-- If administrators exist: *"Contact your administrators: Maria Schmidt (maria@example.com), ..."*
+- If administrators exist: *"Contact your administrators: Maria Schmidt, ..."*
 
 The administrators listed in the tooltip are automatically derived from the organization owner and all members who have **Manage Users** set to Edit. These contacts are computed automatically — not configured manually.
 

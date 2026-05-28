@@ -1,3 +1,7 @@
+---
+description: Display the latest sensor reading on a Kilo IoT Server dashboard with the Last Data widget — number, doughnut, pie, tube, or gauge styles.
+---
+
 # Last Data Widget
 
 The Last Data widget shows the **last value received from a sensor**. When a device is actively transmitting, that is also the current value. When a device goes offline after its last transmission, the widget continues showing that last value — it does not clear the display or indicate that the device has stopped reporting. The widget shows what the sensor last said: current if the device is still transmitting, potentially stale if it is not.

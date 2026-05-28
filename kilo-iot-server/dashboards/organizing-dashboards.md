@@ -1,3 +1,7 @@
+---
+description: Organize many Kilo IoT Server dashboards into folders with drag-and-drop reordering — keep multi-site deployments scannable in the sidebar.
+---
+
 # Organizing Dashboards
 
 As your deployment grows, so does your collection of dashboards. A handful of dashboards is easy to scan in the sidebar, but when you're managing views across multiple buildings, floors, and teams, a flat list becomes unmanageable. Folders let you group dashboards by site, purpose, or team — and drag-and-drop reordering lets you put the most critical views at the top.

@@ -1,3 +1,7 @@
+---
+description: Edit your Kilo IoT Server profile — first name, last name, avatar, language, theme, and password — globally across every organization you belong to.
+---
+
 # Profile Settings
 
 Your profile information identifies you across every organization you belong to on the Kilo IoT Server. Changes made here apply globally — your name and avatar appear in audit logs, team member lists, and notification histories.

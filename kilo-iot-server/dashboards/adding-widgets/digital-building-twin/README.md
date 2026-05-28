@@ -1,3 +1,7 @@
+---
+description: Build a live 3D Digital Building Twin in Kilo IoT Server — draw walls, place 60+ objects, bind sensors, and watch the model recolor as data arrives.
+---
+
 # Digital Building Twin
 
 The Digital Building Twin is a 3D model of a real facility — drawn, furnished, and wired to your sensors — that lives on a dashboard and recolors itself in real time as readings arrive. It turns a flat list of devices into a spatial picture of the building they monitor: a warehouse, an office floor, a parking lot, a server room, a production hall.
@@ -6,7 +10,7 @@ Instead of reading a temperature value in a table and mentally mapping it to "Co
 
 This is a complete building editor built into the platform — no separate modeling tool, no CAD license, no plugin. You draw the structure, place objects from a catalog of more than 60 ready-made 3D models, bind any of them to a sensor, and define the colors that turn raw readings into an at-a-glance operational view.
 
-<figure><img src="../../../../.gitbook/assets/3d_Scene_Screen.png" alt="Digital Building Twin scene with parking bays color-coded by occupancy (A123 red, A124 green), dumpsters indicating fill state, and per-room sensor status markers"><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/3d_Scene_Screen.jpg" alt="Digital Building Twin scene with parking bays color-coded by occupancy (A123 red, A124 green), dumpsters indicating fill state, and per-room sensor status markers"><figcaption></figcaption></figure>
 
 ## What you can build with it
 

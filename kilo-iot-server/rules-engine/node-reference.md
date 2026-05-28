@@ -1,3 +1,7 @@
+---
+description: Node reference for the Kilo IoT Server Rules Engine — Start Event, End Event, Script Task, Exclusive Gateway, Set Alarm, Enrichment, Boundary Error.
+---
+
 # Node Reference
 
 Every automation rule is built from a set of node types that you drag onto the visual editor canvas, connect with flows, and configure through a properties panel. This page documents each node type — what it does, when to use it, how it appears on the canvas, and every field in its properties panel.

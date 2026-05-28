@@ -1,3 +1,7 @@
+---
+description: Authenticate Kilo IoT Server API requests with scoped API keys — X-API-Key and X-Organization-Id headers, per-integration keys, and rotation.
+---
+
 # Authentication & API Keys
 
 Every API request — REST or gRPC — is authenticated with a **scoped API key**. Create, scope, rotate, and revoke keys in [Settings → API Keys](../settings/api-keys.md); this page covers how requests authenticate.

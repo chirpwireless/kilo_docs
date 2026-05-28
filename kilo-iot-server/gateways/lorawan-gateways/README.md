@@ -1,3 +1,7 @@
+---
+description: LoRaWAN gateways for Kilo IoT Server — radio infrastructure supporting LoRaWAN and LR-FHSS, 2-15 km range over Ethernet, Wi-Fi, LTE, or satellite.
+---
+
 # LoRaWAN gateways
 
 A LoRaWAN gateway is the radio infrastructure that receives signals from your sensors and forwards them to the Kilo IoT Server. Gateways support both **LoRaWAN** and **LR-FHSS** (Long Range Frequency Hopping Spread Spectrum) protocols. Every LoRaWAN or LR-FHSS device in your deployment communicates through at least one gateway — it is the first link in the data chain.

@@ -1,3 +1,7 @@
+---
+description: Account in Kilo IoT Server — manage organizations, team members, and per-surface ABAC permissions from the user menu in the bottom-left corner.
+---
+
 # Account
 
 Manage your organizations, team members, and access controls. These options are accessed from the **user menu** in the bottom-left corner of the interface — separate from the Settings section in the sidebar.

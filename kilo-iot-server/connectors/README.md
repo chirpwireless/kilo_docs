@@ -1,3 +1,7 @@
+---
+description: Connect device protocols to Kilo IoT Server — LNS (LoRaWAN), Tracker (OBD2/CAN/GPS), and MQTT connectors that funnel telemetry into one pipeline.
+---
+
 # Connectors
 
 Each connector establishes an organization-level connection to a specific device protocol or data source. Connectors do not create devices — device registration is a separate workflow. A connector enables the server to accept data from devices of that type once they are registered.

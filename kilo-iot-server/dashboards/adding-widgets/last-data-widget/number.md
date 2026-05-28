@@ -1,3 +1,7 @@
+---
+description: Show a sensor reading as a plain figure with its unit using the Number display in the Kilo IoT Server Last Data widget.
+---
+
 # Number Display
 
 <figure><img src="../../../../.gitbook/assets/last-data-number.jpg" alt="Last Data widget using the Number display type"><figcaption></figcaption></figure>

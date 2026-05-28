@@ -1,3 +1,7 @@
+---
+description: Manage Kilo IoT Server profile, subscription, locations, and API keys from the Settings area.
+---
+
 # Settings
 
 Configure your Kilo IoT Server environment. The Settings section in the sidebar covers platform-level preferences and configuration that apply across your deployment.

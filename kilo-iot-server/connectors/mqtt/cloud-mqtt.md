@@ -1,3 +1,7 @@
+---
+description: Provision a managed Cloud MQTT broker in Kilo IoT Server — dedicated endpoint and credentials per connector, ideal for pilots and remote sites.
+---
+
 # Cloud MQTT
 
 Cloud MQTT is the platform-managed broker option for an MQTT connector. The Kilo IoT Server provisions a dedicated broker endpoint per connector, generates credentials, and assigns a unique topic prefix that scopes the connector's namespace within the managed broker. Devices and edge gateways publish to that endpoint; the platform consumes the messages directly.

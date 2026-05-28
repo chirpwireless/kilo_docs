@@ -1,3 +1,7 @@
+---
+description: Accept a Kilo IoT Server invitation — membership invites valid for 7 days, ownership-transfer invites with their own acceptance flow.
+---
+
 # Accepting Invitations
 
 When someone invites you to join their organization — or transfers ownership to you — you receive an email with a one-click link. There are two types of invitations, each with its own acceptance flow and expiration window.

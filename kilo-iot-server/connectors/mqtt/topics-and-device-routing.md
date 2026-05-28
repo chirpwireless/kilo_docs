@@ -1,3 +1,7 @@
+---
+description: MQTT topic structure and Device ID routing in Kilo IoT Server — pattern placeholders, Mapping vs Topic sub-tabs, and the two-pass save flow.
+---
+
 # Topics and device routing
 
 This page covers how the Kilo IoT Server resolves an inbound MQTT message to a specific Digital Twin: the structure of incoming topics, the **Device ID Topic** field's pattern semantics, the inner Mapping/Topic sub-tabs, the byte-for-byte match between the Device ID input and the device-level topic segment, and the two-pass save flow that the Mapping tab requires. Read this before registering MQTT devices in production deployments — most "device registered but no telemetry" support tickets resolve to one of the patterns documented here.

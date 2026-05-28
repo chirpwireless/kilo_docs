@@ -1,3 +1,7 @@
+---
+description: Configure notification severity policy in Kilo IoT Server — repeat cadence per severity tier (Critical, High, Medium, Low, Info) for active alarms.
+---
+
 # Notification Severity
 
 Not every operational event carries the same urgency. A critical cold-chain breach and a routine informational reading should not repeat at the same cadence. The Notification Severity settings control how frequently each severity level re-sends notifications while an alarm remains active, ensuring that critical events receive persistent attention while lower-priority events do not overwhelm your operations team.

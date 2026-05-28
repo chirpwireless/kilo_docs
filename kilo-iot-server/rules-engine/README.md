@@ -1,3 +1,7 @@
+---
+description: Rules Engine in Kilo IoT Server — visual BPMN automation that turns sensor data into alarms, actions, and enrichment with build, deploy, rollback safety.
+---
+
 # Rules Engine
 
 The Rules Engine is a visual automation system based on BPMN (Business Process Model and Notation) for monitoring IoT devices in real time. When sensor data meets conditions you define, the engine triggers actions automatically — raising alarms, sending notifications, or enriching data from other sensors before making a decision.

@@ -1,3 +1,7 @@
+---
+description: Drop labelled value pins into a Digital Building Twin scene to show live sensor readings exactly where they belong — name, value, units, status color.
+---
+
 # Drop-Pins and Live Values
 
 Conditional color tells an operator *that* something needs attention — a red zone, an amber unit. Sometimes they also need the **number**: not just "the cold store is in breach" but "the cold store is at 13.4 °C." A drop-pin puts that exact reading in the model, anchored to the spot it belongs to.

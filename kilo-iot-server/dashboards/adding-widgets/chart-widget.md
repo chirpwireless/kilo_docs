@@ -1,3 +1,7 @@
+---
+description: Plot a sensor's history as a line or bar Chart widget in Kilo IoT Server — current value, trend, average line, and threshold bands in one view.
+---
+
 # Chart Widget
 
 <figure><img src="../../../.gitbook/assets/chart-widget.jpg" alt="Chart widget — the Appearance settings and a live preview of the graph"><figcaption></figcaption></figure>

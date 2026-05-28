@@ -1,3 +1,7 @@
+---
+description: Run a Zigbee2MQTT hub as an MQTT edge gateway for Kilo IoT Server — coordinator radio, Z2M software, and the flat JSON topic stream it produces.
+---
+
 # Zigbee2MQTT hubs
 
 Zigbee2MQTT (Z2M) is one MQTT edge-gateway pattern available to Kilo deployments that include Zigbee field hardware. It is not the default ingestion path, and it is not a fit for every deployment — Modbus, BACnet, OPC-UA, and Sparkplug B bridges all remain the conventional choices for industrial telemetry. But where Zigbee hardware genuinely fits the operational picture — pilot programs, lab and office instrumentation, facility-wide environmental sensors, occupancy and people-counting, smart-plug telemetry, building-management lighting and presence — Z2M provides a well-supported open-source bridge that turns a Zigbee mesh into MQTT publishes the platform's connector can consume.

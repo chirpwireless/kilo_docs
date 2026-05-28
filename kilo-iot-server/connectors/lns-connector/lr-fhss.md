@@ -1,3 +1,7 @@
+---
+description: LR-FHSS in Kilo IoT Server — frequency-hopping LoRaWAN extension that scales to millions of devices for utility metering and wide-area sensing.
+---
+
 # LR-FHSS
 
 LR-FHSS (Long Range Frequency Hopping Spread Spectrum) is an extension of the LoRaWAN protocol that uses frequency-hopping techniques to dramatically increase network capacity and interference resistance. For large-scale deployments — utility metering, wide-area sensing, satellite connectivity — LR-FHSS enables device densities that are impractical with standard LoRa modulation.

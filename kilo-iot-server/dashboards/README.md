@@ -1,3 +1,7 @@
+---
+description: Build customizable monitoring dashboards in Kilo IoT Server — assemble widgets from any device, organize by folder, and deploy on ops displays.
+---
+
 # Dashboards
 
 Dashboards are customizable monitoring views that you assemble from widgets. Each dashboard focuses on a specific concern — a particular building, a device group, a compliance metric, or an operational workflow — and displays exactly the data that matters for that context.

@@ -1,3 +1,7 @@
+---
+description: Query your Kilo IoT Server deployment in natural language — live device status, historical aggregations, threshold violations, and follow-up questions.
+---
+
 # Querying Your Data
 
 The AI Assistant accepts natural language queries. There is no special syntax to learn, no query language to memorize. Type your question the way you would ask a colleague who happens to know everything about your deployment.

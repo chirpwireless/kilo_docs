@@ -79,7 +79,7 @@
   * [Builds and Deployment](kilo-iot-server/rules-engine/builds-artifacts-and-deployment.md)
   * [Trash and Recovery](kilo-iot-server/rules-engine/trash-and-recovery.md)
   * [Automation Patterns](kilo-iot-server/rules-engine/automation-patterns.md)
-  * [Troubleshooting](kilo-iot-server/rules-engine/troubleshooting.md)
+  * [Rules Engine Troubleshooting](kilo-iot-server/rules-engine/troubleshooting.md)
 * [IoT AI Assistant](kilo-iot-server/ai-assistant/README.md)
   * [Querying Your Data](kilo-iot-server/ai-assistant/querying-your-data.md)
   * [What It Can Access](kilo-iot-server/ai-assistant/data-sources.md)

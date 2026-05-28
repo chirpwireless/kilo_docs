@@ -1,3 +1,7 @@
+---
+description: Place GPS-reporting assets on an interactive map with the Kilo IoT Server Map widget — current position, live metric value, and route history.
+---
+
 # Map Widget
 
 The Map widget places a GPS-reporting asset on a real outdoor interactive map. The marker shows the asset's current position and the current value of **one selected metric** at a time — speed, cargo temperature, engine on/off status, battery level, or any other sensor the device transmits.

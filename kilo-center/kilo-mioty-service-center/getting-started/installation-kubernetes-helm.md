@@ -1,3 +1,7 @@
+---
+description: Deploy KiloCenter to Kubernetes with Helm — chart, prerequisites (k8s 1.25+, external PostgreSQL 14+, Redis 7+), and ingress configuration.
+---
+
 # Installation: Kubernetes (Helm)
 
 ### Goal
@@ -103,8 +107,10 @@ On first startup, a default admin user is created via database migration:
 
 |              |                          |
 | ------------ | ------------------------ |
-| **Email**    | `admin@kilocenter.local` |
+| **Email**    | `admin [at] kilocenter.local` |
 | **Password** | `admin123!`              |
+
+> Replace `[at]` with `@` when signing in.
 
 > **Warning:** Change the password or remove this account before any public-facing deployment. The credentials are published in this repository.
 

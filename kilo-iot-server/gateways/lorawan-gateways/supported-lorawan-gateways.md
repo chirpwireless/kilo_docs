@@ -1,3 +1,7 @@
+---
+description: Which LoRaWAN gateways work with Kilo IoT Server — Basics Station required, no proprietary hardware, choose by deployment environment and coverage.
+---
+
 # Supported LoRaWAN Gateways
 
 Kilo IoT works with any LoRaWAN gateway that meets the compatibility requirements described on this page. There is no proprietary hardware requirement — you choose the gateway that fits your deployment environment, budget, and coverage needs.

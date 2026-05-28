@@ -1,3 +1,7 @@
+---
+description: Kilo includes a fully managed LPWAN network server — no separate LNS to install, scale, or maintain; gateways connect natively to the cloud.
+---
+
 # Built in LPWAN Server
 
 In any LoRaWAN or LPWAN deployment, the **network server** plays a central role. It acts as the middleware between your gateways and applications—managing communication, session handling, device authentication, and message routing. Without an LPWAN server, raw data from devices and gateways can’t be meaningfully processed or delivered to your visualization or automation systems.

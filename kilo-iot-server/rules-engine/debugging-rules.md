@@ -1,3 +1,7 @@
+---
+description: Debug a Kilo IoT Server automation rule before deployment — step through nodes, watch variables, and check expressions against test context.
+---
+
 # Debugging Rules
 
 A rule that looks correct on the canvas can still behave in ways you didn't expect — a gateway sends the flow down the wrong branch, an expression evaluates against a data shape you didn't anticipate, a variable holds something other than what you assumed. Debug mode lets you find that out *before* the rule is deployed to production, by running the rule step by step and inspecting exactly what happens at every node.

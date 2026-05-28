@@ -1,3 +1,7 @@
+---
+description: Tour every section of the Kilo IoT Server — sidebar, overview, themes, and language — to know exactly where each feature lives.
+---
+
 # Navigating the Interface
 
 This page walks through every section of the Kilo IoT dashboard so you know exactly where to find each feature.

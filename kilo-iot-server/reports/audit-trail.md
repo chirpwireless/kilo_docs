@@ -1,3 +1,7 @@
+---
+description: Audit Trail in Kilo IoT Server — searchable log of organization membership events: invites sent, accepted, permissions changed, users removed.
+---
+
 # Audit Trail
 
 The Audit Trail is a searchable log of organization membership events — who invited whom, who accepted, whose permissions changed, and who was removed. It provides an immutable record of access-related activity for compliance reviews and operational accountability.
@@ -29,7 +33,7 @@ Events are displayed in a table with three columns:
 |---|---|
 | **Time** | The time the event occurred (HH:mm:ss format). |
 | **Actor** | The email address of the user who performed the action. |
-| **Event** | A human-readable summary of what happened — for example, *"Changed access rights for user@example.com."* |
+| **Event** | A human-readable summary of what happened — for example, *"Changed access rights for Jens Müller."* |
 
 Events are grouped by date. The table shows 50 events per page, with pagination controls at the bottom.
 

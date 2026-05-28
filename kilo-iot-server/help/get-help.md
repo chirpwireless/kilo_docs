@@ -1,6 +1,10 @@
+---
+description: Submit a support request from inside Kilo IoT Server — the in-product support dialog sends your message with account context to the support team.
+---
+
 # Get Help
 
-The support request dialog is available throughout the Kilo IoT Server interface. It sends your message directly to the Kilo IoT support team at **support@kiloiot.io**.
+The support request dialog is available throughout the Kilo IoT Server interface. It sends your message — along with your account context — directly to the Kilo IoT support team.
 
 ## Opening the Dialog
 

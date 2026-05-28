@@ -1,3 +1,7 @@
+---
+description: Manage Kilo IoT Server users and per-surface ABAC permissions — Edit, View, or No access set independently for each product surface.
+---
+
 # Users and Permissions
 
 Within each organization, Kilo IoT Server uses attribute-based access control (ABAC) to determine who can do what. Access is assigned per product surface — dashboards, devices, rules, connectors, and more — not through a single all-or-nothing role. When you invite someone or edit their permissions, you set each surface individually to Edit, View, or No access.

@@ -1,3 +1,7 @@
+---
+description: Import an architectural DXF drawing into a Digital Building Twin in Kilo IoT Server — convert CAD line work into precise scaled walls instantly.
+---
+
 # Importing a DXF Plan
 
 Most commercial facilities already have an architectural drawing. Rather than redraw a warehouse or office floor wall by wall, you can import that drawing directly. The editor reads **DXF** files — the interchange format every major CAD application can export — and converts the line work into walls on the current floor.

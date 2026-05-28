@@ -1,3 +1,7 @@
+---
+description: Manage the Kilo IoT Server alarm Inbox — filter by severity or status, search by title, resolve events, and trace back to the originating rule.
+---
+
 # Inbox and Resolution
 
 Every time an alarm fires, an event appears in the Inbox. This is the operational triage queue — where your team reviews what has happened, assesses priority, resolves events, and traces back to the originating automation for investigation.

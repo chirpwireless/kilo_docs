@@ -1,3 +1,7 @@
+---
+description: What is LoRaWAN? A long-range, low-power wireless IoT protocol for battery-powered sensors across warehouses, campuses, and agricultural land.
+---
+
 # What is LoRaWAN?
 
 LoRaWAN (Long Range Wide Area Network) is a wireless communication protocol built for IoT deployments. It enables small, battery-powered devices to transmit data over long distances while consuming minimal energy. LoRaWAN builds on LoRa radio modulation to deliver secure, bidirectional communication between distributed field devices — sensors, trackers, meters — and centralized management systems.

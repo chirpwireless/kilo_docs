@@ -1,3 +1,7 @@
+---
+description: Register a device on Kilo IoT Server through the LNS, Tracker, or MQTT connector — build its Digital Twin, profile, and metric mappings step by step.
+---
+
 # Registering Devices
 
 Every physical device registered on the Kilo IoT Server becomes a Digital Twin — a complete digital representation that mirrors the device's current state, configuration, telemetry history, and behavioral patterns. The Digital Twin persists even when the physical device is offline, giving you a continuous operational view of your entire deployment. Because the physical device binding is optional, you can create and fully configure a device profile before the physical hardware is connected — so setup and hardware commissioning don't have to happen at the same time.

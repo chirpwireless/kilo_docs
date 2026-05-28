@@ -1,3 +1,7 @@
+---
+description: Core benefits of LoRaWAN — long range, low power, secure two-way communication, scalability, and built-in support for mobility and location awareness.
+---
+
 # Core Benefits of LoRaWAN
 
 * **Long-Range Communication**\

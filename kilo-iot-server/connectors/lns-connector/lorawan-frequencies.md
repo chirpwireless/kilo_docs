@@ -1,3 +1,7 @@
+---
+description: LoRaWAN regional frequency bands explained — EU868, US915, AU915, AS923, IN865 — and how to pick the right Band when registering a LoRaWAN device.
+---
+
 # LoRaWAN Frequencies
 
 > **Reference only.** This page is provided as a general guide. The frequency data may not be 100% accurate or up to date. Always verify the correct frequency band for your country with your local radio regulations authority before deploying devices. Use at your own risk.

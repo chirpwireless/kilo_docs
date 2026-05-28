@@ -1,3 +1,7 @@
+---
+description: Place 3D objects — desks, racks, parking bays, AC units — into a Digital Building Twin scene in Kilo IoT Server from the built-in object catalog.
+---
+
 # Placing Objects
 
 Walls make a building; objects make it *the* building. A row of desks turns an empty floor plate into an open-plan office. A parking spot turns an outdoor slab into a bay you can monitor. The objects you place are also what most sensors bind to — a sensor reads "occupied," and the desk it's bound to changes color.

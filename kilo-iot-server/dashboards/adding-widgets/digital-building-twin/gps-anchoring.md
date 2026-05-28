@@ -1,3 +1,7 @@
+---
+description: GPS anchor a Digital Building Twin to real-world latitude and longitude — automatic from map tracing or manual point-by-point for any model.
+---
+
 # GPS Anchoring
 
 A Digital Building Twin is a model of a real place — and a real place has a location on the planet. GPS anchoring records that location: it ties the building, and selected points inside it, to actual latitude and longitude coordinates. This gives the model a geographic frame of reference and lays the spatial groundwork for location-aware operations.

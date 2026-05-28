@@ -1,3 +1,7 @@
+---
+description: Runnable Go examples for the KiloCenter gRPC API — generate stubs with buf, authenticate, and call uplink and endpoint management methods.
+---
+
 # Go Examples
 
 This page provides runnable Go examples for the KiloCenter gRPC API. For the full API reference, see API Reference.

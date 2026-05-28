@@ -1,3 +1,7 @@
+---
+description: Operational alerting in Kilo IoT Server — Inbox, Alarm definitions, severity tiers, escalation chains, and delivery across email, SMS, and push.
+---
+
 # Alarm
 
 When a cold-storage sensor reports a temperature exceedance at 3 AM, the right person needs to know — immediately, reliably, and through the right channel. The Alarm section in Kilo IoT Server transforms real-time sensor data into structured operational alerts with multi-step escalation, configurable severity policies, and delivery across email, SMS, and push.

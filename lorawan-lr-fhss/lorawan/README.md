@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+description: LoRaWAN explained — long-range, low-power wireless IoT protocol for battery-powered sensors over kilometers, with end-to-end encryption.
 ---
 
 # What is LoRaWAN?

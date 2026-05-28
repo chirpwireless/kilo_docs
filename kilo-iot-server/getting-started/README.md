@@ -1,3 +1,7 @@
+---
+description: Get oriented with the Kilo IoT Server interface and walk through your first LoRaWAN deployment from gateway to live dashboard.
+---
+
 # Getting Started
 
 This section helps you get oriented: how the interface is organized and a simple walkthrough to get your first device online with live data on a dashboard. The hands-on walkthrough here uses the LoRaWAN path. Other protocol integrations do not always start in the same place. Each feature has its own dedicated section later in the documentation — this is just the quick path to getting started.

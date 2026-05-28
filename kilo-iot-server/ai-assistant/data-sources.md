@@ -1,3 +1,7 @@
+---
+description: What the Kilo IoT AI Assistant can access — live device data, full telemetry history, the platform knowledge base, and IoT-scoped web search.
+---
+
 # What It Can Access
 
 Every query the assistant runs is scoped to your permissions and your current organization. It sees exactly what you see in the platform interface — nothing more.

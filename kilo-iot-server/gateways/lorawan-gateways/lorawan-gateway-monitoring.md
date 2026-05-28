@@ -1,3 +1,7 @@
+---
+description: Monitor LoRaWAN gateway fleet health in Kilo IoT Server — status, availability, traffic, last-seen, regenerate certificates, manage firmware.
+---
+
 # LoRaWAN Gateway Monitoring
 
 Once LoRaWAN gateways are deployed, the Gateways section gives you a fleet-level view of their health and performance, plus detailed information for each individual gateway.

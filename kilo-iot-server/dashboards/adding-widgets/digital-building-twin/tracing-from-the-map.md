@@ -1,3 +1,7 @@
+---
+description: Trace a building outline from an aerial map in the Digital Building Twin editor — turn a polygon into walls and capture a real-world GPS anchor.
+---
+
 # Tracing from the Map
 
 When you don't have a CAD drawing, you can build the shell of a Digital Building Twin straight from an aerial map. Open the map, find the building, click around its outline, and the editor turns the traced polygon into walls — and records where that building sits on the planet.

@@ -1,3 +1,7 @@
+---
+description: Install KiloCenter with Docker Compose — start the full four-service MIOTY stack including KC-Web in containers, no host toolchain required.
+---
+
 # Installation: Docker Compose
 
 ### Goal

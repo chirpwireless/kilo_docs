@@ -1,3 +1,7 @@
+---
+description: Why choose LoRaWAN for IoT — flexible, low-maintenance, energy-efficient connectivity that scales from a single building to a national network.
+---
+
 # Why Choose LoRaWAN?
 
 LoRaWAN provides a unique value proposition for IoT deployments that need to span large areas, use minimal power, and remain cost-effective. It allows developers and operators to build networks that are:

@@ -1,3 +1,7 @@
+---
+description: Invite a teammate to join your Kilo IoT Server organization — choose per-surface permissions and send the invitation to their existing Kilo account.
+---
+
 # Inviting Users
 
 You can invite someone to join your organization — as long as they already have a Kilo IoT platform account. The invitation system does not create new accounts. If the person you want to invite has not signed up yet, they need to create an account first, and then you can send the invitation.

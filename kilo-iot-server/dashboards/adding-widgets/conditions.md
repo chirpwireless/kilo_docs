@@ -1,3 +1,7 @@
+---
+description: Configure per-metric color conditions on Kilo IoT Server widgets — green, yellow, red rules that turn raw sensor readings into operational status.
+---
+
 # Conditions
 
 Conditions are per-metric color rules that turn a raw sensor reading into operational status. Instead of an operator looking at a number and deciding whether it's acceptable, the widget shows green, yellow, or red based on rules you define. The same sensor type in two different contexts can have completely different condition sets — a temperature of 4°C in a cold storage unit is compliant (green), but the same reading in a pharmaceutical cleanroom may be out of specification (red).

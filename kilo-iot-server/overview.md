@@ -1,3 +1,7 @@
+---
+description: Read the Overview page in Kilo IoT Server — device and gateway summary cards, recent alarms, and live deployment health at a glance.
+---
+
 # Overview
 
 The Overview page is the first screen you see after logging into the Kilo IoT Server. It provides a high-level summary of your deployment — device counts, gateway health, and recent notifications — so you can assess operational status at a glance without navigating into any specific section.

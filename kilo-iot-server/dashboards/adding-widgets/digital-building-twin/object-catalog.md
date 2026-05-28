@@ -1,3 +1,7 @@
+---
+description: Browse the Digital Building Twin object catalog — 60+ scaled 3D models across Furniture, Appliance, Kitchen, Bathroom, and Outdoor categories.
+---
+
 # Object Catalog
 
 The editor includes a built-in catalog of more than 60 ready-made 3D objects, organized into five categories. This page is the reference inventory — what's in each category and how to think about using it. For the mechanics of dropping objects into a model, see [Placing objects](placing-objects.md).

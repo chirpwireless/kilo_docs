@@ -1,3 +1,7 @@
+---
+description: Configure alarm definitions in Kilo IoT Server — severity, escalation chain, repeat cadence, channels, schedule, suppression, and message body.
+---
+
 # Alarm Definitions
 
 An alarm definition configures the operational response when the [Rules Engine](../rules-engine/README.md) triggers an alarm — severity classification, escalation chain, repeat cadence, delivery channels, scheduling, suppression, and the notification message. Alarm definitions are managed from the **Alarm definitions** tab on the Alarm page.

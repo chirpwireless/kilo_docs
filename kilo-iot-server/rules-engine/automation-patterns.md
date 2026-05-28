@@ -1,3 +1,7 @@
+---
+description: Proven automation patterns for Kilo IoT Server — threshold alarms, multi-sensor enrichment, escalation chains, and dynamic CEL classification examples.
+---
+
 # Automation Patterns
 
 This page presents proven automation patterns for enterprise IoT deployments. Each pattern describes a real operational scenario, the BPMN diagram structure, the CEL expressions involved, and when to use the pattern.

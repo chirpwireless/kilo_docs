@@ -1,3 +1,7 @@
+---
+description: Soft-deleted rules go to Trash in Kilo IoT Server — review and restore deleted automation rules within the recovery window before permanent removal.
+---
+
 # Trash and Recovery
 
 Deleting a rule does not destroy it immediately. The platform uses soft deletion — removed rules move to a trash area where they can be reviewed and restored. This protects against accidental deletions and gives teams a recovery window before anything is permanently gone.

@@ -1,3 +1,7 @@
+---
+description: Add and configure widgets on a Kilo IoT Server dashboard — connect to devices, set thresholds, and turn raw sensor readings into status at a glance.
+---
+
 # Adding Widgets
 
 Widgets are the visual components of a dashboard. Each widget connects to one or more devices, displays metrics, and can be customized with value ranges, thresholds, and conditions that turn numbers into operational meaning. A temperature reading of 22°C is normal in an office but a compliance breach in cold storage — widgets let you encode that context so operators see green or red at a glance without looking up the raw reading.

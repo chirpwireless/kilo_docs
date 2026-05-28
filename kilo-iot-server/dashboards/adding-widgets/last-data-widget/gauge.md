@@ -1,3 +1,7 @@
+---
+description: Track a reading against thresholds with the Gauge display in the Kilo IoT Server Last Data widget — colored bands show safe, warning, breach zones.
+---
+
 # Gauge Display
 
 <figure><img src="../../../../.gitbook/assets/last-data-gauge.jpg" alt="Last Data widget using the Gauge display type"><figcaption></figcaption></figure>

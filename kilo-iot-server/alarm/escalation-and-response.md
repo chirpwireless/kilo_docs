@@ -1,3 +1,7 @@
+---
+description: Build escalation chains in Kilo IoT Server alarms — ordered steps that fire over time until an alarm is resolved, with multi-channel notification.
+---
+
 # Escalation and Response
 
 Production incidents left unacknowledged become production outages. Escalation chains ensure that when the primary responder does not act within the expected window, the alarm reaches the next tier — supervisor, site manager, or on-call backup — automatically and through the appropriate channel.

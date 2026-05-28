@@ -1,3 +1,7 @@
+---
+description: Verify the first MIOTY uplink in KiloCenter — confirm data travels from endpoint through base station to the service center via KC-Web.
+---
+
 # Verify the First Uplink
 
 ### Goal

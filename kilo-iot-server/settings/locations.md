@@ -1,3 +1,7 @@
+---
+description: Organize Kilo IoT Server devices into a location hierarchy — sites, buildings, floors, zones — that mirrors your real-world infrastructure.
+---
+
 # Locations
 
 Locations give your Kilo IoT Server deployment a spatial structure. By organizing devices into locations and sub-locations, you create a hierarchy that mirrors your real-world infrastructure — sites, buildings, floors, zones, or any other geographic grouping that makes sense for your operations.

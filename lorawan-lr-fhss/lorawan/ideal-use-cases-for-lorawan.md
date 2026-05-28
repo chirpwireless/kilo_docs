@@ -1,3 +1,7 @@
+---
+description: Ideal LoRaWAN use cases — smart cities, smart buildings, logistics, agriculture, and industrial IoT applications with small intermittent data packets.
+---
+
 # Ideal Use Cases for LoRaWAN
 
 LoRaWAN excels in scenarios where:

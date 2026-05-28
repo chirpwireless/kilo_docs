@@ -1,3 +1,7 @@
+---
+description: Use KiloCenter with LLM coding assistants — llms.txt and llms-full.txt machine-readable summaries for ChatGPT, Claude, Copilot, and Cursor.
+---
+
 # LLM-Assisted Development
 
 ### Overview

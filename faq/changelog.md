@@ -1,3 +1,7 @@
+---
+description: Kilo IoT Server changelog — Scale Log entries for every platform release, with feature summaries, screenshots, and links to feature documentation.
+---
+
 # Changelog
 
 <details>
@@ -23,7 +27,7 @@ Kilo IoT Server 3.4.0 is the release the major-version jump from 3.1 to 3.4 exis
 
 **Digital Building Twin**
 
-<figure><img src="../.gitbook/assets/3d_Scene_Screen.png" alt="Digital Building Twin recoloring live across a facility — parking bay A123 in red (occupied), A124 in green (vacant), color-coded waste containers, and conditional sensor markers across rooms"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/3d_Scene_Screen.jpg" alt="Digital Building Twin recoloring live across a facility — parking bay A123 in red (occupied), A124 in green (vacant), color-coded waste containers, and conditional sensor markers across rooms"><figcaption></figcaption></figure>
 
 The Digital Building Twin is Kilo's live IoT digital twin of a real-world property. Sensors from your deployment bind directly to the objects on a 3D scale model — a warehouse, an office floor, a parking lot, a retail site, a server room, a residential block, an industrial yard — and the scene recolors as readings flow in. Open a dashboard, add the Digital Building Twin widget, switch to edit mode, and start drawing — there's no separate CAD program, no external 3D engine, no plugin install.
 
@@ -147,7 +151,7 @@ Together these changes remove a class of incidents where downstream services wer
 
 <summary>Scale Log. Release 3.1.0</summary>
 
-<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.1.0.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.1.0.jpg" alt=""><figcaption></figcaption></figure>
 
 Kilo IoT Server 3.1.0 extends the platform's connectivity model with External MQTT support, completing the connector framework's first expansion since 3.0.0. Programmatic access is now available through an API key system with granular scope control, rotation, and revocation. The subscription tier structure has been restructured and repriced across the full range — from the free evaluation tier to the Max plan. Alarm management receives targeted precision improvements: one-time notification semantics, mandatory escalation recipient validation, and last-trigger visibility for operational triage. [kiloiot.io](https://kiloiot.io)
 
@@ -301,7 +305,7 @@ The alarm definitions table now exposes a Last Trigger timestamp column — the 
 
 <summary>Scale Log. Release 3.0.0</summary>
 
-<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.0.0.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.0.0.jpg" alt=""><figcaption></figcaption></figure>
 
 Kilo IoT Server 3.0.0 delivers a ground-up rearchitecture of the platform's core infrastructure. The connectivity layer has been replaced with a modular framework that abstracts protocol handling into pluggable connector types. Device management now operates on a Digital Twin model with inline payload normalization — eliminating the need for manual onboarding of new device types. A BPMN-based automation engine provides enterprise-grade rule authoring with full version control, validated builds, and zero-downtime deployment. Operational alerting supports five severity tiers with multi-step escalation policies delivered across email, SMS, and native mobile push notifications. Dashboard widgets are now fully operator-configurable with per-metric conditional formatting. Multi-tenant access control is enforced through ABAC with complete audit logging. [kiloiot.io](https://kiloiot.io)
 
@@ -513,7 +517,7 @@ Every organizational membership event is recorded: invitation dispatch, user acc
 
 <summary>Scale Log. Release 2.2.1</summary>
 
-<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.1.jpg" alt=""><figcaption></figcaption></figure>
 
 ### Major Changes
 
@@ -573,7 +577,7 @@ Every organizational membership event is recorded: invitation dispatch, user acc
 
 <summary>Scale Log. Release 2.2.0</summary>
 
-<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.0.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.2.0.jpg" alt=""><figcaption></figcaption></figure>
 
 #### **Scale Log 2.2.0 is one of the biggest releases of the year — and this Weightlog is a great way to close it out strong.**
 
@@ -709,7 +713,7 @@ This update makes it significantly easier to scale dashboard usage and keep oper
 
 <summary>Scale Log. Release 2.0.0</summary>
 
-<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.0.0.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_2.0.0.jpg" alt=""><figcaption></figcaption></figure>
 
 #### Major Changes
 
@@ -777,7 +781,7 @@ This update makes it significantly easier to scale dashboard usage and keep oper
 
 <summary>Scale Log. Release 1.0.0</summary>
 
-<figure><img src="../.gitbook/assets/Scale_Log_Release_1.0.0.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Scale_Log_Release_1.0.0.jpg" alt=""><figcaption></figcaption></figure>
 
 ### Released features
 

@@ -1,3 +1,7 @@
+---
+description: CEL expression reference for Kilo IoT Server rules — Common Expression Language syntax used in gateways, script tasks, alarm messages, and enrichment.
+---
+
 # CEL Reference
 
 The Rules Engine uses [CEL (Common Expression Language)](https://cel.dev) for expressions inside the visual workflow editor — gateway conditions, Script Task computations, alarm messages, enrichment lookups, and input/output definitions. CEL is a fast, safe expression language originally designed by Google for evaluating conditions in security policies and infrastructure systems. The full language specification is available on [GitHub](https://github.com/google/cel-spec).

@@ -1,3 +1,7 @@
+---
+description: Bind sensor readings to Digital Building Twin objects and define color rules — turn a 3D drawing into a live operational view of your facility.
+---
+
 # Binding Sensors and Colors
 
 This is the step that makes a Digital Building Twin worth building. Up to now the model is a 3D drawing of a facility. Binding sensors turns it into a live operational view: a sensor reads "occupied" and the desk it's bound to turns red; a probe reports 14 °C and the cold store it's bound to turns from green to amber.

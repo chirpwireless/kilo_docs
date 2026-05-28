@@ -1,3 +1,7 @@
+---
+description: Manage a registered device in Kilo IoT Server — Device info, photos, connection settings, metric mappings, and live data logs from the detail page.
+---
+
 # Device Management
 
 Once a device is registered, its Digital Twin is a living record that you can update, reconfigure, and inspect at any time. The device detail page is the ongoing management interface — every device property, connection setting, metric mapping, and data log is accessible from there.

@@ -1,3 +1,7 @@
+---
+description: KiloCenter project overview — MIOTY-native open-source network server with Docker, Linux-host, and Kubernetes deployment paths and a web console.
+---
+
 # Project Overview
 
 ## KiloCenter - Open Source MIOTY Network Server
@@ -16,8 +20,10 @@ MIOTY is a LPWAN protocol built for interference resilience, long-range communic
 
 A demo environment is available at [https://servicecenter.kiloiot.io/](https://servicecenter.kiloiot.io/)
 
-* **Username:** `demo@kiloiot.io`
+* **Username:** `demo [at] kiloiot.io`
 * **Password:** `demo1234`
+
+> Replace `[at]` with `@` when signing in.
 
 ### Production Use Notice
 
@@ -181,8 +187,10 @@ http://localhost/
 
 |              |                          |
 | ------------ | ------------------------ |
-| **Email**    | `admin@kilocenter.local` |
+| **Email**    | `admin [at] kilocenter.local` |
 | **Password** | `admin123!`              |
+
+> Replace `[at]` with `@` when signing in.
 
 > **Warning:** Change the default admin password or remove this account before any production or public-facing deployment. The default credentials are published in this repository.
 

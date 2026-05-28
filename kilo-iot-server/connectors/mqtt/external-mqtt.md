@@ -1,3 +1,7 @@
+---
+description: Connect Kilo IoT Server to your own MQTT broker — Mosquitto, AWS IoT Core, HiveMQ — with TLS auth, topic routing, and end-to-end verification.
+---
+
 # External MQTT
 
 External MQTT connects the Kilo IoT Server to an MQTT broker you already operate. The platform connects out to the broker, subscribes to the relevant topics, and consumes messages into the same routing pipeline as Cloud MQTT data. Choose this option when the broker is already part of your infrastructure footprint — an on-premise Mosquitto cluster, AWS IoT Core, an enterprise HiveMQ deployment, or a vendor-managed broker shared across sites.

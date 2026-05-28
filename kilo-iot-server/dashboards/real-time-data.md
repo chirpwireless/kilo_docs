@@ -1,3 +1,7 @@
+---
+description: Understand how Kilo IoT Server delivers real-time sensor data to dashboards and the Overview page — and what to check when live updates stop.
+---
+
 # Real-Time Data
 
 The Kilo IoT Server delivers device data to your dashboards and overview page in real time. When a sensor reports a new reading, that reading appears on screen without requiring a page refresh or manual action. This page explains the two Live Data surfaces, how real-time delivery works, and what to check when data is not appearing as expected.

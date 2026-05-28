@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: LoRaWAN regional use — sub-GHz ISM frequency plans by country, regulatory differences, and per-region transmit power and duty-cycle rules.
 ---
 
 # LoRaWAN Regional Use

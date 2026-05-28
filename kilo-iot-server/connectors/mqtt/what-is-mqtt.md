@@ -1,3 +1,7 @@
+---
+description: What is MQTT? A lightweight publish-subscribe IoT messaging protocol — brokers, topics, QoS — and how it maps onto the Kilo IoT Server connector.
+---
+
 # What MQTT is
 
 MQTT is a lightweight publish-subscribe messaging protocol designed for constrained networks and devices, originally specified by IBM in 1999 for SCADA over satellite links and now standardized as ISO/IEC 20922. Three properties make it the dominant industrial-IoT protocol today: small wire-format overhead suitable for cellular and battery-powered endpoints, decoupled producers and consumers via a central broker, and well-defined delivery guarantees (QoS 0/1/2) that allow integrators to trade throughput for reliability per topic.

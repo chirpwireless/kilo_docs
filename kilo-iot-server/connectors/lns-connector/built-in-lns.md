@@ -1,3 +1,7 @@
+---
+description: Kilo IoT Server includes a fully managed LoRaWAN Network Server — no third-party LNS to deploy, join requests and downlinks handled automatically.
+---
+
 # Built-in Network Server
 
 In any LoRaWAN deployment, the network server is the critical middleware layer between your gateways and your applications. It manages device authentication, session handling, message routing, uplink deduplication, and downlink scheduling. Without a network server, raw radio packets from gateways cannot be processed into usable application data.

@@ -1,3 +1,7 @@
+---
+description: Kilo IoT Server API overview — REST and gRPC programmatic access, scoped API keys, and cloud or on-premise endpoints for external integrations.
+---
+
 # API
 
 Kilo IoT Server exposes programmatic access so external systems can read and act on your deployment — backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications.

@@ -1,3 +1,7 @@
+---
+description: Runnable C# examples for the KiloCenter gRPC API — create a console project, add Grpc.Net.Client NuGet packages, and call service methods.
+---
+
 # C# Examples
 
 This page provides runnable C# examples for the KiloCenter gRPC API. For the full API reference, see API Reference.

@@ -1,3 +1,7 @@
+---
+description: MQTT edge gateways for Kilo IoT Server — Modbus, BACnet, OPC-UA, Sparkplug B, and Zigbee2MQTT bridges that translate field protocols into MQTT.
+---
+
 # MQTT edge gateways
 
 In commercial deployments, the MQTT connector is often the integration surface for **edge gateways** — small computers or industrial appliances that translate non-MQTT protocols into MQTT publishes. Modbus PLCs, BACnet building management systems, OPC-UA-exposed control systems, Sparkplug B-equipped automation, and Zigbee meshes don't speak MQTT natively, but well-supported gateway software can bridge each of these into the platform's connector with a uniform topic and payload model.

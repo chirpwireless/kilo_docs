@@ -1,3 +1,7 @@
+---
+description: Manage alarm delivery channels in Kilo IoT Server — verified Email contacts, SMS with credit balance, and Push notification setup.
+---
+
 # Delivery Channels
 
 Alarm definitions fire notifications, but those notifications need verified delivery endpoints and active channels. The **Settings** tab on the Alarm page is where you manage the contacts, enable or disable channels, and control which delivery paths receive your operational alerts.

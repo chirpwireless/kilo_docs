@@ -1,3 +1,7 @@
+---
+description: Pin live sensor readings onto any image — floor plan, site photo, equipment schematic — with the Image Widget in Kilo IoT Server dashboards.
+---
+
 # Image Widget
 
 <figure><img src="../../../.gitbook/assets/image-widget.jpg" alt="Image Widget configuration — a photo of silo tanks with sensor pins, beside the live preview"><figcaption></figcaption></figure>

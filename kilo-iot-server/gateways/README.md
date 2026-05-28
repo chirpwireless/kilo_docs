@@ -1,3 +1,7 @@
+---
+description: Gateways in Kilo IoT Server — LoRaWAN radio gateways and MQTT edge gateways that bring field telemetry into the platform over secure channels.
+---
+
 # Gateways
 
 Gateways are the connectivity infrastructure that brings field devices into the Kilo IoT Server. Different protocols use different gateway architectures, but they share the role of receiving telemetry at the network edge and forwarding it to the platform over an authenticated, encrypted channel.

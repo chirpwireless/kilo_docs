@@ -1,3 +1,7 @@
+---
+description: Manage all automation rules in Kilo IoT Server — Rules, Artifacts, and Trash tabs for creating, cloning, deleting, and deploying rule definitions.
+---
+
 # Rules List and Navigation
 
 The Rules Engine page is your central hub for managing all automation rules in your organization. From here you can create, view, edit, clone, delete, and deploy rules.

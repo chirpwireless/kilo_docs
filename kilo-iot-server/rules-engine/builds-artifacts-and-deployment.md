@@ -1,3 +1,7 @@
+---
+description: Build, name, and deploy Kilo IoT Server rule artifacts — validate the diagram, produce a deployable artifact, then start it processing live data.
+---
+
 # Builds, Artifacts, and Deployment
 
 Saving a rule preserves your work. Building a rule validates it and produces a deployable artifact. Deploying an artifact starts the rule processing live sensor data. These are deliberate, separate steps — the platform never runs automation logic that has not been explicitly built and deployed.

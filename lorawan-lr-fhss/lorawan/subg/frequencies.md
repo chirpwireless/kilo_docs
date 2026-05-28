@@ -1,5 +1,6 @@
 ---
 sidebar_position: 6
+description: LoRaWAN frequencies by country — reference table mapping countries A through Z to their permitted frequency plans (EU868, US915, AS923, IN865).
 ---
 
 # LoRaWAN Frequencies by Country

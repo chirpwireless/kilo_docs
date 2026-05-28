@@ -1,3 +1,7 @@
+---
+description: What is Kilo Connectivity — global LPWAN and cellular IoT connectivity through one SIM, one platform, one partner, simplifying multi-country IoT.
+---
+
 # What is Kilo Connectivity?
 
 Make Your International IoT Project a Success

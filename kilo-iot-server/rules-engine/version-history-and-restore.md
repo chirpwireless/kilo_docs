@@ -1,3 +1,7 @@
+---
+description: Browse rule version history in Kilo IoT Server and restore any previous version — a full audit trail of who changed what and when, no data loss.
+---
+
 # Version History and Restore
 
 Every save — whether manual, automatic, or triggered by a session event — creates a version of your rule. The version history gives your team a complete audit trail of how an automation rule evolved, who changed it, and when. If a change introduces unexpected behavior, you can restore any previous version without losing anything in the process.

@@ -1,3 +1,7 @@
+---
+description: KiloCenter gRPC API reference — Protocol Buffer definitions for base stations, endpoints, and integrations, with an interactive online portal.
+---
+
 # API Reference
 
 KiloCenter provides a gRPC API for integrating with or extending the platform. All API definitions are Protocol Buffers hosted in the repository under `KC-Core/api/proto/`.

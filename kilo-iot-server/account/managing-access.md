@@ -1,3 +1,7 @@
+---
+description: Update permissions, revoke pending invitations, or remove members from a Kilo IoT Server organization — all from the Users table.
+---
+
 # Managing Access
 
 After users join your organization, their access may need adjusting — permissions updated as responsibilities change, pending invitations revoked, or members removed when they leave the team. All of these actions require **Manage users** permission with Edit access.
