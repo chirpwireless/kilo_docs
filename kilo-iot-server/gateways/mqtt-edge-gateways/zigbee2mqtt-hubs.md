@@ -1,5 +1,5 @@
 ---
-description: Run a Zigbee2MQTT hub as an MQTT edge gateway for Kilo IoT Server — coordinator radio, Z2M software, and the flat JSON topic stream it produces.
+description: Run a Zigbee2MQTT hub as an MQTT edge gateway — coordinator radio, Z2M software, flat JSON topic stream.
 ---
 
 # Zigbee2MQTT hubs

@@ -1,5 +1,5 @@
 ---
-description: Node reference for the Kilo IoT Server Rules Engine — Start Event, End Event, Script Task, Exclusive Gateway, Set Alarm, Enrichment, Boundary Error.
+description: Node reference for the Rules Engine — Start, End, Script, Gateway, Set Alarm, Enrichment, Boundary.
 ---
 
 # Node Reference

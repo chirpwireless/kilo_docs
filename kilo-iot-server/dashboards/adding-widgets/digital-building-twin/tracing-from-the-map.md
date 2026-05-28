@@ -1,5 +1,5 @@
 ---
-description: Trace a building outline from an aerial map in the Digital Building Twin editor — turn a polygon into walls and capture a real-world GPS anchor.
+description: Trace a building outline from an aerial map in the Digital Building Twin — polygon to walls with real GPS anchor.
 ---
 
 # Tracing from the Map

@@ -1,5 +1,5 @@
 ---
-description: Send and verify the first MIOTY downlink in KiloCenter — queue a command to a bidirectional endpoint and confirm successful delivery.
+description: Send and verify the first MIOTY downlink in KiloCenter — queue a command to a bidirectional endpoint, confirm delivery.
 ---
 
 # Verify the First Downlink

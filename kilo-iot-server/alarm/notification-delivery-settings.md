@@ -1,5 +1,5 @@
 ---
-description: Configure notification severity policy in Kilo IoT Server — repeat cadence per severity tier (Critical, High, Medium, Low, Info) for active alarms.
+description: Notification severity policy in Kilo IoT — repeat cadence per tier: Critical, High, Medium, Low, Info.
 ---
 
 # Notification Severity

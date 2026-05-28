@@ -1,5 +1,5 @@
 ---
-description: First steps with the KiloCenter gRPC API — verify local connectivity to KC-Core on port 9090 with grpcurl and discover available services.
+description: First steps with the KiloCenter gRPC API — verify local connectivity to KC-Core port 9090 with grpcurl, list services.
 ---
 
 # gRPC First Steps

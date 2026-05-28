@@ -1,5 +1,5 @@
 ---
-description: Account in Kilo IoT Server — manage organizations, team members, and per-surface ABAC permissions from the user menu in the bottom-left corner.
+description: Account in Kilo IoT Server — manage orgs, team members, and per-surface ABAC permissions from the bottom-left menu.
 ---
 
 # Account

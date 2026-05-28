@@ -1,5 +1,5 @@
 ---
-description: Build a live 3D Digital Building Twin in Kilo IoT Server — draw walls, place 60+ objects, bind sensors, and watch the model recolor as data arrives.
+description: Build a live 3D Digital Building Twin — draw walls, place 60+ objects, bind sensors, watch it recolor.
 ---
 
 # Digital Building Twin

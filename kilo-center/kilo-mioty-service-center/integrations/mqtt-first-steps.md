@@ -1,5 +1,5 @@
 ---
-description: First steps with KiloCenter MQTT integration — enable the disabled-by-default broker, subscribe to events, and publish downlink commands.
+description: First steps with KiloCenter MQTT — enable the disabled-by-default broker, subscribe to events, publish downlinks.
 ---
 
 # MQTT First Steps

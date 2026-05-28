@@ -1,5 +1,5 @@
 ---
-description: Deploy KiloCenter to Kubernetes with Helm — chart, prerequisites (k8s 1.25+, external PostgreSQL 14+, Redis 7+), and ingress configuration.
+description: Deploy KiloCenter to Kubernetes with Helm — chart, prerequisites (k8s 1.25+, PostgreSQL 14+, Redis 7+), and ingress.
 ---
 
 # Installation: Kubernetes (Helm)

@@ -1,5 +1,5 @@
 ---
-description: Manage alarm delivery channels in Kilo IoT Server — verified Email contacts, SMS with credit balance, and Push notification setup.
+description: Manage alarm delivery channels in Kilo IoT — verified Email contacts, SMS with credit balance, Push notifications.
 ---
 
 # Delivery Channels

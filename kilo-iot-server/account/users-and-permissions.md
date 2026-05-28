@@ -1,5 +1,5 @@
 ---
-description: Manage Kilo IoT Server users and per-surface ABAC permissions — Edit, View, or No access set independently for each product surface.
+description: Manage Kilo IoT users and per-surface ABAC permissions — Edit, View, or No access set independently per surface.
 ---
 
 # Users and Permissions

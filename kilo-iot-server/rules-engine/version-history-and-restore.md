@@ -1,5 +1,5 @@
 ---
-description: Browse rule version history in Kilo IoT Server and restore any previous version — a full audit trail of who changed what and when, no data loss.
+description: Browse rule version history in Kilo IoT and restore any previous version — full audit of who changed what and when.
 ---
 
 # Version History and Restore

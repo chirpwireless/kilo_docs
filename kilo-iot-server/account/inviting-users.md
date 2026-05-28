@@ -1,5 +1,5 @@
 ---
-description: Invite a teammate to join your Kilo IoT Server organization — choose per-surface permissions and send the invitation to their existing Kilo account.
+description: Invite a teammate to your Kilo IoT organization — pick per-surface permissions and send the invite.
 ---
 
 # Inviting Users

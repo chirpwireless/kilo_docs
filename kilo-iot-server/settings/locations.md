@@ -1,5 +1,5 @@
 ---
-description: Organize Kilo IoT Server devices into a location hierarchy — sites, buildings, floors, zones — that mirrors your real-world infrastructure.
+description: Organize Kilo IoT devices into a location hierarchy — sites, buildings, floors, zones — mirroring your real layout.
 ---
 
 # Locations

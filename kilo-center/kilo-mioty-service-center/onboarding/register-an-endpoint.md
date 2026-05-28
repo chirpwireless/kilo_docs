@@ -1,5 +1,5 @@
 ---
-description: Register a MIOTY endpoint in KiloCenter — required fields (endpoint EUI, network key, profile), and how a base station can attach to it.
+description: Register a MIOTY endpoint in KiloCenter — required fields (EUI, network key, profile) and how a base station attaches.
 ---
 
 # Register an Endpoint

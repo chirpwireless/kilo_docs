@@ -1,5 +1,5 @@
 ---
-description: Per-rule edit locks and team handoff flow in Kilo IoT Server Rules Engine — prevent overwrites with automatic locking, heartbeat extension, and timeout.
+description: Per-rule edit locks in Kilo IoT Server — auto locking, heartbeat, timeout prevent overwrites during handoff.
 ---
 
 # Edit Locks and Team Handoffs

@@ -1,5 +1,5 @@
 ---
-description: Read the Overview page in Kilo IoT Server — device and gateway summary cards, recent alarms, and live deployment health at a glance.
+description: Read the Overview page in Kilo IoT Server — device and gateway summary cards, recent alarms, live deployment health.
 ---
 
 # Overview

@@ -1,5 +1,5 @@
 ---
-description: Submit a support request from inside Kilo IoT Server — the in-product support dialog sends your message with account context to the support team.
+description: Submit a support request from inside Kilo IoT Server — the in-product dialog sends your message with context.
 ---
 
 # Get Help

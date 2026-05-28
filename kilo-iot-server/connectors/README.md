@@ -1,5 +1,5 @@
 ---
-description: Connect device protocols to Kilo IoT Server — LNS (LoRaWAN), Tracker (OBD2/CAN/GPS), and MQTT connectors that funnel telemetry into one pipeline.
+description: Connect device protocols to Kilo IoT Server — LNS (LoRaWAN), Tracker (OBD2/CAN/GPS), and MQTT into one pipeline.
 ---
 
 # Connectors

@@ -1,5 +1,5 @@
 ---
-description: Add and configure widgets on a Kilo IoT Server dashboard — connect to devices, set thresholds, and turn raw sensor readings into status at a glance.
+description: Add and configure widgets on a Kilo IoT dashboard — connect to devices, set thresholds, see status.
 ---
 
 # Adding Widgets

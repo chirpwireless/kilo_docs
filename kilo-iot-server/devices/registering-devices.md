@@ -1,5 +1,5 @@
 ---
-description: Register a device on Kilo IoT Server through the LNS, Tracker, or MQTT connector — build its Digital Twin, profile, and metric mappings step by step.
+description: Register a device via LNS, Tracker, or MQTT — build its Digital Twin, profile, and metric mappings.
 ---
 
 # Registering Devices

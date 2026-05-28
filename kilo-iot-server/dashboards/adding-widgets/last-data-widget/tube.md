@@ -1,5 +1,5 @@
 ---
-description: Show a fill level as a vertical sight-glass cylinder with the Tube display in the Kilo IoT Server Last Data widget — tanks, silos, reservoirs.
+description: Show a fill level as a vertical sight-glass cylinder with the Tube display — tanks, silos, reservoirs.
 ---
 
 # Tube Display

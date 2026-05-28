@@ -1,5 +1,5 @@
 ---
-description: Pin live sensor readings onto any image — floor plan, site photo, equipment schematic — with the Image Widget in Kilo IoT Server dashboards.
+description: Pin live sensor readings onto any image — floor plan, site photo, equipment schematic — with the Image Widget.
 ---
 
 # Image Widget

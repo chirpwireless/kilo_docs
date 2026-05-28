@@ -1,5 +1,5 @@
 ---
-description: View, compare, and upgrade your Kilo IoT Server subscription — Free, Pro, and Enterprise tiers with monthly or annual billing through Stripe.
+description: View, compare, and upgrade your Kilo IoT subscription — Free, Pro, Enterprise tiers with monthly or annual billing.
 ---
 
 # Subscription

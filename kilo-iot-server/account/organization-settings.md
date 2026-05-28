@@ -1,5 +1,5 @@
 ---
-description: Owner-only Organization settings in Kilo IoT Server — rename the organization or transfer ownership to another verified member.
+description: Owner-only Organization settings in Kilo IoT — rename the organization or transfer ownership to a verified member.
 ---
 
 # Organization Settings

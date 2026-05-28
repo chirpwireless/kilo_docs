@@ -1,5 +1,5 @@
 ---
-description: Kilo IoT Server changelog — Scale Log entries for every platform release, with feature summaries, screenshots, and links to feature documentation.
+description: Kilo IoT Server changelog — Scale Log entries for every release, with feature summaries, screenshots, and doc links.
 ---
 
 # Changelog

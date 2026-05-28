@@ -1,5 +1,5 @@
 ---
-description: Kilo IoT Server FAQ — answers about accounts, gateways, devices, dashboards, alarms, billing, and how to reach support from inside the platform.
+description: Kilo IoT Server FAQ — accounts, gateways, devices, dashboards, alarms, billing, and how to reach support.
 ---
 
 # Help and FAQ

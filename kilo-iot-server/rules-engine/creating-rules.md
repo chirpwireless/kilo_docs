@@ -1,5 +1,5 @@
 ---
-description: Create a new automation rule from scratch in the Kilo IoT Server Rules Engine — name it, design the workflow, and save the first version.
+description: Create a new automation rule from scratch in the Kilo IoT Rules Engine — name it, design the workflow, save first.
 ---
 
 # Creating Rules

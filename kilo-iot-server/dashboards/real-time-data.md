@@ -1,5 +1,5 @@
 ---
-description: Understand how Kilo IoT Server delivers real-time sensor data to dashboards and the Overview page — and what to check when live updates stop.
+description: How Kilo IoT delivers real-time sensor data to dashboards and Overview — and what to check when updates stop.
 ---
 
 # Real-Time Data

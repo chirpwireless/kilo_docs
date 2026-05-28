@@ -1,5 +1,5 @@
 ---
-description: KiloCenter next steps — recommended sequence to install, onboard a base station, set up integrations, configure security, and run operations.
+description: KiloCenter next steps — install, onboard a base station, set up integrations, configure security, run operations.
 ---
 
 # Next Steps

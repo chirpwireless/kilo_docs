@@ -1,5 +1,5 @@
 ---
-description: Per-feature Page access in Kilo IoT Server ABAC — Edit, View, or No access for every surface, with Admin, Editor, and Viewer display labels.
+description: Per-feature Page access in Kilo IoT ABAC — Edit, View, or No access per surface, with Admin/Editor/Viewer labels.
 ---
 
 # Roles and Page Access

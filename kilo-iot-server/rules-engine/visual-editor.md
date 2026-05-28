@@ -1,5 +1,5 @@
 ---
-description: Design automation rules on the Kilo IoT Server visual BPMN canvas — drag nodes, draw flows, and configure each step in the properties panel.
+description: Design automation rules on the Kilo IoT visual BPMN canvas — drag nodes, draw flows, configure each step in panel.
 ---
 
 # Visual Editor

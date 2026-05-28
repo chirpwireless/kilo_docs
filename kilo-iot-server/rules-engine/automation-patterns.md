@@ -1,5 +1,5 @@
 ---
-description: Proven automation patterns for Kilo IoT Server — threshold alarms, multi-sensor enrichment, escalation chains, and dynamic CEL classification examples.
+description: Automation patterns for Kilo IoT — threshold alarms, multi-sensor enrichment, escalation, dynamic CEL.
 ---
 
 # Automation Patterns

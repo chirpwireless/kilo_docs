@@ -1,5 +1,5 @@
 ---
-description: Query your Kilo IoT Server deployment in natural language — live device status, historical aggregations, threshold violations, and follow-up questions.
+description: Query Kilo IoT Server in natural language — device status, history, threshold violations, follow-ups.
 ---
 
 # Querying Your Data

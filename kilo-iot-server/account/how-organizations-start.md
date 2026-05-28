@@ -1,5 +1,5 @@
 ---
-description: How a Kilo IoT Server organization gets created — automatic default organization for new users, or joining an existing organization via invitation.
+description: How a Kilo IoT organization gets created — automatic default for new users or via invitation.
 ---
 
 # How Organizations Start

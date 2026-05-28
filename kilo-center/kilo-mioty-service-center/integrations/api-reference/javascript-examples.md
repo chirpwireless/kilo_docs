@@ -1,5 +1,5 @@
 ---
-description: Runnable Node.js examples for the KiloCenter gRPC API — install @grpc/grpc-js with dynamic proto loading and call core service methods.
+description: Runnable Node.js examples for the KiloCenter gRPC API — install @grpc/grpc-js with dynamic proto loading, call methods.
 ---
 
 # JavaScript Examples

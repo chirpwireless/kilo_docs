@@ -1,5 +1,5 @@
 ---
-description: Tour the Digital Building Twin editor in Kilo IoT Server — toolbars, Scene panel, camera controls, and floor selector for the 3D building modeler.
+description: Tour the Digital Building Twin editor — toolbars, Scene panel, camera controls, and floor selector for the 3D modeler.
 ---
 
 # Editor Tour

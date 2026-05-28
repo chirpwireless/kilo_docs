@@ -1,5 +1,5 @@
 ---
-description: Run KiloCenter in a local VM with automated provisioning — repeatable setup for testing and team onboarding using Docker Compose inside the VM.
+description: Run KiloCenter in a local VM with automated provisioning — repeatable setup for testing and team onboarding via Docker.
 ---
 
 # Installation: Local VM and Automation

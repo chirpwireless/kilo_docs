@@ -1,5 +1,5 @@
 ---
-description: KiloCenter gRPC API reference — Protocol Buffer definitions for base stations, endpoints, and integrations, with an interactive online portal.
+description: KiloCenter gRPC API reference — Protocol Buffer definitions for base stations, endpoints, with online portal.
 ---
 
 # API Reference

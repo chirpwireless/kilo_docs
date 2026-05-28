@@ -1,5 +1,5 @@
 ---
-description: Build escalation chains in Kilo IoT Server alarms — ordered steps that fire over time until an alarm is resolved, with multi-channel notification.
+description: Build escalation chains in Kilo IoT alarms — ordered steps fire over time until resolution with multi-channel notice.
 ---
 
 # Escalation and Response

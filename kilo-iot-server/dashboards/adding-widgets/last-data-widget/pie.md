@@ -1,5 +1,5 @@
 ---
-description: Render a sensor reading as a bold filled disc with the Pie display in the Kilo IoT Server Last Data widget — high-contrast for wall displays.
+description: Render a sensor reading as a bold filled disc with the Pie display — high-contrast for wall displays.
 ---
 
 # Pie Display

@@ -1,5 +1,5 @@
 ---
-description: Authenticate Kilo IoT Server API requests with scoped API keys — X-API-Key and X-Organization-Id headers, per-integration keys, and rotation.
+description: Authenticate Kilo IoT API requests with scoped keys — X-API-Key and X-Organization-Id headers, per-integration keys.
 ---
 
 # Authentication & API Keys

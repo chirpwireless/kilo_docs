@@ -1,5 +1,5 @@
 ---
-description: Configure per-metric color conditions on Kilo IoT Server widgets — green, yellow, red rules that turn raw sensor readings into operational status.
+description: Configure per-metric color conditions on widgets — green, yellow, red rules turn raw sensor readings into status.
 ---
 
 # Conditions

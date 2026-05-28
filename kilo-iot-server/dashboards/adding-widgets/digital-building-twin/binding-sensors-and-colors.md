@@ -1,5 +1,5 @@
 ---
-description: Bind sensor readings to Digital Building Twin objects and define color rules — turn a 3D drawing into a live operational view of your facility.
+description: Bind sensors to Digital Building Twin objects and define color rules — turn a 3D drawing into a live operational view.
 ---
 
 # Binding Sensors and Colors

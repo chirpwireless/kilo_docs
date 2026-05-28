@@ -1,5 +1,5 @@
 ---
-description: Place GPS-reporting assets on an interactive map with the Kilo IoT Server Map widget — current position, live metric value, and route history.
+description: Place GPS-reporting assets on an interactive map with the Map widget — current position, live metric, route history.
 ---
 
 # Map Widget

@@ -1,5 +1,5 @@
 ---
-description: Kilo Connectivity platform — manage SIMs and devices with zero-touch provisioning, real-time control, alerts, diagnostics, and API integration.
+description: Kilo Connectivity platform — manage SIMs and devices with zero-touch provisioning, real-time control, alerts, API.
 ---
 
 # Connectivity Platform

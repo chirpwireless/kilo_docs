@@ -1,5 +1,5 @@
 ---
-description: Draw walls, doors, windows, and fences for a Digital Building Twin in Kilo IoT Server — 2D plan and 3D views of the same scene.
+description: Draw walls, doors, windows, and fences for a Digital Building Twin — 2D plan and 3D views of the same scene.
 ---
 
 # Drawing Your Building

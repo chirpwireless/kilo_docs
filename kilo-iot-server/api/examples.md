@@ -1,5 +1,5 @@
 ---
-description: Authentication examples for the Kilo IoT Server API — curl REST requests and gRPC headers using X-API-Key and X-Organization-Id.
+description: Authentication examples for the Kilo IoT API — curl REST and gRPC headers using X-API-Key and X-Organization-Id.
 ---
 
 # Examples

@@ -1,5 +1,5 @@
 ---
-description: Devices in Kilo IoT Server — Digital Twin model, lifecycle, registration, configuration, and metric template normalization across every connector.
+description: Devices in Kilo IoT Server — Digital Twin model, lifecycle, registration, configuration, normalization.
 ---
 
 # Devices

@@ -1,5 +1,5 @@
 ---
-description: LoRaWAN quickstart for Kilo IoT Server — register a gateway, set up an LNS connector, add a sensor, build a dashboard, and trigger an alarm.
+description: LoRaWAN quickstart for Kilo IoT — register a gateway, set up LNS, add a sensor, build a dashboard, trigger an alarm.
 ---
 
 # Your First Deployment

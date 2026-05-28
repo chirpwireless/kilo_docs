@@ -1,5 +1,5 @@
 ---
-description: Create, rename, and delete Kilo IoT Server dashboards — the named containers that hold widgets for device data, charts, and floor plans.
+description: Create, rename, and delete Kilo IoT dashboards — named containers that hold widgets for data, charts, and floor plans.
 ---
 
 # Creating Dashboards

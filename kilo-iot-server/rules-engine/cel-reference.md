@@ -1,5 +1,5 @@
 ---
-description: CEL expression reference for Kilo IoT Server rules — Common Expression Language syntax used in gateways, script tasks, alarm messages, and enrichment.
+description: CEL syntax reference for Kilo IoT rules — Common Expression Language used in gateways, scripts, alarms.
 ---
 
 # CEL Reference

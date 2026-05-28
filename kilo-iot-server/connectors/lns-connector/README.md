@@ -1,5 +1,5 @@
 ---
-description: Activate the built-in LoRaWAN Network Server with the Kilo IoT Server LNS connector — no external LNS to configure, no credentials to exchange.
+description: Activate the built-in LoRaWAN Network Server via the LNS connector — no external LNS to configure, no credentials swap.
 ---
 
 # LNS Connector

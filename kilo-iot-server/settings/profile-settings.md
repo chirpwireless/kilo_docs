@@ -1,5 +1,5 @@
 ---
-description: Edit your Kilo IoT Server profile — first name, last name, avatar, language, theme, and password — globally across every organization you belong to.
+description: Edit your Kilo IoT Server profile — name, avatar, language, theme, password — global across all orgs.
 ---
 
 # Profile Settings

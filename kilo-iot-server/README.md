@@ -1,5 +1,5 @@
 ---
-description: Kilo IoT Server is a managed-or-self-hosted platform for device management, real-time data, dashboards, alarms, and rule-based automation.
+description: Kilo IoT Server is a managed or self-hosted platform for device management, real-time data, dashboards, and rules.
 ---
 
 # Kilo IoT Server

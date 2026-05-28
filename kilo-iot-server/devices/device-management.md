@@ -1,5 +1,5 @@
 ---
-description: Manage a registered device in Kilo IoT Server — Device info, photos, connection settings, metric mappings, and live data logs from the detail page.
+description: Manage a registered device in Kilo IoT — info, photos, connection, metrics, and logs from one panel.
 ---
 
 # Device Management

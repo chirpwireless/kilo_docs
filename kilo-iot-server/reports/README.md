@@ -1,5 +1,5 @@
 ---
-description: Reports in Kilo IoT Server — operational visibility into membership and access activity, currently covering the Audit Trail report.
+description: Reports in Kilo IoT Server — operational visibility into membership and access activity via the Audit Trail report.
 ---
 
 # Reports

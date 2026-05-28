@@ -1,5 +1,5 @@
 ---
-description: What is LoRaWAN? A long-range, low-power wireless IoT protocol for battery-powered sensors across warehouses, campuses, and agricultural land.
+description: What is LoRaWAN? Long-range, low-power wireless IoT protocol for battery sensors across campuses and agriculture.
 ---
 
 # What is LoRaWAN?

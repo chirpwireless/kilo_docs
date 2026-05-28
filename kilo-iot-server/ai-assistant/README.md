@@ -1,5 +1,5 @@
 ---
-description: IoT AI Assistant for Kilo IoT Server — an intelligent analyst grounded in your devices and telemetry, available on Pro and Enterprise plans.
+description: IoT AI Assistant for Kilo IoT Server — an analyst grounded in your devices and telemetry, on Pro and Enterprise.
 ---
 
 # IoT AI Assistant

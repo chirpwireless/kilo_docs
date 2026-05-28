@@ -1,5 +1,5 @@
 ---
-description: Kilo IoT Server gRPC API — advanced typed service-to-service path for on-premise installations, using the same scoped API-key authentication.
+description: Kilo IoT Server gRPC API — typed service-to-service path for on-premise installs, same scoped API-key auth.
 ---
 
 # gRPC API

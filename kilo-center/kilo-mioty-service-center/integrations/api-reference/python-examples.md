@@ -1,5 +1,5 @@
 ---
-description: Runnable Python examples for the KiloCenter gRPC API — install grpcio, generate stubs, and call uplink and endpoint management methods.
+description: Runnable Python examples for the KiloCenter gRPC API — install grpcio, generate stubs, call uplink and endpoint methods.
 ---
 
 # Python Examples

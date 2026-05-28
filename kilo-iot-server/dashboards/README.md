@@ -1,5 +1,5 @@
 ---
-description: Build customizable monitoring dashboards in Kilo IoT Server — assemble widgets from any device, organize by folder, and deploy on ops displays.
+description: Build customizable monitoring dashboards in Kilo IoT — assemble widgets from any device, organize by folder.
 ---
 
 # Dashboards

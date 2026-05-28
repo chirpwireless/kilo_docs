@@ -1,5 +1,5 @@
 ---
-description: Kilo includes a fully managed LPWAN network server — no separate LNS to install, scale, or maintain; gateways connect natively to the cloud.
+description: Kilo includes a managed LPWAN network server — no separate LNS to install or maintain; gateways connect natively.
 ---
 
 # Built in LPWAN Server

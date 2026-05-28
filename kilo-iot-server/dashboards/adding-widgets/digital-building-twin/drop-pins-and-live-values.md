@@ -1,5 +1,5 @@
 ---
-description: Drop labelled value pins into a Digital Building Twin scene to show live sensor readings exactly where they belong — name, value, units, status color.
+description: Drop labelled pins into a Digital Building Twin — show live sensor readings with name, value, color.
 ---
 
 # Drop-Pins and Live Values

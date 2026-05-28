@@ -1,5 +1,5 @@
 ---
-description: MQTT topic structure and Device ID routing in Kilo IoT Server — pattern placeholders, Mapping vs Topic sub-tabs, and the two-pass save flow.
+description: MQTT topic structure and Device ID routing in Kilo IoT — pattern placeholders, Mapping/Topic tabs, two-pass save.
 ---
 
 # Topics and device routing

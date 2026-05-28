@@ -1,5 +1,5 @@
 ---
-description: Accept a Kilo IoT Server invitation — membership invites valid for 7 days, ownership-transfer invites with their own acceptance flow.
+description: Accept a Kilo IoT invitation — membership invites valid 7 days, ownership-transfer invites with their own acceptance.
 ---
 
 # Accepting Invitations

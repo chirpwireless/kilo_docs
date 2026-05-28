@@ -1,5 +1,5 @@
 ---
-description: Kilo is a full-stack IoT company covering devices, connectivity, and the cloud IoT Server — usable end-to-end or piece by piece.
+description: Kilo is a full-stack IoT company covering devices, connectivity, and the cloud IoT Server — end-to-end or piecemeal.
 ---
 
 # Intro to Kilo

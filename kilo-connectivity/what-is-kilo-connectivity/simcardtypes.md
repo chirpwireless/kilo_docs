@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-description: Standard vs Industrial IoT SIM cards — lifespan, durability ratings, and recommended use cases for fixed vs mobile vs harsh-environment deployments.
+description: Standard vs Industrial IoT SIM cards — lifespan, durability, and use for fixed, mobile, or harsh sites.
 ---
 
 # SIM Cards Types

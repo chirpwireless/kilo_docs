@@ -1,5 +1,5 @@
 ---
-description: Create, scope, rotate, and revoke API keys in Kilo IoT Server — per-integration credentials for REST and gRPC programmatic access.
+description: Create, scope, rotate, and revoke API keys in Kilo IoT — per-integration credentials for REST and gRPC access.
 ---
 
 # API Keys

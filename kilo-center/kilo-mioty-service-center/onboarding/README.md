@@ -1,5 +1,5 @@
 ---
-description: KiloCenter onboarding — connect MIOTY base stations, register endpoints, and verify the first uplink and downlink through the service center.
+description: KiloCenter onboarding — connect MIOTY base stations, register endpoints, verify first uplink and downlink.
 ---
 
 # Onboarding

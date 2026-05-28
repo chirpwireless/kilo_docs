@@ -1,5 +1,5 @@
 ---
-description: Install KiloCenter on a Linux host without Docker — set up PostgreSQL, Redis, Mosquitto, TLS certificates, and the four KC services directly.
+description: Install KiloCenter on a Linux host without Docker — PostgreSQL, Redis, Mosquitto, TLS certs, and the four KC services.
 ---
 
 # Installation: Linux Host

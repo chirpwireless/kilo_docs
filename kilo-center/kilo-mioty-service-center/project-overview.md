@@ -1,5 +1,5 @@
 ---
-description: KiloCenter project overview — MIOTY-native open-source network server with Docker, Linux-host, and Kubernetes deployment paths and a web console.
+description: KiloCenter project overview — MIOTY-native open-source server with Docker, Linux-host, and Kubernetes deploy paths.
 ---
 
 # Project Overview

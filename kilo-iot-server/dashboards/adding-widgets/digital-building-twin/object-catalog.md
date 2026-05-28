@@ -1,5 +1,5 @@
 ---
-description: Browse the Digital Building Twin object catalog — 60+ scaled 3D models across Furniture, Appliance, Kitchen, Bathroom, and Outdoor categories.
+description: Browse the Digital Building Twin object catalog — 60+ scaled 3D models across Furniture, Appliance, Kitchen, Outdoor.
 ---
 
 # Object Catalog

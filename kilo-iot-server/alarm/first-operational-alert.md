@@ -1,5 +1,5 @@
 ---
-description: Walkthrough — create your first operational alarm in Kilo IoT Server, link it to a rule, see it fire in the Inbox, and resolve the event.
+description: Walkthrough — create your first operational alarm, link it to a rule, see it fire in the Inbox, resolve the event.
 ---
 
 # Your First Alert

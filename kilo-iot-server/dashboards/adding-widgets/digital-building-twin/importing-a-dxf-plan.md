@@ -1,5 +1,5 @@
 ---
-description: Import an architectural DXF drawing into a Digital Building Twin in Kilo IoT Server — convert CAD line work into precise scaled walls instantly.
+description: Import an architectural DXF drawing into a Digital Building Twin — convert CAD line work into scaled walls.
 ---
 
 # Importing a DXF Plan

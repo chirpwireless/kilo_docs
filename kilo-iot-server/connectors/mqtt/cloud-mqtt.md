@@ -1,5 +1,5 @@
 ---
-description: Provision a managed Cloud MQTT broker in Kilo IoT Server — dedicated endpoint and credentials per connector, ideal for pilots and remote sites.
+description: Provision a managed Cloud MQTT broker in Kilo IoT — dedicated endpoint and credentials per connector, ideal for pilots.
 ---
 
 # Cloud MQTT

@@ -1,5 +1,5 @@
 ---
-description: Connect a MIOTY base station to KiloCenter — BSSCI on port 5000, server CA certificate, and KC-Web base station creation steps.
+description: Connect a MIOTY base station to KiloCenter — BSSCI on port 5000, server CA certificate, and KC-Web creation steps.
 ---
 
 # Connect a Base Station

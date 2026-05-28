@@ -1,5 +1,5 @@
 ---
-description: Manage the Kilo IoT Server alarm Inbox — filter by severity or status, search by title, resolve events, and trace back to the originating rule.
+description: Manage the Kilo IoT alarm Inbox — filter by severity or status, search, resolve events, trace back to the source rule.
 ---
 
 # Inbox and Resolution

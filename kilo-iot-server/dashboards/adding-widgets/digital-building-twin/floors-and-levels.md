@@ -1,5 +1,5 @@
 ---
-description: Model multi-storey facilities in a Digital Building Twin — add floors above or below, switch the active level, and view all levels stacked together.
+description: Model multi-storey buildings in a Digital Building Twin — add floors, switch the active level.
 ---
 
 # Floors and Levels

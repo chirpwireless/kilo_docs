@@ -1,5 +1,5 @@
 ---
-description: KiloCenter operations — health checks, monitoring, log inspection, and troubleshooting recipes for keeping the MIOTY service center running.
+description: KiloCenter operations — health checks, monitoring, log inspection, and recipes for keeping MIOTY service running.
 ---
 
 # Operations

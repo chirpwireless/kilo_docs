@@ -1,5 +1,5 @@
 ---
-description: Display the latest sensor reading on a Kilo IoT Server dashboard with the Last Data widget — number, doughnut, pie, tube, or gauge styles.
+description: Display the latest sensor reading on a Kilo IoT dashboard with the Last Data widget — number, doughnut, pie, tube.
 ---
 
 # Last Data Widget

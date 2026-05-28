@@ -1,5 +1,5 @@
 ---
-description: IoT security with Kilo Connectivity — private global IPX network, IPSec VPN, Cloud Connect, and SIM-based Root of Trust for end-to-end protection.
+description: IoT security with Kilo Connectivity — private global IPX, IPSec VPN, Cloud Connect, SIM-based Root of Trust.
 ---
 
 # IoT Security

@@ -1,5 +1,5 @@
 ---
-description: Organize many Kilo IoT Server dashboards into folders with drag-and-drop reordering — keep multi-site deployments scannable in the sidebar.
+description: Organize many Kilo IoT dashboards into folders with drag-and-drop reordering — multi-site deployments stay scannable.
 ---
 
 # Organizing Dashboards

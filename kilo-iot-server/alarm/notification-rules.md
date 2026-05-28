@@ -1,5 +1,5 @@
 ---
-description: Configure alarm definitions in Kilo IoT Server — severity, escalation chain, repeat cadence, channels, schedule, suppression, and message body.
+description: Configure alarm definitions in Kilo IoT — severity, escalation, repeat cadence, channels, schedule, suppression, body.
 ---
 
 # Alarm Definitions

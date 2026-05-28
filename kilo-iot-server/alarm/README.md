@@ -1,5 +1,5 @@
 ---
-description: Operational alerting in Kilo IoT Server — Inbox, Alarm definitions, severity tiers, escalation chains, and delivery across email, SMS, and push.
+description: Operational alerting in Kilo IoT Server — Inbox, alarm definitions, severity tiers, escalation, multi-channel delivery.
 ---
 
 # Alarm

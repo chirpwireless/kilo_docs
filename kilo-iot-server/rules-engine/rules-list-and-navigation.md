@@ -1,5 +1,5 @@
 ---
-description: Manage all automation rules in Kilo IoT Server — Rules, Artifacts, and Trash tabs for creating, cloning, deleting, and deploying rule definitions.
+description: Manage automation rules in Kilo IoT — Rules, Artifacts, Trash tabs for create, clone, delete, deploy.
 ---
 
 # Rules List and Navigation

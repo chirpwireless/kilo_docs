@@ -1,5 +1,5 @@
 ---
-description: Build, name, and deploy Kilo IoT Server rule artifacts — validate the diagram, produce a deployable artifact, then start it processing live data.
+description: Build, name, and deploy Kilo IoT rule artifacts — validate the diagram, produce an artifact, then start processing.
 ---
 
 # Builds, Artifacts, and Deployment

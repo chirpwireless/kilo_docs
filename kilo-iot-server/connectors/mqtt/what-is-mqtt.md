@@ -1,5 +1,5 @@
 ---
-description: What is MQTT? A lightweight publish-subscribe IoT messaging protocol — brokers, topics, QoS — and how it maps onto the Kilo IoT Server connector.
+description: What is MQTT? A lightweight pub-sub IoT protocol — brokers, topics, QoS — and how it maps to the Kilo connector.
 ---
 
 # What MQTT is

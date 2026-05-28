@@ -1,5 +1,5 @@
 ---
-description: Kilo IoT Server Public REST API — primary integration surface over HTTPS and JSON, with X-API-Key and X-Organization-Id authentication headers.
+description: Kilo IoT Server Public REST API — primary integration surface over HTTPS/JSON with X-API-Key and X-Organization-Id.
 ---
 
 # Public REST API

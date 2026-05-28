@@ -1,5 +1,5 @@
 ---
-description: Get oriented with the Kilo IoT Server interface and walk through your first LoRaWAN deployment from gateway to live dashboard.
+description: Get oriented with Kilo IoT Server and walk through your first LoRaWAN deployment from gateway to live dashboard.
 ---
 
 # Getting Started

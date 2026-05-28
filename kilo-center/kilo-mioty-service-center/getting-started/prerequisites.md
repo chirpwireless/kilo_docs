@@ -1,5 +1,5 @@
 ---
-description: KiloCenter prerequisites — Docker, Docker Compose, Git, and optional toolchains (Go, Bun) required to install or build the MIOTY service center.
+description: KiloCenter prerequisites — Docker, Docker Compose, Git, and optional toolchains (Go, Bun) for install or build.
 ---
 
 # Prerequisites

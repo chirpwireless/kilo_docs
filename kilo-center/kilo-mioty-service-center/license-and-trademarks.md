@@ -1,5 +1,5 @@
 ---
-description: KiloCenter Community Edition license — AGPL-3.0-or-later with network-use clause — and trademark notices for the Kilo and MIOTY marks.
+description: KiloCenter Community Edition license — AGPL-3.0-or-later with network-use clause — and trademark notices.
 ---
 
 # License And Trademarks

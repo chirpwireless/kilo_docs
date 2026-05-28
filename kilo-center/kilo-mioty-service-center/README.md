@@ -1,5 +1,5 @@
 ---
-description: Kilo MIOTY Service Center — open-source self-hosted MIOTY network server for base stations, endpoints, uplink/downlink traffic, and integrations.
+description: Kilo MIOTY Service Center — open-source MIOTY network server for base stations, endpoints, traffic, and integrations.
 ---
 
 # Kilo Service Center

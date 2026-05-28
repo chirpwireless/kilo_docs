@@ -1,5 +1,5 @@
 ---
-description: What is LR-FHSS — frequency-hopping LoRaWAN extension built for utility metering, wide-area sensing, and millions of devices per network.
+description: What is LR-FHSS — frequency-hopping LoRaWAN extension for utility metering, wide-area sensing, millions of devices.
 ---
 
 # What is LR-FHSS?

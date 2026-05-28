@@ -1,5 +1,5 @@
 ---
-description: MQTT edge gateways for Kilo IoT Server — Modbus, BACnet, OPC-UA, Sparkplug B, and Zigbee2MQTT bridges that translate field protocols into MQTT.
+description: MQTT edge gateways for Kilo IoT — Modbus, BACnet, OPC-UA, Sparkplug B, Zigbee2MQTT bridges into MQTT.
 ---
 
 # MQTT edge gateways

@@ -1,5 +1,5 @@
 ---
-description: Belong to several Kilo IoT Server organizations from one account — switch context through the My organizations list in the user menu.
+description: Belong to several Kilo IoT organizations from one account — switch context via the My organizations list in the menu.
 ---
 
 # Switching Organizations

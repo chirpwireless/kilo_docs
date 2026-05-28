@@ -1,5 +1,5 @@
 ---
-description: Tour every section of the Kilo IoT Server — sidebar, overview, themes, and language — to know exactly where each feature lives.
+description: Tour every section of Kilo IoT Server — sidebar, overview, themes, and language — to know where each feature lives.
 ---
 
 # Navigating the Interface

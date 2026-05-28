@@ -1,5 +1,5 @@
 ---
-description: KiloCenter configuration files and baseline settings — config.docker.yaml, KC-Core, KC-Gateway, and docker-compose port mappings.
+description: KiloCenter configuration files and baseline settings — config.docker.yaml, KC-Core, KC-Gateway, port mappings.
 ---
 
 # Configuration Basics

@@ -1,5 +1,5 @@
 ---
-description: LR-FHSS in Kilo IoT Server — frequency-hopping LoRaWAN extension that scales to millions of devices for utility metering and wide-area sensing.
+description: LR-FHSS in Kilo IoT — frequency-hopping LoRaWAN extension that scales to millions of devices for utility metering.
 ---
 
 # LR-FHSS

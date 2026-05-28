@@ -1,5 +1,5 @@
 ---
-description: Bring MQTT-capable devices into Kilo IoT Server — Cloud MQTT (platform-provisioned broker) or External MQTT (bridge to your own broker).
+description: Bring MQTT-capable devices into Kilo IoT — Cloud MQTT (platform-provisioned broker) or External MQTT (bridge yours).
 ---
 
 # MQTT Connector

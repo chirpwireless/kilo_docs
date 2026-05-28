@@ -1,5 +1,5 @@
 ---
-description: KiloCenter operations and troubleshooting — health endpoints for KC-Core, KC-Gateway, KC-Identity, common startup issues, and message diagnostics.
+description: KiloCenter operations — health endpoints for KC-Core, KC-Gateway, KC-Identity, common startup issues, diagnostics.
 ---
 
 # Operations and Troubleshooting

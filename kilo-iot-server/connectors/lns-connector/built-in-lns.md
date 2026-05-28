@@ -1,5 +1,5 @@
 ---
-description: Kilo IoT Server includes a fully managed LoRaWAN Network Server — no third-party LNS to deploy, join requests and downlinks handled automatically.
+description: Kilo IoT Server includes a managed LoRaWAN Network Server — no separate LNS to deploy, joins and downlinks automatic.
 ---
 
 # Built-in Network Server

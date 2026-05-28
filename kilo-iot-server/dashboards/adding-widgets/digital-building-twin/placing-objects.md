@@ -1,5 +1,5 @@
 ---
-description: Place 3D objects — desks, racks, parking bays, AC units — into a Digital Building Twin scene in Kilo IoT Server from the built-in object catalog.
+description: Place 3D objects — desks, racks, parking bays, AC units — into a Digital Building Twin from the object catalog.
 ---
 
 # Placing Objects

@@ -1,5 +1,5 @@
 ---
-description: LoRaWAN gateways for Kilo IoT Server — radio infrastructure supporting LoRaWAN and LR-FHSS, 2-15 km range over Ethernet, Wi-Fi, LTE, or satellite.
+description: LoRaWAN gateways for Kilo IoT — radio for LoRaWAN and LR-FHSS over Ethernet, Wi-Fi, LTE, or satellite.
 ---
 
 # LoRaWAN gateways

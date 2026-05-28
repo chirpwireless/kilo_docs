@@ -1,5 +1,5 @@
 ---
-description: Define metric templates in Kilo IoT Server — Units, Metric keys, and Templates that normalize raw sensor data into one vocabulary across devices.
+description: Define metric templates in Kilo IoT — Units, Metric keys, and Templates that normalize raw sensor data into one model.
 ---
 
 # Metric Templates

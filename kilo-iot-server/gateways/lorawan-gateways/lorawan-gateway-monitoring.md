@@ -1,5 +1,5 @@
 ---
-description: Monitor LoRaWAN gateway fleet health in Kilo IoT Server — status, availability, traffic, last-seen, regenerate certificates, manage firmware.
+description: Monitor LoRaWAN gateway fleet in Kilo IoT — status, traffic, last-seen, regenerate certs, manage firmware.
 ---
 
 # LoRaWAN Gateway Monitoring

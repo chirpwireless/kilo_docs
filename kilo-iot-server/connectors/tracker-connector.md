@@ -1,5 +1,5 @@
 ---
-description: Connect OBD2, CAN bus, and GPS vehicle trackers to Kilo IoT Server with the Tracker connector — 2,000+ preconfigured vehicle tracker models supported.
+description: Connect OBD2, CAN bus, and GPS trackers via the Tracker connector — 2,000+ preconfigured models.
 ---
 
 # Tracker Connector

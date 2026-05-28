@@ -1,5 +1,5 @@
 ---
-description: GPS anchor a Digital Building Twin to real-world latitude and longitude — automatic from map tracing or manual point-by-point for any model.
+description: GPS anchor a Digital Building Twin to real lat/long — automatic from map tracing or manual point-by-point for any.
 ---
 
 # GPS Anchoring

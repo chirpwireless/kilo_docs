@@ -1,5 +1,5 @@
 ---
-description: KiloCenter architecture — four cooperating services (KC-Core, KC-Identity, KC-Gateway, KC-Web) and infrastructure dependencies for MIOTY deployments.
+description: KiloCenter architecture — four services (KC-Core, KC-Identity, KC-Gateway, KC-Web) plus infrastructure.
 ---
 
 # Architecture and Components

@@ -1,5 +1,5 @@
 ---
-description: Privacy and security of the Kilo IoT AI Assistant — session-scoped authentication, permission inheritance, organization isolation, data retention.
+description: Privacy of the Kilo IoT AI Assistant — session-scoped auth, permission inheritance, org isolation, data retention.
 ---
 
 # Privacy and Security

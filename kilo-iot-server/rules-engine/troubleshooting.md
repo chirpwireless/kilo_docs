@@ -1,5 +1,5 @@
 ---
-description: Troubleshoot Kilo IoT Server rule build errors and runtime issues — missing nodes, invalid CEL expressions, boundary event attachment, deploy limits.
+description: Troubleshoot rule errors in Kilo IoT — missing nodes, invalid CEL, boundary attachment, deploy limits.
 ---
 
 # Rules Engine Troubleshooting
