@@ -1,5 +1,5 @@
 ---
-description: Audit Trail in Kilo IoT Server — searchable log of org membership events: invites, accepts, permission changes.
+description: "Audit Trail in Kilo IoT Server — searchable log of org membership events: invites, accepts, permission changes."
 ---
 
 # Audit Trail

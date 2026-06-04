@@ -1,5 +1,5 @@
 ---
-description: Notification severity policy in Kilo IoT — repeat cadence per tier: Critical, High, Medium, Low, Info.
+description: "Notification severity policy in Kilo IoT — repeat cadence per tier: Critical, High, Medium, Low, Info."
 ---
 
 # Notification Severity
