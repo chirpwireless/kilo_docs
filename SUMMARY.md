@@ -91,6 +91,7 @@
   * [Working With the Assistant](kilo-iot-server/ai-assistant/querying-your-data.md)
   * [Building With the Assistant](kilo-iot-server/ai-assistant/building-with-ai.md)
   * [What It Can Access](kilo-iot-server/ai-assistant/data-sources.md)
+  * [Managing Chats and AI Access](kilo-iot-server/ai-assistant/managing-chats-and-ai-access.md)
   * [Privacy and Security](kilo-iot-server/ai-assistant/privacy.md)
 * [Reports](kilo-iot-server/reports/README.md)
   * [Audit Trail](kilo-iot-server/reports/audit-trail.md)

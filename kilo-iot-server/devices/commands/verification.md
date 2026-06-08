@@ -1,5 +1,5 @@
 ---
-description: Choose how Kilo IoT Server confirms a device command took effect — no verification, wait for the next uplink, or query after acknowledgment.
+description: How Kilo IoT Server confirms a command took effect — no verification, next-uplink check, or query after the ack.
 ---
 
 # Confirming Commands
@@ -22,9 +22,10 @@ This suits devices that report on a schedule and reflect their state in normal t
 
 ## Query after ack
 
-The most thorough option. After the device acknowledges the command, the platform sends a **query command** and matches that query's uplink response against the expected states.
+The most thorough option. After the device acknowledges the command, the platform sends a **query command** — a small read that pokes the device for its current state — and matches that query's uplink response against the expected states.
 
-* **Query command** — Select an existing command to run as the query. If you don't have a suitable one yet, you can **create a new query command** inline; once saved, it appears in the Commands list and can be reused by other commands.
+* **Query command** — Select an existing query command, or **create a new one** inline. A query command is a dedicated, lightweight command type: a **state-polling read with no operator parameters**, so there is nothing to fill in at execute time. It is always itself set to **No verification** — the query *is* the verification step, and its uplink is what gets checked, so it carries no verification block of its own. Once saved it appears in the Commands list, flagged as suitable as a query, and can be reused by any other command's *Query after ack*.
+* In the **New query command** dialog you define the payload that polls the device. For MQTT devices, choose whether to **Send as-is** (deliver the payload exactly as written) or **Process with encoder** (run it through the device's encoder first).
 * The query runs after the device acks, and its response is evaluated against the expected states below.
 
 Use this when a device does not volunteer its state in routine uplinks but will answer a direct read.

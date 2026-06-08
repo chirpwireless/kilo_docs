@@ -1,5 +1,5 @@
 ---
-description: Define a device command in Kilo IoT Server — identity, MQTT or LoRaWAN routing, typed parameters, payload encoding, and the built-in encoder test.
+description: Define a device command in Kilo IoT Server — MQTT or LoRaWAN routing, typed parameters, payload encoding, and a test.
 ---
 
 # Creating Commands

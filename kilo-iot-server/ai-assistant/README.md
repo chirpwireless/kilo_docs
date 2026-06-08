@@ -1,5 +1,5 @@
 ---
-description: The Kilo IoT AI Assistant knows your whole deployment and can provision devices, build and deploy rules, and set up alarms with you — confirming first.
+description: The Kilo IoT AI Assistant knows your deployment and can provision devices, deploy rules, and set up alarms with you.
 ---
 
 # IoT AI Assistant

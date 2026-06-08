@@ -1,5 +1,5 @@
 ---
-description: Add headings and notes to a Kilo IoT dashboard with the Text widget — label sections and group related tiles so a busy board reads clearly.
+description: Add headings and notes to a Kilo IoT dashboard with the Text widget — label sections and group tiles on a busy board.
 ---
 
 # Text widget

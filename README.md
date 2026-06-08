@@ -1,5 +1,5 @@
 ---
-description: Kilo is a full-stack, AI-first IoT company covering devices, connectivity, and the cloud IoT Server — with an AI integrator built into the platform.
+description: Kilo is a full-stack, AI-first IoT company — devices, connectivity, and a cloud IoT Server with built-in AI.
 ---
 
 # Intro to Kilo

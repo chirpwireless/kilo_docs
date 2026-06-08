@@ -1,5 +1,5 @@
 ---
-description: Send downlink commands from Kilo IoT Server to control almost any device — on/off, dimming, color temperature, setpoints — over MQTT or LoRaWAN.
+description: Send downlink commands from Kilo IoT Server to control devices — on/off, dimming, setpoints — over MQTT or LoRaWAN.
 ---
 
 # Device Commands

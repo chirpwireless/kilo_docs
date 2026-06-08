@@ -1,5 +1,5 @@
 ---
-description: Hand setup work to the Kilo IoT AI Assistant — onboard devices, author and deploy rules with their CEL, and configure alarms, with confirmation first.
+description: Hand setup work to the Kilo IoT AI Assistant — onboard devices, deploy rules with their CEL, and configure alarms.
 ---
 
 # Building With the Assistant

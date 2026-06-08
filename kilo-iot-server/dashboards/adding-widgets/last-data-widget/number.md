@@ -1,5 +1,5 @@
 ---
-description: Show a sensor's latest value — number, text, or Boolean — using the Value display in the Kilo IoT Server Last Data widget.
+description: Show a sensor's latest value — number, text, or Boolean — with the Value display in the Kilo IoT Last Data widget.
 ---
 
 # Value Display

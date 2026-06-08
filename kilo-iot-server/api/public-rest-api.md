@@ -19,7 +19,7 @@ All traffic is over TLS. Treat the key like a credential — see [Authentication
 
 ## What the API can do
 
-REST is the broad, primary surface. Subject to the scopes granted to the key, integrations can work across the platform — for example: read the account/user profile; list and manage devices, their sensors, and sensor templates; read sensor **history and last-seen** values; read connector definitions and manage connections; read and manage dashboards and widgets; read organization, membership, and subscription data; and read and manage automation rules.
+REST is the broad, primary surface. Subject to the scopes granted to the key, integrations can work across the platform — for example: read the account/user profile; list and manage devices and their **physical-device configuration** (the client device ID, the connection it binds to, and connection-specific settings), their sensors and sensor mappings, and sensor templates; read sensor **history and last-seen** values; read connector definitions and manage connections; read and manage dashboards and widgets; read organization, membership, and subscription data; and read and manage automation **rule definitions, along with their versions and builds**.
 
 For typed service-to-service or on-premise integrations, see [gRPC API](grpc-api.md).
 
