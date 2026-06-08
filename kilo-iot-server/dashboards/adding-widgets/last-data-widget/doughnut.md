@@ -28,7 +28,7 @@ Here is a full setup for one real case — a ring that shows an office's tempera
 4. Click **Add metric**. A metric row appears.
 5. In the row, set **Data type** to **Telemetry**, choose the temperature reading under **Device metric**, and pick an **Icon**.
 
-   > **Can't find your metric?** The **Device metric** list only offers numeric metrics. If a reading you expect is missing, its metric **Type** is set to String or Boolean instead of Integer or Float. Open **Metric Templates** (the **Metrics Templates** button on a connection's Connected Devices list), find the metric on the **Metrics** tab, and set its **Type** to Integer or Float — provided the device actually reports a number. See [Metric Templates](../../../devices/metric-templates.md).
+   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change a metric's type, use the **Metrics Templates** button on a connection's Connected Devices list — see [Metric Templates](../../../devices/metric-templates.md).
 6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), because a house room realistically swings between -5 °C and 40 °C, enter **From** -5 (the coldest you would expect) and **To** 40 (the hottest), and pick a **Color**. Then you can enter the color levels. For example:
 
    Working up from the coldest:
@@ -59,4 +59,4 @@ A Doughnut is a natural fit for a tank or a battery. A level sensor in a 5,000-l
 
 - [Last Data Widget](../last-data-widget.md) — Full setup reference and the other display types
 - [Conditions](../conditions.md) — Numeric From/To color rules for each metric
-- Other display types: [Number](number.md) · [Pie](pie.md) · [Gauge](gauge.md) · [Tube](tube.md) · [Radial gauge](radial-gauge.md)
+- Other display types: [Value](number.md) · [Pie](pie.md) · [Gauge](gauge.md) · [Tube](tube.md) · [Radial gauge](radial-gauge.md)

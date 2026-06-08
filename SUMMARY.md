@@ -13,7 +13,7 @@
   * [Creating Dashboards](kilo-iot-server/dashboards/creating-dashboards.md)
   * [Adding Widgets](kilo-iot-server/dashboards/adding-widgets.md)
     * [Last Data Widget](kilo-iot-server/dashboards/adding-widgets/last-data-widget.md)
-      * [Number Display](kilo-iot-server/dashboards/adding-widgets/last-data-widget/number.md)
+      * [Value Display](kilo-iot-server/dashboards/adding-widgets/last-data-widget/number.md)
       * [Doughnut Display](kilo-iot-server/dashboards/adding-widgets/last-data-widget/doughnut.md)
       * [Pie Display](kilo-iot-server/dashboards/adding-widgets/last-data-widget/pie.md)
       * [Tube Display](kilo-iot-server/dashboards/adding-widgets/last-data-widget/tube.md)

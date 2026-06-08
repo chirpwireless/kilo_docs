@@ -49,4 +49,4 @@ The dial appears with the needle at the current reading, the condition arcs behi
 * [Last Data Widget](../last-data-widget.md) — Full setup reference and the other display types
 * [Gauge Display](gauge.md) — The horizontal-track alternative
 * [Conditions](../conditions.md) — Numeric From/To rules that become the dial's arcs
-* Other display types: [Number](number.md) · [Doughnut](doughnut.md) · [Pie](pie.md) · [Tube](tube.md)
+* Other display types: [Value](number.md) · [Doughnut](doughnut.md) · [Pie](pie.md) · [Tube](tube.md)

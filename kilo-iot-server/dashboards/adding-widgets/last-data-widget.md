@@ -8,7 +8,7 @@ The Last Data widget shows the **last value received from a sensor**. When a dev
 
 Is the pump running or stopped? Is the valve open or closed? What is the cold storage temperature? These are Last Data questions. The widget shows the last transmitted value for each — no trend, no historical comparison, no time axis. For compliance history and shift-to-shift comparison, use the [Chart widget](chart-widget.md).
 
-You can display a plain number, a Doughnut ring gauge, a Pie filled gauge, a Tube that fills with the reading, a Gauge that marks the reading along a banded track, or a Radial Gauge that shows it on a circular instrument dial. One widget can hold multiple sensors across multiple devices — temperature, humidity, and CO2 for a zone, each styled and color-coded independently. Conditions encode operational context into the display: the same temperature reading that is green in a warehouse can be red in a pharmaceutical cleanroom, because you configure what the reading means in each specific environment.
+You can display the latest value as-is — a number, text, or a Boolean (`true`/`false`) — or as a Doughnut ring gauge, a Pie filled gauge, a Tube that fills with the reading, a Gauge that marks the reading along a banded track, or a Radial Gauge that shows it on a circular instrument dial. One widget can hold multiple sensors across multiple devices — temperature, humidity, and CO2 for a zone, each styled and color-coded independently. Conditions encode operational context into the display: the same temperature reading that is green in a warehouse can be red in a pharmaceutical cleanroom, because you configure what the reading means in each specific environment.
 
 ## Setting up a Last Data widget
 
@@ -26,14 +26,14 @@ The Datasource tab is titled **"Last Data configuration"** with the subtitle **"
 2. In the block, click **Choose device** and select the device whose sensor you want to display.
 3. Click **Add metric**. A metric row appears. Each metric row contains:
    - **Data type** — set to Telemetry
-   - **Device metric** — the sensor reading to display (only numeric metrics are listed)
+   - **Device metric** — the sensor reading to display (any metric type — number, text, or Boolean)
    - **Icon** — a visual indicator for this metric on the widget
    - **Conditions button** — labeled **"Conditions: N"** where N is the current count. Click to define what color this reading shows at different values. The default color for the metric is also set here. See [Conditions](conditions.md).
    - **Delete** — remove this metric
 
 There is no color picker directly in the metric row. The metric's base color and all threshold colors are set inside the Conditions modal.
 
-> **A metric missing from the list?** **Device metric** only offers numeric metrics. If a reading you expect does not appear, its metric **Type** is set to String or Boolean. Open [Metric Templates](../../devices/metric-templates.md), find the metric on the **Metrics** tab, and set its **Type** to Integer or Float — provided the device reports a number.
+> **Metric types.** The **Device metric** list offers every metric type. The **Value** display shows whatever the metric reports — a number, text, or a Boolean (`true`/`false`) — directly, with no conversion. The gauge-style displays (Doughnut, Pie, Tube, Gauge, Radial gauge) need a number to fill or mark a scale: a numeric text value is parsed, and a non-numeric one reads as 0. To change a metric's type, open [Metric Templates](../../devices/metric-templates.md) and set its **Type** on the **Metrics** tab.
 
 **Adding more sensors:**
 
@@ -50,7 +50,7 @@ When the data sources are set, click **Next** to continue to the Appearance tab.
 **Description** — Optional context note beneath the widget name.
 
 **Widget type:** — choose how each reading is shown. Every display type has its own page with a screenshot and full detail:
-- **Number** — A plain numeric value with unit, for readings where the figure itself is the information. [→ Number Display](last-data-widget/number.md)
+- **Value** — The latest value shown as-is — a number with unit, text, or a Boolean (`true`/`false`) — for readings where the value itself is the information. [→ Value Display](last-data-widget/number.md)
 - **Doughnut** — A ring gauge that fills proportionally between Min and Max. [→ Doughnut Display](last-data-widget/doughnut.md)
 - **Pie** — A filled circle gauge — the same scale concept as Doughnut, with more visual weight. [→ Pie Display](last-data-widget/pie.md)
 - **Tube** — A vertical cylinder whose fill marks where the reading sits in its range; it reads like a level. [→ Tube Display](last-data-widget/tube.md)
@@ -83,8 +83,8 @@ If a sensor hasn't reported yet: **"Waiting for live data"**. If the widget has 
 
 Most Last Data widgets fall into one of a few shapes. Each display type has its own page with the full walkthrough and worked examples — start here, then follow the link.
 
-- **Statuses** — running/stopped, open/closed, on/off. A plain figure with one condition per state reads best as a [Number display](last-data-widget/number.md).
-- **Measured readings** — an exact temperature, pressure, or flow with compliance bands behind it. Use a [Number display](last-data-widget/number.md) for the figure, or a [Gauge display](last-data-widget/gauge.md) when position against thresholds is what matters.
+- **Statuses** — running/stopped, open/closed, on/off. A plain figure with one condition per state reads best as a [Value display](last-data-widget/number.md).
+- **Measured readings** — an exact temperature, pressure, or flow with compliance bands behind it. Use a [Value display](last-data-widget/number.md) for the figure, or a [Gauge display](last-data-widget/gauge.md) when position against thresholds is what matters.
 - **Levels** — tanks, silos, reserves, anything with a floor and a ceiling. Show the proportion as a [Doughnut](last-data-widget/doughnut.md) or [Pie](last-data-widget/pie.md), or as a filling [Tube](last-data-widget/tube.md) when it should read like a physical level.
 - **Thresholds** — a value that must stay inside a safe window, or trip a warning when it crosses a line. The [Gauge display](last-data-widget/gauge.md) paints your conditions as bands along the track so a crossing is unmistakable.
 
