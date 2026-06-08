@@ -19,10 +19,10 @@ This page walks through registering a new LoRaWAN gateway with the Kilo IoT Serv
 1. Click **Gateways** in the left sidebar.
 2. Click the **Add gateway** button.
 
-<figure><img src="../../.gitbook/assets/addgateway.png" alt="The Gateways page with the Add gateway button highlighted"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/addgateway.png" alt="The Gateways page with the Add gateway button highlighted"><figcaption></figcaption></figure>
 3. Enter a **Name** for the gateway — something that identifies its location or purpose (e.g., "Warehouse A — Loading Dock").
 
-<figure><img src="../../.gitbook/assets/name.png" alt="Enter a name for the gateway"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/name.png" alt="Enter a name for the gateway"><figcaption></figcaption></figure>
 
 4. Select the **region** from the dropdown. This must match the LoRaWAN frequency band supported by your gateway hardware and used for the deployment. If the gateway was purchased for use in your country, the common regional band is often correct, but you should still verify the hardware specification.
 
@@ -37,11 +37,11 @@ This page walks through registering a new LoRaWAN gateway with the Kilo IoT Serv
    | RU864 | Russia deployments |
    | EU433 | Special-case 433 MHz deployments; use only if the gateway hardware is specifically built or configured for EU433 |
 
-<figure><img src="../../.gitbook/assets/region.png" alt="Select the region from the dropdown"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/region.png" alt="Select the region from the dropdown"><figcaption></figcaption></figure>
 
 5. Enter the **Gateway EUI** — the 16-character identifier from the gateway hardware. This is not the same as a device's Device EUI; it uniquely identifies the gateway itself.
 
-<figure><img src="../../.gitbook/assets/gweui.png" alt="Enter the Gateway EUI"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/gweui.png" alt="Enter the Gateway EUI"><figcaption></figcaption></figure>
 
 6. Click **Next**.
 
@@ -53,12 +53,12 @@ After submitting the gateway details, the next screen displays:
 8. The **LNS Address** — click the copy icon to copy it to your clipboard. This is the server endpoint your gateway will connect to.
 9. The **certs.zip** file — click the download icon to save the certificate bundle. These TLS certificates authenticate the gateway's Basics Station connection.
 
-<figure><img src="../../.gitbook/assets/downloadcerts.png" alt="Download certificates and copy the LNS address"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/downloadcerts.png" alt="Download certificates and copy the LNS address"><figcaption></figcaption></figure>
 10. Click **Continue**.
 
 A confirmation screen appears: *"Gateway successfully added. This gateway will appear in your list soon, it can take couple minutes."*
 
-<figure><img src="../../.gitbook/assets/gatewayadded.png" alt="Gateway successfully added confirmation"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/gatewayadded.png" alt="Gateway successfully added confirmation"><figcaption></figcaption></figure>
 
 ### Configure the gateway hardware
 
@@ -72,7 +72,7 @@ With the LNS address and certificates in hand, you now configure the gateway its
 
 The exact steps vary by gateway manufacturer — refer to your gateway's documentation for its specific Basics Station configuration interface.
 
-<figure><img src="../../.gitbook/assets/basicsstation.jpg" alt="Gateway Basics Station configuration — select Basics Station mode"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/basicsstation.jpg" alt="Gateway Basics Station configuration — select Basics Station mode"><figcaption></figcaption></figure>
 
 ### Verify the connection
 
@@ -80,7 +80,7 @@ Once the gateway establishes its Basics Station connection, it will appear in th
 
 This typically takes a few minutes after configuration.
 
-<figure><img src="../../.gitbook/assets/yourgateway.png" alt="The gateway appears in the Gateways list"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/yourgateway.png" alt="The gateway appears in the Gateways list"><figcaption></figcaption></figure>
 
 If the gateway does not come online:
 - Verify the LNS Address was entered correctly (no extra spaces or characters)

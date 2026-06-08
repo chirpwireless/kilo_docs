@@ -38,7 +38,7 @@ Click **Settings** in the sidebar to expand the settings submenu:
 - **Locations** — Create a hierarchy of locations and sublocations (e.g., sites, buildings, floors, zones) to organize devices spatially.
 - **Device sharing** — View which devices you've shared with other users and manage sharing permissions.
 - **API Keys** — Create, manage, and rotate API keys for integrating external systems with the server. Each key has scoped permissions (e.g., devices read, devices write), an optional expiration date, and a visible status (active, rotated, revoked).
-- **New device request** — Submit a request if you need help onboarding a specific device type.
+- **New device request** — When you're adding a device and your model isn't in the list, choose **New device request** to ask the team to add support. Describe the device — **Brand**, **Model**, **Band**, and, if you have them, a **Documentation link** and **Codec link or code** — then click **Send request**; you'll get a confirmation that the request was sent.
 - **Changelog** — Opens an external page with recent platform updates and release notes.
 
 ### Bottom of the sidebar

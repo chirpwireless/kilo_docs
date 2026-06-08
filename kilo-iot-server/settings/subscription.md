@@ -27,7 +27,9 @@ The plan comparison matrix on the Subscription page shows the specific limits fo
 
 ## Upgrading Your Plan
 
-To move onto a paid plan, choose the tier you want and click **Upgrade Plan**. This takes you straight to the Stripe checkout, where you enter payment details and activate the plan — there is no separate confirmation step in between. All payment processing is handled by Stripe. Plan limits apply from the moment a plan is active.
+To move onto a paid plan, choose the tier you want on the plan comparison and click **Upgrade Plan**. This takes you straight to the Stripe checkout, where you enter payment details and activate the plan — there is no separate confirmation step in between. All payment processing is handled by Stripe, and plan changes take effect immediately. Plan limits apply from the moment a plan is active.
+
+For the **Individual** tier, click **Talk to sales** to reach the Kilo IoT team for custom pricing and terms.
 
 ## Managing an Existing Subscription
 
@@ -36,12 +38,6 @@ Current subscribers see a **Manage my subscription** button. This opens the Stri
 - Update your payment method
 - View invoices and payment history
 - Cancel or modify your subscription
-
-## Upgrading Your Plan
-
-To upgrade, click a different plan tier on the comparison matrix. An **Upgrade to [plan name]** option appears, prompting you to confirm the change. Plan changes are processed through Stripe and take effect immediately.
-
-For the **Individual** tier, click **Talk to sales** to connect with the Kilo IoT sales team for custom pricing and terms.
 
 ## SMS Credits
 

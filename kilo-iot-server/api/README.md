@@ -4,9 +4,11 @@ description: Kilo IoT Server API overview — REST and gRPC access, scoped API k
 
 # Kilo IoT Server API
 
-Kilo IoT Server exposes programmatic access so external systems can read and act on your deployment — backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications.
+Kilo IoT Server exposes programmatic access so external systems can read and manage your deployment's data and configuration — backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications.
 
 Use the **[API reference](https://api.kiloiot.io/)** for the complete list of endpoints, request fields, responses, and required scopes. This section covers what the API is for, how to choose a protocol, how requests authenticate, and where to manage keys.
+
+> To send commands to a device — downlinks, on/off, setpoints — use [Device Commands](../devices/commands/). The API covers your deployment's data and configuration, not device control.
 
 ## What's available
 
