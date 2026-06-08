@@ -1,5 +1,5 @@
 ---
-description: Dispatch device commands from the States tab in Kilo IoT Server, set parameters in the Execute dialog, and track every execution through its confirmed, soft-warning, or failed lifecycle.
+description: Dispatch device commands from the States tab in Kilo IoT Server and track each one through its confirmed, soft-warning, or failed lifecycle.
 ---
 
 # Executing Commands

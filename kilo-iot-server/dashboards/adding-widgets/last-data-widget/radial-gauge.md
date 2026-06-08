@@ -1,5 +1,5 @@
 ---
-description: Show a reading on a circular dial with the Radial Gauge — a configurable sweep angle, tick marks, and condition bands that turn a value into an at-a-glance status.
+description: Show a reading on a circular dial with the Radial Gauge — a configurable sweep angle, tick marks, and condition arcs for at-a-glance status.
 ---
 
 # Radial Gauge Display

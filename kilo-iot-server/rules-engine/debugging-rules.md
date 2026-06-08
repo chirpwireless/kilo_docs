@@ -11,11 +11,11 @@ Debug mode is an interactive debugger built into the visual editor. You feed the
 ## Starting a debug session
 
 1. Open the rule in the [visual editor](visual-editor.md).
-2. In the rule editor's top bar, click **Set context** to open the **Start Debug Session** panel. (The top bar also carries a **Start Debug** button.)
-3. The panel asks you to **provide initial context variables** — the input the rule will run against. Each row is a **Name** and a **Value**:
+2. In the rule editor's top bar, click **Set context** to open the **Start Debug Session** panel. (The top bar also carries a **Start Debug** button, shortcut **F12**.)
+3. The panel asks you to **provide initial context variables** — the input the rule will run against. It opens with one default value row, and each row is a **Name** and a **Value**:
    * **Name** is the variable name your rule expects (for example `value`, `temperature`, `status`).
    * **Value** is the test reading. It can be a number, `true` / `false`, `null`, text, or JSON — the panel interprets it for you.
-4. Click **Add metric** to add more context variables.
+4. Click **Add metric** to add more context variables; remove any extra row you don't need.
 5. Click **Load and Start**. The rule loads and pauses, ready for the first step.
 
 The initial context stands in for what a device would send in production. Set it to the values you want to test — the edge case, the threshold, the reading you suspect is causing trouble.
@@ -24,11 +24,11 @@ The initial context stands in for what a device would send in production. Set it
 
 Once a session is running, a debug toolbar sits at the bottom of the editor with five controls:
 
-* **Run** — run the rule until it hits a breakpoint or finishes.
-* **Step over** — execute the next node and stop, showing its result.
-* **Step into** — enter the next node and inspect its internals — its inputs, scripts, and outputs — rather than just its result.
-* **Run ignore breakpoints** — run the whole rule to the end without pausing at any breakpoint.
-* **Stop** — end the debug session.
+* **Run (F10)** — run the rule until it hits a breakpoint or finishes.
+* **Step over (F9)** — execute the next node and stop, showing its result.
+* **Step into (F8)** — enter the next node and inspect its internals — its inputs, scripts, and outputs — rather than just its result.
+* **Run ignore breakpoints (F11)** — run the whole rule to the end without pausing at any breakpoint.
+* **Stop (F12)** — end the debug session.
 
 As the rule runs, the active node is highlighted on the canvas, so you can always see where execution currently is.
 
@@ -66,13 +66,17 @@ Some nodes do more than transform data — they send notifications, raise alarms
 
 * **Execute — run the real handler.** The side effect happens for real, exactly as it would in a deployed rule.
 * **Skip — variables unchanged.** The side effect is skipped and the rule's variables are left as they are.
-* **Mock — provide a mock response.** You supply a stand-in response (as JSON) and the rule continues as if the handler had returned it.
+* **Mock — provide a mock response.** You supply a stand-in response as JSON and the rule continues as if the handler had returned it. The response must be valid JSON — if it isn't, the mock simply isn't applied.
 
 This is what lets you debug a rule that sends alerts without actually paging an on-call engineer: choose **Skip** or **Mock** while you're testing the logic, and **Execute** only when you specifically want to verify the real delivery.
 
 ## When a node fails
 
-If a node errors during execution, an error dialog surfaces the node's name and the underlying error, with a **Go to…** action that focuses the canvas on the failing node. This takes you straight to the problem instead of leaving you to hunt for which node in a large rule went wrong.
+If a node errors during execution, the failing node is highlighted on the canvas and the error is surfaced as a notification, so you can see exactly which node went wrong without hunting through a large rule. A **recoverable** error keeps the debug session paused and loaded — you can inspect the variables, adjust state, and continue — while an **unrecoverable** error ends the session.
+
+## Session lifecycle
+
+A debug session is time-limited. You'll see a warning shortly before it expires, and a notification if it times out, closes (with the reason), or loses its connection — at which point you start a new session to keep debugging. Breakpoints can also be invalidated when the editor reloads; if any are dropped, a notification tells you how many, so you can re-add them.
 
 ## Tips
 

@@ -15,7 +15,7 @@ Two variants are available:
 
 Use External MQTT when you already have a broker running. Use Cloud MQTT when you want the platform to provide one — you give the connector a name, the platform provisions the rest.
 
-> **Scope.** This documentation covers MQTT telemetry ingestion and device mapping. MQTT command and control through the platform API is not covered here.
+> **Scope.** This documentation covers MQTT telemetry ingestion and device mapping. Sending commands the other way — controlling a connected device with downlinks — is set up per device under [Device Commands](../devices/commands/).
 
 ## In this section
 

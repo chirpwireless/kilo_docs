@@ -1,5 +1,5 @@
 ---
-description: Choose how Kilo IoT Server confirms a device command took effect — no verification, wait for the next uplink, or query after acknowledgment, with expected states and timeouts.
+description: Choose how Kilo IoT Server confirms a device command took effect — no verification, wait for the next uplink, or query after acknowledgment.
 ---
 
 # Confirming Commands

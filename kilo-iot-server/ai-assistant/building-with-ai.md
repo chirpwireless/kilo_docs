@@ -1,5 +1,5 @@
 ---
-description: Hand real setup work to the Kilo IoT AI Assistant — onboard devices, author and deploy rules with their CEL logic, configure alarms, and manage access, with confirmation before every change.
+description: Hand setup work to the Kilo IoT AI Assistant — onboard devices, author and deploy rules with their CEL, and configure alarms, with confirmation first.
 ---
 
 # Building With the Assistant
@@ -41,7 +41,7 @@ To learn the rules engine itself, see [Rules Engine](../rules-engine/). The assi
 
 ## The control boundary
 
-The assistant **sets up the system that controls your devices; it does not send the control commands itself.** It will build the rule, configure the alarm, and explain exactly how to operate a device — but pushing an actual on/off, dim level, setpoint, or other downlink is handled by [Device Commands](../devices/commands/) and, for one-tap operation, the dashboard [Control widget](../dashboards/adding-widgets/control-widget.md). When you ask the assistant to "turn something on," it will point you to that path and can build the surrounding automation around it.
+The automations the assistant builds **monitor and alert — they do not send commands to devices**, and neither does the assistant itself. It will build the rule that warns you, configure the alarm, and explain exactly how to operate a device — but pushing an actual on/off, dim level, setpoint, or other downlink is done with [Device Commands](../devices/commands/), from the device's **Commands & States** tab or, for one-tap operation, a dashboard [Control widget](../dashboards/adding-widgets/control-widget.md). When you ask the assistant to "turn something on," it will point you to that path and can set up the monitoring around it.
 
 ## Tips for delegating well
 

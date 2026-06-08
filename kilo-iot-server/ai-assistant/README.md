@@ -1,5 +1,5 @@
 ---
-description: The Kilo IoT AI Assistant is an experienced integrator built into the platform — it knows your whole deployment and can provision devices, build and deploy rules, and configure alarms with you.
+description: The Kilo IoT AI Assistant knows your whole deployment and can provision devices, build and deploy rules, and set up alarms with you — confirming first.
 ---
 
 # IoT AI Assistant
@@ -26,7 +26,7 @@ Ask it what your devices are doing and it answers from your real telemetry. Ask 
 
 ## The boundary worth knowing
 
-The assistant **builds the automation that controls your devices — it does not toggle them itself.** It will design and deploy a rule, configure an alarm, and tell you exactly how to wire up control, but sending an on/off, a dim level, or any other downlink to a device is the job of [Device Commands](../devices/commands/). Think of the assistant as the integrator who sets the system up, and Device Commands (and its dashboard [Control widget](../dashboards/adding-widgets/control-widget.md)) as the controls it installs for you.
+The assistant builds **monitoring and alerting** automations — rules that watch your data and notify the right people — and it can walk you through setting up device control. What it does **not** do is operate devices: it doesn't send an on/off, a dim level, or any other downlink, and the automations it builds raise alerts rather than send commands. Direct device control is [Device Commands](../devices/commands/) — run from the device's **Commands & States** tab or a dashboard [Control widget](../dashboards/adding-widgets/control-widget.md). Think of the assistant as the integrator who sets the monitoring up and shows you where the controls are.
 
 It also stays in its lane in the ways you'd want: it works only within your access and your current organization, never crosses into another organization's data, and never surfaces credentials or billing secrets. See [Privacy and Security](privacy.md).
 

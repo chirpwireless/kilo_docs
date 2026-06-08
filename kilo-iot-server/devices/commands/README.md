@@ -1,10 +1,10 @@
 ---
-description: Send downlink commands from Kilo IoT Server to control almost any device — toggles, setpoints, dimming, color temperature, reboots, and configuration over MQTT or LoRaWAN.
+description: Send downlink commands from Kilo IoT Server to control almost any device — on/off, dimming, color temperature, setpoints — over MQTT or LoRaWAN.
 ---
 
 # Device Commands
 
-Monitoring tells you what a device is doing. **Commands** let you change it. With Device Commands, the Kilo IoT Server stops being a one-way data pipe and becomes a two-way control plane: you define the actions a device can perform, then dispatch them on demand, from a dashboard, or as the closing step of an automated workflow.
+Monitoring tells you what a device is doing. **Commands** let you change it. With Device Commands, the Kilo IoT Server stops being a one-way data pipe and becomes a two-way control plane: you define the actions a device can perform, then dispatch them on demand from the device page or from a dashboard.
 
 Almost anything a device can be told to do is a command. Switch a relay or smart plug on or off. Dim a luminaire to 40% and set its color temperature to 4000 K. Push a new temperature setpoint to an HVAC controller. Open or close a valve. Reboot a gateway-attached controller, change its reporting interval, or write a configuration register. If the hardware accepts a downlink, the platform can send it — and it sends it the same way whether the device speaks **MQTT** or **LoRaWAN**.
 
@@ -44,9 +44,11 @@ Before you can control a device, make sure:
 
 ## How control fits together
 
-Device Commands is the engine. It surfaces in two other places in the platform:
+There are two ways to send a command to a device:
 
-* **Dashboards** — a [Control widget](../../dashboards/adding-widgets/control-widget.md) binds a command to a Switch or Button so anyone with dashboard access can operate the device without opening its detail page.
-* **Automations** — rules respond to conditions and route alerts through the [Rules Engine](../../rules-engine/) and the Alarm system, so an out-of-bounds reading can trigger the right people and the right workflow.
+* **From the device page** — the **States** tab, where you execute any of the device's commands and review their history.
+* **From a dashboard** — a [Control widget](../../dashboards/adding-widgets/control-widget.md) binds a command to a Switch or Button so anyone with dashboard access can operate the device without opening its detail page.
+
+Automation works alongside this rather than as a third control path: the [Rules Engine](../../rules-engine/) and the Alarm system watch your data and **alert the right people** when a condition is met — so an out-of-bounds reading reaches an operator who can then act. Rules raise alerts and drive decisions; sending the command itself is done from the device page or the Control widget.
 
 Continue to [Creating Commands](creating-commands.md) to define your first action.

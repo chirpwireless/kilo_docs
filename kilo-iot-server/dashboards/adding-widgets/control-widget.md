@@ -1,5 +1,5 @@
 ---
-description: Operate a device straight from a Kilo IoT dashboard with the Control widget — a Switch or Button bound to a device command, with live state from a feedback sensor.
+description: Operate a device from a Kilo IoT dashboard with the Control widget — a Switch or Button bound to a device command, showing live state.
 ---
 
 # Control widget
