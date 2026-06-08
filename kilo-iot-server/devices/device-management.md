@@ -35,11 +35,11 @@ The **Connector type** dropdown shows available connectors in your organization.
 
 ### For LoRaWAN devices (LNS connector)
 
-* **Device EUI** — The device's unique LoRaWAN identifier. This field is locked once a physical device is bound. To change it, you must first detach the physical device.
+* **Device EUI** — The device's unique LoRaWAN identifier. This field is locked once a physical device is bound. To change it, you must first detach the physical device. The DevEUI is matched without regard to upper- or lower-case, so enter it consistently — if a device is added with one casing and a binding or connector key uses another, both still resolve to the same device.
 * **Detach physical device** — Click the detach button (X icon) next to the Device EUI to unbind the physical device from this Digital Twin. The Digital Twin and its history are preserved; only the live connection is severed. You can then re-bind a different physical device.
 * **Use device profile templates** — Toggle this checkbox to switch between template-based and manual configuration:
   * **Template mode:** Select **Brand**, **Model**, and **Profile** from dropdowns that filter based on your selections.
-  * **Manual mode:** Enter Brand, Model, and Band as free text, choose **Class A** (battery-powered, uplink-first, power-efficient) or **Class C** (continuous listening, can receive downlinks at any time, typically mains-powered), and enter the **AppKey**. For full details on Class A vs Class C, band options, and the template flow, see [Registering Devices](registering-devices.md).
+  * **Manual mode:** Enter Brand, Model, and Band as free text, choose **Class A** (battery-powered, uplink-first, power-efficient) or **Class C** (continuous listening, can receive downlinks at any time, typically mains-powered), and enter the **AppKey**. For full details on Class A vs Class C, band options, and the template flow, see [Registering Devices](registering-devices.md). Setting a LoRaWAN device to **Class C** also unlocks its **Commands & States** tab, so you can send it downlink commands — see [Device Commands](commands/).
 * **Code functions** — The device's payload codec: JavaScript logic that decodes raw LoRaWAN uplink data into the named fields that appear as connector keys in the Metrics tab. When a device profile template is selected, this field is pre-filled with the template's codec. If the decoded output is missing fields or producing incorrect values, you can edit the code directly. Alternative codecs can often be found in the device manufacturer's documentation or community repositories. For the full codec explanation, see [Registering Devices](registering-devices.md).
 * **Data sending interval** — Where you tell the platform how often this device transmits. A device's transmission schedule is set on the device itself and varies by manufacturer — sometimes preconfigured at the factory, sometimes set during commissioning — so enter the schedule the device is actually configured for. Set a device that transmits once a day to **1 day**, one that transmits monthly to **1 month**. The field defaults to **1 hour**, but that is only a placeholder — the platform cannot read the device's real schedule. If no message arrives within the configured interval, the device is marked offline in the device list; entering the correct schedule keeps a healthy low-frequency device from being flagged. Choose a number and a unit (minute, hour, day, week, or month).
 
@@ -69,6 +69,10 @@ The Metrics tab maps the device's raw sensor output to your normalized metric te
 ### User metadata
 
 Below the telemetry metrics table, a separate **User Metadata** section allows you to define custom key-value pairs that are user-assigned properties (not reported by the device). These are useful for operational annotations like installation date, maintenance notes, or asset tags.
+
+## Commands & States tab
+
+For devices that can receive downlinks — MQTT devices, and Class C LoRaWAN devices — a **Commands & States** tab appears. This is where you define the actions a device can perform and dispatch them on demand, turning the Digital Twin from a read-only record into a control surface. The full workflow has its own section: see [Device Commands](commands/).
 
 ## Logs tab
 

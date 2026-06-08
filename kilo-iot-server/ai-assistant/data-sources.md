@@ -4,7 +4,7 @@ description: What the Kilo IoT AI Assistant can access — live device data, ful
 
 # What It Can Access
 
-Every query the assistant runs is scoped to your permissions and your current organization. It sees exactly what you see in the platform interface — nothing more.
+The assistant's answers are trustworthy because they're grounded in your actual deployment — read live, at the moment you ask, and scoped to your permissions and current organization. It sees exactly what you see in the platform interface, and it works from that real data rather than from generic training knowledge. When something can't be retrieved, it tells you instead of inventing an answer.
 
 ## Live device data
 

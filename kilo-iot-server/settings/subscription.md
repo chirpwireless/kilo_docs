@@ -25,9 +25,9 @@ Kilo IoT Server offers several subscription tiers, each available with monthly o
 
 The plan comparison matrix on the Subscription page shows the specific limits for each tier, including maximum rules, dashboards, device log retention days, notification channels, and support level.
 
-## Starting a Trial or Subscribing
+## Upgrading Your Plan
 
-New users who have not yet subscribed see a **Start trial** button. Clicking it opens the Stripe checkout flow where you enter payment details and activate your selected plan. All payment processing is handled by Stripe.
+To move onto a paid plan, choose the tier you want and click **Upgrade Plan**. This takes you straight to the Stripe checkout, where you enter payment details and activate the plan — there is no separate confirmation step in between. All payment processing is handled by Stripe. Plan limits apply from the moment a plan is active.
 
 ## Managing an Existing Subscription
 

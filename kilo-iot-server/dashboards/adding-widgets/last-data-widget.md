@@ -8,7 +8,7 @@ The Last Data widget shows the **last value received from a sensor**. When a dev
 
 Is the pump running or stopped? Is the valve open or closed? What is the cold storage temperature? These are Last Data questions. The widget shows the last transmitted value for each — no trend, no historical comparison, no time axis. For compliance history and shift-to-shift comparison, use the [Chart widget](chart-widget.md).
 
-You can display a plain number, a Doughnut ring gauge, a Pie filled gauge, a Tube that fills with the reading, or a Gauge that marks the reading along a banded track. One widget can hold multiple sensors across multiple devices — temperature, humidity, and CO2 for a zone, each styled and color-coded independently. Conditions encode operational context into the display: the same temperature reading that is green in a warehouse can be red in a pharmaceutical cleanroom, because you configure what the reading means in each specific environment.
+You can display a plain number, a Doughnut ring gauge, a Pie filled gauge, a Tube that fills with the reading, a Gauge that marks the reading along a banded track, or a Radial Gauge that shows it on a circular instrument dial. One widget can hold multiple sensors across multiple devices — temperature, humidity, and CO2 for a zone, each styled and color-coded independently. Conditions encode operational context into the display: the same temperature reading that is green in a warehouse can be red in a pharmaceutical cleanroom, because you configure what the reading means in each specific environment.
 
 ## Setting up a Last Data widget
 
@@ -55,10 +55,13 @@ When the data sources are set, click **Next** to continue to the Appearance tab.
 - **Pie** — A filled circle gauge — the same scale concept as Doughnut, with more visual weight. [→ Pie Display](last-data-widget/pie.md)
 - **Tube** — A vertical cylinder whose fill marks where the reading sits in its range; it reads like a level. [→ Tube Display](last-data-widget/tube.md)
 - **Gauge** — A horizontal track with the reading marked along it and conditions drawn as colored bands. [→ Gauge Display](last-data-widget/gauge.md)
+- **Radial gauge** — A circular instrument dial with a configurable sweep angle and condition arcs. [→ Radial Gauge Display](last-data-widget/radial-gauge.md)
 
-**Value range** *(Doughnut, Pie, Tube, and Gauge)* — One row per sensor. Set **Min** and **Max** to define the scale the display fills or marks against. The tooltip reads: **"Set min and max to define the chart scale. Max is the value where the indicator is fully filled (for a pie, the whole circle)."** Min must be strictly less than Max — equal values are not accepted.
+**Value range** *(Doughnut, Pie, Tube, Gauge, and Radial gauge)* — One row per sensor. Set **Min** and **Max** to define the scale the display fills or marks against. The tooltip reads: **"Set min and max to define the chart scale. Max is the value where the indicator is fully filled (for a pie, the whole circle)."** Min must be strictly less than Max — equal values are not accepted.
 
-**Tick marks** *(Tube and Gauge)* — Set how many tick marks divide the scale. On a Gauge the ticks sit along the track; on a Tube they run down the side and take the color of any condition band they fall in.
+**Tick marks** *(Tube, Gauge, and Radial gauge)* — Set how many tick marks divide the scale. On a Gauge the ticks sit along the track, on a Tube they run down the side and take the color of any condition band they fall in, and on a Radial gauge they ring the dial.
+
+**Sweep angle** and **Radial Gauge name** *(Radial gauge only)* — The sweep angle sets how far the dial travels, from 0 to 360 degrees (default 300); the name labels the dial. See [Radial Gauge Display](last-data-widget/radial-gauge.md).
 
 **Tube and Gauge have no built-in "good" direction.** The fill or marker simply shows where the value sits; your conditions decide what that means — place the red band at the **low** end to catch something running down, or at the **high** end to catch a level climbing toward trouble. The [Tube](last-data-widget/tube.md) and [Gauge](last-data-widget/gauge.md) pages show this in full.
 

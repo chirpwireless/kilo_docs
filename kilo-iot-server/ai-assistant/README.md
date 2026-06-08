@@ -1,36 +1,44 @@
 ---
-description: IoT AI Assistant for Kilo IoT Server — an analyst grounded in your devices and telemetry, on Pro and Enterprise.
+description: The Kilo IoT AI Assistant is an experienced integrator built into the platform — it knows your whole deployment and can provision devices, build and deploy rules, and configure alarms with you.
 ---
 
 # IoT AI Assistant
 
-Available on **Pro** and **Enterprise** plans.
+Most "AI" in software is a chat box bolted onto a help page. The Kilo IoT Server's assistant is something else entirely: **an experienced IoT integrator that lives inside your platform, knows your whole deployment, and can do the work alongside you.** It is the difference between a tool that answers questions and a colleague who picks up tasks.
 
-The AI Assistant is an intelligent analyst that understands your entire deployment — devices, sensor history, operational patterns, and platform capabilities. It is not a general-purpose chatbot. Every answer it gives is grounded in YOUR data, YOUR devices, and YOUR organization's telemetry. If you ask a question unrelated to IoT, it will politely decline.
+Ask it what your devices are doing and it answers from your real telemetry. Ask it to set something up — onboard a device, build an automation, define an alarm — and it does the work, shows you exactly what it's about to change, and only proceeds once you approve. Open it from **AI Chat** in the sidebar.
 
-## Accessing the assistant
+## Three things make it different
 
-A floating button appears in the bottom-right corner of the interface. The button is draggable — reposition it anywhere on screen to keep it out of your workflow. Click it to open a chat window (360 px wide on desktop, full width on mobile, up to 650 px tall). Close the window at any time; your conversation is preserved.
+**It's grounded in your deployment, not guessing.** Every answer about your devices, rules, alarms, and dashboards comes from your live data — read through the platform at the moment you ask, scoped to your permissions. It doesn't pad answers with plausible-sounding generalities; if it can't retrieve something, it says so. That makes it trustworthy enough to act on.
 
-A list icon at the top of the chat window opens your previous conversations, so you can revisit earlier queries without re-typing them.
+**It acts, it doesn't just advise.** This is the leap. The assistant can provision a device, author a complete automation — writing the [CEL](../rules-engine/cel-reference.md) logic and deploying it — create an alarm with escalation, recommend compatible hardware, and manage team access. It runs the same operations you would, on your behalf, and verifies its own work afterward by reading the result back.
 
-## What it can do
+**It remembers and it confirms.** It keeps the context of your conversation and your setup, so you can refine a task across several messages without starting over. And before anything destructive or consequential — deleting a device or rule, resolving an alarm — it pauses and asks for an explicit **Confirm Action** / **Cancel**. Nothing irreversible happens without your say-so.
 
-The assistant serves four distinct roles across your deployment:
+## What it can do for you
 
-1. **Live device queries** — Ask about the current state of any device: online or offline status, battery levels, GPS coordinates, latest sensor readings, signal strength, and last-seen timestamps. "Which devices in Building C are offline right now?" returns an immediate answer.
+| | |
+| --- | --- |
+| **Understand your deployment** | Answer questions about live device state and full history, run aggregations and comparisons, and generate charts inline. See [Working With the Assistant](querying-your-data.md). |
+| **Build and operate** | Provision devices (guided, or automatically when you provide the LoRaWAN keys), author/test/deploy rules including their CEL, create alarms with escalation, manage team roles, and recommend hardware. See [Building With the Assistant](building-with-ai.md). |
+| **Guide and explain** | Search the platform knowledge base and IoT references to explain features, walk you through setup, and troubleshoot — grounded in [what it can access](data-sources.md). |
 
-2. **Historical analysis** — Query any time period using natural language. The assistant supports aggregations (min, max, average, sum, count), threshold violation detection, trend comparisons, and event counting. "What was the average humidity in Lab 2 last Tuesday?" works exactly as you would expect.
+## The boundary worth knowing
 
-3. **Chart generation** — Request visual charts on demand. Line charts for time-series trends, bar charts for cross-device comparisons, pie charts for proportional breakdowns, and scatter charts for correlations. Charts render directly inside the chat window.
+The assistant **builds the automation that controls your devices — it does not toggle them itself.** It will design and deploy a rule, configure an alarm, and tell you exactly how to wire up control, but sending an on/off, a dim level, or any other downlink to a device is the job of [Device Commands](../devices/commands/). Think of the assistant as the integrator who sets the system up, and Device Commands (and its dashboard [Control widget](../dashboards/adding-widgets/control-widget.md)) as the controls it installs for you.
 
-4. **Documentation search** — The assistant searches the full Kilo IoT Server knowledge base semantically. It understands the meaning behind your question, not just keywords, and returns explanations with direct links to the relevant documentation pages.
+It also stays in its lane in the ways you'd want: it works only within your access and your current organization, never crosses into another organization's data, and never surfaces credentials or billing secrets. See [Privacy and Security](privacy.md).
 
-## What it cannot do
+## Availability
 
-The assistant operates within strict boundaries:
+The assistant is part of the platform, with a monthly allowance of requests that scales with your plan. If you'd rather not be limited by the allowance, you can connect your own model API key and keep working. You'll see your remaining allowance above the chat input, and a prompt to review plans or add a key when you reach it.
 
-- It will not answer general trivia, perform non-IoT tasks, or act as a personal assistant.
-- It has read-only access to your deployment. It cannot modify device configurations, change rules, or alter any settings.
-- It cannot see data belonging to other organizations, even if you are a member of multiple organizations.
-- It will never surface billing details, passwords, or API secrets.
+This is the first generation of the assistant, and it's improving continuously — the capabilities above are live today, with more arriving as the platform grows.
+
+## Where to go next
+
+* [Working With the Assistant](querying-your-data.md) — ask about your data and get answers, analysis, and charts
+* [Building With the Assistant](building-with-ai.md) — hand it real setup work: devices, rules, alarms
+* [What It Can Access](data-sources.md) — the sources behind its grounded answers
+* [Privacy and Security](privacy.md) — authentication, isolation, and confirmation gates

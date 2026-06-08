@@ -57,4 +57,4 @@ Some readings must stay *between* two limits, not above or below one. For a comp
 
 - [Last Data Widget](../last-data-widget.md) — Full setup reference and the other display types
 - [Conditions](../conditions.md) — Numeric From/To rules that become the track bands
-- Other display types: [Number](number.md) · [Doughnut](doughnut.md) · [Pie](pie.md) · [Tube](tube.md)
+- Other display types: [Number](number.md) · [Doughnut](doughnut.md) · [Pie](pie.md) · [Tube](tube.md) · [Radial gauge](radial-gauge.md)

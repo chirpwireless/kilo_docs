@@ -55,4 +55,4 @@ A Number widget can carry several readings at once. Add three metrics from one m
 
 - [Last Data Widget](../last-data-widget.md) — Full setup reference and the other display types
 - [Conditions](../conditions.md) — Numeric From/To color rules for each metric
-- Other display types: [Doughnut](doughnut.md) · [Pie](pie.md) · [Gauge](gauge.md) · [Tube](tube.md)
+- Other display types: [Doughnut](doughnut.md) · [Pie](pie.md) · [Gauge](gauge.md) · [Tube](tube.md) · [Radial gauge](radial-gauge.md)

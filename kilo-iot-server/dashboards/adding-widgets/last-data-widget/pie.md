@@ -57,4 +57,4 @@ A soil-moisture sensor reports a percentage, so the scale is naturally **Min val
 
 - [Last Data Widget](../last-data-widget.md) — Full setup reference and the other display types
 - [Conditions](../conditions.md) — Numeric From/To color rules for each metric
-- Other display types: [Number](number.md) · [Doughnut](doughnut.md) · [Gauge](gauge.md) · [Tube](tube.md)
+- Other display types: [Number](number.md) · [Doughnut](doughnut.md) · [Gauge](gauge.md) · [Tube](tube.md) · [Radial gauge](radial-gauge.md)

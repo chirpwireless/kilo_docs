@@ -59,4 +59,4 @@ A Doughnut is a natural fit for a tank or a battery. A level sensor in a 5,000-l
 
 - [Last Data Widget](../last-data-widget.md) — Full setup reference and the other display types
 - [Conditions](../conditions.md) — Numeric From/To color rules for each metric
-- Other display types: [Number](number.md) · [Pie](pie.md) · [Gauge](gauge.md) · [Tube](tube.md)
+- Other display types: [Number](number.md) · [Pie](pie.md) · [Gauge](gauge.md) · [Tube](tube.md) · [Radial gauge](radial-gauge.md)

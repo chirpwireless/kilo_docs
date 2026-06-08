@@ -11,7 +11,7 @@ Debug mode is an interactive debugger built into the visual editor. You feed the
 ## Starting a debug session
 
 1. Open the rule in the [visual editor](visual-editor.md).
-2. In the rule editor's top bar, click **Set context** to open the **Start Debug Session** panel. (The top bar also carries a **Start Debug** button, shortcut **F12**.)
+2. In the rule editor's top bar, click **Set context** to open the **Start Debug Session** panel. (The top bar also carries a **Start Debug** button.)
 3. The panel asks you to **provide initial context variables** — the input the rule will run against. Each row is a **Name** and a **Value**:
    * **Name** is the variable name your rule expects (for example `value`, `temperature`, `status`).
    * **Value** is the test reading. It can be a number, `true` / `false`, `null`, text, or JSON — the panel interprets it for you.
@@ -24,11 +24,11 @@ The initial context stands in for what a device would send in production. Set it
 
 Once a session is running, a debug toolbar sits at the bottom of the editor with five controls:
 
-* **Run (F10)** — run the rule until it hits a breakpoint or finishes.
-* **Step over (F9)** — execute the next node and stop, showing its result.
-* **Step into (F8)** — enter the next node and inspect its internals — its inputs, scripts, and outputs — rather than just its result.
-* **Run ignore breakpoints (F11)** — run the whole rule to the end without pausing at any breakpoint.
-* **Stop (F12)** — end the debug session.
+* **Run** — run the rule until it hits a breakpoint or finishes.
+* **Step over** — execute the next node and stop, showing its result.
+* **Step into** — enter the next node and inspect its internals — its inputs, scripts, and outputs — rather than just its result.
+* **Run ignore breakpoints** — run the whole rule to the end without pausing at any breakpoint.
+* **Stop** — end the debug session.
 
 As the rule runs, the active node is highlighted on the canvas, so you can always see where execution currently is.
 

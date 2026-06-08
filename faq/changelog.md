@@ -6,6 +6,65 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <details>
 
+<summary>Scale Log. Release 3.5.0</summary>
+
+<!-- IMAGE: Kilo_Scale_Log_Release_3.5.0.jpg (hero) — alt: Kilo IoT Server 3.5.0 release banner -->
+
+Kilo IoT Server 3.5.0 makes the platform **AI-first** and **two-way**. The IoT AI Assistant grows from an analyst into an experienced integrator that works inside your deployment — it can provision devices, author and deploy automations (writing the CEL itself), and configure alarms on your behalf, all from a plain-language conversation and all gated by your confirmation. And with Device Commands, the platform stops being a one-way data pipe: define the actions a device can perform and send them as downlinks over MQTT or LoRaWAN — switch a relay, dim and color-tune a luminaire, push a setpoint, reboot a controller. New Control, Text, and Radial Gauge widgets bring that control and clarity onto your dashboards. [kiloiot.io](https://kiloiot.io)
+
+***
+
+#### What's in This Release
+
+* **IoT AI Assistant — now an integrator copilot** — Grounded in your live deployment, it provisions devices, builds/tests/deploys rules (including their CEL), creates alarms with escalation, manages team access, and recommends hardware — confirming before any consequential change and verifying its own work.
+* **Device Commands** — Full remote device control. Define typed commands and dispatch them as downlinks over MQTT or LoRaWAN, with parameter validation, optional result verification, and a complete execution history.
+* **Control Widget** — A dashboard Switch or Button bound to a device command, reflecting live state from a feedback sensor.
+* **Text Widget** — Headings and notes to label and organize a busy dashboard.
+* **Radial Gauge** — A sixth Last Data display type: a circular instrument dial with a configurable sweep angle and condition arcs.
+* **Simplified upgrades** — Choosing a plan now goes straight to checkout with a single **Upgrade Plan** action, and plan limits apply by default.
+
+***
+
+**IoT AI Assistant — an integrator built into the platform**
+
+<!-- IMAGE: ai-assistant-build-rule.jpg — alt: AI Assistant proposing and confirming an automation -->
+
+This is the headline of 3.5.0. The assistant is no longer just a way to ask questions about your data — it does the work with you. Describe an automation in plain language and it designs the rule, **writes the CEL**, simulates it against matching and non-matching values to prove it fires correctly, and deploys it. Ask it to onboard a device and it runs the flow — or completes it automatically when you provide the LoRaWAN keys — then checks the device is reporting. It can also create alarms with escalation, manage team roles, and recommend compatible hardware. Every answer is grounded in your real deployment rather than invented, it remembers the context of your conversation, and before anything destructive it asks for an explicit **Confirm Action**. It builds the automation that controls your devices; sending the control signal itself is the job of Device Commands.
+
+[→ IoT AI Assistant](../kilo-iot-server/ai-assistant/README.md)
+
+***
+
+**Device Commands**
+
+<!-- IMAGE: device-commands-editor.jpg — alt: Device command editor with routing, payload, and verification -->
+
+Monitoring tells you what a device is doing; commands change it. On a device's new **Commands & States** tab you define named, typed actions — a brightness level, a setpoint, an open/close — and the platform delivers them as downlinks over **MQTT or LoRaWAN**. Typed parameters keep operators inside safe ranges, optional verification confirms the device actually acted (not just that the message was sent), and every dispatch is recorded with its outcome — Pending, Confirmed, Soft warning, or Failed. Available for MQTT devices and Class C LoRaWAN devices.
+
+[→ Device Commands](../kilo-iot-server/devices/commands/README.md)
+
+***
+
+**Control, Text, and Radial Gauge widgets**
+
+<!-- IMAGE: control-widget-dashboard.jpg — alt: Control widget on a dashboard -->
+
+Three additions to dashboards. The **Control widget** puts a Switch or Button on the board, bound to a device command and reflecting the device's live state — operate a device without leaving the dashboard. The **Text widget** adds headings and notes so a dense board reads as organized sections. And the **Radial Gauge** joins the Last Data widget as a circular instrument dial, with a configurable sweep angle and your conditions drawn as colored arcs.
+
+[→ Control Widget](../kilo-iot-server/dashboards/adding-widgets/control-widget.md) · [→ Text Widget](../kilo-iot-server/dashboards/adding-widgets/text-widget.md) · [→ Radial Gauge Display](../kilo-iot-server/dashboards/adding-widgets/last-data-widget/radial-gauge.md)
+
+***
+
+**Simplified plan upgrades**
+
+Moving to a paid plan is now a single step: choose a tier and **Upgrade Plan** takes you straight to secure checkout, with no extra confirmation screens in between. Plan limits apply by default.
+
+[→ Subscription](../kilo-iot-server/settings/subscription.md)
+
+</details>
+
+<details>
+
 <summary>Scale Log. Releases 3.2.0, 3.3.0, 3.4.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.4.0.jpg" alt=""><figcaption></figcaption></figure>

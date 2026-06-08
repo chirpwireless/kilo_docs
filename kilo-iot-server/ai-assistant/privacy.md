@@ -6,7 +6,7 @@ description: Privacy of the Kilo IoT AI Assistant — session-scoped auth, permi
 
 ## Authentication
 
-Every interaction with the assistant is authenticated using your active session. The assistant inherits your exact permissions and organizational context. It cannot see more data than you can, and it cannot perform actions beyond your access level.
+Every interaction with the assistant is authenticated using your active session. The assistant inherits your exact permissions and organizational context. It cannot see more data than you can, and it cannot perform any action you couldn't perform yourself.
 
 ## Permission inheritance
 
@@ -14,7 +14,11 @@ The assistant mirrors the access model of the account using it:
 
 - **Organization administrators** can query all organizational data through the assistant, matching the full visibility they already have in the platform interface.
 - **Standard users** see only the devices and data their permissions grant. If a user cannot access a device on the Devices page, the assistant cannot query that device either.
-- **Read-only users** can query freely, but the assistant cannot modify anything on their behalf. The assistant is inherently read-only regardless of the user's role.
+- **Read-only users** can query freely, but the assistant cannot change anything on their behalf — it can only do what their role already allows. A user who cannot edit a rule in the interface cannot have the assistant edit it either.
+
+## Confirmation before consequential actions
+
+When your role does allow changes, the assistant still asks before doing anything destructive or hard to reverse. Deleting a device or rule, or resolving an alarm, surfaces an explicit **Confirm Action** / **Cancel** prompt, and the assistant only proceeds once you approve. Routine, safe steps run directly; consequential ones are always gated by your confirmation.
 
 ## Organization isolation
 

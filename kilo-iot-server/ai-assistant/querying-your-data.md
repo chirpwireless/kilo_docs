@@ -4,7 +4,7 @@ description: Query Kilo IoT Server in natural language — device status, histor
 
 # Querying Your Data
 
-The AI Assistant accepts natural language queries. There is no special syntax to learn, no query language to memorize. Type your question the way you would ask a colleague who happens to know everything about your deployment.
+The AI Assistant accepts natural language. There is no special syntax to learn, no query language to memorize. Type the way you would talk to a colleague who happens to know everything about your deployment — whether you're *asking* about your data or *asking it to do something*. This page focuses on the asking-and-analyzing side; to hand it real setup work, see [Building With the Assistant](building-with-ai.md).
 
 ## Writing effective queries
 
@@ -73,3 +73,7 @@ The assistant remembers context within a session. Build on previous answers with
 4. "Which one had more threshold violations above 30 degrees?"
 
 Each follow-up builds on the previous context, making complex analysis conversational rather than tedious.
+
+## From asking to acting
+
+The same conversation can move from analysis straight into action. After "which freezers breached −18 °C last night?", you can follow with "build a rule that alerts me if it happens again" — and the assistant authors and deploys it. Whenever a request would change something consequential, the assistant shows a confirmation with **Confirm Action** and **Cancel** first, so you stay in control of every change. The full build-and-operate workflow is covered in [Building With the Assistant](building-with-ai.md).

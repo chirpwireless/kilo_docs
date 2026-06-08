@@ -10,10 +10,20 @@ The Tube display is a vertical cylinder that fills from the bottom as the readin
 
 Tube is the natural choice for anything you already picture as a level. Because the conditions decide the colors, it works equally for "how full" and "how empty" — a tank filling up, or a reserve draining down.
 
+## Watch a drop, or watch a rise
+
+The Tube has no built-in "good" or "bad" end. You decide which direction is the problem and paint the conditions to match — the same widget covers two opposite jobs:
+
+- **Monitor a decrease** — when the danger is *running low*. A diesel or heating-oil tank, a chemical reserve, a water cistern: the level falls as it's consumed, so put the warning colors at the **bottom**. The column reads green while well stocked and turns yellow then red as it drains toward empty, so a refill is never a surprise.
+- **Monitor an increase** — when the danger is *rising too high*. A sump or drainage pit kept low by a pump: if the pump malfunctions the water has nowhere to go and the level climbs, so put the warning colors at the **top**. The column sits short and green in normal service and rises into a red band near the overflow point, flagging the fault before it floods.
+
+The mechanism is identical — only where you place the red condition changes. Both setups are shown in full below.
+
 ## When to choose it
 
-- A genuine physical level — a storage tank, a silo, a cistern, a reservoir.
+- A genuine physical level — a storage tank, a silo, a cistern, a reservoir, a sump pit.
 - A reserve or consumable where the question is "how much is left," and the fill falling toward the bottom is the signal.
+- A contained level that must not climb past a safe point, where the fill rising toward the top is the signal.
 - Any reading where an operator's instinct is to picture a column rising and falling.
 
 Wherever a value has a meaningful floor and ceiling and "level" is the mental model, the Tube fits — the conditions then decide which end is the one to watch.
@@ -58,4 +68,4 @@ Any stored liquid works the same way — a level sensor in a heating-oil tank or
 
 - [Last Data Widget](../last-data-widget.md) — Full setup reference and the other display types
 - [Conditions](../conditions.md) — Numeric From/To color rules for the fill
-- Other display types: [Number](number.md) · [Doughnut](doughnut.md) · [Pie](pie.md) · [Gauge](gauge.md)
+- Other display types: [Number](number.md) · [Doughnut](doughnut.md) · [Pie](pie.md) · [Gauge](gauge.md) · [Radial gauge](radial-gauge.md)
