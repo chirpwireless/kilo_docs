@@ -21,6 +21,7 @@ Kilo IoT Server 3.5.0 makes the platform **AI-first** and **two-way**. The IoT A
 * **Control Widget** — A dashboard Switch or Button bound to a device command, reflecting live state from a feedback sensor.
 * **Text Widget** — Headings and notes to label and organize a busy dashboard.
 * **Radial Gauge** — A sixth Last Data display type: a circular instrument dial with a configurable sweep angle and condition arcs.
+* **Rule debugging** — Step through a rule node by node against a test payload, set breakpoints, inspect variables and CEL expressions, and control how side effects run — before you deploy to production.
 * **Simplified upgrades** — Choosing a plan now goes straight to checkout with a single **Upgrade Plan** action, and plan limits apply by default.
 
 ***
@@ -52,6 +53,14 @@ Monitoring tells you what a device is doing; commands change it. On a device's n
 Three additions to dashboards. The **Control widget** puts a Switch or Button on the board, bound to a device command and reflecting the device's live state — operate a device without leaving the dashboard. The **Text widget** adds headings and notes so a dense board reads as organized sections. And the **Radial Gauge** joins the Last Data widget as a circular instrument dial, with a configurable sweep angle and your conditions drawn as colored arcs.
 
 [→ Control Widget](../kilo-iot-server/dashboards/adding-widgets/control-widget.md) · [→ Text Widget](../kilo-iot-server/dashboards/adding-widgets/text-widget.md) · [→ Radial Gauge Display](../kilo-iot-server/dashboards/adding-widgets/last-data-widget/radial-gauge.md)
+
+***
+
+**Step-through rule debugging**
+
+Automation you can trust means seeing exactly what a rule does before it runs for real. The visual rule editor now includes an interactive debugger: feed a rule a test payload and walk its execution one node at a time, pausing on breakpoints, watching variables change, and evaluating each CEL expression as it fires. A debug toolbar drives the session — step into, step over, run, run past breakpoints, and stop — so you can prove a rule behaves before deploying it.
+
+[→ Debugging Rules](../kilo-iot-server/rules-engine/debugging-rules.md)
 
 ***
 
