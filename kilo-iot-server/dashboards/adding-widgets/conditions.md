@@ -28,7 +28,7 @@ The metric selectors in the Last data and Image widgets surface numeric sensor t
 
 **Header (applies to the whole metric):**
 - **Device metric** — Read-only. Identifies which sensor this modal is for.
-- **Unit** — Override the unit label shown on the widget. Leave blank to use the sensor's default.
+- **Unit** — A free-text field for the unit shown next to the value on the widget (for example `42 cm`). Type **any unit** — `mm`, `cm`, `m`, `in`, `L`, `gal`, `bar`, `ppm`, `°C`, anything. There is no fixed list and no percentage assumption: it's whatever label you enter. The field pre-fills with the sensor's own unit; change it to whatever fits. Your condition **From / To** values are plain numbers expressed in this unit (so `From 0 To 30` means 0–30 of whatever you set here).
 - **Icon** — Change the display icon for this metric.
 - **Default color** — The color used when no condition matches. This is the only place to set the metric's base color.
 
@@ -98,7 +98,7 @@ A **True / False** dropdown. Matches the reading exactly. Available in the condi
 
 ### Keeping a reserve topped up
 
-A level sensor on something that must stay full — a coolant or reagent reserve, a water tank feeding a process — reports its fill as a percentage (0 = empty, 100 = full). Three Number conditions turn that reading into an at-a-glance refill status. Because the **first matching condition wins**, order them most-urgent first:
+A level sensor on something that must stay full — a coolant or reagent reserve, a water tank feeding a process — reports its level in whatever unit you choose. Set that unit in the modal's **Unit** field (it accepts anything — `mm`, `cm`, `m`, `in`, `L`…); here we'll read the depth in **centimeters** of a roughly one-meter tank. Three Number conditions then turn the reading into an at-a-glance refill status — and because the **first matching condition wins**, order them most-urgent first:
 
 - **Refill** — Number, From 0, To 30 — red
 - **Getting Low** — Number, From 30, To 50 — amber
@@ -124,7 +124,7 @@ Both measure temperature in °C. The hardware is the same. The conditions encode
 
 ### Number conditions — open-ended bounds for threshold monitoring
 
-A liquid storage tank sensor reporting fill level as a percentage:
+A liquid storage tank sensor reporting fill level in its configured unit (here, percent — but the **Unit** field accepts any unit):
 - "Critical" — (no From), To 10 — red
 - "Low" — From 10, To 30 — yellow
 - "Adequate" — From 30 (no upper limit) — green
