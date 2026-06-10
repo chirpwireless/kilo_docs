@@ -8,7 +8,7 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <summary>Scale Log. Release 3.5.0</summary>
 
-<!-- IMAGE: Kilo_Scale_Log_Release_3.5.0.jpg (hero) — alt: Kilo IoT Server 3.5.0 release banner -->
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.5.0.jpg" alt="Kilo IoT Server 3.5.0 release banner"><figcaption></figcaption></figure>
 
 Kilo IoT Server 3.5.0 makes the platform **AI-first** and **two-way**. The IoT AI Assistant grows from an analyst into an experienced integrator that works inside your deployment — it can provision devices, author and deploy automations (writing the CEL itself), and configure alarms on your behalf, all from a plain-language conversation and all gated by your confirmation. And with Device Commands, the platform stops being a one-way data pipe: define the actions a device can perform and send them as downlinks over MQTT or LoRaWAN — switch a relay, dim and color-tune a luminaire, push a setpoint, reboot a controller. New Control, Text, and Radial Gauge widgets bring that control and clarity onto your dashboards. [kiloiot.io](https://kiloiot.io)
 

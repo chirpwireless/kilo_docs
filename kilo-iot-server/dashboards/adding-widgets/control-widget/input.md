@@ -2,13 +2,13 @@
 description: Add an Input Control to a Kilo IoT dashboard to send an exact typed value — a setpoint or threshold — with Apply.
 ---
 
-# Input Control
+# Input
 
 The **Input** is the exact-value control type. The operator types a precise figure and presses **Apply** to send it — ideal when a slider is too coarse or the value must be exact.
 
 ## When to use it
 
-Use an Input when precision matters: a temperature or pressure **threshold**, an exact **setpoint**, or a specific **device parameter**. Where a [Slider](slider.md) is for dialling a value by feel, the Input is for entering an exact number.
+Use an Input when precision matters: a temperature or pressure **threshold**, an exact **setpoint**, or a specific **device parameter**. Where a [Simple Slider](slider-simple.md) is for dialling a value by feel, the Input is for entering an exact number.
 
 ## What you need first
 

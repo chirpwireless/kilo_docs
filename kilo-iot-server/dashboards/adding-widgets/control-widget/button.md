@@ -2,7 +2,7 @@
 description: Add a Button Control to a Kilo IoT dashboard to fire a one-shot device command — reset, open, or start.
 ---
 
-# Button Control
+# Button
 
 The **Button** is the one-shot action type. A press sends a command once. Unlike a Switch, it doesn't represent a lasting state — it triggers something and is done.
 

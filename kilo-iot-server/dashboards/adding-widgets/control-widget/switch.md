@@ -2,7 +2,7 @@
 description: Add a Switch Control to a Kilo IoT dashboard to flip a device between two states — on/off, open/closed.
 ---
 
-# Switch Control
+# Switch
 
 The **Switch** is the two-state control type. It's a toggle for a condition that persists — running or stopped, open or closed, enabled or disabled — where the operator flips between two states and the dashboard shows which one is currently active.
 
