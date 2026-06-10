@@ -6,6 +6,8 @@ description: Operate a device from a Kilo IoT dashboard with a Control widget �
 
 Most widgets report. The **Control widget** acts. It puts an interactive control on your dashboard — a **Switch**, **Button**, **Slider**, or **Input** — bound to one of a device's commands, so an operator can change the device's state right next to the readings that tell them whether they need to. It is the dashboard face of [Device Commands](../../devices/commands/): the command does the work, the widget is the control surface.
 
+<figure><img src="../../../.gitbook/assets/control-dashboard.jpg" alt="A dashboard of Control widgets — a switch, a dial, a slider, and an input controlling a lamp"><figcaption></figcaption></figure>
+
 ## Prerequisite — define a command first
 
 A Control widget operates an existing **device command**, so the device must already have one defined on its **Commands & States** tab. If a device has no commands it won't appear in the picker (you'll see *"No controllable devices in this organization"*). Set the command up first — see [Creating Commands](../../devices/commands/creating-commands.md) — then bind the widget to it.
@@ -17,8 +19,6 @@ Every Control widget is created the same way; only the **Appearance** fields dif
 1. Open the dashboard in **edit mode** and click **Add widget** → **Control**.
 2. On the **Datasource** tab (*"Control configuration"*), choose the **Source** (Device) and the **Device**, then pick the **Device metric** — the reading that reflects the device's current state. Click **Next**.
 3. On the **Appearance** tab, enter a **Widget name** (required) and optional **Description**, then choose a **Widget type** (below). Fill in that type's fields and click **Save**.
-
-<figure><img src="../../../.gitbook/assets/control-widget-datasource.jpg" alt="Control widget Datasource tab — Source, Device, and Device metric selectors"><figcaption></figcaption></figure>
 
 ## Choose a control type
 
