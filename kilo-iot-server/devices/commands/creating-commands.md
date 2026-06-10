@@ -8,6 +8,8 @@ A command is a reusable, named action with typed inputs. You build it once in th
 
 To start, open the device's **Commands & States** tab, stay on the **Commands** sub-tab, and click **Add new command**. The editor opens in four numbered sections.
 
+<figure><img src="../../../.gitbook/assets/device-command-editor.jpg" alt="The command editor showing the Identity, Routing, and Payload sections"><figcaption></figcaption></figure>
+
 ## 1. Identity
 
 Give the command a clear, action-oriented name — this is what operators see when they execute it.

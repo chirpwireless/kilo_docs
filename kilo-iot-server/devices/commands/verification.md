@@ -8,6 +8,8 @@ Sending a command and knowing it worked are two different things. A downlink can
 
 Verification is configured per command, in **section 4** of the [command editor](creating-commands.md). Choose one of three strategies.
 
+<figure><img src="../../../.gitbook/assets/device-command-verification.jpg" alt="The Verification section with No verification, Wait for next uplink, and Query after ack options"><figcaption></figcaption></figure>
+
 ## No verification
 
 Fire-and-forget. The command is sent and the platform does not check the result.

@@ -8,6 +8,8 @@ Monitoring tells you what a device is doing. **Commands** let you change it. Wit
 
 Almost anything a device can be told to do is a command. Switch a relay or smart plug on or off. Dim a luminaire to 40% and set its color temperature to 4000 K. Push a new temperature setpoint to an HVAC controller. Open or close a valve. Reboot a gateway-attached controller, change its reporting interval, or write a configuration register. If the hardware accepts a downlink, the platform can send it — and it sends it the same way whether the device speaks **MQTT** or **LoRaWAN**.
 
+<figure><img src="../../../.gitbook/assets/device-command-states.jpg" alt="The Commands & States tab on a device, listing commands and recent executions"><figcaption></figcaption></figure>
+
 ## Why it matters
 
 Without an integrated command layer, controlling a device means leaving the platform: a separate vendor app, a hand-built MQTT publisher, a script that crafts raw downlink bytes, or a field technician with a laptop. Each of those is an unmanaged path with no audit, no verification, and no shared definition of what "turn it on" actually means for a given model.

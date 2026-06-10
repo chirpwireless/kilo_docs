@@ -8,6 +8,8 @@ Most "AI" in software is a chat box bolted onto a help page. The Kilo IoT Server
 
 Ask it what your devices are doing and it answers from your real telemetry. Ask it to set something up — onboard a device, build an automation, define an alarm — and it does the work, shows you exactly what it's about to change, and only proceeds once you approve. Open it from **AI Chat** in the sidebar.
 
+<figure><img src="../../.gitbook/assets/ai-assistant.jpg" alt="The AI Chat assistant ready to help set up automations, devices, and alerts"><figcaption></figcaption></figure>
+
 ## Three things make it different
 
 **It's grounded in your deployment, not guessing.** Every answer about your devices, rules, alarms, and dashboards comes from your live data — read through the platform at the moment you ask, scoped to your permissions. It doesn't pad answers with plausible-sounding generalities; if it can't retrieve something, it says so. That makes it trustworthy enough to act on.

@@ -6,6 +6,8 @@ description: Dispatch device commands from the States tab in Kilo IoT Server and
 
 Once a device has commands defined, the **States** sub-tab of the **Commands & States** tab is where you operate it. It shows what you can run, lets you dispatch a command with its parameters, and records the outcome of everything you've sent.
 
+<figure><img src="../../../.gitbook/assets/device-command-execute.jpg" alt="The Execute command dialog, setting a parameter value before dispatch"><figcaption></figcaption></figure>
+
 ## Available commands
 
 The **Available commands** table lists every command defined on the device:

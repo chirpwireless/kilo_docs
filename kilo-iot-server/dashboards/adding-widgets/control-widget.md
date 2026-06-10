@@ -1,58 +1,42 @@
 ---
-description: Operate a device from a Kilo IoT dashboard with the Control widget — a Switch or Button bound to a device command.
+description: Operate a device from a Kilo IoT dashboard with a Control widget — Switch, Button, Slider, or Input bound to a device command.
 ---
 
 # Control widget
 
-Most widgets report. The **Control widget** acts. It puts a **Switch** or **Button** on your dashboard, bound to one of a device's commands, so an operator can change the device's state with a single tap — right alongside the readings that tell them whether they need to. It is the dashboard face of [Device Commands](../../devices/commands/): the command does the work, the widget is the control surface.
+Most widgets report. The **Control widget** acts. It puts an interactive control on your dashboard — a **Switch**, **Button**, **Slider**, or **Input** — bound to one of a device's commands, so an operator can change the device's state right next to the readings that tell them whether they need to. It is the dashboard face of [Device Commands](../../devices/commands/): the command does the work, the widget is the control surface.
 
-Pair it with a feedback sensor and the widget also *reflects* the device's real state. A switch bound to a smart relay shows on when the relay reports on, and flips when you operate it — so the control and the live status are the same element.
+## Prerequisite — define a command first
 
-## Before you add one
+A Control widget operates an existing **device command**, so the device must already have one defined on its **Commands & States** tab. If a device has no commands it won't appear in the picker (you'll see *"No controllable devices in this organization"*). Set the command up first — see [Creating Commands](../../devices/commands/creating-commands.md) — then bind the widget to it.
 
-A Control widget needs a **controllable device** — one that already has at least one command defined on its **Commands & States** tab. If a device has no commands, it won't appear in the picker (you'll see *"No controllable devices in this organization"*). Define the command first; see [Creating Commands](../../devices/commands/creating-commands.md).
+## Shared setup flow
 
-## Setting up a Control widget
+Every Control widget is created the same way; only the **Appearance** fields differ by type.
 
-Open the dashboard in edit mode and choose **Control** from the widget picker. The settings panel opens with two tabs: **Datasource** and **Appearance**.
+1. Open the dashboard in **edit mode** and click **Add widget** → **Control**.
+2. On the **Datasource** tab (*"Control configuration"*), choose the **Source** (Device) and the **Device**, then pick the **Device metric** — the reading that reflects the device's current state. Click **Next**.
+3. On the **Appearance** tab, enter a **Widget name** (required) and optional **Description**, then choose a **Widget type** (below). Fill in that type's fields and click **Save**.
 
-### Step 1 — Datasource tab
+<figure><img src="../../../.gitbook/assets/control-widget-datasource.jpg" alt="Control widget Datasource tab — Source, Device, and Device metric selectors"><figcaption></figcaption></figure>
 
-Titled **"Control configuration"** (*"Configure control and data sources"*).
+## Choose a control type
 
-* Click to choose a device — the picker lists only controllable devices.
-* Select the **feedback sensor** for the widget — the reading that tells the widget the device's current state (for example a relay-state or on/off metric). The first suitable sensor is selected automatically; change it if needed.
-
-Click **Next** to continue.
-
-### Step 2 — Appearance tab
-
-Headed **"Add Control widget"** (*"Customize widget details."*).
-
-* **Widget name** *(required)* — the label on the dashboard. Placeholder *"Enter widget name."*
-* **Description** — optional supporting text.
-* **Widget type** — choose how the control looks and behaves:
-  * **Switch** — a toggle for two-state control (on/off, open/closed). Best for a state you flip back and forth.
-  * **Button** — a press control for dispatching an action. Best for a one-direction command.
-* **State bindings** — this is what makes the control work. You bind each state to a command:
-  * **Label** — what the state is called on the widget.
-  * **Command** *(required)* — which of the device's commands this state sends. (The list is empty until a device is selected; it shows the commands defined on that device.)
-  * **Expected sensor value** *(required)* — what the feedback sensor reads when this state is active, so the widget knows when to show the control as "on." It is auto-filled from the command where possible — edit it if your sensor reports a different value.
-  * If the command takes parameters, set each **Value** here too.
-
-  A Switch binds an on-state and an off-state; a Button binds the action it sends.
-* **Appearance options** — set the on, off, and disabled **colors** (the section is titled *Switch color* or *Button color* to match the type), toggle **Display labels** (Switch), choose a **Button size** of S, M, or L (Button), and toggle whether the widget shows its **name and last update**.
-
-Click **Save** to place the widget.
+| Type | Best for | Sends |
+| --- | --- | --- |
+| [Switch](control-widget/switch.md) | A persistent two-state condition (on/off, open/closed) | An on command or an off command as you toggle |
+| [Button](control-widget/button.md) | A one-shot action (reset, open, start) | A single command per press |
+| [Slider](control-widget/slider.md) | A numeric value across a range | A command parameter as you move the slider |
+| [Input](control-widget/input.md) | An exact typed value | A command parameter when you press **Apply** |
 
 ## How it behaves
 
-* **Tap to operate.** Operating the control dispatches the bound command through the same pipeline as the device's States tab — with the same validation, delivery, and execution history.
-* **Reflects real state.** The widget reads the feedback sensor and shows the control in its on or off state accordingly, so it stays in sync with the device rather than just remembering the last tap.
+* **Operate from the dashboard.** Using the control dispatches the bound command through the same pipeline as the device's States tab — same validation, delivery, and execution history.
+* **Reflects real state.** The widget reads the **Device metric** and shows the current state, so it stays in sync with the device rather than just remembering the last action.
 * **Disabled when it can't act.** If the device is offline or the binding is incomplete, the control is shown disabled rather than sending into the void.
 
 ## See also
 
-* [Device Commands](../../devices/commands/) — define and manage the commands this widget operates
+* [Device Commands](../../devices/commands/) — define and manage the commands a Control widget operates
 * [Creating Commands](../../devices/commands/creating-commands.md) — set up the command to bind
-* [Executing Commands](../../devices/commands/executing-commands.md) — the execution history behind every tap
+* Control types: [Switch](control-widget/switch.md) · [Button](control-widget/button.md) · [Slider](control-widget/slider.md) · [Input](control-widget/input.md)

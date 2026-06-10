@@ -4,7 +4,7 @@ description: Show a reading on a circular dial with the Radial Gauge — a confi
 
 # Radial Gauge Display
 
-<!-- IMAGE: last-data-radial-gauge.jpg — alt: Last Data widget using the Radial Gauge display type -->
+<figure><img src="../../../../.gitbook/assets/last-data-radial-gauge.jpg" alt="Last Data widget using the Radial Gauge display type"><figcaption></figcaption></figure>
 
 The Radial Gauge draws each reading as a needle on a **circular dial**. The dial is scaled between a minimum and a maximum, the condition bands you define paint colored arcs around it, and a configurable **sweep angle** lets the dial range from a near-full circle to a tight arc. It's the instrument-panel look — the reading you'd expect on a pressure gauge, a tachometer, or a fill indicator.
 

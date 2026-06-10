@@ -27,7 +27,7 @@ Kilo IoT Server 3.5.0 makes the platform **AI-first** and **two-way**. The IoT A
 
 **IoT AI Assistant — an integrator built into the platform**
 
-<!-- IMAGE: ai-assistant-build-rule.jpg — alt: AI Assistant proposing and confirming an automation -->
+<figure><img src="../.gitbook/assets/ai-assistant.jpg" alt="The AI Chat assistant ready to set up automations, devices, and alerts"><figcaption></figcaption></figure>
 
 This is the headline of 3.5.0. The assistant is no longer just a way to ask questions about your data — it does the work with you. Describe an automation in plain language and it designs the rule, **writes the CEL**, simulates it against matching and non-matching values to prove it fires correctly, and deploys it. Ask it to onboard a device and it runs the flow — or completes it automatically when you provide the LoRaWAN keys — then checks the device is reporting. It can also create alarms with escalation, manage team roles, and recommend compatible hardware. Every answer is grounded in your real deployment rather than invented, it remembers the context of your conversation, and before anything destructive it asks for an explicit **Confirm Action**. The automations it builds monitor and alert; sending an actual command to a device is the job of Device Commands.
 
@@ -37,7 +37,7 @@ This is the headline of 3.5.0. The assistant is no longer just a way to ask ques
 
 **Device Commands**
 
-<!-- IMAGE: device-commands-editor.jpg — alt: Device command editor with routing, payload, and verification -->
+<figure><img src="../.gitbook/assets/device-command-editor.jpg" alt="The device command editor with routing, payload, and verification sections"><figcaption></figcaption></figure>
 
 Monitoring tells you what a device is doing; commands change it. On a device's new **Commands & States** tab you define named, typed actions — a brightness level, a setpoint, an open/close — and the platform delivers them as downlinks over **MQTT or LoRaWAN**. Typed parameters keep operators inside safe ranges, optional verification confirms the device actually acted (not just that the message was sent), and every dispatch is recorded with its outcome — Pending, Confirmed, Soft warning, or Failed. Available for MQTT devices and Class C LoRaWAN devices.
 
@@ -47,7 +47,7 @@ Monitoring tells you what a device is doing; commands change it. On a device's n
 
 **Control, Text, and Radial Gauge widgets**
 
-<!-- IMAGE: control-widget-dashboard.jpg — alt: Control widget on a dashboard -->
+<figure><img src="../.gitbook/assets/control-widget-switch.jpg" alt="A Control widget Switch operating a device from a dashboard"><figcaption></figcaption></figure>
 
 Three additions to dashboards. The **Control widget** puts a Switch or Button on the board, bound to a device command and reflecting the device's live state — operate a device without leaving the dashboard. The **Text widget** adds headings and notes so a dense board reads as organized sections. And the **Radial Gauge** joins the Last Data widget as a circular instrument dial, with a configurable sweep angle and your conditions drawn as colored arcs.
 

@@ -8,6 +8,8 @@ A dashboard packed with tiles is only useful if a viewer can find their way arou
 
 It carries no data and no device binding. Its only job is to give the board structure and context.
 
+<figure><img src="../../../.gitbook/assets/text-widget.jpg" alt="Text widget adding a labeled heading tile to a dashboard"><figcaption></figcaption></figure>
+
 ## When to use it
 
 * **Section headers** — separate "Cold Storage", "HVAC", and "Power" into labeled zones on a single board.
