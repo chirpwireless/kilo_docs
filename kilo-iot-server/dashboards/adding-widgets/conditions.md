@@ -96,6 +96,18 @@ A **True / False** dropdown. Matches the reading exactly. Available in the condi
 
 ## Operational examples
 
+### Keeping a reserve topped up
+
+A level sensor on something that must stay full — a coolant or reagent reserve, a water tank feeding a process — reports its fill as a percentage (0 = empty, 100 = full). Three Number conditions turn that reading into an at-a-glance refill status. Because the **first matching condition wins**, order them most-urgent first:
+
+- **Refill** — Number, From 0, To 30 — red
+- **Getting Low** — Number, From 30, To 50 — amber
+- **Normal Level** — Number, From 50, To 100 — green
+
+<figure><img src="../../../.gitbook/assets/conditions.jpg" alt="Conditions modal with three fill-level rules — Refill 0–30 red, Getting Low 30–50 amber, Normal Level 50–100 green"><figcaption></figcaption></figure>
+
+On the widget the metric reads green while the reserve is healthy, turns amber as it draws down, and goes red the moment it crosses into the refill zone — so an operator restocks before it runs dry. To be alerted off the dashboard as well, pair the same threshold with an [Alarm](../../alarm/README.md).
+
 ### Number conditions — same sensor type, two contexts
 
 **Refrigeration unit:**
