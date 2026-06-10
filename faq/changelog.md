@@ -10,17 +10,17 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.5.0.jpg" alt="Kilo IoT Server 3.5.0 release banner"><figcaption></figcaption></figure>
 
-Kilo IoT Server 3.5.0 makes the platform **AI-first** and **two-way**. The IoT AI Assistant grows from an analyst into an experienced integrator that works inside your deployment — it can provision devices, author and deploy automations (writing the CEL itself), and configure alarms on your behalf, all from a plain-language conversation and all gated by your confirmation. And with Device Commands, the platform stops being a one-way data pipe: define the actions a device can perform and send them as downlinks over MQTT or LoRaWAN — switch a relay, dim and color-tune a luminaire, push a setpoint, reboot a controller. New Control, Text, and Radial Gauge widgets bring that control and clarity onto your dashboards. [kiloiot.io](https://kiloiot.io)
+Every release until now made the Kilo IoT Server a sharper pair of eyes. **3.5.0 gives it hands.** Two changes turn the platform from something that watches your deployment into something that works it. First, the IoT AI Assistant stops being a question-answering box and becomes an integrator that *does the job with you* — provisioning devices, writing and deploying automations, standing up alarms, all from a plain-language conversation and all under your confirmation. Second, the platform goes genuinely **two-way**: Device Commands and a full family of Control widgets let you send actions back to your hardware — switch a relay, dim and color-tune a luminaire, push a setpoint, reboot a controller — over MQTT or LoRaWAN, from the device page or straight from a dashboard. Add a Text widget, a new Radial Gauge, and step-through rule debugging, and this is the most capable Kilo IoT Server yet. [kiloiot.io](https://kiloiot.io)
 
 ***
 
 #### What's in This Release
 
-* **IoT AI Assistant — now an integrator copilot** — Grounded in your live deployment, it provisions devices, builds/tests/deploys rules (including their CEL), creates alarms with escalation, manages team access, and recommends hardware — confirming before any consequential change and verifying its own work.
-* **Device Commands** — Full remote device control. Define typed commands and dispatch them as downlinks over MQTT or LoRaWAN, with parameter validation, optional result verification, and a complete execution history.
-* **Control Widget** — A dashboard Switch or Button bound to a device command, reflecting live state from a feedback sensor.
-* **Text Widget** — Headings and notes to label and organize a busy dashboard.
-* **Radial Gauge** — A sixth Last Data display type: a circular instrument dial with a configurable sweep angle and condition arcs.
+* **IoT AI Assistant — now an integrator copilot** — Grounded in your live deployment, it provisions devices, builds/tests/deploys rules (writing the CEL itself), creates alarms with escalation, manages team access, and recommends hardware — confirming before any consequential change and verifying its own work.
+* **Device Commands** — The platform becomes a two-way control plane. Define named, typed commands and dispatch them as downlinks over **MQTT or LoRaWAN**, with parameter validation, optional closed-loop verification, and a complete execution history.
+* **Control widgets — a family of six** — Six dashboard control types — **Switch, Button, Simple Slider, Circular Slider, Vertical Slider, and Input** — each bound to a device command and reflecting the device's live state.
+* **Text widget** — Headings and notes to structure a busy operations dashboard into labeled sections.
+* **Radial Gauge** — A sixth Last Data display type: a circular instrument dial with a configurable sweep angle and your conditions drawn as colored arcs.
 * **Rule debugging** — Step through a rule node by node against a test payload, set breakpoints, inspect variables and CEL expressions, and control how side effects run — before you deploy to production.
 * **Simplified upgrades** — Choosing a plan now goes straight to checkout with a single **Upgrade Plan** action, and plan limits apply by default.
 
@@ -30,29 +30,58 @@ Kilo IoT Server 3.5.0 makes the platform **AI-first** and **two-way**. The IoT A
 
 <figure><img src="../.gitbook/assets/ai-assistant.jpg" alt="The AI Chat assistant ready to set up automations, devices, and alerts"><figcaption></figcaption></figure>
 
-This is the headline of 3.5.0. The assistant is no longer just a way to ask questions about your data — it does the work with you. Describe an automation in plain language and it designs the rule, **writes the CEL**, simulates it against matching and non-matching values to prove it fires correctly, and deploys it. Ask it to onboard a device and it runs the flow — or completes it automatically when you provide the LoRaWAN keys — then checks the device is reporting. It can also create alarms with escalation, manage team roles, and recommend compatible hardware. Every answer is grounded in your real deployment rather than invented, it remembers the context of your conversation, and before anything destructive it asks for an explicit **Confirm Action**. The automations it builds monitor and alert; sending an actual command to a device is the job of Device Commands.
+This is the headline of 3.5.0, and it changes what the platform *is*. Most "AI" in software is a chat box bolted onto a help page. The Kilo assistant is an experienced IoT integrator that lives inside your deployment, knows it end to end, and picks up real work alongside you. Open it from **AI Chat** in the sidebar and talk to it the way you'd brief a colleague.
+
+**It acts — it doesn't just advise.** Describe an automation in plain language and it designs the rule, **writes the CEL**, simulates it against matching and non-matching values to prove it fires correctly, and deploys it. Ask it to onboard a device and it runs the flow — or completes it automatically when you hand over the LoRaWAN keys — then checks the device is actually reporting. It builds alarms with full escalation chains, manages team roles, and recommends hardware that fits what you're trying to do. These are the same operations you would run by hand, executed on your behalf.
+
+**It's grounded, and it asks before it commits.** Every answer about your devices, rules, and alarms is read from your live deployment at the moment you ask, scoped to your permissions — not invented. It remembers the context of the conversation, so you can refine a task over several messages without starting over. And before anything destructive or consequential — deleting a device or rule, resolving an alarm — it stops and asks for an explicit **Confirm Action**. When it's done, it reads the result back to verify its own work. Its allowance scales with your plan, and you can connect your own model API key if you'd rather not be capped.
+
+One boundary worth knowing: the assistant builds **monitoring and alerting** — automations that watch your data and notify the right people — and it'll show you where the controls are. Sending an actual on/off or setpoint to a device is the job of Device Commands, below.
 
 [→ IoT AI Assistant](../kilo-iot-server/ai-assistant/README.md)
 
 ***
 
-**Device Commands**
+**Device Commands — the platform goes two-way**
 
 <figure><img src="../.gitbook/assets/device-command-editor.jpg" alt="The device command editor with routing, payload, and verification sections"><figcaption></figcaption></figure>
 
-Monitoring tells you what a device is doing; commands change it. On a device's new **Commands & States** tab you define named, typed actions — a brightness level, a setpoint, an open/close — and the platform delivers them as downlinks over **MQTT or LoRaWAN**. Typed parameters keep operators inside safe ranges, optional verification confirms the device actually acted (not just that the message was sent), and every dispatch is recorded with its outcome — Pending, Confirmed, Soft warning, or Failed. Available for MQTT devices and Class C LoRaWAN devices.
+Until now the Kilo IoT Server was a one-way data pipe: telemetry flowed in, and acting on it meant leaving the platform for a vendor app, a hand-built MQTT publisher, or a technician with a laptop. Device Commands closes that loop. A device's new **Commands & States** tab turns "control this device" into a modeled, reusable, auditable surface.
+
+**Define once, run anywhere.** A command is a named action with typed parameters — a brightness level, a setpoint, an open/close. Operators run it without ever seeing the raw payload, byte layout, or topic. The same command concept delivers an **MQTT** downlink to a smart plug and a **LoRaWAN** downlink to a Class C controller; the platform handles the encoding for each.
+
+**Closed-loop, with a full record.** Typed parameters keep inputs inside safe ranges. Optional verification confirms the device *actually acted* — not just that the message left the building. And every dispatch is recorded with its outcome — Pending, Confirmed, Soft warning, or Failed — giving operations and compliance a complete who-changed-what-and-when. Available for MQTT devices and **Class C** LoRaWAN devices (which listen continuously, so they're always ready to receive). A device becomes controllable the moment it has one command defined — which is also what makes it selectable for a Control widget.
 
 [→ Device Commands](../kilo-iot-server/devices/commands/README.md)
 
 ***
 
-**Control, Text, and Radial Gauge widgets**
+**Control widgets — operate devices from the dashboard**
 
-<figure><img src="../.gitbook/assets/control-widget-switch.jpg" alt="A Control widget Switch operating a device from a dashboard"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/control-dashboard.jpg" alt="A dashboard of Control widgets — a switch, a dial, a slider, and an input controlling a device"><figcaption></figcaption></figure>
 
-Three additions to dashboards. The **Control widget** puts a Switch or Button on the board, bound to a device command and reflecting the device's live state — operate a device without leaving the dashboard. The **Text widget** adds headings and notes so a dense board reads as organized sections. And the **Radial Gauge** joins the Last Data widget as a circular instrument dial, with a configurable sweep angle and your conditions drawn as colored arcs.
+If Device Commands is the engine, the Control widget is the control surface — and it isn't one widget, it's a **family of six**. Each binds to a device command and reflects the device's live state, so an operator can change a device right beside the readings that say whether they need to. When a device is offline or a binding is incomplete, the control greys out instead of sending into the void.
 
-[→ Control Widget](../kilo-iot-server/dashboards/adding-widgets/control-widget.md) · [→ Text Widget](../kilo-iot-server/dashboards/adding-widgets/text-widget.md) · [→ Radial Gauge Display](../kilo-iot-server/dashboards/adding-widgets/last-data-widget/radial-gauge.md)
+| Control type | Best for | Sends |
+| --- | --- | --- |
+| [Switch](../kilo-iot-server/dashboards/adding-widgets/control-widget/switch.md) | A persistent two-state condition (on/off, open/closed) | An on or off command as you toggle |
+| [Button](../kilo-iot-server/dashboards/adding-widgets/control-widget/button.md) | A one-shot action (reset, open, start) | A single command per press |
+| [Simple Slider](../kilo-iot-server/dashboards/adding-widgets/control-widget/slider-simple.md) | A numeric value on a horizontal track | A command parameter as you slide |
+| [Circular Slider](../kilo-iot-server/dashboards/adding-widgets/control-widget/slider-circular.md) | A numeric value on a radial dial | A command parameter as you turn the dial |
+| [Vertical Slider](../kilo-iot-server/dashboards/adding-widgets/control-widget/slider-vertical.md) | A numeric value on an upright track | A command parameter as you slide |
+| [Input](../kilo-iot-server/dashboards/adding-widgets/control-widget/input.md) | An exact typed value | A command parameter when you press **Apply** |
+
+[→ Control widget overview](../kilo-iot-server/dashboards/adding-widgets/control-widget.md)
+
+***
+
+**Text and Radial Gauge widgets**
+
+<figure><img src="../.gitbook/assets/last-data-radial-gauge.jpg" alt="A Radial Gauge display showing a single reading on a circular dial with colored condition arcs"><figcaption></figcaption></figure>
+
+Two more dashboard building blocks land alongside the controls. The **Text widget** drops headings and notes onto a board, so a dense NOC-style screen reads as organized sections instead of an undifferentiated grid of tiles. And the **Radial Gauge** joins the Last Data widget as its sixth display type — a circular instrument dial with a configurable sweep angle and your conditions drawn as colored arcs, ideal for a headline reading like a tank level or load percentage.
+
+[→ Text widget](../kilo-iot-server/dashboards/adding-widgets/text-widget.md) · [→ Radial Gauge display](../kilo-iot-server/dashboards/adding-widgets/last-data-widget/radial-gauge.md)
 
 ***
 
