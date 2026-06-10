@@ -12,7 +12,7 @@ This is different from the [Image Widget](image-widget.md), which works with any
 
 Place the Map widget on an operations dashboard alongside Last data and Chart widgets to give dispatchers and supervisors at-a-glance situational awareness: asset location, current metric status, and recent route history, all in one view. Date range controls let operators review route history without navigating away from the dashboard.
 
-<figure><img src="../../../.gitbook/assets/map-widget-configuration.jpg" alt="Map widget configuration — selecting a device and the metric shown on the marker"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/map-widget.jpg" alt="Add Map widget — Appearance settings with a live map preview of a tracked asset"><figcaption></figcaption></figure>
 
 ## Setting up a Map widget
 
@@ -56,8 +56,6 @@ The map renders with the asset's last known position. The marker shows the selec
 - **Clear data range** — Returns to the current position view.
 
 When a date range is active, the widget plots the device's recorded locations as a dashed line connecting all positions logged during that period. Up to **500 GPS position points** are rendered per date range.
-
-<figure><img src="../../../.gitbook/assets/map-widget-route-history.jpg" alt="Map widget showing a device's route history as a dashed line over a date range"><figcaption></figcaption></figure>
 
 ## Troubleshooting
 
