@@ -15,11 +15,15 @@ Getting an on-call device ready takes a few minutes. Once it's connected and the
 
 On first launch the app asks **"How will you use the app?"** Select **Business Use** — described as *Kilo IoT — alerts for your business deployments*. This points the app at your Kilo account and deployment and applies Kilo branding.
 
+<figure><img src="../../../.gitbook/assets/kilo-alerts-mode-select.jpg" alt="IoT Alerts mode-select screen with Home Use and Business Use options"><figcaption></figcaption></figure>
+
 You can change this later under **Settings → Platform → Change mode**, but switching between Home and Business signs you out, since each platform uses its own account.
 
 ## Step 3 — Sign in with your Kilo account
 
 Sign in with the same credentials you use on the Kilo web platform — there is no separate app account. Email and password both work, as does single sign-on if your Kilo account is linked to it. Your organizations, deployments, and access carry over exactly as they are on the web.
+
+<figure><img src="../../../.gitbook/assets/kilo-alerts-sign-in.jpg" alt="Kilo Alerts sign-in screen with Google, Apple, and email options"><figcaption></figcaption></figure>
 
 ## Step 4 — Grant notification and Critical Alert permission
 
