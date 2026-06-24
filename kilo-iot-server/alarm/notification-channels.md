@@ -40,7 +40,7 @@ For operations teams, SMS provides a high-reliability delivery path that reaches
 
 Push notifications are available when enabled for the account. When available, a push notification section appears at the top of the Settings tab with device-specific setup instructions.
 
-Push provides device-level mobile alerts, making it suitable for time-sensitive escalation tiers.
+Push provides device-level mobile alerts, making it suitable for time-sensitive escalation tiers. Delivery runs through the [IoT Alerts App](iot-alerts-app/README.md), where Critical alarms can break through silent mode on a responder's phone — install it and turn this toggle On to start receiving alarms on a device.
 
 ## Connecting channels to escalation
 
