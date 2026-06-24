@@ -54,7 +54,7 @@ The sidebar can be collapsed to a narrow icon strip to free up screen space. Hov
 
 Click your **avatar or name** at the bottom-left of the sidebar to open the user menu. This dropdown provides access to several areas that are not in the sidebar:
 
-- **Language selector** — Switch between English, German, French, and Spanish. The change is immediate and persists across sessions.
+- **Language selector** — Switch between English, German, French, Spanish, and Portuguese. The change is immediate and persists across sessions.
 - **Theme toggle** — Switch between light and dark mode. Dark mode is well-suited for control rooms and low-light environments.
 - **Subscription** — View your current plan, device and rule usage against plan limits, and billing details. Upgrade or manage your subscription through Stripe.
 - **Users** — Manage organization members, invitations, permissions, and access control.

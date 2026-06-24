@@ -106,7 +106,7 @@ Kilo IoT Server exposes a public API for backend integrations, analytics and rep
 
 ## Languages and accessibility
 
-The interface is available in English, German, French, and Spanish. Both light and dark themes are supported, and your preferences persist across sessions.
+The interface is available in English, German, French, Spanish, and Portuguese. Both light and dark themes are supported, and your preferences persist across sessions.
 
 ## Subscription plans
 
