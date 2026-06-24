@@ -10,7 +10,7 @@ The app is built for response, not just receipt. From a responder's phone you ca
 
 The **Inbox** tab lists alarm events for the currently selected organization, newest first, and refreshes on its own while the app is open. Each entry shows the alert title and message, the time it triggered, and a status indicator — active versus resolved.
 
-<figure><img src="../../../.gitbook/assets/kilo-alerts-inbox.jpg" alt="Kilo Alerts Inbox tab beside the Alert Definitions tab, showing an empty alert list"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/kilo-alerts-inbox.jpg" alt="Kilo Alerts Inbox tab beside the Alert Definitions tab, showing an empty alert list" width="300"><figcaption></figcaption></figure>
 
 ### Resolving an event
 
@@ -31,9 +31,9 @@ This is the field control for a definition that's firing too often — mute it f
 ## Switching organization and platform
 
 - **Organization** — if your account spans several organizations, switch between them from the app menu; the Inbox and Alert Definitions update to the selected one.
-- **Platform** — under **Settings → Platform → Change mode** you can move between Business (Kilo) and Home (Chirp). Switching signs you out, because each platform uses its own account; sign back in with the credentials for the platform you selected.
+- **Platform** — **Settings → Platform → Change mode** changes which platform the app is connected to. Changing it signs you out, because each platform uses its own account; sign back in afterward.
 
-<figure><img src="../../../.gitbook/assets/kilo-alerts-settings.jpg" alt="Kilo Alerts Settings screen showing the Platform section, Change mode, app version, and account options"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/kilo-alerts-settings.jpg" alt="Kilo Alerts Settings screen showing the Platform section, Change mode, app version, and account options" width="300"><figcaption></figcaption></figure>
 
 ## Acknowledgment paths at a glance
 

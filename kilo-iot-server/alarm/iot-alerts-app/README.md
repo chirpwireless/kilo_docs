@@ -8,9 +8,9 @@ A push notification is only useful if it reaches the right responder in the stat
 
 The app is a delivery surface for the alarms you already define on the web platform. You author alarm definitions, severity policies, and escalation chains in Kilo IoT Server; the app receives the resulting events, signals them according to severity, and lets responders acknowledge or resolve from the field.
 
-## One app, two platforms
+## Choosing Business Use
 
-IoT Alerts is a single app that serves both Kilo (business) and Chirp (home). On first launch it asks **how you'll use it** and you choose **Business Use** — the Kilo IoT experience. From that point the app signs in against your Kilo account, connects to your Kilo deployment, and themes itself for Kilo. Field teams running personal devices alongside a home setup can switch later in **Settings → Platform**, though switching signs you out (the two platforms use separate accounts).
+The first time you open IoT Alerts, it asks how you'll use it. Select **Business Use** for the Kilo IoT experience — the app signs in against your Kilo account, connects to your deployment, and applies Kilo branding throughout.
 
 ## Download
 
@@ -35,4 +35,4 @@ Apple restricts which apps may break through silent mode and a Focus or Do Not D
 |---|---|
 | [Set Up IoT Alerts](getting-started.md) | Install, choose Business Use, sign in, and enable push delivery. |
 | [When Alerts Wake Your Phone](alert-behavior.md) | Understand exactly which severities ring the alarm and which arrive quietly. |
-| [Acknowledge and Resolve](managing-alerts.md) | Work the Inbox, manage Alert Definitions, and switch platforms from the app. |
+| [Acknowledge and Resolve](managing-alerts.md) | Work the Inbox and manage Alert Definitions from the app. |
