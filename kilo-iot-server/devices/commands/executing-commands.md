@@ -50,14 +50,34 @@ Every dispatch is logged in the **Recent executions** table, giving you a runnin
 
 ### Execution status
 
-The platform collapses the full delivery lifecycle into four clear outcomes:
+The platform collapses the full delivery lifecycle into five clear outcomes:
 
 * **Pending** — In flight. The command has been dispatched and is moving through delivery and (if configured) verification.
-* **Confirmed** — Success. The command was delivered and, where verification is configured, the device's reported state matched what was expected.
+* **Confirmed** — Verified success. Verification was configured, and the device's reported state matched what was expected.
+* **Delivered** — The downlink was accepted for delivery, but the command uses **No verification**, so the platform isn't checking whether the device acted on it. The command went out; its effect is unverified by design — distinct from the verified **Confirmed**.
 * **Soft warning** — Delivered and acknowledged, but the platform could not confirm the effect within the convergence window. Treat this as "couldn't verify," not "definitely failed" — worth a look, but the command may well have worked.
 * **Failed** — The command did not go through. The **Details** column explains why — for example a validation failure or a full device downlink queue.
 
 The **Details** text gives the human-readable reason behind each status, so triaging a problematic command rarely requires leaving the page.
+
+### Common reasons in the Details column
+
+When a command lands on **Soft warning** or **Failed**, the Details column names the cause in plain language. The ones you'll see most often:
+
+| What Details says | What it means |
+| --- | --- |
+| Device downlink queue is full. | The device's pending-downlink queue is saturated — wait or clear it before re-sending. |
+| Validation failed. | The request didn't pass validation — check the command's parameters and payload. |
+| Payload too large for the device. | The encoded payload exceeds what the device accepts at its current data rate. |
+| Sent, but the device didn't confirm receipt. | The downlink went out but no acknowledgment came back (confirmed downlinks). |
+| Sent, but the device didn't confirm the expected state in time. | Delivered, but the expected sensor state didn't arrive within the convergence window. |
+| Device offline — command not delivered in time. | The device wasn't reachable within its receive window. |
+| No gateway available to reach the device. | No gateway was in range to transmit the downlink. |
+| Broker authentication failed. | The MQTT connection rejected the publish — check the connector's credentials. |
+| The command couldn't be sent. Please try again later. | A transient dispatch error — retry. |
+| Invalid payload — check the command. | The payload was malformed for the device — revisit the encoder or template. |
+
+These are the common cases; other messages can appear, and the platform passes through the underlying reason when it has a more specific one.
 
 ## Operating commands from a dashboard
 
