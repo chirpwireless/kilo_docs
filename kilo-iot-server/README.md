@@ -10,7 +10,7 @@ What makes it AI-first is **AIoT** — Artificial Intelligence of Things built i
 
 Kilo is built for organizations that need to connect, monitor, and automate physical devices at scale — whether that means five sensors in a single building or thousands of devices across dozens of sites. When we designed the server, we chose full customizability over a simpler but limited tool — and AIoT is what makes that depth easy to use: the assistant turns a highly configurable platform into something you operate by describing what you want.
 
-<figure><img src="../.gitbook/assets/rules.jpg" alt="The visual Rules Engine — a BPMN automation flow with Start, Gateway, and End nodes wired together on the editor canvas"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/rules.jpg" alt="The visual Rules Engine — a BPMN automation that branches at a Gateway into two paths, with a Start event, a Script task, and End nodes on the canvas"><figcaption></figcaption></figure>
 
 ## Who Kilo IoT is for
 
@@ -66,7 +66,7 @@ Every rule change is automatically versioned. You can review the full history of
 
 Rules also support decision tables for structured multi-criteria evaluation, time-based schedules with day-of-week and timezone selection, and a "remain true for" parameter that requires a condition to persist for a specified duration before triggering — eliminating false alarms from transient sensor spikes.
 
-<figure><img src="../.gitbook/assets/rules.jpg" alt="Building an automation in the visual Rules Engine — Start, Gateway, and End nodes connected on the canvas"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/rules.jpg" alt="Building a branching automation in the visual Rules Engine — a Gateway routing to a Script task and End events"><figcaption></figcaption></figure>
 
 ### Multi-channel alerting with escalation
 
