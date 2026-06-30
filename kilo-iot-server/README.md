@@ -10,7 +10,7 @@ What makes it AI-first is **AIoT** — Artificial Intelligence of Things built i
 
 Kilo is built for organizations that need to connect, monitor, and automate physical devices at scale — whether that means five sensors in a single building or thousands of devices across dozens of sites. When we designed the server, we chose full customizability over a simpler but limited tool — and AIoT is what makes that depth easy to use: the assistant turns a highly configurable platform into something you operate by describing what you want.
 
-<figure><img src="../.gitbook/assets/3d_Scene_Screen.jpg" alt="Digital Building Twin scene with parking bays color-coded by occupancy (A123 red, A124 green), dumpsters indicating fill state, and per-room sensor status markers"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/rules.jpg" alt="The visual Rules Engine — a BPMN automation flow with Start, Gateway, and End nodes wired together on the editor canvas"><figcaption></figcaption></figure>
 
 ## Who Kilo IoT is for
 
@@ -66,6 +66,8 @@ Every rule change is automatically versioned. You can review the full history of
 
 Rules also support decision tables for structured multi-criteria evaluation, time-based schedules with day-of-week and timezone selection, and a "remain true for" parameter that requires a condition to persist for a specified duration before triggering — eliminating false alarms from transient sensor spikes.
 
+<figure><img src="../.gitbook/assets/rules.jpg" alt="Building an automation in the visual Rules Engine — Start, Gateway, and End nodes connected on the canvas"><figcaption></figcaption></figure>
+
 ### Multi-channel alerting with escalation
 
 When an alarm rule fires, the system delivers notifications across email, SMS, and push simultaneously. Each channel is independently configurable per rule. Alarms are categorized across five severity levels — Critical, High, Medium, Low, and Info — each with its own repeat interval and escalation behavior. Organizations can configure per-severity policies to control how each level is handled across the deployment.
@@ -100,6 +102,8 @@ The Digital Building Twin is a 3D model of a real facility, built directly into 
 Once it is wired, the model becomes a live operational view. A cold store shades amber as it drifts out of range. An occupied parking bay turns red while a free one stays clear. A pump turns red the moment it faults. Instead of mapping a row in a table to a place in their head, an operator looks at the building and sees exactly where attention is needed. Occupancy, parking availability, equipment health, climate faults, zone conditions — whatever your sensors report, it shows up where it physically belongs.
 
 The building can also be anchored to real GPS coordinates, giving the model a true position in the world. See [Digital Building Twin](dashboards/adding-widgets/digital-building-twin/README.md) for the full guide.
+
+<figure><img src="../.gitbook/assets/3d_Scene_Screen.jpg" alt="Digital Building Twin scene with parking bays color-coded by occupancy (A123 red, A124 green), dumpsters indicating fill state, and per-room sensor status markers"><figcaption></figcaption></figure>
 
 ### Maps, GPS tracking, and spatial views
 
