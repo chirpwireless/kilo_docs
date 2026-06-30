@@ -2,7 +2,7 @@
 
 * [Intro to Kilo](README.md)
 
-## Kilo IoT Platform
+## Kilo IoT Server
 
 * [Kilo IoT Platform](kilo-iot-server/README.md)
 * [First Steps](kilo-iot-server/getting-started/README.md)
