@@ -6,6 +6,10 @@ description: Query Kilo IoT Server in natural language — device status, histor
 
 The AI Assistant accepts natural language. There is no special syntax to learn, no query language to memorize. Type the way you would talk to a colleague who happens to know everything about your deployment — whether you're *asking* about your data or *asking it to do something*. This page focuses on the asking-and-analyzing side; to hand it real setup work, see [Building With the Assistant](building-with-ai.md).
 
+<figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
+
+When you open **AI Chat**, a greeting and a few suggested topics get you started — select one, or just type your question in the box at the bottom.
+
 ## Writing effective queries
 
 A specific question produces a specific answer. Follow these guidelines to get the most useful results:

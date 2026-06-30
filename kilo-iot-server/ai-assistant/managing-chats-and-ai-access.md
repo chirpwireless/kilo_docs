@@ -26,6 +26,8 @@ When you reach the limit, the assistant tells you you've **reached your AI assis
 
 ## Connecting your own AI
 
+<figure><img src="../../.gitbook/assets/ai-connect-your-model.jpg" alt="The Connect your AI panel — provider, base URL, API key, and model ID"><figcaption></figcaption></figure>
+
 You can point the assistant at your own model instead of the included allowance — useful for teams that already run a provider account or want a specific model. Open **Connect your AI** from the AI Chat top bar and fill in:
 
 * **Provider** — choose **OpenAI**, **Anthropic**, **Ollama**, or **Custom (OpenAI compatible)**.
