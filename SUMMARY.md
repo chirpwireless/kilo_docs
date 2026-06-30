@@ -2,9 +2,9 @@
 
 * [Intro to Kilo](README.md)
 
-## Kilo IoT Server
+## Kilo IoT Platform
 
-* [Kilo IoT Server](kilo-iot-server/README.md)
+* [Kilo IoT Platform](kilo-iot-server/README.md)
 * [First Steps](kilo-iot-server/getting-started/README.md)
   * [Navigating the Interface](kilo-iot-server/getting-started/navigating-the-interface.md)
   * [Your First Deployment](kilo-iot-server/getting-started/your-first-deployment.md)
@@ -90,6 +90,7 @@
   * [Visual Editor](kilo-iot-server/rules-engine/visual-editor.md)
   * [Debugging Rules](kilo-iot-server/rules-engine/debugging-rules.md)
   * [Node Reference](kilo-iot-server/rules-engine/node-reference.md)
+  * [Running Device Commands](kilo-iot-server/rules-engine/running-device-commands.md)
   * [CEL Reference](kilo-iot-server/rules-engine/cel-reference.md)
   * [Edit Locks](kilo-iot-server/rules-engine/edit-locks-and-team-handoffs.md)
   * [Version History](kilo-iot-server/rules-engine/version-history-and-restore.md)

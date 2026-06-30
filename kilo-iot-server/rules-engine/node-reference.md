@@ -6,7 +6,7 @@ description: Node reference for the Rules Engine — Start, End, Script, Gateway
 
 Every automation rule is built from a set of node types that you drag onto the visual editor canvas, connect with flows, and configure through a properties panel. This page documents each node type — what it does, when to use it, how it appears on the canvas, and every field in its properties panel.
 
-This page documents the nodes currently available in the live palette: **Start Event**, **End Event**, **Script Task**, **Exclusive Gateway**, **Set Alarm**, **Enrichment**, and **Boundary Error Event**. Transitional or planned nodes are intentionally excluded until they are part of the live editor surface.
+This page documents the nodes currently available in the live palette: **Start Event**, **End Event**, **Script Task**, **Exclusive Gateway**, **Set Alarm**, **Execute Command**, **Enrichment**, and **Boundary Error Event**. Transitional or planned nodes are intentionally excluded until they are part of the live editor surface.
 
 For an overview of the canvas itself — palette, toolbar, and general editing workflow — see [Visual Editor](visual-editor.md).
 
@@ -288,6 +288,52 @@ A server room environmental monitoring rule reaches the Set Alarm node when temp
 
 ---
 
+## Execute Command
+
+The Execute Command node sends a command to a device when the rule reaches it — the action that lets a rule control hardware, not just alert about it. It dispatches one of a device's pre-defined [Device Commands](../devices/commands/) as a downlink, so a rule can shut a valve, push a setpoint, or switch a relay automatically the moment its conditions are met.
+
+For the full workflow, examples, and the act-and-alert pattern, see [Running Device Commands](running-device-commands.md). This entry covers the node's fields.
+
+### Visual appearance
+
+A rounded rectangle with a command icon in the upper-left corner. It sits in the same activity group as Set Alarm and Enrichment.
+
+### When to use it
+
+- Close a valve, switch a relay, or stop a pump the instant a threshold is crossed
+- Push a new setpoint to a controller in response to a reading
+- Set a value proportionally — e.g. fan speed derived from the measured temperature
+
+### Prerequisites
+
+The target device must be **controllable** (MQTT, or a Class C LoRaWAN device) and must already have **at least one command defined** on its **Commands & States** tab. The node runs existing commands; it does not create them. See [Creating Commands](../devices/commands/creating-commands.md).
+
+### Properties panel
+
+| Field | Description |
+|---|---|
+| **Name** | A text field for the node label. If left blank, it fills in with the selected command's name. Example: "Shut intake valve". |
+| **Device** | A searchable autocomplete dropdown listing the devices in your organization. Selects the device the command is sent to. |
+| **Command** | An autocomplete dropdown of the chosen device's defined commands. Disabled until a device is selected. |
+| **Parameters** | One row per parameter the selected command expects. Each parameter is supplied as a literal **Value** (validated against the parameter's type and range) or a **CEL Expression** (evaluated at runtime, with `vars` available). |
+| **Inputs / Outputs** | Optional named CEL expressions for advanced data shaping, the same pattern as other nodes. |
+
+**Save / Cancel** — At the bottom of the panel. Save is disabled until both a device and a command are selected and every parameter is valid.
+
+### What happens when the node executes
+
+1. Each parameter is resolved — literals as-is, expressions evaluated against the current `vars`.
+2. The command is dispatched to the device as a downlink (MQTT or LoRaWAN), exactly as a manual execution would be.
+3. The dispatch is recorded in the device's execution history with its outcome (Pending, Confirmed, Delivered, Soft warning, or Failed). Any verification configured on the command applies here too.
+
+Pair an Execute Command node with a [Boundary Error Event](#boundary-error-event) when a failed dispatch should still reach a human via a fallback path.
+
+### Example
+
+A leak-detection rule binds its Start Event to a leak sensor. An Exclusive Gateway routes a "leak detected" reading to an Execute Command node that sends a `close` command to the water shutoff valve, followed by a Set Alarm node that raises a Critical alarm. The water is stopped automatically, and the team is notified that it happened.
+
+---
+
 ## Enrichment
 
 The Enrichment node fetches the most recent reading from another sensor. This lets you make decisions based on data from multiple sensors within a single rule, without needing to create separate rules for each one.
@@ -414,7 +460,7 @@ Use the **Global Connect Tool** from the palette, or hover over a source node un
 |---|---|
 | **Start Events** | One outgoing flow. No incoming flows. |
 | **End Events** | No outgoing flows. One or more incoming flows. |
-| **Task nodes** (Script Task, Set Alarm, Enrichment) | One outgoing flow. One incoming flow (or Boundary Error Event attachment). |
+| **Task nodes** (Script Task, Set Alarm, Execute Command, Enrichment) | One outgoing flow. One incoming flow (or Boundary Error Event attachment). |
 | **Exclusive Gateways** | One incoming flow. Multiple outgoing flows (one per branch). |
 | **Boundary Error Events** | Exactly one outgoing flow. No incoming flows (attached implicitly to parent). |
 

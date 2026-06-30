@@ -1,12 +1,14 @@
 ---
-description: Kilo IoT Server is a managed or self-hosted platform for device management, real-time data, dashboards, and rules.
+description: AI-first IoT Platform with an AI assistant that works like an experienced IoT integrator for your devices and data.
 ---
 
-# Kilo IoT Server
+# Kilo IoT Platform
 
-Kilo IoT is an IoT server for device management, data collection, real-time processing, visualization, automation, and alerting. It is available as a fully managed cloud deployment or as a self-hosted on-premise installation.
+Kilo IoT is an **AI-first** IoT platform for device management, data collection, real-time processing, visualization, automation, and alerting. It is available as a fully managed cloud deployment or as a self-hosted on-premise installation.
 
-Kilo is built for organizations that need to connect, monitor, and automate physical devices at scale — whether that means five sensors in a single building or thousands of devices across dozens of sites.
+What makes it AI-first is **AIoT** — Artificial Intelligence of Things built into the core of the server, not bolted on as a chat box. A built-in AI assistant works like having an experienced IoT integrator by your side: ask it in plain language to onboard a device, build and deploy an automation, or stand up an alarm, and it does the work with you — grounded in your live deployment and always under your confirmation.
+
+Kilo is built for organizations that need to connect, monitor, and automate physical devices at scale — whether that means five sensors in a single building or thousands of devices across dozens of sites. When we designed the server, we chose full customizability over a simpler but limited tool — and AIoT is what makes that depth easy to use: the assistant turns a highly configurable platform into something you operate by describing what you want.
 
 ## Who Kilo IoT is for
 
@@ -24,7 +26,17 @@ Organizations across a wide range of sectors use Kilo to solve fundamentally sim
 
 These are examples, not boundaries. If your use case involves connecting devices and acting on their data, Kilo is built for it.
 
-## What the server does
+## What the platform does
+
+### AIoT — an AI assistant that works like an IoT integrator
+
+The built-in AI assistant is not a generic chatbot pinned to a help page. It is connected to your actual deployment and works like an experienced IoT integrator who knows your system end to end. Open **AI Chat** from the sidebar and brief it the way you would a colleague.
+
+**It answers from your real data.** Ask *"What was the average temperature in Warehouse B last week?"* or *"Which devices haven't reported in 24 hours?"* and it queries your device history, analyzes trends, and gives a grounded answer — scoped to your permissions, never invented.
+
+**It does the work, not just the talking.** Describe an automation in plain language and it designs the rule, writes the [CEL](https://cel.dev), tests it, and deploys it. Ask it to onboard a device and it runs the flow; ask for an alarm and it builds the escalation chain. Before anything consequential, it pauses for your explicit confirmation, then reads the result back to verify its own work.
+
+This runs on an enterprise-grade agent runtime built in-house and improved continuously — its accuracy grows as the agents are trained on more real-world IoT work, so the assistant keeps taking on more. We were confident enough in the engineering to open-source that runtime as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew), where you can see exactly how it is built or use it to bring AI into your own products.
 
 ### Device management with Digital Twin technology
 
@@ -80,10 +92,6 @@ The building can also be anchored to real GPS coordinates, giving the model a tr
 ### Maps, GPS tracking, and spatial views
 
 Place devices on 2D maps for spatial context. For GPS-equipped trackers, review full location history with playback, coordinates tables, and route visualization.
-
-### AI assistant connected to your data
-
-The built-in AI assistant is not a generic chatbot — it is connected to your actual deployment data. Ask questions in natural language: *"What was the average temperature in Warehouse B last week?"* or *"Which devices haven't reported in 24 hours?"* The assistant queries your device history, analyzes trends, and provides actionable answers.
 
 ### Attribute-Based Access Control and multi-organization isolation
 

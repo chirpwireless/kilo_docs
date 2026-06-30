@@ -46,6 +46,7 @@ The palette provides tools and draggable elements you can place on the canvas.
 | **Exclusive Gateway** | Decision point — routes to one branch based on conditions |
 | **Script Task** | Evaluates a CEL expression to transform or classify data |
 | **Set Alarm** | Triggers an alarm definition with a dynamic message |
+| **Execute Command** | Sends a command to a device when the rule fires — control hardware, not just alert |
 | **Enrichment** | Fetches the latest reading from another sensor |
 | **Boundary Error Event** | Attaches to a task to catch errors and route to a fallback path |
 

@@ -4,7 +4,9 @@ description: Visual BPMN rules engine — turn sensor data into alarms, actions,
 
 # Rules Engine
 
-The Rules Engine is a visual automation system based on BPMN (Business Process Model and Notation) for monitoring IoT devices in real time. When sensor data meets conditions you define, the engine triggers actions automatically — raising alarms, sending notifications, or enriching data from other sensors before making a decision.
+The Rules Engine is a visual automation system based on BPMN (Business Process Model and Notation) for monitoring IoT devices in real time. When sensor data meets conditions you define, the engine acts automatically — raising alarms, enriching data from other sensors before making a decision, and **sending commands straight back to your devices**.
+
+That last capability changes what automation means here. A rule no longer just alerts a person to go act — it can take the action itself, the instant a condition is met. A leak sensor used to trigger an alarm and a scramble to the shutoff valve; now the same rule closes the valve automatically and raises the alarm in the same evaluation. Sense, decide, act — end to end, with no one in the loop. See [Running Device Commands](running-device-commands.md).
 
 ## How it works
 
@@ -26,6 +28,7 @@ A rule starts with a **Start Event** bound to a specific device and sensor. Each
 - **Transform data** with Script Tasks — compute derived values, classify readings, or prepare flags for downstream decisions
 - **Fetch data from other sensors** with Enrichment nodes — compare indoor vs. outdoor temperature, correlate humidity with occupancy, or check a reference reading before deciding
 - **Raise alarms** with Set Alarm nodes — trigger alarm definitions with dynamic motivation messages, kicking off escalation policies and notifications
+- **Act on devices** with Execute Command nodes — send a command (close a valve, push a setpoint, switch a relay) straight to a device when conditions are met, so the rule contains the problem instead of only reporting it. See [Running Device Commands](running-device-commands.md)
 - **Handle errors gracefully** with Boundary Error Events — if a step fails (for example, a sensor is offline during enrichment), catch the error and route to a fallback path instead of stopping the entire rule
 
 All conditions and computations use [CEL](https://cel.dev) (Common Expression Language) — a safe, sandboxed expression language designed for evaluating conditions. CEL cannot access files, make network calls, or run loops. It only evaluates expressions against the data you provide.
@@ -52,6 +55,7 @@ The Rules Engine is designed for environments where unmanaged automation changes
 | [Creating Rules](creating-rules.md) | How to create a new rule from scratch |
 | [Visual Editor](visual-editor.md) | The BPMN canvas — palette, properties panel, and toolbar |
 | [Node Reference](node-reference.md) | Every node type with configuration details and examples |
+| [Running Device Commands](running-device-commands.md) | The Execute Command node — make a rule act on a device, not just alert |
 | [CEL Reference](cel-reference.md) | Expression language types, operators, and patterns |
 | [Edit Locks and Team Handoffs](edit-locks-and-team-handoffs.md) | Locking, force-unlock, inactivity, and autosave |
 | [Version History and Restore](version-history-and-restore.md) | Version tracking, naming, viewing, and restoring |

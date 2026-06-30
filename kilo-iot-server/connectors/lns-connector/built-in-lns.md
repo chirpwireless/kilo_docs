@@ -8,7 +8,7 @@ In any LoRaWAN deployment, the network server is the critical middleware layer b
 
 Traditionally, deploying a LoRaWAN network meant setting up and maintaining a separate network server — either open-source or commercial — integrating it with your gateways, configuring device profiles, and connecting it to a separate platform for visualization and automation. That operational overhead scales with the size of the deployment and adds ongoing maintenance burden.
 
-## How the Kilo IoT Server Handles This
+## How the Kilo IoT Platform Handles This
 
 The Kilo IoT Server includes a fully managed LoRaWAN Network Server (LNS) directly within the platform. There is nothing to install, configure, or maintain separately. When you add an LNS connector and register gateways, the built-in network server activates automatically for your organization.
 

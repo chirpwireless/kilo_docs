@@ -42,6 +42,7 @@ Available scopes may depend on your organization and plan. Sensor **history** an
 
 | Scope | Read grants access to | Write grants access to |
 |-------|----------------------|----------------------|
+| **Commands** | View device command definitions and execution history | Create and edit commands, and dispatch them to devices |
 | **Connections** | View connection status and configuration | Create and modify connections |
 | **Dashboards** | View dashboards and widget data | Create, edit, and delete dashboards and widgets |
 | **Devices** | View device list and Digital Twin state | Register devices, update device configuration |

@@ -76,9 +76,9 @@ For devices that can receive downlinks — MQTT devices, and Class C LoRaWAN dev
 
 ## Logs tab
 
-The Logs tab displays the raw event history received from the device, providing a detailed record of every data point the server has processed.
+The Logs tab displays the raw event history received from the device, providing a detailed record of every data point the server has processed. A status indicator in the device header reflects its live connection and logging activity, so you can tell at a glance whether new data is currently flowing in.
 
-**Log entries are grouped by timestamp.** Click a timestamp group header to expand or collapse it. Each entry within a group shows:
+**Log entries are grouped by the minute.** All readings received within the same minute are collected under a single group header — so even when several batches arrive in the same minute, the view stays tidy. Click a group header to expand or collapse the readings inside it. Each entry within a group shows:
 
 | Column     | Description                                               |
 | ---------- | --------------------------------------------------------- |

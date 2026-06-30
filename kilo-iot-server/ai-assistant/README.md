@@ -26,9 +26,9 @@ Ask it what your devices are doing and it answers from your real telemetry. Ask 
 | **Build and operate** | Provision devices (guided, or automatically when you provide the LoRaWAN keys), author/test/deploy rules including their CEL, create alarms with escalation, manage team roles, and recommend hardware. See [Building With the Assistant](building-with-ai.md). |
 | **Guide and explain** | Search the platform knowledge base and IoT references to explain features, walk you through setup, and troubleshoot — grounded in [what it can access](data-sources.md). |
 
-## The boundary worth knowing
+## Monitoring, automation, and control
 
-The assistant builds **monitoring and alerting** automations — rules that watch your data and notify the right people — and it can walk you through setting up device control. What it does **not** do is operate devices: it doesn't send an on/off, a dim level, or any other downlink, and the automations it builds raise alerts rather than send commands. Direct device control is [Device Commands](../devices/commands/) — run from the device's **Commands & States** tab or a dashboard [Control widget](../dashboards/adding-widgets/control-widget.md). Think of the assistant as the integrator who sets the monitoring up and shows you where the controls are.
+The assistant works through the platform the same way you would: it answers from your data and builds **monitoring and automation** for you. And automations themselves are no longer limited to alerting — a rule can now run a device command directly when its conditions are met (see [Running Device Commands](../rules-engine/running-device-commands.md)), so the logic it sets up can both notify the right people and act on a device. For hands-on, one-off control outside of automation, use [Device Commands](../devices/commands/) — the device's **Commands & States** tab or a dashboard [Control widget](../dashboards/adding-widgets/control-widget.md). Before anything consequential, the assistant shows you the change and waits for your confirmation.
 
 It also stays in its lane in the ways you'd want: it works only within your access and your current organization, never crosses into another organization's data, and never surfaces credentials or billing secrets. See [Privacy and Security](privacy.md).
 
@@ -36,7 +36,7 @@ It also stays in its lane in the ways you'd want: it works only within your acce
 
 The assistant is part of the platform, with a monthly allowance of requests that scales with your plan. If you'd rather not be limited by the allowance, you can connect your own model API key and keep working. You'll see your remaining allowance above the chat input, and a prompt to review plans or add a key when you reach it.
 
-This is the first generation of the assistant, and it's improving continuously — the capabilities above are live today, with more arriving as the platform grows.
+The capabilities above are live today and improving continuously: the assistant runs on an enterprise-grade agent runtime built in-house, and its accuracy grows as the agents are trained on more real-world IoT work — so it keeps taking on more. We were confident enough in that runtime to open-source it as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew), where you can see how it is engineered or build on it yourself.
 
 ## Where to go next
 

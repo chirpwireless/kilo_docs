@@ -4,7 +4,7 @@ description: Send downlink commands from Kilo IoT Server to control devices — 
 
 # Device Commands
 
-Monitoring tells you what a device is doing. **Commands** let you change it. With Device Commands, the Kilo IoT Server stops being a one-way data pipe and becomes a two-way control plane: you define the actions a device can perform, then dispatch them on demand from the device page or from a dashboard.
+Monitoring tells you what a device is doing. **Commands** let you change it. With Device Commands, the Kilo IoT Server stops being a one-way data pipe and becomes a two-way control plane: you define the actions a device can perform, then dispatch them on demand from the device page, from a dashboard, or automatically from a [rule](../../rules-engine/running-device-commands.md).
 
 Almost anything a device can be told to do is a command. Switch a relay or smart plug on or off. Dim a luminaire to 40% and set its color temperature to 4000 K. Push a new temperature setpoint to an HVAC controller. Open or close a valve. Reboot a gateway-attached controller, change its reporting interval, or write a configuration register. If the hardware accepts a downlink, the platform can send it — and it sends it the same way whether the device speaks **MQTT** or **LoRaWAN**.
 
@@ -46,11 +46,12 @@ Before you can control a device, make sure:
 
 ## How control fits together
 
-There are two ways to send a command to a device:
+There are three ways to send a command to a device:
 
 * **From the device page** — the **States** tab, where you execute any of the device's commands and review their history.
 * **From a dashboard** — a [Control widget](../../dashboards/adding-widgets/control-widget.md) binds a command to a Switch or Button so anyone with dashboard access can operate the device without opening its detail page.
+* **From a rule** — the [Rules Engine](../../rules-engine/) can now dispatch a command automatically when a condition is met, using an Execute Command node. The same command you run by hand is sent by the rule with no one in the loop — so an out-of-bounds reading at 3 a.m. closes the valve itself. See [Running Device Commands](../../rules-engine/running-device-commands.md).
 
-Automation works alongside this rather than as a third control path: the [Rules Engine](../../rules-engine/) and the Alarm system watch your data and **alert the right people** when a condition is met — so an out-of-bounds reading reaches an operator who can then act. Rules raise alerts and drive decisions; sending the command itself is done from the device page or the Control widget.
+The Alarm system works alongside all three: it makes sure the right people are told when a condition is met — whether or not a rule has already acted on it. Acting and alerting are complementary, and a single rule can do both: contain the problem with a command *and* raise the alarm so the team knows.
 
 Continue to [Creating Commands](creating-commands.md) to define your first action.

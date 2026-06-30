@@ -13,6 +13,7 @@ A specific question produces a specific answer. Follow these guidelines to get t
 - **Name the device, sensor, or location.** "What is the temperature in Warehouse B?" is far more useful than "What is the temperature?" When dozens of sensors report temperature, the assistant needs to know which one you mean.
 - **Use natural time expressions.** The assistant understands "yesterday", "last 3 hours", "between January 1 and January 15", "this morning", and similar phrases. There is no need to provide Unix timestamps or formatted dates.
 - **Ask follow-ups.** The assistant maintains full context within a conversation. Refine, narrow, or expand a previous query without restating everything.
+- **Reuse your last message.** Press the **Up arrow** key in the chat input to bring back the last message you sent — useful for tweaking a question and asking it again.
 
 ## Query categories
 

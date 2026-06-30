@@ -6,6 +6,71 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <details>
 
+<summary>Scale Log. Release 3.6.0</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.6.0.jpg" alt="Kilo IoT Server 3.6.0 release banner"><figcaption></figcaption></figure>
+
+3.6.0 is the release where the Kilo IoT Server becomes **AI-first**. The built-in assistant — **AIoT**, Artificial Intelligence of Things wired into the core of the platform — stops being a question box and starts working like an experienced IoT integrator by your side: ask in plain language and it provisions devices, writes the CEL, builds and deploys rules, and stands up alarms, all under your confirmation. And the Rules Engine grows hands of its own — a new **Execute Command** node lets a rule act on a device the instant a condition is met, so a leak no longer just raises an alarm, it can shut the water off. New public command APIs round out a release that makes the platform both smarter and more capable. [kiloiot.io](https://kiloiot.io)
+
+***
+
+#### What's in This Release
+
+* **AIoT — an AI integrator built into the platform** — Grounded in your live deployment, the assistant answers from your real data and does the work with you: provisioning devices, writing and deploying rules, and building alarms with escalation — confirming before any consequential change and verifying its own results.
+* **Commands in the Rules Engine** — A new **Execute Command** node turns automation two-way: a rule can send a command straight to a device when conditions are met. Sense, decide, act — end to end, with no one in the loop.
+* **Public command APIs** — The device-command endpoints are now part of the public REST API, with new `Commands` read and write scopes for API keys.
+* **Clearer device logs** — Logs are now grouped by the minute, and a status indicator in the device header shows live connection and logging activity at a glance.
+* **Portuguese interface** — The platform interface is now available in Portuguese.
+* **Fixes and polish** — A round of stability and sign-in fixes across organizations, alarms, and API keys.
+
+***
+
+**AIoT — your platform, run like an integrator**
+
+<figure><img src="../.gitbook/assets/ai-assistant.jpg" alt="The AIoT assistant ready to provision devices, deploy rules, and set up alarms"><figcaption></figcaption></figure>
+
+This is the headline of 3.6.0, and it changes what the platform *is*. We were among the first to put an AI chat on top of device data — then we paused, and instead of rushing, we built the infrastructure underneath it properly: an enterprise-grade agent runtime that knows your deployment end to end and does real work inside it. Open it from **AI Chat** in the sidebar and brief it like a colleague.
+
+It answers from your live data, scoped to your permissions — *"which devices haven't reported in 24 hours?"* — and it acts: describe an automation and it designs the rule, writes the [CEL](https://cel.dev), tests it, and deploys it; ask it to onboard a device or stand up an alarm and it runs the flow, pausing for your **Confirm Action** before anything consequential and reading the result back to check its own work.
+
+This is the beginning, not the finish line: the architecture is in place, and the assistant's accuracy and reach grow as its agents are trained on more real-world IoT work. We were confident enough in the runtime to open-source it as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew) — so teams can see how seriously we approach the backend, or bring AI into their own products faster.
+
+[→ IoT AI Assistant](../kilo-iot-server/ai-assistant/README.md)
+
+***
+
+**Commands in the Rules Engine — automation that acts**
+
+Until now the Rules Engine could watch and warn; now it can act. The new **Execute Command** node sends a command straight to a device the moment a rule's conditions are met — closing the loop the platform used to leave to a human. A leak detected in a plant room used to mean an alarm and a scramble to the shutoff valve; now the same rule closes the valve itself and raises the alarm in the same evaluation. Cold storage drifting warm pushes its own setpoint correction. A tank at a high-level mark closes its inlet. Pick the target device and one of its existing commands, set each parameter as a fixed value or a CEL expression driven by the live reading, and the rule does the rest — recorded in the device's execution history like any other command.
+
+[→ Running Device Commands](../kilo-iot-server/rules-engine/running-device-commands.md) · [→ Device Commands](../kilo-iot-server/devices/commands/README.md)
+
+***
+
+**Public command APIs**
+
+The device-command endpoints are now exposed on the public REST API, so external systems can define and dispatch commands programmatically. Two new scopes — **Commands: Read** and **Commands: Write** — let you grant a key exactly the command access it needs and no more.
+
+[→ Public REST API](../kilo-iot-server/api/public-rest-api.md) · [→ API Keys](../kilo-iot-server/settings/api-keys.md)
+
+***
+
+**Clearer device logs**
+
+The device Logs tab now groups entries by the minute, so a busy minute with several batches reads as one tidy group instead of a cluttered stream. A status indicator in the device header reflects live connection and logging activity, so you can see at a glance whether new data is flowing in.
+
+[→ Device Management](../kilo-iot-server/devices/device-management.md)
+
+***
+
+**Fixes and polish**
+
+This release also clears a batch of stability and sign-in issues: more reliable organization selection after login, the alarm inbox refreshing correctly when you switch organizations, plan-limit handling that no longer blocks managing your devices and rules, consistent API-key scope labels, and assorted device-registration and command-creation fixes.
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 3.5.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.5.0.jpg" alt="Kilo IoT Server 3.5.0 release banner"><figcaption></figcaption></figure>
