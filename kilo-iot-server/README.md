@@ -10,6 +10,8 @@ What makes it AI-first is **AIoT** — Artificial Intelligence of Things built i
 
 Kilo is built for organizations that need to connect, monitor, and automate physical devices at scale — whether that means five sensors in a single building or thousands of devices across dozens of sites. When we designed the server, we chose full customizability over a simpler but limited tool — and AIoT is what makes that depth easy to use: the assistant turns a highly configurable platform into something you operate by describing what you want.
 
+<figure><img src="../.gitbook/assets/3d_Scene_Screen.jpg" alt="Digital Building Twin scene with parking bays color-coded by occupancy (A123 red, A124 green), dumpsters indicating fill state, and per-room sensor status markers"><figcaption></figcaption></figure>
+
 ## Who Kilo IoT is for
 
 Kilo IoT is designed to serve any IoT use case where devices need to be connected, monitored, and automated — regardless of industry or vertical. The server provides the infrastructure; you define what it does.
@@ -38,6 +40,8 @@ The built-in AI assistant is not a generic chatbot pinned to a help page. It is 
 
 This runs on an enterprise-grade agent runtime built in-house and improved continuously — its accuracy grows as the agents are trained on more real-world IoT work, so the assistant keeps taking on more. We were confident enough in the engineering to open-source that runtime as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew), where you can see exactly how it is built or use it to bring AI into your own products.
 
+<figure><img src="../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
+
 ### Device management with Digital Twin technology
 
 Every device you register becomes a full digital representation — a Digital Twin — that mirrors its state, configuration, telemetry history, and behavior in real time. The digital twin persists even when the physical device goes offline, so you always have a complete picture of your deployment.
@@ -46,9 +50,13 @@ You are not limited to a pre-approved device catalog or a single protocol. Conne
 
 For many popular devices, premade templates with pre-configured mappings are already available — simplifying onboarding to just entering device credentials. For any other device, you map its raw output to meaningful parameters yourself. There is no dependency on a pre-approved device catalog.
 
+<figure><img src="../.gitbook/assets/deviceslist.jpg" alt="Screenshot of the Devices screen in the Kilo IoT platform"><figcaption></figcaption></figure>
+
 ### Built-in LoRaWAN Network Server
 
 The server includes a fully integrated LoRaWAN Network Server (LNS). There is no need to deploy, configure, or maintain a separate LNS. Device join requests, uplinks, downlinks, and message deduplication are handled automatically. This removes an entire layer of infrastructure from your deployment.
+
+<figure><img src="../.gitbook/assets/yourgateway.png" alt="The gateway appears in the Gateways list"><figcaption></figcaption></figure>
 
 ### Visual rules engine with production-grade safety
 
@@ -66,6 +74,8 @@ Escalation steps let you define notification chains: if an alert isn't acknowled
 
 The notification delivery system is fault-tolerant. If a notification fails to send — because of a temporary email provider issue or an SMS gateway timeout — the system automatically retries with exponential backoff. If the automation service restarts during execution, workflows resume from where they left off. No alert is silently dropped.
 
+<figure><img src="../.gitbook/assets/kilo-alerts-inbox.jpg" alt="Kilo Alerts Inbox tab beside the Alert Definitions tab, showing an alert list" width="300"><figcaption></figcaption></figure>
+
 ### Custom dashboards and real-time visualization
 
 Build operational dashboards organized in a folder hierarchy — by site, building, floor, or any structure that reflects your deployment. Each dashboard holds widgets sourced from any device and any parameter.
@@ -81,6 +91,8 @@ The entire pipeline — from message queues to caching layers to query storage �
 - The architecture is built to scale as your deployment grows
 - Data is partitioned by time for efficient retention and compressed for long-term storage
 
+<figure><img src="../.gitbook/assets/control-dashboard.jpg" alt="A dashboard of Control widgets — a switch, a dial, a slider, and an input controlling a device"><figcaption></figcaption></figure>
+
 ### Digital Building Twin — your facility modeled in 3D
 
 The Digital Building Twin is a 3D model of a real facility, built directly into a dashboard. Draw the building yourself — walls, doors, windows, multiple floors — or import an existing CAD floor plan, or trace the outline from an aerial map. Furnish it from a catalog of more than 60 ready-made 3D objects: desks, racks, parking spots, AC units, pumps, vehicles, gates. Then bind any object to a sensor in your deployment and define what its colors mean.
@@ -93,11 +105,15 @@ The building can also be anchored to real GPS coordinates, giving the model a tr
 
 Place devices on 2D maps for spatial context. For GPS-equipped trackers, review full location history with playback, coordinates tables, and route visualization.
 
+<figure><img src="../.gitbook/assets/map-widget.jpg" alt="Add Map widget — Appearance settings with a live map preview of a tracked asset"><figcaption></figcaption></figure>
+
 ### Attribute-Based Access Control and multi-organization isolation
 
 Kilo uses Attribute-Based Access Control (ABAC) rather than traditional role-based access. Permissions are evaluated dynamically based on organization membership, page-level assignments, and user context — giving you fine-grained, per-resource control without role explosion.
 
 Each organization on the server is fully isolated: its own devices, users, dashboards, rules, billing, and audit trail. A single user can belong to multiple organizations with different permission levels in each. This makes Kilo a natural fit for managed service providers, facility management companies, and multi-tenant deployments.
+
+<figure><img src="../.gitbook/assets/Add leave dates.png" alt="Organization settings dialog showing name and owner fields"><figcaption></figcaption></figure>
 
 ### Audit trail
 

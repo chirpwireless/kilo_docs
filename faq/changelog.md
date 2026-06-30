@@ -27,7 +27,7 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 **AIoT — your platform, run like an integrator**
 
-<figure><img src="../.gitbook/assets/ai-assistant.jpg" alt="The AIoT assistant ready to provision devices, deploy rules, and set up alarms"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/ai-chat-home.jpg" alt="The Kilo AIoT assistant ready to provision devices, deploy rules, and set up alarms"><figcaption></figcaption></figure>
 
 This is the headline of 3.6.0, and it changes what the platform *is*. We were among the first to put an AI chat on top of device data — then we paused, and instead of rushing, we built the infrastructure underneath it properly: an enterprise-grade agent runtime that knows your deployment end to end and does real work inside it. Open it from **AI Chat** in the sidebar and brief it like a colleague.
 
