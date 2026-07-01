@@ -19,6 +19,7 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 * **AIoT — an AI integrator built into the platform** — Grounded in your live deployment, the assistant answers from your real data and does the work with you: provisioning devices, writing and deploying rules, and building alarms with escalation — confirming before any consequential change and verifying its own results.
 * **Commands in the Rules Engine** — A new **Execute Command** node turns automation two-way: a rule can send a command straight to a device when conditions are met. Sense, decide, act — end to end, with no one in the loop.
 * **Public command APIs** — The device-command endpoints are now part of the public REST API, with new `Commands` read and write scopes for API keys.
+* **iFrame dashboard widget** — Embed an external web page — a BI report, a weather map, a live tracker — directly onto a dashboard, beside your device data.
 * **Clearer device logs** — Logs are now grouped by the minute, and a status indicator in the device header shows live connection and logging activity at a glance.
 * **Portuguese interface** — The platform interface is now available in Portuguese.
 * **Fixes and polish** — A round of stability and sign-in fixes across organizations, alarms, and API keys.
@@ -52,6 +53,14 @@ Until now the Rules Engine could watch and warn; now it can act. The new **Execu
 The device-command endpoints are now exposed on the public REST API, so external systems can define and dispatch commands programmatically. Two new scopes — **Commands: Read** and **Commands: Write** — let you grant a key exactly the command access it needs and no more.
 
 [→ Public REST API](../kilo-iot-server/api/public-rest-api.md) · [→ API Keys](../kilo-iot-server/settings/api-keys.md)
+
+***
+
+**iFrame widget — external context on the dashboard**
+
+Not everything an operations team watches comes from a sensor. The new **iFrame** widget embeds a live external web page straight into a dashboard tile, so a corporate BI report, a regional weather map, an inbound-freight tracker, or a dependency's status page sits beside your device data instead of in another browser tab. Pick **iFrame** in the widget picker, paste the source's embed URL — the one it hands you under *Share → Embed* — name the widget, and it renders live, refreshing on the source's own schedule. Embeds are limited to a reviewed list of supported services grouped by category in the picker, so a shared dashboard only ever shows pages the platform has vetted; if a source you need isn't listed, request it from the same panel.
+
+[→ iFrame Widget](../kilo-iot-server/dashboards/adding-widgets/iframe-widget.md)
 
 ***
 

@@ -30,6 +30,7 @@
     * [Chart Widget](kilo-iot-server/dashboards/adding-widgets/chart-widget.md)
     * [Image Widget](kilo-iot-server/dashboards/adding-widgets/image-widget.md)
     * [Map Widget](kilo-iot-server/dashboards/adding-widgets/map-widget.md)
+    * [iFrame Widget](kilo-iot-server/dashboards/adding-widgets/iframe-widget.md)
     * [Digital Building Twin](kilo-iot-server/dashboards/adding-widgets/digital-building-twin/README.md)
       * [Editor Tour](kilo-iot-server/dashboards/adding-widgets/digital-building-twin/editor-tour.md)
       * [Drawing Your Building](kilo-iot-server/dashboards/adding-widgets/digital-building-twin/drawing-your-building.md)

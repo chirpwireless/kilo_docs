@@ -33,6 +33,7 @@ The picker shows the available widget types.
 | **Chart** | You need to understand how a reading changed — compliance history, drift, or shift-to-shift comparison | Historical graph plus the live current reading |
 | **Image** | Location context matters — which zone, floor, or component | Your own uploaded image — floor plan, machine diagram, or site layout — with live numeric readings pinned to locations |
 | **Map** | The live location of something that moves matters | Current GPS position on an interactive outdoor map, plus one selected sensor value on the marker |
+| **iFrame** | External context belongs on the same screen — a BI report, a weather map, a live tracker | A live external web page from a supported service, embedded in the tile beside your device data |
 | **Digital building twin** | You want a 3D model of a building with sensors mapped to the objects they monitor | A built-in 3D editor that turns a facility into a live scene, recolored by sensor readings |
 
 ## Choosing a widget type
@@ -49,7 +50,7 @@ The picker shows the available widget types.
 
 ## Adding a widget
 
-For all five widget types, the setup flow follows the same pattern:
+For every widget type, the setup flow follows the same pattern:
 
 1. Click the **plus button** or **Add widget** button to open the picker.
 2. Select a widget type.
@@ -97,6 +98,7 @@ Widgets are configurable, not fixed cards. Key options available across widget t
 - [Chart Widget](adding-widgets/chart-widget.md) — Time-series graphs with live current reading and threshold bands
 - [Image Widget](adding-widgets/image-widget.md) — Any image — a floor plan, an equipment schematic, a site photo — with draggable live-data pins
 - [Map Widget](adding-widgets/map-widget.md) — GPS tracker location with route history controls
+- [iFrame Widget](adding-widgets/iframe-widget.md) — Embed an external web page from a supported service beside your device data
 - [Conditions](adding-widgets/conditions.md) — Per-metric color rules for Last data and Image widgets
 
 ## Related pages
