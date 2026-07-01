@@ -33,7 +33,7 @@ The picker shows the available widget types.
 | **Chart** | You need to understand how a reading changed — compliance history, drift, or shift-to-shift comparison | Historical graph plus the live current reading |
 | **Image** | Location context matters — which zone, floor, or component | Your own uploaded image — floor plan, machine diagram, or site layout — with live numeric readings pinned to locations |
 | **Map** | The live location of something that moves matters | Current GPS position on an interactive outdoor map, plus one selected sensor value on the marker |
-| **iFrame** | External context belongs on the same screen — a BI report, a weather map, a live tracker | A live external web page from a supported service, embedded in the tile beside your device data |
+| **iFrame** | External context belongs on the same screen — a BI report, a weather map, live traffic | A live external web page from a supported service, embedded in the tile beside your device data |
 | **Digital building twin** | You want a 3D model of a building with sensors mapped to the objects they monitor | A built-in 3D editor that turns a facility into a live scene, recolored by sensor readings |
 
 ## Choosing a widget type
