@@ -15,6 +15,6 @@ Access is controlled by the Audit Trail permission — only users with explicit 
 
 ## Key Vault
 
-Radio credentials are hard to recover once they leave the box. A LoRaWAN device needs its DevEUI and AppKey; a MIOTY endpoint needs its EP EUI and Network Key — and the secret half of each pair cannot be read back off the hardware later. Key Vault keeps those pairs encrypted at the organization level, searchable by partial EUI or key, and reachable when a replacement unit needs provisioning years after commissioning. Access is governed by its own Key Vault permission, granted separately from every other page.
+Radio credentials are hard to recover once they leave the box. A LoRaWAN device needs its DevEUI and AppKey; a MIOTY endpoint needs its EP EUI and Network Key — and whether the secret half can be read back off a unit depends on the manufacturer, often needs a wired connection, and is never practical once the hardware is installed. Key Vault keeps those pairs encrypted at the organization level, searchable by partial EUI or key, and reachable when a replacement unit needs provisioning years after commissioning. Access is governed by its own Key Vault permission, granted separately from every other page.
 
 Both pages are reached from the sidebar under **Records & Reports**.

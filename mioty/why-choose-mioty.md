@@ -22,7 +22,7 @@ Networks tend to degrade as they fill, because more devices means more collision
 
 #### An open, standardized foundation
 
-MIOTY is specified by ETSI as **TS 103 357** (TS-UNB). You are buying against a published standard with a multi-vendor ecosystem behind it, not a single supplier's interpretation of one. Endpoint and base station vendors implement the same specification, and the [MIOTY Alliance](https://mioty-alliance.com) maintains the ecosystem around it.
+MIOTY is specified by ETSI as **TS 103 357** — currently part 2, version 2.1.1 (2024) — under the name TS-UNB. You are buying against a published standard with a multi-vendor ecosystem behind it, not a single supplier's interpretation of one. Endpoint and base station vendors implement the same specification, and the [MIOTY Alliance](https://mioty-alliance.com) maintains the ecosystem around it. The base station to service center interface, **BSSCI**, is specified separately by the Alliance.
 
 ***
 
@@ -65,9 +65,22 @@ And it is not either-or. Nothing stops you running MIOTY where the RF is hard an
 
 ***
 
+### A Network Server, or a Platform
+
+There is a second decision behind the protocol one, and it is worth separating: a MIOTY network server and an IoT platform are not the same product.
+
+A service center moves messages. It manages base stations and endpoints, handles uplinks and downlinks, and hands the data onward. That is a necessary layer and a demanding one — but on its own it gives you telemetry, not answers. Everything you actually want to *do* with a reading — chart it, alert on it, act on it, keep it for an audit — happens somewhere else.
+
+Kilo gives you both paths:
+
+* **Kilo Center — the Community edition.** Our open-source MIOTY service center. Self-host it, own the infrastructure end to end, and integrate it with whatever you run downstream. It is a MIOTY network server: base stations, endpoints, traffic, and an operator console. See [Kilo MIOTY Service Center](../kilo-center/kilo-mioty-service-center/README.md).
+* **Kilo Cloud — the Enterprise edition, built in.** The Enterprise edition of the service center runs inside Kilo Cloud, so there is no MIOTY infrastructure for you to host at all. Register a [MIOTY connector](../kilo-iot-server/connectors/mioty-connector.md), point your base stations at it, and your endpoints arrive on a full IoT platform rather than a bare network server.
+
+That second path is what changes MIOTY from a data feed into an operation. The same readings land in the rules engine, alarms with escalation, dashboards, the Digital Building Twin, multi-tenant access control, and the audit trail — the machinery the rest of your fleet already uses. A MIOTY endpoint and a LoRaWAN sensor become the same kind of object the moment their data is normalized, and a single rule can reason across both.
+
 ### Starting a MIOTY Deployment on Kilo
 
-Data from MIOTY endpoints reaches your organization through the [MIOTY connector](../kilo-iot-server/connectors/mioty-connector.md), and the base stations serving those endpoints are registered and managed under [MIOTY base stations](../kilo-iot-server/gateways/mioty-base-stations/README.md). If you intend to operate service center infrastructure yourself, the [Kilo MIOTY Service Center](../kilo-center/kilo-mioty-service-center/README.md) documentation covers it.
+Data from MIOTY endpoints reaches your organization through the [MIOTY connector](../kilo-iot-server/connectors/mioty-connector.md), and the base stations serving those endpoints are registered and managed under [MIOTY base stations](../kilo-iot-server/gateways/mioty-base-stations/README.md).
 
 ***
 

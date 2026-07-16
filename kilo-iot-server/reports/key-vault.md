@@ -6,7 +6,7 @@ description: Store LoRaWAN DevEUI/AppKey and MIOTY EP EUI/Network Key pairs encr
 
 Key Vault gives your organization an encrypted place to store LoRaWAN and Mioty EUI-key pairs with access control.
 
-Every device you commission carries a pair of radio credentials: an identifier and a secret. For LoRaWAN that pair is the **DevEUI** and the **AppKey**. For MIOTY it is the **EP EUI** and the **Network Key**. Without both halves, a device cannot be provisioned onto a network — and the secret half is not something you can read back off the hardware later.
+Every device you commission carries a pair of radio credentials: an identifier and a secret. For LoRaWAN that pair is the **DevEUI** and the **AppKey**. For MIOTY it is the **EP EUI** and the **Network Key**. Without both halves, a device cannot be provisioned onto a network. Whether the secret half can be read back off a unit afterward is entirely down to the manufacturer — some models will surrender it over a wired UART connection, many will not — and none of it is practical once the unit is mounted and sealed.
 
 Key Vault stores those pairs at the organization level so the credentials survive the device, the installer, and the deployment. It is an organizational record of what each unit's keys are, independent of whether that unit is currently registered, online, or even still in the field.
 
@@ -14,7 +14,7 @@ Key Vault stores those pairs at the organization level so the credentials surviv
 
 ## Why It Matters
 
-Radio credentials tend to live in the worst possible places. They arrive on a sticker inside the box, get typed once into a provisioning form, and after that they exist only on a label, in a contractor's spreadsheet, or in a vendor portal that someone else's account controls.
+Radio credentials tend to live in the worst possible places. They arrive on a sticker inside the box, get typed once into a provisioning form, and after that the only copies anyone can reach in a hurry are a label on the unit, a contractor's spreadsheet, or a vendor portal that someone else's account controls.
 
 That works until it doesn't:
 
@@ -152,7 +152,7 @@ If **"Failed to save key pair"** appears on a correctly formed entry, the entry 
 
 ## Tips and Best Practices
 
-- **Record at commissioning, not afterward.** The window in which a key is easy to capture is the moment it is in the provisioning form. Use **Add to Vault** on the device form and the vault fills itself as the deployment rolls out. Reconstructing keys after the fact means going back to physical labels on installed hardware.
+- **Record at commissioning, not afterward.** The window in which a key is easy to capture is the moment it is in the provisioning form. Use **Add to Vault** on the device form and the vault fills itself as the deployment rolls out. Reconstructing keys after the fact means going back to the label — or to whatever readback the manufacturer supports — on hardware that is already installed.
 - **Make it a line item in the installer's scope.** If contractors commission your sites, "device keys recorded in Key Vault" belongs in the acceptance criteria alongside device registration and signal checks. Handover is when knowledge is cheapest to transfer and most likely to be lost.
 - **Restrict the page deliberately.** Grant Key Vault access to the roles that provision hardware, and leave it at No access by default for everyone else. A broad grant turns a controlled store back into a shared spreadsheet.
 - **Prune on decommissioning, not on impulse.** Delete an entry when the unit leaves service, and treat the entry limit as a prompt to review retired hardware rather than to thin out an active fleet.

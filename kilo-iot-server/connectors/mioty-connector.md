@@ -6,7 +6,9 @@ description: Add the Mioty connector to bind your organization to the MIOTY serv
 
 The Mioty connector binds your organization to the MIOTY service center and unlocks the MIOTY side of the Kilo IoT Server: base station registration and MIOTY endpoint fields on the device form.
 
-MIOTY (ETSI TS 103 357) is an LPWAN protocol built for massive-scale industrial telemetry. It splits every message into small radio bursts spread across time and frequency — telegram splitting — so a single interfered burst does not cost you the message. The practical result is thousands of low-power endpoints per base station, long range, and reliable delivery in RF environments that punish other protocols: plant floors, metal-dense warehouses, utility substations, and dense metering rollouts.
+MIOTY (ETSI TS 103 357) is an LPWAN protocol built for massive-scale industrial telemetry. It splits every message into small radio bursts spread across time and frequency — telegram splitting — so the base station reconstructs a telegram even when up to half its bursts are lost. The practical result is up to 110,000 low-power endpoints per base station, long range, and reliable delivery in RF environments that punish other protocols: plant floors, metal-dense warehouses, utility substations, and dense metering rollouts. For the protocol itself, see [What is MIOTY?](../../mioty/README.md).
+
+**There is no MIOTY infrastructure for you to run.** The Enterprise edition of our MIOTY service center is built into Kilo Cloud, so adding this connector is all it takes to stand up the service-center side of a MIOTY network. Your base stations connect straight to it, and your endpoints arrive on a full IoT platform — rules, alarms, dashboards, audit trail — rather than on a network server you would then have to integrate with something else. If you would rather operate that infrastructure yourself, the Community edition is open source: see [Kilo MIOTY Service Center](../../kilo-center/kilo-mioty-service-center/README.md).
 
 ## Why the connector exists
 

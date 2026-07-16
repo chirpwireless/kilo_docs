@@ -40,10 +40,33 @@ While the block is loading you see **Loading reception status…**. If the diagn
 | **Sending data — set up mapping to keep it** | The device is transmitting and its payload decodes cleanly — `{{count}} keys decoded · none mapped yet` — but no key is connected to a sensor, so nothing is retained. | Use **Set up mapping** or **Map a key** to open the mapping and connect at least one incoming key to a sensor. Values start accumulating from the next message onward. |
 | **Data arrives but nothing is stored** | *"Data is arriving but nothing is stored yet."* Messages reach the platform, but no value survives to history — typically a mapping gap or a decoder producing different keys than the ones your sensors expect. | Click **Fix mapping**. Compare the keys in the Event feed against your mapped sensors. If the keys look wrong rather than merely unmapped, check the payload decoder on this tab. |
 | **Hasn't reported — device looks offline** | *"Device was reporting but has gone quiet."* The device worked before and has stopped. The supporting line — `Expected every {{interval}} {{unit}} · last seen {{last}}` — tells you the schedule the platform is measuring against. | This is field work: check the device power or battery, confirm it is still within range of a gateway, and make sure the sending schedule has not changed. If the device's real schedule changed, correct **Data sending interval** on this tab so it is not flagged unnecessarily. |
-| **Waiting for first data** / **Waiting for the first uplink** / **No uplinks received yet** | The device record exists but the platform has never received anything from it. | Give it one reporting interval to transmit. If the window passes, work through **WHAT TO CHECK** below. |
+| **Waiting for first data** / **Waiting for the first uplink** / **No uplinks received yet** | The device record exists but the platform has never received anything from it. | Give it one reporting interval to transmit. If the window passes, work through **WHAT TO CHECK** below — and if the unit was ever used on another network, see [Before anything arrives: joining the network](#before-anything-arrives-joining-the-network). |
 | **Reached network — waiting for data** | `Joined the network · no uplinks yet`. For a LoRaWAN device this is good news: credentials are correct and the radio link works. The device has simply not sent a payload yet. | Wait one reporting interval. If it stays here, the device is joining but not transmitting — check its sending schedule and power state. |
 
 One more supporting line appears when a device is configured but idle: `{{count}} sensors configured · 0 receiving values`. Your sensors exist, but none of them is being fed. Treat it the same way as *Data arrives but nothing is stored* — the mapping is where to look.
+
+### Before anything arrives: joining the network
+
+The reception states above describe a lifecycle, and it is worth reading them in order:
+
+**Waiting for first data** → **Reached network — waiting for data** → **Receiving & storing**
+
+The step between the first two is the one that catches people out, because it happens entirely on the device side and the platform can only wait for it.
+
+An LPWAN device is not simply "configured" onto a network — it has to **join** one. A LoRaWAN device sends a **join request**, the network server validates it against the DevEUI and AppKey you registered, and answers with a join accept. Only then does the device have a session and start sending uplinks. A MIOTY endpoint does the equivalent: it **attaches** through a base station, which is what moves the platform to *Reached network — waiting for data*. Until that handshake happens, a device record on the platform is just a record — correct credentials and all.
+
+**A device belongs to one network at a time.** This is the part that surprises people. A device that was previously commissioned somewhere else — a unit returned from another site, hardware bought second-hand, a sensor that was on a different platform or a previous operator's network, or a demo unit that came back from a trade stand — is still joined to that network. It will not join yours simply because you registered it here. It is not looking for a new network; as far as its firmware is concerned it already has one.
+
+The symptom is distinctive: the device sits on **Waiting for first data** indefinitely while every setting you can check is correct. The DevEUI matches. The AppKey matches. It is powered, it is in range, and the reporting interval has come and gone several times. Nothing in **WHAT TO CHECK** resolves it, because none of those things is wrong.
+
+The fix is to **reset the device** so it sends a fresh join request. The procedure is manufacturer-specific — a magnet swipe, a button hold, a reed switch, a power cycle of a particular length, or a downlink command — so check the vendor's instructions for your model rather than guessing. Some devices distinguish a plain restart from a full rejoin, and only the latter clears the previous session.
+
+Once it re-joins, the status moves to *Reached network — waiting for data* and then to *Receiving & storing* on the device's next scheduled transmission.
+
+Two related cases worth recognizing:
+
+* **A device that joined once and then stopped** is a different problem. That is *Hasn't reported — device looks offline*, and it points at power, range, or schedule — not at joining. A device does not silently un-join.
+* **A device that keeps returning to *Waiting for first data*** after a successful join usually means the credentials on the platform and the credentials burned into the device disagree in a way that lets the join fail quietly. Re-enter the DevEUI and AppKey — [Scan QR code](registering-devices.md) removes the transcription risk — and reset the device again.
 
 ### WHAT TO CHECK and WHILE YOU WAIT
 
@@ -61,6 +84,8 @@ Alongside an unhealthy or pending status, the platform lists the relevant checks
 * Map at least one incoming key to a sensor
 
 The list is state-aware, so it is worth reading rather than skimming: a device that has joined the network will not be asked about AppKey and DevEUI, because that question is already answered.
+
+One thing the list cannot tell you is whether the device is still joined to a network it was used on before yours — that is invisible from the platform's side. If every item here checks out and the device has still never reported, that is the case to suspect: see [Before anything arrives: joining the network](#before-anything-arrives-joining-the-network).
 
 Every item points at a setting you control. AppKey, DevEUI, the payload decoder, and the connection settings all live on this same **Connection** tab. The sending schedule is set on the device itself and mirrored into **Data sending interval** — see [Device Management](device-management.md). Mapping lives on the **Metrics** tab, and the **Fix**, **Fix mapping**, **Set up mapping**, and **Map a key** actions take you there directly.
 

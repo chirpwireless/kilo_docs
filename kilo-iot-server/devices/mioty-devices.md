@@ -55,6 +55,8 @@ If your commissioning sheet does not mention a parameter, the endpoint is not us
 
 Both are **0** for a new device. They exist so that a device record can be aligned with an endpoint that already has history — for example when you are migrating a unit that has been running elsewhere. For a unit out of the box, leave them at zero.
 
+Aligning the counters lines up the *record*. It does not move the endpoint onto your network. A MIOTY endpoint attaches to one network at a time, and a unit that was running on another service center is still attached there — it will not appear under your base stations because you created a device record for it. Reset the endpoint so it attaches again, following the manufacturer's procedure for your model. Once a base station picks it up, the device's **Connection** tab moves to *Reached network — waiting for data*. See [Device Diagnostics](device-diagnostics.md) for how that lifecycle reads on the platform.
+
 ## Security
 
 - **Network Session Key** — required. Exactly 32 hexadecimal characters. This is the key that secures the endpoint's link to the network; without a valid one the device cannot be saved.
@@ -62,9 +64,9 @@ Both are **0** for a new device. They exist so that a device record can be align
 
 ### Add to Vault
 
-Endpoint credentials have a way of existing in exactly one place — a label on a unit that is now sealed inside an enclosure on a pipe rack. Click **Add to Vault** on the device form to store the End Point EUI and Network Session Key pair in Key Vault, where they are recoverable independently of the hardware and the sticker.
+Endpoint credentials have a way of ending up out of reach — on a label on a unit that is now sealed inside an enclosure on a pipe rack. Click **Add to Vault** on the device form to store the End Point EUI and Network Session Key pair in Key Vault, where they are recoverable independently of the hardware and the sticker.
 
-Do it at commissioning, while the credentials are still in front of you. Recovering a unit whose Network Session Key exists only on an inaccessible label means physically retrieving the endpoint. See [Key Vault](../reports/key-vault.md).
+Do it at commissioning, while the credentials are still in front of you. Recovering a unit whose Network Session Key you no longer have on file means opening the enclosure — and some manufacturers only give the key back over a wired connection, if they give it back at all. See [Key Vault](../reports/key-vault.md).
 
 ## Validation — what blocks a save
 

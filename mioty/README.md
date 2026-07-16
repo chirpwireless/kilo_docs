@@ -4,7 +4,9 @@ description: MIOTY explained — the ETSI TS 103 357 LPWAN protocol that uses te
 
 # What is MIOTY?
 
-**MIOTY** is a low-power wide-area network (LPWAN) protocol built for industrial environments where radio conditions are hostile and device counts are large. It is standardized by ETSI as **TS 103 357**, and within that standard it is referred to as **TS-UNB** — Telegram Splitting Ultra Narrow Band. That name is not decoration: telegram splitting is the technique that defines the protocol and explains nearly everything MIOTY does well.
+**MIOTY** is a low-power wide-area network (LPWAN) protocol built for industrial environments where radio conditions are hostile and device counts are large. It was developed at the **Fraunhofer Institute for Integrated Circuits (IIS)** and standardized by ETSI as **TS 103 357**, where it is specified as **TS-UNB** — Telegram Splitting Ultra Narrow Band. That name is not decoration: telegram splitting is the technique that defines the protocol and explains nearly everything MIOTY does well.
+
+MIOTY is the newer of the two LPWAN technologies Kilo supports, and it is gaining ground quickly — not on novelty, but because it solves a problem the first generation of LPWAN left open. Those earlier technologies had to trade range against capacity and robustness. MIOTY was designed after that trade-off was well understood, and engineered from the physical layer up to avoid it.
 
 Like other LPWAN technologies, MIOTY carries small messages from battery-powered sensors over long distances at very low energy cost. What sets it apart is how it survives interference. Instead of trying to push a whole message through a noisy channel in one attempt, MIOTY assumes the channel is noisy and designs around that assumption from the start.
 
@@ -12,17 +14,21 @@ Like other LPWAN technologies, MIOTY carries small messages from battery-powered
 
 ### Telegram Splitting — the Core Idea
 
-#### The message is broken into radio bursts
+#### The message is protected, then broken into radio bursts
 
-When an endpoint has data to send, MIOTY does not transmit that data as a single packet. The message — the *telegram* — is divided into many small sub-packets, often called radio bursts. Each burst carries a fragment of the payload plus the information needed to place it back in sequence.
+When an endpoint has data to send, MIOTY does not transmit that data as a single packet. The message — the *telegram* — is first encoded with forward error correction and interleaved, then divided into small sub-packets. A short telegram becomes **24 radio bursts**, each lasting only about **15 milliseconds**; longer payloads add further bursts. Each burst carries a fragment plus the information needed to place it back in sequence.
+
+The redundancy matters more than the splitting. The error-correcting code is applied *before* the split and spread across every burst, so no single burst is critical — losing one costs you a slice of redundancy, not a piece of the message.
 
 #### The bursts are scattered across frequency and time
 
-Those sub-packets are then transmitted across **different frequencies and at different points in time**. No two fragments sit on the same channel at the same instant, and the full transmission is deliberately spread out rather than concentrated. A single interferer — a motor, a welding rig, a competing radio, a burst of broadband noise — can only ever occupy a narrow slice of that spread.
+Those sub-packets are then transmitted across **different frequencies and at different points in time**. No two fragments sit on the same channel at the same instant, and the full transmission is deliberately spread across several seconds and two dozen carriers rather than concentrated. A single interferer — a motor, a welding rig, a competing radio, a burst of broadband noise — can only ever occupy a narrow slice of that spread.
 
 #### The receiver reconstructs the message from what survives
 
-The base station collects the bursts it heard and reassembles the telegram. Crucially, it does not need all of them. Forward error correction is applied across the fragments, so the receiver can **reconstruct the complete message even when a substantial portion of the sub-packets is lost or collides** with another transmission. What would be a failed delivery for a single-packet protocol is, for MIOTY, an ordinary successful one.
+The base station collects the bursts it heard and reassembles the telegram. Crucially, it does not need all of them. Because the error correction is spread across the whole transmission, the receiver **reconstructs the complete message even when up to 50% of the radio bursts are lost** to interference or collision.
+
+Read that precisely, because it is easy to inflate: it means half the *bursts within one message* can be destroyed and that message still arrives intact. An interferer has to take out more than half of a single transmission, across both time and frequency, to cost you one reading. What would be a failed delivery for a single-packet protocol is, for MIOTY, an ordinary successful one.
 
 #### Why this changes the outcome
 
@@ -52,7 +58,20 @@ Base stations connect to a **service center** using **BSSCI** (Base Station Serv
 
 ### Range, Scale, and Power
 
-MIOTY delivers **long range comparable to other LPWAN technologies**, with particularly strong performance in dense industrial settings where competing signals and metal structures degrade conventional links. It is designed for **massive-scale deployments** — thousands of endpoints per base station — and for endpoints that run for years on a battery. These three properties reinforce each other: robustness reduces retries, fewer retries preserve both battery life and airtime, and preserved airtime is what lets a single base station carry so many devices.
+The figures below come from Fraunhofer IIS and the MIOTY Alliance. Each one depends on its conditions, so they are stated with them — a number without its assumptions is not much use when you are planning a site.
+
+| | Figure | Conditions |
+|---|---|---|
+| **Range** | Up to **15 km** in flat, rural terrain; around **5 km** in urban centers | Sub-GHz, license-free bands |
+| **Endpoints per base station** | Up to **110,000** | At roughly 2.5 km range — not at the 15 km figure above |
+| **Messages per base station** | Up to **3.5 million per day** | Ultra-low-power mode, small payloads, endpoints reporting about hourly |
+| **Battery life** | Around **10 years** on a single 2,200 mAh AA cell at one message every 15 minutes; **20 years and beyond** at lower reporting rates | Depends on payload size, interval, and cell chemistry |
+| **Speed** | Up to **120 km/h** at full performance | Endpoints on moving assets |
+| **Data rate** | Around **500 bit/s** | Sub-GHz; ~2.4 kHz carrier spacing |
+
+Those properties reinforce each other. Robustness reduces retries; fewer retries preserve both battery life and airtime; preserved airtime is what lets a single base station carry so many endpoints. The density figure is a dividend of the interference tolerance, not an independent claim.
+
+The mobility number deserves a note, because it is the one people assume is marketing. It isn't a waveform trick — spreading a telegram across seconds and carriers means a moving endpoint samples many moments and many channels instead of betting the message on one, and the base station's signal processing is what lifts the workable speed to 120 km/h. Fraunhofer measured the penalty for a fading channel versus a static one at under 2 dB.
 
 ***
 

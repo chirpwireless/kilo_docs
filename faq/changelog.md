@@ -20,7 +20,7 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 * **Share dashboard** — Publish a dashboard as a password-protected link with **View** or **Control** access. Regenerate or revoke it at any time; open it full screen on a tablet or a wall display.
 * **Device diagnostics** — A device's Connection tab now reports its reception status, the pipeline each message travels, and an event feed with a status legend — and tells you what to check when something is wrong.
 * **Key Vault** — An encrypted, access-controlled store for device EUI and key pairs, under the new **Records & Reports** group, with **Add to Vault** right on the device form.
-* **MCP server** — Connect Claude Code or Claude Desktop to your organization with your own account sign-in and put an AI client to work on your real deployment.
+* **MCP server** — Connect the AI client you already use — Claude Code, Claude Desktop, ChatGPT, Codex, Cursor — to your organization with your own account sign-in, and put it to work on your real deployment.
 * **Scan a QR code** — Read a DevEUI or AppKey with a laptop or phone camera instead of typing 16 or 32 hex characters.
 * **Duplicate and move widgets** — Repeat a configured widget across identical sensors, or move one to another dashboard.
 * **Fixes and polish** — Layout, mobile, and navigation fixes across dashboards, gateways, devices, and the audit trail.
@@ -29,9 +29,11 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 **MIOTY — a second protocol for the deployments LoRaWAN can't carry**
 
-MIOTY ([ETSI TS 103 357](https://mioty-alliance.com)) is built for the environments that break other LPWAN links: factory floors thick with interference, thousands of endpoints under one receiver, sensors on machinery that never stops moving. It splits each message into many small bursts scattered across frequency and time, and reassembles the whole from whatever survives — so a message lands even when a large share of it collides. In 3.7.0 that becomes a native part of the platform rather than a parallel system.
+MIOTY ([ETSI TS 103 357](https://mioty-alliance.com)) is the newer of the two LPWAN technologies, developed at the Fraunhofer Institute and built for the environments that break the first generation: factory floors thick with interference, tens of thousands of endpoints under one receiver, sensors on machinery that never stops moving. It encodes each message, splits it into two dozen bursts of about 15 milliseconds, and scatters them across frequency and time — so the base station rebuilds the whole telegram **even when half of its bursts are destroyed**. An interferer has to take out more than 50% of a single transmission, across both time and frequency, to cost you one reading. That is why one base station carries up to 110,000 endpoints and 3.5 million messages a day. In 3.7.0 it becomes a native part of the platform rather than a parallel system.
 
 Create a **Mioty connector** and a **Mioty Base Stations** tab appears alongside your LoRaWAN gateways. Register a base station with its BS EUI, download its certificate bundle, copy the BSSCI address, and it connects over a certificate-secured link — no packet forwarder in between. Endpoints get their own form: End Point EUI, short address, network session key, and the MIOTY radio options that matter.
+
+**There is no MIOTY infrastructure to run.** The Enterprise edition of our service center is built into Kilo Cloud, so the connector is the whole setup. That distinction is the point of the release: a MIOTY network server moves messages and manages base stations — useful, and not the same as being able to *do* anything with a reading. Here the endpoints arrive on a full platform, so the rules engine, alarms with escalation, dashboards, the Digital Building Twin, and the audit trail all apply to MIOTY data exactly as they do to everything else, and one rule can reason across a MIOTY endpoint and a LoRaWAN sensor together. If you would rather operate the network yourself, the Community edition — Kilo Center — remains open source and self-hosted.
 
 Payload decoding is where the design earns its keep. A **blueprint** is a decoder spec bound to a device type, organized as manufacturer → model → version and split into a **System** catalog everyone can use and a **Custom** catalog that is yours. Choose one for a device and the platform takes a *snapshot* of it onto that device. Edit or delete the catalog template afterwards and nothing already in the field changes — those devices keep running on their own copy until you deliberately move them to a new version. Two devices of the same model can run different blueprints. Author a new one from pasted JSON and test the decoder against a sample payload before you save it.
 
@@ -51,13 +53,17 @@ A dashboard used to stop at the edge of your organization. Now it doesn't. Open 
 
 Commissioning fails quietly. The device is mounted, the connector is configured, and nothing arrives — with nothing to inspect but a blank chart. The Connection tab now opens with a **reception status** that says which of the real situations you're in: *Receiving & storing*, *Sending data — set up mapping to keep it*, *Data arrives but nothing is stored*, *Reached network — waiting for data*, or *Hasn't reported — device looks offline*. Underneath, a **pipeline** view shows how far each message gets, and an **event feed** lists them stage by stage with a legend that says plainly what Routed, Mapped, Stored, OK, Skipped, and Error each mean — including that Skipped is often not an error at all. Every unhealthy state comes with a **what to check** list and, where the fix is in the platform, a button that takes you to it. Connectors get their own diagnostics with source health, incoming messages, and activity.
 
+Those states are a lifecycle, and the docs now say so — including the step that catches everyone out. An LPWAN device belongs to one network at a time, so a unit returned from another site, bought used, or run on a different platform is still joined *there*. Registering it here changes nothing: it sits on *Waiting for first data* forever while every setting you can check is correct. It has to be reset before it will send a fresh join request. That answer was previously nowhere in the documentation, and it is the difference between a five-minute fix and a site visit.
+
 [→ Device Diagnostics](../kilo-iot-server/devices/device-diagnostics.md)
 
 ***
 
 **Key Vault — device keys where they belong**
 
-A DevEUI and an AppKey are printed on a sticker, entered once at commissioning, and then live in a spreadsheet, a chat thread, or an installer's notebook. Four years later a device needs replacing and nobody can find them. **Key Vault** is an encrypted store for those pairs, scoped to your organization and governed by its own page permission, sitting in the new **Records & Reports** group beside the Audit Trail. Save a pair as you configure a device with **Add to Vault**, or enter it directly; search by any fragment of an EUI or a key. LoRaWAN DevEUI and AppKey, MIOTY EP EUI and Network Key, in one place, encrypted, with access you control.
+A DevEUI and an AppKey are printed on a sticker, entered once at commissioning, and then live in a spreadsheet, a chat thread, or an installer's notebook. Four years later a device needs replacing and nobody can find them. Whether you can read the key back out of the hardware at that point is a lottery — some manufacturers will give it up over a wired connection, plenty won't, and none of it is a job you want on a unit that is already six meters up an aisle.
+
+**Key Vault** is the encrypted notebook that makes the question moot: a store for those pairs, scoped to your organization, governed by its own page permission, sitting in the new **Records & Reports** group beside the Audit Trail. Save a pair as you configure a device with **Add to Vault**, or enter it directly; search by any fragment of an EUI or a key. LoRaWAN DevEUI and AppKey, MIOTY EP EUI and Network Key, in one place, encrypted, with access you control.
 
 [→ Key Vault](../kilo-iot-server/reports/key-vault.md)
 
@@ -65,7 +71,7 @@ A DevEUI and an AppKey are printed on a sticker, entered once at commissioning, 
 
 **MCP server — bring your own AI client**
 
-3.6.0 put an AI integrator inside the platform. 3.7.0 opens the same deployment to the AI client you already use. Point Claude Code or Claude Desktop at your organization's MCP endpoint, sign in through the browser with your usual Kilo account — no key to copy, no token to paste — and your client can list devices, provision hardware, query telemetry, inspect rules and alarms, pull logs, and manage your team, all with exactly the permissions your account already carries. The default endpoint follows whichever organization you have selected; a path with an explicit organization ID pins it to one, and refuses anything you're not a member of.
+3.6.0 put an AI integrator inside the platform. 3.7.0 opens the same deployment to the AI client you already use. Point Claude Code, Claude Desktop, ChatGPT, Codex, Cursor — anything that speaks MCP — at your organization's endpoint, sign in through the browser with your usual Kilo account, and your client can list devices, provision hardware, query telemetry, inspect rules and alarms, pull logs, and manage your team, all with exactly the permissions your account already carries. No key to copy, no token to paste. The default endpoint follows whichever organization you have selected; a path with an explicit organization ID pins it to one, and refuses anything you're not a member of. Because this is the open standard rather than a one-off integration, clients that adopt MCP later work without us shipping anything.
 
 [→ MCP Server](../kilo-iot-server/api/mcp-server.md) · [→ IoT AI Assistant](../kilo-iot-server/ai-assistant/README.md)
 

@@ -1,10 +1,12 @@
 ---
-description: Connect Claude Code or Claude Desktop to your Kilo IoT organization over MCP, using your own account sign-in.
+description: Connect your AI client to your Kilo IoT organization over MCP, using your own account sign-in.
 ---
 
 # Kilo IoT MCP Server
 
-MCP — the Model Context Protocol — is an open standard that lets an AI client discover and call tools on a remote server. The Kilo IoT Server publishes an MCP endpoint, so an MCP-capable client such as Claude Code or Claude Desktop can connect straight to your organization and work with your real deployment: your devices, connectors, rules, alarms, dashboards, and logs.
+MCP — the Model Context Protocol — is an open standard that lets an AI client discover and call tools on a remote server. The Kilo IoT Server publishes an MCP endpoint, so any MCP-capable client — Claude Code, Claude Desktop, ChatGPT, Codex, Cursor, and others — can connect straight to your organization in Kilo and work with your real deployment: your devices, connectors, rules, alarms, dashboards, and logs.
+
+Because MCP is an open standard rather than a per-vendor integration, this is not a fixed list. Any client that speaks MCP over Streamable HTTP can connect, and the walkthroughs below cover the two flows most clients follow: a command-line setup and a connector dialog.
 
 The endpoint is:
 
@@ -48,6 +50,12 @@ Because the connection carries your own account, the assistant is not an extra i
 4. Click **Connect**. Claude Desktop opens your browser for authorization.
 5. Sign in with your usual Kilo account and approve the request.
 6. Back in Claude Desktop, confirm the connector shows as active. Its tools are now available in any conversation.
+
+## Connect another MCP client
+
+ChatGPT, Codex, Cursor, and other MCP-capable clients follow one of the same two shapes. Where the client has a connector or integrations dialog, add a custom MCP server and paste the endpoint URL, as in the Claude Desktop steps above. Where it is configured from a command line or a config file, register the endpoint as a **Streamable HTTP** server — the transport this endpoint serves — as in the Claude Code steps.
+
+Either way the authorization is the same: the client opens your browser, you sign in with your usual Kilo account, and the connection carries your permissions. Consult your client's own documentation for where it keeps MCP servers; nothing about this endpoint is client-specific.
 
 ## Choosing the organization
 

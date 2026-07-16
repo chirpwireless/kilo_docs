@@ -74,9 +74,9 @@ This tab binds the Digital Twin to a physical device through a connector. The fi
 
 #### Add to Vault
 
-Device credentials have a habit of existing in exactly one place: a sticker on a unit that is now mounted six meters up in a warehouse aisle. Click **Add to Vault** on the device form to store the device's EUI and key pair in Key Vault, where they are recoverable independently of the hardware and the label. For a LoRaWAN device, this stores the AppKey against the DevEUI.
+Device credentials have a habit of ending up somewhere impractical: a sticker on a unit that is now mounted six meters up in a warehouse aisle. Click **Add to Vault** on the device form to store the device's EUI and key pair in Key Vault, where they are recoverable independently of the hardware and the label. For a LoRaWAN device, this stores the AppKey against the DevEUI.
 
-Do this at registration, while the credentials are in front of you. Re-provisioning a device whose AppKey exists only on an inaccessible sticker means physically retrieving the unit. See [Key Vault](../reports/key-vault.md).
+Do this at registration, while the credentials are in front of you. Re-provisioning a device whose AppKey you no longer have on file means getting back to the unit itself — and whether the key can be read out of it at that point is down to the manufacturer, and may mean a wired connection to the board. See [Key Vault](../reports/key-vault.md).
 
 #### Code functions (codec)
 
@@ -152,6 +152,8 @@ Click **Save** again to persist the connection and metrics configuration.
 The device appears in the device lists across the server — in the connector's device table, in Devices, and in any dashboards or automation rules that reference it.
 
 For LoRaWAN devices, data begins flowing once the physical device sends a join request and the server accepts it. For tracker devices, data begins flowing once the tracker starts sending data to the configured URL endpoint.
+
+Registering a device here does not make it join. A LoRaWAN device joins one network at a time, so a unit that was previously commissioned elsewhere — returned from another site, bought used, or run on a different platform — stays joined to that network until it is reset and sends a fresh join request. Factory-fresh hardware joins on its own; anything with a history usually needs a reset first. See [Before anything arrives: joining the network](device-diagnostics.md#before-anything-arrives-joining-the-network).
 
 If the device is registered but no data is arriving, open its **Connection** tab and read the reception status — it reports whether the device has reached the network, whether messages are being received, and whether the values in them are being stored, with the specific next step for each case. See [Device Diagnostics](device-diagnostics.md).
 
