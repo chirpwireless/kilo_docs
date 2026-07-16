@@ -70,9 +70,15 @@ To modify a widget already on the dashboard:
 2. Hover over the widget. A **three-dot menu** appears in the top-right corner.
 3. Click the menu:
    - **Edit** — Opens the widget's settings panel with current values pre-filled.
+   - **Duplicate** — Creates a copy of the widget, with all of its configuration, on the same dashboard. A toast confirms **"Widget successfully duplicated"**; if the copy cannot be created you'll see **"Could not duplicate widget"**.
+   - **Move to dashboard** — Moves the widget to a different dashboard. If the move cannot be completed you'll see **"Could not move widget"**.
    - **Delete** — Marks the widget for removal. The deletion is applied only when you click **Save** in the dashboard header. Clicking **Cancel** restores the widget.
 
 The three-dot menu only appears in edit mode.
+
+**Duplicate** saves real time on repetitive deployments. Configure one widget exactly as you want it — value ranges, thresholds, display type, conditions — then duplicate it once per identical sensor and change only the device on the Datasource tab. Fifty cold storage units with the same compliance band are fifty copies of one widget, not fifty configurations built from scratch.
+
+**Move to dashboard** is for when a view outgrows its original home — a metric you added to a general site dashboard turns out to belong on the compliance dashboard, or a widget was built on the wrong dashboard entirely. Move it instead of rebuilding it.
 
 ## The empty dashboard state
 

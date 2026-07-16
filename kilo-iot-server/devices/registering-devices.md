@@ -24,6 +24,8 @@ There are three entry points for device registration — all open the same Manag
 2. **Connector row action** — From the **Connectors** page, click the **+** (Add device) button on any connector row. The dialog opens with that connector pre-selected.
 3. **LNS Connected Devices** — Open the LNS connector, switch to the **Connected Devices** tab, and click **Add device**.
 
+The device form is laid out for small screens as well as desktop, so you can register hardware from a phone while standing at the installation point.
+
 ## Phase 1 — Create the device profile
 
 The dialog opens in **Add device** mode, showing only the **Device info** section. No tabs or navigation are visible yet — the first step is simply to identify the device.
@@ -45,6 +47,10 @@ This tab binds the Digital Twin to a physical device through a connector. The fi
 
 1. **Connector type** — Select the LNS connector from the dropdown. If only one LNS connector exists, it may be pre-selected.
 2. **Device EUI** — Enter the device's unique LoRaWAN identifier (8-byte hexadecimal string, displayed as `HH HH HH HH HH HH HH HH`). This is typically printed on the device label or packaging. Once a physical device is bound, this field cannot be changed without detaching the device first.
+
+   **Scan QR code** — Rather than transcribing sixteen hex characters from a label, click **Scan QR code** and point your laptop or phone camera at the QR code on the device or its packaging. The Device EUI is filled in from the code, and where the code also carries the AppKey, that field is populated too. This is the faster and safer path when commissioning devices in bulk — a single mistyped character in a DevEUI produces a device that silently never joins.
+
+   If the browser cannot access a camera, the scanner reports **"QR code scanner is not found. Please try again."** Check that a camera is present and that the browser has been granted camera permission for the site, then try again — or enter the identifiers by hand.
 3. **Use device profile templates** — Check this option to select from a library of known device profiles.
 
    Device profile templates are convenience presets for known LoRaWAN devices. Each template includes the device's LoRaWAN class, frequency band, and a **codec** — the payload-decoding logic that translates the device's raw binary uplink data into readable fields. Selecting a template is a two-step process:
@@ -65,6 +71,12 @@ This tab binds the Digital Twin to a physical device through a connector. The fi
    - **Brand** and **Model** — Enter the device manufacturer and model as free text.
    - **Band** — Select the LoRaWAN frequency band for your region. The band must match your gateway's configuration and your region's radio regulations. Available options: EU868 (Europe), US915 (USA), AU915 (Australia), AS923 (Asia), KR920 (South Korea), IN865 (India), RU864 (Russia), CN470 (China), CN779 (China), EU433 (Europe 433 MHz), ISM2400 (2.4 GHz global). For a complete list of frequency bands by country, see [LoRaWAN Frequencies](../connectors/lns-connector/lorawan-frequencies.md). For an introduction to LoRaWAN, see [What is LoRaWAN?](../connectors/lns-connector/what-is-lorawan.md).
    - **AppKey** — Enter the device's application key — the LoRaWAN encryption key used for over-the-air activation (OTAA). This is typically provided by the device manufacturer; check the device packaging or official documentation.
+
+#### Add to Vault
+
+Device credentials have a habit of existing in exactly one place: a sticker on a unit that is now mounted six meters up in a warehouse aisle. Click **Add to Vault** on the device form to store the device's EUI and key pair in Key Vault, where they are recoverable independently of the hardware and the label. For a LoRaWAN device, this stores the AppKey against the DevEUI.
+
+Do this at registration, while the credentials are in front of you. Re-provisioning a device whose AppKey exists only on an inaccessible sticker means physically retrieving the unit. See [Key Vault](../reports/key-vault.md).
 
 #### Code functions (codec)
 
@@ -141,7 +153,10 @@ The device appears in the device lists across the server — in the connector's 
 
 For LoRaWAN devices, data begins flowing once the physical device sends a join request and the server accepts it. For tracker devices, data begins flowing once the tracker starts sending data to the configured URL endpoint.
 
+If the device is registered but no data is arriving, open its **Connection** tab and read the reception status — it reports whether the device has reached the network, whether messages are being received, and whether the values in them are being stored, with the specific next step for each case. See [Device Diagnostics](device-diagnostics.md).
+
 ## What's next
 
 - **Configure metric templates** before or after registration to control how raw data is normalized. See [Metric Templates](metric-templates.md).
 - **Edit device properties** at any time through the same dialog. See [Device Management](device-management.md).
+- **Diagnose a silent device** from its Connection tab. See [Device Diagnostics](device-diagnostics.md).

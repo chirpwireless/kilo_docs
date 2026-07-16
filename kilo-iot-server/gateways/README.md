@@ -1,5 +1,5 @@
 ---
-description: Gateways in Kilo IoT Server — LoRaWAN radio gateways and MQTT edge gateways that bring field telemetry over TLS.
+description: Gateways in Kilo IoT — LoRaWAN gateways, MIOTY base stations, and MQTT edge gateways for field telemetry.
 ---
 
 # Gateways
@@ -18,6 +18,13 @@ Radio infrastructure for LoRaWAN and LR-FHSS deployments. A single gateway cover
 - [Monitoring LoRaWAN gateways](lorawan-gateways/lorawan-gateway-monitoring.md)
 - [Supported LoRaWAN gateways](lorawan-gateways/supported-lorawan-gateways.md)
 
+### [MIOTY base stations](mioty-base-stations/README.md)
+
+Radio infrastructure for MIOTY (ETSI TS 103 357) deployments. Unlike a packet-forwarding gateway, a base station is an addressed peer that holds a persistent, mutually authenticated session to a service center over BSSCI. Telegram splitting gives it thousands of low-power endpoints per station and strong interference resistance — the category for high-density metering rollouts and RF-hostile industrial sites.
+
+- [Registering a base station](mioty-base-stations/registering-a-base-station.md)
+- [Base station monitoring](mioty-base-stations/base-station-monitoring.md)
+
 ### [MQTT edge gateways](mqtt-edge-gateways/README.md)
 
 Protocol-bridging hardware and software that publishes MQTT — Modbus-to-MQTT, BACnet-to-MQTT, OPC-UA-to-MQTT, Sparkplug B edge gateways, and Zigbee2MQTT hubs. The infrastructure that lives at the network edge, translates non-MQTT field equipment into MQTT publishes, and feeds the platform's MQTT connector with a uniform topic and payload model.
@@ -26,13 +33,14 @@ Protocol-bridging hardware and software that publishes MQTT — Modbus-to-MQTT, 
 
 ## Choosing the right gateway category
 
-For most commercial Kilo IoT Server deployments, the question is not "which category" but "how many" — the deployment topology is driven by the device fleet's protocol mix, coverage requirements, and operational redundancy needs. LoRaWAN gateways handle long-range, low-power radio fleets directly. MQTT edge gateways handle every other protocol family (Modbus, BACnet, OPC-UA, Sparkplug B, Zigbee, vendor-specific) by translating it into MQTT before the platform consumes it. Most multi-protocol deployments use both categories side by side.
+For most commercial Kilo IoT Server deployments, the question is not "which category" but "how many" — the deployment topology is driven by the device fleet's protocol mix, coverage requirements, and operational redundancy needs. LoRaWAN gateways handle long-range, low-power radio fleets directly. MIOTY base stations handle the segments where endpoint density and interference dominate the design. MQTT edge gateways handle every other protocol family (Modbus, BACnet, OPC-UA, Sparkplug B, Zigbee, vendor-specific) by translating it into MQTT before the platform consumes it. Multi-protocol deployments routinely run more than one category side by side.
 
 ## Transport security
 
 Different gateway paths have different transport-security profiles. Match each to the path you actually use:
 
 - **LoRaWAN gateways** — the platform requires the LoRa Basics Station protocol with certificate authentication. The legacy UDP Packet Forwarder, which transmits data without encryption, is not supported.
+- **MIOTY base stations** — the BSSCI session between the station and the service center is mutually authenticated with certificates (mTLS). Each station is issued its own certificate pair during registration, and there is no unauthenticated path.
 - **MQTT edge gateways via Cloud MQTT** — when the platform provisions the broker, the connection uses MQTTS (TLS) on port 1884 with credentials scoped to the connector. Encrypted and authenticated by default.
 - **MQTT edge gateways via External MQTT** — security is determined by the broker you operate. The broker URL can be `mqtt://` or `mqtts://` on any port, and the authentication method (anonymous, basic, certificate, or JWT) is chosen during connector setup. For production deployments, configure your broker for TLS and require authentication before exposing it on the public internet — anonymous brokers reachable from the internet accept publishes and subscriptions from anyone who finds them.
 

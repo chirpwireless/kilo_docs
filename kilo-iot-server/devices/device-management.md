@@ -20,6 +20,7 @@ The Device info tab contains the device's identity and visual reference:
 
 * **Device photos** — Upload, replace, or remove photos of the physical device. Photos help operations teams identify hardware during site visits or troubleshooting.
 * **Device name** — Update the display name at any time. A consistent naming convention (e.g., including location or device type) helps when managing large fleets.
+* **Location** — A device's location is fully editable after it is first set: reassign it when hardware moves between sites, or remove it entirely when a device is pulled from service and awaiting redeployment. See [Locations](../settings/locations.md).
 
 <figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
@@ -90,6 +91,8 @@ The Logs tab displays the raw event history received from the device, providing 
 **Date filtering:** Click the date button in the top-right corner of the Logs section to open a date range picker. You can select a preset range (e.g., "Last week") or define a custom date range to narrow the log view. This is especially useful for investigating specific incidents or reviewing data from a particular time window.
 
 The logs description notes: _"This tab displays the latest registered data (Telemetry, Metadata) received from the device, including its value, type, and processing status by the platform."_
+
+The Logs tab shows you the readings themselves. If the readings are missing and you need to know *why* — whether messages reached the platform at all, whether their keys matched your sensors, and whether the values were stored — read the reception status, pipeline, and event feed on the **Connection** tab. See [Device Diagnostics](device-diagnostics.md).
 
 ## Common management tasks
 

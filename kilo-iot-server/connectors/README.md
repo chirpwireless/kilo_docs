@@ -1,5 +1,5 @@
 ---
-description: Connect device protocols to Kilo IoT Server — LNS (LoRaWAN), Tracker (OBD2/CAN/GPS), and MQTT into one pipeline.
+description: Connect device protocols to Kilo IoT — LNS (LoRaWAN), Tracker (OBD2/CAN/GPS), MQTT, and Mioty in one pipeline.
 ---
 
 # Connectors
@@ -17,6 +17,7 @@ Kilo IoT Server supports the following connector types:
 | **LNS** | LoRaWAN | GA | The server's built-in LoRaWAN Network Server. Manages LoRaWAN device communication automatically. |
 | **Tracker** | OBD2 / CAN bus / GPS | GA | Vehicle trackers — OBD2, CAN bus, and standalone GPS vehicle tracking devices. Includes preconfigured templates for over 2,000 vehicle tracker models. |
 | **MQTT** | MQTT | GA | Direct MQTT device connections. Two variants: **External MQTT** connects to your own broker (up to 10 per organization); **Cloud MQTT** uses a platform-provisioned broker with dedicated credentials per connector (unlimited). |
+| **Mioty** | MIOTY | GA | The MIOTY service center binding for your organization. Provisions a BSSCI address that your MIOTY base stations connect to, and unlocks the MIOTY endpoint fields on the device form. |
 
 Each organization can have **one LNS connector** and **one Tracker connector**. MQTT connectors come in two variants with different limits: External MQTT — up to 10 per organization; Cloud MQTT — unlimited.
 
@@ -48,6 +49,7 @@ Click anywhere on a connector row to open that connector's detail page, where yo
    - **Tracker** — if your organization does not already have a Tracker connector
    - **External MQTT** — connects to your own MQTT broker (up to 10 per organization)
    - **Cloud MQTT** — platform-provisioned broker; each connector gets its own dedicated credentials (unlimited)
+   - **Mioty** — binds your organization to the MIOTY service center and provisions its BSSCI address
 3. Click **Add**.
 
 For LNS and Tracker connectors, no additional configuration is required during creation — the server handles the integration automatically. For External MQTT, configure broker connection details after creation. For Cloud MQTT, the platform generates and displays credentials immediately after creation.
@@ -59,4 +61,5 @@ Once a connector is in place, you can:
 - **Configure the LNS connector** — manage LoRaWAN gateways and connected devices, and explore LoRaWAN protocol reference material including frequency bands by country. See [LNS Connector](lns-connector/README.md).
 - **Configure the Tracker connector** — onboard vehicle trackers (OBD2, CAN bus, standalone GPS). See [Tracker Connector](tracker-connector.md).
 - **Configure an MQTT connector** — connect PLCs, energy meters, building management systems, or any MQTT-capable hardware. Use External MQTT to connect your own broker, or Cloud MQTT to have the platform provision a broker endpoint for you. See [MQTT Connector](mqtt-connector.md).
+- **Configure the Mioty connector** — bind your organization to the MIOTY service center, get its BSSCI address, and unlock base station registration and MIOTY endpoint fields. See [MIOTY Connector](mioty-connector.md).
 - **Register devices** — add devices through any connector and configure their Digital Twin. See [Registering Devices](../devices/registering-devices.md).

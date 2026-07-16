@@ -6,6 +6,87 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <details>
 
+<summary>Scale Log. Release 3.7.0</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.7.0.jpg" alt="Kilo IoT Server 3.7.0 release banner"><figcaption></figcaption></figure>
+
+3.7.0 widens what the Kilo IoT Platform reaches and tightens what it tells you. **MIOTY** arrives as a first-class protocol — base stations, endpoints, and payload blueprints — so the massive-scale, interference-hard deployments that LoRaWAN was never shaped for now run on the same platform, the same dashboards, the same rules. Dashboards learn to leave the building: a **share link** turns any dashboard into a password-protected address you can hand to a customer or pin to a wall tablet, with **View** or **Control** access and a one-click revoke. **Device diagnostics** replaces the worst moment in any deployment — *it's installed, and nothing is happening* — with a plain answer and the next step. **Key Vault** gets device credentials out of spreadsheets. And an **MCP server** lets your own AI client sign in and work your deployment directly. [kiloiot.io](https://kiloiot.io)
+
+***
+
+#### What's in This Release
+
+* **MIOTY support** — A new connector, a Mioty Base Stations category under Gateways, MIOTY endpoint fields, and a full blueprint system for decoding payloads — with per-device snapshots so a catalog edit never disturbs a device already in production.
+* **Share dashboard** — Publish a dashboard as a password-protected link with **View** or **Control** access. Regenerate or revoke it at any time; open it full screen on a tablet or a wall display.
+* **Device diagnostics** — A device's Connection tab now reports its reception status, the pipeline each message travels, and an event feed with a status legend — and tells you what to check when something is wrong.
+* **Key Vault** — An encrypted, access-controlled store for device EUI and key pairs, under the new **Records & Reports** group, with **Add to Vault** right on the device form.
+* **MCP server** — Connect Claude Code or Claude Desktop to your organization with your own account sign-in and put an AI client to work on your real deployment.
+* **Scan a QR code** — Read a DevEUI or AppKey with a laptop or phone camera instead of typing 16 or 32 hex characters.
+* **Duplicate and move widgets** — Repeat a configured widget across identical sensors, or move one to another dashboard.
+* **Fixes and polish** — Layout, mobile, and navigation fixes across dashboards, gateways, devices, and the audit trail.
+
+***
+
+**MIOTY — a second protocol for the deployments LoRaWAN can't carry**
+
+MIOTY ([ETSI TS 103 357](https://mioty-alliance.com)) is built for the environments that break other LPWAN links: factory floors thick with interference, thousands of endpoints under one receiver, sensors on machinery that never stops moving. It splits each message into many small bursts scattered across frequency and time, and reassembles the whole from whatever survives — so a message lands even when a large share of it collides. In 3.7.0 that becomes a native part of the platform rather than a parallel system.
+
+Create a **Mioty connector** and a **Mioty Base Stations** tab appears alongside your LoRaWAN gateways. Register a base station with its BS EUI, download its certificate bundle, copy the BSSCI address, and it connects over a certificate-secured link — no packet forwarder in between. Endpoints get their own form: End Point EUI, short address, network session key, and the MIOTY radio options that matter.
+
+Payload decoding is where the design earns its keep. A **blueprint** is a decoder spec bound to a device type, organized as manufacturer → model → version and split into a **System** catalog everyone can use and a **Custom** catalog that is yours. Choose one for a device and the platform takes a *snapshot* of it onto that device. Edit or delete the catalog template afterwards and nothing already in the field changes — those devices keep running on their own copy until you deliberately move them to a new version. Two devices of the same model can run different blueprints. Author a new one from pasted JSON and test the decoder against a sample payload before you save it.
+
+[→ What is MIOTY?](../mioty/README.md) · [→ Mioty Connector](../kilo-iot-server/connectors/mioty-connector.md) · [→ Mioty Base Stations](../kilo-iot-server/gateways/mioty-base-stations/README.md) · [→ Mioty Blueprints](../kilo-iot-server/devices/mioty-blueprints.md)
+
+***
+
+**Share dashboard — a link, a password, and an off switch**
+
+A dashboard used to stop at the edge of your organization. Now it doesn't. Open a dashboard's actions menu, choose **Share dashboard**, set a password, and generate a link that opens the dashboard full screen for anyone you send it to — no account needed. Choose **View** for a customer, an auditor, or a client who should see and nothing more; choose **Control** for the tablet mounted by the line where an operator needs to actually work the devices. Change the password when the audience changes, regenerate the link to invalidate the old one, or revoke it outright the moment a contract ends — the link stops working immediately.
+
+[→ Sharing Dashboards](../kilo-iot-server/dashboards/sharing-dashboards.md)
+
+***
+
+**Device diagnostics — an answer instead of a silence**
+
+Commissioning fails quietly. The device is mounted, the connector is configured, and nothing arrives — with nothing to inspect but a blank chart. The Connection tab now opens with a **reception status** that says which of the real situations you're in: *Receiving & storing*, *Sending data — set up mapping to keep it*, *Data arrives but nothing is stored*, *Reached network — waiting for data*, or *Hasn't reported — device looks offline*. Underneath, a **pipeline** view shows how far each message gets, and an **event feed** lists them stage by stage with a legend that says plainly what Routed, Mapped, Stored, OK, Skipped, and Error each mean — including that Skipped is often not an error at all. Every unhealthy state comes with a **what to check** list and, where the fix is in the platform, a button that takes you to it. Connectors get their own diagnostics with source health, incoming messages, and activity.
+
+[→ Device Diagnostics](../kilo-iot-server/devices/device-diagnostics.md)
+
+***
+
+**Key Vault — device keys where they belong**
+
+A DevEUI and an AppKey are printed on a sticker, entered once at commissioning, and then live in a spreadsheet, a chat thread, or an installer's notebook. Four years later a device needs replacing and nobody can find them. **Key Vault** is an encrypted store for those pairs, scoped to your organization and governed by its own page permission, sitting in the new **Records & Reports** group beside the Audit Trail. Save a pair as you configure a device with **Add to Vault**, or enter it directly; search by any fragment of an EUI or a key. LoRaWAN DevEUI and AppKey, MIOTY EP EUI and Network Key, in one place, encrypted, with access you control.
+
+[→ Key Vault](../kilo-iot-server/reports/key-vault.md)
+
+***
+
+**MCP server — bring your own AI client**
+
+3.6.0 put an AI integrator inside the platform. 3.7.0 opens the same deployment to the AI client you already use. Point Claude Code or Claude Desktop at your organization's MCP endpoint, sign in through the browser with your usual Kilo account — no key to copy, no token to paste — and your client can list devices, provision hardware, query telemetry, inspect rules and alarms, pull logs, and manage your team, all with exactly the permissions your account already carries. The default endpoint follows whichever organization you have selected; a path with an explicit organization ID pins it to one, and refuses anything you're not a member of.
+
+[→ MCP Server](../kilo-iot-server/api/mcp-server.md) · [→ IoT AI Assistant](../kilo-iot-server/ai-assistant/README.md)
+
+***
+
+**Smaller things that save real minutes**
+
+Registering a device no longer means transcribing a 32-character AppKey off a label: **Scan QR code** reads it with your laptop or phone camera. Configured widgets can be **duplicated** — one setup, repeated across a row of identical sensors — or **moved to another dashboard** when they outgrow where they started. And a device's location can now be edited or removed, not just set once.
+
+[→ Registering Devices](../kilo-iot-server/devices/registering-devices.md) · [→ Adding Widgets](../kilo-iot-server/dashboards/adding-widgets.md)
+
+***
+
+**Fixes and polish**
+
+This release also clears a set of layout and navigation issues: dashboards now adjust correctly to large monitors instead of breaking their layout, the gateway photo form matches the rest of the platform, the Audit Trail date-range control sits where it belongs, the add-device flow works properly on a phone, and the Terms of Use and Privacy Policy links resolve again.
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 3.6.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.6.0.jpg" alt="Kilo IoT Server 3.6.0 release banner"><figcaption></figcaption></figure>

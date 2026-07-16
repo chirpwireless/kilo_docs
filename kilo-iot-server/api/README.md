@@ -17,6 +17,10 @@ Two protocols are offered on the same secured endpoint:
 - **REST** — the primary path for most integrations. Standard HTTPS and JSON, usable from any HTTP client. Start here unless you have a specific reason not to. See [Public REST API](public-rest-api.md).
 - **gRPC** — the advanced / on-premise path. Choose REST unless you specifically need gRPC for an on-premise or typed service-to-service integration. See [gRPC API](grpc-api.md).
 
+Alongside them, a separate endpoint serves AI clients rather than code you write:
+
+- **MCP** — connect an MCP-capable AI client, such as Claude Code or Claude Desktop, to your organization. You authorize it in the browser with your usual Kilo account instead of issuing a key, and it works within your own permissions. See [MCP Server](mcp-server.md).
+
 ## Authentication
 
 Requests are authenticated with a scoped API key in the `X-API-Key` header (format `kilo_<key>`), plus your organization context in `X-Organization-Id`. Keys are created and managed in **Settings → API Keys**; the concepts are summarized in [Authentication & API keys](authentication-and-api-keys.md), and the full key-management workflow is in [API Keys](../settings/api-keys.md).
@@ -29,5 +33,6 @@ Cloud deployments use the managed endpoint above. On-premise installations expos
 
 - [Public REST API](public-rest-api.md) — the standard integration path.
 - [gRPC API](grpc-api.md) — the advanced / on-premise path (typed, service-to-service).
+- [MCP Server](mcp-server.md) — connect your own AI client to your organization.
 - [Authentication & API keys](authentication-and-api-keys.md) — how requests are authorized.
 - [Examples](examples.md) — a minimal authenticated request to get started.

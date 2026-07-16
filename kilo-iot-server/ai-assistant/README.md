@@ -44,3 +44,4 @@ The capabilities above are live today and improving continuously: the assistant 
 * [Building With the Assistant](building-with-ai.md) — hand it real setup work: devices, rules, alarms
 * [What It Can Access](data-sources.md) — the sources behind its grounded answers
 * [Privacy and Security](privacy.md) — authentication, isolation, and confirmation gates
+* [MCP Server](../api/mcp-server.md) — connect your own AI client, such as Claude Code or Claude Desktop, to the same deployment

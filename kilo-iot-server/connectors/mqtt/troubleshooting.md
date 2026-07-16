@@ -6,6 +6,8 @@ description: Troubleshoot MQTT integrations by failure phase — broker connecti
 
 Diagnostic recipes for MQTT integrations on the Kilo IoT Server, organized by where the failure surfaces. Work through these in order — most issues fall into one of the first three phases, and the diagnostic sequence narrows the root cause efficiently.
 
+Before working through the phases below, let the platform tell you which one you are in. A single silent device reports its own state on its **Connection** tab — whether the broker is reachable, whether a publish arrived on an unexpected topic, and whether its values were stored; see [Device Diagnostics](../../devices/device-diagnostics.md). When several devices go quiet at once, open the connector's **Connector diagnostics** area — **Source health** summarizes the broker subscription, **Incoming** shows what is arriving, and **Activity** shows the connector's recent event history. That reading usually points straight at the phase to start from.
+
 ## Phase 1 — Broker connection failures
 
 **Symptom:** the publisher (an edge gateway, a Zigbee2MQTT instance, custom firmware) reports it cannot connect to the broker. **Last data received** never updates.

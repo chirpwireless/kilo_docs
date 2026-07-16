@@ -57,8 +57,9 @@ Once created, a dashboard appears in the sidebar under its folder (or at the top
 
 The dashboard header shows the **dashboard name** on the left, a vertical divider, and a **Live Data** indicator on the right. The Live Data indicator is a non-interactive label that reads **"Live Data"** with an icon — it confirms that the dashboard receives real-time updates but does not have a click action (unlike the clickable Live Data button on the [overview page](../overview.md)).
 
-To the far right of the header, an **actions menu** (three-dot icon) provides two options:
+To the far right of the header, an **actions menu** (three-dot icon) provides three options:
 
+- **Share dashboard** — Opens the dashboard access dialog, where you can publish the dashboard as a password-protected link. See [Sharing Dashboards](sharing-dashboards.md).
 - **Edit dashboard** — Enters edit mode, where you can add, rearrange, and configure widgets.
 - **Delete dashboard** — Opens a confirmation dialog (see below).
 
