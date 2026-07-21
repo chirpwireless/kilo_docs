@@ -10,6 +10,8 @@ What makes it AI-first is **AIoT** — Artificial Intelligence of Things built i
 
 Kilo is built for organizations that need to connect, monitor, and automate physical devices at scale — whether that means five sensors in a single building or thousands of devices across dozens of sites. When we designed the server, we chose full customizability over a simpler but limited tool — and AIoT is what makes that depth easy to use: the assistant turns a highly configurable platform into something you operate by describing what you want.
 
+Kilo can also operate as a Physical AI platform for external AI models and agents. It places consistent device state, permissions, tested automation, commands, verification, and operational history between model intent and real assets. Read [Physical AI for AI Agents](physical-ai.md) for the architecture and integration paths.
+
 <figure><img src="../.gitbook/assets/rules.jpg" alt="The visual Rules Engine — a BPMN automation that branches at a Gateway into two paths, with a Start event, a Script task, and End nodes on the canvas"><figcaption></figcaption></figure>
 
 ## Who Kilo IoT is for

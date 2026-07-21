@@ -1,10 +1,12 @@
 ---
-description: Connect your AI client to your Kilo IoT organization over MCP, using your own account sign-in.
+description: Connect AI agents to IoT devices through Kilo's OAuth-secured IoT MCP server and work with a live deployment inside the user's permissions.
 ---
 
-# Kilo IoT MCP Server
+# Kilo IoT MCP Server for AI Agents
 
-MCP — the Model Context Protocol — is an open standard that lets an AI client discover and call tools on a remote server. The Kilo IoT Server publishes an MCP endpoint, so any MCP-capable client — Claude Code, Claude Desktop, ChatGPT, Codex, Cursor, and others — can connect straight to your organization in Kilo and work with your real deployment: your devices, connectors, rules, alarms, dashboards, and logs.
+MCP — the Model Context Protocol — is an open standard that lets an AI client discover and call tools on a remote server. The Kilo IoT Server publishes an MCP endpoint, so any MCP-capable client — Claude Code, Claude Desktop, ChatGPT, Codex, Cursor, and others — can connect to your organization and work with your real deployment: devices, connectors, rules, alarms, and dashboards.
+
+This is one integration path for the [Physical AI Platform for AI Agents](../physical-ai.md). Kilo remains the governed execution layer between the client and real infrastructure, so the model does not need to recreate device protocols, organization boundaries, or the operational lifecycle around a change.
 
 Because MCP is an open standard rather than a per-vendor integration, this is not a fixed list. Any client that speaks MCP over Streamable HTTP can connect, and the walkthroughs below cover the two flows most clients follow: a command-line setup and a connector dialog.
 
@@ -20,7 +22,7 @@ You authorize the connection in your browser with your usual Kilo account. There
 
 Without MCP, putting an assistant to work against a live deployment means writing an integration first: a key, a client library, a script per question. That is fine for a scheduled job and heavy for an incident at 2 a.m.
 
-With the MCP server connected, the client you already use becomes an operator's console over your deployment. An operations engineer can ask it which devices in a site have stopped reporting, pull the logs around a failure window, and export them for the post-incident review — in one conversation, against live data. An integrator building a rollout can have it provision a batch of devices against the right connector instead of clicking through the same dialog fifty times. A team lead can ask for open alarm statistics before a shift handover.
+With the MCP server connected, the client you already use becomes an operator's console over your deployment. An operations engineer can ask which devices in a site have stopped reporting and review the alarms around a failure window in one conversation, against live data. An integrator building a rollout can have it provision a batch of devices against the right connector instead of clicking through the same dialog fifty times. A team lead can ask for open alarm statistics before a shift handover.
 
 Because the connection carries your own account, the assistant is not an extra identity to govern. It can do what you can do, in the organization you are working in, and nothing else.
 
@@ -81,10 +83,9 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 |---|---|
 | **Devices** | List devices in the organization, provision LoRaWAN devices and trackers, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
 | **Connectors** | Review the connectors defined in the organization and create a connection for a device to report through. `connector_list`, `connection_create` |
-| **Rules** | Review the automation rules that exist in the organization and what they are configured to do. `rule_list` |
+| **Rules** | Review rules, prepare and deploy automation behind confirmation, simulate logic before it reaches production, and inspect execution history. `rule_list`, `rule_provision`, `rule_simulate`, `rule_execution_history` |
 | **Alarms** | List alarms, summarize alarm activity for a shift or a site, and send a test notification to verify a channel. `alarm_list`, `alarm_stats`, `notification_test` |
 | **Dashboards** | List dashboards and query the data behind a widget, so the client can reason about the same numbers your operators watch. `dashboard_list`, `widget_data_query` |
-| **Logs** | Query logs for an incident window and export the result for a report or a ticket. `log_query`, `log_export` |
 | **Organization** | Read organization details, list teams, invite users, and assign roles. `org_get`, `team_list`, `user_invite`, `user_role_assign` |
 
 ## Security and permissions
@@ -92,7 +93,7 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 - **You sign in, not a service account.** Authorization happens in your browser against your normal Kilo account. No key is generated, copied, or stored for the connection.
 - **Your permissions are the ceiling.** The connection carries your own access. The client can only do what your account is allowed to do — if you cannot deploy a rule or invite a user, neither can it.
 - **Organization boundaries hold.** A request for an organization you are not a member of is refused, whether it comes from the default endpoint or a pinned one.
-- **Actions are still audited.** Work done through the connected client is your work, recorded like any other action in your organization.
+- **Actions retain their operational records.** Rule changes and executions appear in rule history, device-command dispatches appear in command execution history, and organization access changes appear in the Audit Trail. These are separate records for their corresponding workflows, not one generic conversation log.
 
 Treat an authorized client like a signed-in session: it belongs on machines you control.
 
@@ -113,10 +114,10 @@ The [Public REST API](public-rest-api.md) and the [gRPC API](grpc-api.md) are fo
 - **Confirm the organization before batch work.** Ask the client which organization it is connected to, or pin the endpoint, before anything that creates or changes resources.
 - **Pin production, leave staging on the default.** A pinned endpoint cannot be moved by a stray click in the web app's organization switcher.
 - **Reconnect after switching organizations** in the web app if you are using the default endpoint — the existing connection keeps the organization it authorized against.
-- **Give it the incident window.** Log queries get far more useful when you say what you are looking for and over which period, rather than asking for everything.
 
 ## See also
 
+- [Physical AI Platform for AI Agents](../physical-ai.md) — how models, Kilo, and physical infrastructure divide responsibility.
 - [IoT AI Assistant](../ai-assistant/README.md) — the assistant built into the platform.
 - [Public REST API](public-rest-api.md) — the integration path for programs you write.
 - [Authentication & API keys](authentication-and-api-keys.md) — how key-based API requests authorize.

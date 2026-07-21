@@ -1,5 +1,5 @@
 ---
-description: Kilo is a full-stack, AI-first IoT company — devices, connectivity, and a cloud IoT Server with built-in AI.
+description: Kilo provides the IoT infrastructure that lets people, software, and AI operate connected assets safely at scale.
 ---
 
 # Intro to Kilo
@@ -9,9 +9,11 @@ Every IoT project follows the same fundamental path:\
 
 Kilo supports the entire journey — from sourcing hardware, to connecting it, to managing it in the cloud.
 
-Kilo is a full-stack IoT company that provides the tools and infrastructure needed to build scalable, connected systems. Our focus is IoT — pure and simple.
+Kilo is a full-stack IoT company that provides the infrastructure needed to build scalable, connected systems. Our broader mission is to give intelligence a safe, reliable way to observe and act in the physical world.
 
 And we build it **AI-first**. The Kilo IoT Server doesn't treat AI as a feature in a menu — it puts an experienced IoT integrator inside the platform that understands your entire deployment and can do the work with you: onboard devices, write and deploy automations, and configure alarms, all from a plain-language conversation, all grounded in your real data. The result is a platform where setting up and operating IoT is something you can simply *describe*. See the [IoT AI Assistant](kilo-iot-server/ai-assistant/).
+
+The same IoT Server is a Physical AI platform between external AI agents and physical infrastructure. It normalizes devices, applies permissions and operational controls, and retains the evidence needed to understand what happened. This is Kilo's approach to [Physical AI for AI Agents](kilo-iot-server/physical-ai.md): the model supplies intelligence, while Kilo supplies dependable real-world execution.
 
 Kilo is built around **three core pillars**, which together cover the entire IoT stack:
 
@@ -41,4 +43,4 @@ Kilo Cloud is the platform where device data becomes actionable. It is an AI-fir
 
 ### Who Kilo Is Built For
 
-Kilo is designed for flexibility and scale. Whether you are a system integrator building solutions for customers, a hardware developer deploying connected products, or a business operating hundreds or thousands of devices, Kilo provides the infrastructure needed to bring IoT systems to life.
+Kilo is designed for flexibility and scale. It serves system integrators building solutions for customers, hardware developers deploying connected products, businesses operating hundreds or thousands of devices, and AI teams extending models and agents into real-world operations.

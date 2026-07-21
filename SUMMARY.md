@@ -5,6 +5,7 @@
 ## Kilo IoT Server
 
 * [Kilo IoT Platform](kilo-iot-server/README.md)
+* [Physical AI Platform for AI Agents](kilo-iot-server/physical-ai.md)
 * [First Steps](kilo-iot-server/getting-started/README.md)
   * [Navigating the Interface](kilo-iot-server/getting-started/navigating-the-interface.md)
   * [Your First Deployment](kilo-iot-server/getting-started/your-first-deployment.md)
