@@ -150,7 +150,16 @@ const findSlideSection = (sections, slideTitle) => {
     }
   }
 
-  return bestScore >= 0.6 ? best : null;
+  if (bestScore >= 0.6) return best;
+
+  // Tier 3: accept a partial match when the overlapping token is prominent — present in the
+  // section's bold header ("MIOTY support" bullet vs "MIOTY — a second protocol…" section).
+  if (best && bestScore >= 0.5) {
+    const header = best.match(/\*\*([^*]+)\*\*/);
+    if (header && tokenOverlap(slideTokens, header[1]) > 0) return best;
+  }
+
+  return null;
 };
 
 /** A section may document several small features — pick the link closest to the slide title. */
