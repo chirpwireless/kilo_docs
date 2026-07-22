@@ -8,9 +8,9 @@
  * carousel slides consumed by the Chirp web app.
  *
  * Env (all optional locally, set by the workflow in CI):
- *   GITHUB_REPOSITORY  e.g. "chirpwireless/chirpwireless_docs"
+ *   GITHUB_REPOSITORY  e.g. "chirpwireless/kilo_docs"
  *   FEED_SOURCE_BRANCH branch whose assets raw URLs should point to (default "synchronize")
- *   DOCS_BASE_URL      published portal base (default "https://docs.chirpwireless.io")
+ *   DOCS_BASE_URL      published portal base (default "https://docs.kiloiot.io")
  *   OUTPUT_DIR         where releases.json is written (default "out")
  */
 
@@ -19,9 +19,9 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 
-const REPO = process.env.GITHUB_REPOSITORY || 'chirpwireless/chirpwireless_docs';
+const REPO = process.env.GITHUB_REPOSITORY || 'chirpwireless/kilo_docs';
 const BRANCH = process.env.FEED_SOURCE_BRANCH || 'synchronize';
-const DOCS_BASE_URL = (process.env.DOCS_BASE_URL || 'https://docs.chirpwireless.io').replace(/\/$/, '');
+const DOCS_BASE_URL = (process.env.DOCS_BASE_URL || 'https://docs.kiloiot.io').replace(/\/$/, '');
 const OUTPUT_DIR = process.env.OUTPUT_DIR || 'out';
 
 const CHANGELOG_PATH = 'faq/changelog.md';
