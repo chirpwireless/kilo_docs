@@ -1,0 +1,53 @@
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md
+
+redirects:
+  intro: README.md
+  Terms%20of%20Use: legal/terms-of-use.md
+  Privacy%20Policy: legal/privacy-policy.md
+  kilo-iot-server/dashboard: kilo-iot-server/README.md
+  kilo-iot-server/dashboard/features: kilo-iot-server/README.md
+  kilo-iot-server/dashboard/navigation-menu: kilo-iot-server/getting-started/navigating-the-interface.md
+  kilo-iot-server/dashboard/overview-page: kilo-iot-server/overview.md
+  kilo-iot-server/dashboard/display-and-language-settings: kilo-iot-server/getting-started/navigating-the-interface.md
+  kilo-iot-server/dashboard/get-help: kilo-iot-server/help/get-help.md
+  kilo-iot-server/dashboard/custom-dashboards: kilo-iot-server/dashboards/README.md
+  kilo-iot-server/dashboard/custom-dashboards/overview: kilo-iot-server/dashboards/README.md
+  kilo-iot-server/dashboard/custom-dashboards/dashboard-hierarchy-and-management: kilo-iot-server/dashboards/organizing-dashboards.md
+  kilo-iot-server/dashboard/custom-dashboards/adding-widgets-to-a-dashboard: kilo-iot-server/dashboards/adding-widgets.md
+  kilo-iot-server/dashboard/devices: kilo-iot-server/devices/README.md
+  kilo-iot-server/dashboard/devices/adding-device: kilo-iot-server/devices/registering-devices.md
+  kilo-iot-server/dashboard/gateways: kilo-iot-server/gateways/README.md
+  kilo-iot-server/dashboard/gateways/adding-gateways-to-kilo-network: kilo-iot-server/gateways/lorawan-gateways/deploying-a-lorawan-gateway.md
+  kilo-iot-server/gateways/deploying-a-lorawan-gateway: kilo-iot-server/gateways/lorawan-gateways/deploying-a-lorawan-gateway.md
+  kilo-iot-server/gateways/lorawan-gateway-monitoring: kilo-iot-server/gateways/lorawan-gateways/lorawan-gateway-monitoring.md
+  kilo-iot-server/gateways/supported-lorawan-gateways: kilo-iot-server/gateways/lorawan-gateways/supported-lorawan-gateways.md
+  kilo-iot-server/connectors/mqtt/mqtt-edge-gateways: kilo-iot-server/gateways/mqtt-edge-gateways/README.md
+  kilo-iot-server/dashboard/notification-center: kilo-iot-server/alarm/README.md
+  kilo-iot-server/dashboard/notification-center/inbox: kilo-iot-server/alarm/inbox-and-resolution.md
+  kilo-iot-server/dashboard/notification-center/rules: kilo-iot-server/alarm/notification-rules.md
+  kilo-iot-server/dashboard/notification-center/settings: kilo-iot-server/alarm/notification-delivery-settings.md
+  kilo-iot-server/dashboard/notification-center/setting-alert-rules: kilo-iot-server/alarm/notification-rules.md
+  kilo-iot-server/dashboard/notification-center/setting-notification-intervals: kilo-iot-server/alarm/notification-delivery-settings.md
+  kilo-iot-server/dashboard/reporting: kilo-iot-server/reports/README.md
+  kilo-iot-server/dashboard/reporting/audit-trail: kilo-iot-server/reports/audit-trail.md
+  kilo-iot-server/dashboard/attribute-based-access-control-abac: kilo-iot-server/account/README.md
+  kilo-iot-server/dashboard/attribute-based-access-control-abac/why-abac-instead-of-rbac: kilo-iot-server/account/users-and-permissions.md
+  kilo-iot-server/dashboard/attribute-based-access-control-abac/permission-levels-explained: kilo-iot-server/account/roles-and-page-access.md
+  kilo-iot-server/dashboard/attribute-based-access-control-abac/creating-an-organization: kilo-iot-server/account/how-organizations-start.md
+  kilo-iot-server/dashboard/attribute-based-access-control-abac/changing-organization-name-and-owner: kilo-iot-server/account/organization-settings.md
+  kilo-iot-server/dashboard/attribute-based-access-control-abac/adding-and-managing-users: kilo-iot-server/account/inviting-users.md
+  kilo-iot-server/dashboard/iot-ai-assistant: kilo-iot-server/ai-assistant/README.md
+  kilo-iot-server/dashboard/iot-ai-assistant/assistant-how-to: kilo-iot-server/ai-assistant/querying-your-data.md
+  kilo-iot-server/dashboard/iot-ai-assistant/assistant-data-sources: kilo-iot-server/ai-assistant/data-sources.md
+  kilo-iot-server/dashboard/iot-ai-assistant/assistant-privacy: kilo-iot-server/ai-assistant/privacy.md
+  kilo-iot-server/dashboard/integrations: kilo-iot-server/settings/api-keys.md
+  kilo-iot-server/dashboard/integrations/api-keys: kilo-iot-server/settings/api-keys.md
+  kilo-iot-server/dashboards/widget-reference: kilo-iot-server/dashboards/adding-widgets.md
+  kilo-iot-server/dashboards/maps-and-tracking: kilo-iot-server/dashboards/adding-widgets/map-widget.md
+  kilo-iot-server/dashboards/maps-and-tracking/gps-tracking: kilo-iot-server/dashboards/adding-widgets/map-widget.md
+  kilo-iot-server/dashboards/maps-and-tracking/device-maps: kilo-iot-server/dashboards/adding-widgets/map-widget.md
+  kilo-iot-server/dashboards/adding-widgets/image-map-widget: kilo-iot-server/dashboards/adding-widgets/image-widget.md
