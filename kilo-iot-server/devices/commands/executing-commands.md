@@ -83,8 +83,12 @@ These are the common cases; other messages can appear, and the platform passes t
 
 For day-to-day control, you don't have to open the device detail page at all. Add a [Control widget](../../dashboards/adding-widgets/control-widget.md) to a dashboard, bind it to a controllable device's command, and anyone with access to that dashboard can operate the device with a single Switch or Button — backed by the same execution pipeline and history described here.
 
+You can also dispatch a command by asking. The built-in [IoT AI Assistant](../../ai-assistant/README.md) will list a device's commands, run one after showing you what it is about to send and waiting for your confirmation, and then report the delivery status — and an external client connected over the [MCP Server](../../api/mcp-server.md) can do the same. Either way the dispatch runs through the pipeline described on this page and lands in the same history.
+
 ## Related
 
 * [Creating Commands](creating-commands.md) — define the actions a device can perform
 * [Confirming Commands](verification.md) — set how the platform verifies a result
 * [Control widget](../../dashboards/adding-widgets/control-widget.md) — put a command on a dashboard
+* [Building with AI](../../ai-assistant/building-with-ai.md) — run a command by asking the assistant
+* [MCP Server](../../api/mcp-server.md) — run a command from ChatGPT, Claude or another AI client

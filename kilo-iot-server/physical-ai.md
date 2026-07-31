@@ -20,7 +20,7 @@ Kilo supports a production lifecycle around real-world action:
 
 1. **Observe** — read normalized telemetry, device state, alarms, and operating context.
 2. **Reason** — give the AI grounded information from the deployment rather than disconnected payloads.
-3. **Simulate** — test automation logic against representative inputs before deployment.
+3. **Simulate** — test automation logic against representative inputs before deployment, including against [emulated devices](devices/emulated-devices.md) that produce the readings you specify, so a loop can be exercised before the equipment exists.
 4. **Approve** — apply the signed-in user's permissions and require confirmation where the workflow calls for it.
 5. **Act** — deploy a rule or execute a typed device command through the configured connection.
 6. **Verify** — inspect command delivery, optional device confirmation, and the resulting state.

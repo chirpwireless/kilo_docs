@@ -32,6 +32,7 @@ The **Commands & States** tab appears for devices that can receive downlinks:
 
 * **MQTT devices** — any device connected through an MQTT connector.
 * **Class C LoRaWAN devices** — Class C devices listen continuously and are always ready to receive commands, so the tab becomes available once a device is configured as Class C. (Class A devices only open a brief receive window after each uplink, so they are not eligible for on-demand control.)
+* **Emulated devices with Support commands enabled** — an [emulated device](../emulated-devices.md) behaves like controllable hardware, which lets you define and rehearse a full command workflow before the equipment exists.
 
 A device is considered **controllable** once it has at least one command defined — that is also what makes it selectable for a dashboard [Control widget](../../dashboards/adding-widgets/control-widget.md).
 
@@ -39,19 +40,24 @@ A device is considered **controllable** once it has at least one command defined
 
 Before you can control a device, make sure:
 
-1. **The device can receive downlinks** — it is connected over MQTT, or it is a Class C LoRaWAN device.
+1. **The device can receive downlinks** — it is connected over MQTT, it is a Class C LoRaWAN device, or it is an [emulated device](../emulated-devices.md) with **Support commands** enabled.
 2. **At least one command is defined** — an empty device exposes nothing to execute. Start in [Creating Commands](creating-commands.md).
 3. **You have the access to manage or execute commands** — defining commands and dispatching them are governed by your organization's access policy.
 4. **Parameters are valid** — when a command takes inputs (a brightness level, a setpoint), the values must satisfy the limits set on each parameter before the command will send.
 
 ## How control fits together
 
-There are three ways to send a command to a device:
+There are five ways to send a command to a device:
 
 * **From the device page** — the **States** tab, where you execute any of the device's commands and review their history.
 * **From a dashboard** — a [Control widget](../../dashboards/adding-widgets/control-widget.md) binds a command to a Switch or Button so anyone with dashboard access can operate the device without opening its detail page.
 * **From a rule** — the [Rules Engine](../../rules-engine/) can now dispatch a command automatically when a condition is met, using an Execute Command node. The same command you run by hand is sent by the rule with no one in the loop — so an out-of-bounds reading at 3 a.m. closes the valve itself. See [Running Device Commands](../../rules-engine/running-device-commands.md).
 
-The Alarm system works alongside all three: it makes sure the right people are told when a condition is met — whether or not a rule has already acted on it. Acting and alerting are complementary, and a single rule can do both: contain the problem with a command *and* raise the alarm so the team knows.
+* **By asking the assistant** — the built-in [IoT AI Assistant](../../ai-assistant/README.md) lists what a device can do, runs one of those commands after showing you what it will send and waiting for your confirmation, then reports whether it was delivered. See [Building with AI](../../ai-assistant/building-with-ai.md).
+* **From your own AI client** — connect ChatGPT, Claude or any other MCP client and it can do the same, scoped to your permissions and recorded like any other dispatch. See [MCP Server](../../api/mcp-server.md).
+
+Every route ends in the same place: the command definitions on this tab, the same execution pipeline, and the same history. Defining a command well is what makes all five safe.
+
+The Alarm system works alongside all of them: it makes sure the right people are told when a condition is met — whether or not a rule has already acted on it. Acting and alerting are complementary, and a single rule can do both: contain the problem with a command *and* raise the alarm so the team knows.
 
 Continue to [Creating Commands](creating-commands.md) to define your first action.

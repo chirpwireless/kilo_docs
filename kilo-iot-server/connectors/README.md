@@ -51,9 +51,10 @@ Click anywhere on a connector row to open that connector's detail page, where yo
    - **External MQTT** — connects to your own MQTT broker (up to 10 per organization)
    - **Cloud MQTT** — platform-provisioned broker; each connector gets its own dedicated credentials (unlimited)
    - **Mioty** — binds your organization to the MIOTY service center and provisions its BSSCI address
+   - **Emulator** — generates device data with no hardware, so you can build and test before your sensors arrive (one per organization)
 3. Click **Add**.
 
-For LNS and Tracker connectors, no additional configuration is required during creation — the server handles the integration automatically. For External MQTT, configure broker connection details after creation. For Cloud MQTT, the platform generates and displays credentials immediately after creation.
+For LNS, Tracker and Emulator connectors, no additional configuration is required during creation — the server handles the integration automatically. For External MQTT, configure broker connection details after creation. For Cloud MQTT, the platform generates and displays credentials immediately after creation.
 
 ## What's next
 
@@ -63,4 +64,5 @@ Once a connector is in place, you can:
 - **Configure the Tracker connector** — onboard vehicle trackers (OBD2, CAN bus, standalone GPS). See [Tracker Connector](tracker-connector.md).
 - **Configure an MQTT connector** — connect PLCs, energy meters, building management systems, or any MQTT-capable hardware. Use External MQTT to connect your own broker, or Cloud MQTT to have the platform provision a broker endpoint for you. See [MQTT Connector](mqtt-connector.md).
 - **Configure the Mioty connector** — bind your organization to the MIOTY service center, get its BSSCI address, and unlock base station registration and MIOTY endpoint fields. See [MIOTY Connector](mioty-connector.md).
+- **Add the Emulator connector** — stand up devices that generate their own telemetry, so dashboards, rules and alarms can be built and proven before any hardware is on site. See [Emulator Connector](emulator-connector.md).
 - **Register devices** — add devices through any connector and configure their Digital Twin. See [Registering Devices](../devices/registering-devices.md).

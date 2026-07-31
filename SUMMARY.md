@@ -70,6 +70,7 @@
   * [Metric Templates](kilo-iot-server/devices/metric-templates.md)
   * [MIOTY Devices](kilo-iot-server/devices/mioty-devices.md)
   * [MIOTY Blueprints](kilo-iot-server/devices/mioty-blueprints.md)
+  * [Emulated Devices](kilo-iot-server/devices/emulated-devices.md)
   * [Device Commands](kilo-iot-server/devices/commands/README.md)
     * [Creating Commands](kilo-iot-server/devices/commands/creating-commands.md)
     * [Confirming Commands](kilo-iot-server/devices/commands/verification.md)

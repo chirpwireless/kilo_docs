@@ -53,22 +53,26 @@ Three things govern this, and they are what make it safe to hand an AI a buildin
 * **It always asks first.** Command execution has real physical effects, so every one goes behind an explicit confirmation.
 * **It checks the result.** Delivery is asynchronous, so after sending, the assistant reports the execution status rather than assuming success. The device also has to be online to receive the command.
 
+This applies to devices that can receive downlinks in the first place — MQTT devices, Class C LoRaWAN devices, and emulated devices with **Support commands** enabled. A Class A LoRaWAN sensor only opens a brief receive window after each uplink, so it is not available for on-demand control. See [Device Commands](../devices/commands/README.md).
+
 ## Set up a gateway
 
 Ask the assistant to add a gateway and it does the platform side for you — registering it and producing the connection details the hardware needs. It then tells you exactly what to enter on the gateway itself, since that last step happens in the gateway's own configuration rather than in Kilo.
 
 ## Drive the emulator
 
-The assistant knows the [Emulator connector](../connectors/emulator-connector.md) and can run the whole workflow in conversation: list the available device presets, provision an emulated device from a preset or from metrics you describe, read and change its configuration and reporting interval, and send a one-off reading to exercise a rule. It can also perform the swap from the emulator to a real connector when the hardware arrives.
+The assistant can run the whole [emulated device](../devices/emulated-devices.md) workflow in conversation: list the available device presets, provision a device from a preset or from metrics you describe, read and change its configuration and reporting interval, and send a one-off reading to exercise a rule. It can also perform the swap from the emulator to a real connector when the hardware arrives.
 
-> *"Create an emulated AM319 in Cold Room 3 and send a temperature of −20."*
+> *"Create an emulated air-quality sensor in Cold Room 3 and send a temperature of −20."*
 > A device that reports on its own, ready for the dashboards and rules you are about to build.
 
-## The control boundary
+## What it builds versus what it operates
 
-The assistant can operate devices, and the boundary is about *how*. It executes [Device Commands](../devices/commands/) that already exist on a device — named actions with typed parameters, defined deliberately by someone who knows the equipment — and it asks for confirmation before each one. It does not compose raw downlinks or invent new command types, so an AI can act on your infrastructure without improvising the part where a mistake is physical.
+The distinction worth holding onto is between the automations the assistant *writes* and the commands it *runs*.
 
-The **automations** it builds are a separate matter: the rules it authors for you monitor and alert. A rule that acts on its own uses the Rules Engine's own Execute Command node, which you add deliberately. And for one-tap manual operation there is still the device's **Commands & States** tab or a dashboard [Control widget](../dashboards/adding-widgets/control-widget.md).
+The **automations** it builds monitor and alert. A rule that acts on its own does so through the Rules Engine's own Execute Command node, which you add deliberately — the assistant does not make a rule actuate as a side effect of asking for one.
+
+And nothing here replaces the manual route: the device's **Commands & States** tab and a dashboard [Control widget](../dashboards/adding-widgets/control-widget.md) are still there for one-tap operation.
 
 ## Tips for delegating well
 

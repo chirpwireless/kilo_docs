@@ -22,17 +22,19 @@ The Device info tab contains the device's identity and visual reference:
 * **Device name** — Update the display name at any time. A consistent naming convention (e.g., including location or device type) helps when managing large fleets.
 * **Location** — A device's location is fully editable after it is first set: reassign it when hardware moves between sites, or remove it entirely when a device is pulled from service and awaiting redeployment. See [Locations](../settings/locations.md).
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/device-info-tab.png" alt="The Device info tab, showing the device name, description, photos and location fields"><figcaption></figcaption></figure>
 
 ## Connection tab
 
-The Connection tab manages the link between the Digital Twin and its physical device. The available fields depend on the connector type.<br>
+The Connection tab manages the link between the Digital Twin and the device that feeds it. The available fields depend on the connector type.
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/device-connection-tab.png" alt="The Connection tab of a device, showing the connector type and its identifier fields"><figcaption></figcaption></figure>
 
 ### Connector selection
 
-The **Connector type** dropdown shows available connectors in your organization. Changing the connector re-binds the device to a different data source. A link below the dropdown directs you to the [Connectors](../connectors/) section if you need to add a new connector.
+The **Connector type** dropdown shows available connectors in your organization. A link below the dropdown directs you to the [Connectors](../connectors/) section if you need to add a new connector.
+
+Changing the connector re-binds the device to a different data source, and is offered **only for pairs that involve the Emulator** — emulator to real, or real back to emulator. Swapping directly between two physical connector types is not offered, because the identifiers and payload mappings differ enough that the mapping has to be rebuilt anyway. See [Emulated Devices](emulated-devices.md#going-live-swapping-to-a-real-device).
 
 ### For LoRaWAN devices (LNS connector)
 
@@ -42,7 +44,7 @@ The **Connector type** dropdown shows available connectors in your organization.
   * **Template mode:** Select **Brand**, **Model**, and **Profile** from dropdowns that filter based on your selections.
   * **Manual mode:** Enter Brand, Model, and Band as free text, choose **Class A** (battery-powered, uplink-first, power-efficient) or **Class C** (continuous listening, can receive downlinks at any time, typically mains-powered), and enter the **AppKey**. For full details on Class A vs Class C, band options, and the template flow, see [Registering Devices](registering-devices.md). Setting a LoRaWAN device to **Class C** also unlocks its **Commands & States** tab, so you can send it downlink commands — see [Device Commands](commands/).
 * **Code functions** — The device's payload codec: JavaScript logic that decodes raw LoRaWAN uplink data into the named fields that appear as connector keys in the Metrics tab. When a device profile template is selected, this field is pre-filled with the template's codec. If the decoded output is missing fields or producing incorrect values, you can edit the code directly. Alternative codecs can often be found in the device manufacturer's documentation or community repositories. For the full codec explanation, see [Registering Devices](registering-devices.md).
-* **Data sending interval** — Where you tell the platform how often this device transmits. A device's transmission schedule is set on the device itself and varies by manufacturer — sometimes preconfigured at the factory, sometimes set during commissioning — so enter the schedule the device is actually configured for. Set a device that transmits once a day to **1 day**, one that transmits monthly to **1 month**. The field defaults to **1 hour**, but that is only a placeholder — the platform cannot read the device's real schedule. If no message arrives within the configured interval, the device is marked offline in the device list; entering the correct schedule keeps a healthy low-frequency device from being flagged. Choose a number and a unit (minute, hour, day, week, or month).
+* **Data sending interval** — Where you tell the platform how often this device transmits. A device's transmission schedule is set on the device itself and varies by manufacturer — sometimes preconfigured at the factory, sometimes set during commissioning — so enter the schedule the device is actually configured for. Set a device that transmits once a day to **1 day**, one that transmits monthly to **1 month**. The field defaults to **1 hour**, but that is only a placeholder — the platform cannot read the device's real schedule. If no message arrives within the configured interval, the device is marked offline in the device list; entering the correct schedule keeps a healthy low-frequency device from being flagged. Choose a number and a unit (minute, hour, day, week, or month). On an [emulated device](emulated-devices.md) this field works the other way round: it is the schedule the platform emits on.
 
 ### For vehicle trackers (Tracker connector)
 
@@ -54,7 +56,7 @@ The **Connector type** dropdown shows available connectors in your organization.
 
 The Metrics tab maps the device's raw sensor output to your normalized metric templates. This is where you control what data the device contributes to dashboards and automation rules.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/device-metrics-tab.png" alt="The Metrics tab of a device, mapping connector keys to metric templates"><figcaption></figcaption></figure>
 
 **Table columns:** Metrics template, Unit, Type, Data type, Connector key, Value, Last update, Actions.
 
@@ -73,7 +75,7 @@ Below the telemetry metrics table, a separate **User Metadata** section allows y
 
 ## Commands & States tab
 
-For devices that can receive downlinks — MQTT devices, and Class C LoRaWAN devices — a **Commands & States** tab appears. This is where you define the actions a device can perform and dispatch them on demand, turning the Digital Twin from a read-only record into a control surface. The full workflow has its own section: see [Device Commands](commands/).
+For devices that can receive downlinks — MQTT devices, Class C LoRaWAN devices, and emulated devices with **Support commands** enabled — a **Commands & States** tab appears. This is where you define the actions a device can perform and dispatch them on demand, turning the Digital Twin from a read-only record into a control surface. The full workflow has its own section: see [Device Commands](commands/).
 
 ## Logs tab
 
@@ -93,6 +95,12 @@ The Logs tab displays the raw event history received from the device, providing 
 The logs description notes: _"This tab displays the latest registered data (Telemetry, Metadata) received from the device, including its value, type, and processing status by the platform."_
 
 The Logs tab shows you the readings themselves. If the readings are missing and you need to know *why* — whether messages reached the platform at all, whether their keys matched your sensors, and whether the values were stored — read the reception status, pipeline, and event feed on the **Connection** tab. See [Device Diagnostics](device-diagnostics.md).
+
+## Copying a device
+
+Click the copy icon on a device row to create a new device pre-filled from that one. The copy carries the original's configuration — its metrics, their data types, its connection settings and, for an emulated device, its reporting interval and emulator specification. What it does not carry is identity: give the copy its own name and its own device identifier before saving.
+
+Building one device carefully and copying it is the fastest way to stand up a site where many devices report the same measurements — twenty cold rooms, a floor of meeting rooms, a row of tanks. It works particularly well with the Emulator, where you can model the whole site before any hardware exists. See [Emulated Devices](emulated-devices.md).
 
 ## Common management tasks
 

@@ -1,10 +1,10 @@
 ---
-description: Register a device via LNS, Tracker, or MQTT — build its Digital Twin, profile, and metric mappings.
+description: Register a device in Kilo IoT via LNS, MIOTY, Tracker, MQTT or the Emulator — build its Digital Twin, profile, and metric mappings.
 ---
 
 # Registering Devices
 
-Every physical device registered on the Kilo IoT Server becomes a Digital Twin — a complete digital representation that mirrors the device's current state, configuration, telemetry history, and behavioral patterns. The Digital Twin persists even when the physical device is offline, giving you a continuous operational view of your entire deployment. Because the physical device binding is optional, you can create and fully configure a device profile before the physical hardware is connected — so setup and hardware commissioning don't have to happen at the same time.
+Every device registered on the Kilo IoT Server becomes a Digital Twin — a complete digital representation that mirrors the device's current state, configuration, telemetry history, and behavioral patterns. The Digital Twin persists even when the physical device is offline, giving you a continuous operational view of your entire deployment. Because the physical device binding is optional, you can create and fully configure a device profile before the hardware is connected — so setup and hardware commissioning don't have to happen at the same time. With the [Emulator](emulated-devices.md), you can go further and have the device produce data before the hardware exists at all.
 
 Device registration is the process of creating this Digital Twin and linking it to a physical device through a connector. The registration flow guides you through naming the device, binding it to a connector, configuring its communication profile, and mapping the measurements it reports.
 
@@ -12,8 +12,8 @@ Device registration is the process of creating this Digital Twin and linking it 
 
 Before registering a device, you need:
 
-- **A connector** — at least one LNS, Tracker, or MQTT connector (Cloud or External) must be set up. See [Connectors](../connectors/) and the [MQTT Connector](../connectors/mqtt-connector.md) documentation.
-- **Device identifiers** — for LoRaWAN devices: the Device EUI and AppKey (typically printed on the device or its packaging). For tracker devices: the Unique ID provided by the manufacturer. For MQTT devices: the device-level topic segment the device publishes under, used as the Device ID on the device record; it must match the published segment byte-for-byte (whitespace is stripped on input).
+- **A connector** — at least one LNS, Mioty, Tracker, MQTT (Cloud or External) or Emulator connector must be set up. See [Connectors](../connectors/) and the [MQTT Connector](../connectors/mqtt-connector.md) documentation.
+- **Device identifiers** — for LoRaWAN devices: the Device EUI and AppKey (typically printed on the device or its packaging). For MIOTY endpoints: the End Point EUI and Network Session Key. For tracker devices: the Unique ID provided by the manufacturer. For MQTT devices: the device-level topic segment the device publishes under, used as the Device ID on the device record; it must match the published segment byte-for-byte (whitespace is stripped on input). **Emulated devices need none of this** — you choose the Device ID yourself.
 - **For MQTT devices only — the device must be publishing before mapping can be completed.** The Connector key dropdown in the Mapping tab populates from payload keys actually received from the device. See the [MQTT-specific behavior section](#mqtt-specific-behavior) below for the two-pass workflow.
 
 ## Where to start
@@ -37,11 +37,11 @@ Click **Save**. The Digital Twin is created with just the name and optional phot
 
 ## Phase 2 — Configure connection, metrics, and logs
 
-After the first save, the dialog reopens with four tabs — **Device info**, **Connection**, **Metrics**, and **Logs** — and a **Next** button for navigating between them. This is where you bind the device to a physical connector and configure its data.
+After the first save, the dialog reopens with **Device info**, **Connection**, **Metrics** and **Logs** tabs, and a **Next** button for navigating between them. This is where you bind the device to a connector and configure its data. Two more tabs appear when they apply: **Commands & States** on a device that can receive downlinks, and **Emulator** on a device bound to the Emulator connector.
 
 ### Connection tab
 
-This tab binds the Digital Twin to a physical device through a connector. The fields change based on the connector type.
+This tab binds the Digital Twin to the device that feeds it through a connector. The fields change based on the connector type.
 
 #### For LoRaWAN devices (LNS connector)
 
@@ -96,12 +96,24 @@ If no message arrives within the configured interval, the device is marked offli
 
 Choose a number and a unit: **minute**, **hour**, **day**, **week**, or **month**.
 
+> **Emulated devices are the exception.** On a device bound to the Emulator connector, this field is not a description of a schedule the hardware already keeps — it *is* the schedule the platform emits on. See [Emulated Devices](emulated-devices.md).
+
 #### For vehicle trackers (Tracker connector)
 
 1. **Connector type** — Select the Tracker connector from the dropdown.
 2. **Unique ID** — Enter the tracker's unique device identifier.
 3. **Device model** — Search and select from the tracker model library. Start typing to filter the list.
 4. **Url for GPS tracker** — After selecting a model, a panel appears showing the endpoint URL. Click the copy button to copy it, then configure your tracker to send data to this URL.
+
+#### For MIOTY endpoints (Mioty connector)
+
+Select the Mioty connector from the dropdown and the form presents the MIOTY parameter set — End Point EUI, short address, network session key and counters. These fields, their valid ranges and the blueprint that decodes the endpoint's payloads are documented in full on [MIOTY Devices](mioty-devices.md).
+
+#### For emulated devices (Emulator connector)
+
+Select the Emulator connector and the device generates its own telemetry instead of receiving it — no identifiers, no credentials, no hardware. You give it a Device ID, choose what it measures (by hand or from a device preset), and set how often it reports. An extra **Emulator** tab then lets you drive its values directly.
+
+This is how you build a deployment before the sensors arrive, and swap the same device onto real hardware when they do. See [Emulated Devices](emulated-devices.md).
 
 ### Metrics tab
 
@@ -162,3 +174,5 @@ If the device is registered but no data is arriving, open its **Connection** tab
 - **Configure metric templates** before or after registration to control how raw data is normalized. See [Metric Templates](metric-templates.md).
 - **Edit device properties** at any time through the same dialog. See [Device Management](device-management.md).
 - **Diagnose a silent device** from its Connection tab. See [Device Diagnostics](device-diagnostics.md).
+- **Register a MIOTY endpoint** and its protocol-specific fields. See [MIOTY Devices](mioty-devices.md).
+- **Start without hardware** and swap to the real device when it arrives. See [Emulated Devices](emulated-devices.md).

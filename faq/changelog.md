@@ -41,7 +41,7 @@ Then the part that makes it more than a demo. When the hardware arrives, change 
 
 ***
 
-**Physical AI, shipped: run your devices from ChatGPT or Claude**
+**AI runs device commands**
 
 This is the big one. Everyone has seen the demo where a lamp is wired to a language model and switched on — a good trick, and not a system. There is no device model behind it, no permissions, no typed parameters, no delivery status, no record of what happened. Ask a model to do that across a building, a plant or a fleet and it has to improvise radio protocols, payloads and access policy on every single call. That is why those demos never leave the desk.
 
@@ -49,11 +49,31 @@ This is the big one. Everyone has seen the demo where a lamp is wired to a langu
 
 What makes that safe is what it refuses to do. It executes **commands that already exist** on the device — named actions with typed parameters that someone who knows the equipment defined deliberately — rather than composing a raw downlink. Every execution goes behind an explicit confirmation, because the effect is physical. Delivery is asynchronous, so it reports the status afterwards instead of assuming success. And every dispatch lands in command execution history like any other.
 
-The assistant also learned the Emulator: it can list presets, provision an emulated device, read and update its configuration, send a one-off reading, and perform the swap to a real connector. Setting up a test deployment is now a conversation.
-
 <figure><img src="../.gitbook/assets/ai-chat-device-commands.jpg" alt="The Kilo assistant listing what it can do with device commands and its confirmation rule"><figcaption></figcaption></figure>
 
-[→ Physical AI Platform](../kilo-iot-server/physical-ai.md) · [→ MCP Server](../kilo-iot-server/api/mcp-server.md) · [→ Building with AI](../kilo-iot-server/ai-assistant/building-with-ai.md)
+[→ Physical AI Platform](../kilo-iot-server/physical-ai.md) · [→ Building with AI](../kilo-iot-server/ai-assistant/building-with-ai.md)
+
+***
+
+**Control your devices from ChatGPT or Claude**
+
+It is not only the assistant inside Kilo. Connect the AI client your team already works in — **ChatGPT**, **Claude**, Cursor, Codex, anything that speaks MCP — sign in with your usual Kilo account, and it gets the same device control through `device_command_list`, `device_command_execute` and `device_command_status`.
+
+The guarantees travel with it: existing command definitions only, a confirmation before anything physical happens, the delivery status reported afterwards, and every dispatch in command execution history. What changes is where you are standing when you ask.
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg" alt="Kilo IoT Server 3.8.0 — device control from any MCP client"><figcaption></figcaption></figure>
+
+[→ MCP Server](../kilo-iot-server/api/mcp-server.md)
+
+***
+
+**AI drives the emulator**
+
+The assistant also learned the Emulator. It can list the available device presets, provision an emulated device, read and update its configuration and interval, send a one-off reading to exercise a rule, and perform the swap to a real connector when the hardware lands. Standing up a test deployment is now a conversation rather than an afternoon.
+
+<figure><img src="../.gitbook/assets/emulator-manual-value.jpg" alt="Sending a one-off reading from an emulated device's Emulator tab"><figcaption></figcaption></figure>
+
+[→ Emulated Devices](../kilo-iot-server/devices/emulated-devices.md)
 
 ***
 
@@ -85,11 +105,13 @@ The Audit Trail page had broken components. It is fixed: the actor filter, the e
 
 <figure><img src="../.gitbook/assets/audit-trail.jpg" alt="The repaired Audit Trail page with its actor, event type and date range filters"><figcaption></figcaption></figure>
 
+[→ Audit Trail](../kilo-iot-server/reports/audit-trail.md)
+
 ***
 
 **Fixes and polish**
 
-The Audit Trail page had broken components; they are repaired. Subscription now reports the current plan period correctly, and a CORS error affecting the interface is resolved. Adding a widget no longer disturbs the placement of the widgets already on a dashboard. Long MQTT topics no longer overflow their container on mobile, the threshold **Label** field is wide enough to read what you typed, the device mapping tooltip says what it means, and the allowed range for a MIOTY **Short Address** is described consistently. Type validation and a set of access-control hardening fixes round out the release.
+Subscription now reports the current plan period correctly, and a CORS error affecting the interface is resolved. Adding a widget no longer disturbs the placement of the widgets already on a dashboard. Long MQTT topics no longer overflow their container on mobile, the threshold **Label** field is wide enough to read what you typed, the device mapping tooltip says what it means, and the allowed range for a MIOTY **Short Address** is described consistently. Type validation and a set of access-control hardening fixes round out the release.
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg" alt="Kilo IoT Server 3.8.0"><figcaption></figcaption></figure>
 

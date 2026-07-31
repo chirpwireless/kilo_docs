@@ -28,7 +28,7 @@ Ask it what your devices are doing and it answers from your real telemetry. Ask 
 
 ## Monitoring, automation, and control
 
-The assistant works through the platform the same way you would: it answers from your data, builds **monitoring and automation**, and now **operates equipment directly**. Ask what a device can do and it lists the commands configured on it; ask it to run one and it executes it, then reports whether it was delivered. Because the effect is physical, every execution goes behind an explicit confirmation, and it runs command definitions that already exist on the device rather than composing a raw downlink.
+The assistant works through the platform the same way you would: it answers from your data, builds **monitoring and automation**, and now **operates equipment directly** — running a device's existing commands behind a confirmation and reporting whether they were delivered. [Building with AI](building-with-ai.md) covers how that works and where its limits are.
 
 Automations can act too: a rule can run a device command when its conditions are met (see [Running Device Commands](../rules-engine/running-device-commands.md)), so the logic it sets up can both notify the right people and act on a device. For hands-on control you still have the device's **Commands & States** tab and the dashboard [Control widget](../dashboards/adding-widgets/control-widget.md).
 
