@@ -10,14 +10,15 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg" alt="Kilo IoT Server 3.8.0 release banner"><figcaption></figcaption></figure>
 
-3.8.0 removes the two things that used to stand between an idea and a working deployment: hardware, and hands. The **Emulator** lets you build an entire site — dashboards, rules, escalating alarms — with no devices at all, and then hand those same devices over to real sensors when they arrive. And the **AI assistant can now operate your equipment**: it lists the commands configured on a device, runs one after asking you to confirm, and checks that it was delivered. Connect your own AI client over MCP and it can do the same. Alongside that, the platform now tells you what changed in a **What's New** panel, and MIOTY reaches a wider set of base stations with **BSSCI 1.1** support. [kiloiot.io](https://kiloiot.io)
+3.8.0 is the release where the platform stops waiting — for hardware, and for you. The **Emulator** lets you build an entire site — dashboards, rules, escalating alarms — with no devices at all, and then hand those same devices over to real sensors when they arrive. And the **AI assistant can now operate your equipment**: it lists the commands configured on a device, runs one after asking you to confirm, and checks that it was delivered. Connect your own AI client over MCP and it can do the same. Alongside that, the platform now tells you what changed in a **What's New** panel, and MIOTY reaches a wider set of base stations with **BSSCI 1.1** support. [kiloiot.io](https://kiloiot.io)
 
 ***
 
 #### What's in This Release
 
 * **Emulator connector** — Build and test a deployment before any hardware exists: devices that generate their own telemetry from real device presets, with manual values and send-once, then swap to a real connector on go-live day.
-* **AI runs device commands** — The assistant lists a device's commands, executes one behind a confirmation, and reports whether it was delivered. Your own AI client can do it too, over MCP.
+* **Your AI now runs the equipment** — Ask the assistant what a device can do, tell it to do one, and it executes the command and confirms delivery. The platform stopped being something you only ask questions about.
+* **Control your devices from ChatGPT or Claude** — Connect any MCP client — ChatGPT, Claude, Cursor, Codex — and it can run commands on your hardware the same way, inside your own permissions. An LLM with hands on real infrastructure.
 * **AI drives the emulator** — Provision an emulated device, change its configuration, send a reading, and swap it to real hardware, all in conversation.
 * **What's New in the product** — A panel that tells you what shipped, generated from this changelog so it can never drift from the documentation.
 * **MIOTY BSSCI 1.1** — Protocol version negotiation brings newer base stations onto the same service center, and station identifiers are accepted across the full unsigned 64-bit EUI range.
@@ -40,11 +41,11 @@ Then the part that makes it more than a demo. When the hardware arrives, change 
 
 ***
 
-**AI that operates the equipment, not just the software**
+**Physical AI, shipped: run your devices from ChatGPT or Claude**
 
-Everyone has seen the demo where a lamp is wired to a language model and switched on. It is a good trick, and it is not a system: there is no device model behind it, no permissions, no typed parameters, no delivery status, no record of what happened. Ask a model to do that across a building, a plant or a fleet and it has to improvise radio protocols, payloads and access policy on every single call.
+This is the big one. Everyone has seen the demo where a lamp is wired to a language model and switched on — a good trick, and not a system. There is no device model behind it, no permissions, no typed parameters, no delivery status, no record of what happened. Ask a model to do that across a building, a plant or a fleet and it has to improvise radio protocols, payloads and access policy on every single call. That is why those demos never leave the desk.
 
-3.8.0 puts the IoT server behind the model. The assistant can now **list the commands configured on a device, execute one, and check the execution status** — and so can any AI client you connect over MCP, through `device_command_list`, `device_command_execute` and `device_command_status`. Change a reporting interval, switch a relay, adjust a device configuration, in the client you already have open.
+3.8.0 puts a real IoT server behind the model — and opens it to the AI client you already use. The built-in assistant can **list the commands configured on a device, execute one, and check the execution status**. So can **ChatGPT**. So can **Claude**. So can Cursor, Codex, or anything else that speaks MCP, through `device_command_list`, `device_command_execute` and `device_command_status`. Change a reporting interval, switch a relay, adjust a controller — from the window you already have open, against real hardware.
 
 What makes that safe is what it refuses to do. It executes **commands that already exist** on the device — named actions with typed parameters that someone who knows the equipment defined deliberately — rather than composing a raw downlink. Every execution goes behind an explicit confirmation, because the effect is physical. Delivery is asynchronous, so it reports the status afterwards instead of assuming success. And every dispatch lands in command execution history like any other.
 
