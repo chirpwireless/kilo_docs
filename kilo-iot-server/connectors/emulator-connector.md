@@ -39,11 +39,11 @@ Add a device the way you always do, then open its **Connection** tab and choose 
 
 ### Starting from a device preset
 
-Ticking **Use device preset** lets you pick a real sensor model — Milesight AM319, UC300, WS301, WS303, WT201 and others — and the platform fills in that model's actual measurements for you.
+Ticking **Use device preset** opens a list of real sensor models. Pick the one you have — or the one you have on order — and the platform fills in that model's actual measurements for you.
 
-Choosing the AM319, for example, produces `temperature`, `humidity`, `co2`, `tvoc`, `pm2_5` and `pm10`, each with the right data type, and sets a sensible reporting interval. It is the fastest way to get a realistic device, and it means the metric names you build dashboards against are the ones the real sensor will send.
+A multi-sensor preset, for instance, fills in its full set of readings — temperature, humidity, air quality and the rest — each with the right data type, and sets a sensible reporting interval. It is the fastest way to get a realistic device, and it means the metric names you build dashboards against are the ones the real sensor will send.
 
-<figure><img src="../../.gitbook/assets/emulator-device-metrics.jpg" alt="An emulated device configured from the Milesight AM319 preset, showing six metrics with their data types"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/emulator-device-metrics.jpg" alt="An emulated device configured from a device preset, showing its metrics with their data types"><figcaption></figcaption></figure>
 
 > **A preset replaces what is already there.** Selecting one overwrites metrics you typed by hand and resets the interval to the preset's own. Pick the preset first, then adjust.
 
