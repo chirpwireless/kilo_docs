@@ -59,6 +59,12 @@ ChatGPT, Codex, Cursor, and other MCP-capable clients follow one of the same two
 
 Either way the authorization is the same: the client opens your browser, you sign in with your usual Kilo account, and the connection carries your permissions. Consult your client's own documentation for where it keeps MCP servers; nothing about this endpoint is client-specific.
 
+## What a connected session looks like
+
+<figure><img src="../../.gitbook/assets/mcp-claude-session.jpg" alt="A Claude Code session connected to Kilo over MCP, calling the connection_list tool and asking permission before continuing"><figcaption>An authenticated Claude Code session working a live deployment: asked to configure a LoRaWAN sensor, it recommends provisioning through the platform, calls a Kilo tool, and stops for permission before continuing</figcaption></figure>
+
+Two things in that exchange are worth pointing out. The client reasons about **your** deployment rather than IoT in general, because it can read the connections and devices that are actually there. And the approval prompt is the client's — Kilo annotates destructive tools and says so in the tool description, and a compatible client turns that into the prompt you see. See [Security and permissions](#security-and-permissions) below for what Kilo enforces regardless of which client you use.
+
 ## Choosing the organization
 
 `https://mcp-auth.kiloiot.io/mcp` works against the organization **currently selected in the Kilo web app**. This is the right default for most people: whatever you are working on in the platform is what your client sees.

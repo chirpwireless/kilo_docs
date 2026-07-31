@@ -40,10 +40,22 @@ Conversations and data queries are strictly scoped to your current organization.
 1. Your question is sent to the assistant backend, authenticated with your active session.
 2. A language model interprets the intent of your question.
 3. The assistant queries only the data sources your permissions authorize.
-4. Results are analyzed and a natural-language response is composed.
+4. The results of those queries are returned to the model, which composes a natural-language response from them.
 5. The response is streamed back to your browser in real time.
 
-Only the question text is sent to the language model for interpretation. Your device telemetry stays within the Kilo IoT infrastructure and is not transmitted to external services for processing.
+## Which data reaches the model
+
+The assistant is **agentic**: it answers by calling tools against the platform and reading the results. That means the telemetry, device state, rules, and alarms it retrieves for your question **become part of the model's context** — that is how it can tell you which cold store drifted overnight rather than only describing how to find out.
+
+Where that data goes depends on the model provider you choose:
+
+- **The included allowance** — requests are served through Kilo's configured model provider.
+- **Your own model key** (OpenAI, Anthropic, or any OpenAI-compatible provider) — data goes to that provider under your own agreement with them.
+- **A self-hosted model** (for example Ollama) — the data never leaves your own infrastructure.
+
+Two limits hold in every case: the assistant reads **only what your permissions already allow**, and it stays inside your current organization. Raw telemetry is not duplicated or retained by the assistant beyond the scope of your query.
+
+The same applies to the [MCP server](../api/mcp-server.md): when you connect your own AI client, the data it retrieves reaches whichever model that client runs. You choose the client and the model.
 
 ## Best practices
 
