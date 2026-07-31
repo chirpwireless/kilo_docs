@@ -6,6 +6,78 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <details>
 
+<summary>Scale Log. Release 3.8.0</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg" alt="Kilo IoT Server 3.8.0 release banner"><figcaption></figcaption></figure>
+
+3.8.0 removes the two things that used to stand between an idea and a working deployment: hardware, and hands. The **Emulator** lets you build an entire site — dashboards, rules, escalating alarms — with no devices at all, and then hand those same devices over to real sensors when they arrive. And the **AI assistant can now operate your equipment**: it lists the commands configured on a device, runs one after asking you to confirm, and checks that it was delivered. Connect your own AI client over MCP and it can do the same. Alongside that, the platform now tells you what changed in a **What's New** panel, and MIOTY reaches a wider set of base stations with **BSSCI 1.1** support. [kiloiot.io](https://kiloiot.io)
+
+***
+
+#### What's in This Release
+
+* **Emulator connector** — Build and test a deployment before any hardware exists: devices that generate their own telemetry from real device presets, with manual values and send-once, then swap to a real connector on go-live day.
+* **AI runs device commands** — The assistant lists a device's commands, executes one behind a confirmation, and reports whether it was delivered. Your own AI client can do it too, over MCP.
+* **AI drives the emulator** — Provision an emulated device, change its configuration, send a reading, and swap it to real hardware, all in conversation.
+* **What's New in the product** — A panel that tells you what shipped, generated from this changelog so it can never drift from the documentation.
+* **MIOTY BSSCI 1.1** — Protocol version negotiation brings newer base stations onto the same service center, and station identifiers are accepted across the full unsigned 64-bit EUI range.
+* **Audit Trail repaired** — The broken components on the Audit Trail page are fixed.
+* **Fixes and polish** — Subscription plan period, a CORS fix, MIOTY reliability, dashboard widget placement, and interface fixes across devices and thresholds.
+
+***
+
+**The Emulator — a deployment you can build before the sensors land**
+
+Sensor lead times are measured in weeks. Until now the configuration work waited for them: you could not see a dashboard update, watch a rule fire, or test whether an escalation chain actually reaches somebody, because there was nothing sending data. The Emulator removes that dependency entirely. Add the connector — it has no settings, nothing to configure — create a device on it, and that device starts producing telemetry on the interval you choose.
+
+The metrics come from **real device presets**. Pick a Milesight AM319 and you get `temperature`, `humidity`, `co2`, `tvoc`, `pm2_5` and `pm10` with the correct data types, which means the metric names you build dashboards and rules against are the ones the physical sensor will send. Or define the keys by hand. On the device's Emulator tab you can pin a value so the device holds it — a freezer parked at −18 °C while you watch an alarm escalate — or **send once** to trip a threshold on demand. Turn on **Support commands** and the device behaves like controllable hardware, so you can rehearse a closed loop before the equipment exists.
+
+Then the part that makes it more than a demo. When the hardware arrives, change the device's connector from Emulator to the real one. **Everything you built stays** — the dashboards, the rules, the thresholds, the escalation chains. You are replacing the source of the data, not rebuilding the deployment. The swap works in both directions, so you can also move a real device onto the emulator to reproduce a problem and then move it back.
+
+[→ Emulator Connector](../kilo-iot-server/connectors/emulator-connector.md)
+
+***
+
+**AI that operates the equipment, not just the software**
+
+Everyone has seen the demo where a lamp is wired to a language model and switched on. It is a good trick, and it is not a system: there is no device model behind it, no permissions, no typed parameters, no delivery status, no record of what happened. Ask a model to do that across a building, a plant or a fleet and it has to improvise radio protocols, payloads and access policy on every single call.
+
+3.8.0 puts the IoT server behind the model. The assistant can now **list the commands configured on a device, execute one, and check the execution status** — and so can any AI client you connect over MCP, through `device_command_list`, `device_command_execute` and `device_command_status`. Change a reporting interval, switch a relay, adjust a device configuration, in the client you already have open.
+
+What makes that safe is what it refuses to do. It executes **commands that already exist** on the device — named actions with typed parameters that someone who knows the equipment defined deliberately — rather than composing a raw downlink. Every execution goes behind an explicit confirmation, because the effect is physical. Delivery is asynchronous, so it reports the status afterwards instead of assuming success. And every dispatch lands in command execution history like any other.
+
+The assistant also learned the Emulator: it can list presets, provision an emulated device, read and update its configuration, send a one-off reading, and perform the swap to a real connector. Setting up a test deployment is now a conversation.
+
+[→ Physical AI Platform](../kilo-iot-server/physical-ai.md) · [→ MCP Server](../kilo-iot-server/api/mcp-server.md) · [→ Building with AI](../kilo-iot-server/ai-assistant/building-with-ai.md)
+
+***
+
+**What's New, inside the product**
+
+Releases are no use if nobody notices them. The platform now shows a **What's New** panel that walks through what shipped, so a change reaches the people using the product rather than sitting in a changelog they never open.
+
+It is generated from this page. The changelog is the source, a pipeline turns it into the release feed the product reads, and the panel shows the same words you are reading now — so the product and the documentation cannot drift apart.
+
+***
+
+**MIOTY reaches more base stations**
+
+MIOTY arrived in 3.7.0. This release is the first hardening pass on real deployments. The service center now negotiates the **BSSCI protocol version** as each station connects and supports **BSSCI 1.1** alongside earlier revisions, so a newer station and an older one can serve the same site and a firmware upgrade does not cost you the connection. Station identifiers are accepted across the **full unsigned 64-bit EUI range**, including high values that some platforms reject outright.
+
+Underneath, session resume, certificate issuance and downlink dispatch were tightened, and duplicate-station and page errors were fixed along with the ability to unbind a physical MIOTY endpoint from its digital device.
+
+[→ MIOTY Base Stations](../kilo-iot-server/gateways/mioty-base-stations/README.md)
+
+***
+
+**Fixes and polish**
+
+The Audit Trail page had broken components; they are repaired. Subscription now reports the current plan period correctly, and a CORS error affecting the interface is resolved. Adding a widget no longer disturbs the placement of the widgets already on a dashboard. Long MQTT topics no longer overflow their container on mobile, the threshold **Label** field is wide enough to read what you typed, the device mapping tooltip says what it means, and the allowed range for a MIOTY **Short Address** is described consistently. Type validation and a set of access-control hardening fixes round out the release.
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 3.7.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.7.0.jpg" alt="Kilo IoT Server 3.7.0 release banner"><figcaption></figcaption></figure>

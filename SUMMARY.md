@@ -62,6 +62,7 @@
     * [External MQTT](kilo-iot-server/connectors/mqtt/external-mqtt.md)
     * [Topics and Device Routing](kilo-iot-server/connectors/mqtt/topics-and-device-routing.md)
     * [Troubleshooting](kilo-iot-server/connectors/mqtt/troubleshooting.md)
+  * [Emulator Connector](kilo-iot-server/connectors/emulator-connector.md)
 * [Devices](kilo-iot-server/devices/README.md)
   * [Registering Devices](kilo-iot-server/devices/registering-devices.md)
   * [Device Management](kilo-iot-server/devices/device-management.md)

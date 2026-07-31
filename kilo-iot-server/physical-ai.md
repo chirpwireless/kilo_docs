@@ -42,6 +42,10 @@ Kilo is model-agnostic. Teams can use OpenAI, Anthropic, a compatible model endp
 
 The [Kilo MCP Server](api/mcp-server.md) lets a compatible AI client sign in with a Kilo account and discover the tools available to that user. The connection is scoped to the selected organization and inherits the user's permissions.
 
+That toolset now includes device control. A connected client can list the commands configured on a device, execute one, and check whether it was delivered — `device_command_list`, `device_command_execute`, `device_command_status` — so an external model can complete the **Act** and **Verify** steps above without leaving the conversation. Execution runs behind a confirmation, uses command definitions that already exist on the device, and lands in command execution history like any other dispatch.
+
+<figure><img src=".gitbook/assets/ai-chat-device-commands.jpg" alt="The Kilo AI assistant explaining that it can list, execute and check the status of device commands"><figcaption></figcaption></figure>
+
 Use MCP when a person wants ChatGPT, Claude, Codex, Cursor, or another compatible client to work with a live Kilo deployment. The precise actions available depend on the tools exposed by the server and the signed-in user's access.
 
 ### Use the built-in AI Assistant
