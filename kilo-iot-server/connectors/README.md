@@ -1,5 +1,5 @@
 ---
-description: Connect device protocols to Kilo IoT — LNS (LoRaWAN), Tracker (OBD2/CAN/GPS), MQTT, and Mioty in one pipeline.
+description: Connect device protocols to Kilo IoT — LNS (LoRaWAN), Tracker (OBD2/CAN/GPS), MQTT, Mioty, and the Emulator in one pipeline.
 ---
 
 # Connectors
@@ -18,6 +18,7 @@ Kilo IoT Server supports the following connector types:
 | **Tracker** | OBD2 / CAN bus / GPS | GA | Vehicle trackers — OBD2, CAN bus, and standalone GPS vehicle tracking devices. Includes preconfigured templates for over 2,000 vehicle tracker models. |
 | **MQTT** | MQTT | GA | Direct MQTT device connections. Two variants: **External MQTT** connects to your own broker (up to 10 per organization); **Cloud MQTT** uses a platform-provisioned broker with dedicated credentials per connector (unlimited). |
 | **Mioty** | MIOTY | GA | The MIOTY service center binding for your organization. Provisions a BSSCI address that your MIOTY base stations connect to, and unlocks the MIOTY endpoint fields on the device form. |
+| **Emulator** | — (generated data) | GA | Devices that generate their own telemetry, so you can build and test a deployment before any hardware arrives — then swap the device to a real connector when it does. |
 
 Each organization can have **one LNS connector** and **one Tracker connector**. MQTT connectors come in two variants with different limits: External MQTT — up to 10 per organization; Cloud MQTT — unlimited.
 

@@ -22,7 +22,7 @@ You authorize the connection in your browser with your usual Kilo account. There
 
 Without MCP, putting an assistant to work against a live deployment means writing an integration first: a key, a client library, a script per question. That is fine for a scheduled job and heavy for an incident at 2 a.m.
 
-With the MCP server connected, the client you already use becomes an operator's console over your deployment. An operations engineer can ask which devices in a site have stopped reporting and review the alarms around a failure window in one conversation, against live data. An integrator building a rollout can have it provision a batch of devices against the right connector instead of clicking through the same dialog fifty times. A team lead can ask for open alarm statistics before a shift handover.
+With the MCP server connected, the client you already use becomes an operator's console over your deployment — and it can act, not only read. An operations engineer can ask which devices in a site have stopped reporting and review the alarms around a failure window in one conversation, against live data. An integrator building a rollout can have it provision a batch of devices against the right connector instead of clicking through the same dialog fifty times. A team lead can ask for open alarm statistics before a shift handover. And because the toolset includes device commands, the same conversation can change a reporting interval or switch a relay — using command definitions that already exist on the device, behind a confirmation, with the dispatch recorded.
 
 Because the connection carries your own account, the assistant is not an extra identity to govern. It can do what you can do, in the organization you are working in, and nothing else.
 
@@ -82,6 +82,8 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 | Area | What the connected client can do |
 |---|---|
 | **Devices** | List devices in the organization, provision LoRaWAN devices and trackers, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
+| **Commands** | List the commands configured on a device, execute one behind a confirmation, and check whether it was delivered. `device_command_list`, `device_command_execute`, `device_command_status` |
+| **Emulator** | Browse device presets, provision an emulated device, read and update its configuration and interval, send a one-off reading, and swap a device between the emulator and a real connector. `emulator_preset_list`, `emulator_preset_get`, `device_provision_emulator`, `emulator_config_get`, `emulator_config_update`, `emulator_send_once`, `device_connection_swap` |
 | **Connectors** | Review the connectors defined in the organization and create a connection for a device to report through. `connector_list`, `connection_create` |
 | **Rules** | Review rules, prepare and deploy automation behind confirmation, simulate logic before it reaches production, and inspect execution history. `rule_list`, `rule_provision`, `rule_simulate`, `rule_execution_history` |
 | **Alarms** | List alarms, summarize alarm activity for a shift or a site, and send a test notification to verify a channel. `alarm_list`, `alarm_stats`, `notification_test` |

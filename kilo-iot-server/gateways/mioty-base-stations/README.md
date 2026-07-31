@@ -18,6 +18,14 @@ A MIOTY base station is an addressed peer. It holds a persistent, mutually authe
 - **The station has an identity that must be unique.** Every station is registered under a **BS EUI** — exactly 16 hexadecimal characters, from the hardware label. A duplicate BS EUI within your organization is rejected.
 - **The station needs an address that belongs to you.** That address is the **BSSCI address**, provisioned when you add the [Mioty connector](../../connectors/mioty-connector.md). Without the connector, the **Mioty Base Stations** tab does not appear on the Gateways page.
 
+<figure><img src="../../../.gitbook/assets/mioty-base-stations-list.jpg" alt="The Mioty Base Stations tab listing a station with its EUI, status and BSSCI address"><figcaption></figcaption></figure>
+
+## Which base stations connect
+
+The service center negotiates the **BSSCI protocol version** with each station as it connects, and supports **BSSCI 1.1** alongside earlier revisions. In practice that means you are not restricted to one vendor's firmware generation: a 1.1 station and an older one can serve the same site, and a firmware upgrade does not cost you the connection.
+
+Station identifiers are accepted across the **full unsigned 64-bit EUI range**, including values above the signed-integer limit that some platforms reject. If your hardware ships with a high EUI, it registers normally.
+
 ## Where base stations live
 
 Open **Gateways** in the sidebar. Once a Mioty connector exists, the page carries two tabs:
