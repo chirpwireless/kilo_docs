@@ -69,7 +69,7 @@ The guarantees travel with it: existing command definitions only, a confirmation
 
 **AI drives the emulator**
 
-The assistant also learned the Emulator. It can list the available device presets, provision an emulated device, read and update its configuration and interval, send a one-off reading to exercise a rule, and perform the swap to a real connector when the hardware lands. Standing up a test deployment is now a conversation rather than an afternoon.
+The assistant also learned the Emulator. It can list the available device presets, provision an emulated device, read and update its configuration and interval, send a one-off reading to exercise a rule, and take the device live onto a real LoRaWAN connection when the hardware lands. Standing up a test deployment is now a conversation rather than an afternoon.
 
 <figure><img src="../.gitbook/assets/emulator-manual-value.jpg" alt="Sending a one-off reading from an emulated device's Emulator tab"><figcaption></figcaption></figure>
 

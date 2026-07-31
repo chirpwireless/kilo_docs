@@ -98,9 +98,14 @@ The Logs tab shows you the readings themselves. If the readings are missing and 
 
 ## Copying a device
 
-Click the copy icon on a device row to create a new device pre-filled from that one. The copy carries the original's configuration — its metrics, their data types, its connection settings and, for an emulated device, its reporting interval and emulator specification. What it does not carry is identity: give the copy its own name and its own device identifier before saving.
+Click the copy icon on a device row to create a new device pre-filled from that one. The form arrives carrying the original's **name**, its **metric-template rows**, its **connection selection and settings**, and its **images**. Identity is deliberately not carried: give the copy its own name and its own device identifier before saving.
 
-Building one device carefully and copying it is the fastest way to stand up a site where many devices report the same measurements — twenty cold rooms, a floor of meeting rooms, a row of tanks. It works particularly well with the Emulator, where you can model the whole site before any hardware exists. See [Emulated Devices](emulated-devices.md).
+Two things need doing by hand afterwards, and it is worth knowing before you start:
+
+- **Sensor mappings are not saved with the copy.** They appear pre-filled in the form, but the new device is created without them — recreate the mappings on the copy once it exists.
+- **An emulated device's emulator specification is not carried at all.** Its generated signals, reporting interval, command support and preset-derived commands must be configured again, or the copy will emit no readings. See [Emulated Devices](emulated-devices.md#copying-an-emulated-device).
+
+Copying is still the quickest route to a device that resembles an existing one — just treat it as a starting point rather than a finished duplicate.
 
 ## Common management tasks
 

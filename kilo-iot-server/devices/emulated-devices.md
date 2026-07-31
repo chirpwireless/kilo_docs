@@ -21,7 +21,7 @@ On the device form, open the **Connection** tab and choose the Emulator connecto
 
 | Field | What it does |
 |---|---|
-| **Device ID** | The identifier this emulated device reports under. Any value you like — something readable such as `cold-room-01` helps later. |
+| **Device ID** | The identifier this emulated device reports under. 1–64 characters, using letters, digits, spaces, `.`, `_` and `-`. It must be **unique across the whole platform**, not just within your organization, so a readable but specific value such as `cold-room-01` works better than `sensor1`. |
 | **Data sending interval** | How often the device emits a reading, as a number plus a unit (for example 10 minutes). Choose something close to the real sensor's reporting rate so your rules behave realistically. |
 | **Support commands** | Turn this on to give the device a **Commands & States** tab, so you can define and run commands against it exactly as you would against physical hardware. See [Device Commands](commands/README.md). |
 | **Use device preset** | Start from a real device model instead of typing metrics by hand. |
@@ -74,13 +74,22 @@ The swap is deliberately restricted to pairs that involve the Emulator — emula
 
 > Going the other way is just as useful: move a real device onto the Emulator to reproduce a problem, then move it back.
 
-## Cloning an emulated device
+## Copying an emulated device
 
-Duplicating a device copies its emulator configuration with it — metrics, data types and interval. Building one device carefully and cloning it is the quickest way to stand up a realistic multi-device site, such as twenty cold rooms that all report the same measurements. See [Device Management](device-management.md#copying-a-device).
+Copying a device gives you a head start on the device record, but **it does not carry the emulator setup**. The new device is pre-filled with the original's name, metric-template rows, connection selection and settings, and images. Everything that makes it *emulate* has to be set up again:
+
+- **The emulator's signal definitions** — the metrics it generates and their data types.
+- **The reporting interval**, which returns to its default rather than the original's.
+- **Support commands**, which returns to off.
+- **Preset-derived commands.** Selecting the original's preset again is the quickest way back.
+
+Until you do that, the copy reports nothing at all — it is a device bound to the Emulator with an empty specification. **Sensor mappings are not carried either**, so recreate them on the copy after saving.
+
+See [Device Management](device-management.md#copying-a-device).
 
 ## Ask the assistant to do it
 
-The whole workflow above is available in plain language through the [IoT AI Assistant](../ai-assistant/README.md). It can list the available device presets, provision an emulated device, read and update its configuration and interval, send a one-off reading, and perform the swap to a real connector when your hardware arrives.
+The whole workflow above is available in plain language through the [IoT AI Assistant](../ai-assistant/README.md). It can list the available device presets, provision an emulated device, read and update its configuration and interval, send a one-off reading, and take the device live onto a real **LoRaWAN** connection when your hardware arrives. It can also move any real device onto the Emulator. Swapping an emulated device onto a Mioty, Tracker or MQTT connector is a manual step on the Connection tab — the assistant does not offer it.
 
 ## What's next
 

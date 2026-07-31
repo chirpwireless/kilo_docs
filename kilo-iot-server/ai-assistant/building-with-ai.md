@@ -61,7 +61,7 @@ Ask the assistant to add a gateway and it does the platform side for you — reg
 
 ## Drive the emulator
 
-The assistant can run the whole [emulated device](../devices/emulated-devices.md) workflow in conversation: list the available device presets, provision a device from a preset or from metrics you describe, read and change its configuration and reporting interval, and send a one-off reading to exercise a rule. It can also perform the swap from the emulator to a real connector when the hardware arrives.
+The assistant can run the whole [emulated device](../devices/emulated-devices.md) workflow in conversation: list the available device presets, provision a device from a preset or from metrics you describe, read and change its configuration and reporting interval, and send a one-off reading to exercise a rule. It can also take the device live onto a real **LoRaWAN** connection when the hardware arrives, and move a real device onto the Emulator to reproduce something. Other connector types are a manual swap on the device's Connection tab.
 
 > *"Create an emulated air-quality sensor in Cold Room 3 and send a temperature of −20."*
 > A device that reports on its own, ready for the dashboards and rules you are about to build.
