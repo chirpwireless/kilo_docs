@@ -34,6 +34,8 @@ The metrics come from **real device presets**. Pick a Milesight AM319 and you ge
 
 Then the part that makes it more than a demo. When the hardware arrives, change the device's connector from Emulator to the real one. **Everything you built stays** — the dashboards, the rules, the thresholds, the escalation chains. You are replacing the source of the data, not rebuilding the deployment. The swap works in both directions, so you can also move a real device onto the emulator to reproduce a problem and then move it back.
 
+<figure><img src="../.gitbook/assets/emulator-device-metrics.jpg" alt="An emulated device built from the Milesight AM319 preset, with its six readings and data types"><figcaption></figcaption></figure>
+
 [→ Emulator Connector](../kilo-iot-server/connectors/emulator-connector.md)
 
 ***
@@ -48,6 +50,8 @@ What makes that safe is what it refuses to do. It executes **commands that alrea
 
 The assistant also learned the Emulator: it can list presets, provision an emulated device, read and update its configuration, send a one-off reading, and perform the swap to a real connector. Setting up a test deployment is now a conversation.
 
+<figure><img src="../.gitbook/assets/ai-chat-device-commands.jpg" alt="The Kilo assistant listing what it can do with device commands and its confirmation rule"><figcaption></figcaption></figure>
+
 [→ Physical AI Platform](../kilo-iot-server/physical-ai.md) · [→ MCP Server](../kilo-iot-server/api/mcp-server.md) · [→ Building with AI](../kilo-iot-server/ai-assistant/building-with-ai.md)
 
 ***
@@ -58,6 +62,8 @@ Releases are no use if nobody notices them. The platform now shows a **What's Ne
 
 It is generated from this page. The changelog is the source, a pipeline turns it into the release feed the product reads, and the panel shows the same words you are reading now — so the product and the documentation cannot drift apart.
 
+<figure><img src="../.gitbook/assets/whats-new-panel.jpg" alt="The What's New panel in the product, showing the 3.8.0 releases with a screenshot, description and a Learn more link"><figcaption></figcaption></figure>
+
 ***
 
 **MIOTY reaches more base stations**
@@ -66,13 +72,25 @@ MIOTY arrived in 3.7.0. This release is the first hardening pass on real deploym
 
 Underneath, session resume, certificate issuance and downlink dispatch were tightened, and duplicate-station and page errors were fixed along with the ability to unbind a physical MIOTY endpoint from its digital device.
 
+<figure><img src="../.gitbook/assets/mioty-base-stations-list.jpg" alt="The Mioty Base Stations tab showing a registered station with its EUI, status and BSSCI address"><figcaption></figcaption></figure>
+
 [→ MIOTY Base Stations](../kilo-iot-server/gateways/mioty-base-stations/README.md)
+
+***
+
+**Audit Trail repaired**
+
+The Audit Trail page had broken components. It is fixed: the actor filter, the event-type filter and the date range all work again, so you can narrow an organization's access history to the person, the kind of change, and the window you care about.
+
+<figure><img src="../.gitbook/assets/audit-trail.jpg" alt="The repaired Audit Trail page with its actor, event type and date range filters"><figcaption></figcaption></figure>
 
 ***
 
 **Fixes and polish**
 
 The Audit Trail page had broken components; they are repaired. Subscription now reports the current plan period correctly, and a CORS error affecting the interface is resolved. Adding a widget no longer disturbs the placement of the widgets already on a dashboard. Long MQTT topics no longer overflow their container on mobile, the threshold **Label** field is wide enough to read what you typed, the device mapping tooltip says what it means, and the allowed range for a MIOTY **Short Address** is described consistently. Type validation and a set of access-control hardening fixes round out the release.
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg" alt="Kilo IoT Server 3.8.0"><figcaption></figcaption></figure>
 
 </details>
 
