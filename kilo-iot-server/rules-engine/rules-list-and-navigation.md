@@ -14,6 +14,8 @@ Click **Rules engine** in the sidebar to open the Rules Engine page. The page li
 
 The page has a heading, a description, and three tabs:
 
+<figure><img src="../../.gitbook/assets/rules-list.jpg" alt="The Rules Engine page with the Rules, Artifacts and Trash tabs and a rule listed with its actions"><figcaption></figcaption></figure>
+
 - **Rules** — All active rules in your organization
 - **Artifacts** — Build artifacts grouped by rule, with deployment status and controls
 - **Trash** — Rules that have been deleted but can still be restored

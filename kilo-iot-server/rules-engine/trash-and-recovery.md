@@ -28,6 +28,8 @@ The rule is removed from the active Rules list and appears in the Trash tab. If 
 
 ## The Trash tab
 
+
+<figure><img src="../../.gitbook/assets/rules-trash.jpg" alt="The Trash tab listing a deleted rule with its description, deleted time and the Restore rule action"><figcaption></figcaption></figure>
 ### Getting there
 
 From the Rules Engine page at `/rules`, click the **Trash** tab (the third tab, after Rules and Artifacts).

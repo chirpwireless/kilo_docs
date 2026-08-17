@@ -24,6 +24,8 @@ The editor has four main areas:
 3. **Properties panel** — On the right. Opens when you select a node, showing its configuration fields.
 4. **Header bar** — At the top. Shows the rule name, mode selector, autosave status, and action buttons.
 
+<figure><img src="../../.gitbook/assets/rules-visual-editor.jpg" alt="The rule editor with the tool palette on the left, the rule on the canvas and the header bar carrying Save and Build"><figcaption></figcaption></figure>
+
 ## Palette
 
 The palette provides tools and draggable elements you can place on the canvas.

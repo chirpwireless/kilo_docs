@@ -246,6 +246,8 @@ Because conditions are evaluated top-to-bottom, a reading of 90% matches Flow 1 
 
 The Set Alarm node triggers an alarm based on a pre-configured Alarm Definition. When execution reaches this node, it creates an alarm event that starts the escalation policy, sends notifications through configured channels, and appears in the alarm inbox.
 
+<figure><img src="../../.gitbook/assets/rules-node-properties-set-alarm.jpg" alt="The Set Alarm properties panel with the alarm selector, the CEL motivation message, and the Inputs and Outputs sections"><figcaption></figcaption></figure>
+
 ### Visual appearance
 
 A rounded rectangle with a bell icon in the upper-left corner.
