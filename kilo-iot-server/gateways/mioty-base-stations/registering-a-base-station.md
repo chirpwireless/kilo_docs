@@ -20,11 +20,16 @@ Registration is a three-step flow. It produces two artifacts you must carry to t
 
 1. Click **Gateways** in the left sidebar.
 2. Open the **Mioty Base Stations** tab.
-3. Click **Add base station**.
+3. Click **Add gateway**, then choose **Mioty Base Station** — the dialog asks which kind of device you are connecting.
+
+<figure><img src="../../../.gitbook/assets/gateway-add-type-chooser.jpg" alt="The Add gateway dialog offering 3rd Party Gateway and Mioty Base Station"><figcaption></figcaption></figure>
+
 4. Enter a **Name**. Use something that identifies the physical position rather than the hardware — for example "Plant 2 — Rack Hall North". This is the label you will read at 3 a.m. when a station drops.
 5. Enter the **BS EUI** — the 16-character hexadecimal identifier from the station. The field accepts exactly 16 hex characters; a shorter value or one containing non-hex characters is rejected and the step will not advance. It must also be unique within your organization — registering a BS EUI that already exists returns **"A base station with this EUI already exists"**.
 6. Enter a **Description** — optional, but the right place for mounting height, antenna type, or the work order that installed it.
 7. Click **Next**.
+
+<figure><img src="../../../.gitbook/assets/mioty-bs-add-details.jpg" alt="Step one of the Add Mioty Base Station wizard with the name and BS EUI filled in"><figcaption></figcaption></figure>
 
 ### Step 2 — BSSCI address and certificates
 
@@ -33,11 +38,15 @@ The second step presents everything the hardware needs. Do not skip past it — 
 1. Copy the **BSSCI Address** using the copy control. A toast confirms: *"Url has been successfully copied"*. This is the service center endpoint your station will hold its session to.
 2. Download **certs.zip**. The bundle contains the certificate pair this station presents when it authenticates over mTLS.
 
+<figure><img src="../../../.gitbook/assets/mioty-bs-add-bssci-certs.jpg" alt="Step two showing the BSSCI address with its copy control and the certs.zip download"><figcaption></figcaption></figure>
+
 Store `certs.zip` with the same care you give any production credential. It identifies the station; anyone holding it can present as that station. If it is ever mishandled, you can issue a fresh pair from the station's Settings — see [Base station monitoring](base-station-monitoring.md).
 
 ### Step 3 — Confirmation
 
 The final screen confirms **"Base station successfully added"**. Click **Continue**.
+
+<figure><img src="../../../.gitbook/assets/mioty-bs-add-success.jpg" alt="The confirmation step reading Base station successfully added"><figcaption></figcaption></figure>
 
 The station now appears in the **Mioty Base Stations** tab. It will show as offline until the hardware completes its BSSCI session.
 

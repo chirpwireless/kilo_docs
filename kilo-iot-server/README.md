@@ -58,7 +58,7 @@ For many popular devices, premade templates with pre-configured mappings are alr
 
 The server includes a fully integrated LoRaWAN Network Server (LNS). There is no need to deploy, configure, or maintain a separate LNS. Device join requests, uplinks, downlinks, and message deduplication are handled automatically. This removes an entire layer of infrastructure from your deployment.
 
-<figure><img src="../.gitbook/assets/yourgateway.png" alt="The gateway appears in the Gateways list"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/lorawan-gateways-table.jpg" alt="The Gateways list showing a registered LoRaWAN gateway with its status and EUI"><figcaption></figcaption></figure>
 
 ### Visual rules engine with production-grade safety
 

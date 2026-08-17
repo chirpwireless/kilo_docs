@@ -10,6 +10,8 @@ Once LoRaWAN gateways are deployed, the Gateways section gives you a fleet-level
 
 Click **Gateways** in the left sidebar to see all gateways connected to your organization.
 
+<figure><img src="../../../.gitbook/assets/lorawan-gateways-table.jpg" alt="The LoRaWAN Gateways list with the status, EUI, location and firmware columns"><figcaption></figcaption></figure>
+
 ### Table columns
 
 | Column | What it shows |

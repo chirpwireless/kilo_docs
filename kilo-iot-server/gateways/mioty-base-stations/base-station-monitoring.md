@@ -10,6 +10,8 @@ Once MIOTY base stations are deployed, the **Mioty Base Stations** tab on the Ga
 
 Click **Gateways** in the left sidebar and open the **Mioty Base Stations** tab.
 
+<figure><img src="../../../.gitbook/assets/mioty-base-stations-table.jpg" alt="The Mioty Base Stations tab listing stations with their EUI, status and BSSCI URL"><figcaption></figcaption></figure>
+
 ### Table columns
 
 | Column | What it shows |
