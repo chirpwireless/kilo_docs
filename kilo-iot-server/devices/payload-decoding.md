@@ -25,6 +25,8 @@ This is live data from the device, refreshed as new messages arrive, and it is t
 
 A device that has not transmitted yet shows nothing. Wait for its next scheduled message, or trigger one from the device itself.
 
+<figure><img src="../../.gitbook/assets/device-mapping-connector-keys.jpg" alt="The Mapping tab listing each device data key with its live value, last update and the metric it feeds"><figcaption></figcaption></figure>
+
 ## Where the decoder lives
 
 The decoder is the **Code functions** field on the device's **Connection** tab. Selecting a device profile template fills it in for you; configuring a device manually leaves it empty, and you paste in the codec from the manufacturer's documentation or a community codec repository.

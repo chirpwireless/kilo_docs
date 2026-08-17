@@ -27,6 +27,8 @@ Without a Mioty connector, the MIOTY surface is simply not there. The **Mioty Ba
 
 The connector is created immediately and appears in the connectors table with its BSSCI endpoint address provisioned for your organization. No further configuration is required at the connector level — the work of pairing hardware happens at base station registration, where each station gets its own certificate bundle.
 
+<figure><img src="../../.gitbook/assets/mioty-connector.jpg" alt="The Mioty connector showing its BSSCI address and organization ID with the Base Stations, Devices and Blueprints tabs"><figcaption></figcaption></figure>
+
 ## What the connector unlocks
 
 Once the Mioty connector exists, two parts of the server become available:

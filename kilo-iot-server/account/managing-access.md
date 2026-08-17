@@ -25,6 +25,8 @@ Use the **Search users...** input at the top to filter by name or email.
 
 The table sorts the owner first, then other members, then pending invitations.
 
+<figure><img src="../../.gitbook/assets/account-users.jpg" alt="The Users table listing a member with their role and edit and view access"><figcaption></figcaption></figure>
+
 ## Updating Permissions
 
 1. Find the user in the table and click **Edit**. The edit dialog opens, showing the user's current **Page access** settings.

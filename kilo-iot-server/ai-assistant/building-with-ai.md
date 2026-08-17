@@ -22,6 +22,8 @@ Describe the device you want to add and the assistant runs the onboarding flow w
 
 This is especially useful at scale: instead of clicking through the registration steps for each unit, you describe what you're adding and the assistant does the mechanical work.
 
+<figure><img src="../../.gitbook/assets/ai-chat-session.jpg" alt="An assistant session working through a request, showing each tool it called and the alarm definition it created"><figcaption></figcaption></figure>
+
 ## Build and deploy an automation
 
 This is the assistant's most powerful capability. Describe the behavior you want in plain language, and it **authors the complete rule — including the [CEL](../rules-engine/cel-reference.md) expressions — builds it, tests it, and deploys it.**

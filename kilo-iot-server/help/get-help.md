@@ -10,6 +10,8 @@ The support request dialog is available throughout the Kilo IoT Server interface
 
 Click the help or support option in the interface to open the contact form.
 
+<figure><img src="../../.gitbook/assets/get-help-dialog.jpg" alt="The Support request dialog with subject, email address and description fields"><figcaption></figcaption></figure>
+
 ## Dialog Fields
 
 | Field | Required | Description |

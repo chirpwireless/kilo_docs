@@ -25,6 +25,8 @@ Kilo IoT Server offers a free tier alongside paid tiers that scale up to a custo
 
 Beyond these ceilings, the plan comparison on the Subscription page also shows which tiers include unlimited gateways, the Notification Center, email and push notifications, and email support. The free tier lets you explore the platform with no payment details required; the **Enterprise** tier carries everything from the other plans with the option to raise specific limits to fit your operation, on individual pricing and terms.
 
+<figure><img src="../../.gitbook/assets/settings-subscription.jpg" alt="The Subscription page comparing plan tiers with the current plan marked and the SMS balance below"><figcaption></figcaption></figure>
+
 ## Upgrading Your Plan
 
 To move onto a paid plan, choose the tier you want on the plan comparison and click **Upgrade Plan**. This takes you straight to the Stripe checkout, where you enter payment details and activate the plan — there is no separate confirmation step in between. All payment processing is handled by Stripe, and plan changes take effect immediately. Plan limits apply from the moment a plan is active.
