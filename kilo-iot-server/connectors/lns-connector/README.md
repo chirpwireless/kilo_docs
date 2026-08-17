@@ -19,10 +19,12 @@ Each organization can have only one LNS connector. If your organization already 
 
 ## Inside the LNS connector
 
-Click the LNS connector row in the connectors table to open it. The LNS connector page has two tabs:
+Click the LNS connector row in the connectors table to open it. The page is a summary — connector type, creation date, connected device count, and when data last arrived — and it states that this connector type has no editable settings. Everything the connector enables is worked on elsewhere in the sidebar:
 
-- **LoRaWAN Gateways** — Your gateway list. See [LoRaWAN Gateways](../../gateways/) for gateway setup and monitoring.
-- **Connected Devices** — Your device list. See [Registering Devices](../../devices/registering-devices.md) and [Device Management](../../devices/device-management.md) for the full workflow.
+- **Gateways** — Register and monitor the gateways that carry LoRaWAN traffic. See [LoRaWAN Gateways](../../gateways/).
+- **Devices** — Register and manage the devices themselves. See [Registering Devices](../../devices/registering-devices.md) and [Device Management](../../devices/device-management.md).
+
+<figure><img src="../../../.gitbook/assets/connector-lns-detail.jpg" alt="The LNS connector page showing connector type, creation date, connected devices and last data received"><figcaption></figcaption></figure>
 
 ## LoRaWAN Reference
 

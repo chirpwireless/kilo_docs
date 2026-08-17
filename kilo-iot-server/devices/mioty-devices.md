@@ -18,6 +18,8 @@ This page covers the MIOTY-specific fields on the device form. The surrounding r
 
 On the device form, select the Mioty connector as the connector type. The form then presents the MIOTY parameter sections described below.
 
+<figure><img src="../../.gitbook/assets/device-mioty-connection.jpg" alt="The Connection tab of a MIOTY device showing Basic Information, Network Configuration, Communication Settings, Advanced MIOTY Settings and Security Settings"><figcaption></figcaption></figure>
+
 ## Basic
 
 - **End Point EUI** — the endpoint's unique identifier, exactly 16 hexadecimal characters. This is the address the network knows the unit by. A value that is not 16 hex characters is rejected.
