@@ -41,7 +41,9 @@ After the first save, the dialog reopens with **Device info**, **Connection**, *
 
 ### Connection tab
 
-This tab binds the Digital Twin to the device that feeds it through a connector. The fields change based on the connector type.
+This tab binds the Digital Twin to the device that feeds it through a connector. The dropdown lists the connectors your organization actually has, by name and type, and the fields below it change to match the one you pick.
+
+<figure><img src="../../.gitbook/assets/device-connector-type-list.jpg" alt="The Connection tab of a device with the connector type dropdown open, listing the organization's connectors by name and type"><figcaption></figcaption></figure>
 
 #### For LoRaWAN devices (LNS connector)
 

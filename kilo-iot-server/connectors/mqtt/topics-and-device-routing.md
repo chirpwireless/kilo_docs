@@ -19,32 +19,35 @@ External MQTT: plant-3/line-a/EM-4492/data         (after bridge namespace strip
 
 The Device ID Topic field describes only this device-level shape. Connector-prefix handling is internal to the platform; the operator does not configure it.
 
-## The Device ID Topic field accepts a topic pattern
+## Building the Device ID Topic
 
-The field accepts a topic pattern with placeholder substitution at the segment level. The pattern is matched literally against incoming topics, and segments containing placeholders contribute extracted values to the routing decision.
+**MQTT Topic for device ID** on the device's Connection tab is not a free-text box — it is a segment builder. The connector's topic prefix is already in place and locked, and you add one segment at a time with the **+** button. Each segment is one of two kinds:
 
-Standard placeholders:
+| Segment | What it does |
+|---------|--------------|
+| **Text segment** | A literal part of the topic, typed in — `meters`, `line-a`, `SENSOR`. Matched exactly against the incoming topic. |
+| **Device ID** | Marks the segment whose value *is* the device identifier. Exactly one is required, and the value found at that position is matched against the **Device ID** field above. |
 
-| Placeholder | Effect |
-|-------------|--------|
-| `{{deviceId}}` | Marks the topic segment whose value is the device identifier. Required in every Device ID Topic pattern. The value extracted at this position is matched against the Device ID field on the device record. |
-| `{{value}}` | Marks a topic segment whose value is the metric reading itself — for example, `meters/EM-4492/4.21` where `4.21` is the power reading. Use only when the metric value is encoded in the topic; for label-style segments (`/power`, `/temperature`) use the payload-side approach. |
+A **Resolved preview** under the builder shows the complete topic the pattern produces for this device, so you can compare it against what your publisher actually sends before saving. Drag the Device ID chip to move it to a different position.
 
-Example patterns:
+**Where to get the device ID** beside the builder decides where the identifier is read from — **Topic** (the position you marked) is the usual choice.
 
-| Publishing pattern | Device ID Topic |
-|-------------------|----------------|
-| `plant-3/line-a/EM-4492/data` | `plant-3/line-a/{{deviceId}}/data` |
-| `tasmota/PlugKitchen/SENSOR` | `tasmota/{{deviceId}}/SENSOR` |
-| `zigbee2mqtt/LivingRoomSensor` | `zigbee2mqtt/{{deviceId}}` |
-| `home/sensors/esp-kitchen/data` | `home/sensors/{{deviceId}}/data` |
-| `meters/EM-4492/4.21` (value in topic) | `meters/{{deviceId}}/{{value}}` (rarely used; payload-side is the more common choice) |
+Example topic shapes and the segments to add after the prefix:
 
-For nested industrial topic shapes such as Sparkplug B (`spBv1.0/{group}/DDATA/{node}/{device}`), choose the segment that uniquely identifies the device record being registered. Hierarchical context (group, node) is matched literally as part of the pattern.
+| Publishing topic | Segments |
+|-------------------|----------|
+| `plant-3/line-a/EM-4492/data` | `plant-3` · `line-a` · **Device ID** · `data` |
+| `tasmota/PlugKitchen/SENSOR` | `tasmota` · **Device ID** · `SENSOR` |
+| `zigbee2mqtt/LivingRoomSensor` | `zigbee2mqtt` · **Device ID** |
+| `home/sensors/esp-kitchen/data` | `home` · `sensors` · **Device ID** · `data` |
+
+For nested industrial topic shapes such as Sparkplug B (`spBv1.0/{group}/DDATA/{node}/{device}`), add the hierarchical context as text segments and put the Device ID on the segment that uniquely identifies the device record being registered.
+
+<figure><img src="../../../.gitbook/assets/device-mqtt-topic-builder.jpg" alt="The MQTT topic builder on a device Connection tab with a locked connector prefix, a text segment, a Device ID segment and the resolved preview"><figcaption></figcaption></figure>
 
 ## Device ID input must match the extracted segment byte-for-byte
 
-The Device ID field on the device record stores the canonical identifier the platform looks for at the `{{deviceId}}` position. The match is byte-for-byte: case-sensitive, whitespace-sensitive, and unicode-sensitive.
+The Device ID field on the device record stores the canonical identifier the platform looks for at the Device ID segment. The match is byte-for-byte: case-sensitive, whitespace-sensitive, and unicode-sensitive.
 
 A pattern that catches integrators frequently: **the Device ID input strips whitespace on save.** A device publishing on `plant-3/line-a/EM 4492/data` (with a space in the device ID) will not match a Device ID typed as `EM 4492` — the input gets normalized to `EM4492` (or partially trimmed; the exact behavior is not guaranteed). The mismatch is silent — no error appears on save and no error appears when telemetry arrives. The Mapping tab simply stays empty.
 
