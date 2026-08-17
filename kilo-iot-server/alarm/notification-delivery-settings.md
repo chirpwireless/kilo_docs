@@ -10,6 +10,8 @@ Not every operational event carries the same urgency. A critical cold-chain brea
 
 Click the **Notification Severity** button in the Alarm page header. This button is visible on all tabs (Inbox, Alarm definitions, and Settings). It opens a modal titled **Notification severity** with the instructions: *"Choose how often notifications should be sent. You can enable a one-time notification or set a repeat interval."*
 
+<figure><img src="../../.gitbook/assets/alarm-notification-severity.jpg" alt="The Notification severity modal with a repeat interval and a one-time notification toggle for each severity tier"><figcaption></figcaption></figure>
+
 ## Severity levels
 
 Kilo IoT Server classifies alarms across five priority tiers:

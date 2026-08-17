@@ -158,6 +158,8 @@ A debug session lasts 30 minutes, measured from when it started. Stepping throug
 Each subscription plan includes a maximum number of active automation rules. These limits affect several operations:
 
 - **Creating rules:** The **Add Rule** button on the Rules tab is disabled when your organization reaches its rule limit. A message explains that the limit has been reached.
+
+<figure><img src="../../.gitbook/assets/rules-limit-reached.jpg" alt="The Rules tab showing the Rule limit reached banner above the rules list, with Add Rule disabled"><figcaption></figcaption></figure>
 - **Restoring from trash:** Restoring a deleted rule counts as adding an active rule. If you are at the limit, the restore will not proceed.
 - **Cloning rules:** Cloning creates a new rule, which counts against the limit.
 

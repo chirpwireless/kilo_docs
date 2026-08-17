@@ -15,7 +15,9 @@ This page walks through creating a new automation rule from scratch — from nam
 
 ### 1. Open the rule creation page
 
-From the Rules Engine page, click **Add Rule**. This opens a blank rule editor at `/rules/create`.
+From the Rules Engine page, click **Add Rule**. This opens a new rule editor at `/rules/create`, with an empty name field and a starter diagram — a **Start** event already connected to an **End** event.
+
+<figure><img src="../../.gitbook/assets/rules-create-blank.jpg" alt="A new rule in the editor with an empty name field and a Start event connected to an End event"><figcaption></figcaption></figure>
 
 ### 2. Name your rule
 
@@ -32,7 +34,7 @@ Click the three-dot menu (⋮) next to the rule name and select **Edit descripti
 
 ### 4. Build the workflow
 
-The editor opens with a blank BPMN canvas. You need to add at least:
+The editor opens with a Start event and an End event already on the canvas. A complete rule needs at least:
 
 1. A **Start Event** — the trigger that binds the rule to a device and sensor
 2. One or more processing nodes (Script Tasks, Gateways, Enrichment, [Set Alarm](node-reference.md#set-alarm))

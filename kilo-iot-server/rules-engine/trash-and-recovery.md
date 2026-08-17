@@ -24,6 +24,8 @@ Any user with edit permissions on the rule can delete it, provided the rule is n
 
 5. Click **Move to trash** to confirm.
 
+<figure><img src="../../.gitbook/assets/rules-delete-confirm.jpg" alt="The delete confirmation dialog explaining that the rule is stored in the trash, with Cancel and Move to trash"><figcaption></figcaption></figure>
+
 The rule is removed from the active Rules list and appears in the Trash tab. If the rule had a running artifact, the artifact is stopped as part of the deletion.
 
 ## The Trash tab

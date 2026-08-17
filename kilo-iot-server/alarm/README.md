@@ -20,6 +20,8 @@ The Alarm page has three tabs:
 
 A **Notification Severity** button in the page header (visible on all tabs) opens a modal for configuring how frequently each severity level re-sends notifications.
 
+<figure><img src="../../.gitbook/assets/alarm-page-tabs.jpg" alt="The Alarm page on the Inbox tab, with the Alarm definitions and Settings tabs, severity and status filters, and a triggered alarm"><figcaption></figcaption></figure>
+
 ## Severity model
 
 Kilo uses five severity levels to classify alarms by operational priority:
