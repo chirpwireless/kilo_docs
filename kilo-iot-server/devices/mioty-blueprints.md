@@ -38,6 +38,8 @@ The practical split: System covers the hardware the platform already knows. Cust
 
 This is the path for hardware the catalog already covers.
 
+<figure><img src="../../.gitbook/assets/device-mioty-blueprint-config.jpg" alt="The Blueprint Configuration section of a MIOTY device with the Custom and System catalog toggle, the Use existing blueprint checkbox and the Manufacturer dropdown"><figcaption></figcaption></figure>
+
 1. On the device form, find **Blueprint Configuration**.
 2. Turn **Use existing blueprint** **ON**.
 3. Select the catalog — **System** or **Custom**.
