@@ -44,7 +44,7 @@ MIOTY is an ETSI standard — **TS 103 357**, TS-UNB — not a proprietary schem
 
 #### Available Two Ways on Kilo
 
-MIOTY runs on Kilo without you hosting any of it: the Enterprise edition of our service center is built into Kilo Cloud, so endpoints land straight in the rules engine, alarms, and dashboards. If you would rather run the network yourself, the Community edition — [Kilo Center](../kilo-center/kilo-mioty-service-center/README.md) — is open source and self-hosted. See [Why Choose MIOTY?](why-choose-mioty.md) for how that choice plays out.
+MIOTY runs on Kilo without you hosting any of it: the Enterprise edition of our service center is built into Kilo Cloud, so endpoints land straight in the rules engine, alarms, and dashboards. If you would rather run the network yourself, the Community edition — [Kilo Center](../../../kilo-center/kilo-mioty-service-center/README.md) — is open source and self-hosted. See [Why Choose MIOTY?](why-choose-mioty.md) for how that choice plays out.
 
 ***
 

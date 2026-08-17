@@ -69,6 +69,6 @@ Once a connector is in place, you can:
 - **Configure the LNS connector** — manage LoRaWAN gateways and connected devices, and explore LoRaWAN protocol reference material including frequency bands by country. See [LNS Connector](lns-connector/README.md).
 - **Configure the Tracker connector** — onboard vehicle trackers (OBD2, CAN bus, standalone GPS). See [Tracker Connector](tracker-connector.md).
 - **Configure an MQTT connector** — connect PLCs, energy meters, building management systems, or any MQTT-capable hardware. Use External MQTT to connect your own broker, or Cloud MQTT to have the platform provision a broker endpoint for you. See [MQTT Connector](mqtt-connector.md).
-- **Configure the Mioty connector** — bind your organization to the MIOTY service center, get its BSSCI address, and unlock base station registration and MIOTY endpoint fields. See [MIOTY Connector](mioty-connector.md).
+- **Configure the Mioty connector** — bind your organization to the MIOTY service center, get its BSSCI address, and unlock base station registration and MIOTY endpoint fields. See [MIOTY Connector](mioty-connector/README.md).
 - **Add the Emulator connector** — stand up devices that generate their own telemetry, so dashboards, rules and alarms can be built and proven before any hardware is on site. See [Emulator Connector](emulator-connector.md).
 - **Register devices** — add devices through any connector and configure their Digital Twin. See [Registering Devices](../devices/registering-devices.md).

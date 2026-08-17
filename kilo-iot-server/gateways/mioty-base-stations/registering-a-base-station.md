@@ -10,7 +10,7 @@ Registration is a three-step flow. It produces two artifacts you must carry to t
 
 ## Prerequisites
 
-- **A Mioty connector** on your organization. Without it, the **Mioty Base Stations** tab does not appear and the flow cannot be started. See [MIOTY Connector](../../connectors/mioty-connector.md).
+- **A Mioty connector** on your organization. Without it, the **Mioty Base Stations** tab does not appear and the flow cannot be started. See [MIOTY Connector](../../connectors/mioty-connector/README.md).
 - **The station's BS EUI** — exactly 16 hexadecimal characters, normally printed on the hardware label or supplied in the vendor's commissioning sheet.
 - **The station installed** with power and a backhaul path to the internet.
 

@@ -59,6 +59,6 @@ Large landholdings invert the usual problem: coverage is broad, mains power is a
 
 ### Where Another Protocol May Fit Better
 
-MIOTY is not the answer to every deployment, and Kilo does not require you to pick one protocol for your whole estate. Where the radio environment is benign, device counts are modest, and you want the widest possible choice of off-the-shelf sensors, [LoRaWAN](../lorawan-lr-fhss/lorawan/README.md) remains an excellent fit — and the two can coexist across your organization. Choose MIOTY when interference, density, or motion are the constraints that decide whether your data arrives.
+MIOTY is not the answer to every deployment, and Kilo does not require you to pick one protocol for your whole estate. Where the radio environment is benign, device counts are modest, and you want the widest possible choice of off-the-shelf sensors, [LoRaWAN](../lns-connector/what-is-lorawan.md) remains an excellent fit — and the two can coexist across your organization. Choose MIOTY when interference, density, or motion are the constraints that decide whether your data arrives.
 
 Next: [Why Choose MIOTY?](why-choose-mioty.md).

@@ -6,9 +6,9 @@ description: Add the Mioty connector to bind your organization to the MIOTY serv
 
 The Mioty connector binds your organization to the MIOTY service center and unlocks the MIOTY side of the Kilo IoT Server: base station registration and MIOTY endpoint fields on the device form.
 
-MIOTY (ETSI TS 103 357) is an LPWAN protocol built for massive-scale industrial telemetry. It splits every message into small radio bursts spread across time and frequency — telegram splitting — so the base station reconstructs a telegram even when up to half its bursts are lost. The practical result is up to 110,000 low-power endpoints per base station, long range, and reliable delivery in RF environments that punish other protocols: plant floors, metal-dense warehouses, utility substations, and dense metering rollouts. For the protocol itself, see [What is MIOTY?](../../mioty/README.md).
+MIOTY (ETSI TS 103 357) is an LPWAN protocol built for massive-scale industrial telemetry. It splits every message into small radio bursts spread across time and frequency — telegram splitting — so the base station reconstructs a telegram even when up to half its bursts are lost. The practical result is up to 110,000 low-power endpoints per base station, long range, and reliable delivery in RF environments that punish other protocols: plant floors, metal-dense warehouses, utility substations, and dense metering rollouts. For the protocol itself, see [What is MIOTY?](what-is-mioty.md).
 
-**There is no MIOTY infrastructure for you to run.** The Enterprise edition of our MIOTY service center is built into Kilo Cloud, so adding this connector is all it takes to stand up the service-center side of a MIOTY network. Your base stations connect straight to it, and your endpoints arrive on a full IoT platform — rules, alarms, dashboards, audit trail — rather than on a network server you would then have to integrate with something else. If you would rather operate that infrastructure yourself, the Community edition is open source: see [Kilo MIOTY Service Center](../../kilo-center/kilo-mioty-service-center/README.md).
+**There is no MIOTY infrastructure for you to run.** The Enterprise edition of our MIOTY service center is built into Kilo Cloud, so adding this connector is all it takes to stand up the service-center side of a MIOTY network. Your base stations connect straight to it, and your endpoints arrive on a full IoT platform — rules, alarms, dashboards, audit trail — rather than on a network server you would then have to integrate with something else. If you would rather operate that infrastructure yourself, the Community edition is open source: see [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
 
 ## Why the connector exists
 
@@ -27,7 +27,7 @@ Without a Mioty connector, the MIOTY surface is simply not there. The **Mioty Ba
 
 The connector is created immediately and appears in the connectors table with its BSSCI endpoint address provisioned for your organization. No further configuration is required at the connector level — the work of pairing hardware happens at base station registration, where each station gets its own certificate bundle.
 
-<figure><img src="../../.gitbook/assets/mioty-connector.jpg" alt="The Mioty connector showing its BSSCI address and organization ID with the Base Stations, Devices and Blueprints tabs"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/mioty-connector.jpg" alt="The Mioty connector showing its BSSCI address and organization ID with the Base Stations, Devices and Blueprints tabs"><figcaption></figcaption></figure>
 
 ## What the connector unlocks
 
@@ -49,6 +49,15 @@ The BSSCI address is what you hand to the base station hardware, alongside the c
 
 ## What's next
 
-- **Register base stations** — bring your MIOTY radio infrastructure online with its BSSCI address and certificates. See [MIOTY base stations](../gateways/mioty-base-stations/README.md).
-- **Commission endpoints** — enter EUIs, network parameters, and session keys for each MIOTY sensor. See [MIOTY Devices](../devices/mioty-devices.md).
-- **Decode payloads** — bind a blueprint so raw endpoint telemetry becomes named, normalized measurements. See [MIOTY Blueprints](../devices/mioty-blueprints.md).
+- **Register base stations** — bring your MIOTY radio infrastructure online with its BSSCI address and certificates. See [MIOTY base stations](../../gateways/mioty-base-stations/README.md).
+- **Commission endpoints** — enter EUIs, network parameters, and session keys for each MIOTY sensor. See [MIOTY Devices](../../devices/mioty-devices.md).
+- **Decode payloads** — bind a blueprint so raw endpoint telemetry becomes named, normalized measurements. See [MIOTY Blueprints](../../devices/mioty-blueprints.md).
+
+## MIOTY Reference
+
+If you are still deciding whether MIOTY is the right radio for a site, these pages cover the protocol itself rather than the connector. Read them in order — each one hands off to the next:
+
+- [What is MIOTY?](what-is-mioty.md) — Telegram splitting, base stations, and what ETSI TS 103 357 actually specifies
+- [Core Benefits of MIOTY](core-benefits-of-mioty.md) — Interference resistance, endpoint density, range, power, and mobility
+- [Ideal Use Cases for MIOTY](ideal-use-cases-for-mioty.md) — Plant floors, metering rollouts, moving assets, and rotating machinery
+- [Why Choose MIOTY?](why-choose-mioty.md) — How MIOTY and LoRaWAN differ, and which constraints should decide between them

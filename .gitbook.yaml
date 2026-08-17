@@ -51,3 +51,8 @@ redirects:
   kilo-iot-server/dashboards/maps-and-tracking/gps-tracking: kilo-iot-server/dashboards/adding-widgets/map-widget.md
   kilo-iot-server/dashboards/maps-and-tracking/device-maps: kilo-iot-server/dashboards/adding-widgets/map-widget.md
   kilo-iot-server/dashboards/adding-widgets/image-map-widget: kilo-iot-server/dashboards/adding-widgets/image-widget.md
+  mioty: kilo-iot-server/connectors/mioty-connector/what-is-mioty.md
+  mioty/mioty: kilo-iot-server/connectors/mioty-connector/what-is-mioty.md
+  mioty/mioty/core-benefits-of-mioty: kilo-iot-server/connectors/mioty-connector/core-benefits-of-mioty.md
+  mioty/mioty/ideal-use-cases-for-mioty: kilo-iot-server/connectors/mioty-connector/ideal-use-cases-for-mioty.md
+  mioty/mioty/why-choose-mioty: kilo-iot-server/connectors/mioty-connector/why-choose-mioty.md

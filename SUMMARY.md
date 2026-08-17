@@ -55,7 +55,11 @@
     * [LoRa 2.4 GHz](kilo-iot-server/connectors/lns-connector/lora-2g4.md)
     * [LR-FHSS](kilo-iot-server/connectors/lns-connector/lr-fhss.md)
     * [Built-in Network Server](kilo-iot-server/connectors/lns-connector/built-in-lns.md)
-  * [MIOTY Connector](kilo-iot-server/connectors/mioty-connector.md)
+  * [MIOTY Connector](kilo-iot-server/connectors/mioty-connector/README.md)
+    * [What is MIOTY?](kilo-iot-server/connectors/mioty-connector/what-is-mioty.md)
+    * [Core Benefits of MIOTY](kilo-iot-server/connectors/mioty-connector/core-benefits-of-mioty.md)
+    * [Ideal Use Cases for MIOTY](kilo-iot-server/connectors/mioty-connector/ideal-use-cases-for-mioty.md)
+    * [Why Choose MIOTY?](kilo-iot-server/connectors/mioty-connector/why-choose-mioty.md)
   * [Tracker Connector](kilo-iot-server/connectors/tracker-connector.md)
   * [MQTT Connector](kilo-iot-server/connectors/mqtt-connector.md)
     * [What MQTT Is](kilo-iot-server/connectors/mqtt/what-is-mqtt.md)
@@ -188,13 +192,6 @@
     * [LoRa 2.4Ghz](lorawan-lr-fhss/lorawan/subg/2g4.md)
 * [What is LR-FHSS?](lorawan-lr-fhss/what-is-lr-fhss.md)
 * [Built in LPWAN Server](lorawan-lr-fhss/built-in-lpwan-server.md)
-
-## MIOTY
-
-* [What is MIOTY?](mioty/README.md)
-  * [Core Benefits of MIOTY](mioty/core-benefits-of-mioty.md)
-  * [Ideal Use Cases for MIOTY](mioty/ideal-use-cases-for-mioty.md)
-  * [Why Choose MIOTY?](mioty/why-choose-mioty.md)
 
 ## Kilo Connectivity
 

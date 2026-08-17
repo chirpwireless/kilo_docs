@@ -73,14 +73,14 @@ A service center moves messages. It manages base stations and endpoints, handles
 
 Kilo gives you both paths:
 
-* **Kilo Center — the Community edition.** Our open-source MIOTY service center. Self-host it, own the infrastructure end to end, and integrate it with whatever you run downstream. It is a MIOTY network server: base stations, endpoints, traffic, and an operator console. See [Kilo MIOTY Service Center](../kilo-center/kilo-mioty-service-center/README.md).
-* **Kilo Cloud — the Enterprise edition, built in.** The Enterprise edition of the service center runs inside Kilo Cloud, so there is no MIOTY infrastructure for you to host at all. Register a [MIOTY connector](../kilo-iot-server/connectors/mioty-connector.md), point your base stations at it, and your endpoints arrive on a full IoT platform rather than a bare network server.
+* **Kilo Center — the Community edition.** Our open-source MIOTY service center. Self-host it, own the infrastructure end to end, and integrate it with whatever you run downstream. It is a MIOTY network server: base stations, endpoints, traffic, and an operator console. See [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
+* **Kilo Cloud — the Enterprise edition, built in.** The Enterprise edition of the service center runs inside Kilo Cloud, so there is no MIOTY infrastructure for you to host at all. Register a [MIOTY connector](README.md), point your base stations at it, and your endpoints arrive on a full IoT platform rather than a bare network server.
 
 That second path is what changes MIOTY from a data feed into an operation. The same readings land in the rules engine, alarms with escalation, dashboards, the Digital Building Twin, multi-tenant access control, and the audit trail — the machinery the rest of your fleet already uses. A MIOTY endpoint and a LoRaWAN sensor become the same kind of object the moment their data is normalized, and a single rule can reason across both.
 
 ### Starting a MIOTY Deployment on Kilo
 
-Data from MIOTY endpoints reaches your organization through the [MIOTY connector](../kilo-iot-server/connectors/mioty-connector.md), and the base stations serving those endpoints are registered and managed under [MIOTY base stations](../kilo-iot-server/gateways/mioty-base-stations/README.md).
+Data from MIOTY endpoints reaches your organization through the [MIOTY connector](README.md), and the base stations serving those endpoints are registered and managed under [MIOTY base stations](../../gateways/mioty-base-stations/README.md).
 
 ***
 

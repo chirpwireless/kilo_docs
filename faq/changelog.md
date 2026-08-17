@@ -150,7 +150,7 @@ Create a **Mioty connector** and a **Mioty Base Stations** tab appears alongside
 
 Payload decoding is where the design earns its keep. A **blueprint** is a decoder spec bound to a device type, organized as manufacturer → model → version and split into a **System** catalog everyone can use and a **Custom** catalog that is yours. Choose one for a device and the platform takes a *snapshot* of it onto that device. Edit or delete the catalog template afterwards and nothing already in the field changes — those devices keep running on their own copy until you deliberately move them to a new version. Two devices of the same model can run different blueprints. Author a new one from pasted JSON and test the decoder against a sample payload before you save it.
 
-[→ What is MIOTY?](../mioty/README.md) · [→ Mioty Connector](../kilo-iot-server/connectors/mioty-connector.md) · [→ Mioty Base Stations](../kilo-iot-server/gateways/mioty-base-stations/README.md) · [→ Mioty Blueprints](../kilo-iot-server/devices/mioty-blueprints.md)
+[→ What is MIOTY?](../kilo-iot-server/connectors/mioty-connector/what-is-mioty.md) · [→ Mioty Connector](../kilo-iot-server/connectors/mioty-connector/README.md) · [→ Mioty Base Stations](../kilo-iot-server/gateways/mioty-base-stations/README.md) · [→ Mioty Blueprints](../kilo-iot-server/devices/mioty-blueprints.md)
 
 ***
 

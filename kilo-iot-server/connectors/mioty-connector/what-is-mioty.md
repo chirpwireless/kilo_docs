@@ -79,9 +79,9 @@ The mobility number deserves a note, because it is the one people assume is mark
 
 Kilo supports MIOTY alongside LoRaWAN, so the protocol is a design choice rather than a platform commitment. Once your endpoints are reporting, they behave like any other device on the platform: normalized data, dashboards, rules, and alarms all work the same way regardless of which radio delivered the reading.
 
-* To bring MIOTY data into your Kilo organization, see the [MIOTY connector](../kilo-iot-server/connectors/mioty-connector.md).
-* To register and manage the base stations serving your endpoints, see [MIOTY base stations](../kilo-iot-server/gateways/mioty-base-stations/README.md).
-* To run your own service center infrastructure, see the [Kilo MIOTY Service Center](../kilo-center/kilo-mioty-service-center/README.md).
+* To bring MIOTY data into your Kilo organization, add the [MIOTY connector](README.md).
+* To register and manage the base stations serving your endpoints, see [MIOTY base stations](../../gateways/mioty-base-stations/README.md).
+* To run your own service center infrastructure, see the [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
 
 Continue with [Core Benefits of MIOTY](core-benefits-of-mioty.md) to see what telegram splitting buys you in practice.
 
