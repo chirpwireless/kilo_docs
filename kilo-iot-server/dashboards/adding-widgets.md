@@ -36,6 +36,8 @@ The picker shows the available widget types.
 | **iFrame** | External context belongs on the same screen — a BI report, a weather map, live traffic | A live external web page from a supported service, embedded in the tile beside your device data |
 | **Digital building twin** | You want a 3D model of a building with sensors mapped to the objects they monitor | A built-in 3D editor that turns a facility into a live scene, recolored by sensor readings |
 
+<figure><img src="../../.gitbook/assets/dashboard-widget-picker.jpg" alt="The Choose a widget dialog listing Last data, Chart, Text, Image, Map, Digital building twin, Control and iFrame"><figcaption></figcaption></figure>
+
 ## Choosing a widget type
 
 **Last data** is your default for displaying current operational state. Use it when you need to show the latest value from one or more devices in a single panel — a plain number for a quick reading, a Doughnut or Pie gauge when the value has a meaningful scale (tank fill, battery level, percentage within a range). Multiple devices can be combined into one widget.

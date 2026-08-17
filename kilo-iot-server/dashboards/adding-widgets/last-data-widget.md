@@ -43,6 +43,8 @@ When you add a metric, a default value range of 0–100 is created for it automa
 
 When the data sources are set, click **Next** to continue to the Appearance tab.
 
+<figure><img src="../../../.gitbook/assets/last-data-datasource.jpg" alt="The Datasource tab of the Last Data widget with a device and metric selected and a live preview"><figcaption></figcaption></figure>
+
 ### Step 3 — Appearance tab: set display style
 
 **Widget name** *(required)* — The label shown on the dashboard. Placeholder: **"Enter widget name"**.
