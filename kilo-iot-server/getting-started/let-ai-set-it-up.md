@@ -1,5 +1,5 @@
 ---
-description: You do not have to configure Kilo by hand. Ask the built-in AI assistant, or connect the AI client you already use over MCP, and it does the setup work with you.
+description: You do not have to configure Kilo by hand. Ask the built-in AI assistant, or connect the AI client you already use over MCP, and it does the setup with you.
 ---
 
 # Let AI Set It Up for You
