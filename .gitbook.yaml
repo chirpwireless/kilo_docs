@@ -56,3 +56,13 @@ redirects:
   mioty/mioty/core-benefits-of-mioty: kilo-iot-server/connectors/mioty-connector/core-benefits-of-mioty.md
   mioty/mioty/ideal-use-cases-for-mioty: kilo-iot-server/connectors/mioty-connector/ideal-use-cases-for-mioty.md
   mioty/mioty/why-choose-mioty: kilo-iot-server/connectors/mioty-connector/why-choose-mioty.md
+  lorawan-lr-fhss: kilo-iot-server/connectors/lns-connector/what-is-lorawan.md
+  lorawan-lr-fhss/lorawan: kilo-iot-server/connectors/lns-connector/what-is-lorawan.md
+  lorawan-lr-fhss/lorawan/core-benefits-of-lorawan: kilo-iot-server/connectors/lns-connector/what-is-lorawan.md
+  lorawan-lr-fhss/lorawan/ideal-use-cases-for-lorawan: kilo-iot-server/connectors/lns-connector/what-is-lorawan.md
+  lorawan-lr-fhss/lorawan/why-choose-lorawan: kilo-iot-server/connectors/lns-connector/what-is-lorawan.md
+  lorawan-lr-fhss/lorawan/subg: kilo-iot-server/connectors/lns-connector/lorawan-frequencies.md
+  lorawan-lr-fhss/lorawan/subg/frequencies: kilo-iot-server/connectors/lns-connector/lorawan-frequencies.md
+  lorawan-lr-fhss/lorawan/subg/2g4: kilo-iot-server/connectors/lns-connector/lora-2g4.md
+  lorawan-lr-fhss/what-is-lr-fhss: kilo-iot-server/connectors/lns-connector/lr-fhss.md
+  lorawan-lr-fhss/built-in-lpwan-server: kilo-iot-server/connectors/lns-connector/built-in-lns.md

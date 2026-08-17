@@ -181,18 +181,6 @@
   * [Operations](kilo-center/kilo-mioty-service-center/operations/README.md)
     * [Operations and Troubleshooting](kilo-center/kilo-mioty-service-center/operations/operations-and-troubleshooting.md)
 
-## LoRaWAN / LR-FHSS
-
-* [What is LoRaWAN?](lorawan-lr-fhss/lorawan/README.md)
-  * [Core Benefits of LoRaWAN](lorawan-lr-fhss/lorawan/core-benefits-of-lorawan.md)
-  * [Ideal Use Cases for LoRaWAN](lorawan-lr-fhss/lorawan/ideal-use-cases-for-lorawan.md)
-  * [Why Choose LoRaWAN?](lorawan-lr-fhss/lorawan/why-choose-lorawan.md)
-  * [LoRaWAN Regional Use](lorawan-lr-fhss/lorawan/subg/README.md)
-    * [LoRaWAN Frequencies by Country](lorawan-lr-fhss/lorawan/subg/frequencies.md)
-    * [LoRa 2.4Ghz](lorawan-lr-fhss/lorawan/subg/2g4.md)
-* [What is LR-FHSS?](lorawan-lr-fhss/what-is-lr-fhss.md)
-* [Built in LPWAN Server](lorawan-lr-fhss/built-in-lpwan-server.md)
-
 ## Kilo Connectivity
 
 * [What is Kilo Connectivity?](kilo-connectivity/what-is-kilo-connectivity/README.md)
