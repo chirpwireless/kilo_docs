@@ -42,6 +42,8 @@ Click **Add your first key pair** to begin.
 
 ---
 
+<figure><img src="../../.gitbook/assets/key-vault-list.jpg" alt="The Key Vault listing a stored DevEUI and its key, with search, Add Key Pair, Edit and Delete"><figcaption></figcaption></figure>
+
 ## What a Key Pair Contains
 
 Each entry holds two fields:
