@@ -20,6 +20,8 @@ The profile page contains the following fields:
 
 Click **Save changes** when you are done. The button remains disabled until you modify at least one field.
 
+<figure><img src="../../.gitbook/assets/settings-profile.jpg" alt="Profile settings with the avatar uploader, change password, name fields and delete account action"><figcaption></figcaption></figure>
+
 ## Managing Your Avatar
 
 Once an avatar is uploaded, a **Delete avatar** option appears. Clicking it prompts a confirmation: "Are you sure you want to delete your avatar?" Confirming removes the image and reverts to the default placeholder.

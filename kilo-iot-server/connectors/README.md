@@ -42,6 +42,8 @@ Each connector row has action buttons:
 
 Click anywhere on a connector row to open that connector's detail page, where you can manage gateways (for LNS) or view and manage connected devices.
 
+<figure><img src="../../.gitbook/assets/connectors-list.jpg" alt="The Connectors page listing connectors with last data received, connected device count and row actions"><figcaption></figcaption></figure>
+
 ## Adding a connector
 
 1. From the **Connectors** page, click **Add connector** in the top-right corner.

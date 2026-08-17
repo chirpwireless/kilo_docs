@@ -79,6 +79,8 @@ Each metric template specifies:
 
 **Filtering:** Use the Type and Data type dropdown filters above the table to narrow the list to specific value types or sensor types.
 
+<figure><img src="../../.gitbook/assets/metric-templates-metrics.jpg" alt="The Metrics tab of Metric Templates listing normalized keys with their unit, type and data type"><figcaption></figcaption></figure>
+
 ## How metric templates connect to devices
 
 When you register a device through the Manage Device dialog, the **Metrics** tab is where you assign metric templates. The device's raw output keys (whatever the manufacturer's firmware sends) are mapped to your normalized metric definitions.
