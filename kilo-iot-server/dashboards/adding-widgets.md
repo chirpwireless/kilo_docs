@@ -21,6 +21,8 @@ In edit mode, the header changes:
 
 Any changes you make in edit mode are only saved when you click **Save**. Clicking **Cancel** discards all changes and returns to view mode.
 
+<figure><img src="../../.gitbook/assets/dashboard-edit-mode.jpg" alt="A dashboard in edit mode, showing the placement grid with a widget positioned and the Add widget, Cancel and Save controls"><figcaption></figcaption></figure>
+
 ## The widget picker
 
 Click the **plus button** in the edit mode header (or the **Add widget** button in the empty state) to open the widget picker.
