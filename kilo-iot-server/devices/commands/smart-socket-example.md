@@ -33,6 +33,8 @@ In this example `socket_status` is mapped to a metric named **Socket status**.
 
 Open **Commands & States → Commands** and click **Add new command**.
 
+<figure><img src="../../../.gitbook/assets/device-command-editor.jpg" alt="The command editor with the identity, routing and payload sections of a device command"><figcaption></figcaption></figure>
+
 **1. Identity**
 
 * **Command name** — `Turn ON`

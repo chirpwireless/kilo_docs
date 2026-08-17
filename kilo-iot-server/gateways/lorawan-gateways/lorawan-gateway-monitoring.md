@@ -32,15 +32,20 @@ Click any gateway in the list to open its detail page. The page has two tabs: **
 The Overview tab provides real-time operational metrics:
 
 - **Availability** — The percentage of time the gateway has been online over a selected period. A consistently high availability indicates reliable infrastructure; drops may signal power issues, network instability, or hardware problems.
-- **Traffic** — The volume of data the gateway is handling, shown as transmitted (Tx) and received (Rx) counts. This tells you how much device communication is passing through the gateway.
-- **Map** — The gateway's position on a map when location data is available.
+- **Tx/Rx** — The volume of data the gateway is handling, shown as transmitted and received counts. This tells you how much device communication is passing through the gateway.
+- **Pings** — Received and transmitted keepalive counts, a quick read on whether the gateway is still talking to the server.
+- **Map** — The gateway's position on a map when location data is available. Until a location is set, the panel reads *"Your device location is empty"* and offers an **Add device location** button that jumps to the Settings tab.
+
+Each chart has its own **30D / 14D / 7D** range selector.
+
+<figure><img src="../../../.gitbook/assets/gateway-detail-overview.jpg" alt="The Overview tab of a gateway with the availability, Tx/Rx and Pings charts and the empty location panel"><figcaption></figcaption></figure>
 
 ### Settings tab
 
 The Settings tab lets you manage the gateway's configuration:
 
 - **Private name** — The internal name for the gateway (editable).
-- **Location and Sub-location** — The assigned place in your organization's location hierarchy. Used for filtering and organization in the gateway list.
+- **Location and Sublocation** — The assigned place in your organization's location hierarchy, used for filtering and organization in the gateway list. **Add new location** and **Add new sub-location** create them here — see [Locations](../../settings/locations.md).
 - **Gateway EUI** — The unique identifier for this gateway (read-only after registration).
 - **LNS Address** — The server endpoint the gateway connects to. Click the copy icon to copy it.
 - **Certificates** — Download the current certificate bundle (`certs.zip`) or regenerate certificates if needed. Regenerating certificates invalidates the previous set — the gateway will need to be reconfigured with the new certificates.

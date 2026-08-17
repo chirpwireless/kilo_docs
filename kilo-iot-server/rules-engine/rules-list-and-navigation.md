@@ -62,6 +62,8 @@ The button is disabled if your organization has reached its subscription rule li
 
 If no rules exist yet, the page shows a message: *"No rules yet"* with a description and a **Create Rule** button.
 
+<figure><img src="../../.gitbook/assets/rules-empty-state.jpg" alt="The Rules tab with no rules yet, showing the Create Rule button"><figcaption></figcaption></figure>
+
 ## Artifacts tab
 
 The Artifacts tab shows all build artifacts, grouped by rule. Each group row shows the rule name and description. Expand a group to see the individual builds, their status, source link, timestamp, author, and comments.

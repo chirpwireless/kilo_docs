@@ -54,6 +54,8 @@ Once the rule fires (either from real sensor data or a test condition), the alar
 - Severity is color-coded as **High**.
 - The message matches what you configured in the definition.
 
+<figure><img src="../../.gitbook/assets/alarm-inbox.jpg" alt="A triggered alarm in the Inbox with its message, severity, first and last trigger times and the Mark as resolved action"><figcaption></figcaption></figure>
+
 ## Step 4 — Resolve the alarm
 
 Click **Mark as resolved** on the alarm event. The status changes to **Resolved** (checkmark). If the alarm was still in Step 1 when you resolved it, Step 2 never fires — the supervisor is not notified because the technician handled it. If the alarm had already escalated to Step 2, resolving it stops any further notifications from that event.

@@ -64,6 +64,10 @@ Restoring a rule moves it back to the active Rules list, where it can be edited,
 
 5. Click **Restore** to confirm.
 
+<figure><img src="../../.gitbook/assets/rules-restore-confirm.jpg" alt="The restore confirmation dialog explaining that the rule will be activated and moved back to the active rules list"><figcaption></figcaption></figure>
+
+Nothing happens until you confirm — closing the dialog leaves the rule in the trash.
+
 The rule reappears in the Rules tab. It comes back **unlocked**, regardless of its lock state when it was deleted.
 
 ### What a restored rule looks like

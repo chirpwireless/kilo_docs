@@ -35,7 +35,9 @@ Common conventions in industrial deployments:
 - **Vendor-prefixed schemes** for protocol bridges — e.g. `zigbee2mqtt/{friendlyName}`, `tasmota/{deviceName}/SENSOR`, `mosquitto/+/state`. The Kilo IoT Server supports any topic shape through the **Device ID Topic** pattern field — see [Topics and device routing](topics-and-device-routing.md).
 - **Sparkplug B namespaces** for OPC-UA-style hierarchies — e.g. `spBv1.0/{group}/DDATA/{node}/{device}`. The platform consumes these as ordinary MQTT topics; Sparkplug-specific decoding is handled by the publishing edge gateway.
 
-The platform's connector configuration treats topics as patterns: you specify a Device ID Topic like `plant-3/line-a/{{deviceId}}/data` and the platform extracts the device identifier from the placeholder position when each message arrives.
+The platform's connector configuration treats topics as patterns: on each device you build the topic out of segments and mark the one that carries the device identifier, and the platform extracts the identifier from that position when each message arrives.
+
+<figure><img src="../../../.gitbook/assets/device-mqtt-topic-builder.jpg" alt="The MQTT topic builder on a device Connection tab with a locked connector prefix, a text segment, a Device ID segment and the resolved preview"><figcaption></figcaption></figure>
 
 ## Payloads: structured JSON in practice
 
