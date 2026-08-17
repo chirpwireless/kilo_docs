@@ -8,12 +8,14 @@ The Digital Building Twin editor is a full-screen workspace. Everything you do �
 
 When you add a **Digital building twin** widget to a dashboard, the editor opens with a starter scene already in place: a building with one floor. You build outward from there.
 
+<figure><img src="../../../../.gitbook/assets/dbt-editor-tour.jpg" alt="The Digital Building Twin editor with the Scene panel on the left, the mode toolbar along the bottom, and a partly built floor in the 3D view"><figcaption></figcaption></figure>
+
 ## The bottom toolbar — your main control
 
 The toolbar centered along the bottom of the screen is where most work begins. It has four modes:
 
 * **Select** — the default. Click objects to select them, move them, and edit their properties. Press **Escape** at any time to return here.
-* **Build** — opens a row of structure tools: **Wall**, **Door**, **Window**, **Fence**, plus **Trace from map**. Use these to draw the shell of the building. See [Drawing your building](drawing-your-building.md).
+* **Build** — opens a row of structure tools: **Wall**, **Door**, **Window**, **Fence**, **Flat roof**, and **Pitched roof**. Use these to draw the shell of the building. See [Drawing your building](drawing-your-building.md).
 * **Furnish** — opens the object catalog: five category tabs (**Furniture**, **Appliance**, **Kitchen**, **Bathroom**, **Outdoor**) and a scrollable strip of 3D models to drop into the scene. See [Placing objects](placing-objects.md).
 * **Sensors** — opens the Sensors panel, where you connect devices and bind their readings to objects in the model. See [Binding sensors and colors](binding-sensors-and-colors.md).
 

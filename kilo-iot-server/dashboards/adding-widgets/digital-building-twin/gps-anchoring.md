@@ -26,6 +26,8 @@ You can also place anchors manually, on any model — including one drawn from s
 
 Add as many anchors as you need. Two or three known points — the corners of the building, a surveyed reference — are enough to fix the model firmly in real-world space.
 
+<figure><img src="../../../../.gitbook/assets/dbt-sensors-panel.jpg" alt="The GPS Anchors section at the bottom of the Sensors panel with the Add by click control"><figcaption></figcaption></figure>
+
 ## The center point
 
 As you add anchors, the editor computes a **Center** — the average position of all the anchors, in both geographic and model coordinates. The Center is shown at the top of the anchor list with its latitude and longitude. It represents the model's overall geographic position: where, on a real map, this building sits.

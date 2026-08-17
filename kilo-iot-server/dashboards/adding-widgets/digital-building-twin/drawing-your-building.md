@@ -17,6 +17,8 @@ The editor shows the same model two ways, and you can draw in either:
 
 Switch between them with the **3D / 2D** toggle on the floor selector. A common rhythm is to draw the plan in 2D, then flip to 3D to confirm it.
 
+<figure><img src="../../../../.gitbook/assets/dbt-2d-plan-properties.jpg" alt="A two-room floor plan in 2D view, with a window selected and its properties panel open on the right"><figcaption></figcaption></figure>
+
 ## Drawing a wall
 
 1. On the bottom toolbar, click **Build**. A row of structure tools appears.
@@ -27,6 +29,8 @@ Switch between them with the **3D / 2D** toggle on the floor selector. A common 
 6. The tool stays active, so you can immediately draw the next wall. Each wall begins a fresh two-click sequence.
 
 Wall endpoints snap to a grid, which makes it easy to keep corners square and walls aligned. When a new wall crosses an existing one, the existing wall is split at the crossing point — so you can later select and color each segment independently.
+
+<figure><img src="../../../../.gitbook/assets/dbt-build-tools.jpg" alt="The Build row of structure tools — Wall, Door, Window, Fence, Flat roof, Pitched roof — above the mode toolbar"><figcaption></figcaption></figure>
 
 To stop drawing, press **Escape** or right-click, or click **Build** again to leave the mode.
 

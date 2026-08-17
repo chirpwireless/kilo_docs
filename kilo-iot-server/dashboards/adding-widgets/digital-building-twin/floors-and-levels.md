@@ -16,6 +16,8 @@ A floating stack of floor buttons sits to one side of the editor. It is the cont
 * The **active floor** is highlighted. Everything you draw, place, or bind goes onto the active floor.
 * Click any floor button to make that floor active and bring it into focus.
 
+<figure><img src="../../../../.gitbook/assets/dbt-floor-selector.jpg" alt="The floor selector stack showing floor L0 with the add and duplicate controls and the 3D / 2D toggle"><figcaption></figcaption></figure>
+
 ## Adding a floor
 
 * Click the **+** button at the **top** of the stack to add a floor **above** the highest one.

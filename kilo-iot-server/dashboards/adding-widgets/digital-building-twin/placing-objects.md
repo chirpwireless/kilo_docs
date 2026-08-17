@@ -24,6 +24,8 @@ The editor ships with a catalog of more than 60 ready-made 3D objects. This page
 
 Objects snap to a fine grid as you place them, so a row of desks or a line of parking spots lands evenly spaced without fiddling.
 
+<figure><img src="../../../../.gitbook/assets/dbt-object-catalog.jpg" alt="The Furnish mode open, with the category tabs and the scrollable strip of object thumbnails above the mode toolbar"><figcaption></figcaption></figure>
+
 ### Rotating while you place
 
 For objects that sit on the floor, press **R** or **T** while placing to rotate the preview by 45° before you click. This lets you face a desk, angle a vehicle, or orient a rack the right way as you drop it in.

@@ -12,6 +12,8 @@ A **binding** connects one sensor reading to one or more objects in the model, p
 
 On the bottom toolbar, click **Sensors**. The Sensors panel opens, headed **Source**. This is where every binding is configured.
 
+<figure><img src="../../../../.gitbook/assets/dbt-sensors-panel.jpg" alt="The Sensors panel open on the right of the editor, headed Source, with Add datasource and the GPS Anchors section"><figcaption></figcaption></figure>
+
 ## Step 1 — Add a data source
 
 A data source is a device.

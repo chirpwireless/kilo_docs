@@ -8,6 +8,8 @@ The editor includes a built-in catalog of more than 60 ready-made 3D objects, or
 
 Every object is a measured, properly-scaled 3D model, so a desk is desk-sized and a parking spot is the size of a real bay. That accuracy matters: a model built from correctly-scaled objects reads true, and an operator trusts what they see.
 
+<figure><img src="../../../../.gitbook/assets/dbt-object-catalog.jpg" alt="The object catalog strip with its category tabs and 3D model thumbnails"><figcaption></figcaption></figure>
+
 ## Furniture
 
 General-purpose objects for offices, interiors, and workspaces:
