@@ -20,6 +20,8 @@ Debug mode is an interactive debugger built into the visual editor. You feed the
 
 The initial context stands in for what a device would send in production. Set it to the values you want to test — the edge case, the threshold, the reading you suspect is causing trouble.
 
+<figure><img src="../../.gitbook/assets/rules-debug-start-panel.jpg" alt="The Start Debug Session panel with a named context variable and the Load and Start button"><figcaption></figcaption></figure>
+
 ### Name each variable exactly as your rule refers to it
 
 Rules read the context through `vars`, so name each row to match the expressions in your rule. A gateway condition written `vars.RH > 70` needs a row named **`RH`** — `humidity` or `value` will not do. If a condition references a name the context does not contain, the rule stops at that element when you reach it.
@@ -36,6 +38,8 @@ Two rows you do not need to add:
 Loading a session does not run the rule. It opens the diagram, places execution on the Start Event, and waits for you — **nothing runs until you press Run or one of the Step controls**.
 
 When the session loads you will see the canvas turn read-only, the debug toolbar appear at the bottom of the editor, the debug panel open on the right with your initial variables, and a blue outline on the Start Event. The blue outline shows the session is live and waiting.
+
+<figure><img src="../../.gitbook/assets/rules-debug-session-paused.jpg" alt="A loaded debug session paused on the Start Event, with the debug toolbar and the Variables tab"><figcaption></figcaption></figure>
 
 If the diagram appears to sit still, press **Run (F10)** to continue to the first breakpoint or to the end, or **Step over (F9)** to advance one element at a time.
 
@@ -64,6 +68,8 @@ Elements can carry three different marks during a session:
 | **Red outline** | The element that raised the most recent error. It clears on the next successful step. |
 
 A red outline is neither a breakpoint nor the current position — it marks the element that failed, and the expression on that element is where to look. See [When a node fails](#when-a-node-fails).
+
+<figure><img src="../../.gitbook/assets/rules-debug-error-marker.jpg" alt="A rule paused with a blue outline on the Start Event and a red outline on the element that raised an error"><figcaption></figcaption></figure>
 
 ## Breakpoints
 
@@ -99,11 +105,13 @@ Both take the same [CEL](cel-reference.md) you write elsewhere in the rule, and 
 
 Some nodes do more than transform data — they send notifications, raise alarms, or call out to other systems. When debug execution reaches a node with a side effect, a **Side Effect** dialog appears and asks how to handle it. Three options:
 
+<figure><img src="../../.gitbook/assets/rules-debug-side-effect.jpg" alt="The Side Effect dialog offering Execute, Skip and Mock"><figcaption></figcaption></figure>
+
 * **Execute — run the real handler.** The side effect happens for real, exactly as it would in a deployed rule: an alarm is raised and its recipients are notified, and a command is sent to the physical device.
 * **Skip — variables unchanged.** The side effect is skipped and the rule's variables are left as they are.
 * **Mock — provide a mock response.** You supply a stand-in response as JSON and the rule continues as if the handler had returned it. The response must be valid JSON — if it isn't, the mock simply isn't applied.
 
-This is what lets you debug a rule that sends alerts without actually paging an on-call engineer: choose **Skip** or **Mock** while you're testing the logic, and **Execute** only when you specifically want to verify the real delivery.
+**Execute is selected when the dialog opens**, so change the selection before clicking Apply if you do not want the action to happen for real. This is what lets you debug a rule that sends alerts without actually paging an on-call engineer: choose **Skip** or **Mock** while you're testing the logic, and **Execute** only when you specifically want to verify the real delivery.
 
 Two things to expect once you have answered:
 
