@@ -23,6 +23,8 @@ After permissions are saved, the platform computes a display label by matching t
 | **Editor** | Edit on most surfaces. Audit Trail = View. API Keys = Edit. No access to Subscription or Manage Users. | Yes — per surface |
 | **Viewer** | View on most surfaces. Audit Trail = View. API Keys = Edit (self-service exception). No access to Subscription or Manage Users. | Yes — per surface |
 
+<figure><img src="../../.gitbook/assets/users-list.jpg" alt="The Users page listing each member with their label and their edit and view access"><figcaption></figcaption></figure>
+
 ## In This Section
 
 | Page | What it covers |

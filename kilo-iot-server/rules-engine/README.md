@@ -12,6 +12,8 @@ That last capability changes what automation means here. A rule no longer just a
 
 Rules are BPMN 2.0 workflows: visual flowcharts where each node performs a specific job. You connect nodes with flows (arrows) to build the logic. The engine executes this logic every time a bound sensor sends new data.
 
+<figure><img src="../../.gitbook/assets/rules.jpg" alt="A rule on the visual editor canvas — a Start event flowing into a Gateway that branches into two paths ending at End events"><figcaption></figcaption></figure>
+
 Every rule follows a managed lifecycle:
 
 ```

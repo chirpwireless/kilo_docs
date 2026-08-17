@@ -10,6 +10,8 @@ A single gateway can serve hundreds of devices within its coverage area, which t
 
 Gateways are not limited to office or plant-network installations. Depending on the hardware, they can run from mains power or autonomous power systems such as solar, and they can use Ethernet, Wi-Fi, LTE, or satellite backhaul. That makes them suitable for remote industrial sites, outdoor infrastructure, and other locations with limited or unavailable local network access. In dense structures or below-grade areas such as basements, tunnels, or plant rooms, an additional indoor gateway is often added when a single outdoor gateway does not provide reliable signal penetration.
 
+<figure><img src="../../../.gitbook/assets/lorawan-gateways-table.jpg" alt="The LoRaWAN Gateways list showing a registered gateway with its status, EUI and firmware version"><figcaption></figcaption></figure>
+
 ## Basics Station required
 
 Kilo IoT supports gateways that use the **LoRa Basics Station** protocol. Basics Station establishes a secure, certificate-authenticated connection between the gateway and the server — unlike the legacy UDP Packet Forwarder, which transmits data without encryption.

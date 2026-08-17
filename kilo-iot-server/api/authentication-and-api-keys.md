@@ -17,6 +17,10 @@ All requests are over TLS.
 
 Keys are scoped. Most areas have separate **Read** and **Write** scopes; some — such as telemetry and subscription data — are read-only. A key grants only what you select when you create it, so grant only the scopes the integration needs. Each endpoint in the [API reference](https://api.kiloiot.io/) lists the scope it requires.
 
+The **Create API Key** dialog asks for a name, an optional expiry date, and the scopes themselves — every scope starts unchecked, so a key grants nothing until you say so.
+
+<figure><img src="../../.gitbook/assets/api-key-create-scopes.jpg" alt="The Create API Key dialog with the name and expiry fields above the list of read and write scopes"><figcaption></figcaption></figure>
+
 ## Handling keys safely
 
 - The full key value is shown **once** at creation; only a short prefix is visible afterward. Store it immediately in a secrets manager or vault.

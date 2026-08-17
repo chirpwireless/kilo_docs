@@ -9,6 +9,8 @@ The Records & Reports section holds the two places your organization keeps thing
 - [Audit Trail](audit-trail.md) — A searchable log of all membership and access events: invitations sent, users joining, permission changes, and user removals. Filter by actor, event type, and date range.
 - [Key Vault](key-vault.md) — An encrypted store for your devices' EUI-key pairs, so credentials outlive the installer who commissioned the hardware.
 
+<figure><img src="../../.gitbook/assets/audit-trail.jpg" alt="The Audit Trail page with its actor filter, event type dropdown and date range control above the event list"><figcaption></figcaption></figure>
+
 ## Audit Trail
 
 Access is controlled by the Audit Trail permission — only users with explicit access can view these records.

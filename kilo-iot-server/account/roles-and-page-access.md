@@ -14,6 +14,8 @@ When you invite a user or edit their permissions, the dialog shows a **Page acce
 - **View** — the user can see the feature but not make changes
 - **No access** — the feature is hidden from the user
 
+<figure><img src="../../.gitbook/assets/invite-user-page-access.jpg" alt="The Page access list with Edit, View and No access options for each product surface"><figcaption></figcaption></figure>
+
 ## Configurable Surfaces
 
 The following features appear in the invitation and permission dialog. You can set each one independently.

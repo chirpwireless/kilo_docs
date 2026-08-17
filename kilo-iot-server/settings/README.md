@@ -6,11 +6,13 @@ description: Manage Kilo IoT Server profile, subscription, locations, and API ke
 
 Configure your Kilo IoT Server environment. The Settings section in the sidebar covers platform-level preferences and configuration that apply across your deployment.
 
+<figure><img src="../../.gitbook/assets/sidebar-and-overview.jpg" alt="The Kilo IoT Server sidebar with the Settings section beneath Records & Reports"><figcaption></figcaption></figure>
+
 ## What belongs here
 
 - [Profile Settings](profile-settings.md) — Your name, avatar, password, and account management
 - [Subscription](subscription.md) — Plan tiers, billing, and SMS credit top-ups
-- [Locations](locations.md) — Define a site and sub-location hierarchy for organizing devices
+- [Locations](locations.md) — How the site and sub-location hierarchy works, and where it is created
 - [API Keys](api-keys.md) — Create scoped keys for external system integrations (the credentials for the [API](../api/README.md) section)
 
 ## What is NOT here

@@ -1,65 +1,49 @@
 ---
-description: Organize Kilo IoT devices into a location hierarchy — sites, buildings, floors, zones — mirroring your real layout.
+description: Organize Kilo IoT devices and gateways into a location and sub-location hierarchy — created from the record's Settings tab.
 ---
 
 # Locations
 
-Locations give your Kilo IoT Server deployment a spatial structure. By organizing devices into locations and sub-locations, you create a hierarchy that mirrors your real-world infrastructure — sites, buildings, floors, zones, or any other geographic grouping that makes sense for your operations.
+Locations give your Kilo IoT Server deployment a spatial structure. By organizing gateways and devices into locations and sub-locations, you create a hierarchy that mirrors your real-world infrastructure — sites, buildings, floors, zones, or any other geographic grouping that makes sense for your operations.
 
-This organizational layer matters as deployments scale. When you manage hundreds of devices across multiple sites, being able to filter by location, assign devices to specific zones, and see where your infrastructure is deployed makes the difference between operational clarity and data chaos. Locations also provide the foundation for spatial views on dashboards and maps (covered in the Dashboards section).
+This organizational layer matters as deployments scale. When you manage hundreds of devices across multiple sites, being able to filter by location, assign hardware to specific zones, and see where your infrastructure is deployed makes the difference between operational clarity and data chaos. Locations also carry the coordinates that put your hardware on a map.
 
-## Navigating to Locations
+## Where locations are managed
 
-1. Click **Settings** in the sidebar.
-2. Select **Locations** (or navigate directly to `/settings/locations`).
+There is no separate Locations page in the sidebar. Locations are created and assigned **from the record they belong to** — open a gateway or a device, and go to its **Settings** tab. Two dropdowns sit under the name field:
 
-The page title reads **Location settings** with the subtitle "Manage your locations."
+* **Location** — the top-level site.
+* **Sublocation** — the level below it. It stays disabled until a Location is chosen, because a sub-location only exists inside a parent.
 
-## Adding a location
+Beneath each dropdown is an **Add new location** / **Add new sub-location** button for creating one on the spot.
 
-1. Click **Add location** in the top-right corner of the Location settings page.
-2. In the dialog that opens, enter a **Name** for the location (e.g., "Warehouse Berlin", "Building 3", "Farm North").
-3. Click **Save**.
+<figure><img src="../../.gitbook/assets/location-assign-gateway.jpg" alt="The Settings tab of a gateway with the Location and Sublocation dropdowns and the Add new location controls"><figcaption></figcaption></figure>
 
-The new location appears in the location list below. If this is your first location, it replaces the empty state message ("You don't have locations yet").
+## Creating a location
 
-**Naming convention:** Use names that are meaningful at a glance to your operations team. Include the site or function — "Cold Storage B" is more useful than "Location 2."
+1. Open the gateway or device and switch to its **Settings** tab.
+2. Click **Add new location**. The form expands in place.
+3. Enter a **Location name** — for example "Warehouse Berlin", "Building 3", "Farm North".
+4. Set the position, either by typing into **Search location or add a point on the map** and picking a result, or by clicking the point directly on the map.
+5. Click **Add location**.
 
-## Working with locations
+The location is created and becomes selectable in the **Location** dropdown, for this record and every other one in the organization.
 
-Each location in the list shows:
+<figure><img src="../../.gitbook/assets/location-add-form.jpg" alt="The Add new location form with a name field, a location search box and a map for placing the point"><figcaption></figcaption></figure>
 
-- **Name** — An editable text field. Change the name directly by editing the field and clicking outside it (the change saves on blur).
-- **Delete** — Click the trash icon to delete the location. A confirmation dialog will ask you to confirm.
-- **Expand/collapse** — Click the chevron button to expand the location and reveal its details and sub-locations.
+**Naming convention:** use names that are meaningful at a glance to your operations team. Include the site or function — "Cold Storage B" is more useful than "Location 2."
 
-### Setting coordinates
+## Creating a sub-location
 
-When you expand a location, a **search/coordinates** input appears. Use this to set the geographic position of the location:
+1. Select a **Location** first — the sub-location controls stay disabled until you do.
+2. Click **Add new sub-location**.
+3. Enter the name and confirm.
 
-- Search for an address or place name.
-- Or enter latitude and longitude coordinates directly.
+Sub-locations create a hierarchy within a location — floors within a building, zones within a warehouse, rooms within a facility.
 
-Coordinates enable devices assigned to this location to appear correctly on maps.
+## Assigning a record to a location
 
-### Sub-locations
-
-Sub-locations create a hierarchy within a location — useful for organizing floors within a building, zones within a warehouse, or rooms within a facility.
-
-**To add a sub-location:**
-
-1. Expand the parent location by clicking the chevron.
-2. Click the **+** button that appears below the sub-location list.
-3. In the dialog, enter a name for the sub-location.
-4. Click **Save**.
-
-Sub-locations appear indented under their parent location. Each sub-location can be renamed or deleted independently.
-
-### Controlling sub-location visibility
-
-The **Show sub-locations** toggle at the top of the page controls whether sub-locations are displayed in the location list. When turned off, only top-level locations are shown — useful for getting a quick overview of your site structure without the detail of individual zones or floors.
-
-This toggle defaults to **on**.
+On the same Settings tab, pick a **Location** (and optionally a **Sublocation**) from the dropdowns and click **Save changes**. The assignment then shows up wherever locations are surfaced — the **Location / Sub-location** column on the Gateways list, and the location filters above it, which include a **No location** filter for finding hardware that has not been placed yet.
 
 ## Enterprise examples
 
@@ -72,4 +56,4 @@ This toggle defaults to **on**.
 
 ## What's next
 
-Once locations are in place, you can assign devices to specific locations through the [Device Management](../devices/device-management.md) workflow. Locations also become available as filters and grouping dimensions in dashboards and map views (covered in the Dashboards section).
+Once locations are in place, the coordinates you set are what put a gateway or device on a map — see [Map Widget](../dashboards/adding-widgets/map-widget.md). Device assignment is part of the [Device Management](../devices/device-management.md) workflow.

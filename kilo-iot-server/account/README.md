@@ -12,6 +12,8 @@ Click your name or avatar in the bottom-left to open the user menu. From there y
 - **Organization settings** — rename your organization or transfer ownership (owner only)
 - **My organizations** — switch between organizations if you belong to more than one
 
+<figure><img src="../../.gitbook/assets/account-menu-organizations.jpg" alt="The user menu open in the sidebar with Users, Subscription and Organization settings above a My organizations list"><figcaption></figcaption></figure>
+
 ## In this section
 
 - [How Organizations Start](how-organizations-start.md) — Default organization creation and invitation entry paths
