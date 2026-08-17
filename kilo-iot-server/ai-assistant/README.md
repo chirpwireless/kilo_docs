@@ -38,7 +38,7 @@ It also stays in its lane in the ways you'd want: it works only within your acce
 
 The assistant is part of the platform, with a monthly allowance of requests that scales with your plan. If you'd rather not be limited by the allowance, you can connect your own model API key and keep working. You'll see your remaining allowance above the chat input, and a prompt to review plans or add a key when you reach it.
 
-The capabilities above are live today and improving continuously: the assistant runs on an enterprise-grade agent runtime built in-house, and its accuracy grows as the agents are trained on more real-world IoT work — so it keeps taking on more. We were confident enough in that runtime to open-source it as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew), where you can see how it is engineered or build on it yourself.
+The capabilities above are live today and improving continuously: the assistant runs on an enterprise-grade agent runtime built in-house, and its accuracy grows as the agents are trained on more real-world IoT work — so it keeps taking on more. That runtime is [Synthetic Brew](https://syntheticbrew.ai), engineered as a product in its own right rather than a chatbot wrapped around someone else's API.
 
 ## Where to go next
 
