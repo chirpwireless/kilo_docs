@@ -86,6 +86,8 @@ When you select a device profile template, this field is automatically populated
 
 If the decoded output doesn't match what you expect — for example, if fields are missing, values look wrong, or field names don't match your sensor's documentation — you can edit the code directly. The editor is a multiline text area with monospace formatting.
 
+<figure><img src="../../.gitbook/assets/device-connection-codec.png" alt="The Connection tab of a LoRaWAN device, showing the device profile fields and the Code functions codec editor"><figcaption></figcaption></figure>
+
 #### Data sending interval
 
 A device transmits on a fixed schedule — every few minutes, once a day, once a month — and that schedule is configured **on the device itself**. It varies from one manufacturer to the next: some devices ship with the interval already set by the manufacturer, others require you to set it when you commission the device. Either way, the schedule is a property of the device. The **Data sending interval** field is where you tell the platform what that schedule is, so it knows when to expect data.

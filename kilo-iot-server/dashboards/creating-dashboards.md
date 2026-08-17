@@ -8,7 +8,7 @@ Every monitoring view in the Kilo IoT Server starts as a dashboard. A dashboard 
 
 This page covers creating new dashboards, editing their metadata, and deleting dashboards you no longer need. For folder management and drag-and-drop organization, see [Organizing Dashboards](organizing-dashboards.md).
 
-<figure><img src="../../.gitbook/assets/control-dashboard.jpg" alt="A dashboard of Control widgets — a switch, a dial, a slider, and an input controlling a lamp"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/dashboard-add-dialog.png" alt="The Add dashboard dialog with the icon picker, name, folder and description fields"><figcaption></figcaption></figure>
 
 ## Where to find dashboards
 

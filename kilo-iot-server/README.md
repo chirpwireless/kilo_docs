@@ -119,8 +119,6 @@ Kilo uses Attribute-Based Access Control (ABAC) rather than traditional role-bas
 
 Each organization on the server is fully isolated: its own devices, users, dashboards, rules, billing, and audit trail. A single user can belong to multiple organizations with different permission levels in each. This makes Kilo a natural fit for managed service providers, facility management companies, and multi-tenant deployments.
 
-<figure><img src="../.gitbook/assets/Add leave dates.png" alt="Organization settings dialog showing name and owner fields"><figcaption></figcaption></figure>
-
 ### Audit trail
 
 All membership and access events within an organization are logged — user invitations, acceptances, permission changes, and removals. The audit trail provides traceability for compliance and operational accountability.
