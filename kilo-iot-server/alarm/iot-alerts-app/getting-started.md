@@ -15,8 +15,6 @@ Getting an on-call device ready takes a few minutes. Once it's connected and the
 
 On first launch the app asks **"How will you use the app?"** Select **Business Use** — described as *Kilo IoT — alerts for your business deployments*. This points the app at your Kilo account and deployment and applies Kilo branding.
 
-<figure><img src="../../../.gitbook/assets/kilo-alerts-mode-select.jpg" alt="IoT Alerts mode-select screen — choose Business Use" width="300"><figcaption></figcaption></figure>
-
 You can change the app's platform later under **Settings → Platform → Change mode** — changing it signs you out, since each platform uses its own account.
 
 ## Step 3 — Sign in with your Kilo account

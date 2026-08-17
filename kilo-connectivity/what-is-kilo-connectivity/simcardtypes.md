@@ -64,4 +64,3 @@ Kilo supports all common SIM formats:
 
 Each format has trade-offs in durability, size, and integration complexity. MFF2 and nuSIM are preferred for rugged or space-constrained deployments, while 2FF–4FF remain widely used in general-purpose IoT hardware.
 
-![](../../.gitbook/assets/sims.png)

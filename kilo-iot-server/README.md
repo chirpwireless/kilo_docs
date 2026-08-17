@@ -111,8 +111,6 @@ The building can also be anchored to real GPS coordinates, giving the model a tr
 
 Place devices on 2D maps for spatial context. For GPS-equipped trackers, review full location history with playback, coordinates tables, and route visualization.
 
-<figure><img src="../.gitbook/assets/map-widget.jpg" alt="Add Map widget — Appearance settings with a live map preview of a tracked asset"><figcaption></figcaption></figure>
-
 ### Attribute-Based Access Control and multi-organization isolation
 
 Kilo uses Attribute-Based Access Control (ABAC) rather than traditional role-based access. Permissions are evaluated dynamically based on organization membership, page-level assignments, and user context — giving you fine-grained, per-resource control without role explosion.

@@ -12,7 +12,7 @@ This is different from the [Image Widget](image-widget.md), which works with any
 
 Place the Map widget on an operations dashboard alongside Last data and Chart widgets to give dispatchers and supervisors at-a-glance situational awareness: asset location, current metric status, and recent route history, all in one view. Date range controls let operators review route history without navigating away from the dashboard.
 
-<figure><img src="../../../.gitbook/assets/map-widget.jpg" alt="Add Map widget — Appearance settings with a live map preview of a tracked asset"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/map-widget-configuration.jpg" alt="The Map configuration dialog with its Datasource and Appearance tabs and the widget preview"><figcaption></figcaption></figure>
 
 ## Setting up a Map widget
 
