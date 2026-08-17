@@ -18,11 +18,10 @@ Before registering a device, you need:
 
 ## Where to start
 
-There are three entry points for device registration — all open the same Manage Device dialog:
+There are two entry points for device registration — both open the same Manage Device dialog:
 
 1. **Devices** — Click **Devices** in the sidebar. This page shows all devices across all connectors. Click **Add device** in the top-right corner.
-2. **Connector row action** — From the **Connectors** page, click the **+** (Add device) button on any connector row. The dialog opens with that connector pre-selected.
-3. **LNS Connected Devices** — Open the LNS connector, switch to the **Connected Devices** tab, and click **Add device**.
+2. **Connector row action** — From the **Connectors** page, click the **+ Add device** button on any connector row. The dialog opens with that connector pre-selected.
 
 The device form is laid out for small screens as well as desktop, so you can register hardware from a phone while standing at the installation point.
 
@@ -37,7 +36,7 @@ Click **Save**. The Digital Twin is created with just the name and optional phot
 
 ## Phase 2 — Configure connection, metrics, and logs
 
-After the first save, the dialog reopens with **Device info**, **Connection**, **Metrics** and **Logs** tabs, and a **Next** button for navigating between them. This is where you bind the device to a connector and configure its data. Two more tabs appear when they apply: **Commands & States** on a device that can receive downlinks, and **Emulator** on a device bound to the Emulator connector.
+After the first save, the dialog reopens with **Device info**, **Connection**, **Mapping** and **Logs** tabs, and a **Next** button for navigating between them. This is where you bind the device to a connector and configure its data. Two more tabs appear when they apply: **Commands & States** on a device that can receive downlinks, and **Emulator** on a device bound to the Emulator connector.
 
 ### Connection tab
 
@@ -82,7 +81,7 @@ Do this at registration, while the credentials are in front of you. Re-provision
 
 #### Code functions (codec)
 
-The **Code functions** field contains the device's payload codec — JavaScript logic that decodes the device's raw LoRaWAN uplink payload into named fields. These decoded fields become the **connector keys** visible in the Metrics tab.
+The **Code functions** field contains the device's payload codec — JavaScript logic that decodes the device's raw LoRaWAN uplink payload into named fields. These decoded fields become the **connector keys** visible in the Mapping tab.
 
 When you select a device profile template, this field is automatically populated with the template's codec. If you configure manually, this field starts empty — you may need to paste a codec from the device manufacturer's documentation or a community codec repository.
 
@@ -119,13 +118,13 @@ Select the Emulator connector and the device generates its own telemetry instead
 
 This is how you build a deployment before the sensors arrive, and swap the same device onto real hardware when they do. See [Emulated Devices](emulated-devices.md).
 
-### Metrics tab
+### Mapping tab
 
 This tab maps the device's raw sensor data to normalized measurement definitions. If metric templates have been configured for the device type, the mappings may populate automatically. Otherwise, you can assign metric templates manually.
 
 #### Connector keys — see what the device sends
 
-Once the device is connected and transmitting, the Metrics tab displays a **connector keys table** showing every field in the device's raw payload. Each row shows the field name (exactly as the device sends it — e.g., `t`, `temp1`, `humidity_pct`), its current value, and the last update timestamp. This is the live payload from the device, updated in real time.
+Once the device is connected and transmitting, the Mapping tab displays a **connector keys table** showing every field in the device's raw payload. Each row shows the field name (exactly as the device sends it — e.g., `t`, `temp1`, `humidity_pct`), its current value, and the last update timestamp. This is the live payload from the device, updated in real time.
 
 Come back to this table whenever you need to know what a device reports and in what form — writing a rule condition, or setting the expected value on a command. See [Payload Decoding and Connector Keys](payload-decoding.md).
 

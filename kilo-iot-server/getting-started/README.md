@@ -6,6 +6,8 @@ description: Get oriented with Kilo IoT Server and walk through your first LoRaW
 
 This section helps you get oriented: how the interface is organized and a simple walkthrough to get your first device online with live data on a dashboard. The hands-on walkthrough here uses the LoRaWAN path. Other protocol integrations do not always start in the same place. Each feature has its own dedicated section later in the documentation — this is just the quick path to getting started.
 
+<figure><img src="../../.gitbook/assets/sidebar-and-overview.jpg" alt="The Kilo IoT Server sidebar beside the Overview page with its device and gateway counts, notifications and news"><figcaption></figcaption></figure>
+
 **Start here if you would rather not do it by hand.** [Let AI Set It Up for You](let-ai-set-it-up.md) covers the two ways to have AI do the setup work — the assistant built into Kilo, or the AI client you already use connected over MCP — and what each one will and will not do on its own. For many people that is the shortest route to a working deployment; the manual walkthrough below is still here whenever you want to understand the mechanics.
 
 ## What's in this section

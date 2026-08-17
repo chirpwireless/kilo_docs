@@ -38,6 +38,8 @@ The server supports LoRaWAN gateways that use the **Basics Station** protocol. B
 5. Enter the **Gateway EUI** — a 16-character identifier typically printed on a label on the gateway hardware.
 6. Click **Next**.
 
+<figure><img src="../../.gitbook/assets/gateway-add-details.jpg" alt="The Add gateway form with the name, region and Gateway EUI fields"><figcaption></figcaption></figure>
+
 ### Download certificates and configure your gateway
 
 After submitting the gateway details, the next screen shows:
@@ -45,6 +47,8 @@ After submitting the gateway details, the next screen shows:
 7. The **LNS address** — this is the server URL your gateway needs to connect to. Click the **copy icon** to copy it to your clipboard.
 8. A **Download certs.zip** button — click it to download the certificate bundle that authenticates your gateway's connection.
 9. Click **Continue**.
+
+<figure><img src="../../.gitbook/assets/gateway-add-lns-certs.jpg" alt="The gateway setup step showing the LNS address with a copy control and the Download certs.zip button"><figcaption></figcaption></figure>
 
 Now open your gateway's management interface and configure it with:
 - The **LNS address** you copied
@@ -67,41 +71,45 @@ Before adding devices, you need a connector. A connector establishes the protoco
 
 The LNS connector is created and appears in your connectors table. No additional configuration is needed — the server handles the LoRaWAN network integration automatically.
 
+<figure><img src="../../.gitbook/assets/connector-lns-detail.jpg" alt="The LNS connector page showing connector type, creation date, connected devices and last data received"><figcaption></figcaption></figure>
+
 ---
 
 ## Step 3: Add your first device
 
 With the gateway online and the connector in place, you can register your first device — creating a Digital Twin that tracks the physical sensor's state, readings, and history.
 
-1. In the **Connectors** page, click on your **LNS connector** row to open it.
-2. Click the **Connected Devices** tab.
-3. Click the **Add device** button.
+1. Click **Devices** in the left sidebar.
+2. Click the **Add device** button in the top-right corner.
 
 ### Create the device profile
 
 The dialog opens in Add mode, showing only the Device info section:
 
-4. Enter a **device name** (e.g., "Server Room Door Sensor").
-5. Optionally, upload a **device photo** by dragging an image or clicking the upload area.
-6. Click **Save**.
+3. Enter a **device name** (e.g., "Server Room Door Sensor").
+4. Optionally, upload a **device photo** by dragging an image or clicking the upload area.
+5. Click **Save**.
 
-The device profile is created and the dialog transitions to edit mode with all four tabs visible.
+The device profile is created and the form switches to edit mode, with the **Device info**, **Connection**, **Mapping** and **Logs** tabs all available.
 
 ### Configure the connection
 
-7. Click the **Connection** tab.
-8. Select your **connector** from the dropdown.
-9. Under **"Use device profile templates"**, check the box if your device brand and model are in the catalog:
+6. Click the **Connection** tab.
+7. Select your **connector** from the dropdown — it lists your organization's connectors by name and type.
+
+<figure><img src="../../.gitbook/assets/device-connector-type-list.jpg" alt="The Connection tab of a device with the connector type dropdown open, listing the organization's connectors by name and type"><figcaption></figcaption></figure>
+
+8. Under **"Use device profile templates"**, check the box if your device brand and model are in the catalog:
    - Select the **Brand** (e.g., Dragino, Milesight, Browan).
    - Select the **Model** — the list filters based on brand.
    - The **Profile** (band and device class) populates automatically from the template.
-10. If your device is not in the catalog, leave the checkbox unchecked and enter credentials manually:
+9. If your device is not in the catalog, leave the checkbox unchecked and enter credentials manually:
     - **Device EUI** — 16 hexadecimal characters, typically printed on the device.
     - **AppKey** — 32 hexadecimal characters, provided with the device.
-11. Optionally, click the **Metrics** tab to select sensor templates that define what parameters the device reports.
-12. Click **Save**.
+10. Optionally, click the **Mapping** tab to select sensor templates that define what parameters the device reports.
+11. Click **Save**.
 
-The device appears in the Connected Devices list. Once it performs a LoRaWAN join through your gateway (which may take a few seconds to a few minutes depending on the device's transmission interval), its data will begin flowing into the server.
+The device appears in the Devices list. Once it performs a LoRaWAN join through your gateway (which may take a few seconds to a few minutes depending on the device's transmission interval), its data will begin flowing into the server.
 
 ---
 
@@ -109,9 +117,11 @@ The device appears in the Connected Devices list. Once it performs a LoRaWAN joi
 
 Once the device has sent its first reading:
 
-1. Click a **device row** in the Connected Devices list (or find it on the **Devices** page in the sidebar).
-2. The device detail page opens. Click the **Metrics** tab to see sensor data.
-3. The Metrics tab shows the sensor templates attached to the device and their current readings.
+1. Click a **device row** on the **Devices** page in the sidebar.
+2. The device detail page opens. Click the **Mapping** tab to see sensor data.
+3. The Mapping tab shows the sensor templates attached to the device and their current readings.
+
+<figure><img src="../../.gitbook/assets/device-metrics-tab.png" alt="The device Mapping tab listing the device's metrics and their latest values"><figcaption></figcaption></figure>
 
 You can also view device data through the **Dashboards** section by adding widgets — which is what we'll do next.
 
@@ -137,6 +147,8 @@ Dashboards let you combine data from multiple devices onto a single screen.
 7. **Step 2 — Choose a metric:** Select which parameter to show (e.g., door status, temperature, battery). A live preview of the widget appears so you can see how it will look.
 8. Click **Choose** to add it to the dashboard.
 
+<figure><img src="../../.gitbook/assets/dashboard-widget-picker.jpg" alt="The Add widget dialog listing the available widget types"><figcaption></figcaption></figure>
+
 Repeat to add more widgets for different devices or parameters. You can **drag** widgets to reposition them and **resize** them by pulling their edges.
 
 ---
@@ -148,17 +160,19 @@ Now let's have the server notify you when something needs attention — for exam
 1. Click **Alarm** in the left sidebar.
 2. Click the **Add alarm rule** button in the top-right corner.
 3. In the alarm rule modal, fill in:
-   - **Name** — A descriptive label (e.g., "Server Room Door Opened").
-   - **Title** — The subject line for the notification (e.g., "Door Open Alert").
-   - **Body** — The message content (e.g., "The server room door has been opened.").
+   - **Alarm name** — A descriptive label (e.g., "Server Room Door Opened").
    - **Severity** — Choose from **Critical**, **High**, **Medium**, **Low**, or **Info** depending on urgency.
+   - **Theme** — The subject line for the notification (e.g., "Door Open Alert").
+   - **Message body** — The message content (e.g., "The server room door has been opened.").
 
 ### Configure escalation
 
-4. Under **Escalation steps**, the first step is pre-configured with your user account and email.
-   - Select the **notification channel** (Email is the default; SMS and Push are also available if configured).
-   - To add escalation: click **Add step** to define what happens if the alarm isn't acknowledged — for example, notify a second person after 15 minutes.
-   - Set the **delay** between escalation steps.
+4. Under **Escalation chain**, click **Add step** to create the first step.
+   - Choose who to notify under **Notify**, and the delivery channel under **Via** (Email is the default; SMS and Push are also available if configured).
+   - Add further steps to define what happens if the alarm isn't acknowledged — for example, notify a second person after a delay.
+
+<figure><img src="../../.gitbook/assets/alarm-escalation-chain.jpg" alt="The Escalation chain section of an alarm definition with an Immediate step, its Notify recipients dropdown and Via channel, and the Add step control"><figcaption></figcaption></figure>
+
 5. Click **Save**.
 
 The alarm rule is now active. When the condition is met, an alarm appears in **Alarm → Inbox** and a notification is sent through the configured channels.

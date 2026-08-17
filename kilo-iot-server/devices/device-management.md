@@ -11,7 +11,7 @@ Once a device is registered, its Digital Twin is a living record that you can up
 There are several ways to open the detail page for an existing device:
 
 * **From Devices** — Click any device row in the **Devices** list in the sidebar. The device detail page opens showing that device's current state.
-* **From a connector's device list** — Open the LNS connector's **Connected Devices** tab or the Tracker connector's device page, then click a device row.
+* **From the Connectors page** — Click the **+ Add device** button on a connector row to register a device with that connector pre-selected.
 * **Edit button** — Click the edit icon (pencil) on any device row to go directly to the device detail page.
 
 ## Device info tab

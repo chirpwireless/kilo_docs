@@ -10,7 +10,7 @@ This page walks through every section of the Kilo IoT dashboard so you know exac
 
 The left sidebar is your primary navigation. It contains all major sections of the server, organized from top to bottom.
 
-<figure><img src="../../.gitbook/assets/leftmenu.png" alt="The Kilo IoT Server sidebar and overview page"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/sidebar-and-overview.jpg" alt="The Kilo IoT Server sidebar beside the Overview page with its device and gateway counts, notifications and news"><figcaption></figcaption></figure>
 
 The sidebar can be collapsed to show only icons — hover over the logo area at the top and click the double-chevron that appears. Click it again to expand. In collapsed mode, the navigation takes minimal screen space while remaining accessible. This is particularly useful when viewing dashboards on operations center displays, wall-mounted monitors, or any screen where the data should take priority over navigation.
 
@@ -18,7 +18,7 @@ The sidebar can be collapsed to show only icons — hover over the logo area at 
 
 - **Overview** — Your landing page after login. Summary cards showing device and gateway counts with status indicators, and recent alarms.
 - **Dashboards** — Custom dashboards organized in a folder hierarchy. Create operational views combining widgets from any device and parameter. Dashboards can be grouped by site, building, floor, or any structure that fits your deployment.
-- **Connectors** — Establish protocol-level connections between your infrastructure and the server. Connector types: **LNS** (LoRaWAN), **Tracker** (vehicle trackers — OBD2, CAN bus, standalone GPS), and **MQTT** (direct MQTT device connections using your own broker or the built-in cloud broker). Opening an LNS connector shows **LoRaWAN Gateways** and **Connected Devices** tabs. Each connector shows its name, last data received, and connected device count. Devices are registered through the device management dialog.
+- **Connectors** — Establish protocol-level connections between your infrastructure and the server. Connector types: **LNS** (LoRaWAN), **Tracker** (vehicle trackers — OBD2, CAN bus, standalone GPS), and **MQTT** (direct MQTT device connections using your own broker or the built-in cloud broker). Opening a connector shows what it is and how it is doing — type, creation date, connected device count and when data last arrived; MQTT connectors add **Settings** and **Diagnostics** tabs. Gateways and devices are managed from their own sidebar sections. Devices are registered through the device management dialog.
 - **Devices** — View all registered devices across all connectors. Browse and search. Click any device to view or edit its details.
 - **Gateways** — All LoRaWAN gateways connected to your account (Basics Station protocol required for secure TLS connectivity). Check online/offline status, view availability and traffic statistics, register new gateways, and manage firmware updates.
 - **Alarm** — The alarm management center, with three tabs:
@@ -90,13 +90,13 @@ A **Live Data** indicator in the header confirms the Overview is receiving real-
 
 ## Managing devices
 
-Devices are added and configured through the **Connectors** section. Adding a new device opens a registration dialog where you enter a name and click Save.
+Devices are added from the **Devices** page, or from the **+ Add device** button on a connector row. Adding a new device opens a registration dialog where you enter a name and click Save.
 
-Clicking on an existing device — from **Devices** or a connector's Connected Devices tab — opens the device detail page, where you can view and edit all device properties across four tabs:
+Clicking on an existing device on the **Devices** page opens the device detail page, where you can view and edit all device properties across four tabs:
 
 - **Device Info** — Device name, photos, and basic identification.
 - **Connection** — Connector selection, Device EUI or Unique ID, device profile template (brand, model, band, device class), or manual credentials (Device EUI, AppKey).
-- **Metrics** — Sensor templates attached to the device, defining what parameters it reports and how they're measured.
+- **Mapping** — Sensor templates attached to the device, defining what parameters it reports and how they're measured.
 - **Logs** — Device activity and event history.
 
 ## Gateway detail pages

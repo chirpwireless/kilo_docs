@@ -13,7 +13,7 @@ Without metric templates, every device would report data in its own proprietary 
 There are two ways to access metric templates:
 
 - **Direct URL** — Navigate to `/metrics` in your browser. The server redirects to the **Units** tab at `/metrics/units`.
-- **From the LNS device list** — When viewing the Connected Devices tab inside the [LNS Connector](../connectors/lns-connector/README.md), click the **Metrics Templates** button in the top-right corner.
+- **From the Devices page** — Click the **Metrics Templates** button in the top-right corner, beside **Add device**.
 
 ## The three tabs
 
