@@ -6,6 +6,8 @@ description: Manage alarm delivery channels in Kilo IoT — verified Email conta
 
 Alarm definitions fire notifications, but those notifications need verified delivery endpoints and active channels. The **Settings** tab on the Alarm page is where you manage the contacts, enable or disable channels, and control which delivery paths receive your operational alerts.
 
+<figure><img src="../../.gitbook/assets/alarm-notification-channels.jpg" alt="The Alarm Settings tab with the Push, E-mail and SMS channel toggles"><figcaption></figcaption></figure>
+
 ## Email
 
 Email is the baseline delivery channel.

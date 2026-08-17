@@ -8,6 +8,8 @@ Every time an alarm fires, an event appears in the Inbox. This is the operationa
 
 The Inbox is the default tab when you open the **Alarm** page from the sidebar.
 
+<figure><img src="../../.gitbook/assets/alarm-inbox.jpg" alt="The Alarm Inbox listing an active alarm with its message, severity, first and last trigger, and the Mark as resolved action"><figcaption></figcaption></figure>
+
 ## Filtering
 
 Two dropdown filters above the alarm list allow your team to scope the view:

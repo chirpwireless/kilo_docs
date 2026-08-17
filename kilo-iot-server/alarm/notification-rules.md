@@ -8,6 +8,8 @@ An alarm definition configures the operational response when the [Rules Engine](
 
 Click **Add alarm rule** to create a new definition, or click **Edit** on an existing one to modify it.
 
+<figure><img src="../../.gitbook/assets/alarm-definitions-list.jpg" alt="The Alarm definitions tab listing a definition with its message, severity, recipients and on-off toggle"><figcaption></figcaption></figure>
+
 ## Definition form fields
 
 ### Alarm name
