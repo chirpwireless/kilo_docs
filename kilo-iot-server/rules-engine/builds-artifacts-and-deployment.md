@@ -40,6 +40,8 @@ The build step:
 2. Validates the entire diagram: structure, connections, node configurations, and all CEL expressions
 3. Produces an artifact — a deployable package containing the validated rule logic
 
+<figure><img src="../../.gitbook/assets/rules-build-sidebar.jpg" alt="The build sidebar with the build name and comment fields and the Save and Build action"><figcaption></figcaption></figure>
+
 ## The Artifacts tab
 
 ### Getting there
@@ -77,6 +79,8 @@ Each expanded group lists individual builds with the following columns:
 | **Running** | Green | The artifact is deployed and actively processing sensor data |
 | **Stopped** | Orange | The artifact was manually stopped. It can be redeployed. |
 | **Force Stopped** | Red | The system automatically stopped the artifact due to sustained execution errors. See [Emergency safety](#emergency-safety) below. |
+
+<figure><img src="../../.gitbook/assets/rules-artifacts.jpg" alt="The Artifacts tab listing each rule with its builds"><figcaption></figcaption></figure>
 
 ## Deploying an artifact
 

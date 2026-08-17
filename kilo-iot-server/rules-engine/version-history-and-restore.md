@@ -49,6 +49,8 @@ Each version records how it was created:
 
 Save types help you understand the context around each version. A series of "auto" entries followed by a "manual" entry tells you someone was actively working and then deliberately saved. A "disconnect" entry tells you the session ended unexpectedly — check whether the work in that version is complete.
 
+<figure><img src="../../.gitbook/assets/rules-version-history.jpg" alt="The History tab listing saved versions with their date, save type and author"><figcaption></figcaption></figure>
+
 ## Renaming versions
 
 By default, versions carry auto-generated names. You can rename any version to make it meaningful for your team — for example, "Before gateway refactor" or "Production baseline v3."
