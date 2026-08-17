@@ -56,6 +56,10 @@ Click anywhere on a connector row to open that connector's detail page, where yo
    - **Emulator** — generates device data with no hardware, so you can build and test before your sensors arrive (one per organization)
 3. Click **Add**.
 
+<figure><img src="../../.gitbook/assets/connector-type-list.jpg" alt="The Add connector dialog with the Connector type dropdown open, listing the types still available to this organization"><figcaption></figcaption></figure>
+
+Types that are limited to one per organization disappear from the dropdown once you have one, so the list you see is the set still available to you.
+
 For LNS, Tracker and Emulator connectors, no additional configuration is required during creation — the server handles the integration automatically. For External MQTT, configure broker connection details after creation. For Cloud MQTT, the platform generates and displays credentials immediately after creation.
 
 ## What's next

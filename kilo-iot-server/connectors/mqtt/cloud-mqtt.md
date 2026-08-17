@@ -36,6 +36,8 @@ The platform provisions the broker endpoint and displays four credentials:
 
 The password is not stored in a retrievable form. Treat the post-provisioning copy as the only opportunity to capture it; missing the moment requires regenerating credentials and reconfiguring all publishers.
 
+<figure><img src="../../../.gitbook/assets/connector-cloud-mqtt-credentials.jpg" alt="A newly provisioned Cloud MQTT connector showing the broker URL, topic prefix, username and one-time password with copy buttons"><figcaption></figcaption></figure>
+
 ## Integration model
 
 Cloud MQTT publishers connect outbound to the managed broker. Three details matter:
@@ -70,6 +72,8 @@ To rotate:
 5. Restart publishers to pick up the new credential.
 
 The username and Topic prefix remain stable across rotation. Only the password changes.
+
+<figure><img src="../../../.gitbook/assets/connector-mqtt-settings.jpg" alt="The Settings tab of a Cloud MQTT connector, with the password masked and a regenerate button beside it"><figcaption></figcaption></figure>
 
 ## Limits
 

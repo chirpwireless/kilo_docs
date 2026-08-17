@@ -35,6 +35,8 @@ The connector supports four authentication methods, selectable on creation:
 
 For Certification, the three uploaded files form the client side of an mTLS exchange; the broker must be configured to trust the CA and to validate the client certificate against it. The Private Key must be unencrypted at upload time.
 
+<figure><img src="../../../.gitbook/assets/connector-external-mqtt-form.jpg" alt="The Add external MQTT connector dialog on the Certification tab, with upload buttons for the CA certificate, client certificate and private key"><figcaption></figcaption></figure>
+
 ## Provisioning the connector
 
 1. Navigate to **Connectors** in the sidebar.
