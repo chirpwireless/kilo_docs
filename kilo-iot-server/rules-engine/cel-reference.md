@@ -53,7 +53,12 @@ After an Enrichment node stores data under a variable name (e.g., `outdoor_temp`
 
 ### Custom variables
 
-Input and output expressions defined on Start Events, Exclusive Gateways, Script Tasks, Set Alarm nodes, and Enrichment nodes can add named values to the workflow context. Any name you define becomes accessible as `vars.<name>` in downstream nodes.
+Input and output expressions on Start Events, Exclusive Gateways, Script Tasks, Set Alarm nodes, and Enrichment nodes let you name a computed value. Choose between them by how far the value needs to travel:
+
+* **Outputs** add the name to the workflow context. It is accessible as `vars.<name>` in every node that runs afterwards.
+* **Inputs** stay on the node you defined them on. They are computed before that node runs and its own expressions can use them — a gateway's inputs are available to that gateway's flow conditions — but later nodes cannot read them.
+
+If a value computed on one node is needed further along the rule, make it an output. See [Node Reference](node-reference.md#do-i-need-the-input-and-output-parameters) for an example.
 
 ---
 

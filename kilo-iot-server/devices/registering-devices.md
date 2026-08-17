@@ -123,6 +123,8 @@ This tab maps the device's raw sensor data to normalized measurement definitions
 
 Once the device is connected and transmitting, the Metrics tab displays a **connector keys table** showing every field in the device's raw payload. Each row shows the field name (exactly as the device sends it — e.g., `t`, `temp1`, `humidity_pct`), its current value, and the last update timestamp. This is the live payload from the device, updated in real time.
 
+Come back to this table whenever you need to know what a device reports and in what form — writing a rule condition, or setting the expected value on a command. See [Payload Decoding and Connector Keys](payload-decoding.md).
+
 #### Mapping raw fields to metric templates
 
 This is where you turn cryptic device output into meaningful, labeled measurements. When you map a raw connector key (like `t`) to a metric template (like "Temperature", unit: °C, type: Float), you are giving that raw field a human-readable identity. From that point on, dashboards, automation rules, alerts, and historical queries all display "Temperature (°C)" — not the raw field name the device firmware sends.

@@ -44,13 +44,13 @@ Click the Start Event on the canvas to open its properties panel on the right.
 | **Time Range** | A select dropdown with preset options: `0:00 – 24:00`, `8:00 – 20:00`, `9:00 – 18:00`, `6:00 – 22:00`. Defines the window during which the rule can fire. Outside this window, incoming sensor data is ignored. |
 | **Time Zone** | A dropdown listing all standard time zones. Defaults to your browser's time zone. |
 
-**Inputs** — A list of advanced CEL expressions for data preparation. Each input has:
+**Inputs** — Optional. A list of advanced CEL expressions for data preparation. Most rules leave this empty and read the incoming reading directly. Each input has:
 - An input name (text field)
 - A type indicator (locked to "Expression")
 - A CEL expression field
 - Add new inputs with the **+ Add input** button. Remove an input with its delete button.
 
-**Outputs** — Same structure as Inputs, with its own **+ Add output** button. Use outputs to publish named values into `vars` for downstream nodes.
+**Outputs** — Optional. Same structure as Inputs, with its own **+ Add output** button. Use outputs to publish named values into `vars` for downstream nodes.
 
 **Save / Cancel** — At the bottom of the panel. Click **Save** to apply changes, or **Cancel** to discard.
 
@@ -191,17 +191,42 @@ When you change which flow is the default, a warning appears: *"When changing th
 
 If the gateway has no outgoing connections yet, the Flows section shows an empty state: *"Draw connections from this gateway on the canvas to add flows."* You must draw connections on the canvas first — flows cannot be added from the properties panel alone.
 
-**Inputs** — Same structure as the Start Event Inputs section (name, type, CEL expression, + Add input).
+**Inputs** — Optional. Same structure as the Start Event Inputs section (name, type, CEL expression, + Add input).
 
-**Outputs** — Same structure as the Start Event Outputs section (name, type, CEL expression, + Add output).
+**Outputs** — Optional. Same structure as the Start Event Outputs section (name, type, CEL expression, + Add output).
 
 **Save / Cancel** — At the bottom of the panel.
+
+### Do I need the Input and Output parameters?
+
+No. Both are optional, and a gateway that simply checks whether a value is above a threshold needs neither — leave them empty and write `vars.value > 70` straight into the flow condition.
+
+Use them when a condition would otherwise be long, or when you repeat the same calculation across several flows.
+
+**An Input** computes a value before the gateway decides and gives it a short name that the gateway's own flow conditions can use. To convert a Celsius reading once and compare it twice, add an input:
+
+| Field | Value |
+| --- | --- |
+| Input name | `tempF` |
+| Expression | `vars.temperature * 1.8 + 32` |
+
+Then write the flow conditions as `vars.tempF > 158` and `vars.tempF > 104` instead of repeating the conversion in each.
+
+An input belongs to the gateway you defined it on. Later nodes cannot read it.
+
+**An Output** works the other way. It is evaluated after the branch is chosen and writes its result into the rule's variables, so nodes further along can use it — an alarm message can reference `vars.tempF` even though the conversion happened at the gateway.
+
+The same holds wherever Inputs and Outputs appear: an input is a helper for the node you are configuring, an output is how that node passes something on.
 
 ### How condition evaluation works
 
 Conditions are evaluated **top to bottom** as ordered in the Flows list. The first condition that returns `true` is the path taken. All remaining conditions are skipped, regardless of whether they would also be true.
 
 The default flow has no condition expression. It executes only when **every other condition evaluates to false**. Every Exclusive Gateway should have a default flow — without one, if no condition matches, the rule execution stalls on that branch.
+
+The default flow covers the case where nothing matched. It does not cover a condition that fails to evaluate: if an expression cannot be evaluated — usually because it references a variable the rule does not have, or returns something other than `true`/`false` — the gateway stops there and the rule goes no further along that path. In a debug session the gateway is outlined in red; see [Debugging Rules](debugging-rules.md#what-the-markers-on-the-canvas-mean).
+
+A gateway also has to branch or merge: give it two or more outgoing flows to make a decision, or two or more incoming flows to bring paths back together. A gateway with one flow in and one flow out is rejected when you build the rule — connect those two nodes directly instead.
 
 ### Example
 

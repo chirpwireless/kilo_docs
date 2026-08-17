@@ -23,10 +23,12 @@ Routing tells the platform *where* and *how* the message is addressed. The field
 
 ### MQTT devices
 
-* **MQTT topic** — Where the message is published on the broker.
+* **MQTT topic** — Where the message is published on the broker. Required.
   * For a Cloud MQTT connection, the read-only **topic prefix** is shown and you supply the remainder (for example `mqtt-test-01/set`). The device must subscribe to the full topic — prefix plus your value.
   * For an External MQTT connection, enter the full topic exactly as it is published on your broker (for example `devices/light-01/cmd`).
+  * A topic must be under 500 characters, must not contain the wildcards `#` or `+`, must not have empty segments (`a//b`), and must not begin with `iot/`, `external/`, or `external-downlink/` — those prefixes are reserved for the platform's own traffic.
 * If another command on the same connection already publishes to the topic you enter, the editor flags the overlap so you can avoid accidentally colliding two actions on one topic.
+* fPort and Confirmed downlink do not apply to MQTT — those are LoRaWAN settings.
 
 ### LoRaWAN devices
 
@@ -34,6 +36,16 @@ Routing tells the platform *where* and *how* the message is addressed. The field
 * **Confirmed downlink** — A toggle:
   * **On — wait for MAC ACK:** the network waits for the device to acknowledge receipt at the radio layer.
   * **Off — fire-and-forget at MAC layer:** the downlink is sent without waiting for an acknowledgment.
+  * Turn this **on** if you intend to verify the command with *Query after ack* in section 4 — that strategy waits for the acknowledgment, so it cannot be saved against an unconfirmed downlink.
+* LoRaWAN downlinks are raw bytes, so the payload always goes through an encoder — the send-as-is mode offered for MQTT is not available here.
+
+### mioty devices
+
+Confirmed downlink applies; fPort and MQTT topic do not. As with LoRaWAN, the payload is built by an encoder.
+
+### Devices that cannot take commands
+
+Tracker-connected devices are receive-only on the platform: they report in, and there is no downlink path back to them. They do not offer a Commands tab.
 
 ## 3. Payload
 
@@ -71,6 +83,12 @@ Whenever a command uses an encoder, the editor includes a **Try Encoder** tool (
 * any **Console log** output and the execution time
 
 This turns payload encoding from a guessing game into a verifiable step — you confirm the bytes are right before a single command ever reaches a device.
+
+## 4. Verification
+
+The fourth section decides how the platform confirms the command actually took effect — send and forget, wait for the device's next uplink, or poll the device after it acknowledges. It is where you declare which sensor should change and what it should read.
+
+This section has a page of its own: see [Confirming Commands](verification.md). To find out which values the device reports back — and in what form — see [Payload Decoding and Connector Keys](../payload-decoding.md).
 
 ## Saving
 

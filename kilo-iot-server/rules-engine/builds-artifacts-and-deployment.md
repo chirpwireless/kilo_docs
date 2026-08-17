@@ -141,6 +141,6 @@ Do not simply redeploy the force-stopped artifact without fixing the underlying 
 
 - **Name builds after the change they contain.** When scanning the Artifacts tab at 3 AM during an incident, "Added humidity fallback" is more useful than "Build 7."
 - **Add comments to builds.** Comments are editable after creation, so you can annotate builds with deployment notes, incident references, or rollback instructions.
-- **Stop before deploying a new build.** Only one build per rule can run at a time. Stop the current artifact, then deploy the replacement.
+- **Deploy straight over the running build.** Only one build per rule runs at a time, and deploying a new one swaps it in as a single operation — there is no need to stop the current artifact first. Use Stop when you want the rule to stop evaluating altogether, not as a step before deploying.
 - **Treat force stops as incidents.** A force-stopped rule means live monitoring for that rule has stopped. Investigate and resolve promptly.
 - **Build from a clean version.** If you have been iterating on a rule, save manually and name the version before building. This ensures the build artifact maps to a clearly identified version in the history.

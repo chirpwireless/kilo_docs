@@ -19,7 +19,7 @@ Device Commands collapses that into one modeled, reusable, auditable surface:
 * **Define once, reuse everywhere.** A command is a named action with typed parameters. Operators execute it without ever seeing the raw payload, byte layout, or topic.
 * **Protocol-agnostic control.** The same command concept covers an MQTT downlink to a smart plug and a LoRaWAN downlink to a Class C controller — the platform handles the encoding and delivery for each.
 * **Closed-loop confidence.** Commands can verify that the device actually acted, not just that the message left the building (see [Confirming Commands](verification.md)).
-* **Full execution history.** Every dispatch is recorded with its outcome, giving operations and compliance teams a complete record of who changed what, and when.
+* **Full execution history.** Every dispatch is recorded with the parameters it carried, its outcome, and when it happened — so operations and compliance teams can see exactly what was sent to a device and what came of it.
 
 ## Where commands live
 

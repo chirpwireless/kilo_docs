@@ -54,6 +54,7 @@ The Rules Engine is designed for environments where unmanaged automation changes
 | [Rules List and Navigation](rules-list-and-navigation.md) | The main Rules Engine page — tabs, actions, and how to navigate |
 | [Creating Rules](creating-rules.md) | How to create a new rule from scratch |
 | [Visual Editor](visual-editor.md) | The BPMN canvas — palette, properties panel, and toolbar |
+| [Debugging Rules](debugging-rules.md) | Step through a rule before deploying it — breakpoints, variables, watches, side effects |
 | [Node Reference](node-reference.md) | Every node type with configuration details and examples |
 | [Running Device Commands](running-device-commands.md) | The Execute Command node — make a rule act on a device, not just alert |
 | [CEL Reference](cel-reference.md) | Expression language types, operators, and patterns |

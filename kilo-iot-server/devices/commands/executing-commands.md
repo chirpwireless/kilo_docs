@@ -89,6 +89,7 @@ You can also dispatch a command by asking. The built-in [IoT AI Assistant](../..
 
 * [Creating Commands](creating-commands.md) — define the actions a device can perform
 * [Confirming Commands](verification.md) — set how the platform verifies a result
+* [Example: Smart Socket](smart-socket-example.md) — build and verify two commands end to end
 * [Control widget](../../dashboards/adding-widgets/control-widget.md) — put a command on a dashboard
 * [Building with AI](../../ai-assistant/building-with-ai.md) — run a command by asking the assistant
 * [MCP Server](../../api/mcp-server.md) — run a command from ChatGPT, Claude or another AI client
