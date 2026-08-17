@@ -16,6 +16,8 @@ Each organization entry shows:
 - An **Owner** badge if you are the owner of that organization
 - A **checkmark** next to the organization you are currently working in
 
+<figure><img src="../../.gitbook/assets/account-menu-organizations.jpg" alt="The user menu open in the sidebar with Users, Subscription and Organization settings above a My organizations list"><figcaption></figcaption></figure>
+
 ## How to Switch
 
 Click any organization name in the list. The interface immediately switches to that organization's context. Your selection is saved — when you next open the platform, it returns to the last organization you selected.

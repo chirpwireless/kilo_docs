@@ -12,7 +12,7 @@ Open the user menu by clicking your avatar in the sidebar. If you are the organi
 
 If you do not see **Organization settings** in the menu, you are not the owner of the current organization.
 
-<figure><img src="../../.gitbook/assets/Add leave dates.png" alt="Organization settings dialog showing name and owner fields"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/organization-settings.jpg" alt="The Organization settings page with the organization name field, the owner dropdown and the Save changes button"><figcaption></figcaption></figure>
 
 ## Changing the Organization Name
 
