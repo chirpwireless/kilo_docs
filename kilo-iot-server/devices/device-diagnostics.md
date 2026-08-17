@@ -104,6 +104,8 @@ MQTT integrations have their own reception states, because there are two links t
 
 When the device is publishing correctly, the block confirms the conditions that had to be true for the message to land: *"The device publishes to the expected topic"*, *"The payload is valid JSON"*, *"The device ID resolves as configured"*, and — for devices using platform-issued credentials — *"It is connected with its generated MQTT credentials"*.
 
+<figure><img src="../../.gitbook/assets/device-reception-status.jpg" alt="The reception banner reading Receiving and storing, live, with the mapped sensor count and last value time"><figcaption></figcaption></figure>
+
 ## Pipeline
 
 The Pipeline block counts how far messages got over the recent period, broken down into **Routed**, **Mapped**, and **Stored**.
@@ -148,6 +150,8 @@ The feed includes its own legend under the heading **What these statuses mean**:
 | **Error** | This step failed and needs attention. |
 
 **Skipped is the row that misleads people.** It is not a failure — it is the platform telling you it made a deliberate decision. A `Mapped / Skipped` row means a key arrived that no sensor claims; if that key matters to you, map it. If it does not, the row is correct behavior and you can ignore it. An `Error` row is the opposite: something broke and the message did not complete its step. Expand it with **Details** and act on what it reports.
+
+<figure><img src="../../.gitbook/assets/device-event-feed.jpg" alt="The event feed listing each stage with its outcome and detail, showing routed and stored measurements"><figcaption></figcaption></figure>
 
 ## Reading the feed to fix a device
 

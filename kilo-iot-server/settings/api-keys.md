@@ -34,6 +34,8 @@ Store the key in a secrets manager or vault immediately. Once you close this dia
 
 ---
 
+<figure><img src="../../.gitbook/assets/api-key-create.jpg" alt="The Create API Key dialog with the name, expiry and the scrollable list of read and write scopes"><figcaption></figcaption></figure>
+
 ## Scope reference
 
 Scopes control what the key can access. Each scope has a **Read** variant (retrieve data) and a **Write** variant (create, update, or delete). Grant only the minimum set your integration requires.
