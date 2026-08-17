@@ -121,7 +121,7 @@ Once the device has sent its first reading:
 2. The device detail page opens. Click the **Mapping** tab to see sensor data.
 3. The Mapping tab shows the sensor templates attached to the device and their current readings.
 
-<figure><img src="../../.gitbook/assets/device-metrics-tab.png" alt="The device Mapping tab listing the device's metrics and their latest values"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/device-mapping-tab.jpg" alt="The device Mapping tab listing each device data key with its latest value, normalized key, type and data type"><figcaption></figcaption></figure>
 
 You can also view device data through the **Dashboards** section by adding widgets — which is what we'll do next.
 

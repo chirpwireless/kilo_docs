@@ -8,6 +8,8 @@ A command is a reusable, named action with typed inputs. You build it once in th
 
 To start, open the device's **Commands & States** tab, stay on the **Commands** sub-tab, and click **Add new command**. The editor opens in four numbered sections.
 
+<figure><img src="../../../.gitbook/assets/device-commands-empty.jpg" alt="The Commands sub-tab of a device with no commands defined yet and the Add new command button"><figcaption></figcaption></figure>
+
 <figure><img src="../../../.gitbook/assets/device-command-editor.jpg" alt="The command editor showing the Identity, Routing, and Payload sections"><figcaption></figcaption></figure>
 
 ## 1. Identity

@@ -56,7 +56,7 @@ Changing the connector re-binds the device to a different data source, and is of
 
 The Metrics tab maps the device's raw sensor output to your normalized metric templates. This is where you control what data the device contributes to dashboards and automation rules.
 
-<figure><img src="../../.gitbook/assets/device-metrics-tab.png" alt="The Metrics tab of a device, mapping connector keys to metric templates"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/device-mapping-tab.jpg" alt="The device Mapping tab listing each device data key with its latest value, normalized key, type and data type"><figcaption></figcaption></figure>
 
 **Table columns:** Metrics template, Unit, Type, Data type, Connector key, Value, Last update, Actions.
 
