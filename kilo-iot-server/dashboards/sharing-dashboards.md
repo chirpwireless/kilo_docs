@@ -31,6 +31,8 @@ The dialog offers two access options:
 
 Treat the second option the way you would treat any credential you hand outside the building. The link is not guessable, but it is bearer access — whoever has it, and the password, gets in. That is what makes it useful for a contractor's tablet, and what makes rotation discipline matter.
 
+<figure><img src="../../.gitbook/assets/dashboard-share-org.jpg" alt="The Dashboard access dialog set to organization users only, showing the dashboard link"><figcaption></figcaption></figure>
+
 ## Choosing what visitors can do
 
 Once the dashboard is shared by link, choose the permission level the link carries:
@@ -55,6 +57,8 @@ The link cannot exist without a password — there is no unprotected mode.
 The link points at a URL of the form `/dashboards/{dashboard-id}/fullscreen?t=…` and opens the dashboard full screen — no sidebar, no navigation, no platform chrome. That kiosk-style presentation is deliberate: it is what makes the link suitable for a wall display in an operations center or a permanently mounted tablet, not just for sending to a person.
 
 Send the link and the password over separate channels. A link pasted into an email alongside its own password is a single interception away from being useless as a control.
+
+<figure><img src="../../.gitbook/assets/dashboard-share-public-link.jpg" alt="The Dashboard access dialog set to anyone with the link, showing the View and Control choice, the password field and Generate link"><figcaption></figcaption></figure>
 
 ## Changing the password
 
