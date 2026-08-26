@@ -105,9 +105,9 @@ Deleting a **System** entry requires an administrator.
 - **Author once, commission many.** For a fleet rollout, get the blueprint right on one unit with Decode preview, then let the model default carry the rest.
 - **Version on firmware, not on dates.** When a vendor ships a firmware revision that changes the payload, that is a new blueprint version. Name it so the connection is obvious.
 - **Prefer System where it fits.** If the System catalog covers your hardware, use it — you get the decoder without owning its maintenance, and your device still gets its own snapshot.
-- **Map metrics after decoding.** A blueprint produces named fields; metric templates normalize those fields into a vocabulary shared across manufacturers. See [Metric Templates](metric-templates.md).
+- **Map metrics after decoding.** A blueprint produces named fields; metric templates normalize those fields into a vocabulary shared across manufacturers. See [Metrics](metric-templates.md).
 
 ## What's next
 
 - **Commission the endpoint** — the MIOTY device form section by section. See [MIOTY Devices](mioty-devices.md).
-- **Normalize the decoded fields** — map them to your deployment's measurement vocabulary. See [Metric Templates](metric-templates.md).
+- **Normalize the decoded fields** — map them to your deployment's measurement vocabulary. See [Metrics](metric-templates.md).

@@ -91,5 +91,5 @@ Blueprint Configuration lives on the same device form. You can pick an existing 
 ## What's next
 
 - **Bind a blueprint** so the endpoint's payloads decode into named fields. See [MIOTY Blueprints](mioty-blueprints.md).
-- **Map metrics** to normalize decoded fields across manufacturers. See [Metric Templates](metric-templates.md).
+- **Map metrics** to normalize decoded fields across manufacturers. See [Metrics](metric-templates.md).
 - **Complete the shared registration flow** — device info, Metrics, Logs. See [Registering Devices](registering-devices.md).

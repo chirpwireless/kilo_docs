@@ -4,7 +4,7 @@ description: Plot a sensor's history as a line or bar Chart widget — current v
 
 # Chart Widget
 
-<figure><img src="../../../.gitbook/assets/chart-widget.jpg" alt="Chart widget — the Appearance settings and a live preview of the graph"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/chart-widget.jpg" alt="The Chart widget Appearance tab set to bar, with Show metrics below and Display value on bar switched on, beside a live preview showing each bar labelled with its value"><figcaption></figcaption></figure>
 
 The Chart widget plots a reading's history as a graph — a line or bars across the last hour, day, week, or month — so you see not just where a value stands now but the trend that brought it there.
 
@@ -24,7 +24,7 @@ Here is a full setup for one real case — tracking a refrigeration unit's tempe
 4. Click **Add metric**. A metric row appears.
 5. In the row, set **Data type** to **Telemetry**, choose the temperature reading under **Device metric**, and pick a **Color** — this color draws the line (or bars) on the graph and is also the base color of the large current reading at the top.
 
-   > **Can't find your metric?** The **Device metric** list only offers numeric metrics. If a reading you expect is missing, its metric **Type** is set to String or Boolean instead of Integer or Float. Open **Metric Templates** (the **Metrics Templates** button on a connection's Connected Devices list), find the metric on the **Metrics** tab, and set its **Type** to Integer or Float — provided the device actually reports a number. See [Metric Templates](../../devices/metric-templates.md).
+   > **Can't find your metric?** The **Device metric** list only offers numeric metrics. If a reading you expect is missing, the metric is stored as String or Boolean rather than Integer or Float. Open **Devices → Metrics**, find the metric, and change how it is stored to Integer or Float — provided the device actually reports a number. See [Metrics](../../devices/metric-templates.md).
 
    A Chart widget tracks **one metric** — once that metric is in place, there is no second metric row to fill in. To compare several readings, build a separate Chart widget for each.
 6. Click **Next** to open the **Appearance** tab.
@@ -41,7 +41,9 @@ Here is a full setup for one real case — tracking a refrigeration unit's tempe
 12. Switch on **Show average value** to add a dashed line at the period's average, labeled "Average" in the legend.
 13. **Show vertical axis lines** and **Show horizontal axis lines** add time-axis and value-axis grid lines — turn them on if a grid makes the graph easier to read.
 14. Switch on **Display data legend** to list the threshold labels and the average beside the graph.
-15. Click **Save** to place the widget on the dashboard.
+15. Switch on **Show metrics below** to repeat the metric and its reading in a row underneath the graph. This is worth turning on for a widget sized small on a crowded dashboard, where the large headline value is the first thing to lose room.
+16. If you chose **bar** at step 8, **Display value on bar** prints each bar's own value on the bar itself, so an operator can read exact figures off the chart instead of estimating them against the axis. The option applies to bar charts only — on a line chart there are no bars to label, so it is not offered.
+17. Click **Save** to place the widget on the dashboard.
 
 The result: a widget whose large reading shows the current temperature and whose graph traces the whole week behind it — the green, amber, and red bands making it obvious at a glance whether the load held compliance or drifted toward a breach. The same setup fits any reading with a history worth watching; only the device, the value range, and the bands change.
 
@@ -61,7 +63,7 @@ The Chart widget uses **threshold bands** — colored ranges drawn on the histor
 A rack air-temperature sensor on a **line** chart, **Last week**, value range 10–40 °C. Three thresholds: green 18–27 °C "Normal", amber 27–32 °C "Warm", red 32–40 °C "Critical". An operator checking the dashboard after a weekend sees at once whether the cooling held steady or spiked into the amber and red during off-hours.
 
 **Vibration monitoring — discrete reports as bars**
-An equipment vibration sensor reporting amplitude at regular intervals, on a **bar** chart, **Last day**, value range 0–20 mm/s. Three thresholds: green 0–7 mm/s "Normal", amber 7–12 mm/s "Elevated", red 12–20 mm/s "Critical". Each bar is one report interval, so an engineer can pick out exactly which intervals ran rough and line them up against the production schedule.
+An equipment vibration sensor reporting amplitude at regular intervals, on a **bar** chart, **Last day**, value range 0–20 mm/s. Three thresholds: green 0–7 mm/s "Normal", amber 7–12 mm/s "Elevated", red 12–20 mm/s "Critical". Each bar is one report interval, so an engineer can pick out exactly which intervals ran rough and line them up against the production schedule. This is the case that earns **Display value on bar** — when the point of the widget is comparing individual reports, having the amplitude printed on each bar saves reading every one off the axis.
 
 **Energy consumption — baseline and peaks**
 A power meter on a production line, **line** chart, **Last week**. Set the value range to span the line's draw — for example 0–60 kW — then add a green band across the expected production range (say 15–40 kW) and a red band above it for an over-draw. The figures are site-specific: set **From** and **To** to your own baseline and expected peak. Any drift above the expected range then shows immediately as the line leaves the green band.

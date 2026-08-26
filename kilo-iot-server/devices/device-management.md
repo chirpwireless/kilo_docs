@@ -62,7 +62,7 @@ The Metrics tab maps the device's raw sensor output to your normalized metric te
 
 **Working with metric mappings:**
 
-* **Metrics template** — Select a metric template from the dropdown. Each template can only be assigned once per device. The dropdown shows all available templates from the [Metric Templates](metric-templates.md) area, with already-assigned templates grayed out.
+* **Metrics template** — Select a metric template from the dropdown. Each template can only be assigned once per device. The dropdown shows all available metrics from the [Metrics](metric-templates.md) catalog, with already-assigned templates grayed out.
 * **Connector key** — Map the raw key that the device firmware sends (e.g., `temp_c`) to the selected metric template. This is the bridge between the device's native output and your normalized data model.
 * **Value** — Shows the most recent value received for this connector key.
 * **Last update** — Shows when the last value was received.
@@ -119,4 +119,4 @@ Copying is still the quickest route to a device that resembles an existing one �
 | Copy a device configuration            | Device list     | Click the copy icon on a device row to create a new device with the same settings |
 | Delete a device                        | Device list     | Click the delete icon on a device row and confirm                                 |
 
-For metric template setup, see [Metric Templates](metric-templates.md). For organizing devices by location, see [Locations](../settings/locations.md).
+For metric template setup, see [Metrics](metric-templates.md). For organizing devices by location, see [Locations](../settings/locations.md).

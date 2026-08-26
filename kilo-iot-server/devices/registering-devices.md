@@ -134,7 +134,7 @@ This is where you turn cryptic device output into meaningful, labeled measuremen
 
 To normalize a raw field:
 
-1. **Add a metric** — Click **Add key** and select a metric template from the dropdown (e.g., "Temperature", unit: °C, type: Float). The Unit, Type, and Data type columns auto-fill from the template. If the template you need does not exist, create one in [Metric Templates](metric-templates.md) first.
+1. **Add a metric** — Click **Add key** and select a metric template from the dropdown (e.g., "Temperature", unit: °C, type: Float). The Unit, Type, and Data type columns auto-fill from the template. If the template you need does not exist, create one in [Metrics](metric-templates.md) first.
 2. **Select the connector key** — In the **Connector key** dropdown for that metric, choose the raw field name that corresponds to this measurement (e.g., select `t` for a device that sends temperature as `t`).
 3. **Save** — The mapping takes effect immediately. Normalized data flows through dashboards, automation rules, alarm evaluations, and historical queries.
 
@@ -146,7 +146,7 @@ Repeat for each measurement the device reports. Multiple metrics can be mapped i
 
 This workflow accepts data from any device the server can receive — including prototype hardware with evolving payload schemas, sensors from niche manufacturers with undocumented telemetry formats, and legacy field equipment that transmits encoded identifiers rather than human-readable field names. If the device sends data, the connector keys table displays it and you can map it.
 
-For details on setting up metric templates, see [Metric Templates](metric-templates.md).
+For details on setting up metric templates, see [Metrics](metric-templates.md).
 
 #### MQTT-specific behavior
 
@@ -176,7 +176,7 @@ If the device is registered but no data is arriving, open its **Connection** tab
 
 ## What's next
 
-- **Configure metric templates** before or after registration to control how raw data is normalized. See [Metric Templates](metric-templates.md).
+- **Configure metric templates** before or after registration to control how raw data is normalized. See [Metrics](metric-templates.md).
 - **Edit device properties** at any time through the same dialog. See [Device Management](device-management.md).
 - **Diagnose a silent device** from its Connection tab. See [Device Diagnostics](device-diagnostics.md).
 - **Register a MIOTY endpoint** and its protocol-specific fields. See [MIOTY Devices](mioty-devices.md).

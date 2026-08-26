@@ -43,7 +43,7 @@ A multi-sensor preset, for instance, fills in its full set of readings — tempe
 Without a preset — or alongside one — use **Add device data key** to define each measurement:
 
 - **Device data key** — the metric name, such as `temperature`. This is what dashboards, rules and mappings refer to.
-- **Data type** — `Float` for anything with decimals, `Integer` for whole numbers, and the other supported types for booleans and text. See [Metric Templates](metric-templates.md) for how types normalize across a deployment.
+- **Data type** — `Float` for anything with decimals, `Integer` for whole numbers, and the other supported types for booleans and text. See [Metrics](metric-templates.md) for how types normalize across a deployment.
 
 Choose the data type deliberately. An **Integer** metric truncates decimals: send `1.5` and the device reports `1`. If a reading needs decimal precision, it must be a **Float**.
 

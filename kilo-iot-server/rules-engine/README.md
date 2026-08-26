@@ -24,7 +24,7 @@ Changes you make in the visual editor stay in draft until you explicitly build a
 
 ## What you can build
 
-A rule starts with a **Start Event** bound to a specific device and sensor. Each time that sensor reports a new reading, the rule executes. Inside the rule, you can:
+A rule starts with a **Start Event** — either one device's sensor readings, or a condition that has held for a period of time. Each time it fires, the rule executes. Inside the rule, you can:
 
 - **Evaluate conditions** with Exclusive Gateways — route the flow to different branches based on CEL expressions
 - **Transform data** with Script Tasks — compute derived values, classify readings, or prepare flags for downstream decisions

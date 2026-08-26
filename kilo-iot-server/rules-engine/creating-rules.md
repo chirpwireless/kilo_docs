@@ -48,13 +48,21 @@ For a detailed walkthrough of the canvas and available tools, see [Visual Editor
 
 ### 5. Configure the Start Event
 
-Click the Start Event node to open its properties panel on the right. You must configure:
+Select the Start Event node and click the **pencil** icon that appears beneath it — that opens its properties panel on the right. First choose what starts the rule:
+
+- **Start source** — **Sensor reading** runs the rule on one device's readings. **Trigger condition** runs it from a [trigger](triggers.md) instead, which lets the rule start only after a condition has held for a duration, and lets one rule cover a whole group of devices.
+
+A Start Event uses one source or the other, never both.
+
+**With Start source set to Sensor reading**, configure:
 
 - **Device** — Select the device that triggers this rule (searchable dropdown)
 - **Sensor** — Select which sensor on that device to monitor (dropdown, enabled after choosing a device)
 
+**With Start source set to Trigger condition**, the Device and Sensor fields are replaced by a single **Trigger condition** selector — pick the trigger you built on the [Triggers](triggers.md) tab. Note that a rule started this way has no single reading behind it, so `vars.value` is not available to its expressions; `vars.device_name` tells you which device in the group fired.
+
 Optionally, you can:
-- **Enable Schedule** — Toggle to restrict the rule to a specific time window. Choose a time range and time zone.
+- **Enable Schedule** — Toggle to restrict the rule to a specific window. Click **Change schedule** to pick the days and the From/To times, and set the **Time Zone** they are measured in. This applies whichever start source you chose, so a schedule and a trigger duration compose: the schedule decides *when the rule may run at all*, the trigger decides *how long the condition must hold*.
 - **Add inputs/outputs** — Advanced CEL expressions for data transformation at the trigger level
 
 See [Node Reference](node-reference.md) for full Start Event configuration details.

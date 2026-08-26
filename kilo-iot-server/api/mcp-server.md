@@ -96,6 +96,22 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 | **Dashboards** | List dashboards and query the data behind a widget, so the client can reason about the same numbers your operators watch. `dashboard_list`, `widget_data_query` |
 | **Organization** | Read organization details, list teams, invite users, and assign roles. `org_get`, `team_list`, `user_invite`, `user_role_assign` |
 
+## What the client knows before it calls a tool
+
+Every tool arrives with a plain-language title and a declaration of how it behaves, so a client that reads them can tell the difference between looking something up and changing your deployment **before** it acts rather than after. These are declarations the server publishes, not restrictions it imposes — what a client does with them is the client's design.
+
+Three things are declared on each tool:
+
+- **Whether it only reads.** Listing devices, reading alarm history, querying the data behind a widget — these change nothing, and a client can run them without interrupting you.
+- **Whether it can change or remove something.** Deleting a device, updating a dashboard, swapping a device's connection, sending a command to physical equipment. These are marked as such so a client can put them behind a confirmation.
+- **Whether it reaches outside your organization.** Almost everything works strictly within your own data. The two hardware tools are the exception: they search the partner catalog and the open web to recommend equipment, so they are declared as reaching beyond your deployment.
+
+Provisioning tools sit deliberately in the middle. Creating a device or a dashboard adds something without overwriting or stopping anything that already exists, and the effect is undone by deleting what was created — so they are not treated as destructive, but they still change your organization.
+
+The practical result, with a client that honors them, is that ordinary questions are answered without interruption while anything touching your deployment or your equipment stops for a confirmation. The declarations are generated from the running tool set rather than maintained by hand, so what a client is told does not drift from what the server does.
+
+Your permissions remain the real boundary. A client that ignores the declarations still cannot do anything your account could not do.
+
 ## Security and permissions
 
 - **You sign in, not a service account.** Authorization happens in your browser against your normal Kilo account. No key is generated, copied, or stored for the connection.
