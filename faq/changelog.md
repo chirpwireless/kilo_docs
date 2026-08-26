@@ -6,6 +6,114 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <details>
 
+<summary>Scale Log. Release 3.9.0</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0 release banner"><figcaption></figcaption></figure>
+
+The rules engine got considerably smarter in 3.9.0, and it happened in two moves. **First, a rule can now wait.** Until now a rule fired the instant a reading crossed a line, which is right for a leak and wrong for almost everything else — motion in a car park at 3am is a resident going to their car, but motion that is *still going ten minutes later* is not. **Second, one rule can now cover a whole group of devices**, up to 500 of them, each evaluated on its own and each able to tell you which one it was. Sixteen doors used to mean sixteen rules. Alongside that, **every metric in your deployment now lives on one searchable page**, companies can **pay by invoice instead of by card**, and any AI client connecting over MCP can now tell at a glance which tools only read and which change your deployment. [kiloiot.io](https://kiloiot.io)
+
+***
+
+#### What's in This Release
+
+* **Triggers — a rule that waits before it fires** — Require a condition to hold for a duration before anything happens: ten seconds to thirty days, ten minutes by default. This is how you stop a sensor crying wolf without making it any less sensitive.
+* **One rule across a group of devices** — A trigger carries its own device list, up to 500. Each device is evaluated independently and starts the rule on its own, and the alarm can name which one fired.
+* **Metrics, all on one page** — The whole measurement vocabulary in a single searchable catalog, with filters for unit, type and data type, sorting, and one dialog that both creates and edits. Units and normalized keys are now managed from inside their own fields.
+* **Pay by invoice, by bank transfer** — Companies that cannot put a platform subscription on a corporate card can now be invoiced: company details with a VIES-checked VAT ID, reverse charge handled, and an Invoices page that tracks what is paid and what is open.
+* **Bar charts can show their numbers** — Print each bar's value on the bar, and repeat the reading in a row beneath the graph, so a small widget still reads clearly.
+* **Your AI client knows what is safe to run** — Every tool on the MCP server now declares what it does and how it behaves, so a connected client answers questions on its own and stops to confirm anything that changes your deployment.
+* **Fixes and polish** — Device photos save, the Audit Trail records access-rights changes again, a widget value takes its condition color again, blueprint edits stop appearing on devices that did not change, the AI chat handles long telemetry ranges, plan log-retention limits are enforced, and a set of layout and wording fixes across the interface.
+
+***
+
+**Triggers — a rule that waits before it fires**
+
+A rule bound to a sensor reading fires on an instant. That is the right behavior for water on a floor, and the wrong behavior for most of what an operator actually wants to know about. A door open for four minutes is someone loading a pallet; open for twenty it did not latch. A pump running briefly is normal cycling; running for two hours a float switch has failed. The reading is identical in each pair — only the persistence tells you whether to wake somebody.
+
+Triggers are a new tab in the Rules Engine, and they let you say the thing that was previously unsayable: **the condition has to still be true after a period.** Choose **Only if it lasts**, set an amount and a unit — seconds, minutes, hours or days — and nothing starts until it has held that long. A new trigger opens on ten minutes because that is the case this was built for. The floor is ten seconds and the ceiling is thirty days.
+
+If the device goes quiet during the window the condition simply continues, so a sensor that reports every fifteen minutes does not produce a false all-clear. Set the duration longer than the reporting interval and the window means what you think it means.
+
+There is a **Clear behavior** section for the other direction too: by default a trigger releases on the first reading that stops satisfying the condition, but you can give the all-clear its own condition and its own duration, so a motion sensor that goes quiet for one interval does not count as an empty room.
+
+<figure><img src="../.gitbook/assets/trigger-time-window.jpg" alt="The Create trigger dialog with a temperature condition and Only if it lasts set to 10 minutes"><figcaption></figcaption></figure>
+
+[→ Triggers](../kilo-iot-server/rules-engine/triggers.md)
+
+***
+
+**One rule across a group of devices**
+
+The second half of the problem is scale. Once the logic works on one door you want it on every door, and until now that meant one rule per device: sixteen doors, sixteen rules, sixteen places to edit when the duration changes. At two hundred it stops being maintainable at all.
+
+A trigger holds its device list as part of its own definition — **up to 500 devices**. You describe the condition once, attach the devices, and adding the two-hundred-and-first is a checkbox rather than another rule.
+
+Grouping does not merge readings. Each device is evaluated on its own, holds its own countdown, and starts the rule by itself; one door standing open neither depends on nor interferes with the other fifteen. Before you save, **How this trigger will run** lays out a row per device so you can see exactly what you built. And because the rule can read `vars.device_name`, the alarm it raises says *which* door — put it in the motivation message and a two-hundred-device trigger still tells an operator where to go.
+
+<figure><img src="../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per selected device"><figcaption></figcaption></figure>
+
+[→ Triggers](../kilo-iot-server/rules-engine/triggers.md)
+
+***
+
+**Metrics, all on one page**
+
+The measurement vocabulary used to be spread across three tabs, with the add form living in several copies inside the table itself — which is why it had no validation and no confirmation step. It is now one catalog at **Devices → Metrics**.
+
+Search it by normalized key, narrow it by unit, type and data type — several values at once — and sort by newest or oldest. One dialog both creates and edits, so there is a single place where the rules live, and units and normalized keys are managed from inside their own selects rather than on a screen of their own.
+
+The catalog is shared across your whole organization, so editing a metric changes it for every device using it. That is exactly right when you are correcting a unit across a fleet and exactly wrong when you meant one device, so the confirmation spells out which is about to happen — and it waits for a real answer rather than closing on you and leaving you unsure whether it worked.
+
+<figure><img src="../.gitbook/assets/device-metrics.jpg" alt="The Devices Metrics catalog with search, unit, type and data type filters and a sort control"><figcaption></figcaption></figure>
+
+[→ Metrics](../kilo-iot-server/devices/metric-templates.md)
+
+***
+
+**Pay by invoice, by bank transfer**
+
+Card payment suits an individual and rules out a great many companies, whose finance departments want a document with a legal name on it, a VAT ID, and an account to transfer to.
+
+3.9.0 adds that path alongside the card one. An organization supplies its company details — legal name, registered address, billing email and, for the EU-27, a VAT ID checked against VIES with its status shown in the form — and then chooses **Pay by invoice (bank transfer)** when it takes a plan. The invoice arrives by email as a PDF and a hosted page carrying bank details issued for that organization alone, so an incoming transfer reconciles itself with nobody matching payments by hand. An **Invoices** page inside the platform tracks what is open and what is paid.
+
+Plan changes apply in place: an upgrade invoices the difference for the rest of the period, a downgrade credits the balance against the next invoice, and the deployment is never interrupted. Card customers see none of this — their flow is unchanged.
+
+<figure><img src="../.gitbook/assets/billing-details.jpg" alt="The Billing details section of Organization settings, with legal name, billing email, company address and tax ID"><figcaption></figcaption></figure>
+
+[→ Billing and Invoices](../kilo-iot-server/settings/billing-and-invoices.md)
+
+***
+
+**Bar charts can show their numbers**
+
+When a chart's point is comparing individual reports rather than watching a trend, reading each bar off the axis is busywork. **Display value on bar** prints the figure on the bar itself. It is offered for bar charts only, since a line has no bars to label.
+
+**Show metrics below** is the companion: it repeats the metric and its current reading in a row under the graph, which is what keeps a widget legible once it has been sized small on a crowded dashboard.
+
+[→ Chart Widget](../kilo-iot-server/dashboards/adding-widgets/chart-widget.md)
+
+***
+
+**Your AI client knows what is safe to run**
+
+Connect ChatGPT, Claude or any other MCP client and it now sees more than a list of tool names. Every tool declares a readable title and how it behaves: whether it only reads, whether it can change or remove something, and whether it reaches outside your organization.
+
+The practical effect is that a well-behaved client answers ordinary questions immediately and stops to confirm anything that would touch your deployment or your equipment — without you configuring that distinction yourself. The declarations are generated from the running tool set, so what a client is told cannot drift from what the server does. Five tools that were never implemented have been removed rather than left to fail on the first call.
+
+[→ MCP Server](../kilo-iot-server/api/mcp-server.md)
+
+***
+
+**Fixes and polish**
+
+Device photos now save when you add them. **The Audit Trail records access-rights changes again** — changing a member's permissions had stopped producing an entry, so the page looked stale. Editing a blueprint no longer appears to change the specification on other devices using it; those devices were never actually affected, but the screen suggested otherwise. **A value on a Last Data widget changes color with its conditions again.** **The Device logs panel now says plainly that it is waiting for the device to report**, rather than naming something you have no way to act on. The AI assistant handles wide telemetry ranges instead of reporting itself unavailable. A device reporting once a day is no longer flagged as offline hours later, and the interval warning now states its unit. Device-log retention is enforced according to the plan. The support dialog's subject is a choice of bug report, feature request or integration request instead of free text. Emulator devices timestamp their first reading correctly and lay out properly on a phone. The AI chat icon is easier to see, empty states are consistent across connectors, devices and rules, the Overview page and menu spacing are corrected, invoices have a way back, and a large amount of legacy front-end code was removed.
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0"><figcaption></figcaption></figure>
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 3.8.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg" alt="Kilo IoT Server 3.8.0 release banner"><figcaption></figcaption></figure>
