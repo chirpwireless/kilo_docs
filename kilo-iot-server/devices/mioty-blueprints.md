@@ -49,6 +49,8 @@ This is the path for hardware the catalog already covers.
 
 The decoder specification is displayed read-only for review, and the **Type EUI** auto-fills on the device form and is not editable — it comes from the blueprint. Save the device, and the blueprint is snapshotted onto it.
 
+Once that has happened the device is labelled **Pinned snapshot**, so you can see at a glance that what you are reading belongs to this device rather than to the shared catalog entry. If the catalog blueprint it was copied from has since been deleted, the label reads **Pinned snapshot (source template deleted)** — the device is unaffected and keeps decoding on its own copy, but the label tells you there is no longer a catalog entry behind it to compare against.
+
 The **first blueprint created for a model becomes the default for new devices of that model** — so once a model is set up correctly, commissioning the rest of the fleet is a matter of selecting the model.
 
 ## Authoring a new blueprint

@@ -15,7 +15,15 @@ When you ask the assistant to set something up, it doesn't hand you a checklist 
 
 ## Onboard a device
 
-Describe the device you want to add and the assistant runs the onboarding flow with you — choosing the connector, naming the device, capturing identifiers, and selecting the right profile. For a LoRaWAN device, if you provide the **DevEUI** and **AppKey** up front, it can complete the setup automatically and then run diagnostics to confirm the device is actually reporting.
+Describe the device you want to add and the assistant runs the onboarding flow with you — choosing the connector, naming the device, capturing identifiers, and selecting the right profile. For a LoRaWAN device, if you provide the **DevEUI** and **AppKey** up front, it can complete the setup automatically and then run diagnostics to confirm the device is actually reporting. It onboards MQTT devices and trackers the same way.
+
+### MIOTY endpoints
+
+The assistant also commissions [MIOTY](../devices/mioty-devices.md) endpoints, which is the path with the most to get wrong by hand. It can browse the device catalog with you — manufacturers and device models across both the System catalog and your organization's own Custom entries, and the [blueprint](../devices/mioty-blueprints.md) versions available for a model — and then register the endpoint itself.
+
+You supply the credentials, because they are secrets printed on the device or listed on the vendor's sheet: the **EUI** (16 hex characters), the **Network Session Key** (32 hex characters), and the **short address**. Choose **EP class Z** for uplink-only endpoints or **A** for bidirectional ones. The assistant validates each value as you give it rather than failing at the end, resolves the model's Type EUI for you, and binds the blueprint so readings arrive as named fields instead of raw payload. It will never invent a key — if you have not supplied one, it asks.
+
+> *"Register the MIOTY water meter in Plant 2. EUI 70B3D5..., NwkSKey ..., short address 0042."*
 
 > *"Add the new CO2 sensor in Lab 2. DevEUI 24E124..., AppKey ..."*
 > The assistant provisions the device, binds it, and checks whether data is arriving — flagging it if the device stays silent.

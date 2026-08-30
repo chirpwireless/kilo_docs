@@ -28,14 +28,36 @@ When you reach the limit, the assistant tells you you've **reached your AI assis
 
 <figure><img src="../../.gitbook/assets/ai-connect-your-model.jpg" alt="The Connect your AI panel — provider, base URL, API key, and model ID"><figcaption></figcaption></figure>
 
-You can point the assistant at your own model instead of the included allowance — useful for teams that already run a provider account or want a specific model. Open **Connect your AI** from the AI Chat top bar and fill in:
+You can point the assistant at your own model instead of the included allowance — useful for teams that already run a provider account, need one specific model, or want inference billed against their own contract. Open **Connect your AI** from the AI Chat top bar and fill in:
 
-* **Provider** — choose **OpenAI**, **Anthropic**, **Ollama**, or **Custom (OpenAI compatible)**.
-* **Base URL** — leave the default for OpenAI; for a compatible provider (for example DeepSeek or Qwen), enter that provider's endpoint URL.
-* **API Key** — paste your provider key. It's handled as a secret and shown as a password field.
-* **Model ID** — type or select the model you want the assistant to use.
+* **Provider** — **OpenAI**, **Anthropic**, **OpenRouter**, **Ollama**, or **Custom (OpenAI compatible)**.
+* **Base URL** — prefilled for the provider you pick. Change it to reach a self-hosted endpoint or an internal gateway, remembering that the address has to be reachable from the platform — one that only resolves inside your own network will not connect.
+* **API Key** — your provider key, handled as a secret and shown as a password field. Every provider requires one, Ollama included.
+* **Model ID** — the provider's identifier for the model, written exactly as the provider writes it. Type it, or pick one of the suggestions offered for the provider you selected.
 
-Click **Check connectivity** to validate the key and endpoint — the panel shows **Connected** or **Not connected** — then **Save** to apply. Once connected, your own model serves your chats and the platform allowance no longer limits you. You can update or remove the key from the same panel at any time.
+### Getting the Model ID right
+
+The Model ID is passed to the provider verbatim, so it has to match their catalog character for character. The field offers a couple of current suggestions per provider, but anything else that provider serves is equally valid.
+
+**Ollama identifiers carry a version tag.** Ollama names a model `name:tag` — `gpt-oss:120b`, `gemma4:31b` — and the tag is part of the identifier rather than an optional suffix. Leave it off and the model is not found. Two more things specific to Ollama: the prefilled Base URL is Ollama Cloud, and most of the Ollama Cloud catalog needs a paid subscription on your Ollama account. The suggested identifiers do not.
+
+**OpenRouter identifiers are namespaced** — `vendor/model`, such as `anthropic/claude-sonnet-4-6`.
+
+### Checking the connection before you save
+
+**Check connectivity** runs a real request against the provider, so you learn now rather than the next time someone asks the assistant a question. The panel reports **Connected** or **Not connected**; **Save** then applies it. A refusal names its cause instead of leaving you to guess:
+
+| Message | What it means |
+|---|---|
+| the provider rejected the API key | The key is wrong, revoked, or belongs to a different account. |
+| the provider denied this key access to the model — check that your provider plan includes it | The key is valid, but the plan behind it does not cover the model you asked for. The usual cause on Ollama Cloud. |
+| the provider does not serve this model — check the model id | The identifier is not in that provider's catalog. On Ollama, check the version tag. |
+| this model has been retired by the provider — pick a current one | The model existed once and has since been withdrawn. |
+| the provider refused the request for billing reasons — check the account behind this key | The provider account needs attention — an unpaid invoice or a spend cap. |
+| the provider is rate limiting this key — try again in a moment | Too many requests in too short a window. |
+| could not reach AI provider | The Base URL is not reachable from the platform. |
+
+Once connected, your own model serves your chats and the platform allowance no longer limits you. The panel goes on showing the connection in use — base URL, masked key and Model ID — so you can confirm months later which model is actually answering. Update or remove the key from the same panel at any time.
 
 ## Where to go next
 

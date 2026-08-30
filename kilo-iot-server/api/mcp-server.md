@@ -87,7 +87,9 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 
 | Area | What the connected client can do |
 |---|---|
-| **Devices** | List devices in the organization, provision LoRaWAN devices and trackers, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
+| **Devices** | List devices in the organization, provision LoRaWAN, MQTT and tracker devices, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_mqtt`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
+| **MIOTY** | Browse a MIOTY connection's device catalog — manufacturers, device models and their blueprints, across both the System and Custom scopes — and commission an endpoint from it. `mioty_catalog_list`, `device_provision_mioty` |
+| **Hardware** | Search the partner catalog and the open web for equipment that fits a described need, then present a shortlist of those products. These are the two tools that reach outside your organization. `hardware_search`, `recommend_products` |
 | **Commands** | List the commands configured on a device, execute one behind a confirmation, and check whether it was delivered. `device_command_list`, `device_command_execute`, `device_command_status` |
 | **Emulator** | Browse device presets, provision an [emulated device](../devices/emulated-devices.md), read and update its configuration and interval, send a one-off reading, and move a device between the emulator and real hardware — any real device onto the Emulator, and an emulated device onto a real LoRaWAN connection. `emulator_preset_list`, `emulator_preset_get`, `device_provision_emulator`, `emulator_config_get`, `emulator_config_update`, `emulator_send_once`, `device_connection_swap` |
 | **Connectors** | Review the connectors defined in the organization and create a connection for a device to report through. `connector_list`, `connection_create` |

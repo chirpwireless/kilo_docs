@@ -34,7 +34,7 @@ Kilo offers a way to add physical-world capabilities without rebuilding an IoT c
 
 The IoT Server already provides the operational foundation around that integration: device models, connectivity, multi-organization access, dashboards, alarms, automation, remote control, cloud or on-premise deployment, and interfaces for AI clients and software. Model providers can focus on intelligence while Kilo handles the boundary where software meets physical operations.
 
-Kilo is model-agnostic. Teams can use OpenAI, Anthropic, a compatible model endpoint, or another AI system without replacing the device and operations layer.
+Kilo is model-agnostic. Teams can use OpenAI, Anthropic, OpenRouter, a self-hosted or otherwise compatible model endpoint, or another AI system without replacing the device and operations layer.
 
 ## Connect AI agents to IoT through MCP or APIs
 
