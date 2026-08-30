@@ -4,7 +4,7 @@ description: Hand setup work to the Kilo IoT AI Assistant — onboard devices, d
 
 # Building With the Assistant
 
-Answering questions is table stakes. What sets the assistant apart is that it can **do the work** — the same configuration tasks a system integrator would do, driven by a plain-language conversation and gated by your approval. This page covers that build-and-operate side.
+The assistant can configure Kilo for you, not just answer questions. Describe the outcome you need in plain language and it can onboard devices, build rules, configure alarms, and run existing device commands within your permissions. This page explains what it can change and what you need to provide.
 
 ## How acting works
 
@@ -19,16 +19,23 @@ Describe the device you want to add and the assistant runs the onboarding flow w
 
 ### MIOTY endpoints
 
-The assistant also commissions [MIOTY](../devices/mioty-devices.md) endpoints, which is the path with the most to get wrong by hand. It can browse the device catalog with you — manufacturers and device models across both the System catalog and your organization's own Custom entries, and the [blueprint](../devices/mioty-blueprints.md) versions available for a model — and then register the endpoint itself.
+The assistant can commission a [MIOTY endpoint](../devices/mioty-devices.md) and bind the correct [blueprint](../devices/mioty-blueprints.md), so its payload is decoded into named readings.
 
-You supply the credentials, because they are secrets printed on the device or listed on the vendor's sheet: the **EUI** (16 hex characters), the **Network Session Key** (32 hex characters), and the **short address**. Choose **EP class Z** for uplink-only endpoints or **A** for bidirectional ones. The assistant validates each value as you give it rather than failing at the end, resolves the model's Type EUI for you, and binds the blueprint so readings arrive as named fields instead of raw payload. It will never invent a key — if you have not supplied one, it asks.
+Before you start, have the endpoint information supplied with the device:
 
-> *"Register the MIOTY water meter in Plant 2. EUI 70B3D5..., NwkSKey ..., short address 0042."*
+- **EUI** — the 16-character hexadecimal device identifier
+- **Network Session Key** — the 32-character hexadecimal secret used to secure communication
+- **Short address**
+- **Endpoint class** — choose **Z** for an uplink-only endpoint or **A** for a bidirectional endpoint
+
+Tell the assistant what you are adding and where it belongs. It searches both the System catalog and your organization's Custom catalog for the manufacturer, model, and available blueprint versions. If more than one match is possible, it asks you to choose. It then validates the endpoint details, resolves the model's Type EUI, registers the endpoint, and binds the selected blueprint.
+
+> *"Register the MIOTY water meter in Plant 2. Its EUI is 70B3D5..., its Network Session Key is ..., its short address is 0042, and it is a class Z endpoint."*
 
 > *"Add the new CO2 sensor in Lab 2. DevEUI 24E124..., AppKey ..."*
 > The assistant provisions the device, binds it, and checks whether data is arriving — flagging it if the device stays silent.
 
-This is especially useful at scale: instead of clicking through the registration steps for each unit, you describe what you're adding and the assistant does the mechanical work.
+The result is a registered endpoint whose readings use the field names defined by its blueprint. The assistant does not invent missing identifiers or keys; it asks for any required value you have not supplied.
 
 <figure><img src="../../.gitbook/assets/ai-chat-session.jpg" alt="An assistant session working through a request, showing each tool it called and the alarm definition it created"><figcaption></figcaption></figure>
 

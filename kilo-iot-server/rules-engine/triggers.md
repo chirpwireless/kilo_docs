@@ -1,190 +1,159 @@
 ---
-description: Start a rule only when a condition holds for a duration, across a whole group of devices at once — one trigger instead of one rule per device.
+description: Create one trigger that watches up to 500 devices independently, waits for a condition to hold, and starts a Kilo rule.
 ---
 
 # Triggers
 
-A trigger watches a condition over time and starts rules when it holds.
+A trigger starts a rule when selected device data matches a condition. One trigger can watch up to **500 devices**, evaluate each device independently, and start the same rule for whichever device meets the condition.
 
-That sentence contains the two things this page is about, and both of them change what the Rules Engine can express. A rule bound to a sensor reading fires on **an instant** — the moment a value crosses a line. A trigger fires on **a situation** — a condition that was still true after ten minutes. And where a rule reads one device, a trigger watches **a set of devices at once**, evaluating each one separately while you maintain a single definition.
+Before triggers, a rule could be started by only one device. Applying the same response to 50 devices meant creating and maintaining 50 rules. With a trigger, you define the condition once, select the 50 devices, and connect one rule.
 
-## Why a duration changes what you can automate
+A trigger can start the rule immediately or wait until the condition has remained true for a set time. For example, you can ignore a cold-store door opened briefly for loading and act only if it remains open for 20 minutes.
 
-Plenty of things worth knowing about are indistinguishable from noise at the instant they happen.
+## Before you start
 
-Motion in an underground car park at three in the morning is not, by itself, an event. Residents come home late, collect something from a boot, and leave. A rule that alerts on the first motion report at night alerts constantly, and an alert that cries wolf every night is one nobody reads by the second week — which means the night it matters, it is ignored too.
+Decide which devices need the same response and which metric the trigger will evaluate. A metric is a normalized reading such as `temperature`, `door_open`, or `pump_running`.
 
-Motion that is **still going after ten minutes** at three in the morning is an entirely different proposition. Almost nobody spends ten minutes in a car park at that hour on legitimate business. The duration is what separates the two, and until now there was no way to say it.
+Each watched device must provide the metric used as the main condition. If a device is missing from the trigger's device list, open that device's **Mapping** tab and confirm that its incoming data is mapped to the required metric. See [Metrics](../devices/metric-templates.md).
 
-The same distinction runs through most of the estate:
+You can create the trigger before the rule, but the trigger does not perform an action by itself. After saving it, connect it to a rule's Start Event.
 
-- A cold-store door **open for four minutes** is someone loading a pallet. **Open for twenty** is a door that did not latch, and a load at risk.
-- A pump running **briefly** is normal cycling. Running **continuously for two hours** is a float switch that failed.
-- A corridor at **21 °C** is a warm afternoon. **21 °C sustained overnight** is heating that never went into setback.
+## Open Triggers
 
-In each case the raw reading is identical. Only the persistence tells you whether to wake somebody. **This is fundamentally a false-alarm problem** — the goal is not to detect more, it is to stop reporting things that do not matter, so that the reports which do arrive still carry weight.
-
-## Why one trigger beats one rule per device
-
-The second half of the problem is scale. Suppose the car park works, and you now want the same logic on every fire door in the building.
-
-Before, that meant one rule per device. Sixteen doors meant sixteen rules, each an independent copy of the same idea. Change the duration and you change it sixteen times. Miss one and you have a rule estate that quietly disagrees with itself. At two hundred doors it stops being maintainable at all.
-
-A trigger takes the device list as part of its definition. **You describe the condition once and attach the devices you want it to watch** — up to 500 of them. There is one thing to edit, one thing to review, and adding the two-hundred-and-first door is a checkbox rather than another rule.
-
-Critically, grouping does **not** merge the devices you are watching. The main condition is evaluated on each watched device separately: each holds its own countdown, each starts the rule on its own, and one door standing open neither depends on nor interferes with the other fifteen. The rule that runs can tell you **which** door it was.
-
-There is one deliberate exception, and it is useful. When a condition tests more than one reading, the *extra* readings do not have to come from the watched device. A reading can come either from **every watched device individually**, or from **one device that supplies it for all of them**.
-
-Say you want to know about any window left open while the heating is running. The open/closed contact belongs to each window and is checked on each one separately. The heating is a single fact about the building, measured once, and applied to every window in the group — you do not need a heating sensor on each window frame. An outdoor thermometer or a shared occupancy sensor works the same way.
-
-What you cannot do is have it come from *some* of them. Anything between "all of them" and "exactly one" is refused when you save, so a condition cannot end up half-shared by accident.
-
-## Where triggers live
-
-Triggers have their own tab in the Rules Engine, alongside **Rules**, **Artifacts** and **Trash**. Open **Triggers** to see the ones already defined, add a new one, or edit an existing one.
+Open **Rules Engine → Triggers**. This tab lists existing triggers and provides the **Add trigger** action.
 
 <figure><img src="../../.gitbook/assets/trigger-empty-state.jpg" alt="The Triggers tab in the Rules Engine before any trigger exists"><figcaption></figcaption></figure>
 
-A trigger on its own does nothing visible. It becomes useful when a rule points at it — see [Starting a rule from a trigger](#starting-a-rule-from-a-trigger) below.
+## Create a trigger
 
-<figure><img src="../../.gitbook/assets/trigger-time-window.jpg" alt="The Create trigger dialog with a condition and the Only if it lasts duration set to 10 minutes"><figcaption></figcaption></figure>
+Click **Add trigger** to open the **Create trigger** dialog. Complete the sections from top to bottom.
 
-## Creating a trigger
+### 1. Name the trigger
 
-Click **Add trigger**. The **Create trigger** dialog opens, with four sections that follow the sentence at the top of this page: *what* the condition is, *when* it counts, *when it stops counting*, and *which devices* it applies to.
+Enter a **Name** that describes the situation, such as `Cold-store door left open` or `Pump running too long`. This is the name you will select later when configuring the rule.
 
-Give it a **Name** first. Name it for the situation rather than the reading — "Car park occupied at night", "Fire door held open" — because this is the name you will pick from a list when you build the rule.
+### 2. Define what should start the rule
 
-### 1. What should start the rule?
+Under **What should start the rule?**, click **Add normalized key** and select the metric to evaluate.
 
-This is the condition itself. You build it from **normalized keys** — the metric names your devices report in a common vocabulary, so one condition can span devices from different manufacturers that all measure the same thing.
+For each metric, set:
 
-Click **Add normalized key** and choose the key you want to test. Each key gets its own card, headed **Normalized key 1**, **Normalized key 2** and so on, showing **Available on N devices** so you can see how wide a net that key casts before you go further.
+- **Is** — the comparison operator. Numeric metrics offer **equals**, **is greater than**, and **is less than**. String and Boolean metrics offer **equals**.
+- **Value** — the value to compare with the device reading.
 
-Within a card, set the comparison:
+Use **Add check on ‹metric›** when the same reading needs another comparison. For example, two checks can define a temperature range.
 
-- **Is** — the operator. Numbers offer **equals**, **is greater than** and **is less than**. Strings and booleans offer **equals** only.
-- **Value** — what to compare against.
+Use **Add normalized key** when the condition also depends on a different reading. By default, the trigger and optional clear condition can contain up to 10 normalized keys in total.
 
-Two buttons extend the condition. **Add check on ‹key›** adds another comparison against the *same* reading — use it when one value needs more than one constraint. **Add normalized key** brings a second reading into the trigger; one of the chosen devices has to answer it.
+When a condition uses several metrics, the additional metric must be available in one of two ways:
 
-A trigger may declare **at most 10 normalized keys** by default, and that budget is shared with the clear condition described below.
+- every watched device provides it; or
+- exactly one selected device provides a shared value for all watched devices.
 
-### 2. When should it start?
+For example, each fire door can provide its own `door_open` reading while one building controller provides the shared `heating_on` reading. The form refuses combinations where only some watched devices provide the additional metric, preventing an incomplete condition from being saved.
 
-This is the duration control, and it is where a trigger stops being an ordinary threshold.
+### 3. Choose when the trigger starts
 
-Two choices:
+Under **When should it start?**, choose one timing mode:
 
-- **Immediately** — the trigger fires as soon as the condition is satisfied. Use this when the reading itself is the event, and you only wanted the grouping.
-- **Only if it lasts** — the condition must hold continuously for a period before the trigger fires. Choose the amount and the unit: **seconds**, **minutes**, **hours** or **days**.
+- **Immediately** — start the rule as soon as the condition becomes true. Use this when you need device grouping without a delay.
+- **Only if it lasts** — start the rule only after the condition has remained true for the duration you enter.
 
-A new trigger opens on **Only if it lasts, 10 minutes**, because that is the case this exists for.
+For **Only if it lasts**, select seconds, minutes, hours, or days. New triggers default to 10 minutes. The allowed range is 10 seconds to 30 days.
 
-By default the duration must be **at least 10 seconds and at most 30 days**. The form will let you type a shorter figure, but saving it is refused — so if a save fails on an otherwise valid trigger, check the duration first.
+Set the duration longer than the device's reporting interval. If a device sends no new value during the wait, the countdown continues; silence does not reset it. A 10-minute duration on a device that reports every 15 minutes would still be based on only one reading.
 
-> **Set the duration longer than the device's reporting interval.** If the device sends no new value during the period, the condition simply continues — the trigger does not reset just because nothing was heard. But a ten-minute window on a sensor that reports every fifteen minutes is decided by a single reading, which defeats the point. Match the window to how often the device actually speaks.
+<figure><img src="../../.gitbook/assets/trigger-time-window.jpg" alt="The Create trigger dialog with a condition and Only if it lasts set to 10 minutes"><figcaption></figcaption></figure>
 
-### 3. Clear behavior
+### 4. Configure clear behavior
 
-By default a trigger clears on the first reading that stops satisfying the condition — the door shuts, the situation is over.
+By default, the trigger clears on the first reading that no longer satisfies the starting condition.
 
-Sometimes that is too twitchy in the other direction. A motion sensor that goes quiet for one reporting interval has not necessarily been vacated. Switch on **Clear by a separate condition** and you get a second, independent condition for the clearing side, with **its own** timing row — so you can require that the all-clear also holds for a period before the trigger releases.
+Turn on **Clear by a separate condition** when returning to normal requires a different condition or its own delay. The clear condition has the same metric, comparison, and timing controls as the starting condition.
 
-The clear condition draws on the same budget of 10 normalized keys as the raise condition.
+For example, a motion trigger can start after 10 minutes of continuous activity and clear only after the area has remained quiet for five minutes. This prevents one quiet reading from clearing the trigger too early.
 
-### 4. Devices
+### 5. Select devices
 
-This is the group. The device list is filtered to devices that can actually answer your condition, so pick the normalized key first — until you do, the section tells you **"Pick a normalized key first — devices depend on it."**
+Under **Devices**, select the devices the trigger should watch. The list becomes available after you select a normalized key and includes only compatible devices.
 
-Once a key is chosen you get a count of **compatible devices** — meaning devices that provide at least one of the telemetry fields the trigger needs — a **Search devices** box, and the devices themselves as chips you click to select.
+Use **Search devices**, **Select all**, **Select all shown**, **Clear selection**, and **Load more devices** to manage a large selection. A trigger requires at least one device and accepts up to 500. The limit includes watched devices and any device supplying a shared reading.
 
-For a large estate, **Select all** takes everything compatible, and **Select all shown** takes the current page when there are more to load. **Clear selection** starts over. **Load more devices** pages through the rest.
+If an expected device is missing, open its **Mapping** tab and map its incoming data to the metric used by the trigger.
 
-A trigger needs **at least one** device and accepts **at most 500** by default. That ceiling counts everything attached to the trigger — the devices you are watching plus any device supplying a shared reading.
+### 6. Review and save
 
-If a device you expect is missing, nothing on it answers the keys in your condition. Add the sensor on that device's **Mapping** tab and it will appear.
-
-### Check it before you save
-
-At the bottom of the dialog, **How this trigger will run** lays out exactly what you have built: a table with a row per device, showing each **Check**, the **Evaluated device**, and what it **Uses**.
-
-For the sixteen fire doors, that is sixteen rows and one trigger. The caption states the guarantee plainly — each device check runs independently, and one device can start the rule without affecting the others.
+**How this trigger will run** shows one row for every independently evaluated device. Review the **Check**, **Evaluated device**, and **Uses** columns before saving.
 
 <figure><img src="../../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per selected device"><figcaption></figcaption></figure>
 
-Read this table before saving. It is the cheapest place to notice that you selected forty devices when you meant four.
+Click **Create trigger**. The trigger now watches the selected devices, but it will not perform an action until a rule uses it.
 
-## Starting a rule from a trigger
+## Start a rule from the trigger
 
-A trigger decides *that* something is happening; a rule decides what to do about it. Connect the two in the rule's **Start Event**.
+1. Open the rule that should respond to the trigger.
+2. Select the **Start Event** node.
+3. Click the pencil beneath the node to open its properties.
+4. Set **Start source** to **Trigger condition**.
+5. Select the trigger under **Trigger condition**.
+6. Save, build, and deploy the rule as usual.
 
-Open the rule, select the Start Event node and click the **pencil** that appears beneath it, then use **Start source** in the properties panel:
+Set **Start source** to **Sensor reading** when a rule should continue to start directly from one device and sensor. A Start Event uses one source or the other, not both.
 
-- **Sensor reading** — the original behavior. Pick a Device and a Sensor; the rule runs on that device's readings.
-- **Trigger condition** — pick a trigger instead. The Device and Sensor fields are replaced by a single **Trigger condition** selector.
+<figure><img src="../../.gitbook/assets/rule-start-source.jpg" alt="The Start Event panel with Start source set to Trigger condition and a trigger selected"><figcaption></figcaption></figure>
 
-A Start Event uses one source or the other, never both.
+The selector currently shows only the first page of triggers. If the trigger you need is not listed, it cannot yet be selected from this field.
 
-<figure><img src="../../.gitbook/assets/rule-start-source.jpg" alt="The Start event panel with Start source set to Trigger condition and a trigger selected"><figcaption></figcaption></figure>
+## Use trigger variables in the rule
 
-> The trigger list in that selector loads its first page only, and says so — *"Showing the first N triggers"*. If the trigger you want is not offered, that is why. Naming triggers distinctly and keeping the list tidy is the practical workaround.
+A trigger-started rule provides these variables:
 
-### What the rule can read
-
-A trigger-started rule sees a different set of variables from a sensor-started one, and the difference catches people out:
-
-| Variable | What it holds |
+| Variable | Value |
 |---|---|
-| `vars.device_name` | The name of the device that actually fired — this is how one rule reports which of the sixteen doors it was |
-| `vars.sensor_id` | The sensor the reading came from |
-| `vars.timestamp` | When the condition was met |
+| `vars.device_name` | Name of the device whose condition started the rule |
+| `vars.sensor_id` | Sensor that supplied the reading |
+| `vars.timestamp` | Time the condition was met |
 
-**`vars.value` does not exist on a trigger-started rule.** A trigger reports that a condition *held*, not a reading — there is no single value to hand over. A rule written against `vars.value` will fail every time it runs, so if you are converting an existing rule to start from a trigger, this is the line to change.
+`vars.value` is not available to a trigger-started rule. A trigger reports that a condition held; it does not pass one reading as the event value. Update any existing CEL expression that expects `vars.value` before changing its Start Event to a trigger.
 
-Use `vars.device_name` in the alarm's **Motivation Message**, which is a CEL expression, to carry the identity through to whoever gets paged:
+To identify the affected device in an alarm, include `vars.device_name` in the alarm's **Motivation Message**:
 
 ```
-"Motion in " + vars.device_name + " for over 10 minutes"
+"Door left open: " + vars.device_name
 ```
 
-There is no automatic placeholder for this — if you do not put the device name in the message, the alert will not carry it.
+The device name is not added automatically.
 
-## Triggers and schedules compose
+## Combine a trigger with a schedule
 
-**Enable Schedule** on the Start Event is unchanged and still applies to trigger-started rules. The two answer different questions — a trigger's duration governs *how long the condition must hold*, a schedule governs *whether the rule may act* — and it is worth being precise about when each one is decided, because the order surprises people.
+**Enable Schedule** on the Start Event also applies to trigger-started rules. The trigger watches and counts continuously; the schedule is checked when the trigger finishes its countdown and starts the rule.
 
-**The trigger knows nothing about the schedule.** It watches and counts around the clock, whatever the hour. The schedule is checked **once, at the moment the trigger fires and hands over to the rule** — never while the countdown is running.
+For a schedule of 22:00–06:00 and a 10-minute trigger:
 
-That has a consequence worth planning around:
+- a condition that begins at 21:55 and completes at 22:05 can start the rule;
+- a condition that completes at 06:05 cannot start the rule.
 
-> **Enable Schedule** — 22:00 to 06:00, every day
-> **Trigger** — motion detected, only if it lasts 10 minutes
-> **Rule** — raise an alarm naming the device
+A trigger blocked by the schedule is recorded in the rule's execution history as skipped by schedule.
 
-Motion that begins at 21:55 and is still going at 22:05 **does** raise the alarm — the ten minutes started before the window opened, but the trigger fired inside it. Motion that completes at 06:05 does not, even though it began while the window was still open. In other words the schedule filters the *result*, not the watching.
+## Edit or delete a trigger
 
-For most operational cases that is the behavior you want: something that runs over the boundary into protected hours is usually exactly what you wanted to hear about. If you need the whole episode to fall inside the window, set the schedule wider than the duration you are requiring.
+Editing a trigger's condition can restart active countdowns. Kilo warns you before saving a change that resets the current trigger state.
 
-A trigger the schedule holds back is not silently dropped. It is recorded in the rule's execution history as skipped by schedule, so when you go looking you can see the trigger fired and understand why nothing followed.
+Deleting a trigger cannot be undone. It stops monitoring, clears alarms raised by that trigger, and prevents connected rules from starting. Check which rules use the trigger before deleting it.
 
-## Editing and deleting
+## Troubleshooting
 
-**Editing a trigger can reset what it is currently watching.** If your change alters the substance of the condition, any countdown already in progress starts again — a door that has been open eight minutes goes back to zero. You are warned before this happens, so you can choose to make the change at a quiet moment.
-
-**Deleting a trigger is not reversible.** Watching stops, the alarms that trigger raised are cleared, and rules started by it will no longer start. Check what points at a trigger before removing it.
-
-## Tips
-
-- **Name for the situation, not the sensor.** You will pick this from a dropdown in the Start Event; "Fire door held open" tells you what you are wiring, "Door sensor 3 rule" does not.
-- **Start wider on the duration than feels right, then tighten.** A ten-minute window that produces no alerts in a week is easier to shorten than a two-minute one is to live with.
-- **Put `vars.device_name` in every group alarm.** Without it, a trigger across two hundred doors raises an alarm that does not say which door — the single most likely way to make this feature useless in practice.
-- **Group by response, not by hardware.** The right group is the set of devices where you would take the same action. Doors that need a guard dispatched belong together; a door that only needs a maintenance ticket belongs in a different trigger.
+| Problem | What to check |
+|---|---|
+| A device is missing from the selection | Confirm its data is mapped to the normalized key on the device's **Mapping** tab. |
+| The trigger will not save | Confirm the duration is between 10 seconds and 30 days and review any problem shown under **How this trigger will run**. |
+| The rule starts but an expression fails | Remove uses of `vars.value`; use the trigger variables listed above. |
+| The alarm does not identify the device | Add `vars.device_name` to the alarm's **Motivation Message**. |
+| A condition reset after editing | Changes to the condition can restart countdowns; the confirmation dialog warns before this occurs. |
 
 ## See also
 
-- [Creating Rules](creating-rules.md) — building the rule that a trigger starts
-- [Node Reference](node-reference.md) — the Start Event and its full configuration
-- [CEL Reference](cel-reference.md) — writing the expressions that read `vars.device_name`
-- [Alarm](../alarm/README.md) — what happens once a rule raises something
+- [Creating Rules](creating-rules.md) — build the rule that a trigger starts
+- [Node Reference](node-reference.md) — configure the Start Event and other nodes
+- [CEL Reference](cel-reference.md) — use trigger variables in expressions
+- [Alarm](../alarm/README.md) — configure the alarm raised by a rule

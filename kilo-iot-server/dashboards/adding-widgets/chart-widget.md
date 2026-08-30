@@ -41,7 +41,7 @@ Here is a full setup for one real case — tracking a refrigeration unit's tempe
 12. Switch on **Show average value** to add a dashed line at the period's average, labeled "Average" in the legend.
 13. **Show vertical axis lines** and **Show horizontal axis lines** add time-axis and value-axis grid lines — turn them on if a grid makes the graph easier to read.
 14. Switch on **Display data legend** to list the threshold labels and the average beside the graph.
-15. Switch on **Show metrics below** to repeat the metric and its reading in a row underneath the graph. This is worth turning on for a widget sized small on a crowded dashboard, where the large headline value is the first thing to lose room.
+15. Switch on **Show metrics below** to display the metric name and current reading in a row beneath the graph. This keeps the reading visible when the widget is too small to show the large value clearly.
 16. If you chose **bar** at step 8, **Display value on bar** prints each bar's own value on the bar itself, so an operator can read exact figures off the chart instead of estimating them against the axis. The option applies to bar charts only — on a line chart there are no bars to label, so it is not offered.
 17. Click **Save** to place the widget on the dashboard.
 

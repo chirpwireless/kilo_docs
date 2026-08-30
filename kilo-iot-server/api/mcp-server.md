@@ -63,7 +63,7 @@ Either way the authorization is the same: the client opens your browser, you sig
 
 <figure><img src="../../.gitbook/assets/mcp-claude-session.jpg" alt="A Claude Code session connected to Kilo over MCP, calling the connection_list tool and asking permission before continuing"><figcaption>An authenticated Claude Code session working a live deployment: asked to configure a LoRaWAN sensor, it recommends provisioning through the platform, calls a Kilo tool, and stops for permission before continuing</figcaption></figure>
 
-Two things in that exchange are worth pointing out. The client reasons about **your** deployment rather than IoT in general, because it can read the connections and devices that are actually there. And the approval prompt is the client's — Kilo annotates destructive tools and says so in the tool description, and a compatible client turns that into the prompt you see. See [Security and permissions](#security-and-permissions) below for what Kilo enforces regardless of which client you use.
+The client can answer from your actual deployment because it can read the connections and devices available to your account. The approval prompt belongs to the client: Kilo publishes safety information with each tool, and compatible clients can use it to request confirmation. Kilo enforces your account permissions regardless of how the client handles that information. See [Security and permissions](#security-and-permissions).
 
 ## Choosing the organization
 
@@ -98,21 +98,19 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 | **Dashboards** | List dashboards and query the data behind a widget, so the client can reason about the same numbers your operators watch. `dashboard_list`, `widget_data_query` |
 | **Organization** | Read organization details, list teams, invite users, and assign roles. `org_get`, `team_list`, `user_invite`, `user_role_assign` |
 
-## What the client knows before it calls a tool
+## How clients distinguish read and write actions
 
-Every tool arrives with a plain-language title and a declaration of how it behaves, so a client that reads them can tell the difference between looking something up and changing your deployment **before** it acts rather than after. These are declarations the server publishes, not restrictions it imposes — what a client does with them is the client's design.
+Kilo publishes a title, description, and safety annotations with each MCP tool. Compatible clients can read these annotations before choosing whether to run the tool immediately or ask you to confirm.
 
-Three things are declared on each tool:
+| Annotation | Examples | What it tells the client |
+|---|---|---|
+| **Read-only** | List devices, read alarm history, query widget data | The tool does not change your deployment. |
+| **Changes or removes data** | Delete a device, update a dashboard, swap a connection, send a device command | The tool can affect your deployment or equipment, so the client can ask for confirmation. |
+| **Reaches outside your organization** | Search the partner catalog or the open web for hardware | The tool accesses information beyond your organization's data. |
 
-- **Whether it only reads.** Listing devices, reading alarm history, querying the data behind a widget — these change nothing, and a client can run them without interrupting you.
-- **Whether it can change or remove something.** Deleting a device, updating a dashboard, swapping a device's connection, sending a command to physical equipment. These are marked as such so a client can put them behind a confirmation.
-- **Whether it reaches outside your organization.** Almost everything works strictly within your own data. The two hardware tools are the exception: they search the partner catalog and the open web to recommend equipment, so they are declared as reaching beyond your deployment.
+Creating a device or dashboard changes your organization, but it does not overwrite or stop an existing resource and can be reversed by deleting the new resource. Kilo therefore does not describe creation as destructive.
 
-Provisioning tools sit deliberately in the middle. Creating a device or a dashboard adds something without overwriting or stopping anything that already exists, and the effect is undone by deleting what was created — so they are not treated as destructive, but they still change your organization.
-
-The practical result, with a client that honors them, is that ordinary questions are answered without interruption while anything touching your deployment or your equipment stops for a confirmation. The declarations are generated from the running tool set rather than maintained by hand, so what a client is told does not drift from what the server does.
-
-Your permissions remain the real boundary. A client that ignores the declarations still cannot do anything your account could not do.
+Safety annotations are information for the client, not an authorization control. Clients decide how to present confirmations. Your Kilo permissions remain the enforced boundary, so a client cannot perform an action that your account is not allowed to perform.
 
 ## Security and permissions
 
