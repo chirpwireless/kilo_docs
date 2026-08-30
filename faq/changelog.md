@@ -10,14 +10,14 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0 release banner"><figcaption></figcaption></figure>
 
-In Kilo you create rules. A rule watches a reading from one of your devices — a temperature, a door, a pump — and raises an alarm when that reading crosses a limit you set. Two things about rules changed in 3.9.0. **First, a rule can now wait before it runs.** Before, the rule ran the moment the reading crossed the limit. Now you can make it wait until the condition has been true for a set time, anywhere from 10 seconds to 30 days. **Second, one rule can now cover many devices.** Before, you created one rule per device: ten doors meant ten rules. Now you select up to 500 devices and create a single rule for all of them. Also in this release: all your metrics are on one searchable page, you can pay by invoice instead of by card, bar charts can show their values, the AI assistant can add MIOTY devices and can run on your own AI account, and ChatGPT or Claude connected to Kilo now know which of their actions change your data and which only read it. [kiloiot.io](https://kiloiot.io)
+In Kilo you build rules. A rule is a flowchart you draw: it starts when a device reports a reading, follows the branches you set, and then does something about it — raises an alarm, **sends a command straight back to a device** to shut a valve or switch a relay, pulls in a reading from another sensor before deciding, or works out a value of its own. What changed in 3.9.0 is **how a rule starts**. Before, a rule was started by one device's sensor, the moment its reading crossed the limit you set. Now a **trigger** can start it instead: a condition you name once, that has to hold for a set time before anything runs — 10 seconds to 30 days — and that watches up to 500 devices at once, each on its own. Also in this release: all your metrics are on one searchable page, you can pay by invoice instead of by card, bar charts can show their values, the AI assistant can add MIOTY devices and can run on your own AI account, and ChatGPT or Claude connected to Kilo now know which of their actions change your data and which only read it. [kiloiot.io](https://kiloiot.io)
 
 ***
 
 #### What's in This Release
 
-* **Triggers: make a rule wait before it runs** — Before, a rule ran the moment a reading crossed your limit. Now you can make it wait until the condition has been true for a set time — 10 seconds to 30 days. Example: a rule on a freezer door set to 10 minutes will not alarm while someone is loading the freezer, but will alarm if the door was left open.
-* **One rule for many devices** — Before, you created one rule per device. Now you select up to 500 devices and create a single rule for all of them. Each device is still checked separately, and the alarm tells you which device set it off.
+* **Triggers: start a rule only once a condition has lasted** — Before, a rule was started by a sensor reading the moment it crossed your limit. A trigger makes it wait until the condition has held for a set time — 10 seconds to 30 days. Example: a rule on a freezer door set to 10 minutes stays quiet while someone loads the freezer, and runs if the door was left open — raising the alarm, or switching something on, or both.
+* **One trigger, up to 500 devices** — Before, a rule was started by one device's sensor, so the same rule on sixteen doors meant sixteen rules. A trigger holds the device list itself: you describe the condition once and attach up to 500 devices. Each is watched separately with its own countdown, and the alarm names the device that set it off.
 * **All metrics on one page** — A metric is a type of reading, such as temperature or battery level. Metrics used to be spread across three tabs. They are now one searchable list at Devices → Metrics, where you also add and edit them.
 * **Pay by invoice instead of by card** — Before, you could only pay by card. Now you can enter your company details and VAT number and pay by bank transfer. You get a PDF invoice by email, and an Invoices page shows what is paid and what is still open.
 * **Show values on bar charts** — Turn on **Display value on bar** and each bar shows its number, so you do not have to read it off the scale. **Show metrics below** repeats the current reading in a row under the chart.
@@ -30,7 +30,7 @@ In Kilo you create rules. A rule watches a reading from one of your devices — 
 
 **Triggers: make a rule wait before it runs**
 
-Before 3.9.0, a rule ran the moment a reading crossed the limit you set. That is what you want for a water leak. It is not what you want for most other things, because a reading crossing a limit briefly and a reading crossing it for hours look exactly the same at the moment it happens.
+Before 3.9.0, a rule was started by one device's sensor, and it ran the moment that reading crossed the limit you set. That is what you want for a water leak — the rule can raise the alarm and close the valve in the same run. It is not what you want for most other things, because a reading crossing a limit briefly and a reading crossing it for hours look exactly the same at the moment it happens.
 
 Three examples:
 
@@ -55,7 +55,7 @@ Two things to know:
 
 **One rule for many devices**
 
-Before 3.9.0, a rule watched one device. If you wanted the same rule on sixteen doors, you created sixteen rules. Changing the waiting time meant editing all sixteen. At two hundred doors this stops being practical.
+A rule could always reach more than one device — it can pull a reading from another sensor before deciding, and send its command to any device in your organization. What it could not do was be *started* by more than one. So the same rule on sixteen doors meant sixteen rules, and changing the waiting time meant editing all sixteen. At two hundred doors this stops being practical.
 
 Now you select the devices when you create the trigger — **up to 500 of them** — and one rule covers all of them. Adding the two hundred and first device is a checkbox, not another rule.
 
@@ -94,7 +94,7 @@ One thing to be careful about: the list belongs to your whole organization, so e
 
 Before 3.9.0, the only way to pay for a plan was by card. Many companies cannot do that — their finance department needs an invoice with the company's legal name on it, a VAT number, and a bank account to pay into.
 
-Now you can do it that way. In Organization settings you enter your company details once: legal name, registered address, billing email, and for EU companies a VAT number, which Kilo checks against the EU's VIES register as you type. When you choose a plan, select **Pay by invoice (bank transfer)**.
+Now you can do it that way. Which route you use is settled once, when the subscription is created. In Organization settings you enter your company details once: legal name, registered address, billing email, and for EU companies a VAT number, which Kilo checks against the EU's VIES register as you type. When you choose a plan, select **Pay by invoice (bank transfer)**.
 
 What happens then:
 
@@ -125,7 +125,7 @@ Turn on **Display value on bar** and each bar shows its own number. This option 
 
 **The AI assistant can add MIOTY devices**
 
-MIOTY is a radio protocol Kilo supports alongside LoRaWAN, built for large sites with a lot of radio interference. Adding a MIOTY device means typing in three codes exactly as printed on the device or on the vendor's sheet: a 16-character EUI, a 32-character network session key, and a short address. One wrong character produces a device that connects but sends nothing readable. You also have to pick the correct manufacturer and model, because the model determines the blueprint — the file that turns the device's raw data into named readings.
+MIOTY is a radio protocol Kilo supports alongside LoRaWAN, built for large sites with a lot of radio interference. Adding a MIOTY device means typing in three codes exactly as printed on the device or on the vendor's sheet: a 16-character EUI, a 32-character network session key, and a 4-character short address between 0001 and FFFF. One wrong character produces a device that connects but sends nothing readable. You also have to pick the correct manufacturer and model, because the model determines the blueprint — the file that turns the device's raw data into named readings.
 
 Before 3.9.0, the AI assistant could create the MIOTY connection but not the device itself. You added the device by hand on a form.
 
@@ -169,7 +169,7 @@ And once you are connected, the panel keeps showing the address, the hidden key 
 
 **ChatGPT and Claude know which actions change things**
 
-Since 3.7.0 you have been able to connect an AI app you already use — ChatGPT, Claude, Cursor and others — directly to your Kilo account, so you can ask it about your devices and have it make changes without opening Kilo.
+Since 3.7.0 you have been able to connect an AI app you already use — ChatGPT, Claude, Cursor and others — directly to your Kilo account and ask it about your devices, and since 3.8.0 it has been able to run commands on your hardware too, without you opening Kilo.
 
 Before 3.9.0, those apps saw a list of the actions they could take but nothing about what each one would do. An app could not tell "list my devices" apart from "delete this device", so it either asked you to confirm everything or confirmed nothing.
 
