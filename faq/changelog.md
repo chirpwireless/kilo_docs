@@ -17,7 +17,7 @@ In Kilo you build rules. A rule is a flowchart you draw: it starts when a device
 #### What's in This Release
 
 * **Triggers: start a rule only once a condition has lasted** — Before, a rule was started by a sensor reading the moment it crossed your limit. A trigger makes it wait until the condition has held for a set time — 10 seconds to 30 days. Example: a rule on a freezer door set to 10 minutes stays quiet while someone loads the freezer, and runs if the door was left open — raising the alarm, or switching something on, or both.
-* **One trigger, up to 500 devices** — Before, a rule was started by one device's sensor, so the same rule on sixteen doors meant sixteen rules. A trigger holds the device list itself: you describe the condition once and attach up to 500 devices. Each is watched separately with its own countdown, and the alarm names the device that set it off.
+* **One trigger, up to 500 devices** — Before, a rule was started by one device's sensor, so the same rule on sixteen doors meant sixteen rules. A trigger holds the device list itself: you describe the condition once and attach up to 500 devices. Each is watched separately with its own countdown, and the alarm can name the device that set it off once you put that into its message.
 * **All metrics on one page** — A metric is a type of reading, such as temperature or battery level. Metrics used to be spread across three tabs. They are now one searchable list at Devices → Metrics, where you also add and edit them.
 * **Pay by invoice instead of by card** — Before, you could only pay by card. Now you can enter your company details and VAT number and pay by bank transfer. You get a PDF invoice by email, and an Invoices page shows what is paid and what is still open.
 * **Show values on bar charts** — Turn on **Display value on bar** and each bar shows its number, so you do not have to read it off the scale. **Show metrics below** repeats the current reading in a row under the chart.
@@ -61,7 +61,7 @@ Now you select the devices when you create the trigger — **up to 500 of them**
 
 The devices are not combined. Each one is checked separately and has its own countdown, so one door being open does not affect the other fifteen. Before you save, a table called **How this trigger will run** lists one row per device so you can confirm what you built.
 
-The alarm can also name the device that set it off. Turn this on — with two hundred devices on one rule, it is the difference between knowing something is wrong and knowing where to go.
+The alarm can also name the device that set it off. It is not automatic: put `vars.device_name` into the alarm's motivation message yourself. Worth doing — with two hundred devices on one rule, an alarm that does not say which one is close to useless.
 
 <figure><img src="../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per selected device"><figcaption></figcaption></figure>
 
@@ -82,7 +82,7 @@ They are now one list at **Devices → Metrics**. You can:
 * sort by newest or oldest;
 * add and edit in the same dialog.
 
-One thing to be careful about: the list belongs to your whole organization, so editing a metric changes it for every device using it. That is correct when you are fixing a unit across a site and wrong when you meant one device — so before saving, Kilo tells you which of the two is about to happen and waits for your answer.
+One thing to be careful about: the list belongs to your whole organization, so editing a metric changes it for every device using it. That is correct when you are fixing a unit across a site and wrong when you meant one device — so before saving, Kilo warns you that every device using the metric will pick up the change, and waits for your answer.
 
 <figure><img src="../.gitbook/assets/device-metrics.jpg" alt="The Devices Metrics catalog with search, unit, type and data type filters and a sort control"><figcaption></figcaption></figure>
 
@@ -94,7 +94,7 @@ One thing to be careful about: the list belongs to your whole organization, so e
 
 Before 3.9.0, the only way to pay for a plan was by card. Many companies cannot do that — their finance department needs an invoice with the company's legal name on it, a VAT number, and a bank account to pay into.
 
-Now you can do it that way. Which route you use is settled once, when the subscription is created. In Organization settings you enter your company details once: legal name, registered address, billing email, and for EU companies a VAT number, which Kilo checks against the EU's VIES register as you type. When you choose a plan, select **Pay by invoice (bank transfer)**.
+Now you can do it that way. Which route you use is settled once, when the subscription is created. In Organization settings you enter your company details once: legal name, registered address, billing email, and for EU companies a VAT number, which is checked against the EU's VIES register. That check runs in the background rather than holding up the form, so the field shows you whether it is still pending or has come back verified. When you choose a plan, select **Pay by invoice (bank transfer)**.
 
 What happens then:
 
@@ -125,7 +125,7 @@ Turn on **Display value on bar** and each bar shows its own number. This option 
 
 **The AI assistant can add MIOTY devices**
 
-MIOTY is a radio protocol Kilo supports alongside LoRaWAN, built for large sites with a lot of radio interference. Adding a MIOTY device means typing in three codes exactly as printed on the device or on the vendor's sheet: a 16-character EUI, a 32-character network session key, and a 4-character short address between 0001 and FFFF. One wrong character produces a device that connects but sends nothing readable. You also have to pick the correct manufacturer and model, because the model determines the blueprint — the file that turns the device's raw data into named readings.
+MIOTY is a radio protocol Kilo supports alongside LoRaWAN, built for large sites with a lot of radio interference. Adding a MIOTY device means typing in three codes exactly as printed on the device or on the vendor's sheet: a 16-character EUI, a 32-character network session key, and a 4-character short address between 0001 and FFFF. One wrong character produces a device that connects but sends nothing readable. You also have to pick the correct manufacturer and model, because the model is what narrows down which blueprints you can choose — a blueprint being the file that turns the device's raw payload into named readings.
 
 Before 3.9.0, the AI assistant could create the MIOTY connection but not the device itself. You added the device by hand on a form.
 
@@ -149,7 +149,7 @@ Kilo's AI assistant runs on a model we provide, and each plan includes a set num
 
 Open **Connect your AI** from the AI Chat top bar and choose a provider: OpenAI, Anthropic, OpenRouter, Ollama, or a custom OpenAI-compatible endpoint.
 
-Before 3.9.0, one of those providers did not work at all. Ollama puts a version on the end of each model name after a colon — `gpt-oss:120b`, for example. Kilo rejected that colon before even attempting to connect, so no Ollama model could be used. The two models the panel suggested did not work either: one name does not exist, and the other requires a paid Ollama subscription.
+Before 3.9.0, one of those providers did not work at all. Ollama puts a version on the end of each model name after a colon — `gpt-oss:120b`, for example. Kilo rejected that colon before even attempting to connect, so no Ollama model carrying a version tag could be used — which is nearly all of them. The two models the panel suggested were no use either: the tag they used is not in Ollama Cloud's catalog at all, and the model behind them answers with a subscription error on a free account.
 
 Both are now fixed. Model names with a colon are accepted, and the suggested models work on a free Ollama account.
 
@@ -171,11 +171,11 @@ And once you are connected, the panel keeps showing the address, the hidden key 
 
 Since 3.7.0 you have been able to connect an AI app you already use — ChatGPT, Claude, Cursor and others — directly to your Kilo account and ask it about your devices, and since 3.8.0 it has been able to run commands on your hardware too, without you opening Kilo.
 
-Before 3.9.0, those apps saw a list of the actions they could take but nothing about what each one would do. An app could not tell "list my devices" apart from "delete this device", so it either asked you to confirm everything or confirmed nothing.
+Before 3.9.0, those apps saw the actions they could take with no readable title and no way to tell a read from a write. An app could not tell "list my devices" apart from "delete this device", so it either asked you to confirm everything or confirmed nothing.
 
 Now each action states what it is: whether it only reads data, whether it changes or deletes something, and whether it reaches outside your organization. A well-behaved app uses this to answer ordinary questions immediately and stop and ask you before changing your deployment or operating your equipment. You do not configure any of this.
 
-The descriptions are generated from what the server can actually do, so they cannot fall out of date. Some actions that had never been implemented were removed rather than left to fail the first time an app called them.
+What each action declares is checked against the server's live tool set by a test, so what an app is told cannot drift from what Kilo actually does. Some actions that had never been implemented were removed rather than left to fail the first time an app called them.
 
 <figure><img src="../.gitbook/assets/mcp-claude-session.jpg" alt="A Claude session connected to Kilo, calling a tool and asking permission before continuing"><figcaption></figcaption></figure>
 
@@ -189,17 +189,17 @@ Most of the fixes in this release are in the AI assistant, and nearly all of the
 
 * It said it had changed a device's reporting interval when the device had not accepted the change.
 * It renamed a device you had named yourself when you retried adding it.
-* It added a temperature reading nobody asked for to a door sensor.
+* When registering a device it added a temperature reading to the mapping that nobody had asked for.
 * It listed an API key for a MIOTY connection, which does not have one.
 * It said the platform could not run device commands, which it has been able to do since 3.8.0. Where something does have to be done in the web interface, it now tells you which screen.
 * After adding a device it sometimes showed a failure next to the success for that same device.
 * A confirmation message showed stray characters instead of line breaks.
-* It sometimes answered twice, using two of your monthly messages for one answer.
+* It sometimes gave the same answer twice in one turn — once as prose, then again inside a widget saying the same thing.
 * An answer that arrived all at once left the conversation looking empty until you reloaded.
 
 All of these are fixed. The assistant also respects your plan's device limit now — on the free plan you could previously go over it by asking the assistant instead of using the form.
 
-Elsewhere: photos you add to a device now save. **The Audit Trail records permission changes again** — changing what someone can see had stopped leaving a record, so the page looked frozen. Editing a MIOTY blueprint no longer looks as though it changed other devices using it; they were never affected, and a device now states plainly that it is running its own copy. **A value on a Last Data widget changes color with its conditions again.** **The Device logs panel now says it is waiting for the device to report** instead of naming something you cannot act on, and it no longer mentions a Chirp broker. The assistant handles requests for long periods of history instead of saying it is unavailable. A device set to report once a day is no longer marked offline a few hours later, and the warning now states its units. Device log retention follows your plan. The support form asks you to choose bug report, feature request or integration request instead of leaving a blank box. Emulated devices timestamp their first reading correctly and lay out properly on a phone. The trigger dialog fits on a phone screen. The AI chat icon is easier to see. Empty screens now look consistent across connectors, devices, rules, rule artifacts and MIOTY base stations, and the Devices and Gateways ones link to the shop if you have no hardware yet. The Overview page, the menu spacing and the Download the app card are corrected. Invoices have a back button. The Rules Engine screens received a general tidy-up, and a large amount of old front-end code was removed.
+Elsewhere: photos you add to a device now save. **The Audit Trail records permission changes again** — changing what someone can see had stopped leaving a record, so the page looked frozen. Editing a MIOTY blueprint no longer looks as though it changed other devices using it; they were never affected, and a device now states plainly that it is running its own copy. **A value on a Last Data widget changes color with its conditions again.** **Device diagnostics no longer tells a Kilo user to wait for a Chirp broker** — the message now uses the name of the platform you are actually on. The assistant handles requests for long periods of history instead of saying it is unavailable. A device set to report once a day is no longer marked offline a few hours later, and the warning now states its units. Device log retention follows your plan. The support form asks you to choose bug report, feature request or integration request instead of leaving a blank box. Emulated devices timestamp their first reading correctly and lay out properly on a phone. The trigger dialog fits on a phone screen. The AI chat icon is easier to see. Empty screens now look consistent across connectors, devices, rules, rule artifacts and MIOTY base stations, and the Devices and Gateways ones link to the shop if you have no hardware yet. The Overview page, the menu spacing and the Download the app card are corrected. Invoices have a back button. The Rules Engine screens received a general tidy-up, and a large amount of old front-end code was removed.
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0"><figcaption></figcaption></figure>
 
