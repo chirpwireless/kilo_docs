@@ -4,7 +4,7 @@ description: Plot a sensor's history as a line or bar Chart widget — current v
 
 # Chart Widget
 
-<figure><img src="../../../.gitbook/assets/chart-widget.jpg" alt="The Chart widget Appearance tab set to bar, with Show metrics below and Display value on bar switched on, beside a live preview showing each bar labelled with its value"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/chart-widget.jpg" alt="The Chart widget configuration dialog, with the data source and the live preview beside it"><figcaption></figcaption></figure>
 
 The Chart widget plots a reading's history as a graph — a line or bars across the last hour, day, week, or month — so you see not just where a value stands now but the trend that brought it there.
 
