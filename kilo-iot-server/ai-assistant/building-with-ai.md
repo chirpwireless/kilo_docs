@@ -36,7 +36,7 @@ Tell the assistant what you are adding, which existing MIOTY connection it shoul
 > *"Add the new CO2 sensor in Lab 2. DevEUI 24E124..., AppKey ..."*
 > The assistant provisions the device, binds it, and checks whether data is arriving — flagging it if the device stays silent.
 
-The result is a registered endpoint whose readings use the field names defined by its blueprint. The assistant does not invent missing identifiers or keys; it asks for any required value you have not supplied.
+The result is a registered endpoint. When you select a blueprint, its readings use the field names defined by that blueprint. The assistant does not invent missing identifiers or keys; it asks for any required value you have not supplied.
 
 <figure><img src="../../.gitbook/assets/ai-chat-session.jpg" alt="An assistant session working through a request, showing each tool it called and the alarm definition it created"><figcaption></figcaption></figure>
 
