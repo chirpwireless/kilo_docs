@@ -4,7 +4,7 @@ description: Plot a sensor's history as a line or bar Chart widget — current v
 
 # Chart Widget
 
-<figure><img src="../../../.gitbook/assets/chart-widget.jpg" alt="The Chart widget configuration dialog, with the data source and the live preview beside it"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/dashboard-widget-picker.jpg" alt="The Kilo widget picker with Chart shown as a separate dashboard widget"><figcaption></figcaption></figure>
 
 The Chart widget plots a reading's history as a graph — a line or bars across the last hour, day, week, or month — so you see not just where a value stands now but the trend that brought it there.
 
@@ -13,6 +13,15 @@ A single Chart widget combines four things in one place: the **current value** a
 Threshold bands also color the **large current reading** at the top — when the live value falls inside a band, that headline number takes the band's color, while the line or bars keep the metric color set in the Datasource tab. So the widget signals status before anyone studies the trace.
 
 A Chart widget tracks one metric. To compare several readings, add a separate Chart widget for each.
+
+## Line and Bar are Chart types
+
+The dashboard picker contains one **Chart** widget. Inside its **Appearance** tab, **Widget type** offers two presentations:
+
+- [Line Chart](chart-widget/line-chart.md) — joins readings into a continuous trend.
+- [Bar Chart](chart-widget/bar-chart.md) — draws a separate bar for each report.
+
+They share the same data source, timeframe, value range, thresholds, average, axes, legend, and **Show metrics below** settings. **Display value on bar** belongs only to Bar and is hidden when Line is selected.
 
 ## Configure a Chart widget
 
@@ -73,5 +82,7 @@ A Chart suits any reading whose history carries meaning — pressure, flow, humi
 ## See also
 
 - [Last Data Widget](last-data-widget.md) — The current value on its own, when you do not need the history
+- [Line Chart](chart-widget/line-chart.md) — Configure and read a continuous trend
+- [Bar Chart](chart-widget/bar-chart.md) — Compare reports and print values on bars
 - [Conditions](conditions.md) — Per-metric color rules for the Last Data and Image widgets
 - [Adding Widgets](../adding-widgets.md) — Edit mode and the widget picker

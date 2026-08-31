@@ -42,14 +42,14 @@ Dot notation is convenient for most field names. Bracket notation is required wh
 
 | Variable | Type | Description |
 |---|---|---|
-| `vars.device_name` | string | The name of the device that satisfied the condition. On a [trigger](triggers.md) spanning a group of devices, this is what tells you which one fired. |
+| `vars.device_name` | string | The name of the device that satisfied the condition. On a [trigger](triggers.md) watching several devices, this identifies the one that fired. |
 | `vars.subject_kind` | string | The type of watched resource. This is currently `device`. |
 | `vars.subject_id` | string | The identifier of the watched device that satisfied the condition. |
 | `vars.sensor_id` | string | The sensor identifier used to associate the run and any alarm with the watched device. |
 | `vars.detector_id` | string | The identifier of the trigger that started the rule. |
 | `vars.timestamp` | int | The trigger signal time as Unix seconds. |
 
-> **`vars.value` does not exist on a trigger-started rule.** A trigger reports that a condition *held over a period*, not a single reading, so there is no value to hand over. An expression referring to `vars.value` will fail on every signal the rule receives — this is the first thing to check when converting an existing rule to start from a trigger.
+> **`vars.value` does not exist on a trigger-started rule.** A trigger reports a condition transition rather than handing the rule one normalized sensor event. This is true for both immediate and duration triggers. An expression referring to `vars.value` will fail on every trigger signal — check this first when converting an existing rule from **Sensor reading**.
 
 ### Available after Script Tasks
 

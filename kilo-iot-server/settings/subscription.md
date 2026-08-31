@@ -29,7 +29,12 @@ Beyond these ceilings, the plan comparison on the Subscription page also shows w
 
 ## Upgrading Your Plan
 
-To move onto a paid plan, choose the tier you want on the plan comparison and click **Upgrade Plan**. This takes you straight to the Stripe checkout, where you enter payment details and activate the plan — there is no separate confirmation step in between. All payment processing is handled by Stripe, and plan changes take effect immediately. Plan limits apply from the moment a plan is active.
+To move onto a paid plan, choose the tier you want on the plan comparison and click **Upgrade Plan**. If the organization does not have a paid subscription yet, **Choose payment method** opens:
+
+- **Pay by card** continues to Stripe checkout. The plan activates after the card payment clears.
+- **Pay by invoice (bank transfer)** creates the subscription after you confirm it. This option requires complete company billing details; the invoice and bank-transfer information are sent to the billing email.
+
+Once a paid subscription exists, its payment method stays with it. A card-paid subscription continues through Stripe when you select another plan. An invoice-paid subscription opens an in-platform confirmation and applies the plan change to the existing subscription. See [Billing and Invoices](billing-and-invoices.md) for billing details, invoice payment terms, and plan changes.
 
 For the **Enterprise** tier, click **Talk to sales** to reach the Kilo IoT team for custom pricing and terms.
 

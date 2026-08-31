@@ -36,7 +36,7 @@ Click the three-dot menu (⋮) next to the rule name and select **Edit descripti
 
 The editor opens with a Start event and an End event already on the canvas. A complete rule needs at least:
 
-1. A **Start Event** — the trigger that binds the rule to a device and sensor
+1. A **Start Event** — the entry point that uses either one sensor's readings or a saved trigger condition
 2. One or more processing nodes (Script Tasks, Gateways, Enrichment, [Set Alarm](node-reference.md#set-alarm))
 3. An **End Event** — at least one termination point
 
@@ -50,7 +50,7 @@ For a detailed walkthrough of the canvas and available tools, see [Visual Editor
 
 Select the Start Event node and click the **pencil** icon that appears beneath it — that opens its properties panel on the right. First choose what starts the rule:
 
-- **Start source** — **Sensor reading** runs the rule on one device's readings. **Trigger condition** runs it from a [trigger](triggers.md) instead, which lets the rule start only after a condition has held for a duration, and lets one rule cover a whole group of devices.
+- **Start source** — **Sensor reading** runs the rule whenever one selected sensor reports. **Trigger condition** runs it when a saved [trigger](triggers.md) becomes active. A trigger can act immediately or after a duration, and it can evaluate one device or several devices independently.
 
 A Start Event uses one source or the other, never both.
 
@@ -59,10 +59,10 @@ A Start Event uses one source or the other, never both.
 - **Device** — Select the device that triggers this rule (searchable dropdown)
 - **Sensor** — Select which sensor on that device to monitor (dropdown, enabled after choosing a device)
 
-**With Start source set to Trigger condition**, the Device and Sensor fields are replaced by a single **Trigger condition** selector — pick the trigger you built on the [Triggers](triggers.md) tab. Note that a rule started this way has no single reading behind it, so `vars.value` is not available to its expressions; `vars.device_name` tells you which device in the group fired.
+**With Start source set to Trigger condition**, the Device and Sensor fields are replaced by a single **Trigger condition** selector. Pick the trigger you built on the [Triggers](triggers.md) tab. This is the path for a condition that must be evaluated before the rule starts, whether that condition is immediate or delayed and whether it watches one device or many. The trigger signal does not contain one sensor-event value, so `vars.value` is unavailable; `vars.device_name` identifies the watched device that met the condition.
 
 Optionally, you can:
-- **Enable Schedule** — Toggle to restrict the rule to a specific window. Click **Change schedule** to pick the days and the From/To times, and set the **Time Zone** they are measured in. This applies whichever start source you chose, so a schedule and a trigger duration compose: the schedule decides *when the rule may run at all*, the trigger decides *how long the condition must hold*.
+- **Enable Schedule** — Toggle to restrict the rule to a specific window. Click **Change schedule** to pick the days and the From/To times, and set the **Time Zone** they are measured in. Schedule is not another start source: it limits when the source you already chose may run the rule. With a duration trigger, the trigger decides when its condition becomes active and the schedule decides whether the rule may run at that time.
 - **Add inputs/outputs** — Advanced CEL expressions for data transformation at the trigger level
 
 See [Node Reference](node-reference.md) for full Start Event configuration details.

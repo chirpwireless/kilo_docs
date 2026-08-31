@@ -14,7 +14,7 @@ For an overview of the canvas itself — palette, toolbar, and general editing w
 
 ## Start Event
 
-The Start Event is the entry point of every rule. It decides what sets the rule off — either one device's sensor readings, or a [trigger](triggers.md) that has been watching a condition hold over time across one or more devices. Every rule must have exactly one Start Event.
+The Start Event is the entry point of every rule. It decides what sets the rule off — either one device's sensor readings or a saved [trigger](triggers.md) that evaluates a condition for one or more devices. Every rule must have exactly one Start Event.
 
 ### Visual appearance
 
@@ -35,7 +35,7 @@ Select the Start Event on the canvas — a pencil and a bin icon appear beneath 
 | Option | What the rule starts from |
 |---|---|
 | **Sensor reading** | One device's readings. The rule fires each time that sensor reports. |
-| **Trigger condition** | A [trigger](triggers.md) — a condition that had to hold for a duration, optionally across a group of devices. The rule fires when the trigger fires. |
+| **Trigger condition** | A saved [trigger](triggers.md). Its condition can act immediately or after a duration and can evaluate one or more devices independently. The rule runs when the trigger signals it. |
 
 **Event filter** — Shown when **Start source** is **Sensor reading**. A section headed "Define which devices can initiate this rule." containing two fields:
 
@@ -88,7 +88,7 @@ The process variables depend on the **Start source**.
 | `vars.detector_id` | The unique identifier of the trigger |
 | `vars.timestamp` | The trigger signal time as Unix seconds |
 
-A trigger-started rule does not receive `vars.value`. See [Triggers](triggers.md#use-trigger-variables-in-the-rule) before converting a sensor-started rule.
+A trigger-started rule does not receive `vars.value`. See [Data available to the rule](triggers.md#data-available-to-the-rule) before converting a sensor-started rule.
 
 The Start Event can also reshape incoming data before the rest of the rule runs:
 
