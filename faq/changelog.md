@@ -448,7 +448,7 @@ This is the headline of 3.6.0, and it changes what the platform *is*. We were am
 
 It answers from your live data, scoped to your permissions — *"which devices haven't reported in 24 hours?"* — and it acts: describe an automation and it designs the rule, writes the [CEL](https://cel.dev), tests it, and deploys it; ask it to onboard a device or stand up an alarm and it runs the flow, pausing for your **Confirm Action** before anything consequential and reading the result back to check its own work.
 
-This is the beginning, not the finish line: the architecture is in place, and the assistant's accuracy and reach grow as its agents are trained on more real-world IoT work. We were confident enough in the runtime to open-source it as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew) — so teams can see how seriously we approach the backend, or bring AI into their own products faster.
+This is the beginning, not the finish line: the architecture is in place, and the assistant's accuracy and reach grow as its agents are trained on more real-world IoT work. The runtime underneath is [Synthetic Brew](https://syntheticbrew.ai), built in-house as a product in its own right rather than a chatbot wrapped around someone else's API.
 
 [→ IoT AI Assistant](../kilo-iot-server/ai-assistant/README.md)
 

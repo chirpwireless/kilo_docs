@@ -40,7 +40,7 @@ The built-in AI assistant is not a generic chatbot pinned to a help page. It is 
 
 **It does the work, not just the talking.** Describe an automation in plain language and it designs the rule, writes the [CEL](https://cel.dev), tests it, and deploys it. Ask it to onboard a device and it runs the flow; ask for an alarm and it builds the escalation chain. Before anything consequential, it pauses for your explicit confirmation, then reads the result back to verify its own work.
 
-This runs on an enterprise-grade agent runtime built in-house and improved continuously — its accuracy grows as the agents are trained on more real-world IoT work, so the assistant keeps taking on more. We were confident enough in the engineering to open-source that runtime as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew), where you can see exactly how it is built or use it to bring AI into your own products.
+This runs on an enterprise-grade agent runtime built in-house and improved continuously — its accuracy grows as the agents are trained on more real-world IoT work, so the assistant keeps taking on more. That runtime is [Synthetic Brew](https://syntheticbrew.ai), built as a product in its own right rather than a chatbot wrapped around someone else's API.
 
 <figure><img src="../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
 
