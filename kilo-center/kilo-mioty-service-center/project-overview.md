@@ -14,6 +14,20 @@ It is a MIOTY-native service center built specifically for the MIOTY stack from 
 
 MIOTY is a LPWAN protocol built for interference resilience, long-range communication, and large endpoint fleets. KiloCenter implements the service-center side of that stack with Docker and Linux-host deployment paths, gRPC and MQTT integrations, and a web management console.
 
+### How it relates to Kilo Cloud
+
+KiloCenter Community Edition is the free, open-source, self-hosted service center. Its boundary is the MIOTY network layer: base stations, endpoints, traffic, service-center operations, and interfaces that pass data to another application.
+
+The Enterprise edition of KiloCenter is built into **Kilo Cloud**. Choose Kilo Cloud when the deployment also needs the rest of an IoT platform: normalized device data, visual dashboards, historical charts, a visual rules engine, sustained-condition triggers, alarms and escalation, audit history, access control, and an AI assistant. MIOTY devices then use those features directly instead of requiring separate downstream systems.
+
+| Choose | When it fits |
+|---|---|
+| **KiloCenter Community Edition** | You need a MIOTY service center, want to operate it yourself, and will integrate its gRPC or MQTT data into your own applications. |
+| **Kilo Cloud** | You want the Enterprise service center managed for you and need rules, visualization, alarms, or other Kilo platform capabilities around MIOTY data. |
+| **Kilo IoT Platform on-premise** | You need the complete enterprise platform within infrastructure you control. |
+
+See [KiloCenter or Kilo Cloud?](README.md#kilocenter-or-kilo-cloud) for the feature boundary, or start with the [Kilo Cloud MIOTY connector](../../kilo-iot-server/connectors/mioty-connector/README.md).
+
 ### Live Demo
 
 
@@ -31,7 +45,7 @@ A demo environment is available at [https://servicecenter.kiloiot.io/](https://s
 
 The community edition is provided as-is without commercial support. Production use is at your own risk.
 
-For supported production deployments, use Kilo Cloud or the on-premise Kilo IoT Platform (Contact Sales). The enterprise edition includes commercial support, SLA-backed operation, multi-tenancy, and optional MIOTY capabilities including BSSCI sub-channels, the Variable MAC (VM) attachment, and ReCon extension support.
+For supported production deployments, use Kilo Cloud or the on-premise Kilo IoT Platform (Contact Sales). The Enterprise edition of KiloCenter is built into Kilo Cloud and includes commercial support, SLA-backed operation, multi-tenancy, and optional MIOTY capabilities including BSSCI sub-channels, the Variable MAC (VM) attachment, and ReCon extension support. Kilo Cloud also adds the complete platform around MIOTY data: device management, normalization, dashboards, rules, alarms, audit history, access control, and AI-assisted operations.
 
 ### Features
 
@@ -320,7 +334,7 @@ The community edition focuses on the core service-center stack. Optional MIOTY c
 
 
 
-This repository is not the recommended production rollout vehicle. Use Kilo Cloud or the on-premise Kilo IoT Platform for production deployments that require commercial support, operational guarantees, SLA coverage, multi-tenancy, and optional MIOTY capabilities such as BSSCI sub-channels, Variable MAC (VM), and ReCon extensions.
+This repository is not the recommended production rollout vehicle. Use Kilo Cloud or the on-premise Kilo IoT Platform for production deployments that require commercial support, operational guarantees, SLA coverage, multi-tenancy, and optional MIOTY capabilities such as BSSCI sub-channels, Variable MAC (VM), and ReCon extensions. Choose Kilo Cloud when the deployment also needs visual rules, dashboards, historical data, alarms and escalation, audit history, or other platform workflows without building those systems around the Community Edition yourself.
 
 #### System Requirements
 

@@ -10,13 +10,13 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0 release banner"><figcaption></figcaption></figure>
 
-Kilo rules automate how your deployment responds to device data, and a **trigger** defines the condition that starts a rule. Before 3.9.0, applying the same response to 50 devices meant creating and maintaining 50 rules. Now you can group those devices in one trigger and connect them to one rule. Each watched device is evaluated independently, while another selected device can provide a shared reading used by the whole group. A trigger can also wait until the condition has remained true for a set time — from 10 seconds to 30 days — before the rule runs. This release also brings all metrics into one searchable page, adds invoice payments and values on bar charts, expands what the AI assistant can do, and helps connected AI apps distinguish between actions that read data and actions that change it. [kiloiot.io](https://kiloiot.io)
+Kilo rules automate how a deployment responds to device data. A **trigger** is a saved condition that starts a rule, and it now has two independent controls: it can evaluate one device or several selected devices, and it can act immediately or wait for the condition to remain true. Before 3.9.0, applying one response to 50 devices required 50 rules; now one trigger and rule can cover them while keeping every device's condition and countdown separate. This release also brings all metrics into one searchable page, adds invoice payments and exact values on bar charts, expands the AI assistant, and helps connected AI apps distinguish actions that read data from actions that change it. [kiloiot.io](https://kiloiot.io)
 
 ***
 
 #### What's in This Release
 
-* **One rule for a group of up to 500 devices** — Previously, applying the same rule to 50 devices required 50 separate rules. Now one trigger can include the group, evaluate each watched device separately, and start the shared rule for whichever one meets the condition.
+* **One rule for up to 500 devices** — Previously, applying the same rule to 50 devices required 50 separate rules. Now one trigger can select those devices, evaluate each one separately, and start the shared rule for whichever device meets the condition.
 * **Wait before a rule runs** — A trigger can require a condition to remain true for 10 seconds to 30 days before starting the rule. For example, a freezer-door rule can ignore a door opened briefly for loading but act when the door remains open for 10 minutes.
 * **All metrics on one page** — A metric is a type of reading, such as temperature or battery level. Metrics that were spread across three tabs are now available in one searchable list at **Devices → Metrics**, where you can also add and edit them.
 * **Pay by invoice instead of by card** — Enter your company details and, when required, your VAT number; then choose bank transfer and receive the invoice information by email. The new **Invoices** page shows which invoices are open or paid and provides the PDF download.
@@ -34,9 +34,9 @@ A rule is a flowchart that tells Kilo how to respond to device data. It can eval
 
 Before 3.9.0, a rule could be triggered by only one device. If the same condition and response applied to 50 devices, you needed 50 separate rules. Updating the condition later meant editing every copy.
 
-Now one trigger can include up to **500 devices**, and one rule applies to the group. Adding another device means updating the trigger instead of creating another rule.
+Now one trigger can select up to **500 devices**, and one rule applies to all of them. Adding another device means updating that trigger instead of creating another rule. The selection belongs to the trigger; it is not a reusable device group elsewhere in Kilo.
 
-Most grouped triggers are simple: every selected device supplies the same reading and is watched independently. Every watched device has its own trigger state and countdown, so one door remaining open does not affect any other door.
+Most multi-device triggers are simple: every selected device supplies the same reading and is watched independently. Every watched device has its own trigger state and countdown, so one door remaining open does not affect any other door.
 
 A selected device can also supply a shared reading instead of being watched. For example, 50 doors can each supply their own `door_open` reading while one building controller supplies `heating_on` for every door check. Before you save, **How this trigger will run** shows one row for each watched device and identifies any shared reading in the **Uses** column.
 
@@ -44,7 +44,7 @@ An alarm can also identify the device that triggered the rule. Add `vars.device_
 
 <figure><img src="../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per watched device"><figcaption></figcaption></figure>
 
-[→ Triggers](../kilo-iot-server/rules-engine/triggers.md)
+[→ One Trigger for Multiple Devices](../kilo-iot-server/rules-engine/triggers/multiple-devices.md)
 
 ***
 
@@ -57,6 +57,7 @@ A trigger can now require the condition to remain true before the rule starts. C
 For example:
 
 * Ignore a freezer door opened briefly for loading, but run the rule if it remains open for 20 minutes.
+* In an apartment-complex garage, ignore a resident's short visit but raise a security alarm if motion continues for 10 minutes during the overnight rule schedule.
 * Ignore a normal one-minute pump cycle, but act if the pump continues running for two hours.
 * Ignore a short temperature increase, but raise an alarm if a room remains above 25 °C all afternoon.
 
@@ -67,7 +68,7 @@ Two additional behaviors control how the timer works:
 
 <figure><img src="../.gitbook/assets/trigger-time-window.jpg" alt="The Create trigger dialog with a temperature condition and Only if it lasts set to 10 minutes"><figcaption></figcaption></figure>
 
-[→ Triggers](../kilo-iot-server/rules-engine/triggers.md)
+[→ Trigger Timing](../kilo-iot-server/rules-engine/triggers/trigger-timing.md)
 
 ***
 
@@ -121,7 +122,9 @@ Turn on **Display value on bar** to print the value directly on each bar. This o
 
 Turn on **Show metrics below** to add a row beneath the chart with each metric and its current reading. This can make compact dashboard widgets easier to read.
 
-[→ Chart Widget](../kilo-iot-server/dashboards/adding-widgets/chart-widget.md)
+<figure><img src="../.gitbook/assets/chart-widget.jpg" alt="A Kilo Bar chart with exact values printed on the bars and the current metric shown below"><figcaption></figcaption></figure>
+
+[→ Bar Chart](../kilo-iot-server/dashboards/adding-widgets/chart-widget/bar-chart.md)
 
 ***
 

@@ -48,7 +48,7 @@ This runs on an enterprise-grade agent runtime built in-house and improved conti
 
 Every device you register becomes a full digital representation — a Digital Twin — that mirrors its state, configuration, telemetry history, and behavior in real time. The digital twin persists even when the physical device goes offline, so you always have a complete picture of your deployment.
 
-You are not limited to a pre-approved device catalog or a single protocol. Connect LoRaWAN sensors, vehicle trackers, and any MQTT-capable device — PLCs, energy meters, building systems, and custom-firmware hardware all connect through the MQTT connector. Different manufacturers report data differently — one vendor sends `temp_c`, another uses `temperature`, a third just sends a raw number. Kilo normalizes all of it through sensor templates, normalized key names, and unit measurements. You define how each device's raw data maps to standardized parameters, and the server handles the rest. Once mapped, every device — regardless of manufacturer or connectivity method — reports data in a consistent, unified format.
+You are not limited to a pre-approved device catalog or a single protocol. Connect LoRaWAN sensors, MIOTY endpoints, vehicle trackers, and any MQTT-capable device — PLCs, energy meters, building systems, and custom-firmware hardware all connect through the appropriate connector. Different manufacturers report data differently — one vendor sends `temp_c`, another uses `temperature`, a third just sends a raw number. Kilo normalizes all of it through sensor templates, normalized key names, and unit measurements. You define how each device's raw data maps to standardized parameters, and the server handles the rest. Once mapped, every device — regardless of manufacturer or connectivity method — reports data in a consistent, unified format.
 
 For many popular devices, premade templates with pre-configured mappings are already available — simplifying onboarding to just entering device credentials. For any other device, you map its raw output to meaningful parameters yourself. There is no dependency on a pre-approved device catalog.
 
@@ -60,13 +60,19 @@ The server includes a fully integrated LoRaWAN Network Server (LNS). There is no
 
 <figure><img src="../.gitbook/assets/lorawan-gateways-table.jpg" alt="The Gateways list showing a registered LoRaWAN gateway with its status and EUI"><figcaption></figcaption></figure>
 
+### Built-in MIOTY Service Center
+
+Kilo Cloud includes the Enterprise edition of KiloCenter, Kilo's MIOTY service center. You do not deploy or integrate a separate network server: add the [MIOTY connector](connectors/mioty-connector/README.md), connect the base stations, and register the endpoints. Their readings enter the same normalized device model, dashboards, rules, alarms, audit history, and AI workflows as data from other Kilo connectors.
+
+If your requirement ends at the MIOTY network layer and you want to operate it yourself, [KiloCenter Community Edition](../kilo-center/kilo-mioty-service-center/README.md) is free, open source, and self-hosted. Use Kilo Cloud when you also need the complete IoT operations platform around the MIOTY data or want the Enterprise service center managed for you.
+
 ### Visual rules engine with production-grade safety
 
 Automation rules are built on a visual canvas using a drag-and-drop editor. Conditions are written in [CEL (Common Expression Language)](https://cel.dev) — a fast, safe expression language that goes far beyond simple threshold comparisons. A rule can be as simple as `device.temperature > 30` or as complex as your operation requires — combining multiple sensor readings, spanning devices across different locations, evaluating decision tables with multi-criteria hit policies, and branching through conditional switch logic. There is no artificial ceiling on complexity.
 
 Every rule change is automatically versioned. You can review the full history of any rule, compare versions, roll back to a previous state with one click, and clone rules as templates. Rules are built into deployable artifacts and deployed to production explicitly — giving you full control over what's running and when. This means automation you can trust in production — not automation you have to babysit.
 
-Rules also support decision tables for structured multi-criteria evaluation, time-based schedules with day-of-week and timezone selection, and a "remain true for" parameter that requires a condition to persist for a specified duration before triggering — eliminating false alarms from transient sensor spikes.
+Rules also support decision tables for structured multi-criteria evaluation and schedules with day-of-week and timezone selection. When a condition must persist before the rule starts, create a [trigger](rules-engine/triggers.md) and choose **Only if it lasts**. The trigger owns that duration and can watch one or several devices independently; the rule's Start Event chooses the trigger and optionally restricts execution to scheduled hours.
 
 <figure><img src="../.gitbook/assets/rules.jpg" alt="Building a branching automation in the visual Rules Engine — a Gateway routing to a Script task and End events"><figcaption></figcaption></figure>
 
