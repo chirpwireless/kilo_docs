@@ -50,8 +50,8 @@ The assistant is **agentic**: it answers by calling tools against the platform a
 Where that data goes depends on the model provider you choose:
 
 - **The included allowance** — requests are served through Kilo's configured model provider.
-- **Your own model key** (OpenAI, Anthropic, or any OpenAI-compatible provider) — data goes to that provider under your own agreement with them.
-- **A self-hosted model** (for example Ollama) — the data never leaves your own infrastructure.
+- **Your own model key** (OpenAI, Anthropic, OpenRouter, or any OpenAI-compatible provider) — data goes to that provider under your own agreement with them.
+- **A model you host yourself** — set **Base URL** to your own endpoint and the data goes only there. Choosing the **Ollama** provider fills in Ollama Cloud, which is a hosted service like any other; self-hosting means replacing that address with your own, and the address has to be reachable from the platform.
 
 Two limits hold in every case: the assistant reads **only what your permissions already allow**, and it stays inside your current organization. Raw telemetry is not duplicated or retained by the assistant beyond the scope of your query.
 

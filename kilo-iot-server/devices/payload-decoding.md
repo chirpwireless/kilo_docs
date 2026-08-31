@@ -39,7 +39,7 @@ For the full device setup walkthrough, see [Registering Devices](registering-dev
 
 Mapping is what connects a connector key to a metric template, giving the raw field a readable name, a unit, and a type. Once mapped, that measurement appears under its metric name everywhere in the platform.
 
-Do this from the same Metrics or Mapping tab — see [Registering Devices](registering-devices.md#mapping-raw-fields-to-metric-templates) for the step-by-step, and [Metric Templates](metric-templates.md) to create a template that doesn't exist yet.
+Do this from the same Metrics or Mapping tab — see [Registering Devices](registering-devices.md#mapping-raw-fields-to-metric-templates) for the step-by-step, and [Metrics](metric-templates.md) to create a template that doesn't exist yet.
 
 A connector key that is never mapped keeps arriving but has nowhere to go: it will not appear in rules, dashboards or command verification.
 
@@ -72,6 +72,6 @@ For LoRaWAN and MQTT devices, the connector keys table is where you check the re
 ## Related
 
 * [Registering Devices](registering-devices.md) — Device setup, codecs, and the mapping workflow
-* [Metric Templates](metric-templates.md) — Normalized names, units, and value types
+* [Metrics](metric-templates.md) — Normalized names, units, and value types
 * [Device Diagnostics](device-diagnostics.md) — What the device last sent and whether it decoded
 * [Confirming Commands](commands/verification.md) — Using a metric and its value to verify a command

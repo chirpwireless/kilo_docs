@@ -49,6 +49,8 @@ This is the path for hardware the catalog already covers.
 
 The decoder specification is displayed read-only for review, and the **Type EUI** auto-fills on the device form and is not editable — it comes from the blueprint. Save the device, and the blueprint is snapshotted onto it.
 
+Once that has happened the device is labelled **Pinned snapshot**, so you can see at a glance that what you are reading belongs to this device rather than to the shared catalog entry. If the catalog blueprint it was copied from has since been deleted, the label reads **Pinned snapshot (source template deleted)** — the device is unaffected and keeps decoding on its own copy, but the label tells you there is no longer a catalog entry behind it to compare against.
+
 The **first blueprint created for a model becomes the default for new devices of that model** — so once a model is set up correctly, commissioning the rest of the fleet is a matter of selecting the model.
 
 ## Authoring a new blueprint
@@ -105,9 +107,9 @@ Deleting a **System** entry requires an administrator.
 - **Author once, commission many.** For a fleet rollout, get the blueprint right on one unit with Decode preview, then let the model default carry the rest.
 - **Version on firmware, not on dates.** When a vendor ships a firmware revision that changes the payload, that is a new blueprint version. Name it so the connection is obvious.
 - **Prefer System where it fits.** If the System catalog covers your hardware, use it — you get the decoder without owning its maintenance, and your device still gets its own snapshot.
-- **Map metrics after decoding.** A blueprint produces named fields; metric templates normalize those fields into a vocabulary shared across manufacturers. See [Metric Templates](metric-templates.md).
+- **Map metrics after decoding.** A blueprint produces named fields; metric templates normalize those fields into a vocabulary shared across manufacturers. See [Metrics](metric-templates.md).
 
 ## What's next
 
 - **Commission the endpoint** — the MIOTY device form section by section. See [MIOTY Devices](mioty-devices.md).
-- **Normalize the decoded fields** — map them to your deployment's measurement vocabulary. See [Metric Templates](metric-templates.md).
+- **Normalize the decoded fields** — map them to your deployment's measurement vocabulary. See [Metrics](metric-templates.md).

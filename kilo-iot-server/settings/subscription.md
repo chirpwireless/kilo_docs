@@ -41,11 +41,13 @@ Each plan caps how much of the platform you can use — devices, custom dashboar
 
 ## Managing an Existing Subscription
 
-Current subscribers see a **Manage my subscription** button. This opens the Stripe customer portal, where you can:
+Current subscribers paying **by card** see a **Manage my subscription** button. This opens the Stripe customer portal, where you can:
 
 - Update your payment method
 - View invoices and payment history
 - Cancel or modify your subscription
+
+Organizations billed **by invoice** manage things differently: their invoices live on an **Invoices** page inside Kilo rather than in the Stripe portal, and plan changes are applied in place instead of going through checkout. See [Billing and Invoices](billing-and-invoices.md).
 
 ## SMS Credits
 

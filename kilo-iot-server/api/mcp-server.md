@@ -63,7 +63,7 @@ Either way the authorization is the same: the client opens your browser, you sig
 
 <figure><img src="../../.gitbook/assets/mcp-claude-session.jpg" alt="A Claude Code session connected to Kilo over MCP, calling the connection_list tool and asking permission before continuing"><figcaption>An authenticated Claude Code session working a live deployment: asked to configure a LoRaWAN sensor, it recommends provisioning through the platform, calls a Kilo tool, and stops for permission before continuing</figcaption></figure>
 
-Two things in that exchange are worth pointing out. The client reasons about **your** deployment rather than IoT in general, because it can read the connections and devices that are actually there. And the approval prompt is the client's — Kilo annotates destructive tools and says so in the tool description, and a compatible client turns that into the prompt you see. See [Security and permissions](#security-and-permissions) below for what Kilo enforces regardless of which client you use.
+The client can answer from your actual deployment because it can read the connections and devices available to your account. The approval prompt belongs to the client: Kilo publishes safety information with each tool, and compatible clients can use it to request confirmation. Kilo enforces your account permissions regardless of how the client handles that information. See [Security and permissions](#security-and-permissions).
 
 ## Choosing the organization
 
@@ -87,14 +87,30 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 
 | Area | What the connected client can do |
 |---|---|
-| **Devices** | List devices in the organization, provision LoRaWAN devices and trackers, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
+| **Devices** | List devices in the organization, provision LoRaWAN, MQTT and tracker devices, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_mqtt`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
+| **MIOTY** | Browse a MIOTY connection's device catalog — manufacturers, device models and their blueprints, across both the System and Custom scopes — and commission an endpoint from it. `mioty_catalog_list`, `device_provision_mioty` |
+| **Hardware** | Search the partner catalog and the open web for equipment that fits a described need, then present a shortlist of those products. These are the two tools that reach outside your organization. `hardware_search`, `recommend_products` |
 | **Commands** | List the commands configured on a device, execute one behind a confirmation, and check whether it was delivered. `device_command_list`, `device_command_execute`, `device_command_status` |
 | **Emulator** | Browse device presets, provision an [emulated device](../devices/emulated-devices.md), read and update its configuration and interval, send a one-off reading, and move a device between the emulator and real hardware — any real device onto the Emulator, and an emulated device onto a real LoRaWAN connection. `emulator_preset_list`, `emulator_preset_get`, `device_provision_emulator`, `emulator_config_get`, `emulator_config_update`, `emulator_send_once`, `device_connection_swap` |
 | **Connectors** | Review the connectors defined in the organization and create a connection for a device to report through. `connector_list`, `connection_create` |
 | **Rules** | Review rules, prepare and deploy automation behind confirmation, simulate logic before it reaches production, and inspect execution history. `rule_list`, `rule_provision`, `rule_simulate`, `rule_execution_history` |
-| **Alarms** | List alarms, summarize alarm activity for a shift or a site, and send a test notification to verify a channel. `alarm_list`, `alarm_stats`, `notification_test` |
+| **Alarms** | List alarms and summarize alarm activity for a shift or a site. `alarm_list`, `alarm_stats` |
 | **Dashboards** | List dashboards and query the data behind a widget, so the client can reason about the same numbers your operators watch. `dashboard_list`, `widget_data_query` |
 | **Organization** | Read organization details, list teams, invite users, and assign roles. `org_get`, `team_list`, `user_invite`, `user_role_assign` |
+
+## How clients distinguish read and write actions
+
+Kilo publishes a title, description, and safety annotations with each MCP tool. Compatible clients can read these annotations before choosing whether to run the tool immediately or ask you to confirm.
+
+| Annotation | Examples | What it tells the client |
+|---|---|---|
+| **Read-only** | List devices, read alarm history, query widget data | The tool does not change your deployment. |
+| **Changes or removes data** | Delete a device, update a dashboard, swap a connection, send a device command | The tool can affect your deployment or equipment, so the client can ask for confirmation. |
+| **Reaches outside your organization** | Search the partner catalog or the open web for hardware | The tool accesses information beyond your organization's data. |
+
+Creating a device or dashboard changes your organization, but it does not overwrite or stop an existing resource and can be reversed by deleting the new resource. Kilo therefore does not describe creation as destructive.
+
+Safety annotations are information for the client, not an authorization control. Clients decide how to present confirmations. Your Kilo permissions remain the enforced boundary, so a client cannot perform an action that your account is not allowed to perform.
 
 ## Security and permissions
 

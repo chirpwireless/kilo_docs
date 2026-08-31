@@ -33,7 +33,7 @@ The Datasource tab is titled **"Last Data configuration"** with the subtitle **"
 
 There is no color picker directly in the metric row. The metric's base color and all threshold colors are set inside the Conditions modal.
 
-> **Metric types.** The **Device metric** list offers every metric type. The **Value** display shows whatever the metric reports — a number, text, or a Boolean (`true`/`false`) — directly, with no conversion. The gauge-style displays (Doughnut, Pie, Tube, Gauge, Radial gauge) need a number to fill or mark a scale: a numeric text value is parsed, and a non-numeric one reads as 0. To change a metric's type, open [Metric Templates](../../devices/metric-templates.md) and set its **Type** on the **Metrics** tab.
+> **Metric types.** The **Device metric** list offers every metric type. The **Value** display shows whatever the metric reports — a number, text, or a Boolean (`true`/`false`) — directly, with no conversion. The gauge-style displays (Doughnut, Pie, Tube, Gauge, Radial gauge) need a number to fill or mark a scale: a numeric text value is parsed, and a non-numeric one reads as 0. To change how a metric is stored, open [Metrics](../../devices/metric-templates.md).
 
 **Adding more sensors:**
 

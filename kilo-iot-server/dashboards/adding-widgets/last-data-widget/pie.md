@@ -28,7 +28,7 @@ Here is a full setup for one real case — a bold capacity tile for a process-wa
 4. Click **Add metric**. A metric row appears.
 5. In the row, set **Data type** to **Telemetry**, choose the volume reading under **Device metric**, and pick an **Icon**.
 
-   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change a metric's type, use the **Metrics Templates** button on a connection's Connected Devices list — see [Metric Templates](../../../devices/metric-templates.md).
+   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change how a metric is stored, open **Devices → Metrics** — see [Metrics](../../../devices/metric-templates.md).
 6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), because the reservoir holds 8,000 liters, enter **From** 0 (an empty reservoir) and **To** 8000 (a full one), and pick a **Color**. Then you can enter the color levels. For example:
 
    Working up from empty:

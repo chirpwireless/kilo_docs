@@ -1,93 +1,123 @@
 ---
-description: Define metric templates in Kilo IoT — Units, Metric keys, and Templates that normalize raw sensor data into one model.
+description: Find, create, and manage the shared metrics that give device readings consistent names, units, and data types across Kilo.
 ---
 
-# Metric Templates
+# Metrics
 
-Metric templates define the measurement vocabulary for your entire Kilo IoT Server deployment. They ensure that raw data from devices of different manufacturers, protocols, and firmware versions is normalized into a consistent format — so that dashboards, automation rules, and queries all work the same way regardless of which device produced the data.
+A metric tells Kilo what a device reading means and how to store it. It combines a **normalized key**, such as `temperature`, with a unit, value type, and data type.
 
-Without metric templates, every device would report data in its own proprietary format. One temperature sensor might send `temp_c`, another `temperature`, and a third `t_celsius`. Metric templates solve this by mapping all of these to a single normalized key like `temperature`, with a defined unit (e.g., °C) and value type (e.g., Float). The result is a deployment where data from any device is immediately usable everywhere.
+The two type fields answer different questions: **Data type** says whether the information is telemetry, device metadata, or a custom attribute; **Type** says whether its value is stored as a Float, Integer, String, or Boolean.
 
-## How to reach the Metric Templates area
+This shared definition lets devices from different manufacturers use the same dashboards and rules. One device may send `temp_c` and another may send `t_celsius`; mapping both raw keys to the `temperature` metric gives Kilo one consistent reading to work with.
 
-There are two ways to access metric templates:
+## Open the metric catalog
 
-- **Direct URL** — Navigate to `/metrics` in your browser. The server redirects to the **Units** tab at `/metrics/units`.
-- **From the Devices page** — Click the **Metrics Templates** button in the top-right corner, beside **Add device**.
+Go to **Devices → Metrics**.
 
-## The three tabs
+The list contains every metric available to your organization. Each row shows its normalized key, unit of measurement, value type, and data type.
 
-The Metric Templates area has three tabs, each managing a layer of the normalization system:
+<figure><img src="../../.gitbook/assets/device-metrics.jpg" alt="The Devices Metrics catalog with search, unit, type and data type filters and a sort control"><figcaption></figcaption></figure>
 
-### Units
+Use the controls above the list to find a metric:
 
-Units define the measurement units available in your deployment. Each unit has a name and a symbol.
+- **Search** matches the normalized key.
+- **All units** filters by unit and includes metrics without a unit. Select the units and click **Apply**.
+- **All types** filters by String, Integer, Float, or Boolean and applies immediately.
+- **All data type** filters by Telemetry, Device metadata, or Custom attributes and applies immediately.
+- **Sort by** orders metrics by **Newest** or **Oldest**.
 
-**Table columns:** Name, Symbol, Actions (edit, delete).
+The unit, type, and data-type filters accept several values at once.
 
-**To add a unit:**
+Metrics created by your organization provide **Edit** and **Delete** actions. Metrics supplied by Kilo do not, because their definitions are shared across deployments.
 
-1. Click **Add Unit**.
-2. In the dialog, enter the **Name** (e.g., "Celsius") and **Symbol** (e.g., "°C").
-3. Click **Save**.
+## Create a metric
 
-System-provided units cannot be edited or deleted — they are marked as read-only.
+1. Go to **Devices → Metrics**.
+2. Click **Add metric**.
+3. Complete the four fields in the **Add Metric** dialog.
+4. Click **Add**.
 
-**Examples:** Celsius (°C), Fahrenheit (°F), Percent (%), Hectopascal (hPa), Lux (lx), Millivolt (mV).
+<figure><img src="../../.gitbook/assets/device-metrics-add.jpg" alt="The Add Metric dialog with Data type, Type, Normalized key and Unit of measurement"><figcaption></figcaption></figure>
 
-### Normalized Keys
+### Data type
 
-Normalized keys are the standard names used to identify what a measurement represents, independent of what any specific device calls it. They are the mapping targets for raw device data.
+Choose what kind of information the metric represents:
 
-**Table columns:** Normalized Key, Type, Actions (edit, delete).
+| Data type | Use it for | Examples |
+|---|---|---|
+| **Telemetry** | Readings that change over time | Temperature, humidity, battery level, pressure |
+| **Device metadata** | Information the device reports about itself | Firmware version, hardware revision |
+| **Custom attributes** | Information your organization adds | Installation date, asset tag, maintenance interval |
 
-All normalized keys are currently of type **String**.
+Only Telemetry metrics appear when mapping incoming device readings. Device metadata and Custom attributes are not offered as telemetry mappings.
 
-**To add a normalized key:**
+### Type
 
-1. Click **Add Normalized Key**.
-2. In the dialog, enter the **Normalized Key** name (e.g., "temperature", "humidity", "battery_level").
-3. Click **Save**.
+Choose how Kilo stores the value:
 
-System-provided normalized keys cannot be edited or deleted.
+| Type | Use it for | Examples |
+|---|---|---|
+| **Float** | Numbers with decimals | `22.5`, `67.3`, `3.28` |
+| **Integer** | Whole numbers | `85`, `-120`, `42` |
+| **String** | Text | `"open"`, `"standby"` |
+| **Boolean** | True or false | Motion detected, alarm active |
 
-**Naming convention:** Use lowercase with underscores. Choose names that describe the measurement, not the device — `soil_moisture` rather than `sensor_3_value`.
+Chart widgets and the gauge-style Last Data displays require an Integer or Float metric. The Last Data **Value** display can also show text and Boolean values.
 
-### Metrics
+### Normalized key
 
-Metrics are sensor templates that combine a normalized key, a unit, a value type, and a sensor type into a reusable measurement definition. When you register a device, you assign metric templates to map the device's raw output keys to these definitions.
+The normalized key is the standard name for the measurement, independent of the raw name sent by a device.
 
-**Table columns:** Normalized key, Unit of measurement, Type, Data type, Actions (edit, delete).
+Open **Normalized key** and either select an existing key or choose **Create a new normalized key**. Use a descriptive name such as `soil_moisture`, not a device-specific name such as `sensor_3_value`. Lowercase names with underscores keep the catalog consistent.
 
-Each metric template specifies:
+Each normalized key can belong to only one metric. If the selected key is already in use, the form reports **A metric with this normalized key already exists**.
 
-| Field | Options | Description |
-|-------|---------|-------------|
-| **Normalized key** | Select from existing or create new | The standard measurement name this metric maps to (e.g., `temperature`, `humidity`, `battery_level`) |
-| **Unit of measurement** | Select from Units | The unit symbol displayed alongside values (e.g., °C, %, lx, mV) |
-| **Type** (value type) | Integer, Float, String, Boolean | How the measurement value is stored and displayed. **Integer** — whole numbers with no decimal point (e.g., battery percentage: 85, signal strength: -120, packet count: 42). **Float** — numbers with decimal precision (e.g., temperature: 22.5, humidity: 67.3, voltage: 3.28). This is the most common type for sensor readings. **String** — text values (e.g., door status: "open", firmware version: "1.2.3", device mode: "standby"). **Boolean** — true or false (e.g., motion detected: true, alarm active: false). |
-| **Data type** (sensor type) | Telemetry, Device Metadata, User Metadata | How the measurement is classified. **Telemetry** — regular sensor readings that change over time. This is the most common type (temperature, humidity, battery level, pressure). **Device Metadata** — information the device reports about itself that changes infrequently (firmware version, hardware revision, signal strength). **User Metadata** — properties you assign manually, not reported by the device (installation date, location notes, asset tag, maintenance schedule). |
+Normalized keys are created, renamed, and deleted from this field. Keys supplied by Kilo cannot be renamed or removed.
 
-**To add a metric template:**
+### Unit of measurement
 
-1. A new row appears at the top of the table when you start editing.
-2. Select or create a **Normalized key**.
-3. Select a **Unit of measurement** from the dropdown.
-4. Select the **Type** (value type): **Integer** for whole numbers (e.g., 85), **Float** for decimal values (e.g., 22.5), **String** for text (e.g., "open"), **Boolean** for true/false. Float is the most common choice for sensor readings.
-5. Select the **Data type** (sensor type): **Telemetry** for regular sensor readings that change over time, **Device Metadata** for information the device reports about itself (firmware version, signal strength), **User Metadata** for properties you assign manually (installation date, asset tag). Telemetry is the most common choice.
-6. Click the save button on the row.
+Select the unit displayed beside the value, such as °C, %, lx, or mV. Choose an existing unit or select **Create a new unit** and enter the symbol exactly as it should appear.
 
-**Filtering:** Use the Type and Data type dropdown filters above the table to narrow the list to specific value types or sensor types.
+A unit is required for Telemetry. It is optional for Device metadata and Custom attributes, where values such as a firmware version or asset tag may not have a unit.
 
-<figure><img src="../../.gitbook/assets/metric-templates-metrics.jpg" alt="The Metrics tab of Metric Templates listing normalized keys with their unit, type and data type"><figcaption></figcaption></figure>
+Units are created, renamed, and deleted from this field. Units supplied by Kilo cannot be renamed or removed.
 
-## How metric templates connect to devices
+## Edit a metric
 
-When you register a device through the Manage Device dialog, the **Metrics** tab is where you assign metric templates. The device's raw output keys (whatever the manufacturer's firmware sends) are mapped to your normalized metric definitions.
+Metrics are shared across your organization, not configured separately for each device. Editing a metric changes the definition for every device mapped to it.
 
-This means:
-- A temperature sensor from Manufacturer A and one from Manufacturer B can both map to the same `temperature` metric template.
-- Dashboards and automation rules that reference `temperature` work with data from either device.
-- Adding a new device type requires only mapping its raw keys to existing templates — no changes to dashboards or rules.
+1. Find the metric under **Devices → Metrics**.
+2. Click **Edit**.
+3. Update the required fields.
+4. Click **Save**.
+5. Review the confirmation describing the organization-wide effect and confirm the change.
 
-For the device-level metric mapping workflow, see [Registering Devices](registering-devices.md) and [Device Management](device-management.md).
+If only one device needs a different definition, create a new metric and remap that device instead of editing the shared metric.
+
+## Delete a metric
+
+Click **Delete** on a metric created by your organization and confirm the action.
+
+Kilo refuses to delete a metric that is still mapped to a device. Remove the mapping from every device that uses it, then try again.
+
+## Map a device reading to the metric
+
+Creating a metric does not connect it to a device automatically. Open the device's **Metrics** tab and map the raw key sent by the device to the normalized metric.
+
+After several device types map their raw temperature keys to `temperature`, the same dashboard widget, rule, or query can use all of them without manufacturer-specific logic.
+
+## Troubleshooting
+
+| Problem | What to check |
+|---|---|
+| A metric is missing from a chart or gauge-style Last Data display | Confirm its **Type** is Integer or Float and the device sends a numeric value. |
+| A metric is missing from a device mapping | Confirm its **Data type** is Telemetry. |
+| A normalized key cannot be selected | Another metric may already use it. Search the catalog for that key. |
+| Edit and Delete are unavailable | The metric, key, or unit was supplied by Kilo and cannot be changed. |
+| Delete is refused | Remove the metric from every device mapping before deleting it. |
+
+## See also
+
+- [Registering Devices](registering-devices.md) — map raw device data during registration
+- [Device Management](device-management.md) — change mappings on an existing device
+- [Chart Widget](../dashboards/adding-widgets/chart-widget.md) — display numeric metrics over time

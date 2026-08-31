@@ -14,7 +14,7 @@ For an overview of the canvas itself — palette, toolbar, and general editing w
 
 ## Start Event
 
-The Start Event is the entry point of every rule. It binds the rule to a specific device and sensor, and fires each time that sensor sends a new reading. Every rule must have exactly one Start Event.
+The Start Event is the entry point of every rule. It decides what sets the rule off — either one device's sensor readings, or a [trigger](triggers.md) that has been watching a condition hold over time across one or more devices. Every rule must have exactly one Start Event.
 
 ### Visual appearance
 
@@ -26,23 +26,34 @@ Every rule begins here. You cannot build a valid rule without a Start Event.
 
 ### Properties panel
 
-Click the Start Event on the canvas to open its properties panel on the right.
+Select the Start Event on the canvas — a pencil and a bin icon appear beneath it. Click the **pencil** to open its properties panel on the right.
 
 **Name** — A text field for the node label. Placeholder: *e.g., Fire Alarm*.
 
-**Event filter** — A section headed "Define which devices can initiate this rule." containing two fields:
+**Start source** — A select with two options that decides what the rest of the panel asks for. A Start Event names one source or the other; markup naming both, or neither, is rejected.
+
+| Option | What the rule starts from |
+|---|---|
+| **Sensor reading** | One device's readings. The rule fires each time that sensor reports. |
+| **Trigger condition** | A [trigger](triggers.md) — a condition that had to hold for a duration, optionally across a group of devices. The rule fires when the trigger fires. |
+
+**Event filter** — Shown when **Start source** is **Sensor reading**. A section headed "Define which devices can initiate this rule." containing two fields:
 
 | Field | Description |
 |---|---|
 | **Device** | Searchable autocomplete dropdown. Placeholder: *Select device*. Lists all devices in your organization. |
 | **Sensor** | Autocomplete dropdown. Placeholder: *Select sensor*. Disabled until a device is chosen. Shows only sensors belonging to the selected device. |
 
+**Trigger condition** — Shown instead of the Event filter when **Start source** is **Trigger condition**. A single autocomplete, placeholder *Select trigger*, listing the triggers defined on the **Triggers** tab.
+
+> Only the first page of triggers is loaded, and the field says so when there are more. If the trigger you need is not in the list, that is why — see [Triggers](triggers.md).
+
 **Enable Schedule** — A toggle switch (Off by default). When turned On, the following fields appear:
 
 | Field | Description |
 |---|---|
-| **Time Range** | A select dropdown with preset options: `0:00 – 24:00`, `8:00 – 20:00`, `9:00 – 18:00`, `6:00 – 22:00`. Defines the window during which the rule can fire. Outside this window, incoming sensor data is ignored. |
-| **Time Zone** | A dropdown listing all standard time zones. Defaults to your browser's time zone. |
+| **Time Range** | Appears when Schedule is On, headed *"Time Range. Rule is only active during this period:"*. A **Change schedule** button opens the editor, where you pick the days of the week the rule may run and the **From** and **To** times. Outside that window, the rule does not run. For a trigger source, monitoring and countdowns continue; only the attempted rule run is skipped. |
+| **Time Zone** | A dropdown listing standard time zones, so the window means the same thing regardless of where the viewer is. |
 
 **Inputs** — Optional. A list of advanced CEL expressions for data preparation. Most rules leave this empty and read the incoming reading directly. Each input has:
 - An input name (text field)
@@ -56,13 +67,28 @@ Click the Start Event on the canvas to open its properties panel on the right.
 
 ### How data flows from the Start Event
 
-When the bound sensor sends a reading, the rule engine makes the data available as process variables:
+The process variables depend on the **Start source**.
+
+**Sensor reading** provides:
 
 | Variable | Contents |
 |---|---|
 | `vars.value` | The sensor's reported value |
 | `vars.sensor_id` | The unique identifier of the sensor |
 | `vars.timestamp` | The reading's timestamp |
+
+**Trigger condition** provides:
+
+| Variable | Contents |
+|---|---|
+| `vars.device_name` | The name of the watched device that satisfied the trigger |
+| `vars.subject_kind` | The watched resource type; currently `device` |
+| `vars.subject_id` | The unique identifier of the watched device |
+| `vars.sensor_id` | The sensor identifier used to associate the run and any alarm with the watched device |
+| `vars.detector_id` | The unique identifier of the trigger |
+| `vars.timestamp` | The trigger signal time as Unix seconds |
+
+A trigger-started rule does not receive `vars.value`. See [Triggers](triggers.md#use-trigger-variables-in-the-rule) before converting a sensor-started rule.
 
 The Start Event can also reshape incoming data before the rest of the rule runs:
 
@@ -71,7 +97,7 @@ The Start Event can also reshape incoming data before the rest of the rule runs:
 
 ### Example
 
-A cold-storage compliance rule for a pharmaceutical warehouse binds the Start Event to a temperature probe inside the storage unit. The schedule is set to `0:00 – 24:00` (round-the-clock monitoring) with the facility's local time zone. No inputs are needed — the raw temperature value is enough for the downstream gateway to evaluate.
+A cold-storage compliance rule for a pharmaceutical warehouse binds the Start Event to a temperature probe inside the storage unit. Schedule is left off, since the probe is worth watching around the clock; were it a rule that should only run out of hours, **Change schedule** would set those days and times against the facility's local time zone. No inputs are needed — the raw temperature value is enough for the downstream gateway to evaluate.
 
 ---
 

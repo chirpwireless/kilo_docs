@@ -28,7 +28,7 @@ Here is a full setup for one real case — watching a sump pit so a pump failure
 4. Click **Add metric**. A metric row appears.
 5. In the row, set **Data type** to **Telemetry**, choose the water-level reading under **Device metric**, and pick an **Icon**.
 
-   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change a metric's type, use the **Metrics Templates** button on a connection's Connected Devices list — see [Metric Templates](../../../devices/metric-templates.md).
+   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change how a metric is stored, open **Devices → Metrics** — see [Metrics](../../../devices/metric-templates.md).
 6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, separate from the metric row's), because the pit is 100 cm deep, enter **From** 0 (the dry floor) and **To** 100 (the overflow point), and pick a **Color**. Then you can enter the color levels. For example:
 
    Working up from the dry floor:

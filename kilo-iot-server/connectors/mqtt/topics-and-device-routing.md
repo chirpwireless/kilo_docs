@@ -79,7 +79,7 @@ For a brand-new device with no historical traffic, the dropdown is empty. The pl
 **Pass 1:**
 
 1. Add a Mapping row per metric the device produces.
-2. Select the **Normalized key** from the templates dropdown. Use **+ Add new metric** to create a new sensor template if needed. (The modal handles creating both the normalized name and the sensor template — pre-creating names from the Metrics Templates page is optional.)
+2. Select the **Normalized key** from the templates dropdown. Use **+ Add new metric** to create a new sensor template if needed. (The modal handles creating both the normalized name and the sensor template — pre-creating names from the Metrics tab is optional.)
 3. Set **Data type** (Reported State, Telemetry, or Device Metadata — see below).
 4. Leave **Connector key** empty.
 5. Save the device record.

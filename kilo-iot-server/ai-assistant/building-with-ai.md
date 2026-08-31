@@ -4,7 +4,7 @@ description: Hand setup work to the Kilo IoT AI Assistant — onboard devices, d
 
 # Building With the Assistant
 
-Answering questions is table stakes. What sets the assistant apart is that it can **do the work** — the same configuration tasks a system integrator would do, driven by a plain-language conversation and gated by your approval. This page covers that build-and-operate side.
+The assistant can configure Kilo for you, not just answer questions. Describe the outcome you need in plain language and it can onboard devices, build rules, configure alarms, and run existing device commands within your permissions. This page explains what it can change and what you need to provide.
 
 ## How acting works
 
@@ -15,12 +15,28 @@ When you ask the assistant to set something up, it doesn't hand you a checklist 
 
 ## Onboard a device
 
-Describe the device you want to add and the assistant runs the onboarding flow with you — choosing the connector, naming the device, capturing identifiers, and selecting the right profile. For a LoRaWAN device, if you provide the **DevEUI** and **AppKey** up front, it can complete the setup automatically and then run diagnostics to confirm the device is actually reporting.
+Describe the device you want to add and the assistant runs the onboarding flow with you — choosing the connector, naming the device, capturing identifiers, and selecting the right profile. For a LoRaWAN device, if you provide the **DevEUI** and **AppKey** up front, it can complete the setup automatically and then run diagnostics to confirm the device is actually reporting. It onboards MQTT devices and trackers the same way.
+
+### MIOTY endpoints
+
+The assistant can commission a [MIOTY endpoint](../devices/mioty-devices.md) on an existing MIOTY connection and bind a compatible [blueprint](../devices/mioty-blueprints.md), so its payload is decoded into named readings.
+
+Before you start, create the MIOTY connection that will carry the endpoint. Then have the endpoint information supplied with the device:
+
+- **EUI** — the 16-character hexadecimal device identifier
+- **Network Session Key** — the 32-character hexadecimal secret used to secure communication
+- **Short address**
+- **Endpoint class** — **Z** for an uplink-only endpoint or **A** for a bidirectional endpoint; Kilo uses **Z** when you omit it
+- **Application Key**, if the endpoint uses one
+
+Tell the assistant what you are adding, which existing MIOTY connection it should use, and where the device belongs. It searches both the System catalog and your organization's Custom catalog for the manufacturer, model, and available blueprint versions. If more than one match is possible, it asks you to choose. It then validates the endpoint details, resolves the model's Type EUI, and registers the endpoint. Select a blueprint from that model when its payload needs to be decoded; a blueprint is optional when no decoder is required.
+
+> *"Register the MIOTY water meter in Plant 2. Its EUI is 70B3D5..., its Network Session Key is ..., its short address is 0042, and it is a class Z endpoint."*
 
 > *"Add the new CO2 sensor in Lab 2. DevEUI 24E124..., AppKey ..."*
 > The assistant provisions the device, binds it, and checks whether data is arriving — flagging it if the device stays silent.
 
-This is especially useful at scale: instead of clicking through the registration steps for each unit, you describe what you're adding and the assistant does the mechanical work.
+The result is a registered endpoint. When you select a blueprint, its readings use the field names defined by that blueprint. The assistant does not invent missing identifiers or keys; it asks for any required value you have not supplied.
 
 <figure><img src="../../.gitbook/assets/ai-chat-session.jpg" alt="An assistant session working through a request, showing each tool it called and the alarm definition it created"><figcaption></figcaption></figure>
 
