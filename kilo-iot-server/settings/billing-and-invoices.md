@@ -81,14 +81,11 @@ Selecting another plan opens a confirmation for the plan change. The payment-met
 
 ## Receive and pay an invoice
 
-After the subscription is created, Kilo sends the invoice to the billing email in two forms:
-
-- a PDF attachment for your records;
-- a link to a hosted invoice page showing the current payment status and bank details.
+After the subscription is created, Kilo emails the invoice information to the billing address. Use the hosted invoice link in that email to see the current payment status and bank details. You can download the PDF from Kilo's **Invoices** page.
 
 The hosted page includes an account reference assigned to your organization. Use those bank details and reference when making the transfer so the payment can be matched automatically.
 
-Invoices must be settled in full. The invoice remains open until the received amount covers it, although a small difference caused by intermediary bank charges is tolerated. When the payment is matched, the status changes to **Paid** automatically.
+Invoices must be settled in full. The invoice remains open until the received amount covers the full amount due, including when bank charges reduce the amount received. When the full payment is matched, the status changes to **Paid** automatically.
 
 ## View invoices
 
@@ -108,7 +105,7 @@ The billing currency cannot be changed on an existing subscription. Contact Kilo
 
 ## When an invoice is overdue
 
-Invoices have a 14-day payment term. Kilo sends reminders two days before the due date, on the due date, seven days after it, and 14 days after it. A **Payment required** notice in the platform links to the invoice.
+Invoices use a 14-day payment term unless your billing arrangement specifies another term. A **Payment required** notice in the platform links to an outstanding invoice. Email reminder timing may vary; use the due date shown on the invoice as the payment deadline.
 
 While the invoice is open:
 

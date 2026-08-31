@@ -52,7 +52,7 @@ Select the Start Event on the canvas — a pencil and a bin icon appear beneath 
 
 | Field | Description |
 |---|---|
-| **Time Range** | Appears when Schedule is On, headed *"Time Range. Rule is only active during this period:"*. A **Change schedule** button opens the editor, where you pick the days of the week the rule may run and the **From** and **To** times. Outside that window, incoming data is ignored. |
+| **Time Range** | Appears when Schedule is On, headed *"Time Range. Rule is only active during this period:"*. A **Change schedule** button opens the editor, where you pick the days of the week the rule may run and the **From** and **To** times. Outside that window, the rule does not run. For a trigger source, monitoring and countdowns continue; only the attempted rule run is skipped. |
 | **Time Zone** | A dropdown listing standard time zones, so the window means the same thing regardless of where the viewer is. |
 
 **Inputs** — Optional. A list of advanced CEL expressions for data preparation. Most rules leave this empty and read the incoming reading directly. Each input has:
@@ -67,13 +67,28 @@ Select the Start Event on the canvas — a pencil and a bin icon appear beneath 
 
 ### How data flows from the Start Event
 
-When the bound sensor sends a reading, the rule engine makes the data available as process variables:
+The process variables depend on the **Start source**.
+
+**Sensor reading** provides:
 
 | Variable | Contents |
 |---|---|
 | `vars.value` | The sensor's reported value |
 | `vars.sensor_id` | The unique identifier of the sensor |
 | `vars.timestamp` | The reading's timestamp |
+
+**Trigger condition** provides:
+
+| Variable | Contents |
+|---|---|
+| `vars.device_name` | The name of the watched device that satisfied the trigger |
+| `vars.subject_kind` | The watched resource type; currently `device` |
+| `vars.subject_id` | The unique identifier of the watched device |
+| `vars.sensor_id` | The sensor identifier used to associate the run and any alarm with the watched device |
+| `vars.detector_id` | The unique identifier of the trigger |
+| `vars.timestamp` | The trigger signal time as Unix seconds |
+
+A trigger-started rule does not receive `vars.value`. See [Triggers](triggers.md#use-trigger-variables-in-the-rule) before converting a sensor-started rule.
 
 The Start Event can also reshape incoming data before the rest of the rule runs:
 

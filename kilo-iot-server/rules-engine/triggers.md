@@ -1,12 +1,12 @@
 ---
-description: Create one trigger that watches up to 500 devices independently, waits for a condition to hold, and starts a Kilo rule.
+description: Apply one trigger to a group of devices, combine their readings, and control when a Kilo rule starts.
 ---
 
 # Triggers
 
-A trigger starts a rule when selected device data matches a condition. One trigger can watch up to **500 devices**, evaluate each device independently, and start the same rule for whichever device meets the condition.
+A trigger starts a rule when device data matches a condition. One trigger can include up to **500 devices**, so the same rule can respond to an entire device group.
 
-Before triggers, a rule could be started by only one device. Applying the same response to 50 devices meant creating and maintaining 50 rules. With a trigger, you define the condition once, select the 50 devices, and connect one rule.
+Before triggers, a rule could be started by only one device. Applying the same response to 50 devices meant creating and maintaining 50 rules. With a trigger, you define the condition once, select the 50 devices, and connect one rule. Each watched device is evaluated independently: one device can start the rule without changing the state or countdown of the others.
 
 A trigger can start the rule immediately or wait until the condition has remained true for a set time. For example, you can ignore a cold-store door opened briefly for loading and act only if it remains open for 20 minutes.
 
@@ -14,7 +14,7 @@ A trigger can start the rule immediately or wait until the condition has remaine
 
 Decide which devices need the same response and which metric the trigger will evaluate. A metric is a normalized reading such as `temperature`, `door_open`, or `pump_running`.
 
-Each watched device must provide the metric used as the main condition. If a device is missing from the trigger's device list, open that device's **Mapping** tab and confirm that its incoming data is mapped to the required metric. See [Metrics](../devices/metric-templates.md).
+The devices that provide the condition metric labeled **Devices answering this key are the watched ones** receive independent evaluations. If a device is missing from the trigger's device list, open that device's **Mapping** tab and confirm that its incoming data is mapped to a metric used by the trigger. See [Metrics](../devices/metric-templates.md).
 
 You can create the trigger before the rule, but the trigger does not perform an action by itself. After saving it, connect it to a rule's Start Event.
 
@@ -45,12 +45,19 @@ Use **Add check on ‹metric›** when the same reading needs another comparison
 
 Use **Add normalized key** when the condition also depends on a different reading. By default, the trigger and optional clear condition can contain up to 10 normalized keys in total.
 
-When a condition uses several metrics, the additional metric must be available in one of two ways:
+When you add more than one check, choose how the checks are combined:
+
+- **AND** means every check must be true. For example, `temperature > 2` AND `temperature < 8` defines a range.
+- **OR** means any check can be true. For example, `status = alarm` OR `status = fault` accepts either state.
+
+There is a separate **AND/OR** choice between different metrics. It combines the readings used for one watched device; it never combines the watched devices with one another.
+
+The metric marked **Devices answering this key are the watched ones** determines which devices receive independent evaluations. An additional metric must be available in one of two ways:
 
 - every watched device provides it; or
 - exactly one selected device provides a shared value for all watched devices.
 
-For example, each fire door can provide its own `door_open` reading while one building controller provides the shared `heating_on` reading. The form refuses combinations where only some watched devices provide the additional metric, preventing an incomplete condition from being saved.
+For example, each fire door can provide its own `door_open` reading while one building controller provides the shared `heating_on` reading. The controller participates in the trigger, but it does not receive its own door evaluation. The form refuses combinations where only some watched devices provide the additional metric, preventing an incomplete condition from being saved.
 
 ### 3. Choose when the trigger starts
 
@@ -75,19 +82,19 @@ For example, a motion trigger can start after 10 minutes of continuous activity 
 
 ### 5. Select devices
 
-Under **Devices**, select the devices the trigger should watch. The list becomes available after you select a normalized key and includes only compatible devices.
+Under **Devices**, select every device that should provide data to the trigger. The list becomes available after you select a normalized key and includes devices that provide at least one required metric.
 
 Use **Search devices**, **Select all**, **Select all shown**, **Clear selection**, and **Load more devices** to manage a large selection. A trigger requires at least one device and accepts up to 500. The limit includes watched devices and any device supplying a shared reading.
 
-If an expected device is missing, open its **Mapping** tab and map its incoming data to the metric used by the trigger.
+If an expected device is missing, open its **Mapping** tab and map its incoming data to a metric used by the trigger. If a device has two sensors mapped to the same metric, choose which sensor the trigger should use. A sensor without a source mapping cannot supply readings to a trigger.
 
 ### 6. Review and save
 
-**How this trigger will run** shows one row for every independently evaluated device. Review the **Check**, **Evaluated device**, and **Uses** columns before saving.
+**How this trigger will run** shows one row for every watched device. A device selected only to supply a shared value appears in the **Uses** column instead of receiving its own row. Review the **Check**, **Evaluated device**, and **Uses** columns before saving.
 
-<figure><img src="../../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per selected device"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per watched device"><figcaption></figcaption></figure>
 
-Click **Create trigger**. The trigger now watches the selected devices, but it will not perform an action until a rule uses it.
+Click **Create trigger**. Kilo now monitors the saved device group, but the trigger will not perform an action until a rule uses it.
 
 ## Start a rule from the trigger
 
@@ -111,10 +118,15 @@ A trigger-started rule provides these variables:
 | Variable | Value |
 |---|---|
 | `vars.device_name` | Name of the device whose condition started the rule |
-| `vars.sensor_id` | Sensor that supplied the reading |
-| `vars.timestamp` | Time the condition was met |
+| `vars.subject_kind` | Type of watched resource; currently `device` |
+| `vars.subject_id` | ID of the watched device whose condition started the rule |
+| `vars.sensor_id` | Sensor ID used to associate the run and any alarm with the watched device |
+| `vars.detector_id` | ID of the trigger that started the rule |
+| `vars.timestamp` | Unix timestamp for the trigger signal |
 
 `vars.value` is not available to a trigger-started rule. A trigger reports that a condition held; it does not pass one reading as the event value. Update any existing CEL expression that expects `vars.value` before changing its Start Event to a trigger.
+
+While a condition remains active, later readings can start the connected rule again. Kilo limits rapid duplicate execution, but an action should still be safe to repeat. For example, use an alarm definition that continues the same incident instead of assuming the rule can run only once.
 
 To identify the affected device in an alarm, include `vars.device_name` in the alarm's **Motivation Message**:
 
@@ -139,16 +151,18 @@ A trigger blocked by the schedule is recorded in the rule's execution history as
 
 Editing a trigger's condition can restart active countdowns. Kilo warns you before saving a change that resets the current trigger state.
 
-Deleting a trigger cannot be undone. It stops monitoring, clears alarms raised by that trigger, and prevents connected rules from starting. Check which rules use the trigger before deleting it.
+Deleting a trigger cannot be undone. It stops future monitoring and prevents connected rules from starting again. Resolve or review any outstanding alarms first, and check which rules use the trigger before deleting it.
 
 ## Troubleshooting
 
 | Problem | What to check |
 |---|---|
 | A device is missing from the selection | Confirm its data is mapped to the normalized key on the device's **Mapping** tab. |
-| The trigger will not save | Confirm the duration is between 10 seconds and 30 days and review any problem shown under **How this trigger will run**. |
+| A device is listed but cannot supply a metric | Confirm the sensor has a source mapping. If several sensors answer the same metric, select the intended sensor. |
+| The trigger will not save | Confirm the duration is between 10 seconds and 30 days. Then review **How this trigger will run** for an unanswered metric or a shared metric supplied by more than one selected device. |
 | The rule starts but an expression fails | Remove uses of `vars.value`; use the trigger variables listed above. |
 | The alarm does not identify the device | Add `vars.device_name` to the alarm's **Motivation Message**. |
+| The rule runs again while the condition is still active | Later readings can produce another run. Make downstream actions safe to repeat. |
 | A condition reset after editing | Changes to the condition can restart countdowns; the confirmation dialog warns before this occurs. |
 
 ## See also

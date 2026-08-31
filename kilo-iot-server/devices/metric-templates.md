@@ -6,6 +6,8 @@ description: Find, create, and manage the shared metrics that give device readin
 
 A metric tells Kilo what a device reading means and how to store it. It combines a **normalized key**, such as `temperature`, with a unit, value type, and data type.
 
+The two type fields answer different questions: **Data type** says whether the information is telemetry, device metadata, or a custom attribute; **Type** says whether its value is stored as a Float, Integer, String, or Boolean.
+
 This shared definition lets devices from different manufacturers use the same dashboards and rules. One device may send `temp_c` and another may send `t_celsius`; mapping both raw keys to the `temperature` metric gives Kilo one consistent reading to work with.
 
 ## Open the metric catalog

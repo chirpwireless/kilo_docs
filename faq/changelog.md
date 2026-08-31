@@ -10,18 +10,18 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0 release banner"><figcaption></figcaption></figure>
 
-Kilo rules automate how your deployment responds to device data. Before 3.9.0, each rule could be triggered by only one device. If 50 devices needed the same rule, you had to create and maintain that rule 50 times. Now one **trigger** can monitor up to 500 selected devices independently and start the same rule for whichever device meets its condition. A trigger can also wait until the condition has remained true for a set time — from 10 seconds to 30 days — before the rule runs. This release also brings all metrics into one searchable page, adds invoice payments and values on bar charts, expands what the AI assistant can do, and helps connected AI apps distinguish between actions that read data and actions that change it. [kiloiot.io](https://kiloiot.io)
+Kilo rules automate how your deployment responds to device data, and a **trigger** defines the condition that starts a rule. Before 3.9.0, applying the same response to 50 devices meant creating and maintaining 50 rules. Now you can group those devices in one trigger and connect them to one rule. Each watched device is evaluated independently, while another selected device can provide a shared reading used by the whole group. A trigger can also wait until the condition has remained true for a set time — from 10 seconds to 30 days — before the rule runs. This release also brings all metrics into one searchable page, adds invoice payments and values on bar charts, expands what the AI assistant can do, and helps connected AI apps distinguish between actions that read data and actions that change it. [kiloiot.io](https://kiloiot.io)
 
 ***
 
 #### What's in This Release
 
-* **One rule, up to 500 devices** — Previously, applying the same rule to 50 devices required 50 separate rules. Now you can select up to 500 devices in one trigger. Each device is monitored independently, and any one of them can start the shared rule when it meets the condition.
+* **One rule for a group of up to 500 devices** — Previously, applying the same rule to 50 devices required 50 separate rules. Now one trigger can include the group, evaluate each watched device separately, and start the shared rule for whichever one meets the condition.
 * **Wait before a rule runs** — A trigger can require a condition to remain true for 10 seconds to 30 days before starting the rule. For example, a freezer-door rule can ignore a door opened briefly for loading but act when the door remains open for 10 minutes.
 * **All metrics on one page** — A metric is a type of reading, such as temperature or battery level. Metrics that were spread across three tabs are now available in one searchable list at **Devices → Metrics**, where you can also add and edit them.
-* **Pay by invoice instead of by card** — Enter your company and VAT details, choose bank transfer, and receive a PDF invoice by email. The new **Invoices** page shows which invoices are open or paid.
+* **Pay by invoice instead of by card** — Enter your company details and, when required, your VAT number; then choose bank transfer and receive the invoice information by email. The new **Invoices** page shows which invoices are open or paid and provides the PDF download.
 * **Show values on bar charts** — **Display value on bar** prints each value on its bar. **Show metrics below** adds the current readings beneath the chart.
-* **Add MIOTY devices with the AI assistant** — The assistant can now guide you through selecting a MIOTY device model, entering its identifiers, and creating the device with the correct blueprint attached.
+* **Add MIOTY devices with the AI assistant** — The assistant can now use an existing MIOTY connection to help you select a device model, enter its identifiers, and create the device with a compatible blueprint when one is needed.
 * **Use your own AI account** — Connect an OpenAI, Anthropic, OpenRouter, Ollama, or compatible account instead of using the monthly message allowance included with your Kilo plan. Ollama model names with version tags are now supported.
 * **Connected AI apps can distinguish read and write actions** — Actions available to ChatGPT, Claude, Cursor, and other connected AI apps now identify whether they only read data or can change or delete something.
 * **Reliability and interface improvements** — Device photos save correctly, the Audit Trail refreshes after permission changes, widget colors work again, log retention follows your plan, and the AI assistant reports completed actions more reliably.
@@ -34,13 +34,15 @@ A rule is a flowchart that tells Kilo how to respond to device data. It can eval
 
 Before 3.9.0, a rule could be triggered by only one device. If the same condition and response applied to 50 devices, you needed 50 separate rules. Updating the condition later meant editing every copy.
 
-Now you select up to **500 devices** when you create the trigger, and one rule applies to the entire selection. Adding another device means updating the trigger instead of creating another rule.
+Now one trigger can include up to **500 devices**, and one rule applies to the group. Adding another device means updating the trigger instead of creating another rule.
 
-Each device is still monitored independently. Every device has its own trigger state and countdown, so one door remaining open does not affect any other door. Before you save, **How this trigger will run** shows one row for each selected device so you can review the setup.
+Most grouped triggers are simple: every selected device supplies the same reading and is watched independently. Every watched device has its own trigger state and countdown, so one door remaining open does not affect any other door.
+
+A selected device can also supply a shared reading instead of being watched. For example, 50 doors can each supply their own `door_open` reading while one building controller supplies `heating_on` for every door check. Before you save, **How this trigger will run** shows one row for each watched device and identifies any shared reading in the **Uses** column.
 
 An alarm can also identify the device that triggered the rule. Add `vars.device_name` to the alarm's motivation message so the notification names the affected device.
 
-<figure><img src="../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per selected device"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per watched device"><figcaption></figcaption></figure>
 
 [→ Triggers](../kilo-iot-server/rules-engine/triggers.md)
 
@@ -97,7 +99,7 @@ You can now enter your legal name, registered address, billing email, and VAT nu
 
 When you pay by invoice:
 
-* the PDF invoice is sent to your billing email;
+* the invoice information and hosted invoice link are sent to your billing email;
 * the invoice includes a payment page with bank details assigned to your organization so the payment can be matched automatically;
 * the **Invoices** page shows open and paid invoices;
 * upgrades invoice the difference for the remaining period, while downgrade credits are applied to the next invoice;
@@ -125,15 +127,15 @@ Turn on **Show metrics below** to add a row beneath the chart with each metric a
 
 **Add MIOTY devices with the AI assistant**
 
-MIOTY is a radio protocol designed for large sites and environments with substantial radio interference. Registering a MIOTY device requires its EUI, network session key, short address, manufacturer, model, and blueprint. A blueprint converts the device's raw payload into named readings that Kilo can use.
+MIOTY is a radio protocol designed for large sites and environments with substantial radio interference. To register an endpoint, Kilo needs an existing MIOTY connection, the endpoint's EUI, network session key, short address, and device model. Some endpoints also use an Application Key. A compatible blueprint is optional and converts the raw payload into named readings that Kilo can use.
 
 Before 3.9.0, the AI assistant could create a MIOTY connection, but you still had to register the device manually.
 
 The assistant can now complete the device setup with you. It will:
 
-1. help you select the manufacturer, model, and available blueprint version;
+1. help you select the manufacturer, model, and an available blueprint version when a decoder is needed;
 2. collect and validate the EUI, network session key, and short address as you enter them;
-3. create the device with its blueprint already attached.
+3. create the device and attach the selected blueprint, if any.
 
 The assistant asks for identifiers that must come from your hardware or vendor documentation; it does not generate them.
 

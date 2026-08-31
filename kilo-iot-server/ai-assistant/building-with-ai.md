@@ -19,16 +19,17 @@ Describe the device you want to add and the assistant runs the onboarding flow w
 
 ### MIOTY endpoints
 
-The assistant can commission a [MIOTY endpoint](../devices/mioty-devices.md) and bind the correct [blueprint](../devices/mioty-blueprints.md), so its payload is decoded into named readings.
+The assistant can commission a [MIOTY endpoint](../devices/mioty-devices.md) on an existing MIOTY connection and bind a compatible [blueprint](../devices/mioty-blueprints.md), so its payload is decoded into named readings.
 
-Before you start, have the endpoint information supplied with the device:
+Before you start, create the MIOTY connection that will carry the endpoint. Then have the endpoint information supplied with the device:
 
 - **EUI** — the 16-character hexadecimal device identifier
 - **Network Session Key** — the 32-character hexadecimal secret used to secure communication
 - **Short address**
-- **Endpoint class** — choose **Z** for an uplink-only endpoint or **A** for a bidirectional endpoint
+- **Endpoint class** — **Z** for an uplink-only endpoint or **A** for a bidirectional endpoint; Kilo uses **Z** when you omit it
+- **Application Key**, if the endpoint uses one
 
-Tell the assistant what you are adding and where it belongs. It searches both the System catalog and your organization's Custom catalog for the manufacturer, model, and available blueprint versions. If more than one match is possible, it asks you to choose. It then validates the endpoint details, resolves the model's Type EUI, registers the endpoint, and binds the selected blueprint.
+Tell the assistant what you are adding, which existing MIOTY connection it should use, and where the device belongs. It searches both the System catalog and your organization's Custom catalog for the manufacturer, model, and available blueprint versions. If more than one match is possible, it asks you to choose. It then validates the endpoint details, resolves the model's Type EUI, and registers the endpoint. Select a blueprint from that model when its payload needs to be decoded; a blueprint is optional when no decoder is required.
 
 > *"Register the MIOTY water meter in Plant 2. Its EUI is 70B3D5..., its Network Session Key is ..., its short address is 0042, and it is a class Z endpoint."*
 

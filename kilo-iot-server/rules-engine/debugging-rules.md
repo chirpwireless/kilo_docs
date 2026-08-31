@@ -30,8 +30,8 @@ Copy the names out of your gateway conditions rather than typing them from memor
 
 Two rows you do not need to add:
 
-* The panel opens with a row named `value`, which suits rules that read `vars.value` straight from the bound sensor. Rename it if your rule uses a different name.
-* `sensor_id` is filled in from the sensor bound to the Start Event, and appears in the Variables tab on its own.
+* The panel opens with a row named `value`, which suits rules started by **Sensor reading**. A production rule started by **Trigger condition** does not receive `vars.value`, so remove or rename this test value to match the trigger context.
+* The debugger provides `sensor_id` automatically. In production it comes from the selected sensor or trigger signal, depending on the Start source.
 
 ## The session starts paused
 
