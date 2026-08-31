@@ -1,0 +1,366 @@
+{
+  "generatedAt": "2026-08-31T23:13:18.938Z",
+  "source": "chirpwireless/kilo_docs@synchronize:faq/changelog.md",
+  "releases": [
+    {
+      "version": "3.9.0",
+      "title": "Scale Log. Release 3.9.0",
+      "banner": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg",
+      "intro": "Kilo rules automate how a deployment responds to device data. A trigger is a saved condition that starts a rule, and it now has two independent controls: it can evaluate one device or several selected devices, and it can act immediately or wait for the condition to remain true. Before 3.9.0, applying one response to 50 devices required 50 rules; now one trigger and rule can cover them while keeping every device's condition and countdown separate. This release also brings all metrics into one searchable page, adds invoice payments and exact values on bar charts, expands the AI assistant, and helps connected AI apps distinguish actions that read data from actions that change it. kiloiot.io",
+      "slides": [
+        {
+          "title": "One rule for up to 500 devices",
+          "description": "Previously, applying the same rule to 50 devices required 50 separate rules. Now one trigger can select those devices, evaluate each one separately, and start the shared rule for whichever device meets the condition.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/trigger-device-group.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/rules-engine/triggers/multiple-devices"
+        },
+        {
+          "title": "Wait before a rule runs",
+          "description": "A trigger can require a condition to remain true for 10 seconds to 30 days before starting the rule. For example, a freezer-door rule can ignore a door opened briefly for loading but act when the door remains open for 10 minutes.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/trigger-time-window.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/rules-engine/triggers/trigger-timing"
+        },
+        {
+          "title": "All metrics on one page",
+          "description": "A metric is a type of reading, such as temperature or battery level. Metrics that were spread across three tabs are now available in one searchable list at Devices → Metrics, where you can also add and edit them.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/device-metrics.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/devices/metric-templates"
+        },
+        {
+          "title": "Pay by invoice instead of by card",
+          "description": "Enter your company details and, when required, your VAT number; then choose bank transfer and receive the invoice information by email. The new Invoices page shows which invoices are open or paid and provides the PDF download.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/billing-details.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/settings/billing-and-invoices"
+        },
+        {
+          "title": "Show values on bar charts",
+          "description": "Display value on bar prints each value on its bar. Show metrics below adds the current readings beneath the chart.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/chart-widget.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets/chart-widget/bar-chart"
+        },
+        {
+          "title": "Add MIOTY devices with the AI assistant",
+          "description": "The assistant can now use an existing MIOTY connection to help you select a device model, enter its identifiers, and create the device with a compatible blueprint when one is needed.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/device-mioty-connection.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/ai-assistant/building-with-ai"
+        },
+        {
+          "title": "Use your own AI account",
+          "description": "Connect an OpenAI, Anthropic, OpenRouter, Ollama, or compatible account instead of using the monthly message allowance included with your Kilo plan. Ollama model names with version tags are now supported.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/ai-connect-your-model.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/ai-assistant/managing-chats-and-ai-access"
+        },
+        {
+          "title": "Connected AI apps can distinguish read and write actions",
+          "description": "Actions available to ChatGPT, Claude, Cursor, and other connected AI apps now identify whether they only read data or can change or delete something.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/mcp-claude-session.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/api/mcp-server"
+        },
+        {
+          "title": "Reliability and interface improvements",
+          "description": "Device photos save correctly, the Audit Trail refreshes after permission changes, widget colors work again, log retention follows your plan, and the AI assistant reports completed actions more reliably.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg"
+        }
+      ]
+    },
+    {
+      "version": "3.8.0",
+      "title": "Scale Log. Release 3.8.0",
+      "banner": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg",
+      "intro": "Three big ones in 3.8.0. First, you no longer need hardware to start — the Emulator builds an entire site with no devices at all, dashboards and rules and escalating alarms included, then hands those same devices over to real sensors the day they arrive. Second, the AI assistant now operates your equipment: it lists the commands on a device, runs one after you confirm, and checks that it landed. And third — the one we are most excited about — connect ChatGPT or Claude over MCP and they control your devices too. Not a chatbot describing your building: your own AI client, switching relays and changing setpoints on real hardware, inside your own permissions, with every dispatch recorded. Alongside all of it, the platform now tells you what shipped in a What's New panel, and MIOTY reaches a wider set of base stations with BSSCI 1.1. kiloiot.io",
+      "slides": [
+        {
+          "title": "Emulator connector",
+          "description": "Build and test a deployment before any hardware exists: devices that generate their own telemetry from real device presets, with manual values and send-once, then swap to a real connector on go-live day.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/emulator-device-metrics.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/connectors/emulator-connector"
+        },
+        {
+          "title": "Your AI now runs the equipment",
+          "description": "Ask the assistant what a device can do, tell it to do one, and it executes the command and confirms delivery. The platform stopped being something you only ask questions about.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/ai-chat-device-commands.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/physical-ai"
+        },
+        {
+          "title": "Control your devices from ChatGPT or Claude",
+          "description": "Connect any MCP client — ChatGPT, Claude, Cursor, Codex — and it can run commands on your hardware the same way, inside your own permissions. An LLM with hands on real infrastructure.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/api/mcp-server"
+        },
+        {
+          "title": "AI drives the emulator",
+          "description": "Provision an emulated device, change its configuration, send a reading, and swap it to real hardware, all in conversation.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/emulator-manual-value.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/devices/emulated-devices"
+        },
+        {
+          "title": "What's New in the product",
+          "description": "A panel that tells you what shipped, generated from this changelog so it can never drift from the documentation.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/whats-new-panel.jpg"
+        },
+        {
+          "title": "MIOTY BSSCI 1.1",
+          "description": "Protocol version negotiation brings newer base stations onto the same service center, and station identifiers are accepted across the full unsigned 64-bit EUI range.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/mioty-base-stations-list.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/gateways/mioty-base-stations"
+        },
+        {
+          "title": "Audit Trail repaired",
+          "description": "The broken components on the Audit Trail page are fixed.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/audit-trail.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/reports/audit-trail"
+        },
+        {
+          "title": "Fixes and polish",
+          "description": "Subscription plan period, a CORS fix, MIOTY reliability, dashboard widget placement, and interface fixes across devices and thresholds.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg"
+        }
+      ]
+    },
+    {
+      "version": "3.7.0",
+      "title": "Scale Log. Release 3.7.0",
+      "banner": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.7.0.jpg",
+      "intro": "3.7.0 widens what the Kilo IoT Platform reaches and tightens what it tells you. MIOTY arrives as a first-class protocol — base stations, endpoints, and payload blueprints — so the massive-scale, interference-hard deployments that LoRaWAN was never shaped for now run on the same platform, the same dashboards, the same rules. Dashboards learn to leave the building: a share link turns any dashboard into a password-protected address you can hand to a customer or pin to a wall tablet, with View or Control access and a one-click revoke. Device diagnostics replaces the worst moment in any deployment — it's installed, and nothing is happening — with a plain answer and the next step. Key Vault gets device credentials out of spreadsheets. And an MCP server lets your own AI client sign in and work your deployment directly. kiloiot.io",
+      "slides": [
+        {
+          "title": "MIOTY support",
+          "description": "A new connector, a Mioty Base Stations category under Gateways, MIOTY endpoint fields, and a full blueprint system for decoding payloads — with per-device snapshots so a catalog edit never disturbs a device already in production.",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/connectors/mioty-connector/what-is-mioty"
+        },
+        {
+          "title": "Share dashboard",
+          "description": "Publish a dashboard as a password-protected link with View or Control access. Regenerate or revoke it at any time; open it full screen on a tablet or a wall display.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/dashboard-share-org.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/sharing-dashboards"
+        },
+        {
+          "title": "Device diagnostics",
+          "description": "A device's Connection tab now reports its reception status, the pipeline each message travels, and an event feed with a status legend — and tells you what to check when something is wrong.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/device-reception-status.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/devices/device-diagnostics"
+        },
+        {
+          "title": "Key Vault",
+          "description": "An encrypted, access-controlled store for device EUI and key pairs, under the new Records & Reports group, with Add to Vault right on the device form.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/key-vault-list.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/reports/key-vault"
+        },
+        {
+          "title": "MCP server",
+          "description": "Connect the AI client you already use — Claude Code, Claude Desktop, ChatGPT, Codex, Cursor — to your organization with your own account sign-in, and put it to work on your real deployment.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/mcp-claude-session.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/api/mcp-server"
+        },
+        {
+          "title": "Scan a QR code",
+          "description": "Read a DevEUI or AppKey with a laptop or phone camera instead of typing 16 or 32 hex characters.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/device-connector-type-list.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/devices/registering-devices"
+        },
+        {
+          "title": "Duplicate and move widgets",
+          "description": "Repeat a configured widget across identical sensors, or move one to another dashboard.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/dashboard-edit-mode.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets"
+        },
+        {
+          "title": "Fixes and polish",
+          "description": "Layout, mobile, and navigation fixes across dashboards, gateways, devices, and the audit trail."
+        }
+      ]
+    },
+    {
+      "version": "3.6.0",
+      "title": "Scale Log. Release 3.6.0",
+      "banner": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.6.0.jpg",
+      "intro": "3.6.0 is the release where the Kilo IoT Server becomes AI-first. The built-in assistant — AIoT, Artificial Intelligence of Things wired into the core of the platform — stops being a question box and starts working like an experienced IoT integrator by your side: ask in plain language and it provisions devices, writes the CEL, builds and deploys rules, and stands up alarms, all under your confirmation. And the Rules Engine grows hands of its own — a new Execute Command node lets a rule act on a device the instant a condition is met, so a leak no longer just raises an alarm, it can shut the water off. New public command APIs round out a release that makes the platform both smarter and more capable. kiloiot.io",
+      "slides": [
+        {
+          "title": "AIoT — an AI integrator built into the platform",
+          "description": "Grounded in your live deployment, the assistant answers from your real data and does the work with you: provisioning devices, writing and deploying rules, and building alarms with escalation — confirming before any consequential change and verifying its own results.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/ai-chat-home.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/ai-assistant"
+        },
+        {
+          "title": "Commands in the Rules Engine",
+          "description": "A new Execute Command node turns automation two-way: a rule can send a command straight to a device when conditions are met. Sense, decide, act — end to end, with no one in the loop.",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/rules-engine/running-device-commands"
+        },
+        {
+          "title": "Public command APIs",
+          "description": "The device-command endpoints are now part of the public REST API, with new Commands read and write scopes for API keys.",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/api/public-rest-api"
+        },
+        {
+          "title": "iFrame dashboard widget",
+          "description": "Embed an external web page — a BI report, a weather map, live traffic — directly onto a dashboard, beside your device data.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/iframe-widget-dashboard.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets/iframe-widget"
+        },
+        {
+          "title": "Clearer device logs",
+          "description": "Logs are now grouped by the minute, and a status indicator in the device header shows live connection and logging activity at a glance.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/device-info-tab.png",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/devices/device-management"
+        },
+        {
+          "title": "Portuguese interface",
+          "description": "The platform interface is now available in Portuguese."
+        },
+        {
+          "title": "Fixes and polish",
+          "description": "A round of stability and sign-in fixes across organizations, alarms, and API keys."
+        }
+      ]
+    },
+    {
+      "version": "3.5.0",
+      "title": "Scale Log. Release 3.5.0",
+      "banner": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.5.0.jpg",
+      "intro": "Every release until now made the Kilo IoT Server a sharper pair of eyes. 3.5.0 gives it hands. For the first time the platform goes genuinely two-way: a full family of six Control widgets — backed by the new Device Commands engine — lets you send actions straight back to your hardware. Switch a relay, dim and color-tune a luminaire, push a setpoint, reboot a controller — over MQTT or LoRaWAN, from a dashboard tile or the device page. Add a Text widget, a new Radial Gauge, and step-through rule debugging, and this is the most capable Kilo IoT Server yet. kiloiot.io",
+      "slides": [
+        {
+          "title": "Control widgets — a family of six",
+          "description": "Six dashboard control types — Switch, Button, Simple Slider, Circular Slider, Vertical Slider, and Input — each bound to a device command and reflecting the device's live state, so you operate a device right beside the readings that say whether you need to.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/control-dashboard.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets/control-widget"
+        },
+        {
+          "title": "Device Commands",
+          "description": "The engine behind the controls. Define named, typed commands and dispatch them as downlinks over MQTT or LoRaWAN, with parameter validation, optional closed-loop verification, and a complete execution history.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/device-command-editor.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/devices/commands"
+        },
+        {
+          "title": "Text widget",
+          "description": "Headings and notes to structure a busy operations dashboard into labeled sections.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/text-widget.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets/text-widget"
+        },
+        {
+          "title": "Radial Gauge",
+          "description": "A sixth Last Data display type: a circular instrument dial with a configurable sweep angle and your conditions drawn as colored arcs.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/last-data-radial-gauge.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets/last-data-widget/radial-gauge"
+        },
+        {
+          "title": "Rule debugging",
+          "description": "Step through a rule node by node against a test payload, set breakpoints, inspect variables and CEL expressions, and control how side effects run — before you deploy to production.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/rules-debug-start-panel.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/rules-engine/debugging-rules"
+        },
+        {
+          "title": "Simplified upgrades",
+          "description": "Choosing a plan now goes straight to checkout with a single Upgrade Plan action, and plan limits apply by default.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/settings-subscription.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/settings/subscription"
+        }
+      ]
+    },
+    {
+      "version": "3.4.0",
+      "title": "Scale Log. Releases 3.2.0, 3.3.0, 3.4.0",
+      "banner": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.4.0.jpg",
+      "intro": "Kilo IoT Server 3.4.0 is the release the major-version jump from 3.1 to 3.4 exists for, and it lands with the feature the whole platform has been building toward: the Digital Building Twin — a live IoT digital twin of your real-world property. Bind any sensor in your deployment to any object on a 3D scale model — a parking bay in the lot, a boom barrier at the entrance, an entrance gate, a dumpster on the loading dock, a smoke detector in the server room, an AC unit on the roof, a water tank in the basement — and the scene recolors live as readings flow. Smart-parking lots, perimeter security, waste management, multi-floor building interiors: one model, one set of sensor bindings, one spatial surface to operate from. Draw the property in 2D and 3D, or trace its outline onto an aerial map and anchor everything to its real GPS coordinates. Alongside the Digital Building Twin, dashboard authors gain two new single-value visualisations for the Last Data widget — Tube and Gauge. 3.2.0 and 3.3.0 shipped along the way as small maintenance releases; their notes are folded into this entry. kiloiot.io",
+      "slides": [
+        {
+          "title": "Digital Building Twin",
+          "description": "Bind any sensor in your deployment to any object on a live 3D model of your real-world property, and watch the scene recolor as readings flow. Smart-parking bays, boom barriers, entrance gates, dumpsters, AC units, smoke detectors, water tanks, desks — anything in the 60+ object catalog. Multi-floor buildings and outdoor lots in one scene; draw in 2D and 3D, or trace from an aerial map; the whole property anchored to real GPS coordinates.",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/3d_Scene_Screen.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets/digital-building-twin"
+        },
+        {
+          "title": "Tube Widget",
+          "description": "New display type for the Last Data widget — a vertical filled tube with configurable tick marks and conditional coloring",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/last-data-datasource.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets/last-data-widget"
+        },
+        {
+          "title": "Gauge Widget",
+          "description": "New display type for the Last Data widget — a horizontal track gauge with condition bands, a position marker, and metric icons",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/last-data-datasource.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/dashboards/adding-widgets/last-data-widget"
+        },
+        {
+          "title": "Connectors sidebar access fix",
+          "description": "The Connectors entry no longer appears in the sidebar for users without permission on the resource",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/users-list.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/account/users-and-permissions"
+        },
+        {
+          "title": "Overview surfaces alarm activity",
+          "description": "The Overview page now lists active alarms and links directly to the Alarm application",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/alarm-inbox.jpg",
+          "docsUrl": "https://docs.kiloiot.io/kilo-iot-server/alarm/inbox-and-resolution"
+        },
+        {
+          "title": "Transport layer reliability",
+          "description": "Fail-fast schema readiness and rolling-restart-safe session handling on the data-ingestion transport"
+        }
+      ]
+    },
+    {
+      "version": "3.1.0",
+      "title": "Scale Log. Release 3.1.0",
+      "banner": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.1.0.jpg",
+      "intro": "Kilo IoT Server 3.1.0 extends the platform's connectivity model with External MQTT support, completing the connector framework's first expansion since 3.0.0. Programmatic access is now available through an API key system with granular scope control, rotation, and revocation. The subscription tier structure has been restructured and repriced across the full range — from the free evaluation tier to the Max plan. Alarm management receives targeted precision improvements: one-time notification semantics, mandatory escalation recipient validation, and last-trigger visibility for operational triage. kiloiot.io",
+      "slides": [
+        {
+          "title": "MQTT Connector",
+          "description": "External MQTT broker support added to the connectivity framework; connect any MQTT-publishing device or system without a LoRaWAN gateway",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/mqtt-connector-type-selector.jpg"
+        },
+        {
+          "title": "Map Widget",
+          "description": "New dashboard widget that plots a tracker's current position on an interactive map and displays the current value of any selected metric the device transmits; includes live view and historical route playback",
+          "image": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/map-widget-configuration.jpg"
+        },
+        {
+          "title": "API Keys",
+          "description": "Scoped programmatic access with key lifecycle management: create, rotate, and revoke credentials for backend integrations"
+        },
+        {
+          "title": "Subscription Plan Restructure",
+          "description": "Revised tier names, pricing, and limits across all plans with a new Individual tier for custom deployments"
+        },
+        {
+          "title": "Alarm System Precision",
+          "description": "One-time notification mode, mandatory recipient validation in escalation chains, and last-trigger timestamps in the alarm definitions table"
+        }
+      ]
+    },
+    {
+      "version": "3.0.0",
+      "title": "Scale Log. Release 3.0.0",
+      "banner": "https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.0.0.jpg",
+      "intro": "Kilo IoT Server 3.0.0 delivers a ground-up rearchitecture of the platform's core infrastructure. The connectivity layer has been replaced with a modular framework that abstracts protocol handling into pluggable connector types. Device management now operates on a Digital Twin model with inline payload normalization — eliminating the need for manual onboarding of new device types. A BPMN-based automation engine provides enterprise-grade rule authoring with full version control, validated builds, and zero-downtime deployment. Operational alerting supports five severity tiers with multi-step escalation policies delivered across email, SMS, and native mobile push notifications. Dashboard widgets are now fully operator-configurable with per-metric conditional formatting. Multi-tenant access control is enforced through ABAC with complete audit logging. kiloiot.io",
+      "slides": [
+        {
+          "title": "Modular Connectivity Framework",
+          "description": "Pluggable protocol adapters with LoRaWAN and OBD2/CAN vehicle tracker support at launch"
+        },
+        {
+          "title": "Device Lifecycle and Data Normalization",
+          "description": "Digital Twin device model with inline payload mapping and sensor template libraries"
+        },
+        {
+          "title": "Visualization and Monitoring",
+          "description": "Operator-configurable widgets with threshold-driven formatting and a new facility Image Widget"
+        },
+        {
+          "title": "Production Automation Engine",
+          "description": "BPMN workflow designer with CEL expressions, artifact versioning, and managed deployment"
+        },
+        {
+          "title": "Operational Alerting and Escalation",
+          "description": "Severity-based alarm routing with escalation chains and mobile push delivery"
+        },
+        {
+          "title": "Multi-Tenant Governance and Compliance",
+          "description": "Organization isolation with Attribute-Based Access Control and immutable audit logs"
+        }
+      ]
+    }
+  ]
+}
