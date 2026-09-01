@@ -61,15 +61,17 @@ A Start Event uses one source or the other, never both.
 
 **With Start source set to Trigger condition**, the Device and Sensor fields are replaced by a single **Trigger condition** selector. Pick the trigger you built on the [Triggers](triggers.md) tab. This is the path for a condition that must be evaluated before the rule starts, whether that condition is immediate or delayed and whether it watches one device or many. The trigger signal does not contain one sensor-event value, so `vars.value` is unavailable; `vars.device_name` identifies the watched device that met the condition.
 
+The selector does not create a trigger. If the trigger does not exist yet, leave the editor, open **Rules Engine → Triggers**, create it, and then return to this rule. After selecting it, click **Save** at the bottom of the Start Event panel to apply the source to the diagram.
+
 Optionally, you can:
 - **Enable Schedule** — Toggle to restrict the rule to a specific window. Click **Change schedule** to pick the days and the From/To times, and set the **Time Zone** they are measured in. Schedule is not another start source: it limits when the source you already chose may run the rule. With a duration trigger, the trigger decides when its condition becomes active and the schedule decides whether the rule may run at that time.
-- **Add inputs/outputs** — Advanced CEL expressions for data transformation at the trigger level
+- **Add inputs/outputs** — Advanced CEL expressions for data transformation at the Start Event
 
 See [Node Reference](node-reference.md) for full Start Event configuration details.
 
 ### 6. Save your rule
 
-Click the **Save** button in the top-right corner. The rule is saved as a new version (version 1). The autosave indicator shows "Saved" when the save completes.
+After saving the Start Event panel, click the separate **Save** button in the top-right corner of the editor. The rule is saved as a new version (version 1). The autosave indicator shows "Saved" when the save completes.
 
 After saving, the editor switches from creation mode to edit mode. You now have access to the **History** tab, the **Build** button, and the full actions menu.
 

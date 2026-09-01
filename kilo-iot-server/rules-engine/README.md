@@ -10,7 +10,7 @@ That last capability changes what automation means here. A rule no longer just a
 
 ## How it works
 
-Rules are BPMN 2.0 workflows: visual flowcharts where each node performs a specific job. You connect nodes with flows (arrows) to build the logic. The engine executes this logic every time a bound sensor sends new data.
+Rules are BPMN 2.0 workflows: visual flowcharts where each node performs a specific job. You connect nodes with flows (arrows) to build the logic. The engine executes a deployed rule when its Start Event receives the selected source: either a reading from one sensor or an activation from a saved trigger condition.
 
 <figure><img src="../../.gitbook/assets/rules.jpg" alt="A rule on the visual editor canvas — a Start event flowing into a Gateway that branches into two paths ending at End events"><figcaption></figcaption></figure>
 
@@ -20,7 +20,7 @@ Every rule follows a managed lifecycle:
 Create → Edit → Build → Deploy → Running → Stop
 ```
 
-Changes you make in the visual editor stay in draft until you explicitly build and deploy them. The build step validates your rule — checking the diagram structure, verifying all expressions, and confirming that every path is complete. Only after a successful build can you deploy the rule to start processing live sensor data.
+Changes you make in the visual editor stay in draft until you explicitly build and deploy them. The build step validates your rule — checking the diagram structure, verifying all expressions, and confirming that every path is complete. Only after a successful build can you deploy the rule to start processing its selected sensor or trigger source.
 
 ## What you can build
 
@@ -55,6 +55,7 @@ The Rules Engine is designed for environments where unmanaged automation changes
 |---|---|
 | [Rules List and Navigation](rules-list-and-navigation.md) | The main Rules Engine page — tabs, actions, and how to navigate |
 | [Creating Rules](creating-rules.md) | How to create a new rule from scratch |
+| [Triggers](triggers.md) | Saved conditions, timing, device selection, and how to connect a trigger to a rule |
 | [Visual Editor](visual-editor.md) | The BPMN canvas — palette, properties panel, and toolbar |
 | [Debugging Rules](debugging-rules.md) | Step through a rule before deploying it — breakpoints, variables, watches, side effects |
 | [Node Reference](node-reference.md) | Every node type with configuration details and examples |
