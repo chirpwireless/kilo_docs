@@ -1,10 +1,10 @@
 ---
-description: Manage automation rules in Kilo IoT — Rules, Artifacts, Trash tabs for create, clone, delete, deploy.
+description: Manage Kilo IoT rules and triggers across the Rules, Triggers, Artifacts, and Trash tabs.
 ---
 
 # Rules List and Navigation
 
-The Rules Engine page is your central hub for managing all automation rules in your organization. From here you can create, view, edit, clone, delete, and deploy rules.
+The Rules Engine page is your central hub for managing automation rules and their saved trigger conditions. From here you can create triggers; create, view, edit, clone, and delete rules; and deploy built artifacts.
 
 ## Getting there
 
@@ -12,15 +12,16 @@ Click **Rules engine** in the sidebar to open the Rules Engine page. The page li
 
 ## Page layout
 
-The page has a heading, a description, and three tabs:
+The page has a heading, a description, and four tabs:
 
-<figure><img src="../../.gitbook/assets/rules-list.jpg" alt="The Rules Engine page with the Rules, Artifacts and Trash tabs and a rule listed with its actions"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/trigger-empty-state.jpg" alt="The Kilo Rules Engine page showing the Rules, Triggers, Artifacts, and Trash tabs with Triggers selected"><figcaption></figcaption></figure>
 
 - **Rules** — All active rules in your organization
+- **Triggers** — Saved conditions that can start one or more rules
 - **Artifacts** — Build artifacts grouped by rule, with deployment status and controls
 - **Trash** — Rules that have been deleted but can still be restored
 
-Each tab is described in detail below. For artifacts and deployment, see also [Builds, Artifacts, and Deployment](builds-artifacts-and-deployment.md). For trash, see [Trash and Recovery](trash-and-recovery.md).
+Each tab is described below. For complete trigger configuration, see [Triggers](triggers.md). For artifacts and deployment, see [Builds, Artifacts, and Deployment](builds-artifacts-and-deployment.md). For trash, see [Trash and Recovery](trash-and-recovery.md).
 
 ## Rules tab
 
@@ -63,6 +64,12 @@ The button is disabled if your organization has reached its subscription rule li
 If no rules exist yet, the page shows a message: *"No rules yet"* with a description and a **Create Rule** button.
 
 <figure><img src="../../.gitbook/assets/rules-empty-state.jpg" alt="The Rules tab with no rules yet, showing the Create Rule button"><figcaption></figcaption></figure>
+
+## Triggers tab
+
+The Triggers tab lists the saved conditions in your organization. Use **Add trigger** to define what normalized device data to watch, whether the condition must last for a set duration, and which devices it applies to.
+
+Saving a trigger does not create or run a rule. After creating it, return to the **Rules** tab, add or edit a rule, and select the trigger in that rule's **Start Event**. The trigger is a Start Event source, not a node in the palette. See [From a trigger to a running rule](triggers.md#from-a-trigger-to-a-running-rule) for the complete sequence.
 
 ## Artifacts tab
 

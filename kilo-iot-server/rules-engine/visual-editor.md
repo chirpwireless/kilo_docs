@@ -43,7 +43,7 @@ The palette provides tools and draggable elements you can place on the canvas.
 
 | Element | Description |
 |---|---|
-| **Start Event** | Entry point of the rule — bound to a device and sensor |
+| **Start Event** | Entry point of the rule — starts from one device sensor or a saved trigger condition. One is placed automatically on a new rule. |
 | **End Event** | Terminates a flow path |
 | **Exclusive Gateway** | Decision point — routes to one branch based on conditions |
 | **Script Task** | Evaluates a CEL expression to transform or classify data |

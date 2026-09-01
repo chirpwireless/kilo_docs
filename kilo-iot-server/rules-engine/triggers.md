@@ -38,6 +38,21 @@ The trigger and the rule have separate responsibilities:
 
 Saving a trigger therefore does not perform an action by itself. You must connect it to a rule, then build and deploy that rule.
 
+## From a trigger to a running rule
+
+A trigger is a saved **start source**, not a node that you drag onto the rule canvas. Creating the trigger and attaching it to a rule happen in two different tabs:
+
+1. Open **Rules Engine → Triggers**, click **Add trigger**, configure the condition, timing, and devices, and click **Create trigger**.
+2. Return to the **Rules** tab. The **Add Rule** button is available there, not on the Triggers tab.
+3. Click **Add Rule**, or edit an existing rule that should respond to the trigger.
+4. Find the **Start Event** already placed on the canvas. Select it and click the pencil beneath the node to open its properties.
+5. Set **Start source** to **Trigger condition**, then choose the trigger you saved.
+6. Click **Save** at the bottom of the Start Event panel. This applies the selection to the diagram.
+7. Add the alarm, command, enrichment, or other nodes that define the response. Then click **Save** in the rule editor.
+8. Click **Build** and deploy the resulting artifact. Only a deployed rule can respond when the trigger becomes active.
+
+Creating a trigger does not create a rule, add a node to the canvas, or select the trigger automatically. The trigger decides **when and for which device** a rule starts; the nodes after the Start Event decide **what the rule does**.
+
 ## Create a trigger
 
 1. Open **Rules Engine → Triggers**.
@@ -67,13 +82,11 @@ For each normalized key, choose the comparison that Kilo should make:
 
 Use **AND** when every check must be true and **OR** when any check may be true. A second AND/OR control combines different normalized keys. These controls combine readings for one watched device; they do not combine the states of different watched devices.
 
-## Use the trigger in a rule
+## Where triggers can be used
 
-1. Create or open the rule that should respond.
-2. Select its **Start Event** and click the pencil beneath the node.
-3. Set **Start source** to **Trigger condition**.
-4. Choose the saved trigger under **Trigger condition**.
-5. Save, build, and deploy the rule.
+In the current rule editor, the Start Event is the only place where you select a saved trigger. Triggers are not available on gateways, Set Alarm, Execute Command, Enrichment, or other downstream nodes.
+
+One saved trigger can be selected by several rules. When it becomes active, every deployed rule that uses it can run. Each individual rule still has exactly one Start Event and one start source.
 
 <figure><img src="../../.gitbook/assets/rule-start-source.jpg" alt="The Kilo Start Event panel with Trigger condition selected as the start source"><figcaption></figcaption></figure>
 

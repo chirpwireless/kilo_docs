@@ -73,7 +73,7 @@ The rule reappears in the Rules tab. It comes back **unlocked**, regardless of i
 ### What a restored rule looks like
 
 - The rule appears in the Rules tab with its original name, description, and full version history intact.
-- The rule is not deployed. Even if the rule had a running artifact before deletion, you need to build and deploy it again to start processing sensor data.
+- The rule is not deployed. Even if it had a running artifact before deletion, you need to build and deploy it again before it can respond to its selected sensor or trigger source.
 - The rule is unlocked, so any team member with edit permissions can immediately open and work on it.
 
 ### Restore limitations

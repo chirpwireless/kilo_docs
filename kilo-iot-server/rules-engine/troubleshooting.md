@@ -39,6 +39,28 @@ Multiple errors can appear simultaneously. Fix them all before re-attempting the
 
 ## Common issues
 
+### "I created a trigger, but nothing happens"
+
+A saved trigger only monitors its condition. It does not contain an alarm, command, or other response, and it is not attached to a rule automatically.
+
+**What to do:**
+1. Return to the **Rules** tab and create or edit the rule that should respond.
+2. Select the Start Event, click its pencil, and set **Start source** to **Trigger condition**.
+3. Select the saved trigger and click **Save** at the bottom of the Start Event panel.
+4. Add the response nodes, then save the rule from the editor toolbar.
+5. Build the rule and deploy its artifact from the **Artifacts** tab.
+
+See [From a trigger to a running rule](triggers.md#from-a-trigger-to-a-running-rule) for the complete workflow.
+
+### "My trigger is missing from the Start Event"
+
+The **Trigger condition** field appears only after you change the Start Event's **Start source** from **Sensor reading** to **Trigger condition**. It lists saved triggers for the current organization and currently loads only the first page of results.
+
+**What to do:**
+- Confirm that the trigger was created in the same organization as the rule.
+- Confirm that **Trigger condition** is selected as the Start source.
+- If the trigger exists but is beyond the first page, it cannot yet be selected from this field.
+
 ### "The rule is locked and I cannot edit it"
 
 Another team member is currently editing the rule. The lock icon on the rule row shows who holds the lock and when it expires.
@@ -55,7 +77,7 @@ Building and deploying are separate steps. A successful build creates an artifac
 **What to do:**
 1. Go to the **Artifacts** tab on the Rules Engine page.
 2. Find the build you just created.
-3. Click **Deploy** to start the rule processing live sensor data.
+3. Click **Deploy** to start the rule processing its selected sensor or trigger source.
 
 ### "The rule was force-stopped"
 
