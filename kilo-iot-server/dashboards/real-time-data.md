@@ -20,7 +20,7 @@ On the [overview page](../overview.md), the header shows a **"Live Data"** label
 
 On any [dashboard](./), the header shows a **"Live Data"** label with a small icon. Unlike the overview button, **this is a status indicator, not a button** — it has no click action, no tooltip, and no hover effect.
 
-The indicator confirms that the dashboard is receiving real-time data updates. Widget values refresh automatically as new readings arrive from devices. The indicator disappears when you enter edit mode (replaced by the dashboard metadata edit icon).
+The label identifies the dashboard's live-data view; it does not report connection health or prove that a sensor has just sent a reading. Check the widget's last-update time and the device's last-reported time when freshness matters. The label disappears when you enter edit mode (replaced by the dashboard metadata edit icon).
 
 ## How real-time delivery works
 
