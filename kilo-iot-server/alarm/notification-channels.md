@@ -24,7 +24,7 @@ Every email address must be verified before it receives alarm notifications. Unv
 
 ### Removing contacts
 
-Click the remove button next to a contact. A confirmation dialog appears before removal. The primary email contact (the first entry in the list) cannot be removed.
+Click the remove button next to a contact. A confirmation dialog appears before removal. The primary email contact cannot be removed; this restriction follows the contact's primary status, not its position in the list.
 
 Contacts cannot be edited after creation. To update an email address, remove the existing contact and add the new one.
 
