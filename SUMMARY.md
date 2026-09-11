@@ -96,7 +96,7 @@
     * [Set Up IoT Alerts](kilo-iot-server/alarm/iot-alerts-app/getting-started.md)
     * [When Alerts Wake Your Phone](kilo-iot-server/alarm/iot-alerts-app/alert-behavior.md)
     * [Acknowledge and Resolve](kilo-iot-server/alarm/iot-alerts-app/managing-alerts.md)
-* [Rules engine](kilo-iot-server/rules-engine/README.md)
+* [IoT Rules Engine](kilo-iot-server/rules-engine/README.md)
   * [Rules List](kilo-iot-server/rules-engine/rules-list-and-navigation.md)
   * [Creating Rules](kilo-iot-server/rules-engine/creating-rules.md)
   * [Visual Editor](kilo-iot-server/rules-engine/visual-editor.md)

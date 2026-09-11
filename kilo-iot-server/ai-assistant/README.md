@@ -38,7 +38,7 @@ It also stays in its lane in the ways you'd want: it works only within your acce
 
 The assistant is part of the platform, with a monthly allowance of requests that scales with your plan. If you'd rather not be limited by the allowance, you can connect your own model API key and keep working. You'll see your remaining allowance above the chat input, and a prompt to review plans or add a key when you reach it.
 
-The capabilities above are live today and improving continuously: the assistant runs on an enterprise-grade agent runtime built in-house, and its accuracy grows as the agents are trained on more real-world IoT work — so it keeps taking on more. We were confident enough in that runtime to open-source it as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew), where you can see how it is engineered or build on it yourself.
+The assistant runs on [SyntheticBrew](https://syntheticbrew.ai/), our own AI agent runtime. It connects the conversation to platform tools, carries the user's access context, and supports pausing a task for confirmation before it continues. Kilo supplies the device models, commands and automation lifecycle around those tools. Together, these layers let you work with physical equipment through the assistant while reviewing consequential actions. See [Physical AI Platform for AI Agents](../physical-ai.md) for the control and verification workflow.
 
 ## Where to go next
 
