@@ -28,6 +28,27 @@ Kilo supports a production lifecycle around real-world action:
 
 The [Rules Engine](rules-engine/README.md) provides debugging, simulation, controlled builds, deployment, version history, and restore. [Device Commands](devices/commands/README.md) provide named actions with typed parameters, dispatch status, and optional verification.
 
+## Test and release physical AI automation
+
+A useful physical AI integration needs a repeatable way to test decisions, approve direct commands and recover from a rule change. Kilo brings those steps into the same device and automation workflow:
+
+| What you need to do | How to do it in Kilo | What to inspect |
+|---|---|---|
+| Review an AI-requested device action | Ask the built-in assistant to list the device's configured commands, then request the selected command. Review its parameters before confirming. | The command definition and the subsequent execution status. See [Run a device command](ai-assistant/building-with-ai.md#run-a-device-command). |
+| Test a rule without sending its side effects | Open the rule debugger and choose **Skip** or **Mock** when a side-effect node is reached. | The chosen branch, variables and response. See [Debugging Rules](rules-engine/debugging-rules.md). |
+| Release tested logic | Build the rule, review the resulting artifact, and deploy it deliberately. | The artifact selected for live execution. See [Building and Deploying](rules-engine/builds-artifacts-and-deployment.md). |
+| Recover an earlier rule design | In the rule's **History** tab, view an available saved version and choose **Restore this version**. Confirm the restore, then build and deploy when ready. | The new restored draft and its preserved version history. See [Version History and Restore](rules-engine/version-history-and-restore.md). |
+
+Debugging gives you control over side effects; it does not make them simulated automatically. **Execute** runs the real handler. Select **Skip** or **Mock** when testing the logic without dispatch, and remember that the debugger reuses your choice for that node during the session.
+
+Restoration changes the editable rule, not the physical world. A restored version becomes a new draft; the previously deployed logic continues until another build is deployed. Restoring a rule does not reverse a command that equipment has already carried out.
+
+## Confirm AI commands and verify the result
+
+For direct device control through the built-in assistant, start with a read-only request such as “What commands are configured on this device?” Choose the actual command and parameters returned for that device. Review the confirmation before approving dispatch, then inspect the execution status.
+
+An accepted command is not proof that equipment reached the requested state. Check the recorded delivery outcome and device confirmation or subsequent telemetry where available. For an external MCP client, configure its approval policy for consequential tools; the command tool is marked destructive, but the client controls its approval experience. Autonomous rules execute the actions you deliberately build and deploy, rather than requesting chat confirmation on every run.
+
 ## Physical AI infrastructure for model providers
 
 Kilo offers a way to add physical-world capabilities without rebuilding an IoT control plane. One integration can reach sensors, machines, actuators, buildings, fleets, and other connected assets across different manufacturers and protocols.
@@ -42,7 +63,7 @@ Kilo is model-agnostic. Teams can use OpenAI, Anthropic, a compatible model endp
 
 The [Kilo MCP Server](api/mcp-server.md) lets a compatible AI client sign in with a Kilo account and discover the tools available to that user. The connection is scoped to the selected organization and inherits the user's permissions.
 
-That toolset now includes device control. A connected client can list the commands configured on a device, execute one, and check whether it was delivered — `device_command_list`, `device_command_execute`, `device_command_status` — so an external model can complete the **Act** and **Verify** steps above without leaving the conversation. Execution runs behind a confirmation, uses command definitions that already exist on the device, and lands in command execution history like any other dispatch.
+That toolset now includes device control. A connected client can list the commands configured on a device, execute one, and check whether it was delivered — `device_command_list`, `device_command_execute`, `device_command_status` — so an external model can complete the **Act** and **Verify** steps above without leaving the conversation. The execution tool is marked destructive, uses command definitions that already exist on the device, and lands in command execution history like any other dispatch. Configure the external client to request approval before calling consequential tools.
 
 <figure><img src="../.gitbook/assets/ai-chat-device-commands.jpg" alt="The Kilo AI assistant explaining that it can list, execute and check the status of device commands"><figcaption></figcaption></figure>
 
