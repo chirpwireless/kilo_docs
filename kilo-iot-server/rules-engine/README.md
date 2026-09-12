@@ -2,7 +2,7 @@
 description: Visual BPMN rules engine — turn sensor data into alarms, actions, and enrichment with safe build and rollback.
 ---
 
-# Rules Engine
+# IoT Rules Engine
 
 The Rules Engine is a visual automation system based on BPMN (Business Process Model and Notation) for monitoring IoT devices in real time. When sensor data meets conditions you define, the engine acts automatically — raising alarms, enriching data from other sensors before making a decision, and **sending commands straight back to your devices**.
 
@@ -37,13 +37,15 @@ All conditions and computations use [CEL](https://cel.dev) (Common Expression La
 
 That balance is deliberate. Most day-to-day rules are assembled by dragging nodes onto the canvas and filling in forms. CEL appears in focused places where the rule needs exact logic: gateway conditions, Script Tasks, dynamic alarm messages, enrichment lookups, and input/output mappings. Through CEL, the rule logic can become very sophisticated — nested conditions, computed severity classifications, multi-sensor delta calculations, and dynamic decision paths that go far beyond simple threshold alerts. You are not forced into arbitrary scripts, but you are also not limited to basic "if value > X" conditions.
 
-## Safety and control
+## IoT automation testing and version control
+
+For [physical AI](../physical-ai.md), the Rules Engine supplies the execution lifecycle around device actions: edit and test the logic, build a release, inspect the running artifact, and restore an available earlier version when a change needs correcting. A restored version is a draft until rebuilt and deployed; it does not undo past physical actions.
 
 The Rules Engine is designed for environments where unmanaged automation changes are not acceptable:
 
 - **Edit locks** — Only one person can edit a rule at a time. Others see who holds the lock and when it expires. Organization owners can force-unlock if needed.
 - **Autosave** — Your work is saved automatically while you edit, with visible status feedback ("Saving...", "Saved", "Autosave Failed").
-- **Version history** — Every save creates a version. Versions can be renamed, viewed, and restored. If a change causes unexpected behavior, you can revert to any previous version.
+- **Version history** — Every save creates a version. Versions can be renamed, viewed, and restored. If a change causes unexpected behavior, restore an available previous version as a new draft while preserving history.
 - **Build before deploy** — The build step catches structural errors, invalid expressions, and missing connections before your rule reaches production.
 - **Artifacts** — Each build produces a named artifact with timestamps, author, and optional comments. The Artifacts tab shows exactly what's deployed across all your rules.
 - **Trash and recovery** — Deleting a rule moves it to trash, not permanent deletion. You can restore rules from trash.
