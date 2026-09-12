@@ -82,15 +82,19 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 | Area | What the connected client can do |
 |---|---|
 | **Devices** | List devices in the organization, provision LoRaWAN devices and trackers, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
-| **Commands** | List the commands configured on a device, execute one behind a confirmation, and check whether it was delivered. `device_command_list`, `device_command_execute`, `device_command_status` |
+| **Commands** | List the commands configured on a device, request execution under the client's approval policy, and inspect the recorded lifecycle state. `device_command_list`, `device_command_execute`, `device_command_status` |
 | **Emulator** | Browse device presets, provision an [emulated device](../devices/emulated-devices.md), read and update its configuration and interval, send a one-off reading, and swap a device between the emulator and a real connector. `emulator_preset_list`, `emulator_preset_get`, `device_provision_emulator`, `emulator_config_get`, `emulator_config_update`, `emulator_send_once`, `device_connection_swap` |
 | **Connectors** | Review the connectors defined in the organization and create a connection for a device to report through. `connector_list`, `connection_create` |
-| **Rules** | Review rules, prepare and deploy automation behind confirmation, simulate logic before it reaches production, and inspect execution history. `rule_list`, `rule_provision`, `rule_simulate`, `rule_execution_history` |
+| **Rules** | Review rules, prepare and deploy automation under the client's approval policy, simulate logic before deployment, and inspect execution history. `rule_list`, `rule_provision`, `rule_simulate`, `rule_execution_history` |
 | **Alarms** | List alarms and summarize alarm activity for a shift or a site. `alarm_list`, `alarm_stats` |
 | **Dashboards** | List dashboards and query the data behind a widget, so the client can reason about the same numbers your operators watch. `dashboard_list`, `widget_data_query` |
 | **Organization** | Read organization details, list teams, invite users, and assign roles. `org_get`, `team_list`, `user_invite`, `user_role_assign` |
 
 ## Security and permissions
+
+Configure the external client to request approval before consequential tool calls. The MCP server marks device-command execution as destructive; tool annotations describe the operation to the client, but do not enforce a confirmation dialog in every third-party application. The built-in Kilo assistant has its own confirmation workflow. Authentication, organization scope and command authorization remain platform controls.
+
+Command execution is asynchronous. An accepted request is not proof that equipment changed state. Read the command history, then inspect supported device confirmation or subsequent telemetry.
 
 - **You sign in, not a service account.** Authorization happens in your browser against your normal Kilo account. No key is generated, copied, or stored for the connection.
 - **Your permissions are the ceiling.** The connection carries your own access. The client can only do what your account is allowed to do — if you cannot deploy a rule or invite a user, neither can it.
