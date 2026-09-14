@@ -200,3 +200,7 @@
 * [Official Links](faq/official-links.md)
 * [Help and FAQ](faq/help-and-faq.md)
 * [Changelog](faq/changelog.md)
+
+## Trust and security
+
+* [Report a vulnerability](trust-security-compliance/incident-response-and-vulnerability-reporting.md)
