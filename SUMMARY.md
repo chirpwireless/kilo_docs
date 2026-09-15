@@ -210,3 +210,4 @@
 ## Trust and security
 
 * [Report a vulnerability](trust-security-compliance/incident-response-and-vulnerability-reporting.md)
+* [Customer security guide](trust-security-compliance/customer-security-guide.md)
