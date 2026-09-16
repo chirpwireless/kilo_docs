@@ -58,7 +58,7 @@ The building controller participates in the trigger but does not receive a door-
 **How this trigger will run** is the final composition check:
 
 - **Evaluated device** identifies each independently watched device.
-- **Check** shows the condition evaluated for that device.
+- **Check** numbers the independent evaluations.
 - **Uses** identifies any device supplying a shared reading.
 
 Do not save until every expected watched device has a row and every shared input points to the intended provider.

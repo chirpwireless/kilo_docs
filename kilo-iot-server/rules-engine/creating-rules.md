@@ -6,6 +6,8 @@ description: Create a new automation rule from scratch in the Kilo IoT Rules Eng
 
 This page walks through creating a new automation rule from scratch — from naming it to saving your first version.
 
+If your task is to **create a trigger**, open **Rules Engine → Triggers → Add trigger** instead. A trigger can be saved before a rule exists. This page creates the response workflow; [Triggers](triggers.md) explains how to create the monitoring condition and connect the two.
+
 ## Prerequisites
 
 - You have edit permissions for the Rules Engine in your organization
