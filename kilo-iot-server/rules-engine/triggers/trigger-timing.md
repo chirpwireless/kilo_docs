@@ -1,96 +1,87 @@
 ---
-description: Choose immediate or sustained trigger timing and control when a Kilo condition clears or starts a scheduled rule.
+description: Set immediate or delayed trigger conditions, understand interrupted waits and clearing, and combine Kilo triggers with rule schedules.
 ---
 
 # Trigger Timing
 
-Trigger timing answers one question: **how long must the condition be true before Kilo starts the connected rule?** It does not determine which devices are watched; device selection is configured separately in the same trigger.
+A trigger watches device readings for a condition. Its timing determines whether that condition needs a response immediately or must last for a while first. For example, a cold-room door may open briefly during loading; a ten-minute wait lets you respond when it is left open instead.
+
+When the condition qualifies, the trigger becomes **active** for that device and can start a connected rule. When it returns to normal, the trigger **clears**. Device selection is separate from timing, and each watched device keeps its own state and wait. See [Triggers](../triggers.md) to create one and connect its response.
 
 ## Choose a timing mode
 
-Under **When should it start?**, choose:
+Open the trigger and find **When should it start?**:
 
-- **Immediately** — activate the trigger as soon as its condition becomes true.
-- **Only if it lasts** — start a countdown when the condition becomes true and activate the trigger after it has remained true for the specified duration.
+- **Immediately** activates the trigger when the reported data satisfies the condition, with no configured waiting period.
+- **Only if it lasts** requires the condition to qualify for the duration you enter. A reported false condition breaks that qualifying period; it is not enough for the condition to be true only at the end.
 
-Use **Immediately** for urgent conditions such as a water leak. Use **Only if it lasts** when short changes are expected, such as a cold-store door opening during loading.
+For a delayed condition, enter a whole number and select **seconds**, **minutes**, **hours**, or **days**. The supported range is **10 seconds to 30 days**. The initial duration is **10 minutes**.
 
-<figure><img src="../../../.gitbook/assets/trigger-time-window.jpg" alt="A Kilo trigger set to Only if it lasts for 10 minutes"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/trigger-time-window.jpg" alt="Kilo temperature trigger with Only if it lasts set to ten minutes"><figcaption>Choose whether the condition should act immediately or qualify for a duration.</figcaption></figure>
 
-## Configure Only if it lasts
+## What happens if the condition changes during the wait?
 
-1. Select **Only if it lasts**.
-2. Enter a whole-number duration.
-3. Select **seconds**, **minutes**, **hours**, or **days**.
+Consider a trigger for a temperature above a chosen limit, with a ten-minute duration. This illustrative timeline uses the times of the reported readings:
 
-The minimum is 10 seconds, the maximum is 30 days, and a new duration trigger begins at 10 minutes.
+| Time | Reading | Result |
+|---|---|---|
+| 10:00 | Above the limit | A qualifying period begins. |
+| 10:04 | At or below the limit | That period is interrupted. |
+| 10:07 | Above the limit again | A new qualifying period begins. |
+| 10:10 | Still above the limit | The original deadline does not qualify: only three minutes have passed since 10:07. |
+| 10:17 | No reported false condition since 10:07 | The new ten-minute period can qualify and signal the rule. |
 
-Set the duration with the reporting interval in mind. A gap with no new sensor report does not reset a running countdown. If a sensor reports every 15 minutes, a 10-minute duration may still rely on its last known reading rather than a second confirming report.
+A threshold crossing followed by a recovery report before the duration finishes does not qualify. If the condition becomes true again, the required duration runs from that later return to true.
 
-## Understand clearing
+## Missing reports do not cancel the wait
 
-By default, the trigger clears when a new evaluation no longer satisfies the starting condition. Clearing returns that watched device to its normal state so a later occurrence can activate the trigger again.
+Kilo evaluates the data it receives. A gap without a new report does not reset a qualifying period or prove that the condition returned to normal. If a sensor reports every 15 minutes, a ten-minute wait may qualify using its last known value before another report arrives.
 
-Turn on **Clear by a separate condition** when recovery needs different logic. The clear condition has its own comparisons and can be:
+Choose the duration with the reporting interval in mind. Door and motion examples require the sensor to report both states: open and closed, or motion and no motion. A sensor that reports only a motion pulse cannot establish that movement stopped simply by going quiet. Unknown or unreadable data is not the same as a reported false condition.
 
-- immediate; or
-- delayed with **Only if it lasts**.
+## When the condition returns to normal
 
-For example, start an overheating trigger after a temperature remains above 80°C for five minutes, but clear it only after the temperature remains below 70°C for 15 minutes. The separate threshold and delay prevent a single borderline reading from ending the incident.
+By default, a trigger clears when a new evaluation shows that its starting condition is false. For a simple `temperature > 8` condition, a reading of `8` or lower clears it. Clearing applies to that watched device, allowing a later occurrence to activate again.
 
-Each watched device has its own start and clear state. One device clearing does not reset another device's countdown.
+To use different recovery logic:
+
+1. Open **Clear behavior** and turn on **Clear by a separate condition**.
+2. Add the recovery reading and comparison.
+3. Choose **Immediately** for clearing without an added wait, or **Only if it lasts** and enter a recovery duration.
+4. Check the devices and run preview, then save the trigger. Keys used only for clearing also need input readings.
+
+For example, an equipment trigger could activate after a temperature exceeds **80°C for five minutes**, then clear only after it stays **below 70°C for 15 minutes**. These are illustrative limits. A reading of 75°C after activation does not clear it: the separate recovery condition has not been met. A recovery reading followed by a reported false recovery condition interrupts the recovery wait too.
+
+Clearing can request resolution of associated trigger alarms through connected rules that are still running. If a rule was stopped first, inspect **Alarm → Inbox** for incidents requiring manual resolution. Clearing does not run a reverse device command.
 
 ## Can an active trigger run a rule again?
 
-Yes. After activation, further readings that continue to support the condition can send another signal for the same active occurrence. A trigger is not a guarantee of exactly one workflow execution until it clears. The rule's execution-rate limit and schedule still apply.
+Yes. Further readings can signal the same active occurrence again. Connected rules may run again, subject to execution-rate limits and their schedules. A device command in the rule may therefore be sent more than once.
 
-Consider this when a workflow sends device commands: another allowed execution can send the command again. Alarm notification timing is configured separately in the alarm definition. Clearing a trigger condition requests resolution of its associated alarms; it does not run a reverse device command.
+This is separate from alarm notification intervals, which belong to the alarm definition. Trigger duration controls how long a condition must qualify; it is not an interval between rule executions or notifications.
 
-With **Only if it lasts**, a contradictory reading within the duration prevents that period from qualifying. A quiet sensor alone does not prove that the physical condition continued; the evaluation depends on reported data.
+For expressions, `vars.timestamp` retains the original activation time on repeated signals for the same occurrence. Use rule execution history to see when a particular run happened.
 
 ## Combine timing with a rule schedule
 
-Trigger duration and the Start Event's **Enable Schedule** setting solve different problems:
+The trigger monitors the condition. The Start Event's **Enable Schedule** limits when the connected rule may respond.
 
-- Trigger timing decides when the condition becomes active.
-- The rule schedule decides whether the rule may run at that time.
+1. Open the rule's Start Event properties.
+2. Turn on **Enable Schedule**.
+3. Use **Change schedule** to set the days and **From**/**To** hours, and select the **Time Zone**.
+4. Save the rule and build and deploy the updated version. See [Node Reference](../node-reference.md) for the schedule fields.
 
-The trigger continues monitoring outside the rule's schedule. When the trigger signals the rule, the rule checks its schedule and records an out-of-window attempt as skipped.
+Monitoring and waits continue outside those hours. The rule checks its schedule when it processes a trigger signal; an out-of-window attempt is skipped and recorded in its history. The configured duration is not an exact wall-clock guarantee of when a response will finish.
 
-For a rule scheduled from 22:00 to 06:00 with a 10-minute trigger:
+For a 22:00–06:00 rule, a condition beginning at 21:55 and qualifying at 22:05 can lead to an allowed run. A signal processed at 06:05 is outside the window. Merely reaching 22:00 does not start the rule: a later signal is needed, which may come from another qualifying reading while the trigger remains active.
 
-- a condition beginning at 21:55 and completing at 22:05 may run the rule;
-- a condition completing at 06:05 is outside the schedule and is skipped.
+## Practical examples
 
-## Operational examples
-
-### Apartment-complex garage theft
-
-An apartment operator needs to detect sustained activity in a garage where thieves have previously removed wheels from parked vehicles. Residents also enter the garage at night, so an alarm on every motion event would create frequent false alarms.
-
-Configure the trigger and rule together:
-
-- Trigger condition: the garage motion metric indicates movement.
-- Trigger timing: **Only if it lasts — 10 minutes**.
-- Rule schedule: **22:00–06:00** in the building's local time zone.
-- Rule action: raise an alarm for the overnight response team.
-
-A resident walking to a car and leaving after a few minutes does not complete the trigger duration. Movement that remains present for 10 minutes during the scheduled night hours starts the rule and raises the alarm. The duration reduces short-lived false alarms; the schedule prevents the same rule from treating normal daytime garage activity as an overnight incident.
-
-### Freezer door left open overnight
-
-For a supermarket or residential complex with shared cold storage, use `door_open = true`, **Only if it lasts — 10 minutes**, and the site's overnight schedule. A brief stock check is ignored. If the door stays open, the rule can raise a high-priority alarm before the temperature climbs far enough to damage stock.
-
-### Loading-bay activity after closing
-
-Set a loading-bay motion condition to last five minutes and restrict the rule to non-operating hours. A cleaner or employee passing through does not complete the duration, while sustained activity after closing starts the security response.
-
-### Equipment condition without a schedule
-
-Not every duration trigger needs a schedule. A vibration reading above the operating limit for two minutes can stop a machine or raise an alarm at any hour. Here the duration filters a brief spike, while the rule remains enabled around the clock.
+- **Cold-room door:** watch the mapped open state for ten minutes, then raise an alarm for the site team. A brief opening is filtered when the closed report arrives before the period qualifies.
+- **Loading-bay movement:** use a sustained-motion condition with an after-hours rule schedule. Verify that the sensor reports no motion as well as motion. The result indicates reported movement, not who caused it or whether a crime occurred.
+- **Equipment temperature:** leave the rule schedule off when the response is needed at any hour. Configure the response and supported commands for the equipment; duration alone does not guarantee safe operation or prevent damage.
 
 ## See also
 
-- [Triggers](../triggers.md) — create and connect a trigger
-- [One Trigger for Multiple Devices](multiple-devices.md) — independent device states and shared readings
-- [Node Reference](../node-reference.md) — Start Event schedule fields
+- [Triggers](../triggers.md) — conditions, creation, connection, and troubleshooting
+- [One Trigger for Multiple Devices](multiple-devices.md) — individual device states and shared readings
