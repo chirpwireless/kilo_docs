@@ -1,10 +1,10 @@
 ---
-description: Define a saved condition that starts a Kilo rule immediately or after a delay for one or many devices.
+description: Create a Kilo trigger separately from a rule, choose its conditions and devices, and connect it to a deployed workflow.
 ---
 
 # Triggers
 
-A **trigger** is a saved condition that can start a rule. It tells Kilo what device data to watch, what comparison must become true, and which selected device caused the condition to be met.
+A **trigger** is a separately saved monitoring condition in **Rules Engine → Triggers**. A **rule** is the workflow in **Rules Engine → Rules** that performs the response. You can create and save a trigger before any rule exists. To create a trigger, open the **Triggers** tab, click **Add trigger**, configure it, and click **Create trigger**. Connecting it to a rule is a separate step.
 
 A trigger is not only a timer and it is not a reusable device group. Timing and device selection are two independent parts of the same trigger:
 
@@ -12,6 +12,18 @@ A trigger is not only a timer and it is not a reusable device group. Timing and 
 - **Devices** decide whether the condition is evaluated for one device or separately for several devices.
 
 For example, one trigger can watch the `door_open` metric on 50 cold-store doors. It can start one shared rule as soon as any door opens, or only after that particular door has remained open for 20 minutes. Each door keeps its own state and countdown.
+
+## What is the difference between a trigger and a rule?
+
+| Product object | Responsibility | Where you configure it |
+|---|---|---|
+| **Trigger** | Watches selected device metrics, tests a condition, and manages activation and clearing for each watched device. | **Rules Engine → Triggers → Add trigger** |
+| **Rule** | Runs a visual workflow: calculations, branches, alarms, enrichment, or device commands. | **Rules Engine → Rules → Add Rule** |
+| **Start Event** | Chooses what starts one rule: **Sensor reading** or a saved **Trigger condition**. | The rule's canvas and Start Event properties |
+
+Choosing a device and sensor in a Start Event creates a sensor-started rule; it does **not** create a saved trigger. An alarm definition is another object: it configures alarm handling and notification delivery, not the trigger's monitoring condition.
+
+One trigger can be used by several rules. Each rule selects one start source. A rule using **Sensor reading** needs no saved trigger.
 
 ## When to use a trigger
 
@@ -33,7 +45,7 @@ The trigger and the rule have separate responsibilities:
 
 1. The trigger monitors normalized metrics and evaluates its condition.
 2. Its timing and clear behavior determine when the condition becomes active and returns to normal.
-3. When the trigger becomes active, it identifies the watched device and signals every deployed rule that uses that trigger.
+3. When the trigger becomes active, it identifies the watched device and signals the deployed, running rules that use that trigger. Their schedules and execution-rate limits still apply.
 4. The rule performs the operational response, such as raising an alarm, enriching data, or sending a command.
 
 Saving a trigger therefore does not perform an action by itself. You must connect it to a rule, then build and deploy that rule.
@@ -53,6 +65,15 @@ A trigger is a saved **start source**, not a node that you drag onto the rule ca
 
 Creating a trigger does not create a rule, add a node to the canvas, or select the trigger automatically. The trigger decides **when and for which device** a rule starts; the nodes after the Start Event decide **what the rule does**.
 
+## Before creating a trigger
+
+- Select the organization that owns the devices and will own the trigger and its rules.
+- You need Rules Engine write access to create or edit a trigger.
+- Map the required device readings to normalized keys. These common metric names let the trigger apply the same comparison to different devices.
+- Have at least one eligible device. If several sensors supply the same key, select which sensor to use.
+
+A rule and an alarm definition are not prerequisites for saving a trigger. Create an alarm definition when the eventual rule needs a **Set Alarm** action.
+
 ## Create a trigger
 
 1. Open **Rules Engine → Triggers**.
@@ -63,7 +84,9 @@ Creating a trigger does not create a rule, add a node to the canvas, or select t
 6. Under **When should it start?**, choose **Immediately** or **Only if it lasts**.
 7. Configure **Clear behavior** if returning to normal needs its own condition or delay.
 8. Under **Devices**, select the device or devices whose data the trigger will use.
-9. Review **How this trigger will run**, then click **Create trigger**.
+9. Review **How this trigger will run**: each **Evaluated device** row is watched independently, and **Uses** identifies shared readings. Resolve any missing or ambiguous input, then click **Create trigger**.
+
+The form closes and returns you to the **Triggers** list. The trigger has been saved independently; no rule or workflow has been created. It can monitor its condition, but an alarm or device action requires a connected, deployed rule. Follow [From a trigger to a running rule](#from-a-trigger-to-a-running-rule) when you are ready to add that response.
 
 <figure><img src="../../.gitbook/assets/trigger-time-window.jpg" alt="The Kilo Create trigger dialog showing a condition and its timing choice"><figcaption></figcaption></figure>
 
@@ -80,7 +103,7 @@ For each normalized key, choose the comparison that Kilo should make:
 - **Add check on ‹metric›** adds another comparison for the same metric.
 - **Add normalized key** includes another metric in the condition.
 
-Use **AND** when every check must be true and **OR** when any check may be true. A second AND/OR control combines different normalized keys. These controls combine readings for one watched device; they do not combine the states of different watched devices.
+Use **AND** when every check must be true and **OR** when any check may be true. A second AND/OR control combines different normalized keys. These controls combine the inputs for each watched device, including any configured shared reading. They do not make all watched devices satisfy the condition together. See [One Trigger for Multiple Devices](triggers/multiple-devices.md#use-one-shared-reading).
 
 ## Where triggers can be used
 
@@ -119,9 +142,9 @@ The device name is not inserted automatically.
 
 ## Edit or delete a trigger
 
-Editing a condition can restart active countdowns. Kilo displays a warning before saving a change that resets trigger state.
+Open **Rules Engine → Triggers** and click **Edit** on the trigger. Change its settings and click **Save changes**. If the change resets trigger state, review the countdown warning before confirming **Save**. The affected devices must satisfy the new condition and duration again. Editing a shared trigger affects every rule that uses it; the trigger itself has no Build or Deploy step.
 
-Deleting a trigger cannot be undone. It stops future monitoring and prevents connected rules from starting from it. Review the rules that use the trigger and any outstanding alarms before deleting it.
+To delete it, use the trash icon on its row and confirm **Delete**. Deleting a trigger stops monitoring, requests clearing of alarms associated with its active trigger conditions, and prevents connected rules from starting from it. It does not delete those rules or reverse physical commands they already sent. Trigger deletion cannot be undone through the Rules **Trash** tab. Review dependent rules and active alarms before confirming. Automatic alarm clearing is routed through connected rules that are still running. If you stopped the rule first, check **Alarm → Inbox** and resolve any remaining incident after confirming the situation.
 
 ## Troubleshooting
 

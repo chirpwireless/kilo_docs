@@ -40,6 +40,14 @@ For example, start an overheating trigger after a temperature remains above 80°
 
 Each watched device has its own start and clear state. One device clearing does not reset another device's countdown.
 
+## Can an active trigger run a rule again?
+
+Yes. After activation, further readings that continue to support the condition can send another signal for the same active occurrence. A trigger is not a guarantee of exactly one workflow execution until it clears. The rule's execution-rate limit and schedule still apply.
+
+Consider this when a workflow sends device commands: another allowed execution can send the command again. Alarm notification timing is configured separately in the alarm definition. Clearing a trigger condition requests resolution of its associated alarms; it does not run a reverse device command.
+
+With **Only if it lasts**, a contradictory reading within the duration prevents that period from qualifying. A quiet sensor alone does not prove that the physical condition continued; the evaluation depends on reported data.
+
 ## Combine timing with a rule schedule
 
 Trigger duration and the Start Event's **Enable Schedule** setting solve different problems:

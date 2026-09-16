@@ -8,6 +8,8 @@ The Rules Engine is a visual automation system based on BPMN (Business Process M
 
 That last capability changes what automation means here. A rule no longer just alerts a person to go act — it can take the action itself, the instant a condition is met. A leak sensor used to trigger an alarm and a scramble to the shutoff valve; now the same rule closes the valve automatically and raises the alarm in the same evaluation. Sense, decide, act — end to end, with no one in the loop. See [Running Device Commands](running-device-commands.md).
 
+**Triggers and rules are separate objects.** Create a monitoring condition under **Rules Engine → Triggers**; create its response workflow under **Rules**. A rule can also start directly from one sensor without a saved trigger. See [Triggers](triggers.md#what-is-the-difference-between-a-trigger-and-a-rule) for the distinction and creation steps.
+
 ## How it works
 
 Rules are BPMN 2.0 workflows: visual flowcharts where each node performs a specific job. You connect nodes with flows (arrows) to build the logic. The engine executes a deployed rule when its Start Event receives the selected source: either a reading from one sensor or an activation from a saved trigger condition.

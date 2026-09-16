@@ -6,6 +6,10 @@ description: Hand setup work to the Kilo IoT AI Assistant — onboard devices, d
 
 The assistant can configure Kilo for you, not just answer questions. Describe the outcome you need in plain language and it can onboard devices, build rules, configure alarms, and run existing device commands within your permissions. This page explains what it can change and what you need to provide.
 
+## Creating a saved trigger
+
+A saved **trigger** is separate from the rule workflow the assistant builds. It stores a monitoring condition, timing, and selected devices. The assistant can explain the setup, but creating or editing the saved trigger currently happens in **Rules Engine → Triggers → Add trigger**. Then select it in a rule's **Start Event → Start source → Trigger condition**, save the rule, build it, and deploy it. See [Triggers](../rules-engine/triggers.md) for the complete steps.
+
 ## How acting works
 
 When you ask the assistant to set something up, it doesn't hand you a checklist to follow. It carries out the task using the platform's real operations, on your behalf and within your permissions, then reads the result back to confirm it worked. Two principles govern every action:
@@ -44,10 +48,10 @@ The result is a registered endpoint. When you select a blueprint, its readings u
 
 This is the assistant's most powerful capability. Describe the behavior you want in plain language, and it **authors the complete rule — including the [CEL](../rules-engine/cel-reference.md) expressions — builds it, tests it, and deploys it.**
 
-> *"Alert the on-call engineer if any freezer in Cold Storage A stays above −18 °C for more than ten minutes."*
-> The assistant designs the rule's logic, writes the condition as a CEL expression, simulates it against both a matching and a non-matching value to prove it fires correctly, and then deploys it — showing you each step.
+> *"Alert the on-call engineer when the temperature sensor on Freezer A reports above −18 °C."*
+> The assistant writes the threshold condition as a CEL expression and provisions the sensor-started rule. After deployment, it can simulate matching and non-matching readings to check the workflow, with side effects captured by the simulation.
 
-Because it simulates before claiming success, you're not trusting a black box: you see the rule trigger on the case that should match and stay quiet on the case that shouldn't. From there you can refine it conversationally ("make it fifteen minutes", "also notify the facility manager") and the assistant updates and redeploys.
+Because it simulates before claiming success, you're not trusting a black box: you see the rule run on the case that should match and stay quiet on the case that shouldn't. From there you can refine it conversationally ("change the temperature threshold to −16 degrees", "also notify the facility manager") and the assistant updates and redeploys.
 
 To learn the rules engine itself, see [Rules Engine](../rules-engine/). The assistant is a fast way to produce a correct first draft — or a finished rule — without hand-building the canvas.
 
