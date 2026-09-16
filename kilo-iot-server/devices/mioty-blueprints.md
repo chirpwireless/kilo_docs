@@ -4,9 +4,11 @@ description: Decode MIOTY payloads in Kilo IoT with blueprints — System vs Cus
 
 # MIOTY Blueprints
 
-A blueprint is the decoder specification for a MIOTY endpoint: a JSON document, bound to a `typeEui`, that tells the Kilo IoT Server how to turn a raw payload into named fields. Telemetry from a MIOTY device is not decoded until a blueprint is selected for it — so binding a blueprint is what turns a registered endpoint into a device that produces usable data.
+A MIOTY blueprint is a decoding specification: it tells Kilo IoT Server how to turn a device's raw message bytes into named fields, such as temperature or battery level. The communicating sensor or meter is called an **endpoint**. Selecting the correct blueprint makes its incoming data understandable to the platform.
 
-Blueprints are organized as a catalog: **Manufacturer → Device Model → Blueprint**. A manufacturer holds its models; a model holds its blueprint versions. Blueprint Configuration on the device form is where you either pick from that catalog or author a new entry.
+A blueprint is stored as JSON, a structured text format, and is associated with a device-type identifier called `typeEui`. Choose the blueprint that matches the endpoint's model and payload format; registering a device alone does not decode its telemetry.
+
+The catalog is arranged as **Manufacturer → Device Model → Blueprint**. Use **Blueprint Configuration** on the [MIOTY device form](mioty-devices.md) to select an existing entry or define a custom one.
 
 ## The idea that matters most: per-device snapshots
 

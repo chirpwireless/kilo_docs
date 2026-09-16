@@ -4,15 +4,15 @@ description: Visual BPMN rules engine — turn sensor data into alarms, actions,
 
 # IoT Rules Engine
 
-The Rules Engine is a visual automation system based on BPMN (Business Process Model and Notation) for monitoring IoT devices in real time. When sensor data meets conditions you define, the engine acts automatically — raising alarms, enriching data from other sensors before making a decision, and **sending commands straight back to your devices**.
+A **rule** in Kilo IoT Server is a saved workflow that responds to device data: it can check values, fetch another reading, raise an alarm, or send a configured device command. The Rules Engine lets you draw those steps and the arrows connecting them, so you can see what will happen and in what order.
 
-That last capability changes what automation means here. A rule no longer just alerts a person to go act — it can take the action itself, the instant a condition is met. A leak sensor used to trigger an alarm and a scramble to the shutoff valve; now the same rule closes the valve automatically and raises the alarm in the same evaluation. Sense, decide, act — end to end, with no one in the loop. See [Running Device Commands](running-device-commands.md).
+Use a rule when a response should run automatically, such as notifying a facilities team when a cold-room reading exceeds a limit. Device actions require compatible equipment and a [saved command](../devices/commands/README.md); dispatching a command is separate from checking the device's resulting state.
 
-**A trigger watches device readings for a condition**, such as a cold room staying too warm for ten minutes. A **rule** defines the response, such as raising an alarm for the site team. Save them separately in the **Triggers** and **Rules** tabs under **Rules Engine**, then connect the trigger to the rule. A rule can also start directly from one sensor without a saved trigger. See [Triggers](triggers.md#what-is-the-difference-between-a-trigger-and-a-rule) for the distinction and creation steps.
+A **trigger** watches device readings for a condition, such as a cold room staying too warm for ten minutes. A **rule** supplies the response. Save them separately in the **Triggers** and **Rules** tabs, then connect the trigger to the rule. A rule can also start directly from one sensor reading. See [Triggers](triggers.md#what-is-the-difference-between-a-trigger-and-a-rule) for the distinction and setup.
 
 ## How it works
 
-Rules are BPMN 2.0 workflows: visual flowcharts where each node performs a specific job. You connect nodes with flows (arrows) to build the logic. The engine executes a deployed rule when its Start Event receives the selected source: either a reading from one sensor or a signal from a saved trigger condition. The rule must be running; its schedule and execution-rate limits determine whether it can process that input.
+The editor uses BPMN 2.0 (Business Process Model and Notation), a standard notation for workflow diagrams. Each step is a **node**, and each connecting arrow is a **flow**. The engine executes a deployed rule when its Start Event receives the selected source: either a reading from one sensor or a signal from a saved trigger condition. The rule must be running; its schedule and execution-rate limits determine whether it can process that input.
 
 <figure><img src="../../.gitbook/assets/rules.jpg" alt="A rule on the visual editor canvas — a Start event flowing into a Gateway that branches into two paths ending at End events"><figcaption></figcaption></figure>
 
@@ -32,7 +32,7 @@ A rule starts with a **Start Event**. Choose **Sensor reading** for incoming rea
 - **Transform data** with Script Tasks — compute derived values, classify readings, or prepare flags for downstream decisions
 - **Fetch data from other sensors** with Enrichment nodes — compare indoor vs. outdoor temperature, correlate humidity with occupancy, or check a reference reading before deciding
 - **Raise alarms** with Set Alarm nodes — trigger alarm definitions with dynamic motivation messages, kicking off escalation policies and notifications
-- **Act on devices** with Execute Command nodes — send a command (close a valve, push a setpoint, switch a relay) straight to a device when conditions are met, so the rule contains the problem instead of only reporting it. See [Running Device Commands](running-device-commands.md)
+- **Act on devices** with Execute Command nodes — send a command (close a valve, push a setpoint, switch a relay) straight to a device when conditions are met, as part of the configured response. Command verification depends on the device and command settings. See [Running Device Commands](running-device-commands.md)
 - **Handle errors gracefully** with Boundary Error Events — if a step fails (for example, a sensor is offline during enrichment), catch the error and route to a fallback path instead of stopping the entire rule
 
 All conditions and computations use [CEL](https://cel.dev) (Common Expression Language) — a safe, sandboxed expression language designed for evaluating conditions. CEL cannot access files, make network calls, or run loops. It only evaluates expressions against the data you provide.

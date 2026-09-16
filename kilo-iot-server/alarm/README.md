@@ -4,9 +4,11 @@ description: Operational alerting in Kilo IoT Server — Inbox, alarm definition
 
 # Alarm
 
-When a cold-storage sensor reports a temperature exceedance at 3 AM, the right person needs to know — immediately, reliably, and through the right channel. The Alarm section in Kilo IoT Server transforms real-time sensor data into structured operational alerts with multi-step escalation, configurable severity policies, and delivery across email, SMS, and push.
+An **alarm event** is a record that something needs attention, such as a cold room reporting an out-of-range temperature. Kilo's Alarm section lets your team receive notifications, review these events in the Inbox, and resolve them after responding.
 
-> **Trigger logic vs response logic:** The [Rules Engine](../rules-engine/README.md) determines _when_ an alarm is raised — it evaluates sensor data against conditions and fires the alarm when those conditions are met. Alarm Definitions control _what happens after_ the alarm fires: severity classification, repeat cadence, recipient selection, delivery channels, weekly schedules, suppression windows, and escalation chains for unresolved events.
+An **alarm definition** is the saved notification setup: the message, severity, recipients, escalation, and delivery timing. A **rule** is the workflow that raises the alarm by using that definition. A **delivery channel** is the route to a recipient, such as email, SMS, or phone push.
+
+To set up an alert, prepare the definition and its recipients, then connect it to a [Rules Engine](../rules-engine/README.md) response. If the response should wait for a sustained condition, create a separate [trigger](../rules-engine/triggers.md) and use it to start the rule. Follow [Your First Alert](first-operational-alert.md) for the complete setup.
 
 ## Page structure
 

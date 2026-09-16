@@ -4,6 +4,10 @@ description: KiloCenter architecture — four services (KC-Core, KC-Identity, KC
 
 # Architecture and Components
 
+Kilo Center sits between MIOTY radio equipment and the applications using its data. An **endpoint** is the communicating device; a **base station** receives its radio messages and forwards them to the service center. A device-to-server message is an **uplink**. A server-to-device message is a **downlink**, which requires compatible bidirectional equipment.
+
+The service center manages endpoint and base-station records and exposes traffic and operations to the browser interface and integrations. Use this architecture guide to identify which component handles a connection before [installing](README.md) or troubleshooting the stack. The components below separate radio processing, identity, external API access, and the operator interface.
+
 ### Runtime Services
 
 KiloCenter runs as four cooperating services plus infrastructure dependencies:

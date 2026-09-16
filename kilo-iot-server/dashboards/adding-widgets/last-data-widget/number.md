@@ -4,13 +4,13 @@ description: Show a sensor's latest value — number, text, or Boolean — with 
 
 # Value Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-number.jpg" alt="Last Data widget using the Value display type"><figcaption></figcaption></figure>
-
 The Value display shows a reading's latest value as-is — no gauge, no scale, just the value. It works for **any** metric type: a number with its unit, a **text** value shown verbatim, or a **Boolean** shown as `true` or `false`. When a tile holds several metrics, they sit side by side, each with its own color and label, so one compact panel can carry the temperature, humidity, and CO2 of a zone at once.
 
 Reach for Value when the reading itself is the information and there is no range to visualize against — an exact instrument reading an engineer acts on, a text status, an on/off state, or a multi-metric summary where space is tight.
 
 Because there is no scale, Value is the one Last Data display type with no **Value range** to set.
+
+<figure><img src="../../../../.gitbook/assets/last-data-number.jpg" alt="Last Data widget using the Value display type"><figcaption></figcaption></figure>
 
 ## When to choose it
 

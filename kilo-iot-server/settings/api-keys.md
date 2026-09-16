@@ -4,9 +4,11 @@ description: Create, scope, rotate, and revoke API keys in Kilo IoT — per-inte
 
 # API Keys
 
-API keys give external systems programmatic access to the Kilo IoT Server. Use them to integrate CI/CD pipelines, synchronize data with warehouse management platforms, feed custom analytics or reporting scripts, connect SCADA systems, or automate configuration through your own tooling. Each key is scoped to exactly the permissions it needs — nothing more. If a key is ever compromised, you revoke or rotate it without affecting any other integration.
+An API key is a secret credential that lets an external script or application authenticate to Kilo IoT Server. Create one for each integration, such as a reporting job that reads device data, so you can manage its access without sharing your account password.
 
-> **Looking for how to *use* the API?** The protocols (REST and gRPC), authentication, and examples are covered in the [API](../api/README.md) section. This page is about creating and managing the keys those integrations authenticate with.
+The key belongs to one organization and carries selected permission **scopes**—the operations it may request. Choose the minimum scopes needed and keep the key private. Revoking or rotating a dedicated key lets you change that integration's access independently.
+
+This page covers key management. For protocols, request headers, and examples, start with the [API guide](../api/README.md).
 
 ---
 

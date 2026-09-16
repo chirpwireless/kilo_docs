@@ -4,6 +4,10 @@ description: Privacy of the Kilo IoT AI Assistant — session-scoped auth, permi
 
 # Privacy and Security
 
+Kilo AI Chat uses your signed-in account and current organization to request data and perform supported actions. This page explains that access context, confirmation prompts, and how conversation content and retrieved data are used.
+
+Your messages and retrieved results can be sent to the configured model provider to produce an answer. Chat history lets you revisit the conversation. Keep account passwords and unrelated secrets out of chat, and review the [AI access settings](managing-chats-and-ai-access.md) when choosing a model provider.
+
 ## Authentication
 
 Every interaction with the assistant is authenticated using your active session. The assistant inherits your exact permissions and organizational context. It cannot see more data than you can, and it cannot perform any action you couldn't perform yourself.
@@ -31,9 +35,7 @@ Conversations and data queries are strictly scoped to your current organization.
 
 ## What is NOT stored
 
-- Raw device telemetry is not duplicated or retained by the assistant beyond the scope of your query.
-- Passwords, API credentials, and authentication tokens are never captured.
-- Billing and payment data is not recorded in conversation logs.
+Chat is not a separate telemetry archive. However, readings and other information included in messages or tool results can appear in conversation history and model context. Do not paste account passwords or unrelated credentials into a conversation; use the dedicated settings for model API keys.
 
 ## How queries are processed
 
@@ -53,7 +55,7 @@ Where that data goes depends on the model provider you choose:
 - **Your own model key** (OpenAI, Anthropic, OpenRouter, or any OpenAI-compatible provider) — data goes to that provider under your own agreement with them.
 - **A model you host yourself** — set **Base URL** to your own endpoint and the data goes only there. Choosing the **Ollama** provider fills in Ollama Cloud, which is a hosted service like any other; self-hosting means replacing that address with your own, and the address has to be reachable from the platform.
 
-Two limits hold in every case: the assistant reads **only what your permissions already allow**, and it stays inside your current organization. Raw telemetry is not duplicated or retained by the assistant beyond the scope of your query.
+Two limits hold in every case: the assistant reads **only what your permissions already allow**, and it stays inside your current organization. Information included in the conversation may also appear in its history.
 
 The same applies to the [MCP server](../api/mcp-server.md): when you connect your own AI client, the data it retrieves reaches whichever model that client runs. You choose the client and the model.
 

@@ -4,9 +4,9 @@ description: Connect device protocols to Kilo IoT — LNS (LoRaWAN), Tracker (OB
 
 # Connectors
 
-Each connector establishes an organization-level connection to a specific device protocol or data source. Connectors do not create devices — device registration is a separate workflow. A connector enables the server to accept data from devices of that type once they are registered.
+A connector is a configured software connection that brings device messages into Kilo IoT Server. Choose a connector for the way your equipment sends data, such as LoRaWAN radio or MQTT messaging, so its readings can be used in dashboards and rules.
 
-Without at least one connector, the server has no protocol binding to receive device data through. Every data path — whether LoRaWAN, vehicle tracker, or a future protocol — starts with a connector.
+The connector belongs to your **organization**, the shared workspace for your deployment. It is separate from a physical gateway, which receives radio messages, and from a registered device, which identifies the equipment and its readings. Add the appropriate connection, then [register its devices](../devices/registering-devices.md). The hardware and network prerequisites depend on the connector you choose.
 
 ## Connector types
 

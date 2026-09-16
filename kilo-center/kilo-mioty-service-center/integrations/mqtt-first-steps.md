@@ -4,6 +4,10 @@ description: First steps with KiloCenter MQTT — enable the disabled-by-default
 
 # MQTT First Steps
 
+Kilo Center's **MQTT integration** exchanges messages with external applications through a **broker**, a server that forwards published messages to subscribers. Applications subscribe to event **topics**, the named message channels, and publish supported command messages to send requests such as downlinks.
+
+Use this path when your application works with message streams rather than direct [gRPC calls](grpc-first-steps.md). Have Kilo Center and a reachable broker running, then enable MQTT in the configuration used by your installation. The integration is disabled by default; starting a broker alone does not enable it.
+
 ### Goal
 
 Enable MQTT integration and validate event consumption and command publishing.

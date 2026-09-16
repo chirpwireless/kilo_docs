@@ -4,7 +4,9 @@ description: Manage alarm delivery channels in Kilo IoT — verified Email conta
 
 # Delivery Channels
 
-Alarm definitions fire notifications, but those notifications need verified delivery endpoints and active channels. The **Settings** tab on the Alarm page is where you manage the contacts, enable or disable channels, and control which delivery paths receive your operational alerts.
+A delivery channel is the way a Kilo alarm notification reaches someone: email, SMS, or push to the [IoT Alerts app](iot-alerts-app/README.md). A contact is the address, phone number, or registered app destination used by that channel.
+
+Use **Alarm → Settings** to verify contacts and enable the required channels. The [alarm definition](notification-rules.md) chooses recipients and notification behavior; the channel settings make those delivery routes available. Configure both before expecting an operational alert to reach your team.
 
 <figure><img src="../../.gitbook/assets/alarm-notification-channels.jpg" alt="The Alarm Settings tab with the Push, E-mail and SMS channel toggles"><figcaption></figcaption></figure>
 

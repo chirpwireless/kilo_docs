@@ -4,6 +4,10 @@ description: KiloCenter configuration files and baseline settings — config.doc
 
 # Configuration Basics
 
+Kilo Center configuration tells its services how to reach each other, which interfaces to listen on, and which credentials and certificates to use. Review it before connecting radio equipment so traffic reaches the intended installation.
+
+The files and addresses depend on whether you run containers or source processes on the host. Docker service names are meaningful inside the container network; host processes use their corresponding host addresses. Start with a completed [installation](README.md), then use the checks below to confirm the selected configuration and port mappings.
+
 ### Goal
 
 Understand and verify baseline runtime configuration for a local deployment.

@@ -4,7 +4,9 @@ description: Account in Kilo IoT Server — manage orgs, team members, and per-s
 
 # Account
 
-Manage your organizations, team members, and access controls. These options are accessed from the **user menu** in the bottom-left corner of the interface — separate from the Settings section in the sidebar.
+A Kilo **organization** is a shared workspace for devices, dashboards, rules, and the people allowed to use them. Your personal account is your login; it can belong to more than one organization, with different permissions in each.
+
+Use the **user menu** in the bottom-left corner to manage membership, organization settings, or the active workspace. These options are separate from personal preferences in [Settings](../settings/README.md). Select the intended organization before changing shared settings.
 
 Click your name or avatar in the bottom-left to open the user menu. From there you can:
 

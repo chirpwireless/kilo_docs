@@ -4,7 +4,9 @@ description: Activate the built-in LoRaWAN Network Server via the LNS connector 
 
 # LNS Connector
 
-The LNS connector links the Kilo IoT Server's built-in LoRaWAN Network Server to your organization. Because the LoRaWAN network integration is built directly into the server, adding the LNS connector is a lightweight operation — there is no external LNS to configure, no credentials to exchange, and no third-party service to maintain.
+The LNS connector connects your Kilo organization to the built-in **LoRaWAN Network Server**. A network server manages communication between wireless devices and their radio gateways, then passes received device messages to the IoT Server for use in dashboards and rules.
+
+LoRaWAN is a wireless protocol for sending small device messages. Its gateway is physical radio equipment; the LNS connector is the software connection. You do not need to operate an external network server, but you still need a compatible [Basics Station gateway](../../gateways/lorawan-gateways/README.md) and registered LoRaWAN devices to receive real readings.
 
 ## Adding the LNS connector
 

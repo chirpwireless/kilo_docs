@@ -4,11 +4,9 @@ description: Kilo IoT Server API overview — REST and gRPC access, scoped keys,
 
 # Kilo IoT Platform API
 
-The Kilo IoT Platform exposes programmatic access so external systems can read and manage your deployment's data and configuration — and now send commands to your devices — covering backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications.
+An **API** (application programming interface) lets your software request data or perform supported operations in Kilo IoT Server without using its browser interface. Use it to connect reporting scripts, business systems, or custom applications to your organization's devices and readings.
 
-Use the **[API reference](https://api.kiloiot.io/)** for the complete list of endpoints, request fields, responses, and required scopes. This section covers what the API is for, how to choose a protocol, how requests authenticate, and where to manage keys.
-
-> Device control is part of the API: a key with the **Commands** scope can create a device's commands and dispatch them as downlinks (on/off, setpoints, and the like). See [Device Commands](../devices/commands/) for the in-app workflow, and the [API reference](https://api.kiloiot.io/#tag/commands) for the command endpoints.
+Start with the [Public REST API](public-rest-api.md), which uses HTTP requests and structured responses. The [API reference](https://api.kiloiot.io/) lists the operations and permissions each requires. Create an [API key](../settings/api-keys.md)—an integration credential—and send it with the matching organization header. Choose only the permission **scopes** the integration needs.
 
 ## What's available
 

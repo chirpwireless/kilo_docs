@@ -4,11 +4,11 @@ description: Visualize a sensor reading as a proportional ring with the Doughnut
 
 # Doughnut Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-doughnut.jpg" alt="Last Data widget using the Doughnut display type"><figcaption></figcaption></figure>
-
 The Doughnut display draws the reading as a ring that fills proportionally between a minimum and a maximum you define, with the current value in the center. At a glance it answers "how far along is this?" — a quarter full, nearly maxed out — without anyone reading the number.
 
 It suits any reading that lives inside a known range: a fill level, a percentage, a capacity, a value that should sit somewhere within an operating band. The ring's fill makes the position in that range immediate.
+
+<figure><img src="../../../../.gitbook/assets/last-data-doughnut.jpg" alt="Last Data widget using the Doughnut display type"><figcaption></figcaption></figure>
 
 ## When to choose it
 

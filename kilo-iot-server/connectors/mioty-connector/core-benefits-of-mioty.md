@@ -4,9 +4,11 @@ description: Core MIOTY benefits — interference resistance, massive endpoint d
 
 # Core Benefits of MIOTY
 
-MIOTY is a newer LPWAN than the technologies most deployments were built on, and it is being adopted quickly for a straightforward reason: it was designed after the first generation's limits were understood, and it engineers around them rather than trading between them.
+MIOTY is a low-power wireless protocol for devices that send small messages, such as meter readings. Its key technique, **telegram splitting**, spreads parts of each message across time and radio frequencies so a receiver can reconstruct the message despite some lost parts.
 
-Every advantage below traces back to a single design decision. MIOTY encodes each telegram with forward error correction, splits it into 24 or more radio bursts of about 15 milliseconds, and scatters those bursts across frequency and time. The base station reconstructs the message even when **up to 50% of the radio bursts are lost**. Read the rest of this page as consequences of that one choice.
+That design can help when many sensors share a radio environment or interference makes reception difficult. The sections below explain its interference tolerance, device density, power use, and mobility considerations. Use these as design factors alongside a site assessment, rather than as a guarantee of range or delivery for every installation.
+
+For the basic network components, start with [What is MIOTY?](what-is-mioty.md).
 
 ***
 

@@ -4,7 +4,9 @@ description: Query Kilo IoT Server in natural language — device status, histor
 
 # Querying Your Data
 
-The AI Assistant accepts natural language. There is no special syntax to learn, no query language to memorize. Type the way you would talk to a colleague who happens to know everything about your deployment — whether you're *asking* about your data or *asking it to do something*. This page focuses on the asking-and-analyzing side; to hand it real setup work, see [Building With the Assistant](building-with-ai.md).
+Use Kilo's **AI Chat** to ask questions about device status and stored readings in your current organization. The assistant can retrieve available data for a named device and time range, then explain or compare the results in plain language.
+
+For example, ask for a warehouse sensor's temperature over the last day and check the returned time coverage and units. The assistant is querying recorded data, not continuously watching the site; an offline device's latest reading may be old. For setup actions rather than data questions, see [Building With the Assistant](building-with-ai.md).
 
 <figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
 
@@ -16,7 +18,7 @@ A specific question produces a specific answer. Follow these guidelines to get t
 
 - **Name the device, sensor, or location.** "What is the temperature in Warehouse B?" is far more useful than "What is the temperature?" When dozens of sensors report temperature, the assistant needs to know which one you mean.
 - **Use natural time expressions.** The assistant understands "yesterday", "last 3 hours", "between January 1 and January 15", "this morning", and similar phrases. There is no need to provide Unix timestamps or formatted dates.
-- **Ask follow-ups.** The assistant maintains full context within a conversation. Refine, narrow, or expand a previous query without restating everything.
+- **Ask follow-ups.** The assistant uses the conversation context available to it. Refine, narrow, or expand a previous query without restating everything.
 - **Reuse your last message.** Press the **Up arrow** key in the chat input to bring back the last message you sent — useful for tweaking a question and asking it again.
 
 ## Query categories

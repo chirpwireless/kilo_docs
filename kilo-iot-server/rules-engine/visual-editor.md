@@ -4,9 +4,11 @@ description: Design automation rules on the Kilo IoT visual BPMN canvas — drag
 
 # Visual Editor
 
-The visual editor is where you design automation workflows. It presents a BPMN 2.0 canvas where you place nodes, connect them with flows, and configure each step through a properties panel.
+The visual editor is where you draw a Kilo rule's response workflow. Place steps on the canvas and connect them with arrows to show execution order and decision paths. Select a step to configure what it does in the properties panel.
 
-This is a visual-first editor, not a drag-and-drop-only rule builder. Most work happens through node placement and form fields, while CEL is used in focused expression fields where the rule needs precise logic.
+The steps are called **nodes** and the arrows are **flows**. Their shapes follow BPMN (Business Process Model and Notation), a standard for workflow diagrams. You can start with the step descriptions in [Node Reference](node-reference.md); no prior BPMN knowledge is needed to follow the editor guide.
+
+Create or open a rule before editing. Most setup uses form fields; short expressions using CEL (Common Expression Language) provide comparisons and calculations where needed.
 
 ## Getting there
 

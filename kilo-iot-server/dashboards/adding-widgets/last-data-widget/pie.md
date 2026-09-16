@@ -4,11 +4,11 @@ description: Render a sensor reading as a bold filled disc with the Pie display 
 
 # Pie Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-pie.jpg" alt="Last Data widget using the Pie display type"><figcaption></figcaption></figure>
-
 The Pie display is a solid filled gauge — a circle that fills in as a wedge, complete at the maximum — with the value beside it. It works on the same scale principle as the Doughnut: the reading is shown as a proportion of a defined range. The difference is visual weight — a solid disc rather than a thin ring.
 
 Choose Pie when you want a bolder mark on the dashboard, a tile that reads as a strong block of color.
+
+<figure><img src="../../../../.gitbook/assets/last-data-pie.jpg" alt="Last Data widget using the Pie display type"><figcaption></figcaption></figure>
 
 ## When to choose it
 

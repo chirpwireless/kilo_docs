@@ -4,11 +4,11 @@ description: Add the Mioty connector to bind your organization to the MIOTY serv
 
 # MIOTY Connector
 
-The Mioty connector binds your organization to the MIOTY service center and unlocks the MIOTY side of the Kilo IoT Server: base station registration and MIOTY endpoint fields on the device form.
+The MIOTY connector is the software connection between your Kilo organization and its MIOTY service center. **MIOTY** is a wireless protocol for small, low-power device messages. Physical **base stations** receive those radio messages; the service center manages the communicating devices and their traffic.
 
-MIOTY (ETSI TS 103 357) is an LPWAN protocol built for massive-scale industrial telemetry. It splits every message into small radio bursts spread across time and frequency — telegram splitting — so the base station reconstructs a telegram even when up to half its bursts are lost. The practical result is up to 110,000 low-power endpoints per base station, long range, and reliable delivery in RF environments that punish other protocols: plant floors, metal-dense warehouses, utility substations, and dense metering rollouts. For the protocol itself, see [What is MIOTY?](what-is-mioty.md).
+Adding the connector makes MIOTY base-station registration and device setup available in Kilo IoT Server. Kilo Cloud runs the service-center side for you. You still need compatible base stations and registered endpoints—the sensors or other devices sending messages—to receive real readings.
 
-**There is no MIOTY infrastructure for you to run.** The Enterprise edition of our MIOTY service center is built into Kilo Cloud, so adding this connector is all it takes to stand up the service-center side of a MIOTY network. Your base stations connect straight to it, and your endpoints arrive on a full IoT platform — rules, alarms, dashboards, audit trail — rather than on a network server you would then have to integrate with something else. If you would rather operate that infrastructure yourself, the Community edition is open source: see [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
+For the wireless protocol, see [What is MIOTY?](what-is-mioty.md). For operating your own service center, see [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
 
 ## Why the connector exists
 

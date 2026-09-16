@@ -1,10 +1,12 @@
 ---
-description: What the Kilo IoT AI Assistant can access — live device data, full telemetry history, platform knowledge, IoT search.
+description: Understand the device data, history, and documentation available to Kilo AI Chat, and the limits of its access and data coverage.
 ---
 
 # What It Can Access
 
-The assistant's answers are trustworthy because they're grounded in your actual deployment — read live, at the moment you ask, and scoped to your permissions and current organization. It sees exactly what you see in the platform interface, and it works from that real data rather than from generic training knowledge. When something can't be retrieved, it tells you instead of inventing an answer.
+The Kilo AI Assistant can retrieve device records, available telemetry history, rules, alarms, and other information exposed by its platform operations. It also uses documentation to explain features. These sources help it answer questions about your current organization rather than relying only on general model knowledge.
+
+Access depends on your account permissions, the available operations, and the data the devices have actually reported. The chat does not have a continuous live view or unrestricted access to every interface feature. Give it a device and time range, then check the returned timestamps and coverage when interpreting an answer.
 
 ## Live device data
 
@@ -12,7 +14,7 @@ The assistant reads the current state of every device you have access to: online
 
 ## Historical records
 
-Complete telemetry history for any device over any time period. The assistant supports aggregations (min, max, average, sum, count), threshold violation detection, event filtering by type or value, and period-over-period comparisons. The depth of available history depends on the data retention window configured in your subscription plan.
+Stored telemetry within the available retention window and the requested time range. The assistant supports aggregations (min, max, average, sum, count), threshold violation detection, event filtering by type or value, and period-over-period comparisons. The depth of available history depends on the data retention window configured in your subscription plan.
 
 ## Platform documentation
 
@@ -26,7 +28,7 @@ For IoT-related questions that fall outside the platform documentation — proto
 
 The following data is outside the assistant's reach by design:
 
-- **Other organizations' data.** Tenant isolation is absolute. The assistant cannot cross organizational boundaries, even if your account belongs to multiple organizations.
+- **Other organizations' data.** Queries use the currently selected organization, including when your account belongs to more than one.
 - **Devices outside your permission scope.** If your role does not grant access to a device or location, the assistant cannot query it.
 - **Billing and payment information.** Subscription details, invoices, and payment methods are not accessible through the assistant.
 - **Credentials.** User passwords, API secrets, and authentication tokens are never surfaced.

@@ -1,12 +1,16 @@
 ---
-description: First steps with the KiloCenter gRPC API — verify local connectivity to KC-Core port 9090 with grpcurl, list services.
+description: Check Kilo Center gRPC access through the local API gateway with grpcurl, discover methods, and supply authentication when enabled.
 ---
 
 # gRPC First Steps
 
+The Kilo Center **gRPC API** lets software call service-center operations using structured requests and responses. It includes endpoint management and downlink operations. Use `grpcurl`, a command-line gRPC client, to check a local installation before writing an integration.
+
+The commands below use the local API entry point at `localhost:9090`, exposed by KC-Gateway. Have the stack running and check its [port configuration](../getting-started/configuration-basics.md) first. These examples use a local plaintext connection; authentication and transport settings must match the installation you are calling.
+
 ### Goal
 
-Verify local gRPC connectivity to KC-Core and discover available API methods.
+Verify local gRPC connectivity through KC-Gateway and discover the KiloCenterService methods.
 
 ### Check Service Reachability
 

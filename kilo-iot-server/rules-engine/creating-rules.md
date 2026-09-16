@@ -4,9 +4,11 @@ description: Create a new automation rule from scratch in the Kilo IoT Rules Eng
 
 # Creating Rules
 
-This page walks through creating a new automation rule from scratch — from naming it to saving your first version.
+Creating a rule means saving the workflow that Kilo will run in response to a sensor reading or a signal from a saved trigger. Its connected steps define what to check and what to do, such as raise an alarm or run a configured device command. This guide takes you from a new rule to its first saved draft.
 
-If your task is to **create a trigger**, open **Rules Engine → Triggers → Add trigger** instead. A trigger can be saved before a rule exists. This page creates the response workflow; [Triggers](triggers.md) explains how to create the monitoring condition and connect the two.
+If you need to **create a trigger**, use **Rules Engine → Triggers → Add trigger**. A trigger is the separate monitoring condition and can be saved before a rule exists. [Triggers](triggers.md) explains how to connect it to the responding workflow.
+
+Have the source sensor or saved trigger ready, along with any alarm definition or device command the workflow will use. Saving the draft preserves the design; [building and deploying](builds-artifacts-and-deployment.md) are separate steps before it runs.
 
 ## Prerequisites
 

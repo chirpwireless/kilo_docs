@@ -4,9 +4,11 @@ description: How Kilo IoT Server confirms a command took effect — no verificat
 
 # Confirming Commands
 
-Sending a command and knowing it worked are two different things. A downlink can be accepted for delivery and still never change the physical device — the device might be asleep, out of range, or simply ignore it. The **Verification** section of the command editor lets you tell the platform how to confirm that a command actually took effect, so an execution is only marked successful when there is real evidence behind it.
+Command verification is an optional check of device feedback after Kilo sends a saved command. It compares reported readings with the expected state, helping you distinguish a request accepted for delivery from evidence that the device reached that state.
 
-Verification is configured per command, in **section 4** of the [command editor](creating-commands.md). Choose one of three strategies.
+Sending or accepting a command does not by itself prove physical execution. Choose **No verification**, **Wait for next uplink** (the device's next incoming message), or **Query after ack** (request feedback after acknowledgment), according to what the device supports.
+
+Configure the check per command in **section 4** of the [command editor](creating-commands.md). The strategies below explain what each result can tell you.
 
 <figure><img src="../../../.gitbook/assets/device-command-verification.jpg" alt="The Verification section with No verification, Wait for next uplink, and Query after ack options"><figcaption></figcaption></figure>
 
@@ -78,7 +80,7 @@ The **Convergence timeout** is how long the platform waits for the reported stat
 
 | Strategy | Confirms | Best for |
 | --- | --- | --- |
-| No verification | Delivery only | Low-stakes, repeatable actions |
+| No verification | Dispatch status, without a reported-state check | Low-stakes, repeatable actions |
 | Wait for next uplink | Reported state on the next scheduled message | Devices that report their state routinely |
 | Query after ack | Reported state from a direct query | Devices that answer reads but don't volunteer state |
 

@@ -4,11 +4,11 @@ description: MIOTY explained — the ETSI TS 103 357 LPWAN protocol that uses te
 
 # What is MIOTY?
 
-**MIOTY** is a low-power wide-area network (LPWAN) protocol built for industrial environments where radio conditions are hostile and device counts are large. It was developed at the **Fraunhofer Institute for Integrated Circuits (IIS)** and standardized by ETSI as **TS 103 357**, where it is specified as **TS-UNB** — Telegram Splitting Ultra Narrow Band. That name is not decoration: telegram splitting is the technique that defines the protocol and explains nearly everything MIOTY does well.
+MIOTY is a wireless protocol for sending small messages from low-power devices to radio receivers called **base stations**. A network built for that kind of communication is a **low-power wide-area network**, or LPWAN. It is useful for applications such as meter readings and equipment monitoring.
 
-MIOTY is the newer of the two LPWAN technologies Kilo supports, and it is gaining ground quickly — not on novelty, but because it solves a problem the first generation of LPWAN left open. Those earlier technologies had to trade range against capacity and robustness. MIOTY was designed after that trade-off was well understood, and engineered from the physical layer up to avoid it.
+MIOTY uses **telegram splitting**: it divides a message into smaller radio transmissions spread over time and frequency, which the receiver uses to reconstruct the message. This helps it tolerate interference. Actual reception still depends on equipment, installation, and radio conditions.
 
-Like other LPWAN technologies, MIOTY carries small messages from battery-powered sensors over long distances at very low energy cost. What sets it apart is how it survives interference. Instead of trying to push a whole message through a noisy channel in one attempt, MIOTY assumes the channel is noisy and designs around that assumption from the start.
+The protocol carries the radio traffic. The [MIOTY connector](README.md) links that network to Kilo IoT Server, where registered devices supply readings for dashboards, rules, and alarms.
 
 ***
 
