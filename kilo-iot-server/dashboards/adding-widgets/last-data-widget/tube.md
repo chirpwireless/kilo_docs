@@ -4,11 +4,11 @@ description: Show a fill level as a vertical sight-glass cylinder with the Tube 
 
 # Tube Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-tube.jpg" alt="Last Data widget using the Tube display type"><figcaption></figcaption></figure>
-
 The Tube display is a vertical cylinder that fills from the bottom as the reading rises between a minimum and a maximum, with tick marks down the side and the value shown on the tube. It reads like a physical sight glass — the fill height *is* the reading.
 
 Tube is the natural choice for anything you already picture as a level. Because the conditions decide the colors, it works equally for "how full" and "how empty" — a tank filling up, or a reserve draining down.
+
+<figure><img src="../../../../.gitbook/assets/last-data-tube.jpg" alt="Last Data widget using the Tube display type"><figcaption></figcaption></figure>
 
 ## Watch a drop, or watch a rise
 

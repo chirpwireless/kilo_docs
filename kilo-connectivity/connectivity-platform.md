@@ -1,10 +1,14 @@
 ---
-description: Kilo Connectivity platform — manage SIMs and devices with zero-touch provisioning, real-time control, alerts, API.
+description: Understand SIM status and usage management in Kilo Connectivity and how it differs from IoT Server dashboards and device data.
 ---
 
 # Connectivity Platform
 
-Kilo provides a unified, intuitive interface for managing SIMs, monitoring devices, and streamlining provisioning workflows. Whether you're handling a few test units or thousands of live devices, the platform adapts to your workflow and scales as your deployment grows.
+The Kilo Connectivity platform gives you one place to follow the cellular service assigned to your devices. Review SIM status and data usage as you commission equipment, investigate a connection, or manage an expanding deployment.
+
+A SIM represents the mobile-network subscription. The management interface helps you operate that connection; [Kilo IoT Server](../kilo-iot-server/README.md) supplies the device dashboards, rules, and alarms around the readings it carries.
+
+Have the SIMs and account access for your connectivity service ready. Confirm the management actions and integrations included with that service before planning bulk activation or automated operations.
 
 **Key Features:**
 

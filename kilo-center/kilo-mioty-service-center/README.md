@@ -4,7 +4,9 @@ description: Run the free, open-source KiloCenter MIOTY Service Center yourself,
 
 # KiloCenter MIOTY Service Center
 
-KiloCenter Community Edition is a free, open-source MIOTY service center for organizations that want to operate the MIOTY network layer themselves. It connects MIOTY base stations, registers endpoints, processes uplinks and downlinks, and exposes data to other systems through gRPC and MQTT.
+Kilo Center Community Edition is an **open-source MIOTY service center** for running the networking yourself. Connect **base stations**—MIOTY's radio gateways—register **endpoints**, the sensors or other communicating devices, and exchange their messages with your applications.
+
+**Kilo Cloud includes the enterprise version of the service center and the full Kilo IoT platform around it.** The same MIOTY devices can feed widgets and dashboards, run automation rules, and raise alarms with escalation. Choose Cloud when you want to build and operate the application as well as connect the radio network.
 
 The Community Edition is the complete self-hosted service-center path, not a trial. There is no software subscription fee. You provide and operate its infrastructure, and deployments and modifications must follow the [AGPL-3.0-or-later license](license-and-trademarks.md).
 
@@ -30,7 +32,7 @@ Use **Kilo Cloud** when MIOTY is one part of a broader deployment. The Enterpris
 
 - MIOTY base-station connections over BSSCI with certificate-based security
 - Endpoint registration, attachment, uplink processing, and downlink support
-- A web console for service-center configuration and network monitoring
+- A web console for service-center configuration and network monitoring; application dashboards, widgets, rules, and alerts belong to Kilo Cloud or your own downstream application
 - gRPC and MQTT interfaces for downstream applications
 - Docker Compose, Linux-host, and Kubernetes deployment paths
 - Source code under AGPL-3.0-or-later

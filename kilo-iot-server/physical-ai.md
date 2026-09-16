@@ -71,7 +71,7 @@ Use MCP when a person wants ChatGPT, Claude, Codex, Cursor, or another compatibl
 
 ### Use the built-in AI Assistant
 
-The [IoT AI Assistant](ai-assistant/README.md) operates inside Kilo. It can reason over live and historical deployment context and help provision devices, build and simulate rules, and configure alarms while showing consequential changes for confirmation.
+The [AI Assistant](ai-assistant/README.md) works like an experienced integrator by your side inside Kilo. Describe your goal, and it can provision devices, build and deploy rules, configure alarms, and simulate readings to test a response. It uses the deployment’s existing configuration to help put those pieces together, with confirmation prompts for actions such as running device commands.
 
 Use the built-in assistant when operators want AI inside the same interface as their devices, rules, alarms, and dashboards.
 

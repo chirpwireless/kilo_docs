@@ -1,16 +1,14 @@
 ---
-description: What is Kilo Connectivity — global LPWAN and cellular IoT through one SIM, one platform, one partner.
+description: Understand Kilo cellular IoT connectivity, SIM services, and how network access differs from IoT Server device integration.
 ---
 
 # What is Kilo Connectivity?
 
-Make Your International IoT Project a Success
+Kilo Connectivity lets IoT equipment communicate through mobile networks when a deployment cannot rely on site Wi-Fi or a nearby private radio gateway. Use cellular service for a remote meter, a controller, or the backhaul connecting field equipment to its application.
 
-**Kilo Connectivity** enables global-scale IoT LPWAN or Cellular deployments with unmatched simplicity and flexibility—powered by one SIM, one platform, and one partner.
+A compatible modem uses a **SIM** to identify its mobile subscription and exchange data on an available operator network. This section covers that cellular connection and its management; the IoT Server's connectors handle how application messages enter Kilo.
 
-Managing connectivity across multiple countries, networks, and technologies is often the most complex part of deploying IoT at scale. Different SIM providers, coverage gaps, fragmented portals, and inconsistent support make it difficult to launch and grow a truly global connected product.
+The SIM identifies the mobile subscription. The [connectivity platform](../connectivity-platform.md) is where you manage that service and its usage. The [Kilo IoT Server](../../kilo-iot-server/README.md) has a different job: managing device data, dashboards, and automation. Its software connectors do not replace a cellular subscription.
 
-**Kilo solves that by bringing all your connectivity needs into one unified platform.**
-
-####
+Start with [Global IoT SIM Cards](cellular-iot.md) to understand the service, then compare [SIM card types](simcardtypes.md) for your equipment. Check coverage, modem compatibility, supported networks, and plan terms for the places where the devices will operate.
 

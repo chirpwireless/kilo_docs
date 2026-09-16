@@ -4,9 +4,11 @@ description: Manage Kilo IoT users and per-surface ABAC permissions — Edit, Vi
 
 # Users and Permissions
 
-Within each organization, Kilo IoT Server uses attribute-based access control (ABAC) to determine who can do what. Access is assigned per product surface — dashboards, devices, rules, connectors, and more — not through a single all-or-nothing role. When you invite someone or edit their permissions, you set each surface individually to Edit, View, or No access.
+Permissions define which operations a person may perform in a Kilo organization, the shared workspace for a deployment. Set each product area, such as devices, dashboards, or rules, to **Edit**, **View**, or **No access** when inviting a user or changing their access.
 
-This per-surface model is more flexible than coarse role-only access. A deployment engineer might get Edit access to devices and connectors but No access to billing. An operations manager might have Edit access to dashboards and alerts but View-only access to the rules engine. A stakeholder might see everything but change nothing. And because access is scoped to each organization, the same person can hold completely different permissions in different organizations.
+For example, a contractor can view device readings without being able to change the rules that operate equipment. Check the organization and the areas that person needs before assigning access; the same account can have different permissions in another organization.
+
+Kilo uses **attribute-based access control (ABAC)**: access decisions take account of membership, ownership, and assigned permissions. The interface exposes these choices per feature, rather than relying on a single role selector.
 
 ## How Permission Labels Work
 

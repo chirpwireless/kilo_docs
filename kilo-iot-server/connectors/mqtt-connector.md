@@ -4,7 +4,11 @@ description: Bring MQTT-capable devices into Kilo IoT — Cloud MQTT (platform-p
 
 # MQTT Connector
 
-The MQTT connector lets you bring any MQTT-capable device into the Kilo IoT Server without going through LoRaWAN. Factory PLCs, HVAC controllers, building energy meters, MQTT-producing edge gateways (Modbus-to-MQTT, BACnet-to-MQTT, OPC-UA-to-MQTT bridges), and custom-firmware sensors that already publish data over MQTT can all be connected directly. Once connected, their data flows through the same normalization pipeline, triggers the same rules engine, and appears in the same dashboards as every other device on the server.
+The MQTT connector brings readings from meters, controllers, and edge systems into Kilo's dashboards and automation. You can connect equipment that already publishes MQTT messages or use an edge bridge to translate another protocol, then map its fields to readings your rules can use.
+
+**MQTT** is a messaging protocol. A **broker** receives messages and forwards them to subscribers; a **topic** is a named message channel, such as a meter's readings channel. Kilo's configured MQTT connection receives those messages and associates them with registered devices.
+
+Choose **Cloud MQTT** for a broker endpoint and credentials supplied by Kilo, or **External MQTT** to connect a broker you already operate.
 
 Two variants are available:
 

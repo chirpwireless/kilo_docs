@@ -4,13 +4,13 @@ description: Pin live sensor readings onto any image — floor plan, site photo,
 
 # Image Widget
 
-<figure><img src="../../../.gitbook/assets/image-widget.jpg" alt="Image Widget configuration — a photo of silo tanks with sensor pins, beside the live preview"><figcaption></figcaption></figure>
-
-The Image Widget turns a picture into a live dashboard. Upload an image — and it can be **any image at all**: a floor plan, an equipment schematic, a site diagram, a photo of a building, a photo of a piece of equipment such as the silo tanks above — then pin live numeric readings onto it, each one sitting exactly where its sensor is.
+The Image Widget turns a picture into a live dashboard. Upload an image — and it can be **any image at all**: a floor plan, an equipment schematic, a site diagram, a photo of a building, a photo of a piece of equipment such as the silo tanks in the screenshot — then pin live numeric readings onto it, each one sitting exactly where its sensor is.
 
 That is the whole idea: you stop reading a list of device names and instead look at the real place or machine and see what every part of it is doing right now. A plant manager looks at the silo photo and sees which tank is running low; a maintenance engineer looks at an equipment schematic and sees which component is outside tolerance.
 
 Upload a supported image file — a PNG or JPG — of any place, object, or system you want to monitor. Each pinned reading shows its current value, its unit, and an icon, and its color changes as conditions trigger, so status is visible across the whole image at a glance.
+
+<figure><img src="../../../.gitbook/assets/image-widget.jpg" alt="Image Widget configuration — a photo of silo tanks with sensor pins, beside the live preview"><figcaption></figcaption></figure>
 
 ## Configure an Image Widget
 

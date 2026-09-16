@@ -4,11 +4,11 @@ description: CEL syntax reference for Kilo IoT rules — Common Expression Langu
 
 # CEL Reference
 
-The Rules Engine uses [CEL (Common Expression Language)](https://cel.dev) for expressions inside the visual workflow editor — gateway conditions, Script Task computations, alarm messages, enrichment lookups, and input/output definitions. CEL is a fast, safe expression language originally designed by Google for evaluating conditions in security policies and infrastructure systems. The full language specification is available on [GitHub](https://github.com/google/cel-spec).
+An **expression** is a short formula that reads workflow data and returns a result, such as whether a temperature exceeds a limit or what text an alarm should contain. Kilo rules use **CEL (Common Expression Language)** for these comparisons, calculations, and text values.
 
-CEL is not a general-purpose programming language. It evaluates expressions and returns results. It cannot access the filesystem, make network calls, create loops, or modify external state. This makes it safe to run user-defined expressions without risk to the platform or to other rules.
+The workflow still lives in the visual editor. CEL appears in specific fields: branch conditions, Script Tasks, alarm messages, enrichment lookups, and input/output definitions. Fetching another sensor's reading is the job of an **Enrichment** node; a CEL expression evaluates the data available to it.
 
-Most Kilo rules use only a few short expressions. The workflow structure remains visual and BPMN-based; CEL is the precision layer that makes those workflows useful in real production scenarios.
+Use this reference when configuring those fields in a [rule](creating-rules.md). The [CEL specification](https://github.com/google/cel-spec) covers the language itself; the examples below explain its use with Kilo workflow variables.
 
 ---
 

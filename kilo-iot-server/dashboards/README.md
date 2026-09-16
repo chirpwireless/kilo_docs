@@ -4,7 +4,7 @@ description: Build customizable monitoring dashboards in Kilo IoT — assemble w
 
 # Dashboards
 
-Dashboards are customizable monitoring views that you assemble from widgets. Each dashboard focuses on a specific concern — a particular building, a device group, a compliance metric, or an operational workflow — and displays exactly the data that matters for that context.
+Build a dashboard around the decision your team needs to make: which cold room needs attention, how a building's conditions changed, or which equipment an operator should adjust. A dashboard is a customizable view assembled from **widgets**, the individual readings, charts, images, maps, and controls you place on it.
 
 Unlike the [overview page](../overview.md), which provides a fixed summary of your deployment, dashboards give you full control over what is displayed and how.
 

@@ -1,18 +1,26 @@
 ---
-description: What the Kilo IoT AI Assistant can access — live device data, full telemetry history, platform knowledge, IoT search.
+description: See how device catalogs, deployment settings, platform guides, and readings help the Kilo AI Assistant configure and improve your IoT project.
 ---
 
 # What It Can Access
 
-The assistant's answers are trustworthy because they're grounded in your actual deployment — read live, at the moment you ask, and scoped to your permissions and current organization. It sees exactly what you see in the platform interface, and it works from that real data rather than from generic training knowledge. When something can't be retrieved, it tells you instead of inventing an answer.
+The Kilo AI Assistant combines your deployment's configuration with device catalogs and platform documentation to help build the setup you need. It can inspect connections, device profiles, existing rules, alarm definitions, and dashboards before deciding what to create or change.
+
+That context matters when you ask for an outcome rather than a sequence of clicks. The assistant can find the relevant device, use its actual readings in a rule, and work with the notification recipients already configured for your organization. Data history adds another layer when you want to investigate or refine the result.
+
+## Your project configuration
+
+The assistant reads configuration and performs changes through the operations available to your account in the current organization. It can create and update resources such as rules, alarm definitions, dashboards, and devices; see [Building With the Assistant](building-with-ai.md) for the setup workflows.
 
 ## Live device data
+
+Check the reading time when interpreting a result: a quiet device may only have an older value, and stored history depends on your retention window.
 
 The assistant reads the current state of every device you have access to: online or offline status, last-seen timestamp, latest sensor readings, battery level, signal strength, GPS coordinates, device metadata, and any labels you have applied. If you can see a device on the Devices page, the assistant can answer questions about it.
 
 ## Historical records
 
-Complete telemetry history for any device over any time period. The assistant supports aggregations (min, max, average, sum, count), threshold violation detection, event filtering by type or value, and period-over-period comparisons. The depth of available history depends on the data retention window configured in your subscription plan.
+Stored telemetry within the available retention window and the requested time range. The assistant supports aggregations (min, max, average, sum, count), threshold violation detection, event filtering by type or value, and period-over-period comparisons. The depth of available history depends on the data retention window configured in your subscription plan.
 
 ## Platform documentation
 
@@ -26,7 +34,7 @@ For IoT-related questions that fall outside the platform documentation — proto
 
 The following data is outside the assistant's reach by design:
 
-- **Other organizations' data.** Tenant isolation is absolute. The assistant cannot cross organizational boundaries, even if your account belongs to multiple organizations.
+- **Other organizations' data.** Queries use the currently selected organization, including when your account belongs to more than one.
 - **Devices outside your permission scope.** If your role does not grant access to a device or location, the assistant cannot query it.
 - **Billing and payment information.** Subscription details, invoices, and payment methods are not accessible through the assistant.
 - **Credentials.** User passwords, API secrets, and authentication tokens are never surfaced.

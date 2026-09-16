@@ -4,7 +4,9 @@ description: Connect AI agents to IoT devices through Kilo's OAuth-secured IoT M
 
 # Kilo IoT MCP Server for AI Agents
 
-MCP — the Model Context Protocol — is an open standard that lets an AI client discover and call tools on a remote server. The Kilo IoT Server publishes an MCP endpoint, so any MCP-capable client — Claude Code, Claude Desktop, ChatGPT, Codex, Cursor, and others — can connect to your organization and work with your real deployment: devices, connectors, rules, alarms, and dashboards.
+Connect your preferred AI client to Kilo and use it to work on the deployment: onboard devices, create dashboards, configure alarms, and build and deploy automation rules. You can keep the project conversation in the tool you already use while Kilo supplies the device connections and execution workflows.
+
+**MCP (Model Context Protocol)** lets an AI client discover and call those platform operations. Kilo exposes an MCP endpoint for clients such as Claude Code, Claude Desktop, ChatGPT, Codex, and Cursor; the client uses your account's access to the selected organization.
 
 This is one integration path for the [Physical AI Platform for AI Agents](../physical-ai.md). Kilo remains the governed execution layer between the client and real infrastructure, so the model does not need to recreate device protocols, organization boundaries, or the operational lifecycle around a change.
 
@@ -127,7 +129,7 @@ Treat an authorized client like a signed-in session: it belongs on machines you 
 
 ## How this differs from the built-in assistant
 
-Kilo has an [IoT AI Assistant](../ai-assistant/README.md) built into the web app — open it from **AI Chat** and it works your deployment alongside you, with no setup at all. That is the fastest path for most people, and it is where confirmation gates, inline charts, and the platform knowledge base live.
+Kilo’s built-in [AI Assistant](../ai-assistant/README.md) is like having an experienced integrator by your side: describe the project, and it can register devices, build and deploy rules, and configure alarms. Open it using **AI Chat** in the sidebar; no external AI client connection is needed. That is the fastest path for most people, and it is where confirmation gates, inline charts, and the platform knowledge base live.
 
 The MCP server points the other way: it brings **your own client** to the same deployment. Use it when you want your deployment in the tool you already have open — a terminal beside the code of the integration you are building, or a desktop client where the deployment sits next to your other context. Both talk to the same platform, so which one you use is a question of where you are working.
 

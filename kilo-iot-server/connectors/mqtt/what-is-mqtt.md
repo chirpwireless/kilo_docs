@@ -4,9 +4,11 @@ description: What is MQTT? A lightweight pub-sub IoT protocol — brokers, topic
 
 # What MQTT is
 
-MQTT is a lightweight publish-subscribe messaging protocol designed for constrained networks and devices, originally specified by IBM in 1999 for SCADA over satellite links and now standardized as ISO/IEC 20922. Three properties make it the dominant industrial-IoT protocol today: small wire-format overhead suitable for cellular and battery-powered endpoints, decoupled producers and consumers via a central broker, and well-defined delivery guarantees (QoS 0/1/2) that allow integrators to trade throughput for reliability per topic.
+MQTT is a messaging protocol for exchanging small messages between devices and software. A sender **publishes** a message to a named channel called a **topic**. A server called a **broker** receives it and forwards it to clients that **subscribe** to that topic.
 
-If you are integrating an existing MQTT-producing system — a building management system, a fleet of cellular-connected meters, an MQTT-bridged PLC fleet — into the Kilo IoT Server, the orientation below covers the model the platform assumes. If you already operate MQTT in production and want to skip ahead, [Cloud MQTT](cloud-mqtt.md) and [External MQTT](external-mqtt.md) describe the connector configuration directly.
+For example, a building meter can publish its reading to `building-a/meter-1/state`. Kilo receives the message through an [MQTT connector](../mqtt-connector.md) and maps it to the registered device and its readings. The broker transports the message; device routing and decoding determine what the reading means.
+
+Use [Cloud MQTT](cloud-mqtt.md) when Kilo should supply the broker connection details, or [External MQTT](external-mqtt.md) when your deployment already has a broker.
 
 ## Architectural roles
 

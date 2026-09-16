@@ -4,7 +4,9 @@ description: How a Kilo IoT organization gets created — automatic default for 
 
 # How Organizations Start
 
-There is no "Create Organization" button in Kilo IoT Server. Organizations appear through two paths: the system creates a default organization automatically when a new user has none, or an existing organization member invites a user to join.
+An **organization** is the shared Kilo workspace containing devices, dashboards, rules, and team permissions. Your personal account joins a workspace before you start configuring a deployment.
+
+If a new user has no organization, Kilo creates a default one and makes that user its owner. An invitation is the route for joining someone else's existing organization; accepting it adds membership rather than creating another workspace. There is no separate **Create Organization** button in the interface.
 
 ## Default Organization
 

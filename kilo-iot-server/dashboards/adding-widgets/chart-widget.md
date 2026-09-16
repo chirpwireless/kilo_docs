@@ -4,8 +4,6 @@ description: Plot a sensor's history as a line or bar Chart widget — current v
 
 # Chart Widget
 
-<figure><img src="../../../.gitbook/assets/dashboard-widget-picker.jpg" alt="The Kilo widget picker with Chart shown as a separate dashboard widget"><figcaption></figcaption></figure>
-
 The Chart widget plots a reading's history as a graph — a line or bars across the last hour, day, week, or month — so you see not just where a value stands now but the trend that brought it there.
 
 A single Chart widget combines four things in one place: the **current value** as a large reading at the top, the **historical graph** — a line or bars over a chosen timeframe — an optional **average line** across that period, and optional **threshold bands** that mark compliant, warning, and breach ranges directly on the graph. An operator sees the reading now, the path it took to get there, and the operational context, without switching views.
@@ -13,6 +11,8 @@ A single Chart widget combines four things in one place: the **current value** a
 Threshold bands also color the **large current reading** at the top — when the live value falls inside a band, that headline number takes the band's color, while the line or bars keep the metric color set in the Datasource tab. So the widget signals status before anyone studies the trace.
 
 A Chart widget tracks one metric. To compare several readings, add a separate Chart widget for each.
+
+<figure><img src="../../../.gitbook/assets/dashboard-widget-picker.jpg" alt="The Kilo widget picker with Chart shown as a separate dashboard widget"><figcaption></figcaption></figure>
 
 ## Line and Bar are Chart types
 

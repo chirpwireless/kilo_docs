@@ -4,7 +4,11 @@ description: Manage Kilo IoT Server profile, subscription, locations, and API ke
 
 # Settings
 
-Configure your Kilo IoT Server environment. The Settings section in the sidebar covers platform-level preferences and configuration that apply across your deployment.
+Settings contains both your personal preferences and configuration for the current Kilo organization. An **organization** is the shared workspace containing a deployment's devices, dashboards, rules, and team access.
+
+Use **Profile Settings** for your own account details. Locations, API keys, and subscription or billing settings concern the selected organization and depend on your permissions. Check which organization is active before changing shared configuration.
+
+Team membership and organization ownership are managed separately through the [Account menu](../account/README.md). The links below explain where each setting belongs.
 
 <figure><img src="../../.gitbook/assets/sidebar-and-overview.jpg" alt="The Kilo IoT Server sidebar with the Settings section beneath Records & Reports"><figcaption></figcaption></figure>
 

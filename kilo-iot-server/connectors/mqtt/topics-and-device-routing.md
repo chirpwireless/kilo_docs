@@ -4,7 +4,11 @@ description: MQTT topic structure and Device ID routing in Kilo IoT — pattern 
 
 # Topics and device routing
 
-This page covers how the Kilo IoT Server resolves an inbound MQTT message to a specific Digital Twin: the structure of incoming topics, the **Device ID Topic** field's pattern semantics, the inner Mapping/Topic sub-tabs, the byte-for-byte match between the Device ID input and the device-level topic segment, and the two-pass save flow that the Mapping tab requires. Read this before registering MQTT devices in production deployments — most "device registered but no telemetry" support tickets resolve to one of the patterns documented here.
+MQTT routing turns a stream of messages into identifiable device readings that Kilo can chart, compare, and use in rules. Configure a device's topic pattern and field mapping once, and its subsequent messages follow that mapping into the platform.
+
+A **topic** is the message's named channel; the **payload** is its content. The routing pattern identifies the device, and field mapping identifies measurements such as temperature or power.
+
+Set up a [Cloud MQTT](cloud-mqtt.md) or [External MQTT](external-mqtt.md) connection first and have a real topic and sample payload from your equipment ready. This guide explains the **Device ID Topic** pattern, the matching device identifier, and the **Mapping** and **Topic** tabs used to turn received messages into readings.
 
 ## Topic shape after broker-side processing
 

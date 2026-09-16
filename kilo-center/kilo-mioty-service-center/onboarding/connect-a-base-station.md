@@ -4,6 +4,8 @@ description: Connect a MIOTY base station to KiloCenter — BSSCI on port 5000, 
 
 # Connect a Base Station
 
+A MIOTY base station is the radio gateway between endpoints and Kilo Center. Connecting it to your open-source service-center installation establishes the path that brings radio messages into the network; you can then register endpoints and verify their traffic.
+
 ### Goal
 
 Connect a MIOTY base station to your local KiloCenter instance and confirm it is online.

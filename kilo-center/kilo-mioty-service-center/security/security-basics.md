@@ -4,6 +4,10 @@ description: KiloCenter security basics — default credentials to change, TLS c
 
 # Security Basics
 
+Kilo Center security configuration controls access to service interfaces and protects communication with base stations, applications, and operators. The person running the installation is responsible for credentials, certificates, authentication settings, and network exposure.
+
+Use this guide before making a development installation available to other users or networks. Review the active [configuration](../getting-started/configuration-basics.md), replace convenience credentials, and expose only the interfaces required by your deployment. A running local stack is the starting point, not evidence that production access has been configured.
+
 ### Goal
 
 Establish a secure baseline for KiloCenter deployments.

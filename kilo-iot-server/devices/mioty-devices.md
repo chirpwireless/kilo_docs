@@ -4,9 +4,13 @@ description: Commission a MIOTY endpoint in Kilo IoT — End Point EUI, short ad
 
 # MIOTY Devices
 
-A MIOTY endpoint registered on the Kilo IoT Server becomes a Digital Twin like any other device — a persistent digital representation of its identity, configuration, telemetry history, and state. What is specific to MIOTY is the set of parameters that describe how the endpoint reaches your base stations, and the security material that lets the service center trust it.
+Register a MIOTY endpoint in Kilo Cloud to use its readings throughout the platform: place them on widgets, compare them in charts, evaluate them in rules, and notify a team through alarms. Cloud's enterprise Kilo Center service center handles the network communication beneath that application.
 
-This page covers the MIOTY-specific fields on the device form. The surrounding registration workflow — naming the device, the Metrics tab, the Logs tab, saving — is the shared flow documented in [Registering Devices](registering-devices.md).
+An **endpoint** is the physical sensor, meter, or other device communicating through a MIOTY **base station**, its radio gateway. Its Kilo device record brings the identity, settings, and readings together.
+
+Before registration, set up the [MIOTY connector](../connectors/mioty-connector/README.md) and have the endpoint's identifiers and network key from its manufacturer or provisioning process. Those values associate the correct hardware with its record. A [blueprint](mioty-blueprints.md) supplies the decoding specification needed to turn its messages into named readings.
+
+This page explains the MIOTY-specific fields. For naming, metrics, logs, and saving the device, follow [Registering Devices](registering-devices.md).
 
 ## Prerequisites
 

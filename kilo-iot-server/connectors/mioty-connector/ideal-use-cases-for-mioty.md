@@ -4,15 +4,9 @@ description: Where MIOTY fits best — factory floors, utility metering, moving 
 
 # Ideal Use Cases for MIOTY
 
-MIOTY earns its place wherever the radio environment is the hard part. If your sensors sit in clean, quiet air with modest device counts, most LPWAN options will serve you. The scenarios below are the ones where telegram splitting stops being a technical footnote and starts being the reason the deployment works.
+MIOTY is a wireless protocol suited to low-power sensors sending small amounts of data, such as utility readings or equipment status. Sensors transmit to base stations; a service center handles the traffic before an application uses the readings.
 
-MIOTY is strongest when:
-
-* The RF environment is noisy, reflective, or crowded with competing transmitters
-* Endpoint counts run into the thousands per site
-* Devices are in motion, or the environment around them changes
-* Sensors are buried deep inside structures, machinery, or below ground
-* Missed readings carry a real operational or compliance cost
+Consider MIOTY for metering, building monitoring, and industrial sensing where cabling is difficult or many devices share the radio environment. Its [telegram-splitting design](what-is-mioty.md) helps reception tolerate interference. Choose equipment and test reception for the actual site: the examples below describe possible applications, not guaranteed coverage or customer results.
 
 ***
 

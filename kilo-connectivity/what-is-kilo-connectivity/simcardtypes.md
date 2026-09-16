@@ -5,6 +5,10 @@ description: Standard vs Industrial IoT SIM cards — lifespan, durability, and 
 
 # SIM Cards Types
 
+A **SIM** holds the identity and credentials a cellular device uses for its mobile-network subscription. Choosing a SIM for an IoT project involves its physical format, environmental rating, and whether the equipment supports remotely managed subscription profiles.
+
+Use this guide to compare those choices before selecting a [cellular service](cellular-iot.md). Match the SIM to the modem's specifications and the installation conditions. A label such as industrial describes a hardware grade; it does not by itself establish coverage, device compatibility, or a guaranteed service life.
+
 ### Standard vs. Industrial SIM Cards
 
 **Standard SIM cards** are suitable for fixed-location devices operating in typical environments with stable temperatures and humidity levels. These are commonly used in indoor or climate-controlled settings.

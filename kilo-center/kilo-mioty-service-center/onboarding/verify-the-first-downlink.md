@@ -4,6 +4,10 @@ description: Send and verify the first MIOTY downlink in KiloCenter — queue a 
 
 # Verify the First Downlink
 
+A **downlink** lets your application send a message back through Kilo Center to a bidirectional MIOTY endpoint. Use this guide to queue the device-compatible payload and inspect the reported delivery result, completing the return path of the network connection.
+
+First [verify an uplink](verify-the-first-uplink.md) from the registered endpoint. Both the endpoint and base station must support bidirectional communication. Acceptance into the downlink queue is not delivery confirmation, and delivery confirmation alone does not prove that a physical action occurred. Check device feedback when the payload requests a state change.
+
 ### Goal
 
 Queue a downlink command to an endpoint and verify the result.
@@ -39,7 +43,7 @@ grpcurl -plaintext -d '{
 
 #### In KC-Web
 
-Check the endpoint's downlink results view for status updates. A successful downlink shows the delivery status and any confirmation from the endpoint.
+Check the endpoint's downlink results view for status updates. Distinguish a queued request from a transmission result and any available endpoint confirmation. For a command that changes device state, inspect the device's reported state separately.
 
 #### In Logs
 

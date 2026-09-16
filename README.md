@@ -4,24 +4,20 @@ description: Kilo provides the IoT infrastructure that lets people, software, an
 
 # Intro to Kilo
 
-Every IoT project follows the same fundamental path:\
-**Devices → Connectivity → IoT Platform.**
+Kilo brings connected equipment, automation, and AI-assisted setup into one working environment. Build a view of a building's conditions, notify the people who can respond, and configure equipment actions without assembling a separate application for every device type.
 
-Kilo supports the entire journey — from sourcing hardware, to connecting it, to managing it in the cloud. You can also start at the other end: with the [Emulator connector](kilo-iot-server/connectors/emulator-connector.md) you build and test a complete deployment — dashboards, rules, escalating alarms — **before any hardware exists**, then point those same devices at real sensors when they arrive.
+The **[AI Assistant](kilo-iot-server/ai-assistant/README.md)** is like having an experienced integrator by your side. It helps you work through protocols and device compatibility, then takes on platform configuration: adding devices, configuring alarms, and building and deploying automation rules from the outcome you describe. You can begin with an [emulated device](kilo-iot-server/connectors/emulator-connector.md) before any hardware is on site.
 
-Kilo is a full-stack IoT company that provides the infrastructure needed to build scalable, connected systems. Our broader mission is to give intelligence a safe, reliable way to observe and act in the physical world.
+The products serve different parts of that job:
 
-And we build it **AI-first**. The Kilo IoT Server doesn't treat AI as a feature in a menu — it puts an experienced IoT integrator inside the platform that understands your entire deployment and can do the work with you: onboard devices and gateways, write and deploy automations, configure alarms, and run commands on your equipment — all from a plain-language conversation, all grounded in your real data. The result is a platform where setting up and operating IoT is something you can simply *describe*. See the [IoT AI Assistant](kilo-iot-server/ai-assistant/).
+- **[Kilo IoT Server](kilo-iot-server/README.md)** manages connected devices, readings, dashboards, rules, alarms, and an AI assistant that carries out device and automation setup. **Kilo Cloud** is its hosted offering.
+- **[Kilo Center](kilo-center/kilo-mioty-service-center/README.md)** is an open-source MIOTY service center for networking: connecting base stations, registering endpoints, and enabling communication. Kilo Cloud includes its enterprise version and adds widgets, rules, alarms, and the wider IoT platform.
+- **[Kilo Connectivity](kilo-connectivity/what-is-kilo-connectivity/README.md)** includes cellular IoT SIM services for equipment that connects through mobile networks. Cellular service is separate from the IoT Server's software connectors.
+- **[Kilo Electronics](https://kiloelectronics.com/)** supplies sensors, gateways, and other hardware for a project.
 
-The same IoT Server is a Physical AI platform between external AI agents and physical infrastructure. It normalizes devices, applies permissions and operational controls, and retains the evidence needed to understand what happened. This is Kilo's approach to [Physical AI for AI Agents](kilo-iot-server/physical-ai.md): the model supplies intelligence, while Kilo supplies dependable real-world execution. That is no longer only a description of the architecture: an external AI client connected over MCP can operate your devices, not just read from them.
+Choose the components your deployment needs. You can bring existing equipment to the IoT Server or begin with an [emulated device](kilo-iot-server/connectors/emulator-connector.md) to try dashboards and rules before connecting hardware.
 
-Kilo is built around **three core pillars**, which together cover the entire IoT stack:
-
-1. **Kilo Electronics** (Devices)
-2. **Kilo Connectivity** (Connectivity)
-3. **Kilo Cloud** (IoT Platform)
-
-Kilo is also modular by design. You can use the full Kilo stack for simplicity, or choose only the services you need. For example, you can use Kilo Cloud as your IoT platform while bringing your own devices, or you can source hardware through Kilo Electronics while using your existing platform.
+The IoT Server also gives AI agents access to supported device operations through the [AI Assistant](kilo-iot-server/ai-assistant/README.md) and [MCP interface](kilo-iot-server/api/mcp-server.md). This is Kilo's [physical AI](kilo-iot-server/physical-ai.md) role: device data, saved commands, permissions, and automation workflows that an agent can use. Available actions depend on the integration and your access.
 
 ***
 
@@ -29,15 +25,15 @@ Kilo is also modular by design. You can use the full Kilo stack for simplicity, 
 
 #### Devices — Kilo Electronics
 
-Kilo Electronics is the fastest-growing electronics distributor in the Kilo ecosystem. It is our German subsidiary operating out of Germany under **Kilo IoT, GmbH**. [Kilo Electronics](https://kiloelectronics.com/) supplies sensors, gateways, and other IoT hardware to support real deployments.
+Kilo Electronics is our hardware distribution business, operating in Germany under **Kilo IoT, GmbH**. [Kilo Electronics](https://kiloelectronics.com/) supplies sensors, gateways, and other IoT hardware to support real deployments.
 
 #### Connectivity — Kilo Connectivity
 
-Kilo provides IoT connectivity through LoRaWAN and a global Cellular IoT network. We are one of the largest cellular IoT connectivity providers, with more than **800 global connectivity partners**. Our global IoT SIM cards operate in **every country worldwide** without requiring SIM swaps or separate contracts for different regions.
+Kilo offers connectivity for device deployments, including cellular IoT SIM services. Check network availability, supported radio technologies, and plan terms for each target country and device before deployment. See [Kilo Connectivity](kilo-connectivity/what-is-kilo-connectivity/README.md).
 
 #### IoT Platform — Kilo Cloud
 
-Kilo Cloud is the platform where device data becomes actionable. It is an AI-first IoT server that enables device management, dashboards, automation, and alerting — with a built-in AI integrator that can provision devices, build and deploy rules, and set up alarms on your behalf. Access it at [**Kilo Cloud**](https://app.kiloiot.io/), the core IoT platform.
+Kilo Cloud is the hosted IoT Server for device management, dashboards, automation, and alerting. Its AI assistant helps you configure a deployment through conversation, from registering devices to building automation rules and setting up alarms. Access it at [**Kilo Cloud**](https://app.kiloiot.io/), the core IoT platform.
 
 ***
 

@@ -4,6 +4,8 @@ description: Install KiloCenter on a Linux host without Docker — PostgreSQL, R
 
 # Installation: Linux Host
 
+Install Kilo Center Community Edition directly on a Linux host when you want to manage its services and dependencies yourself. The result is the same open-source MIOTY networking service, with the processes running on your host rather than inside Docker containers.
+
 ### Goal
 
 Run KiloCenter without Docker by installing all dependencies directly on the host.

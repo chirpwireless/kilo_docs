@@ -4,11 +4,11 @@ description: Node reference for the Rules Engine — Start, End, Script, Gateway
 
 # Node Reference
 
-Every automation rule is built from a set of node types that you drag onto the visual editor canvas, connect with flows, and configure through a properties panel. This page documents each node type — what it does, when to use it, how it appears on the canvas, and every field in its properties panel.
+A **node** is one step or decision in a Kilo automation rule. **Flows** are the arrows connecting nodes: they define the order of work and the available paths. Use this reference to choose each step and configure it in the [visual editor](visual-editor.md).
 
-This page documents the nodes currently available in the live palette: **Start Event**, **End Event**, **Script Task**, **Exclusive Gateway**, **Set Alarm**, **Execute Command**, **Enrichment**, and **Boundary Error Event**. Transitional or planned nodes are intentionally excluded until they are part of the live editor surface.
+For example, a Script Task calculates a value, an Exclusive Gateway chooses a path, and Set Alarm raises an event using a saved alarm definition. Execute Command uses a command already configured on a device. Create those resources before selecting them in a node.
 
-For an overview of the canvas itself — palette, toolbar, and general editing workflow — see [Visual Editor](visual-editor.md).
+The available types are **Start Event**, **End Event**, **Script Task**, **Exclusive Gateway**, **Set Alarm**, **Execute Command**, **Enrichment**, and **Boundary Error Event**. Each section below explains its role and fields.
 
 ---
 

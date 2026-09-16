@@ -4,11 +4,11 @@ description: Track a reading against thresholds with the Gauge — colored bands
 
 # Gauge Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-gauge.jpg" alt="Last Data widget using the Gauge display type"><figcaption></figcaption></figure>
-
-The Gauge display draws each reading as a marker sliding along a horizontal track. The track is scaled between a minimum and a maximum, and every numeric condition you set becomes a colored band along it — so the marker's position shows operational status, not just a value. The figure is shown in full above the track.
+The Gauge display draws each reading as a marker sliding along a horizontal track. The track is scaled between a minimum and a maximum, and every numeric condition you set becomes a colored band along it — so the marker's position shows operational status, not just a value. The numeric value is shown in full above the track.
 
 This is the display for readings where the position against thresholds is the point: whether a value sits inside its safe band, is drifting toward a limit, or has already crossed one.
+
+<figure><img src="../../../../.gitbook/assets/last-data-gauge.jpg" alt="Last Data widget using the Gauge display type"><figcaption></figcaption></figure>
 
 ## When to choose it
 

@@ -4,11 +4,11 @@ description: Start new chats, revisit history, track your request allowance, and
 
 # Managing chats and AI access
 
-The assistant lives in **AI Chat** in the sidebar. This page covers the workspace around the conversation itself — starting and revisiting chats, the request allowance that comes with your plan, and connecting your own model when you'd rather not work against that allowance.
+The Kilo AI Assistant works alongside you as you configure devices and automation. Open it using **AI Chat** in the sidebar. This page covers the workspace around the conversation itself — starting and revisiting chats, the request allowance that comes with your plan, and connecting your own model when you'd rather not work against that allowance.
 
 ## Starting a new chat
 
-The **New Chat** action in the AI Chat top bar opens a fresh conversation. Because the assistant keeps the context of a conversation as you go — so you can refine a task across several messages — start a new chat when you move to an unrelated task, so earlier context doesn't carry over into work where it doesn't belong.
+The **New Chat** action in the assistant’s top bar opens a fresh conversation. Because the assistant keeps the context of a conversation as you go — so you can refine a task across several messages — start a new chat when you move to an unrelated task, so earlier context doesn't carry over into work where it doesn't belong.
 
 ## Chat history
 

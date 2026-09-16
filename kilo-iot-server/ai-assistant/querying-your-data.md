@@ -4,19 +4,23 @@ description: Query Kilo IoT Server in natural language — device status, histor
 
 # Querying Your Data
 
-The AI Assistant accepts natural language. There is no special syntax to learn, no query language to memorize. Type the way you would talk to a colleague who happens to know everything about your deployment — whether you're *asking* about your data or *asking it to do something*. This page focuses on the asking-and-analyzing side; to hand it real setup work, see [Building With the Assistant](building-with-ai.md).
+After setting up a deployment, use Kilo's **AI Assistant** to investigate how it is behaving. Ask which devices stopped reporting, compare a warehouse's temperature across two weeks, or find readings above a threshold. The assistant retrieves the relevant records and explains them in the same conversation you use to refine the setup.
 
-<figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
+Name the device or location and the period you want to examine. Follow-up questions can narrow the result without building a separate report. For device onboarding and automation configuration, start with [Building With the Assistant](building-with-ai.md).
+
+<figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The Kilo AI Assistant with a greeting and suggested starter topics"><figcaption></figcaption></figure>
 
 When you open **AI Chat**, a greeting and a few suggested topics get you started — select one, or just type your question in the box at the bottom.
 
 ## Writing effective queries
 
+Check the timestamps and returned coverage when interpreting a result. A device that has stopped reporting may only have an old value, and the available history depends on retention.
+
 A specific question produces a specific answer. Follow these guidelines to get the most useful results:
 
 - **Name the device, sensor, or location.** "What is the temperature in Warehouse B?" is far more useful than "What is the temperature?" When dozens of sensors report temperature, the assistant needs to know which one you mean.
 - **Use natural time expressions.** The assistant understands "yesterday", "last 3 hours", "between January 1 and January 15", "this morning", and similar phrases. There is no need to provide Unix timestamps or formatted dates.
-- **Ask follow-ups.** The assistant maintains full context within a conversation. Refine, narrow, or expand a previous query without restating everything.
+- **Ask follow-ups.** The assistant uses the conversation context available to it. Refine, narrow, or expand a previous query without restating everything.
 - **Reuse your last message.** Press the **Up arrow** key in the chat input to bring back the last message you sent — useful for tweaking a question and asking it again.
 
 ## Query categories

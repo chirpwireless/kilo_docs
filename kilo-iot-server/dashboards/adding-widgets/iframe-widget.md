@@ -4,13 +4,13 @@ description: Embed a web page — a BI report, weather map, or live traffic — 
 
 # iFrame Widget
 
-<figure><img src="../../../.gitbook/assets/iframe-widget.jpg" alt="The iFrame Widget configurator — an embed URL in the Data source field, the supported-services list below, and a live preview"><figcaption></figcaption></figure>
+An iFrame Widget embeds a live external web page inside a dashboard tile. The embedded page keeps working exactly as it does on its own site — it refreshes, animates, and updates in real time — but it now sits beside your Last Data panels, charts, and building views. You point the widget at an **embed URL** from a supported service, give it a name, and it renders in place.
 
 Not every view an operations team needs comes from a sensor. A shift supervisor watching a plant floor may also need the corporate energy report, the regional weather radar, live traffic on the roads into the site, or the status page of a service the site depends on. The iFrame Widget brings those external views onto the same dashboard as your device data, so a single screen tells the whole operational story instead of scattering it across browser tabs.
 
-An iFrame Widget embeds a live external web page inside a dashboard tile. The embedded page keeps working exactly as it does on its own site — it refreshes, animates, and updates in real time — but it now sits beside your Last Data panels, charts, and building views. You point the widget at an **embed URL** from a supported service, give it a name, and it renders in place.
-
 Because the widget loads a third-party page directly, Kilo only embeds sources from a reviewed list of services that publish safe, embeddable views. That keeps a shared operations dashboard trustworthy: an embedded tile can only ever show a page from a service the platform has vetted, never an arbitrary site pasted in by mistake.
+
+<figure><img src="../../../.gitbook/assets/iframe-widget.jpg" alt="The iFrame Widget configurator — an embed URL in the Data source field, the supported-services list below, and a live preview"><figcaption></figcaption></figure>
 
 ## Add an iFrame Widget
 

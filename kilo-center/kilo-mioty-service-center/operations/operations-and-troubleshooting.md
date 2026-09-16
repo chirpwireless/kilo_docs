@@ -4,6 +4,8 @@ description: KiloCenter operations — health endpoints for KC-Core, KC-Gateway,
 
 # Operations and Troubleshooting
 
+Use these checks to find where a Kilo Center network connection has stopped working: the services, the base-station connection, or the flow of endpoint messages. Checking the path in order helps you restore the communication your downstream application depends on.
+
 ### Goal
 
 Run repeatable checks for startup issues, connectivity problems, and message-flow failures.

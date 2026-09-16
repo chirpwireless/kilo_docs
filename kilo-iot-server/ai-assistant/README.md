@@ -1,38 +1,46 @@
 ---
-description: The Kilo IoT AI Assistant knows your deployment and can provision devices, deploy rules, and set up alarms with you.
+description: An experienced integrator by your side. Let Kilo’s AI Assistant add devices, build and deploy automation, configure alarms, and create dashboards.
 ---
 
 # IoT AI Assistant
 
-Most "AI" in software is a chat box bolted onto a help page. The Kilo IoT Server's assistant is something else entirely: **an experienced IoT integrator that lives inside your platform, knows your whole deployment, and can do the work alongside you.** It is the difference between a tool that answers questions and a colleague who picks up tasks.
+Kilo's **AI Assistant** is like having an experienced integrator by your side.
 
-Ask it what your devices are doing and it answers from your real telemetry. Ask it to set something up — onboard a device, build an automation, define an alarm — and it does the work, shows you exactly what it's about to change, and only proceeds once you approve. Open it from **AI Chat** in the sidebar.
+IoT has traditionally demanded specialist knowledge: protocols to learn, device compatibility to understand, and configuration steps to connect everything into a working system. Kilo's AI Assistant takes on the platform configuration work with you. Explain what you want to achieve, and it can add devices, build and deploy automation rules, configure alarms, and create dashboards.
+
+You bring the goal. The assistant helps put the pieces together—and you can keep refining the setup as your project grows. Start with *“Add this temperature sensor to Warehouse B”*, then ask it to build an automation that alerts the facilities team when a reading exceeds your chosen limit. It asks for the details it needs and carries out the setup in your organization.
+
+To get started, open the AI Assistant using **AI Chat** in the sidebar. See [Building With the Assistant](building-with-ai.md) for device onboarding, automation, and alarm setup.
 
 <figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The Kilo IoT AI assistant ready to help set up automations, devices, and alerts"><figcaption></figcaption></figure>
 
 ## Three things make it different
 
-**It's grounded in your deployment, not guessing.** Every answer about your devices, rules, alarms, and dashboards comes from your live data — read through the platform at the moment you ask, scoped to your permissions. It doesn't pad answers with plausible-sounding generalities; if it can't retrieve something, it says so. That makes it trustworthy enough to act on.
+**It carries out the setup.** The assistant can register devices, map readings, write a rule's [CEL expressions](../rules-engine/cel-reference.md), build and deploy that rule, and configure alarm recipients and escalation. You can also ask it to create an emulated device and send test readings before the hardware arrives.
 
-**It acts, it doesn't just advise.** This is the leap. The assistant can provision a device or a gateway, author a complete automation — writing the [CEL](../rules-engine/cel-reference.md) logic and deploying it — create an alarm with escalation, **run a command on a device**, recommend compatible hardware, and manage team access. It runs the same operations you would, on your behalf, and verifies its own work afterward by reading the result back.
+**It connects the pieces of a project.** Device catalogs, connection details, existing rules, and platform guides give the assistant context for the next step. You can work from choosing a device to registering it and checking its first readings without translating your goal into a separate checklist for every screen.
 
-**It remembers and it confirms.** It keeps the context of your conversation and your setup, so you can refine a task across several messages without starting over. And before anything destructive or consequential — deleting a device or rule, resolving an alarm — it pauses and asks for an explicit **Confirm Action** / **Cancel**. Nothing irreversible happens without your say-so.
+**You can refine the work and review consequential actions.** Continue with *“change the threshold”* or *“notify the site manager too”*. The assistant keeps the conversation context. Device-command execution and actions such as deleting a device or resolving an alarm present a **Confirm Action** / **Cancel** prompt; routine setup can run directly.
 
 ## What it can do for you
 
-| | |
+| Your goal | Work you can hand to the assistant |
 | --- | --- |
-| **Understand your deployment** | Answer questions about live device state and full history, run aggregations and comparisons, and generate charts inline. See [Working With the Assistant](querying-your-data.md). |
-| **Build and operate** | Provision devices and gateways (guided, or automatically when you provide the LoRaWAN keys), author/test/deploy rules including their CEL, create alarms with escalation, run device commands behind a confirmation, set up emulated devices, manage team roles, and recommend hardware. See [Building With the Assistant](building-with-ai.md). |
-| **Guide and explain** | Search the platform knowledge base and IoT references to explain features, walk you through setup, and troubleshoot — grounded in [what it can access](data-sources.md). |
+| **Connect equipment** | Find device models, create connections, register devices, map readings, and inspect diagnostics. See [Building With the Assistant](building-with-ai.md). |
+| **Set up a response** | Create and revise rules, write their expressions, build and deploy them, test sample readings, and configure alarm definitions with escalation. |
+| **Prepare a project before installation** | Create emulated devices, adjust their generated readings, create dashboards and folders, and plan the views your team needs. See [Dashboard setup](building-with-ai.md#prepare-dashboards-and-views). |
+| **Operate and investigate** | Run a device's saved commands after confirmation, inspect execution status, compare readings, and explore history. See [Working With the Assistant](querying-your-data.md). |
+| **Bring people into the workspace** | Invite registered users and configure their access to the organization. |
+
+A saved trigger stores a monitoring condition separately from its responding rule. The assistant can explain that setup, but **cannot currently save or edit triggers in chat**. Use the [Triggers page](../rules-engine/triggers.md) for that step.
 
 ## Monitoring, automation, and control
 
-The assistant works through the platform the same way you would: it answers from your data, builds **monitoring and automation**, and now **operates equipment directly** — running a device's existing commands behind a confirmation and reporting whether they were delivered. [Building with AI](building-with-ai.md) covers how that works and where its limits are.
+A setup conversation can produce a working automation, not just an explanation of one. The resulting rule remains visible in the [Rules Engine](../rules-engine/README.md), where you can inspect its steps, review versions, debug behavior, and manage deployment.
 
-Automations can act too: a rule can run a device command when its conditions are met (see [Running Device Commands](../rules-engine/running-device-commands.md)), so the logic it sets up can both notify the right people and act on a device. For hands-on control you still have the device's **Commands & States** tab and the dashboard [Control widget](../dashboards/adding-widgets/control-widget.md).
+For direct operation, ask the assistant to run a command already defined on a device. It shows the proposed action for confirmation and can retrieve the execution status afterward. Optional [command verification](../devices/commands/verification.md) checks device feedback; accepting a message for delivery is different from confirming a physical result.
 
-It also stays in its lane in the ways you'd want: it works only within your access and your current organization, never crosses into another organization's data, and never surfaces credentials or billing secrets. See [Privacy and Security](privacy.md).
+Data questions complement this setup work. After commissioning, ask which devices have stopped reporting or compare temperatures across a period. The answer uses the readings available to your account. See [What It Can Access](data-sources.md) and [Privacy and Security](privacy.md) for data, permissions, and conversation handling.
 
 ## Availability
 
@@ -42,8 +50,9 @@ The assistant runs on [SyntheticBrew](https://syntheticbrew.ai/), our own AI age
 
 ## Where to go next
 
-* [Working With the Assistant](querying-your-data.md) — ask about your data and get answers, analysis, and charts
-* [Building With the Assistant](building-with-ai.md) — hand it real setup work: devices, rules, alarms
-* [What It Can Access](data-sources.md) — the sources behind its grounded answers
-* [Privacy and Security](privacy.md) — authentication, isolation, and confirmation gates
-* [MCP Server](../api/mcp-server.md) — connect your own AI client, such as Claude Code or Claude Desktop, to the same deployment
+* [Building With the Assistant](building-with-ai.md) — delegate devices, rules, alarms, and dashboard setup
+* [Let AI Set It Up for You](../getting-started/let-ai-set-it-up.md) — start in Kilo or connect your preferred AI client
+* [Working With the Assistant](querying-your-data.md) — investigate readings, trends, and device status
+* [What It Can Access](data-sources.md) — the project context behind its work
+* [Privacy and Security](privacy.md) — permissions, confirmations, and conversation handling
+* [MCP Server](../api/mcp-server.md) — connect an external AI client to your deployment

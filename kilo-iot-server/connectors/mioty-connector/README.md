@@ -1,14 +1,16 @@
 ---
-description: Add the Mioty connector to bind your organization to the MIOTY service center and get its BSSCI endpoint.
+description: Bring MIOTY devices into Kilo Cloud — enterprise service-center networking with dashboards, widgets, automation rules, and alarms.
 ---
 
 # MIOTY Connector
 
-The Mioty connector binds your organization to the MIOTY service center and unlocks the MIOTY side of the Kilo IoT Server: base station registration and MIOTY endpoint fields on the device form.
+The MIOTY connector brings your radio network into **Kilo Cloud's full IoT platform**. Kilo Cloud includes the enterprise Kilo Center service center; your MIOTY endpoint readings can then feed widgets and dashboards, take part in automation rules, and raise alarms with escalation.
 
-MIOTY (ETSI TS 103 357) is an LPWAN protocol built for massive-scale industrial telemetry. It splits every message into small radio bursts spread across time and frequency — telegram splitting — so the base station reconstructs a telegram even when up to half its bursts are lost. The practical result is up to 110,000 low-power endpoints per base station, long range, and reliable delivery in RF environments that punish other protocols: plant floors, metal-dense warehouses, utility substations, and dense metering rollouts. For the protocol itself, see [What is MIOTY?](what-is-mioty.md).
+MIOTY is a low-power wireless protocol. Its **base stations** are radio gateways, and its **endpoints** are communicating sensors or devices. The connector is the software connection between that network and your Kilo organization. Add it, connect your base stations, and register the endpoints to build the application around their readings.
 
-**There is no MIOTY infrastructure for you to run.** The Enterprise edition of our MIOTY service center is built into Kilo Cloud, so adding this connector is all it takes to stand up the service-center side of a MIOTY network. Your base stations connect straight to it, and your endpoints arrive on a full IoT platform — rules, alarms, dashboards, audit trail — rather than on a network server you would then have to integrate with something else. If you would rather operate that infrastructure yourself, the Community edition is open source: see [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
+If you only need networking and want to run it yourself, [Kilo Center Community Edition](../../../kilo-center/kilo-mioty-service-center/README.md) is the open-source service center. Use Kilo Cloud when you also want the enterprise service center and the platform's application capabilities.
+
+For the wireless protocol, see [What is MIOTY?](what-is-mioty.md). For operating your own service center, see [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
 
 ## Why the connector exists
 

@@ -1,8 +1,12 @@
 ---
-description: Privacy of the Kilo IoT AI Assistant — session-scoped auth, permission inheritance, org isolation, data retention.
+description: Delegate IoT setup with your own account permissions — understand AI action confirmations, saved conversations, and model-provider data handling.
 ---
 
 # Privacy and Security
+
+You can delegate configuration to Kilo's AI Assistant while keeping the access boundaries of your own account. The assistant uses your signed-in session and selected organization when it registers devices, builds rules, or works with alarms. This page explains those permissions, action confirmations, and how conversation data is handled.
+
+Your messages and retrieved results can be sent to the configured model provider to produce an answer. Chat history lets you revisit the conversation. Keep account passwords and unrelated secrets out of chat, and review the [AI access settings](managing-chats-and-ai-access.md) when choosing a model provider.
 
 ## Authentication
 
@@ -31,17 +35,15 @@ Conversations and data queries are strictly scoped to your current organization.
 
 ## What is NOT stored
 
-- Raw device telemetry is not duplicated or retained by the assistant beyond the scope of your query.
-- Passwords, API credentials, and authentication tokens are never captured.
-- Billing and payment data is not recorded in conversation logs.
+Chat is not a separate telemetry archive. However, readings and other information included in messages or tool results can appear in conversation history and model context. Do not paste account passwords or unrelated credentials into a conversation; use the dedicated settings for model API keys.
 
 ## How queries are processed
 
-1. Your question is sent to the assistant backend, authenticated with your active session.
-2. A language model interprets the intent of your question.
-3. The assistant queries only the data sources your permissions authorize.
-4. The results of those queries are returned to the model, which composes a natural-language response from them.
-5. The response is streamed back to your browser in real time.
+1. Your message is sent with your active session and organization context.
+2. The assistant interprets the task and identifies the information or operations it needs.
+3. It reads configuration or data and can perform authorized setup operations. Consequential actions use the confirmation workflow described above.
+4. Operation results return to the model so it can explain the outcome, ask for missing details, or continue the task.
+5. The response streams back to your browser.
 
 ## Which data reaches the model
 
@@ -53,7 +55,7 @@ Where that data goes depends on the model provider you choose:
 - **Your own model key** (OpenAI, Anthropic, OpenRouter, or any OpenAI-compatible provider) — data goes to that provider under your own agreement with them.
 - **A model you host yourself** — set **Base URL** to your own endpoint and the data goes only there. Choosing the **Ollama** provider fills in Ollama Cloud, which is a hosted service like any other; self-hosting means replacing that address with your own, and the address has to be reachable from the platform.
 
-Two limits hold in every case: the assistant reads **only what your permissions already allow**, and it stays inside your current organization. Raw telemetry is not duplicated or retained by the assistant beyond the scope of your query.
+Two limits hold in every case: the assistant reads **only what your permissions already allow**, and it stays inside your current organization. Information included in the conversation may also appear in its history.
 
 The same applies to the [MCP server](../api/mcp-server.md): when you connect your own AI client, the data it retrieves reaches whichever model that client runs. You choose the client and the model.
 

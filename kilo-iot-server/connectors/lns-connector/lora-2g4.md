@@ -4,7 +4,9 @@ description: LoRa 2.4 GHz in Kilo IoT — global license-free deployment, higher
 
 # LoRa 2.4 GHz
 
-The Kilo IoT Server supports LoRa 2.4 GHz alongside traditional sub-GHz LoRa frequencies. The 2.4 GHz band opens deployment scenarios where global consistency, higher data throughput, or operation in dense wireless environments are required — without sacrificing the low-power characteristics that make LoRaWAN effective for IoT.
+LoRa is a radio technology for transmitting small messages from low-power devices. **LoRa 2.4 GHz** uses the 2.4 GHz radio band, rather than the sub-GHz bands used in many LoRaWAN deployments. It is a radio option, not a separate IoT Server or software connector.
+
+Use this guide to understand where that option fits before selecting equipment. Devices and gateways must support the same radio configuration; a sub-GHz gateway cannot receive 2.4 GHz transmissions. Check equipment compatibility and local radio requirements before planning a deployment, and see the [LNS connector](README.md) for the platform connection.
 
 ## Why 2.4 GHz Matters for Deployments
 
