@@ -4,14 +4,18 @@ description: Create a Kilo trigger separately from a rule, choose its conditions
 
 # Triggers
 
-A **trigger** is a separately saved monitoring condition in **Rules Engine → Triggers**. A **rule** is the workflow in **Rules Engine → Rules** that performs the response. You can create and save a trigger before any rule exists. To create a trigger, open the **Triggers** tab, click **Add trigger**, configure it, and click **Create trigger**. Connecting it to a rule is a separate step.
+A **trigger** watches device readings for a condition you choose, such as a cold-store door staying open for 20 minutes. When that condition is met, the trigger can start a connected **rule**. The rule defines the response, such as raising an alarm or sending a command to a device.
 
-A trigger is not only a timer and it is not a reusable device group. Timing and device selection are two independent parts of the same trigger:
+For example, if you want an alert when a cold-store door is left open, the **trigger** checks the door readings and the 20-minute wait. The **rule** contains the steps that raise the alert. Creating the trigger alone does not send an alert; you need to connect it to a running rule.
+
+You create and save these separately. You can create a trigger before any rule exists: open **Rules Engine → Triggers**, click **Add trigger**, configure it, and click **Create trigger**. Connect it to a rule when you are ready to set up the response.
+
+A trigger has two independent choices:
 
 - **Timing** decides whether Kilo starts the rule immediately or waits for the condition to remain true.
 - **Devices** decide whether the condition is evaluated for one device or separately for several devices.
 
-For example, one trigger can watch the `door_open` metric on 50 cold-store doors. It can start one shared rule as soon as any door opens, or only after that particular door has remained open for 20 minutes. Each door keeps its own state and countdown.
+The same trigger can watch the `door_open` metric on 50 cold-store doors. It can start one shared rule as soon as any door opens, or only after that particular door has remained open for 20 minutes. Each door keeps its own state and countdown.
 
 ## What is the difference between a trigger and a rule?
 
