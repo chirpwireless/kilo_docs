@@ -8,11 +8,11 @@ The Rules Engine is a visual automation system based on BPMN (Business Process M
 
 That last capability changes what automation means here. A rule no longer just alerts a person to go act — it can take the action itself, the instant a condition is met. A leak sensor used to trigger an alarm and a scramble to the shutoff valve; now the same rule closes the valve automatically and raises the alarm in the same evaluation. Sense, decide, act — end to end, with no one in the loop. See [Running Device Commands](running-device-commands.md).
 
-**Triggers and rules are separate objects.** Create a monitoring condition under **Rules Engine → Triggers**; create its response workflow under **Rules**. A rule can also start directly from one sensor without a saved trigger. See [Triggers](triggers.md#what-is-the-difference-between-a-trigger-and-a-rule) for the distinction and creation steps.
+**A trigger watches device readings for a condition**, such as a cold room staying too warm for ten minutes. A **rule** defines the response, such as raising an alarm for the site team. Save them separately in the **Triggers** and **Rules** tabs under **Rules Engine**, then connect the trigger to the rule. A rule can also start directly from one sensor without a saved trigger. See [Triggers](triggers.md#what-is-the-difference-between-a-trigger-and-a-rule) for the distinction and creation steps.
 
 ## How it works
 
-Rules are BPMN 2.0 workflows: visual flowcharts where each node performs a specific job. You connect nodes with flows (arrows) to build the logic. The engine executes a deployed rule when its Start Event receives the selected source: either a reading from one sensor or an activation from a saved trigger condition.
+Rules are BPMN 2.0 workflows: visual flowcharts where each node performs a specific job. You connect nodes with flows (arrows) to build the logic. The engine executes a deployed rule when its Start Event receives the selected source: either a reading from one sensor or a signal from a saved trigger condition. The rule must be running; its schedule and execution-rate limits determine whether it can process that input.
 
 <figure><img src="../../.gitbook/assets/rules.jpg" alt="A rule on the visual editor canvas — a Start event flowing into a Gateway that branches into two paths ending at End events"><figcaption></figcaption></figure>
 
@@ -26,7 +26,7 @@ Changes you make in the visual editor stay in draft until you explicitly build a
 
 ## What you can build
 
-A rule starts with a **Start Event**. Choose **Sensor reading** to run it whenever one selected sensor reports, or **Trigger condition** to run it when a saved condition becomes active for one or more devices. A trigger may act immediately or wait for the condition to remain true. Each time the selected source fires, the rule executes. Inside the rule, you can:
+A rule starts with a **Start Event**. Choose **Sensor reading** for incoming readings from one selected sensor, or **Trigger condition** for signals from a saved condition watching one or more devices. A trigger may act immediately or require a qualifying period first. An active trigger can signal again on further readings, so the response can repeat. Inside the rule, you can:
 
 - **Evaluate conditions** with Exclusive Gateways — route the flow to different branches based on CEL expressions
 - **Transform data** with Script Tasks — compute derived values, classify readings, or prepare flags for downstream decisions

@@ -35,7 +35,7 @@ Select the Start Event on the canvas — a pencil and a bin icon appear beneath 
 | Option | What the rule starts from |
 |---|---|
 | **Sensor reading** | One device's readings. The rule fires each time that sensor reports. |
-| **Trigger condition** | A saved [trigger](triggers.md). Its condition can act immediately or after a duration and can evaluate one or more devices independently. The rule runs when the trigger signals it. |
+| **Trigger condition** | A saved [trigger](triggers.md). Its condition can act immediately or after a duration and can evaluate one or more devices independently. The trigger signals the rule when the condition qualifies and can signal again while it remains active. The rule must be running, and its schedule and execution-rate limits still apply. |
 
 **Event filter** — Shown when **Start source** is **Sensor reading**. A section headed "Define which devices can initiate this rule." containing two fields:
 
@@ -86,7 +86,7 @@ The process variables depend on the **Start source**.
 | `vars.subject_id` | The unique identifier of the watched device |
 | `vars.sensor_id` | The sensor identifier used to associate the run and any alarm with the watched device |
 | `vars.detector_id` | The unique identifier of the trigger |
-| `vars.timestamp` | The trigger signal time as Unix seconds |
+| `vars.timestamp` | The original activation time in whole Unix seconds; repeated signals for the same occurrence retain it |
 
 A trigger-started rule does not receive `vars.value`. See [Data available to the rule](triggers.md#data-available-to-the-rule) before converting a sensor-started rule.
 

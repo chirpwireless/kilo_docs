@@ -52,7 +52,7 @@ For a detailed walkthrough of the canvas and available tools, see [Visual Editor
 
 Select the Start Event node and click the **pencil** icon that appears beneath it — that opens its properties panel on the right. First choose what starts the rule:
 
-- **Start source** — **Sensor reading** runs the rule whenever one selected sensor reports. **Trigger condition** runs it when a saved [trigger](triggers.md) becomes active. A trigger can act immediately or after a duration, and it can evaluate one device or several devices independently.
+- **Start source** — **Sensor reading** uses incoming readings from one selected sensor. **Trigger condition** uses signals from a saved [trigger](triggers.md), including further signals while it remains active. The rule must be running; its schedule and execution-rate limits still apply. A trigger can act immediately or after a duration, and it can evaluate one device or several devices independently.
 
 A Start Event uses one source or the other, never both.
 
@@ -63,10 +63,10 @@ A Start Event uses one source or the other, never both.
 
 **With Start source set to Trigger condition**, the Device and Sensor fields are replaced by a single **Trigger condition** selector. Pick the trigger you built on the [Triggers](triggers.md) tab. This is the path for a condition that must be evaluated before the rule starts, whether that condition is immediate or delayed and whether it watches one device or many. The trigger signal does not contain one sensor-event value, so `vars.value` is unavailable; `vars.device_name` identifies the watched device that met the condition.
 
-The selector does not create a trigger. If the trigger does not exist yet, leave the editor, open **Rules Engine → Triggers**, create it, and then return to this rule. After selecting it, click **Save** at the bottom of the Start Event panel to apply the source to the diagram.
+The selector does not create a trigger. If the trigger does not exist yet, save your work before leaving the editor, open **Rules Engine → Triggers**, create it, and then return to this rule. After selecting it, click **Save** at the bottom of the Start Event panel to apply the source to the diagram.
 
 Optionally, you can:
-- **Enable Schedule** — Toggle to restrict the rule to a specific window. Click **Change schedule** to pick the days and the From/To times, and set the **Time Zone** they are measured in. Schedule is not another start source: it limits when the source you already chose may run the rule. With a duration trigger, the trigger decides when its condition becomes active and the schedule decides whether the rule may run at that time.
+- **Enable Schedule** — Toggle to restrict the rule to a specific window. Click **Change schedule** to pick the days and the From/To times, and set the **Time Zone** they are measured in. Schedule is not another start source: it limits when the source you already chose may run the rule. With a duration trigger, the trigger decides when its condition becomes active and the schedule decides whether the rule may run when it processes a signal. Reaching the start of a schedule does not itself run the rule.
 - **Add inputs/outputs** — Advanced CEL expressions for data transformation at the Start Event
 
 See [Node Reference](node-reference.md) for full Start Event configuration details.
