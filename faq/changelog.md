@@ -152,7 +152,7 @@ The assistant asks for identifiers that must come from your hardware or vendor d
 
 Each Kilo plan includes a monthly allowance of AI assistant messages. You can instead connect an account from OpenAI, Anthropic, OpenRouter, Ollama, or a custom OpenAI-compatible provider. Messages sent through that connection do not use the allowance included with your Kilo plan.
 
-Open **Connect your AI** from the AI Chat top bar and enter the provider, endpoint, API key, and model name.
+Open **Connect your AI** from the AI Assistant’s top bar and enter the provider, endpoint, API key, and model name.
 
 Before 3.9.0, Kilo rejected Ollama model names that included a version after a colon, such as `gpt-oss:120b`. The suggested Ollama models were also unavailable to free accounts. Versioned model names are now accepted, and the suggestions have been updated to models that work with a free Ollama account.
 
@@ -213,7 +213,7 @@ Additional improvements in this release include:
 * Device-log retention follows the limit included with your plan.
 * The support form lets you select a bug report, feature request, or integration request.
 * Emulated devices timestamp their first reading correctly and display properly on mobile screens.
-* The trigger dialog fits on mobile screens, and the AI Chat icon is easier to see.
+* The trigger dialog fits on mobile screens, and the AI Assistant icon is easier to see.
 * Empty states are consistent across connectors, devices, rules, rule artifacts, and MIOTY base stations. Device and gateway empty states also link to the shop when no hardware has been added.
 * The Overview page, navigation spacing, Download the app card, Invoices navigation, and Rules Engine screens have been polished, and obsolete front-end code has been removed.
 
@@ -227,7 +227,7 @@ Additional improvements in this release include:
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg" alt="Kilo IoT Server 3.8.0 release banner"><figcaption></figcaption></figure>
 
-Three big ones in 3.8.0. **First, you no longer need hardware to start** — the **Emulator** builds an entire site with no devices at all, dashboards and rules and escalating alarms included, then hands those same devices over to real sensors the day they arrive. **Second, the AI assistant now operates your equipment**: it lists the commands on a device, runs one after you confirm, and checks that it landed. **And third — the one we are most excited about — connect ChatGPT or Claude over MCP and they control your devices too.** Not a chatbot describing your building: your own AI client, switching relays and changing setpoints on real hardware, inside your own permissions, with every dispatch recorded. Alongside all of it, the platform now tells you what shipped in a **What's New** panel, and MIOTY reaches a wider set of base stations with **BSSCI 1.1**. [kiloiot.io](https://kiloiot.io)
+Three big ones in 3.8.0. **First, you no longer need hardware to start** — the **Emulator** builds an entire site with no devices at all, dashboards and rules and escalating alarms included, then hands those same devices over to real sensors the day they arrive. **Second, the AI assistant now operates your equipment**: it lists the commands on a device, runs one after you confirm, and checks that it landed. **And third — the one we are most excited about — connect ChatGPT or Claude over MCP and they control your devices too.** Your own AI client can switch relays and change setpoints on real hardware, inside your own permissions, with every dispatch recorded. Alongside all of it, the platform now tells you what shipped in a **What's New** panel, and MIOTY reaches a wider set of base stations with **BSSCI 1.1**. [kiloiot.io](https://kiloiot.io)
 
 ***
 
@@ -447,11 +447,11 @@ This release also clears a set of layout and navigation issues: dashboards now a
 
 <figure><img src="../.gitbook/assets/ai-chat-home.jpg" alt="The Kilo AIoT assistant ready to provision devices, deploy rules, and set up alarms"><figcaption></figcaption></figure>
 
-This is the headline of 3.6.0, and it changes what the platform *is*. We were among the first to put an AI chat on top of device data — then we paused, and instead of rushing, we built the infrastructure underneath it properly: an enterprise-grade agent runtime that knows your deployment end to end and does real work inside it. Open it from **AI Chat** in the sidebar and brief it like a colleague.
+The AI Assistant puts an experienced integrator by your side. Protocols, device compatibility, and configuration have long made IoT projects demanding. With 3.6.0, you can describe the result you need and have the assistant carry out device, automation, and alarm setup with you. Open it using **AI Chat** in the sidebar and brief it like a colleague.
 
-It answers from your live data, scoped to your permissions — *"which devices haven't reported in 24 hours?"* — and it acts: describe an automation and it designs the rule, writes the [CEL](https://cel.dev), tests it, and deploys it; ask it to onboard a device or stand up an alarm and it runs the flow, pausing for your **Confirm Action** before anything consequential and reading the result back to check its own work.
+Describe an automation and it designs the rule, writes its [CEL expressions](../kilo-iot-server/rules-engine/cel-reference.md), builds it, and deploys it. Ask it to onboard a device or configure an alarm, then refine the result in the same conversation. You can also ask it to simulate readings and inspect the results. Actions such as deleting a device require **Confirm Action**. Once the setup is running, questions about device readings help you investigate and improve it.
 
-This is the beginning, not the finish line: the architecture is in place, and the assistant's accuracy and reach grow as its agents are trained on more real-world IoT work. The runtime underneath is [Synthetic Brew](https://syntheticbrew.ai), built in-house as a product in its own right rather than a chatbot wrapped around someone else's API.
+The assistant runs on [SyntheticBrew](https://syntheticbrew.ai/), our own AI agent runtime, which connects the conversation to platform operations and action confirmations.
 
 [→ IoT AI Assistant](../kilo-iot-server/ai-assistant/README.md)
 

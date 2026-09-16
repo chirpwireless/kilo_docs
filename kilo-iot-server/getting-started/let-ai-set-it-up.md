@@ -4,7 +4,7 @@ description: Let Kilo’s AI Assistant handle device onboarding, rules, alarms, 
 
 # Let AI Set It Up for You
 
-You can start a Kilo deployment by describing the result you want. In **AI Chat**, the built-in assistant works like an experienced IoT integrator: it helps choose the connection, adds devices, maps their readings, and builds and deploys the rules and alarms around them.
+Start your Kilo project with an experienced integrator by your side: the **AI Assistant**. Describe the result you want, and it helps work through protocols, device compatibility, and connection details, then carries out the platform setup. It can add devices, map their readings, configure alarms, and build and deploy the automation around them.
 
 Bring your account and the details of the equipment you want to connect. The assistant asks for missing identifiers and settings, carries out the setup, and lets you refine it in conversation. If hardware is still on order, ask it to create an [emulated device](../connectors/emulator-connector.md) and send a test reading so you can begin building now.
 

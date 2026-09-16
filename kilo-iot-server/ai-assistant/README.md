@@ -1,14 +1,16 @@
 ---
-description: An experienced IoT integrator beside you — add devices, build and deploy automation, configure alarms, and refine your setup through AI Chat.
+description: An experienced integrator by your side. Let Kilo’s AI Assistant add devices, build and deploy automation, configure alarms, and create dashboards.
 ---
 
 # IoT AI Assistant
 
-Kilo's **IoT AI Assistant** is like having an experienced IoT integrator beside you. Describe what you want to achieve, and it can add devices, build and deploy automation rules, configure alarms, and create dashboards through conversation.
+Kilo's **AI Assistant** is like having an experienced integrator by your side.
 
-An IoT project brings together hardware, protocols, device identifiers, data formats, and response logic. The assistant helps you work through those choices and carries out the platform configuration, so you can concentrate on the result: monitoring a cold room, organizing a building's sensors, or notifying the right team when a reading needs attention.
+IoT has traditionally demanded specialist knowledge: protocols to learn, device compatibility to understand, and configuration steps to connect everything into a working system. Kilo's AI Assistant takes on the platform configuration work with you. Explain what you want to achieve, and it can add devices, build and deploy automation rules, configure alarms, and create dashboards.
 
-Open **AI Chat** in the sidebar and start with a task: *“Add this temperature sensor to Warehouse B”* or *“Create an automation that alerts the facilities team when this sensor reports above the limit.”* It asks for the details it needs, uses your organization's devices and settings, and lets you refine the result in the same conversation.
+You bring the goal. The assistant helps put the pieces together—and you can keep refining the setup as your project grows. Start with *“Add this temperature sensor to Warehouse B”*, then ask it to build an automation that alerts the facilities team when a reading exceeds your chosen limit. It asks for the details it needs and carries out the setup in your organization.
+
+To get started, open the AI Assistant using **AI Chat** in the sidebar. See [Building With the Assistant](building-with-ai.md) for device onboarding, automation, and alarm setup.
 
 <figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The Kilo IoT AI assistant ready to help set up automations, devices, and alerts"><figcaption></figcaption></figure>
 

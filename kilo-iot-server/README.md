@@ -6,7 +6,7 @@ description: Configure connected devices, dashboards, rules, and alarms in Kilo 
 
 Kilo IoT Server connects equipment from different manufacturers to the same dashboards, automation rules, and alarm workflows. Use it to build a monitoring and control application for a building, a production site, or a distributed deployment, with Kilo Cloud hosting the platform or an on-premise installation in your infrastructure.
 
-The **[AI Assistant](ai-assistant/README.md)** works like an experienced IoT integrator beside you. Describe the outcome and it can register devices, map readings, create dashboards, configure alarms, and build and deploy rules. The depth of the platform stays available in the visual editors, while conversation gives you another way to get the work done.
+The **[AI Assistant](ai-assistant/README.md)** is like having an experienced integrator by your side. IoT projects involve protocols, compatibility decisions, and configuration across devices and applications. Explain your goal to the assistant, and it helps work through those choices and carries out the platform setup: registering devices, mapping readings, creating dashboards, configuring alarms, and building and deploying rules. You can refine the result with the assistant and inspect its work in the visual editors.
 
 Kilo can also operate as a Physical AI platform for external AI models and agents. It places consistent device state, permissions, tested automation, commands, verification, and operational history between model intent and real assets. Read [Physical AI for AI Agents](physical-ai.md) for the architecture and integration paths.
 
@@ -32,7 +32,7 @@ These are examples, not boundaries. If your use case involves connecting devices
 
 ### AIoT — an AI assistant that works like an IoT integrator
 
-Open **AI Chat** and brief the assistant the way you would an integrator: explain the equipment, the condition you care about, and the response you want. It can inspect your deployment's configuration and carry out the platform setup with you.
+Brief the AI Assistant the way you would an integrator: explain the equipment, the condition you care about, and the response you want. It works through the configuration with you and builds the platform resources that make that response possible.
 
 **Give it a configuration task.** Ask it to onboard a device, create an alarm with escalation, or build and deploy a rule with its [CEL expressions](rules-engine/cel-reference.md). Ask for sample readings to test the rule and inspect the results. You can refine the setup conversationally and review consequential actions in a confirmation prompt.
 
@@ -40,7 +40,7 @@ Open **AI Chat** and brief the assistant the way you would an integrator: explai
 
 The assistant runs on [SyntheticBrew](https://syntheticbrew.ai/), our own AI agent runtime. It connects the conversation to platform operations, carries your account context, and supports confirmation before consequential actions.
 
-<figure><img src="../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/ai-chat-home.jpg" alt="The Kilo AI Assistant with a greeting and suggested starter topics"><figcaption></figcaption></figure>
 
 ### Device management with Digital Twin technology
 

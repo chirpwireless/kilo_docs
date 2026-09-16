@@ -129,7 +129,7 @@ Treat an authorized client like a signed-in session: it belongs on machines you 
 
 ## How this differs from the built-in assistant
 
-Kilo has an [IoT AI Assistant](../ai-assistant/README.md) built into the web app — open it from **AI Chat** and it works your deployment alongside you, with no setup at all. That is the fastest path for most people, and it is where confirmation gates, inline charts, and the platform knowledge base live.
+Kilo’s built-in [AI Assistant](../ai-assistant/README.md) is like having an experienced integrator by your side: describe the project, and it can register devices, build and deploy rules, and configure alarms. Open it using **AI Chat** in the sidebar; no external AI client connection is needed. That is the fastest path for most people, and it is where confirmation gates, inline charts, and the platform knowledge base live.
 
 The MCP server points the other way: it brings **your own client** to the same deployment. Use it when you want your deployment in the tool you already have open — a terminal beside the code of the integration you are building, or a desktop client where the deployment sits next to your other context. Both talk to the same platform, so which one you use is a question of where you are working.
 

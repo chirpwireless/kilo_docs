@@ -4,11 +4,11 @@ description: Query Kilo IoT Server in natural language — device status, histor
 
 # Querying Your Data
 
-After setting up a deployment, use Kilo's **AI Chat** to investigate how it is behaving. Ask which devices stopped reporting, compare a warehouse's temperature across two weeks, or find readings above a threshold. The assistant retrieves the relevant records and explains them in the same conversation you use to refine the setup.
+After setting up a deployment, use Kilo's **AI Assistant** to investigate how it is behaving. Ask which devices stopped reporting, compare a warehouse's temperature across two weeks, or find readings above a threshold. The assistant retrieves the relevant records and explains them in the same conversation you use to refine the setup.
 
 Name the device or location and the period you want to examine. Follow-up questions can narrow the result without building a separate report. For device onboarding and automation configuration, start with [Building With the Assistant](building-with-ai.md).
 
-<figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The Kilo AI Assistant with a greeting and suggested starter topics"><figcaption></figcaption></figure>
 
 When you open **AI Chat**, a greeting and a few suggested topics get you started — select one, or just type your question in the box at the bottom.
 

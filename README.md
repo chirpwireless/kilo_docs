@@ -6,7 +6,7 @@ description: Kilo provides the IoT infrastructure that lets people, software, an
 
 Kilo brings connected equipment, automation, and AI-assisted setup into one working environment. Build a view of a building's conditions, notify the people who can respond, and configure equipment actions without assembling a separate application for every device type.
 
-The **[AI Assistant](kilo-iot-server/ai-assistant/README.md)** works like an experienced IoT integrator beside you: describe the result you need, then let it help connect devices, configure alarms, and build and deploy rules. You can begin with an [emulated device](kilo-iot-server/connectors/emulator-connector.md) before any hardware is on site.
+The **[AI Assistant](kilo-iot-server/ai-assistant/README.md)** is like having an experienced integrator by your side. It helps you work through protocols and device compatibility, then takes on platform configuration: adding devices, configuring alarms, and building and deploying automation rules from the outcome you describe. You can begin with an [emulated device](kilo-iot-server/connectors/emulator-connector.md) before any hardware is on site.
 
 The products serve different parts of that job:
 

@@ -4,7 +4,7 @@ description: Hand setup work to the Kilo IoT AI Assistant — onboard devices, d
 
 # Building With the Assistant
 
-Give the Kilo AI Assistant the result you need, and work through the deployment as you would with an experienced integrator. It can find a device model, register the device, map its readings, create an alarm, and build and deploy the rule that responds. You can then refine the configuration in the same chat.
+Kilo’s AI Assistant puts an experienced integrator by your side as you build your project. Describe the outcome, and it helps work through the device and connection choices, then handles the platform configuration: registering devices, mapping readings, creating alarms, and building and deploying the rules that respond. Keep refining the setup in the same conversation as your requirements develop.
 
 Start in **AI Chat** with your equipment details or a project goal. For example: *“Set up temperature monitoring for this cold room and notify the facilities team when this sensor reports above −18 °C.”* The assistant asks for the identifiers, connection, and recipients it needs. You can inspect the devices, rules, and alarms it creates in their normal platform pages.
 
