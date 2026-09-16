@@ -4,9 +4,9 @@ description: How Kilo IoT Server confirms a command took effect — no verificat
 
 # Confirming Commands
 
-Command verification is an optional check of device feedback after Kilo sends a saved command. It compares reported readings with the expected state, helping you distinguish a request accepted for delivery from evidence that the device reached that state.
+Command verification helps you follow a request through to device feedback. After sending a saved command, Kilo can compare a reported reading with the state you expected, such as a valve's reported position. That gives operators more information than a delivery receipt alone.
 
-Sending or accepting a command does not by itself prove physical execution. Choose **No verification**, **Wait for next uplink** (the device's next incoming message), or **Query after ack** (request feedback after acknowledgment), according to what the device supports.
+Verification is optional: choose **No verification**, **Wait for next uplink** (the next incoming message), or **Query after acknowledgement**, according to the command and device. Sending or accepting a command does not by itself prove physical execution.
 
 Configure the check per command in **section 4** of the [command editor](creating-commands.md). The strategies below explain what each result can tell you.
 

@@ -4,6 +4,8 @@ description: Run KiloCenter in a local VM with automated provisioning — repeat
 
 # Installation: Local VM and Automation
 
+A local virtual machine gives your team a repeatable place to install and exercise Kilo Center Community Edition. Use it to learn MIOTY network setup and test installation changes before applying them to the service center you operate.
+
 ### Goal
 
 Create repeatable local environments for testing and team onboarding.

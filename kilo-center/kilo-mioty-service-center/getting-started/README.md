@@ -1,10 +1,12 @@
 ---
-description: Get started with KiloCenter — install dependencies, generate certs, configure runtime, run the stack.
+description: Install the open-source Kilo Center MIOTY service center for networking, or choose Kilo Cloud for widgets, rules, and alerts too.
 ---
 
 # Getting Started
 
-Kilo Center is the MIOTY service center that manages communication between wireless devices, base stations, and connected applications. This section takes you from choosing an installation route to a running service with its essential configuration checked.
+Run your own MIOTY network with **Kilo Center Community Edition**, the open-source service center. This section takes you from choosing an installation route to a running network service ready for base stations and endpoints.
+
+The service center handles networking and passes messages to applications. If you also want dashboards and widgets, automation rules, and alerts in the same platform, use [Kilo Cloud](../../../kilo-iot-server/connectors/mioty-connector/README.md), which includes the enterprise service center and those application capabilities.
 
 Start with [Architecture and Components](architecture-and-components.md) to understand the data path, then check the [Prerequisites](prerequisites.md) for your route:
 

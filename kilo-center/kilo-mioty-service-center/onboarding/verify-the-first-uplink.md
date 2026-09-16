@@ -4,7 +4,9 @@ description: Verify the first MIOTY uplink in KiloCenter — confirm data from e
 
 # Verify the First Uplink
 
-An **uplink** is a message sent from a MIOTY endpoint—the sensor or other communicating device—through a base station to Kilo Center. Checking the first uplink confirms that the device's radio traffic reaches its service-center record.
+The first **uplink** shows that your MIOTY endpoint's message has reached Kilo Center through a base station. Verifying this path is the handoff from registering equipment to receiving data your application can use.
+
+An endpoint is the communicating sensor or device, and a base station is its radio gateway. Check the fresh message and payload in the service center before connecting the traffic to an application through [gRPC or MQTT](../integrations/README.md).
 
 Use this guide after [connecting a base station](connect-a-base-station.md) and [registering the endpoint](register-an-endpoint.md) with matching keys. The endpoint must be transmitting. Inspect the message time and payload to confirm new traffic, rather than relying only on a saved device record or an online base station.
 

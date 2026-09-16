@@ -4,6 +4,8 @@ description: Install KiloCenter with Docker Compose — start the four-service M
 
 # Installation: Docker Compose
 
+Run the open-source Kilo Center MIOTY service center as a container stack. Docker Compose starts the network services and their management console together, giving you a local installation ready to connect a base station and register endpoints.
+
 ### Goal
 
 Start a working local stack using Docker Compose. The full stack — including KC-Web — runs entirely in containers. No host Go toolchain or Bun runtime is required.

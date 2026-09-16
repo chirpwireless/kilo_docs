@@ -4,11 +4,9 @@ description: Hand setup work to the Kilo IoT AI Assistant — onboard devices, d
 
 # Building With the Assistant
 
-The assistant can configure Kilo for you, not just answer questions. Describe the outcome you need in plain language and it can onboard devices, build rules, configure alarms, and run existing device commands within your permissions. This page explains what it can change and what you need to provide.
+Give the Kilo AI Assistant the result you need, and work through the deployment as you would with an experienced integrator. It can find a device model, register the device, map its readings, create an alarm, and build and deploy the rule that responds. You can then refine the configuration in the same chat.
 
-## Creating a saved trigger
-
-A saved **trigger** is separate from the rule workflow the assistant builds. It stores a monitoring condition, timing, and selected devices. The assistant can explain the setup, but creating or editing the saved trigger currently happens in **Rules Engine → Triggers → Add trigger**. Then select it in a rule's **Start Event → Start source → Trigger condition**, save the rule, build it, and deploy it. See [Triggers](../rules-engine/triggers.md) for the complete steps.
+Start in **AI Chat** with your equipment details or a project goal. For example: *“Set up temperature monitoring for this cold room and notify the facilities team when this sensor reports above −18 °C.”* The assistant asks for the identifiers, connection, and recipients it needs. You can inspect the devices, rules, and alarms it creates in their normal platform pages.
 
 ## How acting works
 
@@ -46,14 +44,22 @@ The result is a registered endpoint. When you select a blueprint, its readings u
 
 ## Build and deploy an automation
 
-This is the assistant's most powerful capability. Describe the behavior you want in plain language, and it **authors the complete rule — including the [CEL](../rules-engine/cel-reference.md) expressions — builds it, tests it, and deploys it.**
+This is the assistant's most powerful capability. Describe the behavior you want in plain language, and it **authors the rule — including the [CEL](../rules-engine/cel-reference.md) expressions — builds it, and deploys it. You can then ask it to simulate sample readings and inspect the result.**
 
 > *"Alert the on-call engineer when the temperature sensor on Freezer A reports above −18 °C."*
 > The assistant writes the threshold condition as a CEL expression and provisions the sensor-started rule. After deployment, it can simulate matching and non-matching readings to check the workflow, with side effects captured by the simulation.
 
-Because it simulates before claiming success, you're not trusting a black box: you see the rule run on the case that should match and stay quiet on the case that shouldn't. From there you can refine it conversationally ("change the temperature threshold to −16 degrees", "also notify the facility manager") and the assistant updates and redeploys.
+By asking it to simulate matching and non-matching readings, you're not trusting a black box: you see the rule run on the case that should match and stay quiet on the case that shouldn't. From there you can refine it conversationally ("change the temperature threshold to −16 degrees", "also notify the facility manager") and the assistant updates and redeploys.
 
-To learn the rules engine itself, see [Rules Engine](../rules-engine/). The assistant is a fast way to produce a correct first draft — or a finished rule — without hand-building the canvas.
+To learn the rules engine itself, see [Rules Engine](../rules-engine/). You can produce and refine a rule in conversation, then inspect its diagram and results without hand-building every step on the canvas.
+
+## Prepare dashboards and views
+
+Ask the assistant to create a dashboard or folder for a site, give it a useful name, and organize the views you want to build. It can update dashboard settings and the layout of existing widgets, while the [widget editor](../dashboards/adding-widgets.md) is where you add widgets and configure their readings, appearance, and controls.
+
+> *“Create a Cold Room Monitoring dashboard inside a Warehouse B folder.”*
+
+You can then add a temperature chart and a latest-value display in the editor. Ask the assistant to explain suitable thresholds or investigate the readings as you refine the view.
 
 ## Configure alarms and access
 
@@ -69,7 +75,7 @@ The assistant can operate your equipment, not just describe it. Ask what a devic
 > *"Set its reporting interval to five minutes."*
 > The assistant lists the device's commands, shows the parameters it will use, asks you to confirm, sends it, and then reports whether it was delivered.
 
-Three things govern this, and they are what make it safe to hand an AI a building:
+Three controls make the action reviewable:
 
 * **It executes commands that already exist.** Commands are defined once on the device's **Commands & States** tab, with typed parameters and optional verification. The assistant runs those definitions — it does not invent new ones or improvise a payload.
 * **It always asks first.** Command execution has real physical effects, so every one goes behind an explicit confirmation.
@@ -79,7 +85,7 @@ This applies to devices that can receive downlinks in the first place — MQTT d
 
 ## Set up a gateway
 
-Ask the assistant to add a gateway and it does the platform side for you — registering it and producing the connection details the hardware needs. It then tells you exactly what to enter on the gateway itself, since that last step happens in the gateway's own configuration rather than in Kilo.
+The assistant can explain which gateway path your equipment needs and walk you through it. Register LoRaWAN gateways or MIOTY base stations in the [Gateways section](../gateways/README.md), then apply the connection details to the hardware. With that network in place, continue in chat to onboard devices and build their response workflows.
 
 ## Drive the emulator
 
@@ -92,13 +98,17 @@ The assistant can run the whole [emulated device](../devices/emulated-devices.md
 
 The distinction worth holding onto is between the automations the assistant *writes* and the commands it *runs*.
 
-The **automations** it builds monitor and alert. A rule that acts on its own does so through the Rules Engine's own Execute Command node, which you add deliberately — the assistant does not make a rule actuate as a side effect of asking for one.
+The assistant builds saved workflows for monitoring, calculations, decisions, and alarms. To add an equipment action, use the visual editor’s **Execute Command** node and select a saved device command. Review its parameters and feedback before deploying that rule. Directly running a saved command from chat is a separate operation.
 
 And nothing here replaces the manual route: the device's **Commands & States** tab and a dashboard [Control widget](../dashboards/adding-widgets/control-widget.md) are still there for one-tap operation.
 
+## Creating a saved trigger
+
+A saved **trigger** is separate from the rule workflow the assistant builds. It stores a monitoring condition, timing, and selected devices. The assistant can explain the setup, but creating or editing the saved trigger currently happens in **Rules Engine → Triggers → Add trigger**. Then select it in a rule's **Start Event → Start source → Trigger condition**, save the rule, build it, and deploy it. See [Triggers](../rules-engine/triggers.md) for the complete steps.
+
 ## Tips for delegating well
 
-* **State the outcome, not the clicks.** "Onboard this sensor and put it on the Lab 2 dashboard" beats a step-by-step dictation — the assistant knows the steps.
+* **State the outcome, not the clicks.** "Onboard this sensor and alert the lab team when its temperature exceeds 30 °C" beats a step-by-step dictation — the assistant knows the steps.
 * **Give it the specifics it needs.** Identifiers, thresholds, durations, and recipients up front mean fewer round-trips.
 * **Read the confirmation before approving.** The confirmation card spells out the change; it's your last checkpoint before anything happens.
 * **Iterate.** Treat the first result as a draft you can refine in the same conversation.

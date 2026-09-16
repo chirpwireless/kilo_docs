@@ -433,7 +433,7 @@ This release also clears a set of layout and navigation issues: dashboards now a
 
 #### What's in This Release
 
-* **AIoT — an AI integrator built into the platform** — Grounded in your live deployment, the assistant answers from your real data and does the work with you: provisioning devices, writing and deploying rules, and building alarms with escalation — confirming before any consequential change and verifying its own results.
+* **AIoT — an AI integrator built into the platform** — Grounded in your live deployment, the assistant does the setup with you: provisioning devices, writing and deploying rules, and building alarms with escalation, with device-data analysis alongside those tasks — confirming before any consequential change and verifying its own results.
 * **Commands in the Rules Engine** — A new **Execute Command** node turns automation two-way: a rule can send a command straight to a device when conditions are met. Sense, decide, act — end to end, with no one in the loop.
 * **Public command APIs** — The device-command endpoints are now part of the public REST API, with new `Commands` read and write scopes for API keys.
 * **iFrame dashboard widget** — Embed an external web page — a BI report, a weather map, live traffic — directly onto a dashboard, beside your device data.

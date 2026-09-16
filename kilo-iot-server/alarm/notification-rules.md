@@ -4,7 +4,7 @@ description: Configure alarm definitions in Kilo IoT — severity, escalation, r
 
 # Alarm Definitions
 
-An alarm definition is a saved notification configuration in Kilo IoT Server. It specifies the message, severity, recipients, delivery channels, and escalation used when an alarm is raised. Reuse it wherever the same operational response is needed.
+An **alarm definition** is a reusable response plan for notifications: what to say, how urgent it is, who receives it, and how it escalates. Configure the facilities team's response once, then use that definition from the rules monitoring different pieces of equipment.
 
 The definition is separate from both the **alarm event** your team handles and the **rule** that raises it. Configure the condition and response workflow in the [Rules Engine](../rules-engine/README.md); choose this definition in the rule's **Set Alarm** step.
 

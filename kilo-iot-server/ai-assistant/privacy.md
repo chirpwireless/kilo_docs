@@ -1,10 +1,10 @@
 ---
-description: Privacy of the Kilo IoT AI Assistant — session-scoped auth, permission inheritance, org isolation, data retention.
+description: Delegate IoT setup with your own account permissions — understand AI action confirmations, saved conversations, and model-provider data handling.
 ---
 
 # Privacy and Security
 
-Kilo AI Chat uses your signed-in account and current organization to request data and perform supported actions. This page explains that access context, confirmation prompts, and how conversation content and retrieved data are used.
+You can delegate configuration to Kilo's AI Assistant while keeping the access boundaries of your own account. The assistant uses your signed-in session and selected organization when it registers devices, builds rules, or works with alarms. This page explains those permissions, action confirmations, and how conversation data is handled.
 
 Your messages and retrieved results can be sent to the configured model provider to produce an answer. Chat history lets you revisit the conversation. Keep account passwords and unrelated secrets out of chat, and review the [AI access settings](managing-chats-and-ai-access.md) when choosing a model provider.
 
@@ -39,11 +39,11 @@ Chat is not a separate telemetry archive. However, readings and other informatio
 
 ## How queries are processed
 
-1. Your question is sent to the assistant backend, authenticated with your active session.
-2. A language model interprets the intent of your question.
-3. The assistant queries only the data sources your permissions authorize.
-4. The results of those queries are returned to the model, which composes a natural-language response from them.
-5. The response is streamed back to your browser in real time.
+1. Your message is sent with your active session and organization context.
+2. The assistant interprets the task and identifies the information or operations it needs.
+3. It reads configuration or data and can perform authorized setup operations. Consequential actions use the confirmation workflow described above.
+4. Operation results return to the model so it can explain the outcome, ask for missing details, or continue the task.
+5. The response streams back to your browser.
 
 ## Which data reaches the model
 

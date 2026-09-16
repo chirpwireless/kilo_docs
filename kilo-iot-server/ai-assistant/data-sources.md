@@ -1,14 +1,20 @@
 ---
-description: Understand the device data, history, and documentation available to Kilo AI Chat, and the limits of its access and data coverage.
+description: See how device catalogs, deployment settings, platform guides, and readings help the Kilo AI Assistant configure and improve your IoT project.
 ---
 
 # What It Can Access
 
-The Kilo AI Assistant can retrieve device records, available telemetry history, rules, alarms, and other information exposed by its platform operations. It also uses documentation to explain features. These sources help it answer questions about your current organization rather than relying only on general model knowledge.
+The Kilo AI Assistant combines your deployment's configuration with device catalogs and platform documentation to help build the setup you need. It can inspect connections, device profiles, existing rules, alarm definitions, and dashboards before deciding what to create or change.
 
-Access depends on your account permissions, the available operations, and the data the devices have actually reported. The chat does not have a continuous live view or unrestricted access to every interface feature. Give it a device and time range, then check the returned timestamps and coverage when interpreting an answer.
+That context matters when you ask for an outcome rather than a sequence of clicks. The assistant can find the relevant device, use its actual readings in a rule, and work with the notification recipients already configured for your organization. Data history adds another layer when you want to investigate or refine the result.
+
+## Your project configuration
+
+The assistant reads configuration and performs changes through the operations available to your account in the current organization. It can create and update resources such as rules, alarm definitions, dashboards, and devices; see [Building With the Assistant](building-with-ai.md) for the setup workflows.
 
 ## Live device data
+
+Check the reading time when interpreting a result: a quiet device may only have an older value, and stored history depends on your retention window.
 
 The assistant reads the current state of every device you have access to: online or offline status, last-seen timestamp, latest sensor readings, battery level, signal strength, GPS coordinates, device metadata, and any labels you have applied. If you can see a device on the Devices page, the assistant can answer questions about it.
 

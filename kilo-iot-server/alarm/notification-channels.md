@@ -4,7 +4,7 @@ description: Manage alarm delivery channels in Kilo IoT — verified Email conta
 
 # Delivery Channels
 
-A delivery channel is the way a Kilo alarm notification reaches someone: email, SMS, or push to the [IoT Alerts app](iot-alerts-app/README.md). A contact is the address, phone number, or registered app destination used by that channel.
+Delivery channels let you match an alarm to the way its recipients work: email for a record, SMS for a phone message, or push to the [IoT Alerts app](iot-alerts-app/README.md) for mobile response. A **channel** is the delivery method; a **contact** is the verified address, number, or registered app destination used by that method.
 
 Use **Alarm → Settings** to verify contacts and enable the required channels. The [alarm definition](notification-rules.md) chooses recipients and notification behavior; the channel settings make those delivery routes available. Configure both before expecting an operational alert to reach your team.
 

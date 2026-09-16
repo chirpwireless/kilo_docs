@@ -4,7 +4,9 @@ description: Connect AI agents to IoT devices through Kilo's OAuth-secured IoT M
 
 # Kilo IoT MCP Server for AI Agents
 
-MCP — the Model Context Protocol — is an open standard that lets an AI client discover and call tools on a remote server. The Kilo IoT Server publishes an MCP endpoint, so any MCP-capable client — Claude Code, Claude Desktop, ChatGPT, Codex, Cursor, and others — can connect to your organization and work with your real deployment: devices, connectors, rules, alarms, and dashboards.
+Connect your preferred AI client to Kilo and use it to work on the deployment: onboard devices, create dashboards, configure alarms, and build and deploy automation rules. You can keep the project conversation in the tool you already use while Kilo supplies the device connections and execution workflows.
+
+**MCP (Model Context Protocol)** lets an AI client discover and call those platform operations. Kilo exposes an MCP endpoint for clients such as Claude Code, Claude Desktop, ChatGPT, Codex, and Cursor; the client uses your account's access to the selected organization.
 
 This is one integration path for the [Physical AI Platform for AI Agents](../physical-ai.md). Kilo remains the governed execution layer between the client and real infrastructure, so the model does not need to recreate device protocols, organization boundaries, or the operational lifecycle around a change.
 

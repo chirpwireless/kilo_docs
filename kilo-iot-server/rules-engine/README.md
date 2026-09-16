@@ -4,9 +4,9 @@ description: Visual BPMN rules engine — turn sensor data into alarms, actions,
 
 # IoT Rules Engine
 
-A **rule** in Kilo IoT Server is a saved workflow that responds to device data: it can check values, fetch another reading, raise an alarm, or send a configured device command. The Rules Engine lets you draw those steps and the arrows connecting them, so you can see what will happen and in what order.
+Kilo's Rules Engine lets you build a response around the way your site operates: check a reading, fetch another sensor for context, choose a branch, notify a team, or send a device command. A **rule** is that saved workflow. You draw its steps and connecting arrows so the response is visible and reviewable.
 
-Use a rule when a response should run automatically, such as notifying a facilities team when a cold-room reading exceeds a limit. Device actions require compatible equipment and a [saved command](../devices/commands/README.md); dispatching a command is separate from checking the device's resulting state.
+You can inspect a rule step by step in [debug mode](debugging-rules.md), keep a history of changes, and choose when a built version goes live. This gives a team room to improve an automation while the deployed version continues running. The [AI Assistant](../ai-assistant/building-with-ai.md) can also build and deploy rules from a description of the behavior you need.
 
 A **trigger** watches device readings for a condition, such as a cold room staying too warm for ten minutes. A **rule** supplies the response. Save them separately in the **Triggers** and **Rules** tabs, then connect the trigger to the rule. A rule can also start directly from one sensor reading. See [Triggers](triggers.md#what-is-the-difference-between-a-trigger-and-a-rule) for the distinction and setup.
 

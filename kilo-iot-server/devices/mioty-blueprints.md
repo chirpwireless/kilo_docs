@@ -4,7 +4,9 @@ description: Decode MIOTY payloads in Kilo IoT with blueprints — System vs Cus
 
 # MIOTY Blueprints
 
-A MIOTY blueprint is a decoding specification: it tells Kilo IoT Server how to turn a device's raw message bytes into named fields, such as temperature or battery level. The communicating sensor or meter is called an **endpoint**. Selecting the correct blueprint makes its incoming data understandable to the platform.
+A MIOTY **blueprint** turns a device's compact radio payload into named fields you can use in Kilo, such as temperature, battery level, or a meter reading. Choose the decoder matching your endpoint, then map those fields to metrics for dashboards, rules, and alarms.
+
+The blueprint is the decoding specification; the **endpoint** is the communicating sensor or meter. Keeping the decoder associated with its device model makes the same interpretation reusable when you add more units of that model.
 
 A blueprint is stored as JSON, a structured text format, and is associated with a device-type identifier called `typeEui`. Choose the blueprint that matches the endpoint's model and payload format; registering a device alone does not decode its telemetry.
 

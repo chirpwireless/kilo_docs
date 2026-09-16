@@ -1,14 +1,14 @@
 ---
-description: Use Kilo AI Chat for supported device, alarm, and rule setup, or connect your own AI client. Create saved triggers in the interface.
+description: Let Kilo’s AI Assistant handle device onboarding, rules, alarms, and dashboards, or connect your preferred AI client to the same platform.
 ---
 
 # Let AI Set It Up for You
 
-Kilo's **AI Chat** is a conversational interface for querying connected devices and carrying out supported setup tasks. You can ask it to inspect readings, register a supported device, create an alarm definition, or help build and deploy a rule instead of completing each form yourself.
+You can start a Kilo deployment by describing the result you want. In **AI Chat**, the built-in assistant works like an experienced IoT integrator: it helps choose the connection, adds devices, maps their readings, and builds and deploys the rules and alarms around them.
 
-Start with your Kilo account and the devices or connection details relevant to the task. The assistant works through the operations available to it in your current organization. Review proposed changes and their results, especially before operating equipment.
+Bring your account and the details of the equipment you want to connect. The assistant asks for missing identifiers and settings, carries out the setup, and lets you refine it in conversation. If hardware is still on order, ask it to create an [emulated device](../connectors/emulator-connector.md) and send a test reading so you can begin building now.
 
-Chat can explain triggers, but it **cannot currently save or edit a trigger**. Create that monitoring condition in [Rules Engine → Triggers](../rules-engine/triggers.md), then connect it to the rule that responds. To experiment without hardware, start with an [emulated device](../connectors/emulator-connector.md).
+Use the built-in assistant or connect your preferred AI client through MCP. Both give you access to platform operations; the confirmation experience differs between clients, as explained below.
 
 ## Two ways to let AI do the work
 
@@ -18,7 +18,7 @@ There are two routes, and they are genuinely different. Pick either, or use both
 | --- | --- | --- |
 | Where it runs | Inside Kilo, under **AI Chat** in the sidebar | In the app you already use — Claude Code, Claude Desktop, ChatGPT, Codex, Cursor |
 | Setup needed | None. It is part of the platform | Connect once over [MCP](../api/mcp-server.md) and sign in with your normal Kilo account |
-| What it can do | Answer from live and historical telemetry, provision supported devices, author, test and deploy rules including their CEL, create alarms with escalation, run device commands, set up emulated devices, manage team roles, recommend hardware | The same operations, exposed as MCP tools, against the same deployment |
+| What it can do | Provision devices, create connections and dashboards, author and deploy rules including their CEL, test sample readings, configure alarms with escalation, run saved device commands, set up emulated devices, manage team access, recommend hardware, and analyze readings | The same operations, exposed as MCP tools, against the same deployment |
 | Permissions | Inherits your exact permissions and organization | Identical — the connection carries your own account's permissions |
 | Confirmation before consequential actions | **Enforced by the assistant.** Destructive or hard-to-reverse actions surface an explicit **Confirm Action** / **Cancel** and do not proceed until you approve | **Depends on your client.** Kilo marks destructive tools with the standard MCP annotations and states the requirement in the tool description; compatible clients show an approval prompt. Annotations are hints to the host application, not something Kilo can enforce inside third-party software |
 | Best for | Getting set up, day-to-day operation, anyone who wants the platform to walk them through it | Working across your own tooling, scripting, or staying in the editor you already have open |
@@ -29,10 +29,10 @@ What is enforced in **both** cases: the connection can only ever read and change
 
 ## Route 1 — the built-in assistant
 
-Open **AI Chat** in the sidebar and describe what you want. Name the device, intended response, and relevant time range:
+Open **AI Chat** in the sidebar and describe what you want. Name the equipment, the outcome, and who should receive any alerts:
 
 - *"Register this LoRaWAN sensor — here is the DevEUI and AppKey."*
-- *"Help me create an alarm definition for the facilities team and explain how to connect it to my saved cold-room trigger."*
+- *"Create a rule that alerts the facilities team when the cold-room sensor reports above −18 °C."*
 - *"Create a test device that behaves like a Dragino distance sensor so I can build the dashboard now."*
 
 It will show you what it is about to change and wait for your approval before anything consequential happens. See [Building With the Assistant](../ai-assistant/building-with-ai.md) for what it can do and where its limits are.
@@ -48,6 +48,8 @@ If you already work in Claude, ChatGPT, Cursor or Codex, point it at your Kilo o
 Setup instructions for each client are in [MCP Server](../api/mcp-server.md).
 
 ## When to do it by hand instead
+
+Saved triggers are a separate monitoring configuration: the assistant can explain them, but cannot currently save or edit them in chat. Use [Rules Engine → Triggers](../rules-engine/triggers.md), then connect the trigger to its responding rule. Add widgets and configure their readings in the [widget editor](../dashboards/adding-widgets.md); the assistant can create dashboards and update their layout.
 
 Doing it manually is still worth your time when you want to understand the mechanics, when you are debugging something specific, or when you simply prefer the forms. Nothing is hidden from you: everything the AI does is an ordinary platform action you could have performed yourself, and it shows up in the same places.
 

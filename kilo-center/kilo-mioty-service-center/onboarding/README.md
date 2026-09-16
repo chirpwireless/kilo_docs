@@ -4,7 +4,9 @@ description: KiloCenter onboarding — connect MIOTY base stations, register end
 
 # Onboarding
 
-Onboarding connects physical MIOTY equipment to a running Kilo Center installation. A **base station** receives radio messages; an **endpoint** is the sensor or other device that sends or receives them. Registering the correct equipment and keys lets the service center associate traffic with the right device.
+Bring your MIOTY radio network online by connecting a base station, registering an endpoint, and checking the messages between them. A **base station** is MIOTY's radio gateway; an **endpoint** is the sensor or other device using that network.
+
+These guides configure the open-source Kilo Center service center. The result is working network communication that your own application can use. For device onboarding inside the full platform—with dashboards, widgets, rules, and alerts—follow the [Kilo Cloud MIOTY guide](../../../kilo-iot-server/connectors/mioty-connector/README.md).
 
 Follow these guides in order:
 

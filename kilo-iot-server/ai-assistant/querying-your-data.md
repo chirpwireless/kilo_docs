@@ -4,15 +4,17 @@ description: Query Kilo IoT Server in natural language — device status, histor
 
 # Querying Your Data
 
-Use Kilo's **AI Chat** to ask questions about device status and stored readings in your current organization. The assistant can retrieve available data for a named device and time range, then explain or compare the results in plain language.
+After setting up a deployment, use Kilo's **AI Chat** to investigate how it is behaving. Ask which devices stopped reporting, compare a warehouse's temperature across two weeks, or find readings above a threshold. The assistant retrieves the relevant records and explains them in the same conversation you use to refine the setup.
 
-For example, ask for a warehouse sensor's temperature over the last day and check the returned time coverage and units. The assistant is querying recorded data, not continuously watching the site; an offline device's latest reading may be old. For setup actions rather than data questions, see [Building With the Assistant](building-with-ai.md).
+Name the device or location and the period you want to examine. Follow-up questions can narrow the result without building a separate report. For device onboarding and automation configuration, start with [Building With the Assistant](building-with-ai.md).
 
 <figure><img src="../../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
 
 When you open **AI Chat**, a greeting and a few suggested topics get you started — select one, or just type your question in the box at the bottom.
 
 ## Writing effective queries
+
+Check the timestamps and returned coverage when interpreting a result. A device that has stopped reporting may only have an old value, and the available history depends on retention.
 
 A specific question produces a specific answer. Follow these guidelines to get the most useful results:
 

@@ -4,7 +4,9 @@ description: Understand Kilo cellular IoT connectivity, SIM services, and how ne
 
 # What is Kilo Connectivity?
 
-Kilo Connectivity provides network services for connecting IoT equipment. This section focuses on **cellular connectivity**: devices use a mobile-network modem and a SIM to exchange data over an available operator network, instead of relying on local Wi-Fi or a nearby private radio gateway.
+Kilo Connectivity lets IoT equipment communicate through mobile networks when a deployment cannot rely on site Wi-Fi or a nearby private radio gateway. Use cellular service for a remote meter, a controller, or the backhaul connecting field equipment to its application.
+
+A compatible modem uses a **SIM** to identify its mobile subscription and exchange data on an available operator network. This section covers that cellular connection and its management; the IoT Server's connectors handle how application messages enter Kilo.
 
 The SIM identifies the mobile subscription. The [connectivity platform](../connectivity-platform.md) is where you manage that service and its usage. The [Kilo IoT Server](../../kilo-iot-server/README.md) has a different job: managing device data, dashboards, and automation. Its software connectors do not replace a cellular subscription.
 

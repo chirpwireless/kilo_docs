@@ -4,9 +4,9 @@ description: Account in Kilo IoT Server — manage orgs, team members, and per-s
 
 # Account
 
-A Kilo **organization** is a shared workspace for devices, dashboards, rules, and the people allowed to use them. Your personal account is your login; it can belong to more than one organization, with different permissions in each.
+A Kilo **organization** gives a team a shared workspace for devices, dashboards, rules, and access. An integrator can work with several client workspaces from one personal login, while each workspace keeps its own members and permissions.
 
-Use the **user menu** in the bottom-left corner to manage membership, organization settings, or the active workspace. These options are separate from personal preferences in [Settings](../settings/README.md). Select the intended organization before changing shared settings.
+Your account is your login; the organization is the deployment you are working in. Use the **user menu** in the bottom-left corner to switch workspaces or manage membership and organization settings. Personal preferences live separately in [Settings](../settings/README.md).
 
 Click your name or avatar in the bottom-left to open the user menu. From there you can:
 

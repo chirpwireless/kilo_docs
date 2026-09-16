@@ -4,7 +4,9 @@ description: Build, name, and deploy Kilo IoT rule artifacts — validate the di
 
 # Builds, Artifacts, and Deployment
 
-A **build** turns a saved Kilo rule into a version that can run, after validating its diagram and expressions. That built version is called an **artifact**. **Deploying** selects an artifact to process the rule's configured sensor or trigger source.
+Builds and deployment let you decide when a rule change reaches live operation. You can revise a draft while its deployed version continues running, then release the version you have chosen.
+
+A **build** validates the saved diagram and expressions and creates an executable version called an **artifact**. **Deploying** selects an artifact to process the rule's configured sensor or trigger source.
 
 Use this sequence to control when editing changes reach live operation: save the design, build it, then deploy the chosen artifact. Saving a new draft does not replace the running version. Have a complete [rule](creating-rules.md), its source, and any referenced alarm definitions or commands ready before building.
 

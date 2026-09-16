@@ -4,7 +4,9 @@ description: KiloCenter architecture — four services (KC-Core, KC-Identity, KC
 
 # Architecture and Components
 
-Kilo Center sits between MIOTY radio equipment and the applications using its data. An **endpoint** is the communicating device; a **base station** receives its radio messages and forwards them to the service center. A device-to-server message is an **uplink**. A server-to-device message is a **downlink**, which requires compatible bidirectional equipment.
+Kilo Center separates MIOTY networking from the application you build around it. Its open-source Community Edition connects base stations, registers endpoints, and handles their communication; gRPC and MQTT let your application use that traffic.
+
+An **endpoint** is a sensor or other communicating device. A **base station** is the MIOTY radio gateway that relays its messages to the service center. Device-to-server messages are **uplinks**; server-to-device messages are **downlinks** and require bidirectional equipment. Kilo Center's web console manages this network, while [Kilo Cloud](../../../kilo-iot-server/connectors/mioty-connector/README.md) combines the enterprise service center with widgets, rules, and alarms.
 
 The service center manages endpoint and base-station records and exposes traffic and operations to the browser interface and integrations. Use this architecture guide to identify which component handles a connection before [installing](README.md) or troubleshooting the stack. The components below separate radio processing, identity, external API access, and the operator interface.
 

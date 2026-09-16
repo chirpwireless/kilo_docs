@@ -4,7 +4,9 @@ description: Check Kilo Center gRPC access through the local API gateway with gr
 
 # gRPC First Steps
 
-The Kilo Center **gRPC API** lets software call service-center operations using structured requests and responses. It includes endpoint management and downlink operations. Use `grpcurl`, a command-line gRPC client, to check a local installation before writing an integration.
+Use Kilo Center's **gRPC API** to make MIOTY network operations part of your software: manage endpoints, request downlinks, and inspect their results. gRPC provides defined operations with structured request and response messages, so you can build an integration around the service center's contract.
+
+The examples below use `grpcurl`, a command-line client, to exercise that interface before writing application code.
 
 The commands below use the local API entry point at `localhost:9090`, exposed by KC-Gateway. Have the stack running and check its [port configuration](../getting-started/configuration-basics.md) first. These examples use a local plaintext connection; authentication and transport settings must match the installation you are calling.
 

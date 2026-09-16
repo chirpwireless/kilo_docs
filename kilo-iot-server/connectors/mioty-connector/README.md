@@ -1,12 +1,14 @@
 ---
-description: Add the Mioty connector to bind your organization to the MIOTY service center and get its BSSCI endpoint.
+description: Bring MIOTY devices into Kilo Cloud — enterprise service-center networking with dashboards, widgets, automation rules, and alarms.
 ---
 
 # MIOTY Connector
 
-The MIOTY connector is the software connection between your Kilo organization and its MIOTY service center. **MIOTY** is a wireless protocol for small, low-power device messages. Physical **base stations** receive those radio messages; the service center manages the communicating devices and their traffic.
+The MIOTY connector brings your radio network into **Kilo Cloud's full IoT platform**. Kilo Cloud includes the enterprise Kilo Center service center; your MIOTY endpoint readings can then feed widgets and dashboards, take part in automation rules, and raise alarms with escalation.
 
-Adding the connector makes MIOTY base-station registration and device setup available in Kilo IoT Server. Kilo Cloud runs the service-center side for you. You still need compatible base stations and registered endpoints—the sensors or other devices sending messages—to receive real readings.
+MIOTY is a low-power wireless protocol. Its **base stations** are radio gateways, and its **endpoints** are communicating sensors or devices. The connector is the software connection between that network and your Kilo organization. Add it, connect your base stations, and register the endpoints to build the application around their readings.
+
+If you only need networking and want to run it yourself, [Kilo Center Community Edition](../../../kilo-center/kilo-mioty-service-center/README.md) is the open-source service center. Use Kilo Cloud when you also want the enterprise service center and the platform's application capabilities.
 
 For the wireless protocol, see [What is MIOTY?](what-is-mioty.md). For operating your own service center, see [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
 

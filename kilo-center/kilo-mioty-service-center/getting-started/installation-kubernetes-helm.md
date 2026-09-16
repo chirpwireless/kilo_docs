@@ -4,6 +4,8 @@ description: Deploy KiloCenter to Kubernetes with Helm — chart, prerequisites 
 
 # Installation: Kubernetes (Helm)
 
+Deploy Kilo Center Community Edition into your Kubernetes environment with the supplied Helm chart. This route fits teams that already operate a cluster and want the open-source MIOTY network services managed through that deployment workflow.
+
 ### Goal
 
 Deploy KiloCenter to a Kubernetes cluster using the Helm chart included in this repository.

@@ -4,7 +4,9 @@ description: Make a Kilo rule act on its own — the Execute Command node sends 
 
 # Running Device Commands
 
-The **Execute Command** node sends a saved device command as one step in a Kilo rule. A saved command defines an operation the device supports, such as switching a relay or changing a setpoint, along with its parameters and optional verification.
+The **Execute Command** node lets a Kilo rule act on equipment as part of its response. A rule can check conditions, send a setpoint or switch a relay, and continue along the workflow you designed. Operators can see that action in the same diagram as the decisions leading to it.
+
+The node uses a **saved device command**: an operation you configured with its parameters and optional verification. Define that command on compatible equipment first, then select it in the rule.
 
 Use this node when a rule should request a physical response as well as, or instead of, raising an alarm. For example, a rule could check a tank reading and send a configured inlet-valve command. Whether the valve changes state depends on the equipment and delivery; a successful dispatch alone is not proof of movement.
 

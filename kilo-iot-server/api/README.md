@@ -4,7 +4,9 @@ description: Kilo IoT Server API overview — REST and gRPC access, scoped keys,
 
 # Kilo IoT Platform API
 
-An **API** (application programming interface) lets your software request data or perform supported operations in Kilo IoT Server without using its browser interface. Use it to connect reporting scripts, business systems, or custom applications to your organization's devices and readings.
+Kilo's **API** lets your existing applications work with the deployment: read device information, use sensor history in reports, and call the operations exposed by the platform. You can connect business software and custom tools without reproducing the browser workflow.
+
+An **API**, or application programming interface, is the contract your software uses to make those requests. Start with the [Public REST API](public-rest-api.md), then use the [API reference](https://api.kiloiot.io/) to select the operation and its required scopes. For conversational setup from an external AI client, use [MCP](mcp-server.md).
 
 Start with the [Public REST API](public-rest-api.md), which uses HTTP requests and structured responses. The [API reference](https://api.kiloiot.io/) lists the operations and permissions each requires. Create an [API key](../settings/api-keys.md)—an integration credential—and send it with the matching organization header. Choose only the permission **scopes** the integration needs.
 

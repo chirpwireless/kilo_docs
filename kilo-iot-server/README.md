@@ -1,14 +1,12 @@
 ---
-description: AI-first IoT Platform with an AI assistant that works like an experienced IoT integrator for your devices and data.
+description: Configure connected devices, dashboards, rules, and alarms in Kilo IoT Server, with an AI assistant that works beside you through setup.
 ---
 
 # Kilo IoT Platform
 
-Kilo IoT is an **AI-first** IoT platform for device management, data collection, real-time processing, visualization, automation, and alerting. It is available as a fully managed cloud deployment or as a self-hosted on-premise installation.
+Kilo IoT Server connects equipment from different manufacturers to the same dashboards, automation rules, and alarm workflows. Use it to build a monitoring and control application for a building, a production site, or a distributed deployment, with Kilo Cloud hosting the platform or an on-premise installation in your infrastructure.
 
-What makes it AI-first is **AIoT** — Artificial Intelligence of Things built into the core of the server, not bolted on as a chat box. A built-in AI assistant works like having an experienced IoT integrator by your side: ask it in plain language to onboard a device, build and deploy an automation, or stand up an alarm, and it does the work with you — grounded in your live deployment and always under your confirmation.
-
-Kilo is built for organizations that need to connect, monitor, and automate physical devices at scale — whether that means five sensors in a single building or thousands of devices across dozens of sites. When we designed the server, we chose full customizability over a simpler but limited tool — and AIoT is what makes that depth easy to use: the assistant turns a highly configurable platform into something you operate by describing what you want.
+The **[AI Assistant](ai-assistant/README.md)** works like an experienced IoT integrator beside you. Describe the outcome and it can register devices, map readings, create dashboards, configure alarms, and build and deploy rules. The depth of the platform stays available in the visual editors, while conversation gives you another way to get the work done.
 
 Kilo can also operate as a Physical AI platform for external AI models and agents. It places consistent device state, permissions, tested automation, commands, verification, and operational history between model intent and real assets. Read [Physical AI for AI Agents](physical-ai.md) for the architecture and integration paths.
 
@@ -34,13 +32,13 @@ These are examples, not boundaries. If your use case involves connecting devices
 
 ### AIoT — an AI assistant that works like an IoT integrator
 
-The built-in AI assistant is not a generic chatbot pinned to a help page. It is connected to your actual deployment and works like an experienced IoT integrator who knows your system end to end. Open **AI Chat** from the sidebar and brief it the way you would a colleague.
+Open **AI Chat** and brief the assistant the way you would an integrator: explain the equipment, the condition you care about, and the response you want. It can inspect your deployment's configuration and carry out the platform setup with you.
 
-**It answers from your real data.** Ask *"What was the average temperature in Warehouse B last week?"* or *"Which devices haven't reported in 24 hours?"* and it queries your device history, analyzes trends, and gives a grounded answer — scoped to your permissions, never invented.
+**Give it a configuration task.** Ask it to onboard a device, create an alarm with escalation, or build and deploy a rule with its [CEL expressions](rules-engine/cel-reference.md). Ask for sample readings to test the rule and inspect the results. You can refine the setup conversationally and review consequential actions in a confirmation prompt.
 
-**It does the work, not just the talking.** Describe an automation in plain language and it designs the rule, writes the [CEL](https://cel.dev), tests it, and deploys it. Ask it to onboard a device and it runs the flow; ask for an alarm and it builds the escalation chain. Before anything consequential, it pauses for your explicit confirmation, then reads the result back to verify its own work.
+**Use the same conversation to investigate.** Once the deployment is reporting, ask *"Which devices haven't reported in 24 hours?"* or compare warehouse temperatures over a week. The assistant retrieves the available readings and timestamps, so you can use the results to guide the next configuration change.
 
-This runs on an enterprise-grade agent runtime built in-house and improved continuously — its accuracy grows as the agents are trained on more real-world IoT work, so the assistant keeps taking on more. That runtime is [Synthetic Brew](https://syntheticbrew.ai), built as a product in its own right rather than a chatbot wrapped around someone else's API.
+The assistant runs on [SyntheticBrew](https://syntheticbrew.ai/), our own AI agent runtime. It connects the conversation to platform operations, carries your account context, and supports confirmation before consequential actions.
 
 <figure><img src="../.gitbook/assets/ai-chat-home.jpg" alt="The AI Chat home screen with a greeting and suggested starter topics"><figcaption></figcaption></figure>
 

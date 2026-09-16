@@ -4,7 +4,7 @@ description: Send and verify the first MIOTY downlink in KiloCenter — queue a 
 
 # Verify the First Downlink
 
-A **downlink** is a message sent from Kilo Center toward a MIOTY endpoint, the physical device that receives it through a base station. Use this guide to queue a device-compatible payload and inspect the reported delivery result.
+A **downlink** lets your application send a message back through Kilo Center to a bidirectional MIOTY endpoint. Use this guide to queue the device-compatible payload and inspect the reported delivery result, completing the return path of the network connection.
 
 First [verify an uplink](verify-the-first-uplink.md) from the registered endpoint. Both the endpoint and base station must support bidirectional communication. Acceptance into the downlink queue is not delivery confirmation, and delivery confirmation alone does not prove that a physical action occurred. Check device feedback when the payload requests a state change.
 

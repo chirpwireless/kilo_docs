@@ -4,7 +4,7 @@ description: Register a MIOTY endpoint in KiloCenter — required fields (EUI, n
 
 # Register an Endpoint
 
-An **endpoint** is a MIOTY device, such as a sensor or meter, that communicates through a base station. Registering it in Kilo Center records its identity and network settings so incoming messages can be associated with that device and supported downlinks can be sent to it.
+Registering an **endpoint** gives a physical MIOTY sensor or meter its identity in Kilo Center's network. The service center can then associate arriving messages with that device and send downlinks when its radio class supports them. With communication established, your application can use the messages through the [integration interfaces](../integrations/README.md).
 
 Have the identifiers, network key, and device profile information that match the physical endpoint ready. Complete [Connect a Base Station](connect-a-base-station.md) before testing traffic. Registration creates the record; [receiving an uplink](verify-the-first-uplink.md) verifies that the device can actually communicate through the installation.
 
