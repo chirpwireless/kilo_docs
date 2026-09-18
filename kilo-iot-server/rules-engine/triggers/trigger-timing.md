@@ -85,3 +85,7 @@ For a 22:00–06:00 rule, a condition beginning at 21:55 and qualifying at 22:05
 
 - [Triggers](../triggers.md) — conditions, creation, connection, and troubleshooting
 - [One Trigger for Multiple Devices](multiple-devices.md) — individual device states and shared readings
+
+## Resolution and subsequent readings
+
+Manually resolving an alarm closes that incident; it does not reset the trigger’s view of incoming readings. A subsequent reading that still satisfies the raise condition can cause another alarm, subject to the configured suppression behavior. A reading that refutes the raise condition does not keep re-raising it merely because a separately held clear condition has not finished.

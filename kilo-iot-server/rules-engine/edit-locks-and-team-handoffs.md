@@ -99,3 +99,7 @@ If a lock expires without being explicitly released (for example, the user's bro
 - **Use the actions menu to duplicate** if you want to experiment without blocking the original rule.
 - **Name your versions** after major changes so team members can identify what changed. See [Version History and Restore](version-history-and-restore.md).
 - **Communicate with your team** before force-unlocking — the other user may still be working from another device.
+
+## Closing an editing tab
+
+Closing or leaving an editing tab attempts to save the current diagram and release its edit lock. Save deliberately before an important handoff: a browser crash or lost connection can prevent that final request. If the lock remains, use the displayed expiry or the authorized owner-unlock workflow.

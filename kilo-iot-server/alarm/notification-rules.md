@@ -97,3 +97,7 @@ To delete a definition permanently, open it in Edit mode and click **Delete alar
 - **Cold-chain temperature exceedance:** Severity Critical. Immediate notification to on-call refrigeration technician. Escalate to shift supervisor, then site manager. Schedule: 24/7. Suppression: 10 minutes.
 - **Server room humidity alarm:** Severity High. Immediate notification to data center operations. Theme: "Humidity exceedance in DC-3." Message: "Rack row B humidity has exceeded the operational threshold."
 - **Pump pressure deviation:** Severity Medium. Business hours only (Mon–Fri 06:00–22:00). Notify maintenance team. One-time notification — do not repeat.
+
+## Group the definition with its solution
+
+Choose **Application** in the alarm definition dialog to associate it with the devices, dashboards, and rules for a use case. Save the definition after changing the field. This association does not automatically connect a rule to the alarm: select the definition in the rule’s alarm action. See [Organizing Content](../applications/organizing-content.md).

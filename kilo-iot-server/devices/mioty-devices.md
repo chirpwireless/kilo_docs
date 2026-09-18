@@ -97,3 +97,7 @@ Blueprint Configuration lives on the same device form. You can pick an existing 
 - **Bind a blueprint** so the endpoint's payloads decode into named fields. See [MIOTY Blueprints](mioty-blueprints.md).
 - **Map metrics** to normalize decoded fields across manufacturers. See [Metrics](metric-templates.md).
 - **Complete the shared registration flow** — device info, Metrics, Logs. See [Registering Devices](registering-devices.md).
+
+## Inspect keys privately
+
+**Network Key** and the optional **Application Key** use the same secret-field controls: typing reveals the value, leaving the field or pressing Enter masks it, and the eye control changes visibility. Values loaded from a QR code remain masked. Keep keys hidden when sharing registration screenshots.

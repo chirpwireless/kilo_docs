@@ -528,3 +528,7 @@ If you create a flow from a gateway without setting a condition, the build step 
 ### Flow labels and colors
 
 Flows from Exclusive Gateways can have labels and colors (configured in the gateway's properties panel). Use these to make complex diagrams readable at a glance — for example, label one branch "Critical" in red and another "Warning" in amber, with the default "Normal" branch in green.
+
+## Camera motion as a starting reading
+
+A Lens camera’s motion sensor can be selected in a **Sensor readings** Start event. Its boolean reading can be routed through a gateway before an alarm action. See [Camera Rules and Alerts](../lens/camera-rules-and-alerts.md).

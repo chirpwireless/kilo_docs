@@ -105,3 +105,7 @@ Clicking a gateway in the Gateways list opens its detail page with two tabs:
 
 - **Overview** — Gateway status, availability percentage, ping statistics, traffic metrics, associated devices, location on map, and firmware update notifications.
 - **Settings** — Edit gateway name, location, and configuration. Manage antenna settings and registration details.
+
+## Applications and cameras
+
+**Applications** groups the resources behind an operational use case. **Cameras** opens Lens, where compatible IP cameras provide live video and motion readings. Use Lens’s return control to go back to the platform navigation.

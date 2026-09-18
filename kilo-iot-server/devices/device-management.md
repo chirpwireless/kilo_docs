@@ -120,3 +120,7 @@ Copying is still the quickest route to a device that resembles an existing one â
 | Delete a device                        | Device list     | Click the delete icon on a device row and confirm                                 |
 
 For metric template setup, see [Metrics](metric-templates.md). For organizing devices by location, see [Locations](../settings/locations.md).
+
+## Organize the device in an application
+
+On **Device Info**, use **Application** to associate this device with an operational solution. Choose **Default** to leave it outside named applications, then save. The device can belong to one application at a time. See [Organizing Content](../applications/organizing-content.md).

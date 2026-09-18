@@ -46,3 +46,7 @@ The [Your First Deployment](your-first-deployment.md) guide walks through this e
 ## After the basics
 
 Once you have live data, integrate Kilo with your own systems through the [API](../api/README.md) — REST for standard integrations, and gRPC for typed, service-to-service, and on-premise/industrial automation.
+
+## Start with an existing camera
+
+For a video deployment, follow [Installing Twin](../lens/installing-twin.md) and [Connecting a Camera](../lens/connecting-a-camera.md). Each camera uses its own local Twin container; no LoRaWAN gateway is involved in this path.

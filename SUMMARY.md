@@ -2,14 +2,17 @@
 
 * [Intro to Kilo](README.md)
 
-## Kilo IoT Server
-
 * [Kilo IoT Platform](kilo-iot-server/README.md)
 * [Physical AI Platform for AI Agents](kilo-iot-server/physical-ai.md)
 * [First Steps](kilo-iot-server/getting-started/README.md)
   * [Let AI Set It Up for You](kilo-iot-server/getting-started/let-ai-set-it-up.md)
   * [Navigating the Interface](kilo-iot-server/getting-started/navigating-the-interface.md)
   * [Your First Deployment](kilo-iot-server/getting-started/your-first-deployment.md)
+* [Applications](kilo-iot-server/applications/README.md)
+  * [Creating an Application](kilo-iot-server/applications/creating-an-application.md)
+  * [Organizing Content](kilo-iot-server/applications/organizing-content.md)
+  * [Using Application Dashboards](kilo-iot-server/applications/using-application-dashboards.md)
+  * [Deleting an Application](kilo-iot-server/applications/deleting-an-application.md)
 * [Overview](kilo-iot-server/overview.md)
 * [Dashboards](kilo-iot-server/dashboards/README.md)
   * [Creating Dashboards](kilo-iot-server/dashboards/creating-dashboards.md)
@@ -84,6 +87,18 @@
     * [Confirming Commands](kilo-iot-server/devices/commands/verification.md)
     * [Executing Commands](kilo-iot-server/devices/commands/executing-commands.md)
     * [Example: Smart Socket](kilo-iot-server/devices/commands/smart-socket-example.md)
+* [Cameras](kilo-iot-server/lens/README.md)
+  * [Installing Twin](kilo-iot-server/lens/installing-twin.md)
+  * [Connecting a Camera](kilo-iot-server/lens/connecting-a-camera.md)
+  * [Provider Camera Sources](kilo-iot-server/lens/connecting-cloud-camera-sources.md)
+  * [Managing Cameras](kilo-iot-server/lens/managing-cameras.md)
+  * [RTSP Camera URLs](kilo-iot-server/lens/rtsp-camera-urls.md)
+  * [Watching Live Video](kilo-iot-server/lens/watching-live-video.md)
+  * [Videowalls](kilo-iot-server/lens/videowalls.md)
+  * [Motion Zones](kilo-iot-server/lens/motion-zones.md)
+  * [Camera Rules and Alerts](kilo-iot-server/lens/camera-rules-and-alerts.md)
+  * [Local Recordings](kilo-iot-server/lens/local-recordings.md)
+  * [Access and Troubleshooting](kilo-iot-server/lens/access-and-troubleshooting.md)
 * [Gateways](kilo-iot-server/gateways/README.md)
   * [LoRaWAN Gateways](kilo-iot-server/gateways/lorawan-gateways/README.md)
     * [Deploying a LoRaWAN Gateway](kilo-iot-server/gateways/lorawan-gateways/deploying-a-lorawan-gateway.md)
@@ -154,8 +169,6 @@
   * [Roles and Page Access](kilo-iot-server/account/roles-and-page-access.md)
   * [Managing Access](kilo-iot-server/account/managing-access.md)
 
-## Kilo Center
-
 * [Kilo MIOTY Service Center](kilo-center/kilo-mioty-service-center/README.md)
   * [Project Overview](kilo-center/kilo-mioty-service-center/project-overview.md)
   * [Next Steps](kilo-center/kilo-mioty-service-center/next-steps.md)
@@ -187,21 +200,15 @@
   * [Operations](kilo-center/kilo-mioty-service-center/operations/README.md)
     * [Operations and Troubleshooting](kilo-center/kilo-mioty-service-center/operations/operations-and-troubleshooting.md)
 
-## Kilo Connectivity
-
 * [What is Kilo Connectivity?](kilo-connectivity/what-is-kilo-connectivity/README.md)
   * [Global IoT SIM Cards](kilo-connectivity/what-is-kilo-connectivity/cellular-iot.md)
   * [SIM Cards Types](kilo-connectivity/what-is-kilo-connectivity/simcardtypes.md)
 * [Connectivity Platform](kilo-connectivity/connectivity-platform.md)
 * [IoT Security](kilo-connectivity/iot-security.md)
 
-## FAQ
-
 * [Official Links](faq/official-links.md)
 * [Help and FAQ](faq/help-and-faq.md)
 * [Changelog](faq/changelog.md)
-
-## Trust and security
 
 * [Report a vulnerability](trust-security-compliance/incident-response-and-vulnerability-reporting.md)
 * [Customer security guide](trust-security-compliance/customer-security-guide.md)

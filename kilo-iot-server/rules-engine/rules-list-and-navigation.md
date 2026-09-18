@@ -84,3 +84,7 @@ This tab is covered in detail in [Builds, Artifacts, and Deployment](builds-arti
 The Trash tab shows rules that have been deleted. Each entry shows the rule name, description, deletion time, and a **Restore rule** action. Rules can be restored from here.
 
 This tab is covered in detail in [Trash and Recovery](trash-and-recovery.md).
+
+## Application assignment
+
+Use the rule list’s **Application** selector to place a rule in the operational solution it supports. Select **Default** to remove the association. This groups the rule without changing its logic or deployment. See [Applications](../applications/README.md).

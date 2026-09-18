@@ -86,3 +86,7 @@ The rule reappears in the Rules tab. It comes back **unlocked**, regardless of i
 - **Check trash before re-creating a rule.** If a teammate deleted a rule you still need, restoring it is faster than rebuilding from scratch — and preserves the entire version history.
 - **Do not rely on trash as an archive.** The retention window is limited. If you want to preserve a rule long-term but keep it inactive, consider stopping its deployed artifact rather than deleting the rule.
 - **Coordinate deletions with your team.** Soft delete protects against accidents, but communicating intent prevents confusion about why a rule disappeared from the active list.
+
+## Deleting an executing rule
+
+When a rule has an active deployment, deletion includes stopping its execution before moving it to Trash. Review the confirmation before proceeding. If stopping or deletion fails, inspect the reported state and retry after resolving the problem; do not assume a failed deletion stopped the rule. Restoring a rule does not restart the old deployment: review, build, and deploy it again when ready.

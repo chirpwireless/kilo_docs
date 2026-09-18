@@ -72,3 +72,7 @@ Each alarm event includes a link that opens the Rules Engine automation responsi
 **Post-incident review:** Filter by severity and time range. Use the originating rule link to reconstruct the automation logic that produced each alarm. Verify that escalation reached the correct recipients.
 
 **False alarm triage:** If an alarm fires repeatedly for non-actionable conditions, navigate to the originating rule and adjust the conditions, or modify the alarm definition's suppression window or schedule to reduce noise.
+
+## After resolving an incident
+
+Resolution does not alter the source reading or disable its rule. If the raise condition still qualifies, later readings can create another incident according to the configured suppression and trigger timing. Review the [trigger behavior](../rules-engine/triggers/trigger-timing.md) when investigating repeats. The inbox scrolls within its available space; continue to the final visible rows when reviewing a long list.

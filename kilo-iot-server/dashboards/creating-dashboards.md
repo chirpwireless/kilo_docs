@@ -91,3 +91,7 @@ Deleting a dashboard removes it and all its widgets permanently.
 - [Adding Widgets](adding-widgets.md) — Populate your new dashboard with device data.
 - [Organizing Dashboards](organizing-dashboards.md) — Create folders and reorder dashboards.
 - [Overview Page](../overview.md) — The default summary view that exists before you create any dashboards.
+
+## Associate a dashboard with an application
+
+In the add or edit dialog, choose **Application** to make the dashboard available from that application’s **Dashboard** tab. **Default** keeps it standalone. Save the dialog, then verify the result in [Using Application Dashboards](../applications/using-application-dashboards.md). Layout and widget changes remain in the dashboard editor.

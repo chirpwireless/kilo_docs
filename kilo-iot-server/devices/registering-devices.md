@@ -181,3 +181,7 @@ If the device is registered but no data is arriving, open its **Connection** tab
 - **Diagnose a silent device** from its Connection tab. See [Device Diagnostics](device-diagnostics.md).
 - **Register a MIOTY endpoint** and its protocol-specific fields. See [MIOTY Devices](mioty-devices.md).
 - **Start without hardware** and swap to the real device when it arrives. See [Emulated Devices](emulated-devices.md).
+
+## Entering secret keys
+
+The **AppKey** field reveals the value while you type. Leaving the field or pressing Enter masks it again; use the eye control when you need to inspect it. A key loaded from a QR code remains masked. Check the value without leaving it visible in screenshots or shared screens.
