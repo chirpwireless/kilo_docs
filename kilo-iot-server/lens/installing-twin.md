@@ -17,12 +17,26 @@ Obtain the camera's RTSP URL and camera credentials from its administrator or ma
 
 The official image and available versions are on [Docker Hub: chirpiot/lens-twin](https://hub.docker.com/r/chirpiot/lens-twin).
 
+### Verify the Docker engine
+
+If Docker is not installed, use the [official installation guide](https://docs.docker.com/get-started/get-docker/). Start Docker Desktop on Windows or macOS and wait for the engine to be ready, with Linux containers selected. For a Linux host, start Docker Engine using the [service instructions for that installation](https://docs.docker.com/engine/daemon/start/).
+
+Check access from the same terminal and user account that will launch the container:
+
+```sh
+docker info
+```
+
+The command must return server information without connection or permission errors. A successful `docker --version` only establishes that the CLI is installed; it does not prove the engine is running or accessible. Resolve failures using [Access and Troubleshooting](access-and-troubleshooting.md#diagnose-a-problem) before proceeding.
+
+Keep both the Docker engine and host available throughout camera operation. Host sleep, shutdown, or stopping Docker interrupts every Twin on that host.
+
 ## Start one Twin
 
-The following Bash example publishes the administration interface only on the Docker host's loopback address. It prompts for a local login password rather than putting the password in shell history.
+The following Bash example publishes the administration interface only on the Docker host's loopback address. It prompts for a **temporary Twin setup password** rather than putting the password in shell history. Use a unique value and retain it until account setup is complete. For Windows, use the [PowerShell command](#windows-and-macos).
 
 ```bash
-read -rsp 'Twin administrator password: ' TWIN_PASSWORD
+read -rsp 'Temporary setup password for this Twin: ' TWIN_PASSWORD
 printf '\n'
 export TWIN_PASSWORD
 docker run -d --name camera-01-twin --restart unless-stopped \
@@ -34,19 +48,30 @@ docker run -d --name camera-01-twin --restart unless-stopped \
 unset TWIN_PASSWORD
 ```
 
-Open `http://127.0.0.1:8080` on that host and sign in with `admin` and the password you supplied. On a remote server, use your established secure administrative access, such as an SSH tunnel, to reach this local port.
+Open `http://127.0.0.1:8080` on that host and complete the account setup below. On a remote server, use your established secure administrative access, such as an SSH tunnel, to reach this local port.
 
 ### First login and current password
 
-Twin has **no default production username or password**. In the command above, `TWIN_USERNAME=admin` sets the initial username, and the password you type at the prompt becomes the initial password through `TWIN_PASSWORD`.
+Twin has **no default production username or password** and requires initial credentials on a fresh installation. The example supplies `admin` through `TWIN_USERNAME`; the prompt supplies the temporary setup password through `TWIN_PASSWORD`. Keeping `admin` is allowed.
 
-After signing in, Twin opens **Set your credentials**. Enter that same initial password in **Current password**, then enter **New password** and **Confirm new password**. You may also change **New username (optional)**. Select **Save and continue**, then sign in again with your new credentials. These credentials belong to this Twin, not your Kilo account or the camera itself.
+For administrators using the installation command displayed in Lens, replace its `CHANGE-ME` placeholder with a unique temporary password. Do not use the literal placeholder. The inline value can be read in shell history and container settings, so do not reuse a password from another account.
+
+The initial credential secures the installation before commissioning is complete. Twin then requires you to set the permanent credential in its local browser interface:
+
+1. Log in with the configured initial username (`admin` in the example) and temporary password.
+2. In **Set your credentials**, supply the temporary password as **Current password**.
+3. Set the permanent credential in **New password**, then repeat it in **Confirm new password**.
+4. Keep **New username (optional)** empty to retain the current username, or provide a replacement.
+5. Choose **Save and continue** to complete setup.
+6. Log in again with the permanent password and the retained or replacement username.
+
+These are local Twin credentials, separate from the operator's Kilo account and the camera's own login.
 
 If someone else installed Twin, obtain the initial credentials from that administrator. There is no universal factory password to enter. Use the initial password supplied when this particular Twin was installed.
 
 Choose a new password with at least eight non-space characters, including uppercase and lowercase letters, a number, and a symbol. You can change your local login later by opening your user menu and choosing **Change password**.
 
-The credential variables initialize a new installation only. Keep its persistent configuration volume when replacing or upgrading the container: it preserves the saved credentials, identity, and settings.
+The credential variables initialize a new installation only; changing them does not reset an account already saved in the configuration volume. Keep that volume when replacing or upgrading the container to preserve the saved credentials, identity, and settings.
 
 ## Add more cameras
 
@@ -58,10 +83,10 @@ Recording is off on a fresh installation. Complete [Connecting a Camera](connect
 
 ## Windows and macOS
 
-Start Docker Desktop and ensure its engine is running before starting Twin. On macOS, use the Bash example above. On Windows, use this PowerShell equivalent:
+Run the [Docker engine check](#verify-the-docker-engine) before either example. The Bash command above applies to macOS; on Windows, use PowerShell and supply a temporary setup password when prompted:
 
 ```powershell
-$twinInitialSecret = Read-Host 'Twin administrator password' -AsSecureString
+$twinInitialSecret = Read-Host 'Temporary setup password for this Twin' -AsSecureString
 $env:TWIN_PASSWORD = [System.Net.NetworkCredential]::new('', $twinInitialSecret).Password
 docker run -d --name camera-01-twin --restart unless-stopped `
   -p 127.0.0.1:8080:80 `
@@ -72,7 +97,7 @@ docker run -d --name camera-01-twin --restart unless-stopped `
 Remove-Item Env:TWIN_PASSWORD
 ```
 
-Open the same local address and complete the first-login steps. The Docker host must be able to reach the camera's private IP address. If automatic camera discovery does not reach the camera from Docker Desktop, enter the camera address or RTSP stream manually. A computer that sleeps or shuts down takes its Twins offline.
+Open the same local address and complete [First login and current password](#first-login-and-current-password). The Docker host must be able to reach the camera's private IP address. If automatic camera discovery does not reach the camera from Docker Desktop, enter the camera address or RTSP stream manually.
 
 ## Restart and upgrade
 

@@ -29,6 +29,8 @@ Choose motion mode when selected-area detection drives your workflow. Configure 
 
 ### Set a recording schedule
 
+The shipped default timezone is **UTC**. Verify **Timezone** against the site's operating hours before turning on **Use schedule**: a different zone can move recording and motion-processing windows relative to local time. Retaining the configuration volume during an upgrade retains the saved timezone rather than resetting it to the shipped default.
+
 In **Recording schedule**, select **Timezone**, enable **Use schedule**, and configure the active intervals for each relevant day. Each day supports two intervals, useful for a morning and evening monitoring period. Save the schedule and test both an active and an inactive period. Schedules also restrict motion processing, so use unrestricted operation for the initial motion-rule test.
 
 <figure><img src="../../.gitbook/assets/kilo-twin-recording-settings.jpg" alt="Twin recording settings with motion recording enabled and clip timing controls visible"><figcaption><p>Motion recording includes configurable video before and after detected movement.</p></figcaption></figure>
