@@ -1,5 +1,5 @@
 ---
-description: Deploy a new LoRaWAN gateway to Kilo IoT — register the Gateway EUI, download Basics Station certs, bring it online.
+description: Register a LoRaWAN gateway in Kilo IoT by Gateway EUI, download Basics Station certificates, and go online.
 ---
 
 # Deploying a LoRaWAN Gateway

@@ -1,5 +1,5 @@
 ---
-description: Update permissions, revoke pending invitations, or remove members from a Kilo IoT organization — from the Users table.
+description: Update member permissions, revoke pending invitations, and remove users from a Kilo IoT organization's Users page.
 ---
 
 # Managing Access

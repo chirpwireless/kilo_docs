@@ -1,5 +1,5 @@
 ---
-description: How a Kilo IoT organization gets created — automatic default for new users or via invitation.
+description: "How a Kilo IoT organization starts: a default workspace created for each new user, or joining one by invitation."
 ---
 
 # How Organizations Start

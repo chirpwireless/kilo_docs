@@ -1,5 +1,5 @@
 ---
-description: Use one Kilo trigger for several devices, give each its own condition and wait, and understand shared readings and the device preview.
+description: Use one Kilo trigger for several devices, with each device evaluated separately and able to start the same rule.
 ---
 
 # One Trigger for Multiple Devices

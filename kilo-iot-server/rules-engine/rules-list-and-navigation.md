@@ -1,5 +1,5 @@
 ---
-description: Manage Kilo IoT rules and triggers across the Rules, Triggers, Artifacts, and Trash tabs.
+description: Find, create, clone, and delete Kilo IoT rules and triggers, and deploy build artifacts from the Rules Engine page.
 ---
 
 # Rules List and Navigation

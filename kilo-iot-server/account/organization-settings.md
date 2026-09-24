@@ -1,5 +1,5 @@
 ---
-description: Owner-only Organization settings in Kilo IoT — rename the organization, transfer ownership, and keep the billing details used on your invoices.
+description: "Owner-only Kilo IoT organization settings: rename the organization, transfer ownership, and edit billing details."
 ---
 
 # Organization Settings

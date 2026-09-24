@@ -1,5 +1,5 @@
 ---
-description: Register a device in Kilo IoT via LNS, MIOTY, Tracker, MQTT or the Emulator — build its Digital Twin, profile, and metric mappings.
+description: Register a device in Kilo IoT Server through an LNS, MIOTY, Tracker, MQTT, or Emulator connector and map its metrics.
 ---
 
 # Registering Devices

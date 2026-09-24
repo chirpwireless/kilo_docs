@@ -1,5 +1,5 @@
 ---
-description: "View the dashboards for a Kilo application and open the dashboard editor to maintain their widgets."
+description: "Open the dashboards linked to a Kilo application, switch between them, and edit their layout and widgets."
 ---
 
 # Using Application Dashboards

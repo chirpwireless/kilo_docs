@@ -1,5 +1,5 @@
 ---
-description: "Draw a camera motion zone in Twin so movement near an entrance can trigger Kilo workflows."
+description: "Draw a motion zone in Twin so a Kilo Lens camera detects movement only in the area you care about, such as a doorway."
 ---
 
 # Motion Zones

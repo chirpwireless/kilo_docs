@@ -1,5 +1,5 @@
 ---
-description: Configure a Kilo Line chart to show continuous metric history, averages, threshold bands, and the current value.
+description: Configure a Kilo Line chart for a metric's history, with threshold bands, an average, and the current value.
 ---
 
 # Line Chart

@@ -1,5 +1,5 @@
 ---
-description: Model multi-storey buildings in a Digital Building Twin — add floors, switch the active level.
+description: "Model a multi-floor building in a Digital Building Twin: add or delete floors, switch levels, and pick a view."
 ---
 
 # Floors and Levels

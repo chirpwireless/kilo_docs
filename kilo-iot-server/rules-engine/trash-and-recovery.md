@@ -1,5 +1,5 @@
 ---
-description: Soft-deleted rules go to Trash — review and restore them within the recovery window before removal.
+description: Deleted Kilo IoT rules go to the Trash tab, where you can review and restore them within the retention period.
 ---
 
 # Trash and Recovery

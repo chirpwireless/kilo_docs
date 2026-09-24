@@ -1,5 +1,5 @@
 ---
-description: Build turn-on and turn-off commands for a smart socket end to end — payload, encoder, verification, and running them from the States tab.
+description: Build on and off commands for a smart socket in Kilo, run them from the device, and check that each one worked.
 ---
 
 # Example: On and Off Commands for a Smart Socket

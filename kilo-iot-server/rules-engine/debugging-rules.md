@@ -1,5 +1,5 @@
 ---
-description: Debug a Kilo IoT automation rule before deploy — step nodes, watch variables, check expressions against test context.
+description: "Debug a Kilo IoT rule before deployment: run it step by step with test input, breakpoints, and variable inspection."
 ---
 
 # Debugging Rules

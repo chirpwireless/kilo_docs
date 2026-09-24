@@ -1,5 +1,5 @@
 ---
-description: Receive Kilo operational alarms on iPhone and Android with the IoT Alerts app in Business mode.
+description: Receive Kilo operational alarms on iPhone and Android with the IoT Alerts app, including iOS Critical Alerts.
 ---
 
 # IoT Alerts App

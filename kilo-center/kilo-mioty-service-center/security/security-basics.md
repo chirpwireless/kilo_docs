@@ -1,5 +1,5 @@
 ---
-description: KiloCenter security basics — default credentials to change, TLS cert paths, and minimum hardening for shared deploys.
+description: "KiloCenter security basics: default credentials to replace, TLS certificates, and network exposure limits."
 ---
 
 # Security Basics

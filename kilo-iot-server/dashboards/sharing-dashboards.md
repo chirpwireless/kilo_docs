@@ -1,5 +1,5 @@
 ---
-description: Share a Kilo IoT dashboard as a password-protected link, set View or Control access, then rotate or revoke it.
+description: Share a Kilo IoT dashboard through a password-protected link with View or Control access, then revoke it.
 ---
 
 # Sharing Dashboards

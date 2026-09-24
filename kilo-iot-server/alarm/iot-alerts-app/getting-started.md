@@ -1,5 +1,5 @@
 ---
-description: Install IoT Alerts, choose Business Use, sign in to Kilo, and turn on push delivery.
+description: "Set up the IoT Alerts app: install it, choose Business Use, sign in with your Kilo account, and turn on Push."
 ---
 
 # Set Up IoT Alerts

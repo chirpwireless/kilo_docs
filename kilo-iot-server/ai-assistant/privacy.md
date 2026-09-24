@@ -1,5 +1,5 @@
 ---
-description: Delegate IoT setup with your own account permissions — understand AI action confirmations, saved conversations, and model-provider data handling.
+description: How the Kilo AI Assistant uses your account permissions, confirms actions before running them, and handles chat data.
 ---
 
 # Privacy and Security
