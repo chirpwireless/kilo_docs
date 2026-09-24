@@ -148,7 +148,7 @@
 * [Records & Reports](kilo-iot-server/reports/README.md)
   * [Audit Trail](kilo-iot-server/reports/audit-trail.md)
   * [Key Vault](kilo-iot-server/reports/key-vault.md)
-* [API](kilo-iot-server/api/README.md)
+* [Kilo IoT Platform API](kilo-iot-server/api/README.md)
   * [Public REST API](kilo-iot-server/api/public-rest-api.md)
   * [gRPC API](kilo-iot-server/api/grpc-api.md)
   * [MCP Server](kilo-iot-server/api/mcp-server.md)
