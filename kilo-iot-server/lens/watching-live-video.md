@@ -36,6 +36,8 @@ A camera without a supported capability will not gain physical movement or audio
 
 ## Interpret connection state
 
+For a camera reported offline, Lens removes the previous preview snapshot and displays **Camera is offline**. Treat **No preview available** as a missing preview, not as proof of disconnection; inspect the camera's reported state before diagnosing the cause. These messages describe preview availability and do not guarantee immediate detection of every live-stream failure.
+
 An offline camera cannot provide a current live feed. Check power, the local network, and Twin before treating a missing stream as an empty scene. If the camera is online but playback fails, inspect its video settings and the network path using [Access and Troubleshooting](access-and-troubleshooting.md).
 
 For automated attention to a specific area, continue with [Motion Zones](motion-zones.md).
