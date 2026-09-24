@@ -4,6 +4,10 @@ description: KiloCenter prerequisites — Docker, Docker Compose, Git, and optio
 
 # Prerequisites
 
+Use the current installation examples only in an isolated evaluation environment with test data.
+Published credentials, signing-key defaults and network exposure need correction before customer use.
+Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
+
 ### Required
 
 * Docker and Docker Compose v2

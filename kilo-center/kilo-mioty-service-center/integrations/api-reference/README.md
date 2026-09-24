@@ -52,10 +52,10 @@ python -m grpc_tools.protoc \
 
 #### Community Edition
 
-Community Edition runs with authentication disabled (`KILOCENTER_AUTH_ENABLED=false`). No headers are required for any RPC — all methods are accessible directly.
+The current Community Edition Docker configuration enables local sign-in in KC-Identity and token validation in KC-Gateway. Authenticate protected API calls through the gateway. The examples omit installation-specific credentials; they do not mean that authentication should be disabled. Keep internal service ports private.
 
 ```bash
-# No auth headers needed
+# Supply the authentication required by your installation
 grpcurl -plaintext -d '{}' \
   localhost:9090 kilocenter.api.v1.KiloCenterService/GetSystemStatus
 ```

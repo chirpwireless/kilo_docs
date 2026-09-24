@@ -4,3 +4,6 @@ description: KiloCenter security — TLS certificate generation, default credent
 
 # Security
 
+
+* [Before you install](installation-safety.md)
+* [Renew a server certificate without deleting data](certificate-renewal.md)

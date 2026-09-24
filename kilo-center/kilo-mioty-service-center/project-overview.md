@@ -4,6 +4,10 @@ description: KiloCenter project overview — MIOTY-native open-source server wit
 
 # Project Overview
 
+Use the current installation examples only in an isolated evaluation environment with test data.
+Published credentials, signing-key defaults and network exposure need correction before customer use.
+Changing only the administrator password is insufficient. Read the [installation safety notice](security/installation-safety.md) before running commands.
+
 ## KiloCenter - Open Source MIOTY Network Server
 
 
@@ -160,7 +164,7 @@ Prerequisites:
 
 ```
 git clone https://github.com/Kiloiot/KiloServiceCenter.git
-cd KiloServiceCenter
+cd kilo-service-center
 ```
 
 2. Copy the environment template:

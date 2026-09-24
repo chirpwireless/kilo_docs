@@ -4,6 +4,10 @@ description: Deploy KiloCenter to Kubernetes with Helm — chart, prerequisites 
 
 # Installation: Kubernetes (Helm)
 
+Use the current installation examples only in an isolated evaluation environment with test data.
+Published credentials, signing-key defaults and network exposure need correction before customer use.
+Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
+
 ### Goal
 
 Deploy KiloCenter to a Kubernetes cluster using the Helm chart included in this repository.

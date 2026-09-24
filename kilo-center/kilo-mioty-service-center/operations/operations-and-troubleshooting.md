@@ -10,7 +10,7 @@ Run repeatable checks for startup issues, connectivity problems, and message-flo
 
 ### Health Checks
 
-From `kilocenter-modules/`:
+From the `kilo-service-center` repository root:
 
 ```bash
 # KC-Core health

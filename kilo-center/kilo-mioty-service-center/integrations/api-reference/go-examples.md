@@ -136,7 +136,7 @@ func main() {
 
 #### Community Edition
 
-Community Edition runs in single-tenant mode with authentication and organization enforcement disabled (`auth.enabled: false`, `org_enforcement_enabled: false`). The examples above work without any headers.
+The current Community Edition Docker configuration enables local sign-in in KC-Identity and token validation in KC-Gateway. Authenticate protected API calls through the gateway. The examples omit installation-specific credentials; they do not mean that authentication should be disabled. Keep internal service ports private.
 
 #### Enterprise: JWT User Principal
 
