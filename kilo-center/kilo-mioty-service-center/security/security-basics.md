@@ -23,7 +23,7 @@ Local development includes convenience credentials that must be changed for any 
 
 ### TLS for Base Station and Application Center Communication
 
-BSSCI requires TLS 1.2 or higher. SCACI requires TLS 1.3 or higher. Every connection to KC-Core uses TLS encryption.
+BSSCI requires TLS 1.2 or higher. SCACI requires TLS 1.3 or higher. These requirements cover the BSSCI and SCACI listeners. They do not establish encryption for internal gRPC, database, cache or web traffic.
 
 #### CA Trust Model
 
@@ -56,20 +56,20 @@ docker compose run --rm certgen
 For a production FQDN:
 
 ```bash
-docker compose run --rm certgen -dir /app/certificates -days 365 -server bssci.example.com
+docker compose run --rm --no-deps --entrypoint certgen certgen -dir /app/certificates -days 365 -server bssci.example.com
 ```
 
-This creates four files in `KC-Core/certificates/`:
+For Docker Compose, the files are in the `cert_data` volume mounted at `/app/certificates`; they are not created in the source tree:
 
 * `ca.crt` and `ca.key` -- CA certificate and private key
 * `server.crt` and `server.key` -- server certificate and private key
 
-The server certificate automatically includes `localhost`, `127.0.0.1`, `0.0.0.0`, and all local network IPs as Subject Alternative Names (SANs).
+The server certificate automatically includes `localhost`, `127.0.0.1`, and all local network IPs as Subject Alternative Names (SANs).
 
 **Generate a Client Certificate**
 
 ```bash
-docker compose run --rm certgen \
+docker compose run --rm --no-deps --entrypoint certgen certgen \
     -dir /app/certificates -client-only -client 70-B3-D5-9C-D0-00-09-E6
 ```
 
@@ -86,24 +86,12 @@ docker compose run --rm certgen \
 | `-client-only` | `false`     | Generate only a client certificate (CA must already exist)   |
 | `-client`      | (empty)     | Client name for client certificate (e.g., base station EUI)  |
 
-**Common Scenarios**
+#### Certificate renewal and hostname changes
 
-**Renew server certificate only (CA already exists):**
-
-```bash
-docker compose run --rm certgen \
-    -dir /app/certificates -server bssci.example.com -server-only
-```
-
-#### Certificate Rotation
-
-**Via compose** (recommended for automation):
-
-```bash
-docker compose run --rm certgen \
-    -dir /app/certificates -server bssci.example.com -server-only
-docker compose restart kilocenter
-```
+Use [certificate-only renewal](certificate-renewal.md). Back up the current certificate directory,
+stop KC-Core, renew with the existing CA, verify the new certificate and hostname, then restart and
+check reconnections. Keep a matching old server certificate/key pair for rollback. Do not delete
+data volumes or regenerate the CA for routine server renewal.
 
 **Via GUI** (post-install renewal):
 
@@ -162,12 +150,9 @@ Limit which ports are accessible from outside your local network:
 * [ ] Enable audit-level logging in production environments
 * [ ] Review `config.yaml` for any remaining development defaults
 
-### Enterprise Edition
+### Authentication and edition boundaries
 
-The Enterprise Edition adds multi-tenant security features:
+The current Community Edition Docker configuration enables local sign-in in KC-Identity and token validation in KC-Gateway. Authenticate protected API calls through the gateway. The examples omit installation-specific credentials; they do not mean that authentication should be disabled. Keep internal service ports private.
 
-* User authentication with JWT validation
-* Organization-scoped data isolation
-* Role-based access control
-
-These features are not available in the Community Edition.
+Enterprise features do not mean Community Edition has no authentication. See the
+[installation safety notice](installation-safety.md) for the remaining default-setting limitations.

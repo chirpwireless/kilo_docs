@@ -4,6 +4,10 @@ description: KiloCenter prerequisites — Docker, Docker Compose, Git, and optio
 
 # Prerequisites
 
+Use the current installation examples only in an isolated evaluation environment with test data.
+Published credentials, signing-key defaults and network exposure need correction before customer use.
+Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
+
 Kilo Center prerequisites depend on how you install it. Choose a route before preparing the host: the full Docker Compose stack runs packaged services in containers, a source build needs development tools, and Kubernetes uses a cluster and Helm.
 
 The list below distinguishes those choices so you can prepare the required runtime, ports, and certificates without installing tools you will not use. Start with [Architecture and Components](architecture-and-components.md) if the service roles are unfamiliar.

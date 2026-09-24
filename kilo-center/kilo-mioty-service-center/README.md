@@ -4,6 +4,10 @@ description: Run the free, open-source KiloCenter MIOTY Service Center yourself,
 
 # KiloCenter MIOTY Service Center
 
+Use the current installation examples only in an isolated evaluation environment with test data.
+Published credentials, signing-key defaults and network exposure need correction before customer use.
+Changing only the administrator password is insufficient. Read the [installation safety notice](security/installation-safety.md) before running commands.
+
 Kilo Center Community Edition is an **open-source MIOTY service center** for running the networking yourself. Connect **base stations**—MIOTY's radio gateways—register **endpoints**, the sensors or other communicating devices, and exchange their messages with your applications.
 
 **Kilo Cloud includes the enterprise version of the service center and the full Kilo IoT platform around it.** The same MIOTY devices can feed widgets and dashboards, run automation rules, and raise alarms with escalation. Choose Cloud when you want to build and operate the application as well as connect the radio network.

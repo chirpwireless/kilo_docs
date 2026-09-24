@@ -4,6 +4,10 @@ description: Install KiloCenter on a Linux host without Docker — PostgreSQL, R
 
 # Installation: Linux Host
 
+Use the current installation examples only in an isolated evaluation environment with test data.
+Published credentials, signing-key defaults and network exposure need correction before customer use.
+Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
+
 Install Kilo Center Community Edition directly on a Linux host when you want to manage its services and dependencies yourself. The result is the same open-source MIOTY networking service, with the processes running on your host rather than inside Docker containers.
 
 ### Goal
@@ -73,7 +77,7 @@ go build -o gateway ./cmd/gateway/
 
 ### Step 6: Start KC-Web
 
-From `kilocenter-modules/KC-Web/`:
+From `kilo-service-center/KC-Web/`:
 
 ```bash
 bun install

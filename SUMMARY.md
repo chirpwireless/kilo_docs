@@ -197,6 +197,8 @@
       * [C# Examples](kilo-center/kilo-mioty-service-center/integrations/api-reference/c-examples.md)
   * [Security](kilo-center/kilo-mioty-service-center/security/README.md)
     * [Security Basics](kilo-center/kilo-mioty-service-center/security/security-basics.md)
+    * [Before you install](kilo-center/kilo-mioty-service-center/security/installation-safety.md)
+    * [Certificate renewal](kilo-center/kilo-mioty-service-center/security/certificate-renewal.md)
   * [Operations](kilo-center/kilo-mioty-service-center/operations/README.md)
     * [Operations and Troubleshooting](kilo-center/kilo-mioty-service-center/operations/operations-and-troubleshooting.md)
 

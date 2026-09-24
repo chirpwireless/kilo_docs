@@ -4,6 +4,10 @@ description: Install the open-source Kilo Center MIOTY service center for networ
 
 # Getting Started
 
+Use the current installation examples only in an isolated evaluation environment with test data.
+Published credentials, signing-key defaults and network exposure need correction before customer use.
+Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
+
 Run your own MIOTY network with **Kilo Center Community Edition**, the open-source service center. This section takes you from choosing an installation route to a running network service ready for base stations and endpoints.
 
 The service center handles networking and passes messages to applications. If you also want dashboards and widgets, automation rules, and alerts in the same platform, use [Kilo Cloud](../../../kilo-iot-server/connectors/mioty-connector/README.md), which includes the enterprise service center and those application capabilities.

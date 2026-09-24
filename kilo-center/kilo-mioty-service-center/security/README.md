@@ -8,3 +8,6 @@ Securing a Kilo Center installation means controlling who can reach its interfac
 
 Follow [Security Basics](security-basics.md) to review default credentials, TLS certificates, MQTT access, and network exposure. Use it alongside [Configuration Basics](../getting-started/configuration-basics.md). The expected result is an installation with deliberate access and credential settings, rather than unchanged development defaults.
 
+
+* [Before you install](installation-safety.md)
+* [Renew a server certificate without deleting data](certificate-renewal.md)
