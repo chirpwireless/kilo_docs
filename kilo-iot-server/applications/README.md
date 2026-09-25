@@ -6,15 +6,17 @@ description: "Build complete IoT solutions with Kilo Applications: devices, dash
 
 An **application** is an IoT solution assembled for a particular job. It brings together the devices that collect information, the dashboards that show it, the rules that respond, and the alarms that notify people. For example, a **Leak Monitoring** application could contain a building's leak detectors, a floor dashboard, and the rules and notifications that help the maintenance team respond.
 
-The purpose of Applications is to make that complete solution something a specialist can build and a customer can use. A dealer who serves property managers understands which sensors, views, and alerts they need. A vehicle-tracking specialist needs a different setup. Applications gives each solution a defined set of working parts, with a common place to open and manage them.
+A dealer is a business that sells and sets up solutions for its customers—for example, leak management, home security, vehicle tracking, or refrigeration monitoring. Each type of solution needs its own devices, dashboards, widgets, rules, and alerts. Applications brings those parts together so the dealer can configure a complete solution around the service they provide.
 
-**The direction is reusable templates:** a specialist prepares a solution once, saves its configuration as a template, and customers apply it to create their own devices, dashboards, rules, and alarms together. Customers would start with a coordinated setup instead of configuring every part from scratch. You can create an application and assemble its resources yourself. Publishing and applying templates are planned capabilities.
+**The planned template workflow lets the dealer configure the solution once and customers apply it to their own setup.** The customer would choose a prepared solution and have its digital devices, dashboards, widgets, rules, and alarms created together, with their relationships already configured. They would then connect their real equipment, or replace the prepared devices' simulated inputs with real device connections, so the dashboards and automation can use their readings. They would not have to build every view and rule from scratch. That makes it easier for customers to get started, while the dealer can reuse the setup across customers with the same need.
+
+You can create an application and assemble its resources yourself today. Publishing and applying reusable templates are planned capabilities.
 
 <figure><img src="../../.gitbook/assets/kilo-applications-dashboard.jpg" alt="Kilo application displaying its assigned dashboard"><figcaption><p>An application's Dashboard tab provides a place to use the views configured for that solution.</p></figcaption></figure>
 
 ## What makes up a solution?
 
-Consider a specialist setting up leak monitoring for a property manager. Each part has a job:
+Consider a dealer setting up leak monitoring for a property manager. Each part has a job:
 
 | Part | Example in Leak Monitoring |
 |---|---|
@@ -33,10 +35,10 @@ An **application** is the setup in your organization: the particular devices, da
 
 The intended workflow is:
 
-1. **The specialist builds the solution.** A dealer or integrator prepares devices, useful dashboards, rules, and notification behavior for a particular customer need.
-2. **The specialist publishes a template.** The prepared configuration becomes reusable for other customers with the same need.
-3. **The customer applies the template.** Its digital device configurations, dashboards, rules, and alarms are created together for that customer, ready to be connected to their equipment and adapted to their installation.
-4. **The customer uses the application.** They open its dashboards and work with the resources behind the solution.
+1. **The dealer configures the solution once.** They prepare digital devices, dashboards and their widgets, rules, and alarm definitions, including the connections between them.
+2. **The dealer publishes a template.** Customers with the same need can choose that prepared configuration.
+3. **The customer applies the template.** Their own application is created with its digital devices, dashboards, widgets, rules, and alarms already configured together.
+4. **The customer connects real equipment.** They connect their sensors or trackers to the prepared digital devices and adapt installation-specific settings. The configured dashboards and rules then use that equipment's readings without being rebuilt.
 
 Template publishing and installation are planned. This workflow explains where Applications is heading; the current setup steps are below.
 
