@@ -12,6 +12,8 @@ A blueprint is stored as JSON, a structured text format, and is associated with 
 
 The catalog is arranged as **Manufacturer → Device Model → Blueprint**. Use **Blueprint Configuration** on the [MIOTY device form](mioty-devices.md) to select an existing entry or define a custom one.
 
+A blueprint describes the endpoint's payload; the digital twin identifies the asset. When changing endpoint models on an existing twin, choose the decoder for the replacement and map its output onto the retained measurements. Check units as well as field names so values before and after the change are comparable. See [Device Management](device-management.md#replace-a-physical-sensor).
+
 ## The idea that matters most: per-device snapshots
 
 When you select a blueprint for a device, it is **copied onto that device as an independent snapshot**.
@@ -32,7 +34,7 @@ The catalog is split into two, and the two are never mixed in one list — you s
 | Catalog | Who can see and use it | Who can change it |
 |---|---|---|
 | **System** | Everyone — manufacturers, models, and blueprints are usable by any organization | Administrators only. Creating, editing, and deleting System entries requires an administrator. |
-| **Custom** | Your organization | Yours to manage freely — create, edit, and delete without restriction |
+| **Custom** | Your organization | Users with the required editing permissions can create, edit, and delete entries |
 
 Using a System blueprint on a device creates **only the snapshot on that device**. Nothing is copied into your Custom catalog, and your Custom catalog stays exactly as you built it.
 
@@ -81,7 +83,7 @@ That last one is worth understanding rather than working around. The `typeEui` i
 
 ## Decode preview
 
-Before you save, use **Decode preview** to run the decoder against a sample payload and inspect the fields it produces.
+In **Test decoder**, enter a known **Sample payload (hex or base64)** and click **Run test**. Read **Decoded result (read-only)** or the error beneath the input. This previews decoding without requiring a live transmission.
 
 Use it. A blueprint that parses as JSON is not the same thing as a blueprint that decodes correctly — scaling factors, byte order, and signed values are the classic places a decoder is syntactically perfect and semantically wrong. A sample payload with a known value takes a minute at the bench and saves you from discovering the problem as a temperature chart that reads plausibly and is off by a factor of ten. Take a payload from the device's own documentation, or from a unit you have already commissioned.
 
@@ -98,7 +100,7 @@ Roll out to one device first and confirm its decoded fields against the live pay
 
 ## Deleting catalog entries
 
-Deleting your own blueprint, model, or manufacturer from the Custom catalog is always allowed.
+Users with the required permissions can delete entries from their organization's Custom catalog.
 
 If devices are using the entry, you get a **warning with a count** of the affected devices. Those devices keep working — they are on their snapshots. What changes is the catalog: the entry disappears and can no longer be chosen for new devices.
 
@@ -108,7 +110,7 @@ Deleting a **System** entry requires an administrator.
 
 ## Tips
 
-- **Author once, commission many.** For a fleet rollout, get the blueprint right on one unit with Decode preview, then let the model default carry the rest.
+- **Author once, commission many.** For a fleet rollout, get the blueprint right on one unit with **Test decoder**, then let the model default carry the rest.
 - **Version on firmware, not on dates.** When a vendor ships a firmware revision that changes the payload, that is a new blueprint version. Name it so the connection is obvious.
 - **Prefer System where it fits.** If the System catalog covers your hardware, use it — you get the decoder without owning its maintenance, and your device still gets its own snapshot.
 - **Map metrics after decoding.** A blueprint produces named fields; metric templates normalize those fields into a vocabulary shared across manufacturers. See [Metrics](metric-templates.md).

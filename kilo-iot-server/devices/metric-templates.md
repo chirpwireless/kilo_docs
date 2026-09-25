@@ -49,7 +49,7 @@ Choose what kind of information the metric represents:
 | **Device metadata** | Information the device reports about itself | Firmware version, hardware revision |
 | **Custom attributes** | Information your organization adds | Installation date, asset tag, maintenance interval |
 
-Only Telemetry metrics appear when mapping incoming device readings. Device metadata and Custom attributes are not offered as telemetry mappings.
+Choose **Telemetry** for readings you want to retain and use in dashboards or rules. Device metadata and Custom attributes categories exist in the catalog, but are not offered as telemetry mappings; selecting a category does not create a working value-entry or storage workflow.
 
 ### Type
 
@@ -61,6 +61,8 @@ Choose how Kilo stores the value:
 | **Integer** | Whole numbers | `85`, `-120`, `42` |
 | **String** | Text | `"open"`, `"standby"` |
 | **Boolean** | True or false | Motion detected, alarm active |
+
+The mapped type also controls conversion before storage. See [incoming value conversion](payload-decoding.md#values-keep-the-form-the-device-sent), including numeric text, integer truncation, and rejected Boolean values.
 
 Chart widgets and the gauge-style Last Data displays require an Integer or Float metric. The Last Data **Value** display can also show text and Boolean values.
 
@@ -92,7 +94,7 @@ Metrics are shared across your organization, not configured separately for each 
 4. Click **Save**.
 5. Review the confirmation describing the organization-wide effect and confirm the change.
 
-If only one device needs a different definition, create a new metric and remap that device instead of editing the shared metric.
+If only one device needs a different definition, create a new metric for that device. Replacing its existing template creates a different measurement assignment; it is not the history-preserving source remap used for hardware replacement.
 
 ## Delete a metric
 
@@ -102,9 +104,17 @@ Kilo refuses to delete a metric that is still mapped to a device. Remove the map
 
 ## Map a device reading to the metric
 
-Creating a metric does not connect it to a device automatically. Open the device's **Metrics** tab and map the raw key sent by the device to the normalized metric.
+Creating a metric does not connect it to a device automatically. Open the device's **Mapping** tab and map the raw key sent by the device to the normalized metric.
 
 After several device types map their raw temperature keys to `temperature`, the same dashboard widget, rule, or query can use all of them without manufacturer-specific logic.
+
+## Keep a measurement through sensor replacement
+
+A metric template describes a kind of reading; each digital device has its own measurement using that template. **Refrigerator 1** and **Refrigerator 2** can both use the temperature template while keeping separate histories.
+
+When replacing Refrigerator 1's probe, keep its existing temperature row and change the **Connector key** to the field supplied by the replacement. For example, the old probe may send `temp_c` and the new one `temperature`. Keeping the measurement lets future values join its existing history and keeps dashboard and rule references attached.
+
+A unit label does not convert a value. If the replacement reports Fahrenheit or a scaled integer instead of °C, adjust the source or decoder to produce the expected value before mapping it. See [Replace a physical sensor](device-management.md#replace-a-physical-sensor).
 
 ## Troubleshooting
 

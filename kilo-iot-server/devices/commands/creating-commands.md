@@ -6,7 +6,7 @@ description: Define a device command in Kilo IoT Server — MQTT or LoRaWAN rout
 
 A command is a reusable, named action with typed inputs. You build it once in the command editor; afterward, operators run it from the **States** tab or a dashboard without touching topics, byte layouts, or payload templates.
 
-To start, open the device's **Commands & States** tab, stay on the **Commands** sub-tab, and click **Add new command**. The editor opens in four numbered sections.
+To start, open the device's **Commands & States** tab, stay on the **Commands** sub-tab, and click **Add new command**. The editor has Identity, Routing, Payload, and Verification sections. An emulator omits Routing, so its sections are numbered differently.
 
 <figure><img src="../../../.gitbook/assets/device-commands-empty.jpg" alt="The Commands sub-tab of a device with no commands defined yet and the Add new command button"><figcaption></figcaption></figure>
 
@@ -28,7 +28,7 @@ Routing tells the platform *where* and *how* the message is addressed. The field
 * **MQTT topic** — Where the message is published on the broker. Required.
   * For a Cloud MQTT connection, the read-only **topic prefix** is shown and you supply the remainder (for example `mqtt-test-01/set`). The device must subscribe to the full topic — prefix plus your value.
   * For an External MQTT connection, enter the full topic exactly as it is published on your broker (for example `devices/light-01/cmd`).
-  * A topic must be under 500 characters, must not contain the wildcards `#` or `+`, must not have empty segments (`a//b`), and must not begin with `iot/`, `external/`, or `external-downlink/` — those prefixes are reserved for the platform's own traffic.
+  * A topic must be at most 500 characters, must not contain the wildcards `#` or `+`, must not have empty segments (`a//b`), and must not begin with `iot/`, `external/`, or `external-downlink/` — those prefixes are reserved for the platform's own traffic.
 * If another command on the same connection already publishes to the topic you enter, the editor flags the overlap so you can avoid accidentally colliding two actions on one topic.
 * fPort and Confirmed downlink do not apply to MQTT — those are LoRaWAN settings.
 
@@ -41,9 +41,13 @@ Routing tells the platform *where* and *how* the message is addressed. The field
   * Turn this **on** if you intend to verify the command with *Query after ack* in section 4 — that strategy waits for the acknowledgment, so it cannot be saved against an unconfirmed downlink.
 * LoRaWAN downlinks are raw bytes, so the payload always goes through an encoder — the send-as-is mode offered for MQTT is not available here.
 
-### mioty devices
+### MIOTY devices
 
-Confirmed downlink applies; fPort and MQTT topic do not. As with LoRaWAN, the payload is built by an encoder.
+The current command editor does not yet provide a complete MIOTY routing workflow. An **fPort** field is for LoRaWAN and cannot be used to address a MIOTY endpoint. The LoRaWAN instructions are not a MIOTY setup procedure.
+
+### Emulated devices
+
+An emulator needs no MQTT topic or fPort. Its direct payload must be an object whose keys match the generated data keys, such as `{"valve_open": true}`. If you choose encoded mode, provide a custom encoder returning that object. Enable **Support commands** on the device first.
 
 ### Devices that cannot take commands
 
@@ -72,7 +76,9 @@ Typed parameters are what make commands safe to hand to an operator: a setpoint 
 * **Send as-is** — Publish the JSON body directly. Best when the device or an upstream consumer accepts JSON.
 * **Process with encoder** — Run the body through an encoder function before publishing.
 
-In encoder mode (and always for LoRaWAN, where downlinks must be raw bytes), you define an **Encoder input template** — the JSON object passed to the codec, using `{{ parameterName }}` placeholders to substitute the operator's inputs. Every placeholder must match a parameter defined above. For LoRaWAN, the platform notes that downlinks are bytes, so an encoder is always required; you can use the encoder defined on the connector or turn on **Use custom encoder JS** to override it with a per-command function.
+In encoder mode (and always for LoRaWAN, where downlinks must be raw bytes), you define an **Encoder input template** — the JSON object passed to the codec, using `{{ parameterName }}` placeholders to substitute the operator's inputs. Every placeholder must match a parameter defined above. For LoRaWAN, the platform notes that downlinks are bytes, so an encoder is always required; you can use the encoder in the device codec or turn on **Use custom encoder JS** to override it with a per-command function.
+
+For encoded MQTT commands, **Custom encoder** is required; there is no fallback to a LoRaWAN codec. An encoded emulator command also requires its own encoder and returns a data object rather than radio bytes.
 
 For MQTT commands that send a payload verbatim (direct mode), you instead provide the target **MQTT topic** and the **Direct payload**, which is sent as written — `{{ parameterName }}` substitution still applies for typed values.
 
@@ -91,6 +97,10 @@ This turns payload encoding from a guessing game into a verifiable step — you 
 The fourth section decides how the platform confirms the command actually took effect — send and forget, wait for the device's next uplink, or poll the device after it acknowledges. It is where you declare which sensor should change and what it should read.
 
 This section has a page of its own: see [Confirming Commands](verification.md). To find out which values the device reports back — and in what form — see [Payload Decoding and Connector Keys](../payload-decoding.md).
+
+## Review commands after hardware replacement
+
+Open each retained command and check **Routing**, **Payload**, and **Verification** against the replacement model. A different protocol, command format, or feedback field needs corresponding changes here. Keep feedback bound to the appropriate retained measurement, and confirm the new hardware reports the expected result before returning a control to routine use.
 
 ## Saving
 

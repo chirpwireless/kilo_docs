@@ -4,9 +4,11 @@ description: Register a device in Kilo IoT via LNS, MIOTY, Tracker, MQTT or the 
 
 # Registering Devices
 
-Every device registered on the Kilo IoT Server becomes a Digital Twin — a complete digital representation that mirrors the device's current state, configuration, telemetry history, and behavioral patterns. The Digital Twin persists even when the physical device is offline, giving you a continuous operational view of your entire deployment. Because the physical device binding is optional, you can create and fully configure a device profile before the hardware is connected — so setup and hardware commissioning don't have to happen at the same time. With the [Emulator](emulated-devices.md), you can go further and have the device produce data before the hardware exists at all.
+Registration creates a **Digital Twin**: the lasting digital record of the asset or monitoring point you want to follow. For example, create **Refrigerator 1**, then connect the temperature probe installed inside it. The probe supplies data; the refrigerator's digital record keeps its identity when that probe changes.
 
-Device registration is the process of creating this Digital Twin and linking it to a physical device through a connector. The registration flow guides you through naming the device, binding it to a connector, configuring its communication profile, and mapping the measurements it reports.
+Create the name and optional photo first, then configure the connection and measurements. You can create the record before binding hardware, or use the [Emulator](emulated-devices.md) to generate readings while preparing the deployment. See [Devices](README.md) for how digital twins, sources, and measurements fit together.
+
+If you are replacing hardware on an existing asset, use [Device Management](device-management.md#replace-a-physical-sensor) instead of registering a new twin.
 
 ## Prerequisites
 
@@ -18,25 +20,27 @@ Before registering a device, you need:
 
 ## Where to start
 
-There are two entry points for device registration — both open the same Manage Device dialog:
+There are two entry points for device registration — both open the same device form:
 
 1. **Devices** — Click **Devices** in the sidebar. This page shows all devices across all connectors. Click **Add device** in the top-right corner.
-2. **Connector row action** — From the **Connectors** page, click the **+ Add device** button on any connector row. The dialog opens with that connector pre-selected.
+2. **Connector row action** — From the **Connectors** page, click the **+ Add device** button on any connector row. The page opens with that connector pre-selected.
 
 The device form is laid out for small screens as well as desktop, so you can register hardware from a phone while standing at the installation point.
 
 ## Phase 1 — Create the device profile
 
-The dialog opens in **Add device** mode, showing only the **Device info** section. No tabs or navigation are visible yet — the first step is simply to identify the device.
+The form opens in **Add device** mode, showing only the **Device info** section. No tabs or navigation are visible yet — the first step is simply to identify the device.
 
 - **Device photos** — Optionally upload photos of the physical device for visual identification.
 - **Device name** — Enter a descriptive name (required). Use a naming convention that scales across your deployment — for example, including the location or device type in the name.
 
-Click **Save**. The Digital Twin is created with just the name and optional photo. The dialog automatically transitions to edit mode.
+Click **Save**. The Digital Twin is created with just the name and optional photo. The form automatically transitions to edit mode.
+
+For an asset that will outlast its sensor, use the asset's name here. Keep the probe's hardware identifier in **Connection**. This makes it clear which identity should remain when you replace the probe.
 
 ## Phase 2 — Configure connection, metrics, and logs
 
-After the first save, the dialog reopens with **Device info**, **Connection**, **Mapping** and **Logs** tabs, and a **Next** button for navigating between them. This is where you bind the device to a connector and configure its data. Two more tabs appear when they apply: **Commands & States** on a device that can receive downlinks, and **Emulator** on a device bound to the Emulator connector.
+After the first save, the device form shows **Device info**, **Connection**, **Mapping** and **Logs** tabs, and a **Next** button for navigating between them. This is where you bind the device to a connector and configure its data. Two more tabs appear when they apply: **Commands & States** on a device that can receive downlinks, and **Emulator** on a device bound to the Emulator connector.
 
 ### Connection tab
 
@@ -95,7 +99,7 @@ A device transmits on a fixed schedule — every few minutes, once a day, once a
 
 Set it to match how the device is actually configured to transmit. If the device sends once per day, set this to **1 day**; once per month, set it to **1 month**. The field starts at **1 hour** by default only because the platform needs an initial value — it has no way to read the device's real schedule, so treat that default as a placeholder to replace.
 
-If no message arrives within the configured interval, the device is marked offline in the device list and flagged on the Overview page's Devices card. Setting the interval to match the device is what keeps a healthy, low-frequency device from being marked offline simply because it is quiet between scheduled reports.
+Reception diagnostics compares the last reading with this interval. Set it accurately so an expected pause between reports is not mistaken for a missing transmission. Command execution uses a separate 30-minute last-seen check; see [Executing Commands](commands/executing-commands.md#when-a-device-is-offline).
 
 Choose a number and a unit: **minute**, **hour**, **day**, **week**, or **month**.
 
@@ -107,6 +111,12 @@ Choose a number and a unit: **minute**, **hour**, **day**, **week**, or **month*
 2. **Unique ID** — Enter the tracker's unique device identifier.
 3. **Device model** — Search and select from the tracker model library. Start typing to filter the list.
 4. **Url for GPS tracker** — After selecting a model, a panel appears showing the endpoint URL. Click the copy button to copy it, then configure your tracker to send data to this URL.
+
+#### For MQTT devices (Cloud or External MQTT)
+
+Select the MQTT connector and enter **Device ID** exactly as it appears in the configured topic or payload identifier. On **Mapping → Topic**, configure **Device ID Topic**, **Where to get the device ID**, and any telemetry extraction settings for the messages your device publishes. Then use the inner **Mapping** tab to connect incoming keys to measurements. See [Topics and device routing](../connectors/mqtt/topics-and-device-routing.md).
+
+Save the attachment and allow a fresh publish before choosing connector keys. For a Zigbee2MQTT bridge using its default base topic, the pattern is `zigbee2mqtt/{{deviceId}}` and Device ID is the device's friendly name.
 
 #### For MIOTY endpoints (Mioty connector)
 
@@ -120,7 +130,7 @@ This is how you build a deployment before the sensors arrive, and swap the same 
 
 ### Mapping tab
 
-This tab maps the device's raw sensor data to normalized measurement definitions. If metric templates have been configured for the device type, the mappings may populate automatically. Otherwise, you can assign metric templates manually.
+This tab maps the device's raw sensor data to normalized measurement definitions. A LoRaWAN profile supplies the network configuration and codec. Add the measurement templates you need, then map their incoming connector keys after the source reports.
 
 #### Connector keys — see what the device sends
 
@@ -163,6 +173,8 @@ See [Topics and device routing](../connectors/mqtt/topics-and-device-routing.md)
 The Logs tab is initially empty. After the device begins sending data, this tab displays the raw event log with timestamps and payload details.
 
 Click **Save** again to persist the connection and metrics configuration.
+
+If **Save** is unavailable, check your device-edit permission, required fields, and subscription status. Creating an additional digital device also requires capacity in the plan. An existing twin can be saved before attaching hardware.
 
 ## After saving
 

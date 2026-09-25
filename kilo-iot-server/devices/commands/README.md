@@ -10,6 +10,8 @@ Almost anything a device can be told to do is a command. Switch a relay or smart
 
 <figure><img src="../../../.gitbook/assets/device-command-states.jpg" alt="The Commands & States tab on a device, listing commands and recent executions"><figcaption></figcaption></figure>
 
+Commands belong to the [digital device](../README.md) and operate through its current physical connection. When replacing an actuator, review its command routing, payload, and feedback measurements before sending a command: keeping the twin does not make different hardware models understand the same instructions.
+
 ## Why it matters
 
 Without an integrated command layer, controlling a device means leaving the platform: a separate vendor app, a hand-built MQTT publisher, a script that crafts raw downlink bytes, or a field technician with a laptop. Each of those is an unmanaged path with no audit, no verification, and no shared definition of what "turn it on" actually means for a given model.
@@ -31,7 +33,7 @@ Commands are managed on the device's detail page, under the **Commands & States*
 The **Commands & States** tab appears for devices that can receive downlinks:
 
 * **MQTT devices** — any device connected through an MQTT connector.
-* **Class C LoRaWAN devices** — Class C devices listen continuously and are always ready to receive commands, so the tab becomes available once a device is configured as Class C. (Class A devices only open a brief receive window after each uplink, so they are not eligible for on-demand control.)
+* **LoRaWAN devices** — a saved physical attachment makes commands available. Class A receives downlinks after an uplink; Class C can listen between uplinks. Choose settings and timing that match the hardware.
 * **Emulated devices with Support commands enabled** — an [emulated device](../emulated-devices.md) behaves like controllable hardware, which lets you define and rehearse a full command workflow before the equipment exists.
 
 A device is considered **controllable** once it has at least one command defined — that is also what makes it selectable for a dashboard [Control widget](../../dashboards/adding-widgets/control-widget.md).
@@ -40,7 +42,7 @@ A device is considered **controllable** once it has at least one command defined
 
 Before you can control a device, make sure:
 
-1. **The device can receive downlinks** — it is connected over MQTT, it is a Class C LoRaWAN device, or it is an [emulated device](../emulated-devices.md) with **Support commands** enabled.
+1. **The device can receive downlinks** — it is connected over MQTT, it is a LoRaWAN device that accepts downlinks, or it is an [emulated device](../emulated-devices.md) with **Support commands** enabled.
 2. **At least one command is defined** — an empty device exposes nothing to execute. Start in [Creating Commands](creating-commands.md).
 3. **You have the access to manage or execute commands** — defining commands and dispatching them are governed by your organization's access policy.
 4. **Parameters are valid** — when a command takes inputs (a brightness level, a setpoint), the values must satisfy the limits set on each parameter before the command will send.

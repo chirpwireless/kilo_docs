@@ -6,7 +6,7 @@ description: Create an emulated device in Kilo IoT — device presets, data keys
 
 An emulated device registered on the Kilo IoT Server is a Digital Twin like any other — same profile, same dashboards, same rules, same alarms. What is specific to it is that the platform generates its telemetry instead of receiving it from hardware. That makes it the way to build and prove a deployment before any sensor exists.
 
-This page covers the Emulator-specific fields on the device form and the Emulator tab. The surrounding registration workflow — naming the device, the Metrics tab, the Logs tab, saving — is the shared flow documented in [Registering Devices](registering-devices.md).
+This page covers the Emulator-specific fields on the device form and the Emulator tab. The surrounding registration workflow — naming the device, the Mapping tab, the Logs tab, saving — is the shared flow documented in [Registering Devices](registering-devices.md).
 
 <figure><img src="../../.gitbook/assets/emulator-device-metrics.jpg" alt="An emulated device configured from a device preset, showing its metrics with their data types"><figcaption></figcaption></figure>
 
@@ -34,7 +34,7 @@ Ticking **Use device preset** opens a list of real sensor models. Pick the one y
 
 A multi-sensor preset, for instance, fills in its full set of readings — temperature, humidity, air quality and the rest — each with the right data type, and sets a sensible reporting interval. It is the fastest way to get a realistic device, and it means the metric names you build dashboards against are the ones the real sensor will send.
 
-> **A preset replaces what is already there.** Selecting one overwrites metrics you typed by hand and resets the interval to the preset's own. Pick the preset first, then adjust.
+> **A preset replaces the current metric configuration and interval.** If rows already exist, confirm **Replace the current metrics?** before applying it. Saving can remove measurements and their accessible history when they are no longer in the configuration. Select a preset before collecting operational data. Turning off **Use device preset** keeps the current rows; it does not restore the previous configuration.
 
 **Device presets are not [device profile templates](registering-devices.md#for-lorawan-devices-lns-connector).** A LoRaWAN device profile template configures how a physical device talks to the network — class, band, codec. A device preset describes what an emulated device *measures*, and exists only on the Emulator.
 
@@ -45,7 +45,21 @@ Without a preset — or alongside one — use **Add device data key** to define 
 - **Device data key** — the metric name, such as `temperature`. This is what dashboards, rules and mappings refer to.
 - **Data type** — `Float` for anything with decimals, `Integer` for whole numbers, and the other supported types for booleans and text. See [Metrics](metric-templates.md) for how types normalize across a deployment.
 
-Choose the data type deliberately. An **Integer** metric truncates decimals: send `1.5` and the device reports `1`. If a reading needs decimal precision, it must be a **Float**.
+Use **Float** for decimal readings. Manual **Integer** inputs must be whole numbers: `1.5` is rejected. Enter decimal values with a dot, such as `1.5`, rather than a comma.
+
+## Configure generated behaviour
+
+On **Connection**, click **Emulator** beside a data key to adjust how it behaves:
+
+| Data type | Settings |
+|---|---|
+| Integer or Float | **From**, **To**, **Holds around**, and **Variability**. From must be below To, and the baseline must lie within that range. |
+| Boolean | **Default state** and **Activity**: Rare, Occasional, or Frequent changes away from it. |
+| String | **Values & weights** and **Stickiness**, which controls how long a value is held. Use 1–32 nonempty values, each at most 64 characters, with positive whole-number weights totaling 100%. |
+
+Apply the settings, then save the device. Use plausible ranges for the scenario: a refrigeration temperature signal needs different settings from an air-quality signal. **Data sending interval** accepts whole minutes, hours, or days, from one minute to one day.
+
+An emulator configuration accepts up to **50 signal keys** and **20 preset command definitions**. Each key must be nonempty and at most **256 characters**. Manual text overrides are limited to **256 characters**.
 
 ## Sending values
 
@@ -58,11 +72,13 @@ Once the device is saved, its **Emulator** tab lists every metric with two contr
 
 Sending a value is a **write action** — it feeds history, rules and alarms exactly as real telemetry does. A user with read-only access can view an emulated device but cannot inject readings into it. See [Users and Permissions](../account/users-and-permissions.md).
 
+Clear a pinned input and click **Save** to resume generated values. For dropdown inputs, choose **No manual value** and save. **Send once** requires a value and leaves the stored pin unchanged. Save a newly added metric before trying to pin or send its value.
+
 ## Running commands against an emulated device
 
-With **Support commands** enabled, the device gets a **Commands & States** tab and behaves like controllable hardware. This is what lets you build and rehearse a closed loop before the equipment exists: a rule detects a condition, sends a command, and the alarm records that it happened — with no risk of actuating anything real.
+With **Support commands** enabled, the device gets a **Commands & States** tab and behaves like controllable hardware. This is what lets you build and rehearse a closed loop before the equipment exists: a rule detects a condition, sends a command, and the alarm records that it happened. Commands addressed to the emulator affect its generated state. A rule using its readings can still control other connected equipment, so check the rule's actions before sending a generated value.
 
-Defining and running commands works the same way it does on a physical device. See [Creating Commands](commands/creating-commands.md) and [Executing Commands](commands/executing-commands.md).
+An emulator command changes generated state. Its editor offers **No verification** only and has no radio acknowledgement; use fresh readings to inspect the resulting state. See [Creating Commands](commands/creating-commands.md) and [Executing Commands](commands/executing-commands.md).
 
 ## Going live: swapping to a real device
 
@@ -74,16 +90,19 @@ The swap is deliberately restricted to pairs that involve the Emulator — emula
 
 > Going the other way is just as useful: move a real device onto the Emulator to reproduce a problem, then move it back.
 
+### Check the transition to measured data
+
+The twin keeps its measurement history across the swap, including generated readings. Note when real measurements begin so synthetic temperatures are not mistaken for a refrigerator's observed operating conditions. Use a separate demonstration twin when simulated readings must remain outside the asset's operational record.
+
+Check the real source's connector keys and map them to the retained measurements. Confirm fresh values and timestamps before relying on dashboards or alarms. For replacement of existing physical hardware, see [Device Management](device-management.md#replace-a-physical-sensor).
+
 ## Copying an emulated device
 
-Copying a device gives you a head start on the device record, but **it does not carry the emulator setup**. The new device is pre-filled with the original's name, metric-template rows, connection selection and settings, and images. Everything that makes it *emulate* has to be set up again:
+Copying preserves the emulator's signal definitions and generator settings, reporting interval, **Support commands** setting, and preset command definitions. The form clears **Device ID**: supply a new unique identifier and review the device name before saving.
 
-- **The emulator's signal definitions** — the metrics it generates and their data types.
-- **The reporting interval**, which returns to its default rather than the original's.
-- **Support commands**, which returns to off.
-- **Preset-derived commands.** Selecting the original's preset again is the quickest way back.
+The saved copy receives its own measurements and begins a separate history. Earlier readings remain with the original twin. Check the copied signal settings before using it in rules, and inspect fresh values after saving.
 
-Until you do that, the copy reports nothing at all — it is a device bound to the Emulator with an empty specification. **Sensor mappings are not carried either**, so recreate them on the copy after saving.
+If the device record saves but the emulator configuration fails, reopen **Connection**, correct the reported problem, and save again. An empty set of generated readings does not mean the copy inherited the original history.
 
 See [Device Management](device-management.md#copying-a-device).
 
