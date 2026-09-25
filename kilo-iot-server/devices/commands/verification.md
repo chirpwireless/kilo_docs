@@ -8,9 +8,9 @@ Command verification helps you follow a request through to device feedback. Afte
 
 Verification is optional: choose **No verification**, **Wait for next uplink** (the next incoming message), or **Query after acknowledgement**, according to the command and device. Sending or accepting a command does not by itself prove physical execution.
 
-Configure the check per command in **section 4** of the [command editor](creating-commands.md). The strategies below explain what each result can tell you.
+Emulated devices offer **No verification** only. Their generated values can exercise dashboards and rules, but do not verify delivery to physical hardware.
 
-<figure><img src="../../../.gitbook/assets/device-command-verification.jpg" alt="The Verification section with No verification, Wait for next uplink, and Query after ack options"><figcaption></figcaption></figure>
+Configure the check per command in **section 4** of the [command editor](creating-commands.md). The strategies below explain what each result can tell you.
 
 ## No verification
 
@@ -46,13 +46,13 @@ Select the sensor that the command changes. A command that switches a relay is c
 
 The dropdown lists the device's sensors under the names you gave them when mapping — the same names you see on dashboards and in rules. Those names are not the field names inside your decoder: a decoder that outputs `socket_status` may appear here as *Socket status*. To see which sensor carries which decoded field, open the device's Mapping section — see [Payload Decoding and Connector Keys](../payload-decoding.md).
 
-Choose a sensor that is already mapped and receiving readings. Unmapped sensors also appear in this list, and a command checked against one never receives a value to compare, so it finishes as *Soft warning* every time. If the device has no sensors mapped yet, the editor links you to the Mapping section to set them up first.
+Choose a sensor that is already mapped and receiving readings. Unmapped sensors also appear in this list, and a command checked against one never receives a value to compare, so verification cannot confirm the expected state. If the device has no sensors mapped yet, the editor links you to the Mapping section to set them up first.
 
 ### Expected value
 
 Enter the value the sensor should report once the command has taken effect. Write it exactly as the device reports it — open the device's Mapping section and read the sensor's current value to see the form to copy.
 
-**For a text state**, type it directly. Capitalization does not matter, so `on` matches a device reporting `ON`.
+**For a text state**, type it directly. Match the reported spelling, for example `ON` for a device reporting `ON`.
 
 **For a number or a true/false state**, reference a command parameter instead of typing the value: enter `{{ parameterName }}` and declare that parameter as Integer, Float, or Boolean in the payload section. A value you type is always treated as text, so a typed `1` looks for the text `1` and will not match a device reporting the number 1.
 
@@ -60,7 +60,7 @@ Enter the value the sensor should report once the command has taken effect. Writ
 
 | The sensor reports | Enter |
 | --- | --- |
-| `on` or `ON` | `on` |
+| `ON` | `ON` |
 | `open` | `open` |
 | `60` (a number) | `{{ level }}`, with **level** declared Integer |
 | `true` (true/false) | `{{ state }}`, with **state** declared Boolean |
@@ -72,9 +72,9 @@ If a command keeps finishing as *Soft warning* even though the device clearly re
 The **Convergence timeout** is how long the platform waits for the reported state to match before it gives up.
 
 * Leave it empty to use the platform default of **1.5 × the device's data sending interval**. Set that interval accurately on the device first — where it is missing, the default works out to a 90-minute window, which is far longer than most commands need.
-* Or enter a value of your own, up to 24 hours.
-* If the window passes without a match, the execution is marked **Soft warning** rather than Failed — the command was delivered and acknowledged, but the platform could not confirm the effect within the expected time. This distinction matters operationally: a soft warning is "we couldn't confirm," not "it definitely failed."
-* A command that is not confirmed within its window is not sent again. Run it again yourself, or let a rule do it.
+* Or enter a positive whole number of seconds, up to **86400** (24 hours).
+* If the window passes without a match, the execution is marked **Soft warning** rather than Failed — the platform could not confirm the expected result within the window. Check Details to distinguish missing acknowledgement from missing state feedback. This distinction matters operationally: a soft warning is "we couldn't confirm," not "it definitely failed."
+* Review the execution details before sending the action again, especially if repeating it could have another effect.
 
 ## Choosing a strategy
 

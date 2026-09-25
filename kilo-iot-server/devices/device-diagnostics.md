@@ -87,7 +87,7 @@ The list is state-aware, so it is worth reading rather than skimming: a device t
 
 One thing the list cannot tell you is whether the device is still joined to a network it was used on before yours — that is invisible from the platform's side. If every item here checks out and the device has still never reported, that is the case to suspect: see [Before anything arrives: joining the network](#before-anything-arrives-joining-the-network).
 
-Every item points at a setting you control. AppKey, DevEUI, the payload decoder, and the connection settings all live on this same **Connection** tab. The sending schedule is set on the device itself and mirrored into **Data sending interval** — see [Device Management](device-management.md). Mapping lives on the **Metrics** tab, and the **Fix**, **Fix mapping**, **Set up mapping**, and **Map a key** actions take you there directly.
+Every item points at a setting you control. AppKey, DevEUI, the payload decoder, and the connection settings all live on this same **Connection** tab. The sending schedule is set on the device itself and mirrored into **Data sending interval** — see [Device Management](device-management.md). Mapping lives on the **Mapping** tab, and the **Fix**, **Fix mapping**, **Set up mapping**, and **Map a key** actions take you there directly.
 
 ### MQTT devices
 
@@ -179,10 +179,22 @@ Use connector diagnostics when *several* devices are silent at once — that pat
 
 For broker-side, TLS, authentication, and topic-routing problems, see [MQTT Troubleshooting](../connectors/mqtt/troubleshooting.md).
 
+## Check a replacement source
+
+After replacing hardware, the twin's old readings may still be visible. Check **Last update** to establish that the replacement is reporting now. Reception without stored values points to the decoding or mapping step: reconnect the replacement's fields to the retained measurement rows.
+
+Keep the digital device while resolving the connection. Creating another twin or removing its measurements does not fix a missing transmission and separates the asset from its existing record. See [Replace a physical sensor](device-management.md#replace-a-physical-sensor).
+
 ## Tips
 
 * **Set Data sending interval honestly.** Diagnostics measures "gone quiet" against the interval you entered. A probe that reports once a day but is configured as hourly will be flagged offline twenty-three times a day, and a genuinely dead sensor configured as monthly will stay green for weeks.
 * **Check the reception status before opening a ticket.** *Sending data — set up mapping to keep it* is a desk fix. *Hasn't reported — device looks offline* is a site visit. The distinction is worth thirty seconds.
 * **Watch the pipeline window during commissioning.** The counts cover the days named in the **Stats over the last {{days}} days** label, so a device fixed an hour ago still carries its failed messages in the count. Judge a fresh fix by the newest Event feed rows, not by the totals.
 * **Unmapped keys are an opportunity, not an error.** When a healthy device reports `{{count}} more keys available, unmapped`, the hardware is sending measurements you are not yet using — a vibration sensor may be reporting temperature alongside it, at no extra cost in battery or airtime.
-* **Diagnostics complements the Logs tab, it does not replace it.** Diagnostics explains *why* processing went the way it did. The Logs tab shows the raw readings themselves. See [Device Management](device-management.md).
+* **Diagnostics complements the Logs tab, it does not replace it.** Diagnostics explains *why* processing went the way it did. The Logs tab shows the stored measurement readings. See [Device Management](device-management.md).
+
+## Readings rejected because of their type
+
+A decoded key can reach the platform without producing a stored value. If its value cannot be converted to the mapped metric's type, the event feed reports the mismatch; an Integer mapping also warns when it truncates decimals. Check the key, the template type, and the latest payload together. See [value conversion](payload-decoding.md#values-keep-the-form-the-device-sent).
+
+Reception diagnostics uses the configured interval, or one hour when no valid interval is set. It is separate from the command screen's 30-minute last-seen check. A device with no last-seen time is waiting for data rather than proven offline.

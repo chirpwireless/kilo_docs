@@ -12,6 +12,8 @@ Before registration, set up the [MIOTY connector](../connectors/mioty-connector/
 
 This page explains the MIOTY-specific fields. For naming, metrics, logs, and saving the device, follow [Registering Devices](registering-devices.md).
 
+The endpoint supplies data to a [digital twin](README.md). Name the twin for the asset you monitor, such as **Refrigerator 1**, and keep the endpoint's EUI in its connection settings. Commissioning another endpoint for the same asset should retain that twin and its measurement rows; review the replacement's blueprint and map its decoded fields before relying on new readings.
+
 ## Prerequisites
 
 - **A Mioty connector.** Without it, the MIOTY fields are unavailable and the form reports **"Create a Mioty connector first"**. See [MIOTY Connector](../connectors/mioty-connector/README.md).
@@ -52,7 +54,7 @@ These parameters tune the endpoint's radio behavior and exist for deployments th
 - **Wide carrier offset**
 - **Long interblock distance**
 
-If your commissioning sheet does not mention a parameter, the endpoint is not using it — leave it at its default. These are levers for difficult RF environments, not settings to explore on a working fleet.
+Use the manufacturer's provisioning values. If a parameter is not documented, confirm it with the supplier before changing it; omitting it from a commissioning sheet does not establish what the hardware uses.
 
 ## Counters
 
@@ -65,7 +67,7 @@ Aligning the counters lines up the *record*. It does not move the endpoint onto 
 
 ## Security
 
-- **Network Session Key** — required. Exactly 32 hexadecimal characters. This is the key that secures the endpoint's link to the network; without a valid one the device cannot be saved.
+- **Network Key** — required. Exactly 32 hexadecimal characters. This is the key that secures the endpoint's link to the network; without a valid one the device cannot be saved.
 - **Application Key** — optional. Provide it where the endpoint's payload is application-encrypted.
 
 ### Add to Vault
@@ -82,9 +84,11 @@ The form will not save until these hold:
 |---|---|---|
 | **End Point EUI** | Exactly 16 hexadecimal characters | The field reports that the EUI must be 16 hex characters |
 | **Short Address** | Hexadecimal, in range **0001**–**FFFF** | The field is rejected; zero is not valid |
-| **Network Session Key** | Exactly 32 hexadecimal characters, required | The device cannot be saved |
+| **Network Key** | Exactly 32 hexadecimal characters, required | The device cannot be saved |
+| **Application Key** | Optional; 32 hexadecimal characters when supplied | The field reports an invalid key |
+| **Last Packet** and **Attach** | Whole numbers from 0 to 4294967295 | The field reports an invalid counter |
 
-Registering an identifier that already exists in your organization returns **"A base station with this EUI already exists"**.
+If registration reports an EUI conflict, check for an existing endpoint registration and confirm which twin should own that physical device. Do not create another twin to work around a replacement binding.
 
 ## Decoding telemetry
 
