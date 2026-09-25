@@ -8,7 +8,7 @@ An **application** is an IoT solution assembled for a particular job. It brings 
 
 The purpose of Applications is to make that complete solution something a specialist can build and a customer can use. A dealer who serves property managers understands which sensors, views, and alerts they need. A vehicle-tracking specialist needs a different setup. Applications gives each solution a defined set of working parts, with a common place to open and manage them.
 
-**The direction is reusable templates:** a specialist prepares a solution once, saves its configuration as a template, and customers apply it to create their own devices, dashboards, rules, and alarms together. Customers would start with a coordinated setup instead of configuring every part from scratch. Release 3.10.0 delivers the application itself and the ability to assemble its resources; publishing and applying templates are planned capabilities.
+**The direction is reusable templates:** a specialist prepares a solution once, saves its configuration as a template, and customers apply it to create their own devices, dashboards, rules, and alarms together. Customers would start with a coordinated setup instead of configuring every part from scratch. You can create an application and assemble its resources yourself. Publishing and applying templates are planned capabilities.
 
 <figure><img src="../../.gitbook/assets/kilo-applications-dashboard.jpg" alt="Kilo application displaying its assigned dashboard"><figcaption><p>An application's Dashboard tab provides a place to use the views configured for that solution.</p></figcaption></figure>
 
@@ -25,7 +25,7 @@ Consider a specialist setting up leak monitoring for a property manager. Each pa
 
 The application brings these configured resources together under a recognizable name. A second application could serve space utilization or vehicle tracking, with its own equipment and workflows. Your team can open the solution it needs without searching through every device, dashboard, rule, and alarm in the organization.
 
-Creating the application does not configure those relationships automatically. A dashboard still needs widgets bound to the appropriate devices, and a rule must refer to the alarm definition it should use. In the current release, you configure those connections and assign the resources to the application.
+Creating the application does not configure those relationships automatically. A dashboard still needs widgets bound to the appropriate devices, and a rule must refer to the alarm definition it should use. Configure those connections and assign the resources to the application.
 
 ## An application and a template have different roles
 
@@ -42,7 +42,7 @@ Template publishing and installation are planned. This workflow explains where A
 
 ## What you can do now
 
-In release 3.10.0, you can create and name an application, assign devices, dashboards, rules, and alarm definitions, view its dashboards, and inspect its content. This is useful when building a solution yourself or maintaining a setup for an operations team.
+You can create and name an application, assign devices, dashboards, rules, and alarm definitions, view its dashboards, and inspect its content. This is useful when building a solution yourself or maintaining a setup for an operations team.
 
 1. [Create an application](creating-an-application.md) for a specific outcome, such as Building Monitoring.
 2. Configure its devices, dashboards, rules, and alarm definitions through their normal platform workflows.
