@@ -44,7 +44,7 @@ Cloud MQTT publishers connect outbound to the managed broker. Three details matt
 
 - **TLS on port 1884.** Configure your publisher's MQTT client to use the `mqtts://` scheme on port 1884. Do not assume port 1883 — the managed broker does not accept plaintext connections. The broker certificate is signed by a publicly-trusted CA, so no client-side CA bundle is required for standard libraries.
 - **Topic prefix is mandatory on every published topic.** A device publishing energy readings must publish to `{Topic prefix}/{your topic}` — for example, `iot/{org}/{connection}/meters/EM-4492/power`. Messages published outside the prefix are not delivered to this connector.
-- **The Topic prefix is stripped before device routing.** When you configure a device's Device ID Topic in the Topic sub-tab, you specify only the device-level portion (`meters/{{deviceId}}/power` or similar). The platform handles the prefix internally.
+- **The Topic prefix is stripped before device routing.** When you configure a device's Device ID Topic on the Connection tab, you specify only the device-level portion (`meters/{{deviceId}}/power` or similar). The platform handles the prefix internally.
 
 For Zigbee2MQTT-bridged devices specifically, the Z2M `base_topic` setting in `configuration.yaml` should be `{Topic prefix}/zigbee2mqtt`. Z2M then publishes each device under `{Topic prefix}/zigbee2mqtt/{friendlyName}`, and the device-level topic seen for routing is `zigbee2mqtt/{friendlyName}`.
 
@@ -78,3 +78,5 @@ The username and Topic prefix remain stable across rotation. Only the password c
 ## Limits
 
 Cloud MQTT connectors are unlimited per organization. Use multiple connectors to scope namespaces by site, vendor, or operational team — each connector has its own Topic prefix and credentials, and access can be managed independently per connector.
+
+For the device-level setup, follow [MQTT Devices](../../devices/mqtt-devices.md). It covers the physical identifier, connection fields, measurement mapping and checking retained history.

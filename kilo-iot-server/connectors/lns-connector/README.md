@@ -37,3 +37,5 @@ The LNS connector uses LoRaWAN — a long-range, low-power wireless protocol des
 - [LoRa 2.4 GHz](lora-2g4.md) — The global 2.4 GHz ISM band for cross-border and high-throughput deployments
 - [LR-FHSS](lr-fhss.md) — Frequency-hopping for massive-scale networks and interference resistance
 - [Built-in Network Server](built-in-lns.md) — How the integrated LPWAN server eliminates external infrastructure
+
+For the device-level setup, follow [LoRaWAN Devices](../../devices/lorawan-devices.md). It covers the physical identifier, connection fields, measurement mapping and checking retained history.

@@ -52,6 +52,16 @@ History remains subject to the retention period included in your plan or agreed 
 
 For longer-term refrigeration records or other compliance and operational needs, contact the team to discuss extended retention. See [Data retention](../settings/subscription.md#data-retention) for plan limits and the request route.
 
+## Choose the source for your digital twin
+
+| Source | Start here |
+| --- | --- |
+| LoRaWAN sensor | [LoRaWAN Devices](lorawan-devices.md) — profiles, radio identity, decoding and first readings |
+| MQTT publisher or bridged sensor | [MQTT Devices](mqtt-devices.md) — connect messages to a twin and its measurements |
+| GPS tracker | [Tracker Connector](../connectors/tracker-connector.md) — tracker identity, model and reporting endpoint |
+| MIOTY endpoint | [MIOTY Devices](mioty-devices.md) — endpoint configuration and blueprint decoding |
+| Generated readings | [Emulated Devices](emulated-devices.md) — prepare a deployment before hardware arrives |
+
 ## In this section
 
 - [Registering Devices](registering-devices.md) — the shared registration flow, and the fields each connector type asks for.

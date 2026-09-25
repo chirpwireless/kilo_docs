@@ -117,3 +117,5 @@ For TLS termination, a separate reverse-proxy or Mosquitto's native TLS configur
 ## Limits
 
 External MQTT connectors are limited to 10 per organization. For deployments needing additional broker integrations beyond this limit, engage platform engineering during deployment planning.
+
+For the device-level setup, follow [MQTT Devices](../../devices/mqtt-devices.md). It covers the physical identifier, connection fields, measurement mapping and checking retained history.

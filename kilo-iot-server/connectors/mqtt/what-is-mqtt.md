@@ -59,7 +59,7 @@ A typical industrial telemetry payload:
 
 When mapped to platform metrics, `temperature`, `pressure`, `vibration.rms`, `vibration.peak`, and `status` each become an addressable Connector Key. The Mapping tab links each Connector Key to a normalized metric, which is what then flows into the Digital Twin, the rules engine, and historical storage.
 
-For one-metric-per-topic schemes (legacy bridges, OPC-UA aliasing patterns), the **Telemetry topics** rows on the Topic sub-tab let you map each topic to a named Connector Key explicitly.
+For readings carried in topic segments, configure **Topic Telemetry** on the device's **Connection** tab. JSON payloads normally need no telemetry rows. See [Topics and device routing](topics-and-device-routing.md#topic-telemetry) for the editor's supported patterns.
 
 ## QoS, retained messages, last-will
 

@@ -59,7 +59,7 @@ For External MQTT, this is a reachability or subscription mismatch:
 Two causes are common:
 
 - **Device ID Topic pattern does not match the publishing topic.** Verify the pattern by comparing it byte-for-byte to a topic from the publisher's logs. Common mistakes: leading slash, missing intermediate segments, mismatched case, mismatched plurality (`meter` vs `meters`).
-- **Device ID is byte-for-byte different from the extracted segment.** Whitespace stripping on the Device ID input is the silent killer here. If the publisher's topic is `plant-3/line-a/EM 4492/data` (containing a space) and the Device ID was typed as `EM 4492`, the platform stored a normalized string that no longer matches. Eliminate whitespace from device identifiers — use hyphens or underscores. Re-create the device record with the normalized identifier.
+- **Device ID differs from the publisher’s identifier.** Compare the configured ID with the actual topic segment or payload field, including case and spaces. MQTT IDs preserve both. Keep the existing twin when replacing a bound identity: see [MQTT Devices](../../devices/mqtt-devices.md).
 
 To verify what the publisher is actually sending:
 
@@ -79,12 +79,12 @@ The topic shown in those output lines is the topic your Device ID Topic pattern 
 
 This is the most common operational confusion when commissioning a new MQTT device. The two tabs read from different stores:
 
-- **Mapping tab Value column** = live snapshot of the most recent payload. Updates on every accepted publish, regardless of whether Connector keys are populated.
-- **Logs tab** = per-sensor history, populated only by publishes received *after* Connector keys are saved.
+- **Mapping tab Value column** = live snapshot of the most recent payload. Updates on every accepted publish, regardless of whether Device data keys are populated.
+- **Logs tab** = per-sensor history, populated only by publishes received *after* Device data keys are saved.
 
-If the most recent publish arrived before Connector keys were saved, that publish never reaches Logs. Older publishes are not retroactively normalized.
+If the most recent publish arrived before Device data keys were saved, that publish never reaches Logs. Older publishes are not retroactively normalized.
 
-Resolution: generate a fresh publish after saving Connector keys. Methods:
+Resolution: generate a fresh publish after saving Device data keys. Methods:
 
 - **Wait for the device's next scheduled report** — for sensors on a periodic publish cadence.
 - **Trigger a state change at the device** — for actuators with COV-on-state-change semantics.
@@ -93,18 +93,11 @@ Resolution: generate a fresh publish after saving Connector keys. Methods:
 
 After at least one publish arrives post-save, the Logs tab populates and continues to receive subsequent traffic.
 
-## Phase 5 — null values in the Mapping tab Value column
+## Phase 5 — readings rejected during normalization {#phase-5-null-values-in-the-mapping-tab-value-column}
 
-**Symptom:** Connector keys are mapped, the Logs tab is receiving data, but specific metric values show as null in the Mapping tab.
+**Symptom:** An incoming key has a value, but its mapped measurement does not receive a fresh history entry.
 
-The most common cause: the metric template Type does not match the published value's type. For example, mapping a Z2M `state` field (`"ON"`/`"OFF"` strings) to a Boolean-typed metric template results in nulls — the platform cannot parse the string as a boolean.
-
-Check the [payload-type → Metric Type translation](topics-and-device-routing.md#payload-type--metric-type-translation):
-
-- String-encoded enums (e.g. `"OPEN"`/`"CLOSED"`, `"ON"`/`"OFF"`) → **String**, not Boolean.
-- Z2M `binary` features → String. Z2M `numeric` features → Number. Z2M `enum` features → String.
-
-Resolution: edit the metric template (or replace the Mapping row with a row using the correct template type) so the Type matches the actual payload value type.
+Check the template's Type against the actual value. For example, `"ON"`/`"OFF"` need String, not Boolean. Incompatible readings are rejected for that measurement; they are not stored as null values. Check device diagnostics for the reason. If changing a template, review the effect on measurement identity first; replacing a template is not the same as correcting the incoming key.
 
 ## Phase 6 — Inconsistent or duplicated metric values across multiple devices
 

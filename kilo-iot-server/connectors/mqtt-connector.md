@@ -301,3 +301,5 @@ Energy meters publish individual readings (kWh, kW, voltage, current) to separat
 
 - [Registering Devices](../devices/registering-devices.md) — Complete device registration and Digital Twin configuration.
 - [Connectors](README.md) — Overview of all connector types.
+
+For the device-level setup, follow [MQTT Devices](../devices/mqtt-devices.md). It covers the physical identifier, connection fields, measurement mapping and checking retained history.

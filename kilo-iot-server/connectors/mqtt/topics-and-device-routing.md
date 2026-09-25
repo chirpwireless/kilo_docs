@@ -1,151 +1,120 @@
 ---
-description: MQTT topic structure and Device ID routing in Kilo IoT — pattern placeholders, Mapping/Topic tabs, two-pass save.
+description: Configure Kilo MQTT topic segments, payload identifiers, topic-value extraction and measurement mapping, with examples and validation.
 ---
 
 # Topics and device routing
 
-MQTT routing turns a stream of messages into identifiable device readings that Kilo can chart, compare, and use in rules. Configure a device's topic pattern and field mapping once, and its subsequent messages follow that mapping into the platform.
+MQTT routing identifies which digital device a message belongs to and which readings it contains. A **topic** is the message's named channel; the **payload** is its content. Configure routing on the device's **Connection** tab, then connect received fields to measurement templates on **Mapping**.
 
-A **topic** is the message's named channel; the **payload** is its content. The routing pattern identifies the device, and field mapping identifies measurements such as temperature or power.
-
-Set up a [Cloud MQTT](cloud-mqtt.md) or [External MQTT](external-mqtt.md) connection first and have a real topic and sample payload from your equipment ready. This guide explains the **Device ID Topic** pattern, the matching device identifier, and the **Mapping** and **Topic** tabs used to turn received messages into readings.
+For a complete first-device walkthrough, start with [MQTT Devices](../../devices/mqtt-devices.md). This reference covers the routing controls, including payload-based identifiers and readings carried inside topic names. Broker setup remains in [Cloud MQTT](cloud-mqtt.md) and [External MQTT](external-mqtt.md).
 
 ## Topic shape after broker-side processing
 
-The platform's broker exposes incoming MQTT messages with a connector-scoped prefix. For Cloud MQTT, the prefix is the connector's Topic prefix (`iot/{org}/{connection}`). For External MQTT, the platform's outbound bridge re-publishes incoming messages from your broker into an internal namespace; the device-level topic shape is preserved.
+For Cloud MQTT, the publisher's full topic begins with the connection's **Topic prefix**, such as `iot/{org}/{connection}`. The editor displays that prefix as a locked leading segment; configure the device-level pattern after it. Do not type the prefix twice.
 
-After internal prefix-stripping, the topic seen for device routing is the device-level segment:
+For External MQTT, there is no Cloud prefix to add. Build a pattern matching the topic the equipment publishes to your own broker. For example, `meters/EM-4492/data` matches `meters/{{deviceId}}/data` with Device ID `EM-4492`.
 
-```
-Cloud MQTT:    plant-3/line-a/EM-4492/data         (after prefix strip)
-External MQTT: plant-3/line-a/EM-4492/data         (after bridge namespace strip)
-```
-
-The Device ID Topic field describes only this device-level shape. Connector-prefix handling is internal to the platform; the operator does not configure it.
+The read-only **Resolved preview** includes the Cloud prefix when applicable and substitutes the entered Device ID. It is a preview of the pattern, not evidence that a message arrived.
 
 ## Building the Device ID Topic
 
-**MQTT Topic for device ID** on the device's Connection tab is not a free-text box — it is a segment builder. The connector's topic prefix is already in place and locked, and you add one segment at a time with the **+** button. Each segment is one of two kinds:
+**MQTT Topic for device ID** is a segment builder on **Connection**. A slash separates each segment.
 
-| Segment | What it does |
-|---------|--------------|
-| **Text segment** | A literal part of the topic, typed in — `meters`, `line-a`, `SENSOR`. Matched exactly against the incoming topic. |
-| **Device ID** | Marks the segment whose value *is* the device identifier. Exactly one is required, and the value found at that position is matched against the **Device ID** field above. |
+| Control | Behavior |
+| --- | --- |
+| **+ → Text segment** | Add a literal topic component, such as `meters`, `zigbee2mqtt`, or `data`. Type it exactly as the publisher sends it. |
+| **+ → Device ID** | Add the identifier position. The builder permits one Device ID segment; the add option is unavailable when one is already present. |
+| Drag handle | Reorder segments to match the topic. For example, move Device ID between `meters` and `data`. |
+| Segment remove control | Remove editable text segments. The Device ID segment is locked in Topic mode; switch to Payload mode to remove it when changing the identifier source. |
+| Locked prefix | Cloud MQTT's connection prefix; it cannot be edited or removed here. |
+| **Resolved preview** | Shows the resulting topic using the entered identifier. A value placeholder in telemetry patterns is displayed as `value`, not as a real reading. |
 
-A **Resolved preview** under the builder shows the complete topic the pattern produces for this device, so you can compare it against what your publisher actually sends before saving. Drag the Device ID chip to move it to a different position.
+Use `{{deviceId}}` as the identifier placeholder when reading a serialized pattern in these examples. It is not a literal device name. Topic templates are case-sensitive; matching requires the expected segments and positions. Telemetry templates reject `#`, unknown placeholders and unclosed placeholders. The two recognized placeholders are `{{deviceId}}` and `{{value}}`.
 
-**Where to get the device ID** beside the builder decides where the identifier is read from — **Topic** (the position you marked) is the usual choice.
+## Read the identifier from a payload
 
-Example topic shapes and the segments to add after the prefix:
+**Where to get the device ID** offers **Topic** and **Payload**. Topic is the initial choice and extracts the Device ID segment. Payload mode reads the identifier from JSON instead:
 
-| Publishing topic | Segments |
-|-------------------|----------|
-| `plant-3/line-a/EM-4492/data` | `plant-3` · `line-a` · **Device ID** · `data` |
-| `tasmota/PlugKitchen/SENSOR` | `tasmota` · **Device ID** · `SENSOR` |
-| `zigbee2mqtt/LivingRoomSensor` | `zigbee2mqtt` · **Device ID** |
-| `home/sensors/esp-kitchen/data` | `home` · `sensors` · **Device ID** · `data` |
+1. Choose **Payload**.
+2. Build the message topic without a Device ID segment, for example `building/readings`.
+3. In **Payload template**, enter a dot-separated path, such as `deviceInfo.deviceId`.
+4. Check **Payload preview**, which illustrates the JSON object around that path.
+5. Set the device's **Device ID** to the value carried at that path and save.
 
-For nested industrial topic shapes such as Sparkplug B (`spBv1.0/{group}/DDATA/{node}/{device}`), add the hierarchical context as text segments and put the Device ID on the segment that uniquely identifies the device record being registered.
+For example, this message on `building/readings` identifies device `room-1`:
 
-<figure><img src="../../../.gitbook/assets/device-mqtt-topic-builder.jpg" alt="The MQTT topic builder on a device Connection tab with a locked connector prefix, a text segment, a Device ID segment and the resolved preview"><figcaption></figcaption></figure>
+```json
+{"deviceInfo": {"deviceId": "room-1"}, "temperature": 21.4}
+```
+
+The topic must be non-empty in either mode. Payload mode needs the payload path; its topic patterns must omit the Device ID placeholder. When changing modes, update both the selector and the segments so they agree. Topic mode instead needs the Device ID placeholder in the device pattern and every configured telemetry row.
 
 ## Device ID input must match the extracted segment byte-for-byte
 
-The Device ID field on the device record stores the canonical identifier the platform looks for at the Device ID segment. The match is byte-for-byte: case-sensitive, whitespace-sensitive, and unicode-sensitive.
+**Device ID** accepts 1–64 characters: ASCII letters, digits, spaces, periods, underscores and hyphens. MQTT IDs preserve their case and spaces. Use the same identifier on the publishing side and in the platform. `room-1` and `Room-1` do not match.
 
-A pattern that catches integrators frequently: **the Device ID input strips whitespace on save.** A device publishing on `plant-3/line-a/EM 4492/data` (with a space in the device ID) will not match a Device ID typed as `EM 4492` — the input gets normalized to `EM4492` (or partially trimmed; the exact behavior is not guaranteed). The mismatch is silent — no error appears on save and no error appears when telemetry arrives. The Mapping tab simply stays empty.
+For Zigbee2MQTT, use the device's friendly name. A simple name such as `LivingRoomSensor` is convenient. If the physical identity needs changing after binding, follow [device replacement](../../devices/device-management.md) on the same twin rather than deleting the twin and its measurement associations.
 
-The recommendation in production deployments: avoid whitespace in device identifiers entirely. Use hyphens (`EM-4492`), underscores (`EM_4492`), or no separator (`EM4492`). Whatever you choose, the publishing side and the Device ID field must produce the same exact string.
+## Topic Telemetry {#topic-telemetry}
 
-## The Mapping tab has two sub-tabs
+### When to configure telemetry topics {#telemetry-topics-when-to-configure-them}
 
-When you open a device's Mapping tab, the UI presents an outer tab labeled **Mapping** containing two sub-tabs: **Topic** and **Mapping**. Selecting the outer tab lands on the **Topic** sub-tab by default.
+Leave **Topic Telemetry** empty when a message carries its measurements in JSON. For example, `{"temperature":21.4,"battery":92}` provides the data keys `temperature` and `battery`. Nested objects produce dot-separated paths: `{"vibration":{"rms":0.42}}` provides `vibration.rms`.
 
-- **Topic sub-tab** — Device ID Topic, Where to get the device ID, Device ID Payload Path (when source is Payload), Telemetry topics (per-topic metric definitions for one-metric-per-topic publishing schemes).
-- **Mapping sub-tab** — connector-key rows that link payload keys to normalized metrics.
+Use the topic telemetry editor when the **value itself appears in a topic segment**. For example, the publisher sends on `meters/EM-4492/voltage/230.5`:
 
-A device registered without visiting the inner Mapping sub-tab has Topic configuration but no metric mappings — so even if topic matching succeeds and Last data received updates, the device record holds no telemetry. Click **Next** at the bottom of the Topic sub-tab or click the inner **Mapping** label to reach the per-key rows.
+| Row field or action | How it works |
+| --- | --- |
+| **Add new topic** | Adds a row with a pinned **value** segment. Add text/Device ID segments to match the publisher. |
+| **MQTT Topic for telemetry** | For this example, build `meters/{{deviceId}}/voltage/{{value}}`. The value segment identifies the reading `230.5`; it is not the word `voltage`. |
+| **value** segment | Always present in this editor and cannot be removed. It can be repositioned with the segment controls to match the publisher's topic. |
+| **Device data key** | Required for a value-extraction row. Enter the name under which the extracted reading should appear, such as `voltage`. Map this key to a measurement on **Mapping**. |
+| Row remove control | Removes that telemetry rule from the edited configuration. Save to apply the removal. |
+| **Apply all** | Replaces every existing row's topic pattern with the device-ID topic plus a value segment, unless that pattern already contains one. It preserves the rows' data-key names. Review each row afterward and restore different literal segments such as `voltage` or `current` where needed. It does not create rows or save the device. |
 
-## Telemetry topics: when to configure them
+In Payload identifier mode, telemetry rows omit Device ID and the message must still contain the identifier at the configured JSON path. A matching topic value takes precedence over a payload field with the same key.
 
-The **Telemetry topics** rows on the Topic sub-tab are for publishing schemes where each metric has its own MQTT topic — e.g., a PLC bridge publishing power to `meters/{deviceId}/power`, voltage to `meters/{deviceId}/voltage`, current to `meters/{deviceId}/current`, each with a single numeric value as the payload.
+The incoming parser can also accept JSON fields or raw payload data; that does not mean the topic editor exposes every possible protocol format. For plain non-JSON messages without a telemetry extraction row, inspect the incoming `raw` key and map it only when it represents the value you need. Binary vendor formats need an appropriate upstream conversion; recognizing a topic hierarchy alone does not decode Sparkplug or other binary payloads.
 
-For modern flat-JSON publishing schemes — Zigbee2MQTT, Tasmota with a SENSOR object, custom firmware that emits a JSON status object — Telemetry topics rows are not needed. The platform automatically parses every key in the JSON payload and exposes them as Connector Key candidates. Nested objects are flattened to dot-notation paths (`{"vibration": {"rms": 0.42}}` becomes `vibration.rms`).
+## Connection and Mapping have different jobs {#the-mapping-tab-has-two-sub-tabs}
 
-Configure Telemetry topic rows only when you genuinely have one-topic-per-metric publishing or when you want to override the automatic parser for a specific topic shape.
+**Connection** contains topic routing and identity. **Mapping** contains measurement rows. These are separate device tabs. Saving a matching topic pattern does not automatically create every measurement in the received message.
+
+After changing routing, click the device's **Save** button. Segment previews and **Apply all** only update the form. Empty telemetry rows are not a substitute for a complete value-extraction rule: fill its pattern and data key or remove the row. Read-only users cannot change routing.
 
 ## Connector key dropdown: the two-pass save flow
 
-The Mapping sub-tab's **Connector key** column is a dropdown. The dropdown options are sourced from payload keys actually received from the device — not a free-form text input.
+The **Device data key** dropdown lists incoming fields received for the bound source. Save the connection, let a message arrive, then complete the mappings and save again. If you created template rows before the first message, retain those rows and fill their data keys once available.
 
-For a brand-new device with no historical traffic, the dropdown is empty. The platform doesn't yet know what the device sends, so it has nothing to populate the options with. This is intentional, but it means the registration flow is two-pass:
+See [MQTT Devices](../../devices/mqtt-devices.md#map-messages-to-retained-measurements) for the walkthrough and [mapping controls](../../devices/device-management.md#metrics-tab) for every column and action.
 
-**Pass 1:**
+## Mapping data type {#reported-state-vs-telemetry-vs-device-metadata}
 
-1. Add a Mapping row per metric the device produces.
-2. Select the **Normalized key** from the templates dropdown. Use **+ Add new metric** to create a new sensor template if needed. (The modal handles creating both the normalized name and the sensor template — pre-creating names from the Metrics tab is optional.)
-3. Set **Data type** (Reported State, Telemetry, or Device Metadata — see below).
-4. Leave **Connector key** empty.
-5. Save the device record.
+The device-mapping form offers **Telemetry**. Use it for measurements and reported states that you want to record. The broader metric catalog's metadata/attribute categories are not additional choices in this mapping form. **Data type** is separate from the template's value **Type**.
 
-**Pass 2:**
+## Match the metric type to the actual value {#payload-type-metric-type-translation}
 
-6. Confirm the device is publishing — for a Z2M-bridged device, that the bridge is running and the device has reported at least once. For a PLC bridge, that the bridge process is publishing data.
-7. Reopen the device record. The **Connector key** dropdown now lists the keys received from the device.
-8. Match a payload key to each Mapping row.
-9. Save again.
+| Incoming value | Appropriate template Type |
+| --- | --- |
+| Decimal reading such as `21.4` | Float |
+| Whole-number count such as `12` | Integer |
+| `"ON"`, `"OFF"`, an enum or free text | String |
+| JSON `true` or `false` | Boolean |
 
-Subsequent publishes for the mapped keys flow through to the Logs tab.
-
-## Reported State vs Telemetry vs Device Metadata
-
-The **Data type** dropdown classifies each metric:
-
-- **Reported State** — controllable device properties whose current value the device publishes. The setpoint of an HVAC controller, the open/closed state of a valve, the on/off state of an actuator. Values that the device can also be commanded to change.
-- **Telemetry** — read-only measurements. Process variables, energy meter readings, vibration RMS values, link quality, environmental measurements. The device observes; it does not change these.
-- **Device Metadata** — values that describe the device itself rather than its operational state. Firmware version, hardware model, serial number, calibration date.
-
-Pick the type that matches the operational intent. Reported State is appropriate for state-machine fields and configurable setpoints; Telemetry is appropriate for sensor readings and diagnostics; Device Metadata is appropriate for static device-identity fields.
-
-## Payload type → Metric Type translation
-
-The metric template Type (Integer, Float, String, Boolean) is fixed by the template chosen for the Normalized key. Match the template Type to the data the device actually sends:
-
-- **String-encoded enums and binary states** — values like `"OPEN"`/`"CLOSED"`, `"ON"`/`"OFF"`, `"running"`/`"stopped"` arrive as JSON strings. Map to a **String** Type. Do not select Boolean — it will result in null values.
-- **Numeric scalars** — Integer or Float, depending on whether the device produces decimals.
-- **Free-form text** — String.
-
-For Zigbee2MQTT-bridged devices, the [zigbee2mqtt.io](https://www.zigbee2mqtt.io/supported-devices/) device pages list each feature with a type — translate as follows:
-
-| Z2M feature type | Metric Type | Example |
-|------------------|-----------|---------|
-| `binary` | **String** | `state` (`"ON"`/`"OFF"`) |
-| `numeric` | **Number** | `brightness`, `linkquality` |
-| `enum` | **String** | `power_on_behavior`, `color_mode` |
-| `text` | **String** | Free-form text fields |
+A Zigbee2MQTT feature described as binary can publish either booleans or configured string values. Inspect the actual payload rather than assigning a type from the feature category alone. Numeric strings can be converted to numeric templates; integer conversion truncates decimal values toward zero. Boolean conversion accepts true/false and 0/1 forms, but not `"ON"`/`"OFF"`. Incompatible readings are rejected individually, not stored as nulls. See [metric conversion rules](../../devices/metric-templates.md).
 
 ## Mapping tab Value column vs Logs tab history
 
-After Pass 2 of the save flow:
+**Value** and **Last update** show the latest received field snapshot. **Logs** shows recorded measurements after valid mappings are saved. Allow a fresh message after mapping; earlier messages are not retroactively normalized.
 
-- The **Value** column on the Mapping tab updates from the most recent payload — a live snapshot. Values appear as soon as topic matching succeeds, even before all Connector keys are populated.
-- The **Logs** tab is per-sensor history. It is populated only by publishes that arrive *after* Connector keys are saved. Older publishes are not retroactively normalized.
-
-Operationally: after completing Pass 2, generate a fresh publish (a device wake-on-event, a scheduled report, a poll request from the bridge) to confirm the Logs tab is receiving records. If the device only reports on schedule or on state change, plan validation around that cadence.
+MQTT history uses the time the platform receives the message. Fields named `timestamp`, `ts`, or `time` remain ordinary payload fields; they do not backdate the stored measurement. Buffered messages received after a disconnection therefore are not automatically placed at their original device time.
 
 ### Iterative mapping refinement
 
-Initial mapping rarely covers every useful field a device exposes. Operators commonly discover after deployment that the device publishes additional keys — vendor diagnostic fields, undocumented state values, nested sub-objects with operationally-relevant paths. The recommended pattern is to revisit the Mapping tab after data has been arriving for a representative period:
-
-- Inspect the **Connector key** dropdown and the **Value** column to see exactly what the device is publishing in production.
-- Add new Mapping rows for fields the deployment now wants in the Digital Twin.
-- Set the appropriate Normalized key and Data type per row.
-- Save.
-- Generate a fresh publish so the Logs tab begins recording history for the newly-mapped fields.
-
-For fleets of nominally-identical devices, run this refinement on a representative sample before rolling the mapping changes out to the rest of the fleet — firmware revisions can introduce subtle key differences.
+Return to **Mapping** when firmware or requirements change. Inspect new keys, add the needed templates, select compatible types, save and allow a fresh publish. Keep existing measurement rows when replacing hardware so the twin retains their history.
 
 ## Where to go next
 
-- [Troubleshooting](troubleshooting.md) — diagnostic recipes for topic-match failures and the empty-Logs-tab pattern.
-- [MQTT Edge Gateways](../../gateways/mqtt-edge-gateways/README.md) — patterns for industrial MQTT-producing bridges that feed this routing pipeline (under Gateways).
+- [MQTT Devices](../../devices/mqtt-devices.md) — first-device walkthrough and configuration checklist.
+- [MQTT Troubleshooting](troubleshooting.md) — broker, routing and missing-history problems.
+- [Creating Commands](../../devices/commands/creating-commands.md) — outbound MQTT topics and command payloads.
