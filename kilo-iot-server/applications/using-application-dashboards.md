@@ -28,8 +28,3 @@ After saving your changes, return to the application to check the result. The sa
 ## If no dashboard appears
 
 Check **Content → Dashboards**. If it is empty, create a dashboard or edit an existing one and set its **Application** field to this application. If you cannot view an associated dashboard, ask the organization administrator to check your dashboard access.
-
-
-## Show the resources behind the view
-
-Use a [Text widget](../dashboards/adding-widgets/text-widget.md) to list selected devices, rules, or alarms alongside the dashboard readings. An operations board can show the equipment and alarm severity relevant to that shift.

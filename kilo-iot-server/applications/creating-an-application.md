@@ -4,7 +4,7 @@ description: "Create and name a Kilo application so your team can organize an op
 
 # Creating an Application
 
-Create an application when a deployment needs a recognizable place for its devices, dashboards, rules, and alarms. Choose a name that tells operators what the solution is for, rather than an internal project code.
+Create an application to assemble the resources for an IoT solution your team will use. This guide covers building the application yourself: you create its name and description, then configure and assign its devices, dashboards, rules, and alarms. Applying a prepared template is a planned alternative, explained in [Applications](README.md). Choose a name that tells operators what the solution does, such as **Building Monitoring**.
 
 You must be a member of the current organization. Applications have no separate management permission; viewing or editing their devices, dashboards, rules, and alarms still requires the corresponding resource permissions. Check the organization selector before creating the application, particularly if you manage several customers or sites.
 
