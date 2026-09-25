@@ -1,5 +1,5 @@
 ---
-description: Learn how the Kilo Physical AI platform connects AI agents to IoT devices through MCP, APIs, tested automation, safe commands, verification, and audit trails.
+description: How the Kilo Physical AI platform lets AI agents control IoT devices through MCP or APIs and verify what happened.
 ---
 
 # Physical AI Platform for AI Agents

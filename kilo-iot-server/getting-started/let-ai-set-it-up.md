@@ -1,5 +1,5 @@
 ---
-description: Let Kilo’s AI Assistant handle device onboarding, rules, alarms, and dashboards, or connect your preferred AI client to the same platform.
+description: The Kilo AI Assistant sets up devices, rules, alarms, and dashboards, or you can connect your own AI client.
 ---
 
 # Let AI Set It Up for You

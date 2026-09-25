@@ -1,5 +1,5 @@
 ---
-description: Manage Kilo IoT Server profile, subscription, locations, and API keys from the Settings area.
+description: Kilo IoT Server settings for your profile and for the organization's subscription, billing, locations, and API keys.
 ---
 
 # Settings

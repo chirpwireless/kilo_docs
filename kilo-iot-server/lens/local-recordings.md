@@ -1,5 +1,5 @@
 ---
-description: "Configure Twin recording mode, retention, and local playback for a Kilo Lens camera."
+description: "Record video locally for a Kilo Lens camera in Twin, using motion or continuous mode, storage limits, and playback."
 ---
 
 # Local Recordings

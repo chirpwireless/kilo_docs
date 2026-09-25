@@ -1,5 +1,5 @@
 ---
-description: "Create and name a Kilo application so your team can organize an operational solution."
+description: "Create a Kilo application, give it a clear name and description, and start organizing the resources of a solution."
 ---
 
 # Creating an Application

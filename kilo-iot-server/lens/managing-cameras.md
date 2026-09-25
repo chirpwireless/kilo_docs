@@ -1,5 +1,5 @@
 ---
-description: "Find, rename, reconnect, and remove cameras in Kilo, and understand their connection state."
+description: "Find, rename, reconnect, and remove cameras on the Kilo Lens Cameras page, and check each camera's connection status."
 ---
 
 # Managing Cameras

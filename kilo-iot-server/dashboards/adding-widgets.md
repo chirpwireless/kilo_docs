@@ -1,5 +1,5 @@
 ---
-description: Add and configure Kilo dashboard widgets for live data, charts, controls, maps, images, text, and embedded pages.
+description: Add and configure Kilo dashboard widgets for live values, charts, controls, maps, images, and text notes.
 ---
 
 # Adding Widgets

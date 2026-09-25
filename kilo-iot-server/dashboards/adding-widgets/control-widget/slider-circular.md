@@ -1,5 +1,5 @@
 ---
-description: Add a Circular Slider control to a Kilo IoT dashboard — a radial dial that sets a device value with an instrument feel.
+description: Add a Circular Slider to a Kilo dashboard to set a numeric device value, such as valve position, on a radial dial.
 ---
 
 # Circular Slider

@@ -1,5 +1,5 @@
 ---
-description: Add company billing details, pay for a Kilo plan by bank transfer, and track open, paid, changed, or overdue invoices.
+description: "Invoice billing for a Kilo plan: company billing details, payment by bank transfer, and overdue invoices."
 ---
 
 # Billing and Invoices

@@ -1,5 +1,5 @@
 ---
-description: See how device catalogs, deployment settings, platform guides, and readings help the Kilo AI Assistant configure and improve your IoT project.
+description: "What the Kilo AI Assistant can access: your project configuration, live and historical device data, and platform docs."
 ---
 
 # What It Can Access

@@ -1,5 +1,5 @@
 ---
-description: Find out which fields your device reports and what values they carry, and how those field names become the metrics you see across Kilo IoT Server.
+description: See which fields your device reports in Kilo IoT Server and how its connector keys map to the metrics you use.
 ---
 
 # Payload Decoding and Connector Keys

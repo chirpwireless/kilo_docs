@@ -1,5 +1,5 @@
 ---
-description: "Build complete IoT solutions with Kilo Applications: devices, dashboards, rules, and alarms, with reusable customer templates planned next."
+description: "Build complete IoT solutions with Kilo Applications: the devices, dashboards, rules, and alarms for one job."
 ---
 
 # Applications

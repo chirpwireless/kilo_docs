@@ -1,5 +1,5 @@
 ---
-description: Run the free, open-source KiloCenter MIOTY Service Center yourself, or use its Enterprise edition inside the full Kilo Cloud IoT platform.
+description: Self-host the free, open-source KiloCenter MIOTY Service Center, or use its Enterprise edition within Kilo Cloud.
 ---
 
 # KiloCenter MIOTY Service Center

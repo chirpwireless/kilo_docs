@@ -1,5 +1,5 @@
 ---
-description: Run KiloCenter in a local VM with automated provisioning — repeatable setup for testing and team onboarding via Docker.
+description: Install KiloCenter in a local Linux VM with Docker Compose to get repeatable MIOTY test setups for team onboarding.
 ---
 
 # Installation: Local VM and Automation

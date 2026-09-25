@@ -1,5 +1,5 @@
 ---
-description: "Add notes or selected device, rule, and alarm lists to a Kilo dashboard with the Text widget."
+description: "Kilo's Text widget adds headings, notes, or lists of selected devices, rules, and alarms to your dashboard."
 ---
 
 # Text widget

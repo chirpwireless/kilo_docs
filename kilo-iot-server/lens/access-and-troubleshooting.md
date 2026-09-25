@@ -1,5 +1,5 @@
 ---
-description: "Manage Lens access, reconnect a Twin, and diagnose camera connection or playback failures."
+description: "Manage access to Kilo Lens, reconnect a camera's Twin with a new token, and diagnose connection or playback failures."
 ---
 
 # Access and Troubleshooting

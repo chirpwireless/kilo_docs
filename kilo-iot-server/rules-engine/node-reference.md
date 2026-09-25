@@ -1,5 +1,5 @@
 ---
-description: Node reference for the Rules Engine — Start, End, Script, Gateway, Set Alarm, Enrichment, Boundary.
+description: Reference for each Kilo rules engine node, from Start Event and Script Task to Set Alarm and Execute Command.
 ---
 
 # Node Reference

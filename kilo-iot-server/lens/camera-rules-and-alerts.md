@@ -1,5 +1,5 @@
 ---
-description: "Use Lens motion readings in Kilo rules and raise an operational alarm for a selected camera area."
+description: "Use Kilo Lens camera motion readings in a rule to raise an operational alarm when movement appears in a selected area."
 ---
 
 # Camera Rules and Alerts

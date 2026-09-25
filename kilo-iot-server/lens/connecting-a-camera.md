@@ -1,5 +1,5 @@
 ---
-description: "Configure a camera in Twin, pair its unique key with Kilo Lens, and verify the connection."
+description: "Connect a camera to Kilo Lens: set its RTSP stream in Twin, pair Twin with a connection token, and verify the link."
 ---
 
 # Connecting a Camera

@@ -1,5 +1,5 @@
 ---
-description: "Retire a Kilo application safely by checking its contents and preserving resources before deletion."
+description: "Delete a Kilo application safely: review its content and move the devices and dashboards you want to keep first."
 ---
 
 # Deleting an Application

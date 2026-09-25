@@ -1,5 +1,5 @@
 ---
-description: Organize Kilo IoT devices and gateways into a location and sub-location hierarchy — created from the record's Settings tab.
+description: Organize Kilo IoT devices and gateways into locations and sub-locations, created from each record's Settings tab.
 ---
 
 # Locations

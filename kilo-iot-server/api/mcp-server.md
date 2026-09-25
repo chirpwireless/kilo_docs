@@ -1,5 +1,5 @@
 ---
-description: Connect AI agents to IoT devices through Kilo's OAuth-secured IoT MCP server and work with a live deployment inside the user's permissions.
+description: Connect an AI agent to your Kilo IoT deployment through the MCP server, authorized by your own Kilo sign-in.
 ---
 
 # Kilo IoT MCP Server for AI Agents

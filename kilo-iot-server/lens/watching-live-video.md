@@ -1,5 +1,5 @@
 ---
-description: "View multiple Kilo Lens cameras and use the audio and movement controls supported by each camera."
+description: "Watch several Kilo Lens camera feeds side by side, and use each camera's audio, movement, and saved-position controls."
 ---
 
 # Watching Live Video

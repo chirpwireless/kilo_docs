@@ -1,5 +1,5 @@
 ---
-description: Build a live 3D Digital Building Twin — draw walls, place 60+ objects, bind sensors, watch it recolor.
+description: "Kilo's 3D Digital Building Twin widget: a dashboard model of a building, its objects colored by sensor data."
 ---
 
 # Digital Building Twin
