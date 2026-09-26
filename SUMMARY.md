@@ -216,3 +216,12 @@
 
 * [Report a vulnerability](trust-security-compliance/incident-response-and-vulnerability-reporting.md)
 * [Customer security guide](trust-security-compliance/customer-security-guide.md)
+
+* [Trust and security](trust-security-compliance/README.md)
+* [Security assessment status](trust-security-compliance/compliance-status.md)
+* [Security controls](trust-security-compliance/security-controls.md)
+* [Privacy and data protection](trust-security-compliance/privacy-and-data-protection.md)
+* [Infrastructure and providers](trust-security-compliance/infrastructure-and-subprocessors.md)
+* [Data export and switching](trust-security-compliance/data-export-deletion-and-switching.md)
+* [Shared security responsibilities](trust-security-compliance/shared-responsibility.md)
+* [Video and privacy](trust-security-compliance/video-and-kilo-lens.md)
