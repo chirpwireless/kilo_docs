@@ -4,7 +4,7 @@ description: "Audit Trail in Kilo IoT Server — searchable log of org membershi
 
 # Audit Trail
 
-The Audit Trail is a searchable log of organization membership events — who invited whom, who accepted, whose permissions changed, and who was removed. It provides an immutable record of access-related activity for compliance reviews and operational accountability.
+The Audit Trail is a searchable log of organization membership events — who invited whom, who accepted, whose permissions changed, and who was removed. Use it to investigate the membership activity recorded for your organization. Confirm event coverage and retention before relying on it for a compliance review.
 
 The audit trail currently covers membership events. Device operations, rule changes, dashboard edits, and other platform activity are not logged here.
 
@@ -62,6 +62,6 @@ A calendar picker that lets you select a start and end date. Quick-select shortc
 
 ## Access Permissions
 
-The audit trail is read-only for every user, including the organization owner. All users with Audit Trail set to View can see the log. No one has write access — the log is append-only and cannot be edited, deleted, or modified through any access path.
+The audit trail is read-only for every user, including the organization owner. All users with Audit Trail set to View can see the log. The Audit Trail page provides no editing or deletion controls. This does not mean records are kept forever: service housekeeping removes records according to the configured retention. Confirm the applicable retention for your deployment before relying on older records.
 
 For details on how audit trail permissions work within the broader access model, see [Roles and Page Access](../account/roles-and-page-access.md).
