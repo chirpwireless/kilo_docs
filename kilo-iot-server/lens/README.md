@@ -13,9 +13,29 @@ Existing cameras need not become a separate replacement project. A business with
 
 <figure><img src="../../.gitbook/assets/kilo-lens-live-view.jpg" alt="Two different camera brands together in the Kilo Lens workspace"><figcaption><p>Tapo and HiLook cameras connected to the same Kilo organization, shown in Preview mode.</p></figcaption></figure>
 
+## What does Lens add to the cameras you already have?
+
+### Can you see cameras from different brands in one place?
+
+Yes. Different camera brands at different locations usually mean a different app, recorder and login for each. With Lens, compatible cameras from any manufacturer, at any number of sites, appear in one Kilo organization. Operators watch them in one place and save [videowalls](videowalls.md) for each site or task.
+
+### Who can see and change the cameras?
+
+Many camera systems give access through a shared login on each camera or recorder. In Kilo, access to cameras is set per user: **Edit**, **View** or **No access** (see [Roles and Page Access](../account/roles-and-page-access.md)). When someone leaves the team, you remove their access in Kilo once, without changing anything on the cameras. The local Twin administrator login stays separate from users' Kilo accounts (see [Access and Troubleshooting](access-and-troubleshooting.md)).
+
+### Can an old camera become a smart camera?
+
+Yes. Lens does not need analytics inside the camera. The camera only has to capture video and offer it as an RTSP stream, which most IP cameras can do, including older models. The processing happens off the camera: Twin, at your site, detects motion inside the zones you draw and can record locally, and Kilo uses each camera's motion reading in rules and alarms together with your other sensors.
+
+For example, a loading dock has an older camera above the dock door and a wireless door sensor on the door. Draw a motion zone around the door in Twin. When the camera reports motion there, a rule checks the door sensor's state and raises an alarm if the door is open.
+
+### Where is Lens going?
+
+We are adding more AI to Lens. It runs off the camera, on the platform, where there is room for larger models and more advanced logic than a chip inside a single camera can hold. Because the processing does not depend on the camera's own hardware, cameras that are already installed, including older ones, gain new features through software updates instead of replacement. Today, Lens detection is motion inside selected zones; it does not recognize people or objects.
+
 ## Lens in the cloud, Twin at the site
 
-Lens runs in the cloud. **Twin** is a camera's digital twin running at the edge, on your premises, as a Docker container. Each Twin connects to **one camera**: twenty cameras require twenty Twin containers. Multiple containers can run on a suitable host, with separate configuration and enough processing, network, and storage capacity for the workload.
+**Twin** is the edge program you install at your site. It is the digital twin of one physical camera: it connects to that camera's video stream on your network and links the camera to Lens, which runs in the cloud. Twin runs as a Docker container. Each Twin connects to **one camera**: twenty cameras require twenty Twin containers. Multiple containers can run on a suitable host, with separate configuration and enough processing, network, and storage capacity for the workload.
 
 ```mermaid
 flowchart LR
@@ -29,22 +49,6 @@ flowchart LR
 ```
 
 RTSP is a standard way for an IP camera to provide a video stream. A broad range of camera manufacturers support it. Twin connects to that stream; supported ONVIF cameras can also expose discovery and camera controls. Check your camera's stream settings and credentials before installation.
-
-Twin is distinct from the platform's 3D Digital Building Twin visualization. Here, Twin specifically means the local runtime representing one camera.
-
-## Why doesn't the camera need to be smart?
-
-Many cameras now come with built-in analytics, which means a processor inside every camera running its own software. Lens does not depend on that. A camera only has to do what IP cameras already do: capture video and offer it as an RTSP stream.
-
-The rest happens in software. Twin, on a computer at your site, connects to the stream, detects motion inside the zones you draw and can record locally. Lens, in the cloud, shows the live video, keeps your videowalls and passes each camera's motion reading to Kilo, where rules and alarms use it like any other sensor reading.
-
-In practice this means:
-
-- You can keep the cameras you already have, including different brands at different sites.
-- A basic camera with no analytics of its own can still start a rule when something moves in a selected area.
-- When Twin or Lens gets an update, you update software. The cameras on the wall stay as they are.
-
-For example, a loading dock has an older camera above the dock door and a wireless door sensor on the door itself. Draw a motion zone around the door in Twin. When the camera reports motion there, a rule fetches the door sensor's state and raises an alarm if the door is open.
 
 ## Where Lens fits
 
