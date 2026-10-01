@@ -4,25 +4,29 @@ description: How the Kilo Physical AI platform lets AI agents control IoT device
 
 # Physical AI Platform for AI Agents
 
-## An operating system for physical AI
+## What is an operating system for physical AI?
 
-An operating system for physical AI is the shared software layer that lets devices, machines and AI systems exchange what they observe, coordinate tasks and act within defined permissions, without replacing the software inside each machine.
+An operating system for physical AI is the shared software layer that lets devices, machines and AI from different manufacturers exchange what they observe, coordinate tasks and act within defined permissions, without replacing the software inside each machine.
 
-Kilo provides this operating layer for connected environments. A site can contain cameras, sensors, controllers and machines from different manufacturers, using different protocols. Their observations become more useful when applications can relate them to the same equipment, locations and operational responsibilities.
+Kilo provides this operating layer for buildings, sites, equipment and fleets. A single site can contain sensors, gateways, controllers, trackers and machines from many manufacturers, connected over different protocols. Kilo brings them into one organization through [LoRaWAN, mioty, MQTT and vehicle-tracker connectors](connectors/README.md). Each device keeps a record of where it is and what its readings mean. [Rules](rules-engine/README.md) decide what happens next, [alarms](alarm/README.md) bring in the right people, and [device commands](devices/commands/README.md) act on equipment that accepts them. AI agents and people work with the same devices, under the same permissions.
 
-This role remains the same as individual capabilities develop. A camera can contribute information to a workflow beyond its viewing application. A machine can respond to a condition observed elsewhere when it exposes an appropriate configured action. AI can work with that shared context instead of treating every device as an unrelated conversation.
+This matters more as robots and IoT devices multiply. Each machine can be capable on its own and still miss what another machine has already observed. A robot only knows what its own sensors report. A sensor in another wing of the building can have the information the robot needs, and an operating layer is what carries that information from one to the other.
 
-### How this differs from a device or robot operating system
+For example, a door sensor reports that a warehouse door opened while the site is closed. A deployed rule raises a critical alarm and sends a configured command to a siren controller on site. The alarm's escalation chain notifies the on-call guard by SMS straight away. If nobody resolves the alarm within the delay you set, the next step notifies the site manager. The door sensor, the siren and the guard's phone come from different manufacturers; Kilo connects them in one response.
 
-Kilo does not replace embedded systems such as FreeRTOS or Zephyr, the tools and libraries used to build robot applications such as ROS 2, or the software that handles a machine's local control. It connects supported interfaces with the wider operating environment. Simulation and training are separate responsibilities from connecting to installed equipment.
+### How is it different from a device or robot operating system?
 
-For a proposed robot workflow, define the robot's mission interface and the information it returns. The platform can only coordinate actions that the integration makes available; navigation, local protection and physical suitability remain responsibilities of the robot and its deployment.
+Kilo does not replace the software inside a device or robot. Small sensors and controllers often run an embedded operating system such as FreeRTOS or Zephyr, which manages the device's processor, memory and radio. Robots run their own software for perception, navigation and motor control, often built with ROS 2, the set of libraries and tools developers use to build robot applications. Simulation and training environments, where robots practice before they work in the real world, are another separate job.
 
-### Start with a shared observation and an appropriate response
+Kilo works across all of these. It connects to what each device or machine exposes, its readings and the commands it accepts, and coordinates them with the rest of the site. For a robot, that means defining the tasks the robot accepts and the information it reports back. Kilo can only coordinate actions that an integration makes available. The robot keeps responsibility for navigating, protecting itself and the people around it, and deciding whether a task is physically safe to carry out.
 
-Identify the devices contributing to the situation, the meaning and freshness of their readings, and the actions the installation supports. For cameras, [Lens](lens/README.md) brings compatible video and motion readings into the same environment as other devices. A configured rule can respond through its supported nodes, including a saved device command where appropriate.
+### How do you plan a physical AI workflow?
 
-Give the response a clear owner and an observable outcome. A command accepted for dispatch is different from a confirmed change in the physical environment. The practical workflows below explain how to connect AI, test logic and inspect the evidence available in Kilo.
+Start with the situation, not the device. Identify every device that contributes to it, what each reading means, and how fresh a reading has to be before you act on it. A door state from a sensor that reports every few seconds supports a different response from a temperature that arrives once an hour.
+
+Then list the actions the installation actually supports: which devices accept commands, with which parameters, and who is allowed to send them. A rule can respond through its supported nodes, including an alarm or a configured device command.
+
+Give every response a clear owner and an observable outcome. A command accepted for dispatch is different from a confirmed change in the physical world. Use [command verification](devices/commands/verification.md) where the device can report its new state, and keep a person in the escalation chain for decisions that need one. The practical workflows below explain how to connect AI, test the logic and inspect the evidence Kilo records.
 
 AI models can interpret goals and reason over complex information. Operating a building, machine, fleet, or remote site requires another layer: a dependable system that translates model intent into actions the physical infrastructure can accept, then reports what actually happened.
 
