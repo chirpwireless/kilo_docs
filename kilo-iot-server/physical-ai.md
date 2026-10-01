@@ -4,6 +4,26 @@ description: How the Kilo Physical AI platform lets AI agents control IoT device
 
 # Physical AI Platform for AI Agents
 
+## An operating system for physical AI
+
+An operating system for physical AI is the shared software layer that lets devices, machines and AI systems exchange what they observe, coordinate tasks and act within defined permissions, without replacing the software inside each machine.
+
+Kilo provides this operating layer for connected environments. A site can contain cameras, sensors, controllers and machines from different manufacturers, using different protocols. Their observations become more useful when applications can relate them to the same equipment, locations and operational responsibilities.
+
+This role remains the same as individual capabilities develop. A camera can contribute information to a workflow beyond its viewing application. A machine can respond to a condition observed elsewhere when it exposes an appropriate configured action. AI can work with that shared context instead of treating every device as an unrelated conversation.
+
+### How this differs from a device or robot operating system
+
+Kilo does not replace embedded systems such as FreeRTOS or Zephyr, the tools and libraries used to build robot applications such as ROS 2, or the software that handles a machine's local control. It connects supported interfaces with the wider operating environment. Simulation and training are separate responsibilities from connecting to installed equipment.
+
+For a proposed robot workflow, define the robot's mission interface and the information it returns. The platform can only coordinate actions that the integration makes available; navigation, local protection and physical suitability remain responsibilities of the robot and its deployment.
+
+### Start with a shared observation and an appropriate response
+
+Identify the devices contributing to the situation, the meaning and freshness of their readings, and the actions the installation supports. For cameras, [Lens](lens/README.md) brings compatible video and motion readings into the same environment as other devices. A configured rule can respond through its supported nodes, including a saved device command where appropriate.
+
+Give the response a clear owner and an observable outcome. A command accepted for dispatch is different from a confirmed change in the physical environment. The practical workflows below explain how to connect AI, test logic and inspect the evidence available in Kilo.
+
 AI models can interpret goals and reason over complex information. Operating a building, machine, fleet, or remote site requires another layer: a dependable system that translates model intent into actions the physical infrastructure can accept, then reports what actually happened.
 
 The Kilo IoT Server provides that Physical AI execution layer. It gives AI agents a consistent interface to heterogeneous devices while keeping device protocols, organization boundaries, permissions, operational safeguards, and result history inside the IoT system built to manage them.
