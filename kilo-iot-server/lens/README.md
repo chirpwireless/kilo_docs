@@ -15,6 +15,10 @@ Existing cameras need not become a separate replacement project. A business with
 
 ## Lens in the cloud, Twin at the site
 
+Lens makes cameras part of the wider physical environment managed in Kilo. A camera contributes a view or a motion reading; another device may contribute a door state, temperature or equipment condition. Bringing these observations together lets an application respond to the situation across a site, rather than treating each camera as an isolated feed.
+
+This is the camera side of Kilo's role as an [operating system for physical AI](../physical-ai.md). The shared platform connects information and permitted actions across supported devices and protocols. The camera continues to do its own job, while software gives its observations a role in the wider operation.
+
 Lens runs in the cloud. **Twin** is a camera's digital twin running at the edge, on your premises, as a Docker container. Each Twin connects to **one camera**: twenty cameras require twenty Twin containers. Multiple containers can run on a suitable host, with separate configuration and enough processing, network, and storage capacity for the workload.
 
 ```mermaid
@@ -31,6 +35,20 @@ flowchart LR
 RTSP is a standard way for an IP camera to provide a video stream. A broad range of camera manufacturers support it. Twin connects to that stream; supported ONVIF cameras can also expose discovery and camera controls. Check your camera's stream settings and credentials before installation.
 
 Twin is distinct from the platform's 3D Digital Building Twin visualization. Here, Twin specifically means the local runtime representing one camera.
+
+## Camera hardware and shared local processing
+
+One Twin per camera does not mean one physical computer per camera. A shared host can run several camera Twins, so useful cameras and the software processing their streams can be maintained separately. Check the host's processing, network and storage capacity against the actual feeds and enabled functions before expanding.
+
+This arrangement gives a site flexibility, but also makes the host a shared dependency. If it stops, the Twins running on it stop. Plan power, maintenance access and recovery for the number of cameras that depend on it.
+
+Local processing is not automatically AI recognition. Twin's selected-area motion detection compares frames; it does not establish what moved or why. A wider application can combine the motion reading with other observations and the response you deliberately configure.
+
+## What depends on the internet connection?
+
+Twin runs at the camera's site, while Lens runs in the cloud. Local camera access and enabled local recording have different dependencies from cloud viewing, platform rules and remote notifications. Do not assume that a locally running Twin makes the complete cloud workflow available during an internet outage.
+
+Validate the functions your installation needs with its actual power and network arrangement. After reconnecting, check camera status as well as motion: an unavailable camera is not evidence that the scene is quiet.
 
 ## Where Lens fits
 
