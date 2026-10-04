@@ -39,3 +39,9 @@ prevent every lawful authority request or that every supplier's safeguards have 
 independently assessed.
 
 Read [Shared security responsibilities](shared-responsibility.md) for the practical division of work.
+
+## Processing arrangements
+
+Use [Processing agreements](processing-agreements.md) to identify the actual
+providers, processing roles, authorisations and location requirements for your service.
+A supplier name or computing location alone does not establish the complete agreement.

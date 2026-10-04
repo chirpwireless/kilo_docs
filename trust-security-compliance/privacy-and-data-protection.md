@@ -30,3 +30,9 @@ Read [Data export and switching](data-export-deletion-and-switching.md) before m
 Check the processing agreement, providers, locations and any restrictions needed for your deployment. An AI provider may receive your messages and information retrieved to answer them. Review its retention and model-training terms; disconnecting an application does not erase information already sent to it. See [AI assistant privacy](../kilo-iot-server/ai-assistant/privacy.md).
 
 Camera use needs its own decisions about the people recorded, purpose, access and retention. See [Video and privacy](video-and-kilo-lens.md).
+
+## Processing arrangements
+
+If your organisation will use Kilo to handle information about other people, read
+[Processing agreements](processing-agreements.md) to prepare the service scope,
+responsibilities and safeguards needed for that arrangement.

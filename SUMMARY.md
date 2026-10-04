@@ -221,6 +221,7 @@
 * [Security assessment status](trust-security-compliance/compliance-status.md)
 * [Security controls](trust-security-compliance/security-controls.md)
 * [Privacy and data protection](trust-security-compliance/privacy-and-data-protection.md)
+* [Processing agreements](trust-security-compliance/processing-agreements.md)
 * [Infrastructure and providers](trust-security-compliance/infrastructure-and-subprocessors.md)
 * [Data export and switching](trust-security-compliance/data-export-deletion-and-switching.md)
 * [Data and export formats](trust-security-compliance/data-and-export-formats.md)

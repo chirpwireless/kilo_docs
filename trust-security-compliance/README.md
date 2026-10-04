@@ -14,6 +14,7 @@ Start with the [Customer security guide](customer-security-guide.md). It covers 
 | Check what has been assessed | [Security assessment status](compliance-status.md) |
 | Prepare account and device security | [Security controls](security-controls.md) |
 | Ask about personal information | [Privacy and data protection](privacy-and-data-protection.md) |
+| Prepare a personal-data processing agreement | [Processing agreements](processing-agreements.md) |
 | Understand hosting and provider responsibilities | [Infrastructure and providers](infrastructure-and-subprocessors.md) |
 | Identify data categories and available formats | [Data and export formats](data-and-export-formats.md) |
 | Plan data return, deletion or moving service | [Data export and switching](data-export-deletion-and-switching.md) |

@@ -50,3 +50,10 @@ linked to the move and prohibits switching charges from that date. These limits 
 separate from ordinary service charges. Applicable law also protects the transition
 and time to retrieve data; ordinary account closure must not remove that opportunity.
 See [Data Act Articles 25 and 29](https://eur-lex.europa.eu/eli/reg/2023/2854/oj/eng).
+
+## Processing arrangements
+
+Where Kilo handles personal information on your organisation's instructions,
+[the processing agreement](processing-agreements.md) also needs to address return,
+deletion and supplier copies. Coordinate that choice with switching and any privacy
+request; these processes have different scopes and legal triggers.
