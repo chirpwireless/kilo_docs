@@ -223,5 +223,6 @@
 * [Privacy and data protection](trust-security-compliance/privacy-and-data-protection.md)
 * [Infrastructure and providers](trust-security-compliance/infrastructure-and-subprocessors.md)
 * [Data export and switching](trust-security-compliance/data-export-deletion-and-switching.md)
+* [Data and export formats](trust-security-compliance/data-and-export-formats.md)
 * [Shared security responsibilities](trust-security-compliance/shared-responsibility.md)
 * [Video and privacy](trust-security-compliance/video-and-kilo-lens.md)

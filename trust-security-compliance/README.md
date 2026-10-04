@@ -15,6 +15,7 @@ Start with the [Customer security guide](customer-security-guide.md). It covers 
 | Prepare account and device security | [Security controls](security-controls.md) |
 | Ask about personal information | [Privacy and data protection](privacy-and-data-protection.md) |
 | Understand hosting and provider responsibilities | [Infrastructure and providers](infrastructure-and-subprocessors.md) |
+| Identify data categories and available formats | [Data and export formats](data-and-export-formats.md) |
 | Plan data return, deletion or moving service | [Data export and switching](data-export-deletion-and-switching.md) |
 | Divide security tasks between Kilo and your organisation | [Shared security responsibilities](shared-responsibility.md) |
 | Prepare a camera deployment | [Video and privacy](video-and-kilo-lens.md) |

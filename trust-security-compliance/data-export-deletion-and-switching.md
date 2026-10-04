@@ -18,6 +18,8 @@ Before leaving Kilo, decide which information you need to keep and which you wan
 
 Cancelling a paid subscription concerns billing and service access. It does not by itself confirm that personal information has been erased. Closing an account does not currently automate complete conversation and cross-system deletion.
 
+The [data and format guide](data-and-export-formats.md) lists the information to consider, documented retrieval methods and their limits.
+
 ## Send the request
 
 1. Email **info [at] kiloiot.de** (replace `[at]` with `@`). Identify the service and the outcome you want.
@@ -33,3 +35,18 @@ A personal-data erasure request does not require you to switch providers. Its le
 A complete result considers the information in active systems, copies already sent to providers and backups. Backups can expire on a separate cycle; they are not necessarily rewritten when one record is deleted. Deleted information must be kept out of ordinary use and must not reappear when a backup is restored.
 
 Some necessary records may remain for a specific legal duty or legal claim. The response should identify the relevant record category and reason. A tax record does not justify keeping every conversation or device reading. A reading falling outside your plan's available history is also not proof that every stored copy has been erased.
+
+
+## Fees and switching rights
+
+The [pricing page](https://kiloiot.io/pricing/) lists the standard monthly plans.
+The standard Terms do not specify a switching charge or early-termination penalty.
+They also refer to annual, usage-related and individually agreed charges; your
+accepted Order and disclosed terms must identify any that apply to your service.
+Ask for an itemised explanation before agreeing a move. This page introduces no fee.
+
+The EU Data Act limits switching charges before January 12, 2027 to costs directly
+linked to the move and prohibits switching charges from that date. These limits are
+separate from ordinary service charges. Applicable law also protects the transition
+and time to retrieve data; ordinary account closure must not remove that opportunity.
+See [Data Act Articles 25 and 29](https://eur-lex.europa.eu/eli/reg/2023/2854/oj/eng).
