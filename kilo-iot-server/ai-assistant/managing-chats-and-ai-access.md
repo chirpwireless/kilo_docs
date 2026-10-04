@@ -16,7 +16,7 @@ The top bar also opens **Chat history**, a list of your past conversations with 
 
 ## Deleting a conversation
 
-In Chat history, **Delete conversation** removes a chat and its messages. Deletion is immediate and cannot be undone, so remove only conversations you no longer need.
+In Chat history, **Delete conversation** requests removal of that conversation. The interface has no undo, so save anything you need first. This action is separate from account closure and from handling copies already sent to a model provider. See [Privacy and Security](privacy.md) for a request covering those copies.
 
 ## Your request allowance
 

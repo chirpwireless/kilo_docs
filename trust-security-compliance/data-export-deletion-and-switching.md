@@ -1,21 +1,35 @@
 ---
-description: "Plan a data-return, deletion or service-switching request and check the information and completion evidence you need."
+description: "Request a data copy, account closure, personal-data deletion or a move from Kilo, and understand the result you should receive."
 ---
 
 # Data export and switching
 
-Before closing an account or moving a deployment, identify the readings, device and organisation settings, rules, dashboards and other records you need to retain. Confirm the required formats, access and destination with your organisation's administrator.
+Before leaving Kilo, decide which information you need to keep and which you want removed. A company moving its device deployment may need readings, device settings, rules and dashboards. A person asking for their personal information to be erased is making a different request.
 
-## Make a request
+## Choose the outcome you need
 
-1. Contact **info [at] kiloiot.de** (replace `[at]` with `@`) and identify the service and requested outcome: data return, deletion or switching.
-2. Describe the information and accounts involved without sending customer exports in the initial message.
-3. Confirm your authority, the requested scope, transfer route, applicable time limits and any service arrangements before moving information.
-4. Check the returned data and replacement service before closing access you still need, subject to applicable retention and legal requirements.
-5. Obtain the completion result, including any records that must remain and the reason.
+| Your goal | What to ask for |
+|---|---|
+| Save information for your own use | A copy or export, identifying the records and dates you need. A query download may cover only part of a deployment. |
+| Move to another provider or your own systems | Service switching, with the data, formats, destination and access needed during the move. |
+| End a company service | Account or service closure, and the applicable return or deletion of the company's information. |
+| Exercise a personal privacy right | The specific right, such as access, correction or erasure, and the information involved. |
+| Remove an assistant conversation | Conversation deletion. Include a request about related provider copies if those are part of your concern. |
 
-## Check the result
+Cancelling a paid subscription concerns billing and service access. It does not by itself confirm that personal information has been erased. Closing an account does not currently automate complete conversation and cross-system deletion.
 
-A downloadable query result may cover only part of a deployment. A disabled account does not confirm deletion from every system. A completed backup job does not demonstrate that the complete service can be restored. Confirm the available functions and evidence for your actual request.
+## Send the request
 
-This guidance adds no fee or contractual restriction. The published [Terms of Service](https://kiloiot.io/terms-of-service/) and the agreement applicable to your service remain separate.
+1. Email **info [at] kiloiot.de** (replace `[at]` with `@`). Identify the service and the outcome you want.
+2. Describe the accounts and information involved. Keep passwords, customer exports and unnecessary personal details out of the initial message.
+3. Confirm your authority to act for the person or organisation. For company data, identify the person authorised to instruct its return or deletion.
+4. For a move, agree the data, format, secure transfer route and applicable transition and retrieval arrangements before removing access you still need. Check that the returned information is usable.
+5. Keep the final response. It should distinguish what was returned or deleted from any remaining records, their reason for retention and further action.
+
+A personal-data erasure request does not require you to switch providers. Its legal timing is separate from an ordinary closure process. The [privacy guide](privacy-and-data-protection.md) explains how to exercise those rights. This guidance adds no fee or contractual restriction; the [Terms of Service](https://kiloiot.io/terms-of-service/) and applicable law govern the service arrangements.
+
+## Understand retained copies
+
+A complete result considers the information in active systems, copies already sent to providers and backups. Backups can expire on a separate cycle; they are not necessarily rewritten when one record is deleted. Deleted information must be kept out of ordinary use and must not reappear when a backup is restored.
+
+Some necessary records may remain for a specific legal duty or legal claim. The response should identify the relevant record category and reason. A tax record does not justify keeping every conversation or device reading. A reading falling outside your plan's available history is also not proof that every stored copy has been erased.
