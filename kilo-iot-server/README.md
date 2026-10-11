@@ -73,6 +73,8 @@ Once equipment is reporting, ask focused questions about its available readings 
 
 For teams integrating external AI agents, Kilo's [Physical AI](physical-ai.md) and [MCP interface](api/mcp-server.md) provide supported paths to platform operations. Available actions remain subject to permissions and the connected equipment's capabilities.
 
+[Connect Grok](api/mcp-server.md#connect-grok) to bring those operations into your usual AI conversation. With Grok in a supported Tesla, you can ask where truck 18 last reported, review urgent building alarms, or turn off connected office lights. See [Use Kilo in Your Tesla](ai-assistant/tesla-grok.md).
+
 <figure><img src="../.gitbook/assets/kilo-introduction-ai-readings.jpg" alt="Kilo AI assistant summarizing temperature, humidity, carbon dioxide and equipment-state readings"><figcaption><p>Ask about your devices in ordinary language. This example uses emulated site readings.</p></figcaption></figure>
 
 ## Operate with the right access and integrations

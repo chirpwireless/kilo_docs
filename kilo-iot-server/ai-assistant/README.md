@@ -48,6 +48,10 @@ The assistant is part of the platform, with a monthly allowance of requests that
 
 The assistant runs on [SyntheticBrew](https://syntheticbrew.ai/), our own AI agent runtime. It connects the conversation to platform tools, carries the user's access context, and supports pausing a task for confirmation before it continues. Kilo supplies the device models, commands and automation lifecycle around those tools. Together, these layers let you work with physical equipment through the assistant while reviewing consequential actions. See [Physical AI Platform for AI Agents](../physical-ai.md) for the control and verification workflow.
 
+## Use Grok with Kilo
+
+You can also [connect Grok through MCP](../api/mcp-server.md#connect-grok) to ask about readings, review alarms, and run saved device commands from your usual Grok conversation. [Use Kilo in Your Tesla](tesla-grok.md) brings that connection into the car: locate a fleet vehicle, check an office temperature, or switch the office lights off by voice.
+
 ## Where to go next
 
 * [Building With the Assistant](building-with-ai.md) — delegate devices, rules, alarms, and dashboard setup

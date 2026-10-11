@@ -1,8 +1,8 @@
 ---
-description: Kilo IoT Server API overview — REST and gRPC access, scoped keys, and cloud or on-premise integration endpoints.
+description: Connect applications and AI clients to Kilo IoT Server through REST, gRPC, or MCP, with scoped API keys or your Kilo sign-in.
 ---
 
-# Kilo IoT Platform API
+# Kilo IoT Platform API / MCP
 
 Kilo's **API** lets your existing applications work with the deployment: read device information, use sensor history in reports, and call the operations exposed by the platform. You can connect business software and custom tools without reproducing the browser workflow.
 
@@ -19,11 +19,11 @@ Two protocols are offered on the same secured endpoint:
 
 Alongside them, a separate endpoint serves AI clients rather than code you write:
 
-- **MCP** — connect an MCP-capable AI client, such as Claude Code or Claude Desktop, to your organization. You authorize it in the browser with your usual Kilo account instead of issuing a key, and it works within your own permissions. See [MCP Server](mcp-server.md).
+- **MCP** — connect an MCP-capable AI client, such as Grok, Claude Code, or Claude Desktop, to your organization. You authorize it in the browser with your usual Kilo account instead of issuing a key, and it works within your own permissions. See [MCP Server](mcp-server.md), including [Connect Grok](mcp-server.md#connect-grok).
 
 ## Authentication
 
-Requests are authenticated with a scoped API key in the `X-API-Key` header (format `kilo_<key>`), plus your organization context in `X-Organization-Id`. Keys are created and managed in **Settings → API Keys**; the concepts are summarized in [Authentication & API keys](authentication-and-api-keys.md), and the full key-management workflow is in [API Keys](../settings/api-keys.md).
+REST and gRPC requests are authenticated with a scoped API key in the `X-API-Key` header (format `kilo_<key>`), plus your organization context in `X-Organization-Id`. Keys are created and managed in **Settings → API Keys**; the concepts are summarized in [Authentication & API keys](authentication-and-api-keys.md), and the full key-management workflow is in [API Keys](../settings/api-keys.md).
 
 ## Cloud and on-premise
 

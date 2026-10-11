@@ -6,7 +6,7 @@ description: Connect an AI agent to your Kilo IoT deployment through the MCP ser
 
 Connect your preferred AI client to Kilo and use it to work on the deployment: onboard devices, create dashboards, configure alarms, and build and deploy automation rules. You can keep the project conversation in the tool you already use while Kilo supplies the device connections and execution workflows.
 
-**MCP (Model Context Protocol)** lets an AI client discover and call those platform operations. Kilo exposes an MCP endpoint for clients such as Claude Code, Claude Desktop, ChatGPT, Codex, and Cursor; the client uses your account's access to the selected organization.
+**MCP (Model Context Protocol)** lets an AI client discover and call those platform operations. Kilo exposes an MCP endpoint for clients such as Claude Code, Claude Desktop, ChatGPT, Codex, Cursor, and Grok; the client uses your account's access to the selected organization.
 
 This is one integration path for the [Physical AI Platform for AI Agents](../physical-ai.md). Kilo remains the governed execution layer between the client and real infrastructure, so the model does not need to recreate device protocols, organization boundaries, or the operational lifecycle around a change.
 
@@ -55,6 +55,23 @@ Because the connection carries your own account, the assistant is not an extra i
 5. Sign in with your usual Kilo account and approve the request.
 6. Back in Claude Desktop, confirm the connector shows as active. Its tools are now available in any conversation.
 
+## Connect Grok
+
+Connect Kilo to Grok once, then use the same conversation to inspect readings, review alarms, and run commands already configured on your devices. This works from Grok on your computer or phone; a Tesla is optional.
+
+1. Sign in to Grok and open [Connectors](https://grok.com/connectors).
+2. Select **New Connector → Custom**.
+3. Enter `https://mcp-auth.kiloiot.io/mcp` as the MCP server URL.
+4. Complete the browser authorization with your usual Kilo account and approve the connection. You do not need a Kilo API key or an xAI API key.
+5. Return to Grok and ask: *“Using Kilo, which organization am I working in? List its devices.”* Check that it identifies the expected organization before continuing.
+6. Try a data request: *“What is the latest office temperature, and when was it reported?”* For control, ask *“List the commands available for Office Lights”*, then request the configured **Turn off** command.
+
+These steps follow [Grok's custom MCP connector instructions](https://docs.x.ai/grok/connectors). In Grok Business or Enterprise, a team administrator must first make the connector available through [Connector Management](https://docs.x.ai/grok/connector-management); each user then authorizes their own Kilo access.
+
+Give devices recognizable names and map the readings you want Grok to use. Create control actions in the device's **Commands & States** tab; MCP can run those saved commands, but cannot create command definitions. See [Creating Commands](../devices/commands/creating-commands.md). Grok controls how it asks for confirmation, while Kilo enforces your permissions. Ask it to check the execution result after sending a command.
+
+For voice access on the road, continue with [Use Kilo in Your Tesla](../ai-assistant/tesla-grok.md).
+
 ## Connect another MCP client
 
 ChatGPT, Codex, Cursor, and other MCP-capable clients follow one of the same two shapes. Where the client has a connector or integrations dialog, add a custom MCP server and paste the endpoint URL, as in the Claude Desktop steps above. Where it is configured from a command line or a config file, register the endpoint as a **Streamable HTTP** server — the transport this endpoint serves — as in the Claude Code steps.
@@ -71,7 +88,7 @@ The client can answer from your actual deployment because it can read the connec
 
 `https://mcp-auth.kiloiot.io/mcp` works against the organization **currently selected in the Kilo web app**. This is the right default for most people: whatever you are working on in the platform is what your client sees.
 
-If you switch the active organization in the web app, reconnect the client so the default endpoint picks up the change.
+The default endpoint resolves your selected organization on each request. After switching organizations in the web app, ask the client to check its current organization before continuing; you do not need to reconnect.
 
 To pin a client to one organization regardless of what is selected in the web app, connect it to the organization-scoped form of the endpoint instead:
 
@@ -92,12 +109,13 @@ Once connected, the client sees a set of tools it calls on your behalf. You do n
 | **Devices** | List devices in the organization, provision LoRaWAN, MQTT and tracker devices, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_mqtt`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
 | **MIOTY** | Browse a MIOTY connection's device catalog — manufacturers, device models and their blueprints, across both the System and Custom scopes — and commission an endpoint from it. `mioty_catalog_list`, `device_provision_mioty` |
 | **Hardware** | Search the partner catalog and the open web for equipment that fits a described need, then present a shortlist of those products. These are the two tools that reach outside your organization. `hardware_search`, `recommend_products` |
+| **Readings** | Read mapped sensor measurements, including temperature, reported switch state, and location fields where supplied by a tracker. `device_telemetry` |
 | **Commands** | List the commands configured on a device, request execution under the client's approval policy, and inspect the recorded lifecycle state. `device_command_list`, `device_command_execute`, `device_command_status` |
 | **Emulator** | Browse device presets, provision an [emulated device](../devices/emulated-devices.md), read and update its configuration and interval, send a one-off reading, and move a device between the emulator and real hardware — any real device onto the Emulator, and an emulated device onto a real LoRaWAN connection. `emulator_preset_list`, `emulator_preset_get`, `device_provision_emulator`, `emulator_config_get`, `emulator_config_update`, `emulator_send_once`, `device_connection_swap` |
 | **Connectors** | Review the connectors defined in the organization and create a connection for a device to report through. `connector_list`, `connection_create` |
 | **Rules** | Review rules, prepare and deploy automation under the client's approval policy, simulate logic before deployment, and inspect execution history. `rule_list`, `rule_provision`, `rule_simulate`, `rule_execution_history` |
 | **Alarms** | List alarms and summarize alarm activity for a shift or a site. `alarm_list`, `alarm_stats` |
-| **Dashboards** | List dashboards and query the data behind a widget, so the client can reason about the same numbers your operators watch. `dashboard_list`, `widget_data_query` |
+| **Dashboards** | List dashboards and inspect widget definitions to identify their configured data sources. `dashboard_list`, `widget_data_query` |
 | **Organization** | Read organization details, list teams, invite users, and assign roles. `org_get`, `team_list`, `user_invite`, `user_role_assign` |
 
 ## How clients distinguish read and write actions
@@ -106,7 +124,7 @@ Kilo publishes a title, description, and safety annotations with each MCP tool. 
 
 | Annotation | Examples | What it tells the client |
 |---|---|---|
-| **Read-only** | List devices, read alarm history, query widget data | The tool does not change your deployment. |
+| **Read-only** | List devices, read alarm history, inspect widget configuration | The tool does not change your deployment. |
 | **Changes or removes data** | Delete a device, update a dashboard, swap a connection, send a device command | The tool can affect your deployment or equipment, so the client can ask for confirmation. |
 | **Reaches outside your organization** | Search the partner catalog or the open web for hardware | The tool accesses information beyond your organization's data. |
 
@@ -143,11 +161,18 @@ The [Public REST API](public-rest-api.md) and the [gRPC API](grpc-api.md) are fo
 - **Start read-only.** Ask for a device list or an alarm summary before you ask for a provisioning run. It is a quick way to confirm the connection landed on the organization you expected.
 - **Confirm the organization before batch work.** Ask the client which organization it is connected to, or pin the endpoint, before anything that creates or changes resources.
 - **Pin production, leave staging on the default.** A pinned endpoint cannot be moved by a stray click in the web app's organization switcher.
-- **Reconnect after switching organizations** in the web app if you are using the default endpoint — the existing connection keeps the organization it authorized against.
+
+## If Grok cannot find a reading or command
+
+- **Wrong device list:** ask which organization is selected and check [organization selection](#choosing-the-organization). Pin the endpoint if this connector should always use one organization.
+- **Missing or old reading:** check the device's mapping, last report, and connection in Kilo. Ask Grok to include the reading's timestamp.
+- **No command available:** create it in **Commands & States** and check that your account can execute it.
+- **Accepted or queued:** ask Grok for the command's execution status. Acceptance means the request entered the delivery process; supported device feedback or later telemetry provides the result. See [Command Verification](../devices/commands/verification.md).
 
 ## See also
 
 - [Physical AI Platform for AI Agents](../physical-ai.md) — how models, Kilo, and physical infrastructure divide responsibility.
 - [IoT AI Assistant](../ai-assistant/README.md) — the assistant built into the platform.
+- [Use Kilo in Your Tesla](../ai-assistant/tesla-grok.md) — ask Grok about your deployment by voice.
 - [Public REST API](public-rest-api.md) — the integration path for programs you write.
 - [Authentication & API keys](authentication-and-api-keys.md) — how key-based API requests authorize.
