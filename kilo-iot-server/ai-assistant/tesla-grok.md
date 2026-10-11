@@ -11,7 +11,7 @@ Ask Grok where a truck last reported, check a building's alarms between site vis
 Kilo supplies the device readings, alarms, and configured commands. Grok carries the conversation, including voice requests in the vehicle. You can use the same connection in Grok on your phone or computer.
 
 ```mermaid
-flowchart LR
+flowchart TD
     Voice[Your voice in the Tesla] <--> Grok[Grok]
     Grok <--> MCP[Kilo MCP connection]
     MCP <--> Kilo[Device readings, alarms, and commands]
