@@ -91,9 +91,7 @@ That toolset now includes device control. A connected client can list the comman
 
 <figure><img src="../.gitbook/assets/ai-chat-device-commands.jpg" alt="The Kilo AI assistant explaining that it can list, execute and check the status of device commands"><figcaption></figcaption></figure>
 
-Use MCP when a person wants ChatGPT, Claude, Codex, Cursor, Grok, or another compatible client to work with a live Kilo deployment. The precise actions available depend on the tools exposed by the server and the signed-in user's access.
-
-[Grok's MCP connection](api/mcp-server.md#connect-grok) also makes these operations available by voice in a supported Tesla. A facilities manager can review active building alarms and run a configured lighting command; a fleet operator can ask for truck 18's latest reported location. See [Use Kilo in Your Tesla](ai-assistant/tesla-grok.md).
+Use MCP when a person wants ChatGPT, Claude, Codex, Cursor, or another compatible client to work with a live Kilo deployment. The precise actions available depend on the tools exposed by the server and the signed-in user's access.
 
 ### Use the built-in AI Assistant
 
@@ -103,7 +101,7 @@ Use the built-in assistant when operators want AI inside the same interface as t
 
 ### Integrate a service through REST or gRPC
 
-The REST and gRPC interfaces in [Kilo IoT Platform API / MCP](api/README.md) serve software your team builds, including agent backends, reporting systems, industrial integrations, and unattended workflows. API keys carry explicit scopes and organization context.
+The [Kilo IoT Platform API](api/README.md) is for software your team builds, including agent backends, reporting systems, industrial integrations, and unattended workflows. API keys carry explicit scopes and organization context.
 
 Use an API when you need a deterministic application integration rather than a user-authorized conversational client.
 

@@ -55,9 +55,7 @@ There are five ways to send a command to a device:
 * **From a dashboard** — a [Control widget](../../dashboards/adding-widgets/control-widget.md) binds a command to a Switch or Button so anyone with dashboard access can operate the device without opening its detail page.
 * **From a rule** — the [Rules Engine](../../rules-engine/) can now dispatch a command automatically when a condition is met, using an Execute Command node. The same command you run by hand is sent by the rule with no one in the loop — so an out-of-bounds reading at 3 a.m. closes the valve itself. See [Running Device Commands](../../rules-engine/running-device-commands.md).
 * **By asking the assistant** — the built-in [IoT AI Assistant](../../ai-assistant/README.md) lists what a device can do, runs one of those commands after showing you what it will send and waiting for your confirmation, then reports whether it was delivered. See [Building with AI](../../ai-assistant/building-with-ai.md).
-* **From your own AI client** — connect Grok, ChatGPT, Claude or any other MCP client and it can do the same, scoped to your permissions and recorded like any other dispatch. See [MCP Server](../../api/mcp-server.md).
-
-For Grok, follow [Connect Grok](../../api/mcp-server.md#connect-grok). The same configured commands support voice requests such as switching office lights off; see [Use Kilo in Your Tesla](../../ai-assistant/tesla-grok.md).
+* **From your own AI client** — connect ChatGPT, Claude or any other MCP client and it can do the same, scoped to your permissions and recorded like any other dispatch. See [MCP Server](../../api/mcp-server.md).
 
 Every route ends in the same place: the command definitions on this tab, the same execution pipeline, and the same history. Defining a command well is what makes all five safe.
 

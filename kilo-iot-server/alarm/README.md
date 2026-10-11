@@ -44,10 +44,6 @@ Unresolved alarms can escalate through multiple steps — notifying additional r
 
 For full details on configuring escalation chains, see [Escalation and Response](escalation-and-response.md).
 
-## Ask Grok for an alarm summary
-
-[Connect Grok](../api/mcp-server.md#connect-grok) and ask it to list active alarms for a building, including severity and the source device where available. For example: *“Check the office for urgent leak or smoke alarms.”* It summarizes recorded alarms from your configured monitoring. You can make the same request by voice with [Kilo in your Tesla](../ai-assistant/tesla-grok.md).
-
 ## What to read next
 
 | Page | When to read it |

@@ -41,11 +41,11 @@ It will show you what it is about to change and wait for your approval before an
 
 ## Route 2 — connect the AI client you already use
 
-If you already work in Grok, Claude, ChatGPT, Cursor or Codex, point it at your Kilo organization over MCP and it can operate the same deployment from there. You sign in through the browser with your normal account — there is no API key to mint or paste.
+If you already work in Claude, ChatGPT, Cursor or Codex, point it at your Kilo organization over MCP and it can operate the same deployment from there. You sign in through the browser with your normal account — there is no API key to mint or paste.
 
 <figure><img src="../../.gitbook/assets/mcp-claude-session.jpg" alt="A Claude Code session connected to Kilo over MCP, calling a real tool and asking for permission before continuing"><figcaption>An authenticated Claude Code session discovering a LoRaWAN connection on a live deployment, and asking permission before it continues</figcaption></figure>
 
-Setup instructions are in [MCP Server](../api/mcp-server.md), with a dedicated [Connect Grok](../api/mcp-server.md#connect-grok) walkthrough. For hands-free operations from the car, continue with [Use Kilo in Your Tesla](../ai-assistant/tesla-grok.md).
+Setup instructions for each client are in [MCP Server](../api/mcp-server.md).
 
 ## When to do it by hand instead
 

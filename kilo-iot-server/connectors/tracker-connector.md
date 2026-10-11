@@ -22,5 +22,3 @@ The connector is created immediately. Each organization can have only one Tracke
 Click the Tracker connector row in the connectors table to open it. This shows the shared device list. When registering a device through the Tracker connector, the **Connection** tab includes tracker-specific fields: **Unique ID**, **Device model**, and a **Url for GPS tracker** endpoint.
 
 For device registration and management, see [Registering Devices](../devices/registering-devices.md) and [Device Management](../devices/device-management.md).
-
-Give each vehicle a recognizable name, such as **Truck 18**, and map its reported location fields. With [Grok connected through MCP](../api/mcp-server.md#connect-grok), ask for that vehicle's latest reported location and timestamp. [Use Kilo in Your Tesla](../ai-assistant/tesla-grok.md) shows how to make the request by voice.

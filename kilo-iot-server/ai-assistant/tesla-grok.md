@@ -4,7 +4,7 @@ description: Use Grok in your Tesla to check fleet locations, office readings, a
 
 # Use Kilo in Your Tesla
 
-Ask Grok where a truck last reported, check a building's alarms between site visits, or switch off office lights from your Tesla. Connect Grok to Kilo through **MCP (Model Context Protocol)**, the connection that lets an AI client read platform data and run available actions with your account's permissions.
+Ask Grok where a truck last reported, check a building's alarms between site visits, or switch off office lights from your Tesla. Connect Grok to Kilo through **MCP (Model Context Protocol)**, the connection that lets an AI assistant read platform data and run available actions with your account's permissions.
 
 <figure><img src="../../.gitbook/assets/tesla-grok-hands-free-hero.avif" alt="Tesla interior with Grok open on the center touchscreen"><figcaption><p>Grok on a Tesla touchscreen. Connect your Kilo account from your phone or computer before using it in the car.</p></figcaption></figure>
 
@@ -21,8 +21,8 @@ flowchart TD
 
 | Ask Grok | What the deployment needs |
 | --- | --- |
-| “Where is truck number eighteen? Include when it last reported.” | A registered tracker named **Truck 18**, with mapped location readings. Grok can retrieve its latest reported position and timestamp. See [Tracker Connector](../connectors/tracker-connector.md). |
-| “What is the temperature in the office right now?” | A reporting temperature sensor with a recognizable room name and mapped measurements. Ask for the reading's timestamp when freshness matters. |
+| “Where is truck number eighteen? Include when it last reported.” | A registered tracker named **Truck 18**, with its latest location available in Kilo. Grok can retrieve its latest reported position and timestamp. See [Tracker Connector](../connectors/tracker-connector.md). |
+| “What is the temperature in the office right now?” | A reporting temperature sensor named for its room, with readings visible in Kilo. Ask for the reading's timestamp when freshness matters. |
 | “Are the lights in my office on or off? Please turn them off.” | A connected lighting controller or relay reporting its state, with a saved **Turn off** command and permission for your account to execute it. |
 | “Check the building. Are there any urgent notifications, such as leaks or smoke?” | Configured sensors, rules, and [alarms](../alarm/README.md). Grok can summarize active alarm events, with severity, source device, and location where available. |
 
@@ -30,7 +30,7 @@ Use site and room names when several devices could match. An alarm summary refle
 
 ## Prepare Kilo and the car
 
-Your equipment must already be connected to Kilo, with the required readings mapped. For actions, save the device's supported commands in **Commands & States** before requesting them through Grok. Follow [Creating Commands](../devices/commands/creating-commands.md); MCP executes saved commands and does not author new command definitions.
+Connect your equipment to Kilo and check that the readings you want to ask about are visible. For actions, save the device's supported commands in **Commands & States** before requesting them through Grok. Follow [Creating Commands](../devices/commands/creating-commands.md); MCP executes saved commands and does not author new command definitions.
 
 <figure><img src="../../.gitbook/assets/device-command-editor.jpg" alt="Kilo Commands and States editor with a saved Turn ON relay command"><figcaption><p>Configure actions in Kilo first. This command-editor example uses an emulated relay; the payload for real equipment depends on its protocol and model.</p></figcaption></figure>
 
@@ -43,7 +43,7 @@ For connectors in the car, Tesla requires an **AMD processor**, software **2026.
 3. Start a conversation by holding the steering-wheel microphone button. To use **“Hey Grok,”** enable voice activation under **Controls → Audio → Grok Settings**. [Tesla documents these controls](https://www.tesla.com/support/grok).
 4. Ask Grok to use Kilo, naming the site or device: *“Using Kilo, what is the latest temperature in the Berlin office?”*
 
-If you work across several organizations, consider [pinning the MCP connection](../api/mcp-server.md#choosing-the-organization) to the organization you operate from the car. The default connection follows the organization selected in the Kilo web app on each request.
+If you work across several organizations, consider [pinning the MCP connection](../api/mcp-server.md#choosing-the-organization) to the organization you operate from the car. The default connection uses the organization selected in Kilo.
 
 ## Ask, act, and check the result
 
@@ -57,4 +57,4 @@ Commands run asynchronously. If a request is accepted or queued, ask for its sta
 
 - **The car cannot use the connection:** check the vehicle requirements, internet connection, and that it uses the same Grok account as the computer or phone where you added Kilo.
 - **Grok lists the wrong devices:** ask which Kilo organization it is using and review the default or pinned endpoint.
-- **A reading is old or a command is unavailable:** check the device's latest report, mapping, configured commands, and your permissions. The [Grok troubleshooting steps](../api/mcp-server.md#if-grok-cannot-find-a-reading-or-command) cover these checks.
+- **A reading is old or a command is unavailable:** check the device's latest readings, connection, saved commands, and your permissions. The [MCP connection guide](../api/mcp-server.md) explains account access and organization selection.
