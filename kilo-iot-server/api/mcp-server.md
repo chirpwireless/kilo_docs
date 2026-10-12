@@ -6,7 +6,7 @@ description: Connect an AI agent to your Kilo IoT deployment through the MCP ser
 
 Connect your preferred AI client to Kilo and use it to work on the deployment: onboard devices, create dashboards, configure alarms, and build and deploy automation rules. You can keep the project conversation in the tool you already use while Kilo supplies the device connections and execution workflows.
 
-**MCP (Model Context Protocol)** lets an AI client discover and call those platform operations. Kilo exposes an MCP endpoint for clients such as Claude Code, Claude Desktop, ChatGPT, Codex, and Cursor; the client uses your account's access to the selected organization.
+**MCP (Model Context Protocol)** lets an AI client discover and call those platform operations. Kilo exposes an MCP endpoint for clients such as Claude (listed in the [Claude connectors directory](https://claude.ai/directory/kilo-iot-platform)), Claude Code, Claude Desktop, ChatGPT, Codex, and Cursor; the client uses your account's access to the selected organization.
 
 This is one integration path for the [Physical AI Platform for AI Agents](../physical-ai.md). Kilo remains the governed execution layer between the client and real infrastructure, so the model does not need to recreate device protocols, organization boundaries, or the operational lifecycle around a change.
 
@@ -28,7 +28,30 @@ With the MCP server connected, the client you already use becomes an operator's 
 
 Because the connection carries your own account, the assistant is not an extra identity to govern. It can do what you can do, in the organization you are working in, and nothing else.
 
+## Add Kilo from the Claude connectors directory
+
+Kilo is listed in Claude's connectors directory as **Kilo IoT Platform**, so you can add it without typing a URL. Anthropic marks it as a community connector, which means it passed automated review but is not verified by Anthropic.
+
+1. Open the [Kilo IoT Platform listing](https://claude.ai/directory/kilo-iot-platform), or open **Customize → Connectors** in Claude and search the directory for **Kilo**.
+2. Click **Connect to Claude**.
+3. Your browser opens the Kilo sign-in. Sign in with your usual Kilo account and approve the request.
+4. Start a conversation and ask: *"Using Kilo, which organization am I working in? List its devices."* Check that it names the organization you expect before you ask for anything that changes a deployment.
+
+The connector works in Claude on the web, Claude Desktop, and mobile, and in Claude Code (see below). It uses the same endpoint and the same permissions as every other client on this page.
+
+**Claude Team and Enterprise.** An organization Owner adds the connector under **Organization settings → Connectors**. Members then connect from Customize → Connectors and authorize with their own Kilo account, so each person gets only the access their Kilo role allows. On Team, a member without permission sees a **Request** button that asks the Owners.
+
 ## Connect Claude Code
+
+**Use the directory connector.** A connector you added in Claude appears in Claude Code automatically when you are signed in with a Claude subscription. Run:
+
+```
+/mcp
+```
+
+Select **Kilo IoT Platform**, authorize in the browser if asked, and wait until it is reported as **connected**. If it is missing, run `/status`: connectors do not load when Claude Code authenticates with `ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, a `claude setup-token` token, Amazon Bedrock, or Google Vertex. Unset the variable, run `/login`, and choose your Claude account.
+
+**Or add the server directly.** This works with any login method:
 
 1. Add the server, giving it the name `kilo`:
 
@@ -36,24 +59,23 @@ Because the connection carries your own account, the assistant is not an extra i
    claude mcp add --transport http kilo https://mcp-auth.kiloiot.io/mcp
    ```
 
-2. Start Claude Code in your project and run:
-
-   ```
-   /mcp
-   ```
-
+2. Start Claude Code in your project and run `/mcp`.
 3. Select the `kilo` server. Claude Code opens your browser for authorization.
 4. Sign in with your usual Kilo account and approve the request. The browser confirms the authorization, and you can return to the terminal.
-5. Run `/mcp` again if you want to check the result. When the `kilo` server is reported as **connected**, its tools are available and you can start asking questions in plain language.
+5. Run `/mcp` again to check the result. When the `kilo` server is reported as **connected**, its tools are available and you can start asking questions in plain language.
 
-## Connect Claude Desktop
+If you add Kilo both ways, the server you added directly takes precedence and the directory connector is hidden in `/mcp`.
 
-1. Open **Settings → Connectors**.
+## Connect Claude Desktop without the directory
+
+If you cannot see the directory listing, add Kilo as a custom connector:
+
+1. Open **Customize → Connectors**.
 2. Click **Add custom connector**.
 3. Paste the endpoint URL — `https://mcp-auth.kiloiot.io/mcp` — into the URL field.
-4. Click **Connect**. Claude Desktop opens your browser for authorization.
+4. Click **Connect**. Claude opens your browser for authorization.
 5. Sign in with your usual Kilo account and approve the request.
-6. Back in Claude Desktop, confirm the connector shows as active. Its tools are now available in any conversation.
+6. Back in Claude, confirm the connector shows as active. Its tools are now available in any conversation.
 
 ## Connect Grok
 
@@ -72,7 +94,7 @@ For voice access on the road, continue with [Use Kilo in Your Tesla](../ai-assis
 
 ## Connect another MCP client
 
-ChatGPT, Codex, Cursor, and other MCP-capable clients follow one of the same two shapes. Where the client has a connector or integrations dialog, add a custom MCP server and paste the endpoint URL, as in the Claude Desktop steps above. Where it is configured from a command line or a config file, register the endpoint as a **Streamable HTTP** server — the transport this endpoint serves — as in the Claude Code steps.
+ChatGPT, Codex, Cursor, and other MCP-capable clients follow one of the same two shapes. Where the client has a connector or integrations dialog, add a custom MCP server and paste the endpoint URL, as in the custom connector steps above. Where it is configured from a command line or a config file, register the endpoint as a **Streamable HTTP** server — the transport this endpoint serves — as in the Claude Code steps.
 
 Either way the authorization is the same: the client opens your browser, you sign in with your usual Kilo account, and the connection carries your permissions. Consult your client's own documentation for where it keeps MCP servers; nothing about this endpoint is client-specific.
 
@@ -154,11 +176,18 @@ The [Public REST API](public-rest-api.md) and the [gRPC API](grpc-api.md) are fo
 
 ## Tips
 
-- **Name the server `kilo` in Claude Code.** The command above does this, and it gives you a short handle when you want to point the client at a specific server.
+- **Name the server `kilo` in Claude Code.** The direct-add command does this, and it gives you a short handle when you want to point the client at a specific server.
 - **Start read-only.** Ask for a device list or an alarm summary before you ask for a provisioning run. It is a quick way to confirm the connection landed on the organization you expected.
 - **Confirm the organization before batch work.** Ask the client which organization it is connected to, or pin the endpoint, before anything that creates or changes resources.
 - **Pin production, leave staging on the default.** A pinned endpoint cannot be moved by a stray click in the web app's organization switcher.
 - **Reconnect after switching organizations** in the web app if you are using the default endpoint — the existing connection keeps the organization it authorized against.
+
+## Troubleshooting Claude
+
+- **Kilo does not appear in Claude Code.** Run `/status` and confirm you are signed in with your Claude account rather than an API key, then see [Connect Claude Code](#connect-claude-code).
+- **Claude shows the wrong organization.** The default endpoint follows the organization selected in the Kilo web app. Switch it there and reconnect, or [pin the connection to one organization](#choosing-the-organization).
+- **Claude says an action is not allowed.** The connection carries your own Kilo permissions. Ask an organization admin to change your role if you need the action.
+- **The authorization page does not open.** Remove the connector in Claude and connect again.
 
 ## See also
 
