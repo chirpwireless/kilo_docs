@@ -187,6 +187,7 @@
 * [Kilo MIOTY Service Center](kilo-center/kilo-mioty-service-center/README.md)
   * [Project Overview](kilo-center/kilo-mioty-service-center/project-overview.md)
   * [What's New in 2.0](kilo-center/kilo-mioty-service-center/whats-new-in-2-0.md)
+  * [What Was Fixed in 2.0](kilo-center/kilo-mioty-service-center/whats-fixed-in-2-0.md)
   * [Web Interface](kilo-center/kilo-mioty-service-center/web-interface.md)
   * [Next Steps](kilo-center/kilo-mioty-service-center/next-steps.md)
   * [License And Trademarks](kilo-center/kilo-mioty-service-center/license-and-trademarks.md)

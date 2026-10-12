@@ -134,7 +134,7 @@ What changes in 2.0:
 * **Follows the specification.** Uplinks, downlinks, attach and detach follow BSSCI v1.0.0 and SCACI v1.0.0. One uplink that several base stations receive is delivered once, with every receiving station listed, and sessions survive a restart and resume.
 * **Dependable downlinks.** A downlink can carry a deadline. When a base station still holds it at the deadline, KiloCenter asks the station to drop it and reports it expired only when the station confirms. A command's reference is accepted once, so your application can safely resend a command it is not sure arrived.
 * **Logs you can trust.** The Logs page has an Events Log, an Errors Center that groups failures into Control Plane, Base Stations, End Points and Downlinks, and an Audit Log that administrators use to see who created a user, revealed a key or queued a downlink.
-* **A cleaner, steadier codebase.** Dead code and unused settings are gone, large components are split into focused parts, and more than fifty bugs across uplinks, downlinks, sessions, certificates and the web interface are fixed. We tested the result end to end with our MIOTY developer kit, from real uplinks and downlinks to every screen of the web interface.
+* **A cleaner, steadier codebase.** Dead code and unused settings are gone, large components are split into focused parts, and more than fifty bugs across uplinks, downlinks, sessions, certificates and the web interface are fixed. That makes 2.0 a big release, not only a feature release. We tested the result end to end with our MIOTY developer kit, from real uplinks and downlinks to every screen of the web interface.
 * **More for integrators.** Uplink messages report `dlOpen`, `responseExp` and `dlAck`, downlink results carry the delivery details, and MQTT gains `event/downlink_queued`.
 
 <figure><img src="../.gitbook/assets/kc-traffic-downlink-results.jpg" alt="The Downlink Results tab of the Traffic page listing sent downlinks with the time each one was acknowledged by its end point"><figcaption><p>Every downlink is followed to delivery, and the end point's acknowledgement is shown beside it.</p></figcaption></figure>
@@ -145,13 +145,9 @@ Upgrading a self-hosted installation from 1.x needs a few manual steps, mainly s
 
 **Breaking API changes.** The organization quota fields are removed, endpoint keys are masked on every read, every call checks the caller's role and answers `PERMISSION_DENIED` when the role does not cover it, and the web interface's WebSocket connection is replaced by gRPC-web server streams. The API changes page lists every difference.
 
-[→ Upgrade a self-hosted installation from 1.x](../kilo-center/kilo-mioty-service-center/operations/key-material-migration.md)
-
-[→ API changes in KiloCenter 2.0](../kilo-center/kilo-mioty-service-center/integrations/api-changes-in-2-0.md)
-
-[→ Audit Log and Errors Center](../kilo-center/kilo-mioty-service-center/operations/audit-log-and-errors-center.md)
-
 [→ What's new in KiloCenter 2.0](../kilo-center/kilo-mioty-service-center/whats-new-in-2-0.md)
+
+[→ What bugs were fixed in KiloCenter 2.0?](../kilo-center/kilo-mioty-service-center/whats-fixed-in-2-0.md)
 
 [→ The KiloCenter web interface](../kilo-center/kilo-mioty-service-center/web-interface.md)
 

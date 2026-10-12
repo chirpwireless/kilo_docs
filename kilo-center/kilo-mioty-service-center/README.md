@@ -52,7 +52,7 @@ Read the [Project Overview](project-overview.md) for the architecture, component
 
 ## What is new in version 2.0?
 
-Version 2.0 adds a live web interface, encrypted key storage, enforced user roles and end-to-end BSSCI and SCACI conformance. It needs a few manual steps when you upgrade from 1.x. Read [What's new in KiloCenter 2.0?](whats-new-in-2-0.md) and take a tour of the [web interface](web-interface.md).
+Version 2.0 adds a live web interface, encrypted key storage, enforced user roles and end-to-end BSSCI and SCACI conformance. It needs a few manual steps when you upgrade from 1.x. It is also a large cleanup, with more than fifty bugs fixed. Read [What's new in KiloCenter 2.0?](whats-new-in-2-0.md), see [what was fixed](whats-fixed-in-2-0.md) and take a tour of the [web interface](web-interface.md).
 
 <figure><img src="../../.gitbook/assets/kc-dashboard.jpg" alt="The KiloCenter Network Overview dashboard with live base station, end point and message counts, control plane status and alerts"><figcaption></figcaption></figure>
 

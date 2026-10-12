@@ -14,6 +14,8 @@ The code underneath was cleaned up as well. Dead code, unused settings and unuse
 
 We tested it end to end with our MIOTY developer kit: real uplinks and downlinks, including acknowledged and revoked downlinks, and every screen of the web interface. The screenshots in this documentation come from that run.
 
+[What bugs were fixed in KiloCenter 2.0?](whats-fixed-in-2-0.md) groups the fixes by what you notice and says where to look in the web interface.
+
 ## Which edition does 2.0 apply to?
 
 This release is the open-source Community Edition. It stays self-hosted and comes as is; the [edition comparison](README.md#which-edition-should-i-choose) shows when to ask Kilo for the Enterprise edition on your premises or to move to Kilo Cloud, where the platform around the network adds rules, dashboards and alerting.
