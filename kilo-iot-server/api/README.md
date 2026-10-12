@@ -19,7 +19,7 @@ Two protocols are offered on the same secured endpoint:
 
 Alongside them, a separate endpoint serves AI clients rather than code you write:
 
-- **MCP** — connect an MCP-capable AI client, such as Claude Code or Claude Desktop, to your organization. You authorize it in the browser with your usual Kilo account instead of issuing a key, and it works within your own permissions. See [MCP Server](mcp-server.md).
+- **MCP** — connect an MCP-capable AI client, such as Claude (Kilo is in the [Claude connectors directory](https://claude.ai/directory/kilo-iot-platform)), Claude Code or Claude Desktop, to your organization. You authorize it in the browser with your usual Kilo account instead of issuing a key, and it works within your own permissions. See [MCP Server](mcp-server.md).
 
 ## Authentication
 
