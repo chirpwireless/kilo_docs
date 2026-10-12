@@ -1,5 +1,5 @@
 ---
-description: Manage KiloCenter blueprints: add manufacturers, models and decoders, test a payload, migrate devices to a new blueprint and submit blueprints to a registry.
+description: "Manage KiloCenter blueprints: add manufacturers, models and decoders, test a payload, migrate devices to a new blueprint and submit blueprints to a registry."
 ---
 
 # How do blueprints and decoders work in KiloCenter?

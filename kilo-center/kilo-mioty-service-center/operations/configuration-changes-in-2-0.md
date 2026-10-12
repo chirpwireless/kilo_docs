@@ -1,5 +1,5 @@
 ---
-description: KiloCenter 2.0 configuration and Helm changes: new settings and defaults, removed settings, stricter validation, health checks and rollout behavior.
+description: "KiloCenter 2.0 configuration and Helm changes: new settings and defaults, removed settings, stricter validation, health checks and rollout behavior."
 ---
 
 # Which configuration settings changed in KiloCenter 2.0?
