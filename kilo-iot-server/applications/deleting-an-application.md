@@ -10,7 +10,7 @@ Deleting an application retires its associated solution, not just its name. Use 
 Deleting an application permanently deletes associated devices and dashboards, removes associated alarm definitions, and stops and moves associated rules to Trash. The confirmation dialog says the rules are "permanently removed"; Trash is the only way back for them. Move resources you need to keep to another application or **Default** before deleting.
 {% endhint %}
 
-An application installed from a solution is an ordinary application, so deleting it removes only your copy. The dealer's solution and other customers' copies are not affected.
+An application installed from a solution is an ordinary application, so deleting it removes only your copy. The solution in the catalog and other organizations' copies are not affected.
 
 <figure><img src="../../.gitbook/assets/kilo-applications-delete-confirmation.jpg" alt="Kilo Applications: Review the consequences before confirming application deletion."><figcaption><p>Review the consequences before confirming application deletion.</p></figcaption></figure>
 

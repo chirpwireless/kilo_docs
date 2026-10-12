@@ -11,21 +11,21 @@ Kilo uses three words that sound alike and mean three different things. Once you
 Think of a recipe and a pie.
 
 * An **application** is the pie: a real, working bundle in your organization. It holds the devices, dashboards, rules, and alarms you use for one job, and you can change any part of it.
-* A **solution** is the recipe: a dealer's prepared application, published so that others can install it. Installing a solution bakes a pie of your own.
+* A **solution** is the recipe: a ready-made application from the Kilo catalog. It shows the use case it solves and arrives fully pre-configured with devices, dashboards, rules, and alarms. Installing a solution bakes a pie of your own.
 
 ```mermaid
 flowchart LR
-    D[Dealer builds an application] -->|Publish application| S[Solution in the catalog]
+    D[Kilo prepares an application] -->|Publish application| S[Solution in the catalog]
     S -->|Install solution| A1[Your application]
-    S -->|Install solution| A2[Another customer's application]
+    S -->|Install solution| A2[Another organization's application]
 ```
 
-An installed application is an ordinary application. You can rename it, change its rules, add devices, or delete it. An application you built by hand and an application installed from a solution behave identically. Nothing is synced back to the solution, and nothing the dealer changes later alters your copy.
+An installed application is an ordinary application. You can rename it, change its rules, add devices, or delete it. An application you built by hand and an application installed from a solution behave identically. Nothing is synced back to the solution, and nothing changed in the catalog later alters your copy.
 
 This also explains two important behaviors:
 
-* **Unpublishing is safe.** If a dealer withdraws a solution, it disappears from the catalog, but copies that customers already installed keep working.
-* **Deleting your application is safe.** Deleting an installed application affects only your copy and never the dealer's solution.
+* **Unpublishing is safe.** If an application is withdrawn from the catalog, it disappears from the list, but copies that are already installed keep working.
+* **Deleting your application is safe.** Deleting an installed application affects only your copy and never the solution in the catalog.
 
 ## Where do I find solutions and applications in Kilo?
 
@@ -35,7 +35,7 @@ Everything lives on one page. In the left sidebar, select **Applications**. The 
 
 | Tab | What it is for | Who sees it |
 |---|---|---|
-| **Solutions** | The catalog of ready-made solutions published by your dealer. You preview them and install them here. | Every organization member whose plan includes Applications. |
+| **Solutions** | The catalog of ready-made solutions provided by Kilo. You preview them and install them here. | Every organization member whose plan includes Applications. |
 | **My applications** | Every application in your organization, both the ones you built and the ones you installed. | Every organization member whose plan includes Applications. |
 | **Use cases** | The list of problems a solution can address, with industries. | Only the platform's own catalog publisher. Most organizations never see this tab. |
 
@@ -49,10 +49,10 @@ Each tab has its own guide:
 
 | Role | What they can do |
 |---|---|
-| Any organization member with the right permissions | Create their own applications. Browse the solutions published by their dealer, preview them, and install them. |
-| A dealer | Everything above, plus publish an application as a solution, update the publication, and unpublish it. |
+| Any organization member with the right permissions | Create their own applications. Browse the solutions in the catalog, preview them, and install them. |
+| The organization that publishes the catalog | Everything above, plus publish an application as a solution, update the publication, and unpublish it. |
 
-Dealers are businesses that prepare complete solutions for their customers, for example an installer who focuses on leak protection or video security. Dealers can publish today, and Kilo's own catalog is the first one. Customers see the solutions published by their own dealer.
+Publishing is currently limited to the platform's own catalog publisher, so you install solutions and do not publish them. Each solution is a complete, ready-made application for one use case, for example leak protection or tank level monitoring. New applications are added to the catalog with every release, starting with the next one.
 
 ## What is a use case?
 

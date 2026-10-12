@@ -57,7 +57,7 @@ The Connection tab is where the swap happens.
 
 Select **Cancel swap** at any time to leave the device on the Emulator.
 
-A dealer will often write the exact steps for each device in the solution's description. For the smart-office demo, for example, the checklist says where to mount each sensor and how to build the topic for each device. Read the solution's **Content** text before you start.
+A solution often includes the exact steps for each device in its description. For the smart-office demo, for example, the checklist says where to mount each sensor and how to build the topic for each device. Read the solution's **Content** text before you start.
 
 ### What do the Emulator and Mapping tabs do?
 

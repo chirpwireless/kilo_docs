@@ -4,7 +4,7 @@ description: "Step through the Kilo install screen, choose the 24-hour history o
 
 # How do I install a solution?
 
-Installing a solution turns a dealer's finished setup into your own working application. You do not configure anything first. This guide walks through every element of the install screen and what happens after you press the button.
+Installing a solution turns a ready-made application from the Kilo catalog into your own working application. It arrives fully pre-configured, so you do not configure anything first. If you like it, you buy the devices listed on the install screen and swap the Emulator for them; everything else is already set up, which makes onboarding much simpler. This guide walks through every element of the install screen and what happens after you press the button.
 
 ## How do I open the install screen?
 
@@ -19,7 +19,7 @@ The page title becomes **Install** followed by the solution name, with the solut
 ## What does each card on the install screen mean?
 
 * **What will be created.** Four tiles count exactly what you will get. **Virtual devices** (on the Emulator connector), **rules** (processing logic), **alarm rules** (with escalation), and **widgets** (a pre-bound dashboard). Nothing is a surprise.
-* **Devices.** The heading says: to run this application on real data later, you will need these devices. It lists each virtual device by name, so you can see what real hardware the setup stands for.
+* **Devices.** The heading says: to run this application on real data later, you will need these devices. It lists each virtual device by name, so you can see which real devices you need to buy.
 * **Data source: Emulator connector.** Explains that the virtual devices stream realistic telemetry through the Emulator connector, so the dashboard goes live instantly with no hardware, and that you can swap any device to a real connector later.
 * **The Backfill toggle.** A switch labeled **Backfill 24h of history, so charts aren't empty on first open**. It is on by default.
 * **The footnote.** Under the buttons, a line confirms that installing the solution creates an application based on this solution.
@@ -56,7 +56,7 @@ From now on it is a normal application under **Applications → My applications*
 
 ## Who receives the alarms?
 
-You do. Whatever recipients the dealer used while preparing the solution, the alarms in your copy are addressed to the person who installed it. Review them in [Alarm](../alarm/README.md) and add colleagues or channels before you rely on them.
+You do. Whatever recipients the solution was prepared with, the alarms in your copy are addressed to the person who installed it. Review them in [Alarm](../alarm/README.md) and add colleagues or channels before you rely on them.
 
 ## Why was my installation refused?
 
@@ -76,4 +76,4 @@ If something fails halfway, Kilo removes what it had created, so you are not lef
 2. Read the rule and alarm so you understand what the setup does. The **Content** tab of the application explains each one.
 3. When your real sensors are ready, [swap the Emulator for real devices](swapping-the-emulator-for-real-devices.md).
 
-If you do not like the result, delete the application. Because an installed application is an ordinary application, [deleting it](deleting-an-application.md) never affects the dealer's solution or anyone else's copy.
+If you do not like the result, delete the application. Because an installed application is an ordinary application, [deleting it](deleting-an-application.md) never affects the solution in the catalog or anyone else's copy.

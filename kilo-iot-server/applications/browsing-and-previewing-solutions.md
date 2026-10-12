@@ -4,7 +4,7 @@ description: "Open the Solutions tab, read every card, and preview a live dashbo
 
 # How do I browse and preview solutions?
 
-A solution is a complete answer to one problem. Before you install anything, Kilo lets you walk through it: you see what it contains, you watch its dashboard with live data, and you read the dealer's own explanation. This guide shows each screen in the order you meet it.
+A solution is a complete answer to one problem. Before you install anything, Kilo lets you walk through it: you see what it contains, you watch its dashboard with live data, and you read the explanation that comes with it. This guide shows each screen in the order you meet it.
 
 ## How do I open the Solutions tab?
 
@@ -19,8 +19,8 @@ The tab opens with a heading, **Solutions**, and an introduction: ready-made sol
 
 Every card has the same parts, so you can compare solutions at a glance:
 
-* **Photo.** The picture the dealer chose for the solution.
-* **Name and description.** The name is the problem or setting the solution addresses. The description is the dealer's one-line pitch.
+* **Photo.** The picture chosen for the solution.
+* **Name and description.** The name is the problem or setting the solution addresses. The description is a one-line summary of the use case.
 * **Four counters.** **Virtual devices**, **rules**, **widgets**, and **alarms**. They tell you how big the install will be before you open anything.
 * **Preview.** The button at the bottom of the card. It opens the solution without installing anything.
 
@@ -46,24 +46,24 @@ Some solutions use the Digital Building Twin. This smart-office preview is a 3D 
 
 **Content** explains the solution in words and lists every part of it. Read it from top to bottom:
 
-* **About.** A card with the solution name and the dealer's text. It has two columns: **Who it's for** and **How it works right now**.
+* **About.** A card with the solution name and its explanatory text. It has two columns: **Who it's for** and **How it works right now**.
 * **Virtual devices.** Each device with its name, an optional model, and an **Emulator** badge that marks it as emulated.
 * **Rules.** The processing logic the solution deploys, with a one-line explanation of each rule.
 * **Alarms.** The notification recipes, each with a severity label such as **Critical** or **Low**.
 * **Emulator.** A card that explains how virtual devices run on the Emulator connector, and how to swap to a real connector later.
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-preview-content.jpg" alt="The Content tab of the Building Monitoring preview with an About card, two virtual devices with Emulator badges, a Rules card, an Alarms card, and an Emulator card"><figcaption><p>The Content tab of the Building Monitoring preview. In this demo the About text is empty, which a dealer would normally fill in.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-preview-content.jpg" alt="The Content tab of the Building Monitoring preview with an About card, two virtual devices with Emulator badges, a Rules card, an Alarms card, and an Emulator card"><figcaption><p>The Content tab of the Building Monitoring preview. In this demo the About text is empty, which a finished solution normally fills in.</p></figcaption></figure>
 
-A well-prepared solution fills these cards in. Here is a smart-office demo whose dealer wrote an installation checklist in **How it works right now**:
+A well-prepared solution fills these cards in. Here is a smart-office demo that includes an installation checklist in **How it works right now**:
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-preview-ip500-content.jpg" alt="The Content tab of the IP500 demo Smart Office preview with About, Who it's for, and an installation checklist, followed by five virtual devices, one rule, and one critical alarm"><figcaption><p>A solution whose dealer wrote the About text and a mounting checklist for each real sensor.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-preview-ip500-content.jpg" alt="The Content tab of the IP500 demo Smart Office preview with About, Who it's for, and an installation checklist, followed by five virtual devices, one rule, and one critical alarm"><figcaption><p>A solution with filled-in About text and a mounting checklist for each real sensor.</p></figcaption></figure>
 
-That checklist is the knowledge an installer would normally carry in their head: where to mount each real sensor and how to connect it. Read it before you swap anything to real hardware.
+That checklist covers where to mount each real sensor and how to connect it. Read it before you swap anything to real hardware.
 
 ## What if the preview does not load?
 
 * **Preview is unavailable right now.** The preview could not be loaded. Try again in a moment.
-* **This solution has no dashboards to preview.** The dealer did not include a dashboard. The Content tab still works.
-* **Solution not found.** The dealer may have unpublished it since you opened the catalog. See [How do I publish a solution?](publishing-a-solution.md).
+* **This solution has no dashboards to preview.** This solution does not include a dashboard. The Content tab still works.
+* **Solution not found.** The application may have been withdrawn from the catalog since you opened it. Go back to the catalog and pick another one.
 
 When you are happy with what you see, select **Use this solution** and continue with [How do I install a solution?](installing-a-solution.md)

@@ -13,27 +13,27 @@ description: "A tour of the My applications tab and the application page in Kilo
 
 The heading is **Applications**, with the introduction: your applications are the solutions you installed and the ones you built yourself, each bundling devices, rule chains, alarm rules, and dashboards, running in your organization.
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-my-applications.jpg" alt="The My applications tab with a search box, a Status filter, a Create an application button, and a table of applications with Photo, Name, Description, Status, Dashboards, Devices, Rules, and Alarms columns"><figcaption><p>The My applications tab of a demo organization. This organization is a dealer, so it also shows the Photo and Status columns.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-my-applications.jpg" alt="The My applications tab with a search box, a Status filter, a Create an application button, and a table of applications with Photo, Name, Description, Status, Dashboards, Devices, Rules, and Alarms columns"><figcaption><p>The My applications tab of a demo organization. This organization publishes the catalog, so it also shows the Photo and Status columns.</p></figcaption></figure>
 
 ## What is in the application list?
 
 Above the table:
 
 * **Search.** Filters the list by name as you type.
-* **Status: All.** A filter with the options **Status: All**, **Status: Published**, and **Status: Not published**. It appears only for dealers.
+* **Status: All.** A filter with the options **Status: All**, **Status: Published**, and **Status: Not published**. It appears only for the organization that publishes the catalog.
 * **Create an application.** The blue button in the top-right corner. See below.
 
 The table columns:
 
 | Column | What it shows |
 |---|---|
-| **Photo** | The picture of the application, if one was added when publishing. Dealers only. |
+| **Photo** | The picture of the application, if one was added when publishing. Only for the organization that publishes the catalog. |
 | **Name** | The application name. |
 | **Description** | A short description of its purpose. A dash means none was written. |
-| **Status** | Dealers only. **Published**, **Not published**, **Published in landing**, **Published in AI**, or **Published in landing & AI**. The last three describe where the platform's own publisher has listed it. |
+| **Status** | Only for the organization that publishes the catalog. **Published**, **Not published**, **Published in landing**, **Published in AI**, or **Published in landing & AI**. The last three describe where the platform's own publisher has listed it. |
 | **Dashboards**, **Devices**, **Rules**, **Alarms** | How many of each the application holds. |
 
-At the end of each row are one or two icon buttons. The **arrow** opens the application. For dealers, the **gear** opens the publish dialog (**Publish application** for an unpublished application, **Update publication** for a published one); see [How do I publish a solution?](publishing-a-solution.md). Selecting anywhere else on the row also opens the application.
+At the end of each row are one or two icon buttons. The **arrow** opens the application. For the organization that publishes the catalog, the **gear** opens the publish dialog (**Publish application** for an unpublished application, **Update publication** for a published one); see [How do I publish a solution?](publishing-a-solution.md). Selecting anywhere else on the row also opens the application.
 
 If your organization has no applications, the tab invites you to create your first one.
 
@@ -54,7 +54,7 @@ An empty application is a container; assign devices, dashboards, rules, and alar
 
 Select an application to open it. The title reads **Applications / ** followed by the name, with the description under it and a back arrow on the left. In the top-right corner you will find, depending on your role:
 
-* **Publish application**, or **Unpublish** and **Update publication** for a published one. Dealers only.
+* **Publish application**, or **Unpublish** and **Update publication** for a published one. Only for the organization that publishes the catalog.
 * A **pencil** icon that opens the **Edit application** dialog.
 * A **trash** icon that starts deletion.
 
@@ -64,7 +64,7 @@ Two tabs sit under the title: **Dashboard** and **Content**.
 
 It shows the application's dashboards in one place. A chip row names each dashboard (here **Site Conditions**), and **Go to the dashboard** at the right opens the full dashboard. Every widget and device fed by the Emulator carries an **Emulator** badge, so you can always see what is still virtual.
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-application-detail.jpg" alt="The Building Monitoring application page with Unpublish and Update publication buttons, a pencil icon, a trash icon, Dashboard and Content tabs, and widgets with Emulator badges"><figcaption><p>The page of a published application in a demo organization. A dealer sees Unpublish and Update publication; other members do not.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-application-detail.jpg" alt="The Building Monitoring application page with Unpublish and Update publication buttons, a pencil icon, a trash icon, Dashboard and Content tabs, and widgets with Emulator badges"><figcaption><p>The page of a published application in a demo organization. Only the organization that publishes the catalog sees Unpublish and Update publication; other members do not.</p></figcaption></figure>
 
 ### What does the Content tab show?
 
@@ -92,4 +92,4 @@ Select the **trash** icon. Kilo asks **Are you sure you want to delete the appli
 
 <figure><img src="../../.gitbook/assets/kilo-solutions-delete-application.jpg" alt="A confirmation dialog asking whether to delete the application, warning that its devices, rules, alarms, and dashboard are permanently removed, with Cancel and Yes, delete buttons"><figcaption><p>The delete confirmation. Deleting an application removes the resources inside it.</p></figcaption></figure>
 
-Deleting an installed application affects only your copy, never the dealer's solution. Read [Deleting an Application](deleting-an-application.md) before you retire anything that holds real data.
+Deleting an installed application affects only your copy, never the solution in the catalog. Read [Deleting an Application](deleting-an-application.md) before you retire anything that holds real data.
