@@ -8,6 +8,12 @@ KiloCenter 2.0 is the release that turns the open-source MIOTY service center fr
 
 It is a major release because upgrading from 1.x needs a few manual steps. Read [How do I migrate KiloCenter key material to 2.0?](operations/key-material-migration.md) before you upgrade, and take a database backup first.
 
+## Why is 2.0 more than a feature release?
+
+The code underneath was cleaned up as well. Dead code, unused settings and unused declarations are removed, large components are split into smaller, focused parts, and hard-coded values moved into shared catalogs and configuration. More than fifty bugs across uplinks, downlinks, sessions, certificates and the web interface are fixed, so 2.0 is also simply a steadier base than 1.x.
+
+We tested it end to end with our MIOTY developer kit: real uplinks and downlinks, including acknowledged and revoked downlinks, and every screen of the web interface. The screenshots in this documentation come from that run.
+
 ## Which edition does 2.0 apply to?
 
 This release is the open-source Community Edition. It stays self-hosted and comes as is; the [edition comparison](README.md#which-edition-should-i-choose) shows when to ask Kilo for the Enterprise edition on your premises or to move to Kilo Cloud, where the platform around the network adds rules, dashboards and alerting.
