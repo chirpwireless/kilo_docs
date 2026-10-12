@@ -4,9 +4,9 @@ description: "Open the dashboards linked to a Kilo application, switch between t
 
 # How do I use application dashboards?
 
-The **Dashboard** tab presents the dashboards associated with an application. It gives operators a direct route from a solution's name to the measurements and controls they use, while the **Content** tab provides the underlying resource inventory.
+The **Dashboard** tab presents the dashboards associated with an application. It takes you from the application straight to its charts and controls. The **Content** tab lists the devices, rules, and alarms behind them.
 
-An application installed from a [solution](installing-a-solution.md) arrives with its dashboard already assigned and bound to its devices. A Building Monitoring application can have separate dashboards for environmental conditions and equipment operation. Associate each dashboard with the application through its **Application** field.
+An application installed from a [solution](installing-a-solution.md) arrives with its dashboard already added and connected to its devices. A Building Monitoring application can have separate dashboards for environmental conditions and equipment operation. To add a dashboard to the application, set its **Application** field.
 
 <figure><img src="../../.gitbook/assets/kilo-applications-dashboard-assignment.jpg" alt="Kilo Applications: Choose the application in the dashboard editor."><figcaption><p>Choose the application in the dashboard editor.</p></figcaption></figure>
 
@@ -21,10 +21,10 @@ The dashboard displays its configured widgets. Their data and available interact
 
 ## How do I change the dashboard layout or widgets?
 
-The application's dashboard view is not the layout editor. Select **Go to the dashboard** to open the dashboard itself, then use its normal editing controls. See [Creating Dashboards](../dashboards/creating-dashboards.md) for the complete workflow.
+The application's dashboard view is not the layout editor. Select **Go to the dashboard** to open the dashboard itself, then use its normal editing controls (you can also find it under **Dashboards** in the left sidebar). See [Creating Dashboards](../dashboards/creating-dashboards.md) for the complete workflow.
 
 After saving your changes, return to the application to check the result. The same dashboard is used in both locations; you are not maintaining an independent copy.
 
 ## Why does no dashboard appear?
 
-Check **Content → Dashboards**. If it is empty, create a dashboard or edit an existing one and set its **Application** field to this application. If you cannot view an associated dashboard, ask the organization administrator to check your dashboard access.
+Check **Content → Dashboards**. If it is empty, create a dashboard (or edit one in **Dashboards** in the left sidebar) and set its **Application** field to this application. If you cannot view an associated dashboard, ask the organization administrator to check your dashboard access.

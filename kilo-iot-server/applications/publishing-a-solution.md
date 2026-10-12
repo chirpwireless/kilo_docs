@@ -4,10 +4,12 @@ description: "How a finished Kilo application becomes a catalog solution: the pu
 
 # How do I publish a solution?
 
+This page is for the Kilo team that publishes the catalog. You do not need it to install and use solutions.
+
 Publishing is how a finished application becomes a solution in the catalog. The application is configured once, then **Publish application** makes it installable with one click. This guide describes every button and field in the publishing workflow.
 
 {% hint style="info" %}
-Publishing is currently limited to the platform's own catalog publisher. If you do not see **Publish application** on an application, your organization cannot publish to the catalog. To get a ready-made application, [browse the catalog](browsing-and-previewing-solutions.md) and install one.
+Only Kilo publishes to the catalog, from its own organization. If you do not see **Publish application** on an application, your organization cannot publish to the catalog. To get a ready-made application, [browse the catalog](browsing-and-previewing-solutions.md) and install one.
 {% endhint %}
 
 ## Where do I start?
@@ -31,12 +33,12 @@ Everyone who can publish sees these fields:
 * **Description.** Up to 300 characters; the placeholder reads *Write application description*, and a longer text shows *Description is too long*. Write the problem it solves, not the equipment it uses.
 * **Add application preview photo.** A PNG or JPG, about 5 MB recommended. It appears on the card and in the **Photo** column. A trash icon removes a chosen photo.
 
-The platform's own catalog publisher also sees:
+Kilo's own organization also sees:
 
 * **Industry.** The industry the solution belongs to (placeholder *Choose industry*).
 * **Implemented Use cases.** A searchable multi-select (placeholder *Choose Use cases*). Pick the problems this solution solves. See [What are use cases in Kilo?](use-cases.md).
-* **Use in Kilo AI.** A listing option for the platform's own catalog, with the hint *Allow Kilo AI to recommend this application when it matches a customer's needs.* When it is on, Industry and Implemented Use cases become required: *Required when Use in Kilo AI is on*.
-* **Show on the landing page.** A listing option for the platform's own website.
+* **Use in Kilo AI.** A listing option for Kilo's own catalog, with the hint *Allow Kilo AI to recommend this application when it matches a customer's needs.* When it is on, Industry and Implemented Use cases become required: *Required when Use in Kilo AI is on*.
+* **Show on the landing page.** A listing option for Kilo's own website.
 
 At the bottom, **Close** dismisses the dialog and **Save** (**Publish application** on the first publication) publishes. A note on a republication reminds you that saving republishes the current content of the application as a new version of the solution. When the source application was deleted, the note instead says the save updates only the catalog card.
 

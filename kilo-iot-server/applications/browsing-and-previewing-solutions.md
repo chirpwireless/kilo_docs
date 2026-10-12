@@ -11,9 +11,9 @@ A solution is a complete answer to one problem. Before you install anything, Kil
 1. In the left sidebar, select **Applications**.
 2. Under the page title **Applications and solutions**, select the **Solutions** tab (it is the first tab).
 
-The tab opens with a heading, **Solutions**, and an introduction: ready-made solutions from your provider, each a complete bundle of virtual devices, rule chains, alarm rules, and a pre-built dashboard. Devices stream through the Emulator connector, so the dashboard is live the moment you install, with no hardware required. Installed solutions land in **Applications**, where you swap the Emulator for LoRaWAN, MIOTY, MQTT, or Traccar to go live.
+The tab opens with a heading, **Solutions**, and an introduction: ready-made solutions from Kilo, each with emulator devices, rules, alarms, and a ready-made dashboard. The emulator devices send sample readings, so the dashboard is live the moment you install, with no hardware required. Installed solutions land in **Applications**, where you swap the emulator devices for real ones (LoRaWAN, MIOTY, MQTT, or Traccar) to go live.
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Solutions tab with five solution cards: Building Monitoring, Demo Application, IP500 demo Smart Office, QA-3440-emulator, and QA_Test_Kilo, each with counters and a Preview button"><figcaption><p>The Solutions tab of a demo organization. Several of these cards are test solutions created while building the feature.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Solutions tab with five solution cards, each with a photo, counters, and a Preview button"><figcaption><p>Example solution cards on the Solutions tab.</p></figcaption></figure>
 
 ## What is on a solution card?
 
@@ -21,10 +21,10 @@ Every card has the same parts, so you can compare solutions at a glance:
 
 * **Photo.** The picture chosen for the solution.
 * **Name and description.** The name is the problem or setting the solution addresses. The description is a one-line summary of the use case.
-* **Four counters.** **Virtual devices**, **rules**, **widgets**, and **alarms**. They tell you how big the install will be before you open anything.
+* **Four counters.** **Virtual devices**, **rules**, **widgets**, and **alarms**. They tell you how big the install will be before you open anything. (The card calls them virtual devices; this guide calls them emulator devices.)
 * **Preview.** The button at the bottom of the card. It opens the solution without installing anything.
 
-If your provider has not published anything yet, the tab says **Your provider has not published any solutions yet**. If the catalog cannot be loaded, you see **Couldn't load the solution catalog**.
+If no solutions are available yet, the tab says **Your provider has not published any solutions yet**. If the catalog cannot be loaded, you see **Couldn't load the solution catalog**.
 
 ## How do I preview a solution?
 
@@ -34,11 +34,11 @@ The header contains a back arrow (it returns you to the catalog), the solution n
 
 ### What does the Dashboard tab show?
 
-**Dashboard** is the first tab. It shows the solution's pre-built dashboard with live data. This is not a screenshot: the virtual devices are running, so the gauges move and the charts draw.
+**Dashboard** is the first tab. It shows the solution's ready-made dashboard with live data. This is not a screenshot: the emulator devices are running, so the gauges move and the charts draw.
 
 <figure><img src="../../.gitbook/assets/kilo-solutions-preview-dashboard.jpg" alt="The Building Monitoring preview on the Dashboard tab with an Indoor CO2 gauge, an Air Quality Trend chart, a Site Devices card, and a text widget naming a motion monitoring rule"><figcaption><p>The Dashboard tab of the Building Monitoring preview, with live values from a virtual device.</p></figcaption></figure>
 
-Some solutions use the Digital Building Twin. This smart-office preview is a 3D floor plan with live labels placed on the rooms, and a small navigation pad in the lower-right corner of the view lets you pan around the plan.
+Some solutions use the [Digital Building Twin](../dashboards/adding-widgets/digital-building-twin/README.md), a 3D model of your building with live readings placed on it. This smart-office preview is a 3D floor plan with live labels placed on the rooms, and a small set of arrows in the lower-right corner of the view lets you move around the plan.
 
 <figure><img src="../../.gitbook/assets/kilo-solutions-preview-3d-office.jpg" alt="The IP500 demo Smart Office preview showing a 3D office floor plan with colored rooms and labels such as air_temperature and door_open"><figcaption><p>A solution can include a 3D floor plan with live readings. In this demo, some labels have values and others show a dash until their device reports.</p></figcaption></figure>
 
@@ -47,14 +47,14 @@ Some solutions use the Digital Building Twin. This smart-office preview is a 3D 
 **Content** explains the solution in words and lists every part of it. Read it from top to bottom:
 
 * **About.** A card with the solution name and its explanatory text. It has two columns: **Who it's for** and **How it works right now**.
-* **Virtual devices.** Each device with its name, an optional model, and an **Emulator** badge that marks it as emulated.
-* **Rules.** The processing logic the solution deploys, with a one-line explanation of each rule.
-* **Alarms.** The notification recipes, each with a severity label such as **Critical** or **Low**.
-* **Emulator.** A card that explains how virtual devices run on the Emulator connector, and how to swap to a real connector later.
+* **Virtual devices.** Each device with its name, an optional model, and an **Emulator** badge that shows it sends sample readings.
+* **Rules.** The rules the solution sets up, with a one-line explanation of each.
+* **Alarms.** The notifications, each with a severity label such as **Critical** or **Low**.
+* **Emulator.** A card that explains how the sample devices work and how to swap to real ones later.
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-preview-content.jpg" alt="The Content tab of the Building Monitoring preview with an About card, two virtual devices with Emulator badges, a Rules card, an Alarms card, and an Emulator card"><figcaption><p>The Content tab of the Building Monitoring preview. In this demo the About text is empty, which a finished solution normally fills in.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-preview-content.jpg" alt="The Content tab of the Building Monitoring preview with an About card, two virtual devices with Emulator badges, a Rules card, an Alarms card, and an Emulator card"><figcaption><p>The Content tab of the Building Monitoring preview. A solution normally includes an About text that explains it.</p></figcaption></figure>
 
-A well-prepared solution fills these cards in. Here is a smart-office demo that includes an installation checklist in **How it works right now**:
+A solution normally includes an About text. Here is a smart-office demo that includes an installation checklist in **How it works right now**:
 
 <figure><img src="../../.gitbook/assets/kilo-solutions-preview-ip500-content.jpg" alt="The Content tab of the IP500 demo Smart Office preview with About, Who it's for, and an installation checklist, followed by five virtual devices, one rule, and one critical alarm"><figcaption><p>A solution with filled-in About text and a mounting checklist for each real sensor.</p></figcaption></figure>
 
@@ -64,6 +64,6 @@ That checklist covers where to mount each real sensor and how to connect it. Rea
 
 * **Preview is unavailable right now.** The preview could not be loaded. Try again in a moment.
 * **This solution has no dashboards to preview.** This solution does not include a dashboard. The Content tab still works.
-* **Solution not found.** The application may have been withdrawn from the catalog since you opened it. Go back to the catalog and pick another one.
+* **Solution not found.** The solution may have been withdrawn from the catalog since you opened it. Go back to the catalog and pick another one.
 
 When you are happy with what you see, select **Use this solution** and continue with [How do I install a solution?](installing-a-solution.md)
