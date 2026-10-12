@@ -39,7 +39,7 @@ This guide does not prescribe redundancy patterns for Z2M. Z2M redundancy is non
 
 - **Zigbee 3.0 interoperability is good but not perfect.** Specific device models may need firmware-version-specific handling. Validate the planned device set against the [Zigbee2MQTT supported devices list](https://www.zigbee2mqtt.io/supported-devices/) before procurement.
 - **Sparkplug B is not native to Z2M.** Z2M publishes flat JSON, not Sparkplug. For deployments standardised on Sparkplug, an additional Sparkplug-encoding bridge sits between Z2M and the broker.
-- **Coordinator firmware compatibility.** The `serial.adapter` setting in Z2M's `configuration.yaml` must match the coordinator chip family — `ezsp` for EFR32MG (Sonoff ZBDongle-E and similar), `zstack` for CC2652P (Sonoff ZBDongle-P). Mismatched values cause Z2M to fail to start.
+- **Coordinator firmware compatibility.** Match `serial.adapter` and the installed firmware to the exact coordinator using the [current Zigbee2MQTT adapter guide](https://www.zigbee2mqtt.io/guide/adapters/). The [EmberZNet guide](https://www.zigbee2mqtt.io/guide/adapters/emberznet.html) documents `ember` for supported Silicon Labs adapters and marks `ezsp` deprecated. Check its firmware requirements before changing an existing installation; a shared chip family alone does not establish compatibility.
 
 ## Routing handoff to the MQTT connector
 

@@ -55,7 +55,7 @@ Combine folder structure with clear names so any team member can locate the righ
 
 Once created, a dashboard appears in the sidebar under its folder (or at the top level if no folder was selected). Click it to open the dashboard view.
 
-The dashboard header shows the **dashboard name** on the left, a vertical divider, and a **Live Data** indicator on the right. The Live Data indicator is a non-interactive label that reads **"Live Data"** with an icon — it confirms that the dashboard receives real-time updates but does not have a click action (unlike the clickable Live Data button on the [overview page](../overview.md)).
+The dashboard header shows the **dashboard name** on the left, a vertical divider, and a non-interactive **Live Data** label with an icon on the right. This label is not a connection-health check or proof of a fresh reading. Check the widget's update time and the device's last-reported time before relying on a value. Unlike the clickable Live Data button on the [overview page](../overview.md), the dashboard label has no click action.
 
 To the far right of the header, an **actions menu** (three-dot icon) provides three options:
 
