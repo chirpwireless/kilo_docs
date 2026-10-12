@@ -97,7 +97,7 @@ Metrics are shared across your organization, not configured separately for each 
 <figure><img src="../../.gitbook/assets/kilo-devices-edit-metric.jpg" alt="The Edit Metric dialog with Data type, Type, Normalized key, an optional Unit of measurement, and Cancel and Save buttons"><figcaption><p>The Edit Metric dialog. Its subtitle reminds you that the unit of measurement is optional.</p></figcaption></figure>
 
 4. Click **Save**.
-5. Review the confirmation describing the organization-wide effect and confirm the change.
+5. A confirmation titled **Are you sure you want to edit "{name}"?** explains that *the devices it's assigned to will automatically update their settings to reflect the changes.* Select **Yes, edit** to apply the change, or close the dialog to keep things as they were.
 
 You can change the data type of an existing metric only while no device uses it. If a device is still mapped to the metric, the dialog stays open and says: *This metric is attached to devices. Detach it from all of them to change its data type.* Remove it from those mappings first, then change the type. Saving an edit keeps the metric's description as it was.
 
@@ -107,7 +107,9 @@ If only one device needs a different definition, create a new metric for that de
 
 Click the trash icon on a metric created by your organization and confirm the action.
 
-Kilo refuses to delete a metric that is still mapped to a device. Remove the mapping from every device that uses it, then try again.
+A confirmation titled **Are you sure you want to delete "{name}"?** appears; select **Yes, delete** to remove it.
+
+Kilo refuses to delete a metric that is still mapped to a device. A dialog titled **"{name}" is used in other devices.** explains: *To delete the metric, you need to unbind it from all devices where it is used.* Select **Okay**, remove the mapping from every device that uses it, then try again. The same dialog appears when you try to delete a normalized key or a unit that devices still use, from the key or unit dropdown.
 
 ## Map a device reading to the metric
 

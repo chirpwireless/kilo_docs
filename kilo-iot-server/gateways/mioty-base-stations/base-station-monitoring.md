@@ -72,7 +72,7 @@ Click **Save changes**. A toast confirms *"Base station updated"*. If the change
 
 The station must be reconfigured with the new certificate pair; until it is, it cannot re-establish its BSSCI session. The registration wizard and Settings share the same certificate panel.
 
-**Delete base station** — removes the station from your organization. You are returned to the gateways list, and a toast confirms *"Base station deleted"*. If the operation fails, the toast reads *"Failed to delete base station"* and the station remains.
+**Delete base station** — removes the station from your organization. A dialog titled **Are you sure?** asks *Are you sure you want to delete this Basestation?* — select **Delete** to confirm, or cancel to keep it. A station that has no name is listed as **Unnamed base station**. You are returned to the gateways list, and a toast confirms *"Base station deleted"*. If the operation fails, the toast reads *"Failed to delete base station"* and the station remains.
 
 ## Operational tips
 

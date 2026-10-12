@@ -27,18 +27,18 @@ The dialog is titled **Publish application** the first time and **Update publica
 
 Every dealer sees these fields:
 
-* **Application name.** Up to 70 characters. This is the title customers see on the card.
-* **Description.** Up to 300 characters. Write the problem it solves, not the equipment it uses.
+* **Application name.** Up to 70 characters; the placeholder reads *Write application name*. This is the title customers see on the card. An empty name shows *Application name is required*, and a name that is too long shows *Application name is too long*.
+* **Description.** Up to 300 characters; the placeholder reads *Write application description*, and a longer text shows *Description is too long*. Write the problem it solves, not the equipment it uses.
 * **Add application preview photo.** A PNG or JPG, about 5 MB recommended. It appears on the card and in your **Photo** column. A trash icon removes a chosen photo.
 
 The platform's own catalog publisher also sees:
 
-* **Industry.** The industry the solution belongs to.
-* **Implemented Use cases.** A searchable multi-select. Pick the problems this solution solves. See [What are use cases in Kilo?](use-cases.md).
-* **Use in Kilo AI.** A listing option for the platform's own catalog. When it is on, Industry and Implemented Use cases become required: *Required when Use in Kilo AI is on*. There is no customer-facing recommendation feature behind this option yet.
+* **Industry.** The industry the solution belongs to (placeholder *Choose industry*).
+* **Implemented Use cases.** A searchable multi-select (placeholder *Choose Use cases*). Pick the problems this solution solves. See [What are use cases in Kilo?](use-cases.md).
+* **Use in Kilo AI.** A listing option for the platform's own catalog, with the hint *Allow Kilo AI to recommend this application when it matches a customer's needs.* When it is on, Industry and Implemented Use cases become required: *Required when Use in Kilo AI is on*. There is no customer-facing recommendation feature behind this option yet.
 * **Show on the landing page.** A listing option for the platform's own website.
 
-At the bottom, **Close** dismisses the dialog and **Save** (**Publish application** on the first publication) publishes. A note on a republication reminds you that saving republishes the current content of the application as a new version of the solution.
+At the bottom, **Close** dismisses the dialog and **Save** (**Publish application** on the first publication) publishes. A note on a republication reminds you that saving republishes the current content of the application as a new version of the solution. When the source application was deleted, the note instead says the save updates only the catalog card.
 
 When it succeeds, a confirmation dialog names the application and says it is published. The card appears in your customers' **Solutions** tab, and in your list the **Status** column changes to **Published**.
 

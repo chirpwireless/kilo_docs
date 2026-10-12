@@ -41,7 +41,7 @@ Select the Start Event on the canvas — a pencil and a bin icon appear beneath 
 
 | Field | Description |
 |---|---|
-| **Device** | Searchable autocomplete dropdown. Placeholder: *Select device*. Lists all devices in your organization. |
+| **Device** | Searchable autocomplete dropdown. Placeholder: *Select device*. Lists the devices in your organization. The list loads the first 200 devices; when your organization has more, a grey note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Sensor** | Autocomplete dropdown. Placeholder: *Select sensor*. Disabled until a device is chosen. Shows only sensors belonging to the selected device. |
 
 **Trigger condition** — Shown instead of the Event filter when **Start source** is **Trigger condition**. A single autocomplete, placeholder *Select trigger*, listing the triggers defined on the **Triggers** tab.
@@ -366,7 +366,7 @@ The target device must be **controllable** (MQTT, or a Class C LoRaWAN device) a
 | Field | Description |
 |---|---|
 | **Name** | A text field for the node label. If left blank, it fills in with the selected command's name. Example: "Shut intake valve". |
-| **Device** | A searchable autocomplete dropdown listing the devices in your organization. Selects the device the command is sent to. |
+| **Device** | A searchable autocomplete dropdown listing the devices in your organization. Selects the device the command is sent to. The list loads the first 200 devices; when your organization has more, a grey note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Command** | An autocomplete dropdown of the chosen device's defined commands. Disabled until a device is selected. |
 | **Parameters** | One row per parameter the selected command expects. Each parameter is supplied as a literal **Value** (validated against the parameter's type and range) or a **CEL Expression** (evaluated at runtime, with `vars` available). |
 | **Inputs / Outputs** | Optional named CEL expressions for advanced data shaping, the same pattern as other nodes. |
@@ -409,7 +409,7 @@ The panel header reads **"Data Enrichment"** with the subtext: *"Attach relevant
 | Field | Description |
 |---|---|
 | **Name** | A text field for the node label. Placeholder: *e.g., Attach Room Temperature to Sensor Data*. |
-| **Device** | Searchable autocomplete dropdown. Lists all devices in your organization — the same selector pattern as the Start Event. |
+| **Device** | Searchable autocomplete dropdown. Lists the devices in your organization — the same selector pattern as the Start Event. The list loads the first 200 devices; when your organization has more, a grey note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Sensor** | Filtered dropdown. Disabled until a device is selected. Shows only sensors belonging to the chosen device. |
 | **Output variable** | A text field for the variable name under which the fetched data is stored. Placeholder: *User metadata*. After the node executes, the result is available as `vars.<output_variable>`. |
 

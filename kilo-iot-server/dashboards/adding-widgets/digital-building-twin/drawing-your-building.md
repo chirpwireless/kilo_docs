@@ -28,7 +28,7 @@ Switch between them with the **3D / 2D** toggle on the floor selector. A common 
 5. Click a second time to set the **end point**. The wall is created.
 6. The tool stays active, so you can immediately draw the next wall. Each wall begins a fresh two-click sequence.
 
-Wall endpoints snap to a grid, which makes it easy to keep corners square and walls aligned. When a new wall crosses an existing one, the existing wall is split at the crossing point — so you can later select and color each segment independently.
+Wall endpoints snap to a grid, which makes it easy to keep corners square and walls aligned. When a new wall crosses an existing one, or ends on it close to its line, the existing wall is split at that point — so you can later select and color each segment independently.
 
 <figure><img src="../../../../.gitbook/assets/dbt-build-tools.jpg" alt="The Build row of structure tools — Wall, Door, Window, Fence, Flat roof, Pitched roof — above the mode toolbar"><figcaption></figcaption></figure>
 

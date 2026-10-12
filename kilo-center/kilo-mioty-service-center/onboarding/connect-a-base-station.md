@@ -15,34 +15,51 @@ Connect a MIOTY base station to your local KiloCenter instance and confirm it is
 * KC-Core, KC-Gateway, and KC-Web running (see Installation)
 * TLS certificates generated (see the certificate bootstrap step in your installation guide)
 * BSSCI reachable on port `5000`
-* Server CA certificate available at `kilocenter-modules/KC-Core/certificates/ca.crt`
+* `protocol.bsci_external_url` (environment variable `KILOCENTER_PROTOCOL_BSCI_EXTERNAL_URL`) set to the address base stations should connect to, for example `tls://bssci.example.com:5000`. If it names `localhost` or a wildcard address, the service center cannot hand out a URL and the **Add Base Station** result shows a warning.
+* A user with the **Base Station Manager** role or **Admin** (see [User Roles and Permissions](../security/users-and-roles.md))
 
-### Step 1: Create the Base Station in KC-Web
+### Step 1: How do I add a base station in KiloCenter?
 
-Before the hardware can connect, the base station must exist in KiloCenter.
+Before the hardware can connect, the base station must exist in KiloCenter. The **Add Base Station** wizard creates it and issues its certificates in one pass.
 
 1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
 2. Select **Base Stations** in the sidebar. The page shows the station counts, a map and a table of every station.
-3. Click **Add Base Station**.
-4. Enter the base station **EUI** (16-character hex string matching the hardware identity) and a **name**.
-5. Save the base station.
+3. Click **Add Base Station** at the top right. The **Add Base Station** dialog opens.
+4. Fill in the fields:
+   * **Base Station Name** (required): "A friendly name for this base station."
+   * **Base Station EUI** (required): the 8-byte EUI as 16 hex digits, for example `0123456789ABCDEF`. Spaces and dashes are tolerated while you type. An invalid value shows "Invalid Base Station EUI format. Enter 16 hex digits."; an EUI that is already registered shows "A base station with this EUI already exists."
+   * **Location (optional)**: **Latitude** (-90 to 90), **Longitude** (-180 to 180) and **Altitude** (meters above sea level). Fill both coordinates or neither, otherwise the dialog says "Both latitude and longitude are required, or leave both empty". **Pick on Map** opens **Select Location** ("Click on the map to place a marker"); click the map, then **Confirm** to copy the coordinates into the form.
+5. Click **Next**. The button stays disabled until the name and EUI are filled in and shows **Creating...** while the station is created.
+
+The dialog then moves to **Base Station Ready**:
+
+* A green banner reads "Base station added successfully! Download the certificates below to complete setup."
+* A summary shows the **Name**, the **Base Station EUI** and the **Service Center URL**, each with a copy button.
+* If the service center holds no reachable URL, a warning names `protocol.bsci_external_url` and `KILOCENTER_PROTOCOL_BSCI_EXTERNAL_URL` instead of showing a URL.
+* **Download CA Certificate**, **Download TLS Certificate** and **Download TLS Key (One-time)** save the three files. "Links expire in 15 minutes. Private key can only be downloaded once." Save all three before you close the dialog.
+* **Next Steps** lists what to enter on the base station: the Service Center URL, `kilocenter-ca-certificate.crt`, `basestation-<EUI>-client-certificate.crt` and `basestation-<EUI>-private-key.key`, then save and restart the station.
+* **Continue** closes the dialog and returns to the list.
+
+If certificate generation fails, the dialog shows **Certificate Generation Failed** with the message "Base station created, but certificate generation failed. Use the retry button to generate certificates." The station already exists. Click **Retry Certificate Generation** (it reads **Generating Certificates...** while it works) or **Continue**, and issue new files later from the station's **Edit** dialog with **Regenerate Certificates**. See [How do I regenerate a base station certificate?](../security/certificate-renewal.md)
 
 ### Step 2: Configure Base Station Hardware
 
 Point the base station firmware to your KiloCenter host:
 
-* **Service Center address**: your KC-Core host IP or hostname
+* **Service Center address**: the Service Center URL from the wizard (your KC-Core host name or IP)
 * **Service Center port**: `5000` (BSSCI)
 * **Protocol**: TLS (required)
 
 For AVA base stations, the factory login is `ubuntu` / `123456`. Change these credentials after initial access.
 
-### Step 3: Import CA Certificate
+### Step 3: Install the Certificates on the Base Station
 
-The base station must trust KiloCenter's CA certificate for TLS to succeed.
+The base station must trust KiloCenter's CA certificate for TLS to succeed and present its own client certificate.
 
-1. Copy `kilocenter-modules/KC-Core/certificates/ca.crt` to the base station.
-2. Import it into the base station's TLS trust store through its configuration interface.
+1. Take the three files you downloaded in the wizard: the CA certificate, the TLS (client) certificate and the TLS key.
+2. Import them through the base station's configuration interface: the CA into its TLS trust store, and the client certificate and key as its identity.
+
+Each base station gets its own client certificate, bound to its EUI. The service center refuses a station that presents anyone else's certificate.
 
 ### Step 4: Verify Connection
 

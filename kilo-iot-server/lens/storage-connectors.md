@@ -9,14 +9,14 @@ A **storage connector** tells Lens where to keep your camera recordings. This pa
 ## How do I open the Add storage connector form?
 
 1. In the main menu choose **Cameras** to open the Lens workspace.
-2. Select **Storage** at the bottom of the Lens menu. The **Storage connectors** page opens.
+2. Select **Storage** in the Lens menu, below **Back to Kilo**. The **Storage connectors** page opens. If you do not see **Storage**, the storage feature is not switched on for your organization yet.
 
 <figure><img src="../../.gitbook/assets/kilo-lens-storage-connectors-empty.jpg" alt="The Storage connectors page with the message No storage connectors configured yet and an Add storage connector button"><figcaption><p>The Storage connectors page before any connector exists.</p></figcaption></figure>
 
-3. Select **Add storage connector**. In the dialog open **Connector type**, pick **Amazon S3**, **Google Cloud Storage**, or **Walrus**, and select **Next**. **Cancel** closes the dialog without saving.
-4. Fill in the fields below and select **Add connector**. The button stays disabled until every required field is filled in.
+3. Select **Add storage connector**. On an empty page the button sits in the middle of the page under "Let's add your first storage connector"; once at least one connector exists it moves to the top right of the page header. In the dialog open **Connector type**, pick **Amazon S3**, **Google Cloud Storage**, or **Walrus**, and select **Next**. **Next** stays disabled until you pick a type. **Cancel** closes the dialog without saving. If the list cannot load, the dialog shows **Connector catalog unavailable. Lens Bridge service is offline.** Close it and try again in a few minutes.
+4. Fill in the fields below and select **Add connector**. If the platform refuses the settings, a red message appears at the bottom of the form, either the provider's explanation or **Failed to create connector. Please try again.** Fix the field it names and select **Add connector** again.
 
-Every form starts with the same note: **Your storage keeps the recordings; the platform keeps the keys and previews and can read the archive. Rotating a key protects future recordings, not past ones.** Read it before you connect storage you care about.
+The next step shows the provider's name, a short description, and an **Add connector** button that stays disabled until every required field is filled in. Every form starts with the same note: **Your storage keeps the recordings; the platform keeps the keys and previews and can read the archive. Rotating a key protects future recordings, not past ones.** Read it before you connect storage you care about.
 
 ## How do I add Amazon S3 or S3-compatible storage?
 
@@ -75,3 +75,46 @@ Walrus keeps a recording for the epochs you pay for. Treat that period as a **mi
 Secret fields are write-only. After you save, Lens does not show them again. When you edit a connector, leaving a secret field blank keeps the stored value. If you change the endpoint, you must enter the credentials again.
 
 Use dedicated credentials for Lens, keep them out of screenshots and support messages, and rotate them in your provider's console when people who knew them leave. See [Cloud Archive](cloud-archive.md) for what **Mark key as compromised** and **Disconnect storage** do, and for how to point a camera at the connector under **Cloud backup** on its Storage tab.
+
+## How do I read the Storage connectors list?
+
+Once you have added a connector, the page lists every connector in a table. Sort a column by selecting its heading.
+
+| Column | What it shows |
+|---|---|
+| **Name** | The label you gave the connector |
+| **Type** | The provider, for example Amazon S3 |
+| **Status** | A colored badge: **Active** (green), **Inactive** (gray), **Error** (red), or **Disconnected** (gray). Hover the badge to see **Verified at** and the time of the last successful check, or the last error text |
+| **Usage** | How much recorded data Lens has stored in this connector |
+| **Details** | Short notes that appear only when they apply (see below). Shows a dash when there is nothing to report |
+| **Created** | The day you added the connector |
+
+The last column holds the buttons for each row.
+
+### What do the Details notes mean?
+
+| Note | What it means and what to do |
+|---|---|
+| The provider's error text, or **Check the connector settings and verify it again.** | The connector is in **Error**. Open **Edit** to correct the settings, then select **Verify**. Long errors are shortened; hover to read the whole text |
+| **Disconnected** *date* **by** *user* | Someone disconnected the storage on that date. Use **Reconnect** to use it again |
+| **Key compromised** *date* **by** *user* | Someone marked the key as compromised and a new key was issued |
+| **Walrus keeps files for the paid period. They can't be deleted earlier.** | Recordings in this Walrus connector stay in your storage until the paid epochs end |
+| **Seeking support will be checked with the first recording.** | Lens has not yet learned whether your storage serves file parts. It checks when the first recording uploads |
+| **Seeking is not available: this storage doesn't serve file parts. Use an aggregator that supports byte ranges.** | Recordings play, but you cannot jump within them. Switch to storage or an aggregator that supports byte ranges |
+| **The signing secret will be confirmed by the first uploaded recording.** | Nothing to do. The first successful upload clears this note |
+| **The storage did not accept uploads on** *date* **(HTTP** *code***).** | Your storage rejected an upload. Check the credentials and permissions, then upload again |
+| **The storage could not be reached for uploads for 24 hours.** | Check the endpoint address and the network path to your storage |
+
+### What do the row buttons do?
+
+| Button | What it does |
+|---|---|
+| **Verify** | Checks that Lens can reach the storage with the saved credentials. A green toast says **Connector reachable** (or the provider's own message); a red toast says **Connector unreachable** or shows the error. A spinner shows while the check runs |
+| **Edit** | Opens the same form with the type locked and the saved values filled in. Secret fields stay blank; leave them blank to keep the stored value. Select **Save** to apply. If saving fails you see **Failed to update connector. Please try again.** |
+| **Mark key as compromised** | Starts key rotation. See [Cloud Archive](cloud-archive.md#how-do-i-rotate-the-key-if-i-think-it-leaked) for the dialog and the **Resend** button |
+| **Disconnect storage** | Permanently erases the platform's keys for this connector. See [Cloud Archive](cloud-archive.md#how-do-i-stop-using-a-storage-connector) |
+| **Reconnect** | Replaces Edit, Verify, **Mark key as compromised** and **Disconnect storage** on a disconnected connector. It opens the form with the secrets erased: enter the credentials again and select **Reconnect** |
+| **Uploaded but not registered** | Lists files that reached your storage but whose upload never finished, so Lens does not track them. Each entry shows the file name, the time, and its location in your storage. The list covers the last 30 days; select **Load more** for older pages. Remove those files in your own storage console. If the list fails to load, select **Try again**. An empty list says **No orphaned uploads in the last 30 days.** |
+| **Delete** | Asks **Are you sure you want to remove connector** *name***?** Select **Yes, remove** to confirm. A green toast says **Storage connector removed**. The platform refuses while camera policies, unfinished uploads, or recordings still reference the connector; the toast then explains why. Move the cameras to another connector or **None (local only)** first |
+
+If another administrator deletes a connector while you have its dialog open, the dialog is replaced by the notice **This storage connector no longer exists.**

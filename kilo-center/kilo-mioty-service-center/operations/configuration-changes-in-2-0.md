@@ -31,7 +31,14 @@ Upgrade KC-Core and KC-Identity together: the internal `GetUserMembership` call 
 | `protocol.connection_establishment_timeout` | `30000` ms (Helm chart value) | The time a new SCACI connection has to finish its TLS handshake and connect. |
 | `protocol.scaci_resume_max_pending_operations` | `10000` | How many operations KC-Core holds for a disconnected Application Center that may resume its session. The operation that would exceed it ends the session's resumability. Helm: `kcCore.config.scaci.resumeMaxPendingOperations`. |
 | `general.org_cache_ttl_minutes` | `5` | How long KC-Identity and KC-Core cache a tenant's default organization. |
-| `certificates.server_names` | none | Further DNS names and IP addresses the server certificate carries. The `certgen` tool takes them through `-san`, and the Certificates page lists the names before you confirm a renewal. |
+| `certificates.server_names` | none | Further DNS names and IP addresses the server certificate carries, beside the host of `protocol.bsci_external_url` and the names of the current certificate, which generation and renewal always keep. The `certgen` tool takes them through `-san`, and the Certificates page lists the names before you confirm a renewal. |
+| `certificates.server_validity_days` | `365` | How many days a server certificate generated or renewed from the web interface is valid. |
+| `protocol.delivery.poll_interval` | `1s` | How often the delivery worker claims due uplink deliveries. Helm: `kcCore.config.protocol.delivery.pollInterval`. |
+| `protocol.delivery.batch_size` | `50` | How many deliveries one poll claims. Helm: `batchSize`. |
+| `protocol.delivery.retry_backoff` | `2s` | The base of the exponential wait between retries of a failed delivery. Helm: `retryBackoff`. |
+| `protocol.delivery.reception_window` | `500ms` | How long a new uplink waits for the receptions of other base stations before it is delivered. Helm: `receptionWindow`. |
+| `status.timeout` | `5s` | The time limit of each service-status probe behind the dashboard's **Service Center Status**. |
+| `registry_provider.*` | disabled | Blueprint submission to a GitHub registry; see [How do blueprints and decoders work?](blueprints-and-decoders.md#how-do-i-submit-a-blueprint-to-the-registry). |
 
 ## Which settings are removed?
 
@@ -39,12 +46,42 @@ Upgrade KC-Core and KC-Identity together: the internal `GetUserMembership` call 
 - `grpc.web.enable_websockets`: the web interface and gRPC-web clients use HTTP streams, not WebSockets. A file that still sets the key loads, and the key is ignored.
 - `kcIdentity.config.auth.registrationEnabled` (Helm): no template read it, so KC-Identity always ran with self-registration off. Nothing changes.
 - The organization and tenant quotas `can_have_base_stations`, `max_base_station_count` and `max_endpoint_count`, with their database columns and screens.
+- `protocol.max_retransmissions` (Helm `maxRetransmissions`): KC-Core no longer reads it.
+- `protocol.propagation.*` (`batch_size`, `inter_batch_delay`, `max_retries`, `retry_backoff`, `cool_down`, `enable_metrics`): the automatic propagation reconciliation settings are gone from the configuration.
+- `storage.archival_check_interval`.
+- `auth.bootstrap.*` (`enabled`, `initial_admin_email`, `password_hash`): the first administrator is no longer created from the configuration file.
+- `federation.outbox_max_size`.
+- `status.endpoints`: the components the dashboard probes now follow the general, protocol, gRPC, identity and MQTT settings; only `status.timeout` remains.
+
+A configuration file that still sets a removed key loads without an error, and the key is ignored.
 
 ## Which settings are validated more strictly?
 
 - An empty `certificates.certgen_path`, `certs_dir` or `temp_dir`, or a `server_validity_days` or `cleanup_interval_min` of zero or less, stops KC-Core at start-up. Leave a setting out to get its default.
 - `protocol.strict_org_resolution: true` together with a SCACI listener needs `protocol.scaci_cert_tenant_mapping: true`. KC-Core checks it when it loads the configuration.
 - The `downlink_expiry`, `delivery`, `socket_write_timeout` and `connection_establishment_timeout` values must be positive, and `max_backoff` must be at least the retry backoff.
+
+## What do I need to know before I upgrade a running installation?
+
+- **Migration 000189 changes stored `ref` values.** It adds a unique index on the `ref` of an organization's end point and clears the `ref` of every later downlink that repeated a `ref` the organization had already used for the same end point; only the earliest downlink keeps it. A client still waiting for the result of such a repeated downlink receives that result without `ref`, so it cannot match the result to its command. Finish or reconcile such commands before you upgrade.
+- **Migrations 000190 and 000191** add the **Revoking** downlink status and the `dl_data_sent_after_expiry` event type. They need no action; see [How do I send a downlink and follow it?](downlinks-and-traffic.md).
+- **Changed defaults.** `protocol.detach_signature_validation_enabled` now defaults to `false`: detaches are recorded as unverified until an authoritative validator is injected. `protocol.bsci_tls.min_version` stays `1.2` because BSSCI sets no TLS floor; use `1.3` only if every base station supports it. The sample `registry_provider.blueprint_path` is now empty instead of `blueprints/`.
+- **Helm secrets.** Set `secrets.masterKey` (64 hex characters or base64 for 32 bytes) and `secrets.internalPeerSecret` (at least 32 characters) on every install and upgrade; the services refuse to start without them. Keep the master key: stored keys cannot be decrypted without it.
+
+## How do I configure the Helm key-material hook?
+
+The `rekey` block of `values.yaml` controls the pre-upgrade hook. The procedure is in [How do I migrate KiloCenter key material to 2.0?](key-material-migration.md#kubernetes-helm).
+
+| Value | Default | Meaning |
+|---|---|---|
+| `rekey.enabled` | `true` | Runs the hook before an upgrade. A clean database makes it a no-op. |
+| `rekey.mode` | `apply` | `dry-run` only counts, `apply` converts the keys and `verify` fails unless every value is converted. |
+| `rekey.image.repository`, `rekey.image.tag` | `ghcr.io/kiloiot/kc-core`, empty | The image that contains the `rekey` and `migrate` binaries. An empty tag uses the KC-Core tag. |
+| `rekey.migrateToVersion` | `143` | The schema version the hook migrates to first. It never migrates down. |
+| `rekey.legacyPassphrase` | empty | The `KC_ENCRYPTION_KEY` passphrase a deployment set before 1.4; leave empty if you never set one. |
+| `rekey.allowPublishedDevelopmentKey` | `true` | Decrypts rows sealed under the published development passphrase. Set to `false` when you pass `rekey.legacyPassphrase`. |
+| `rekey.archiveExport.existingClaim` | empty | An existing PersistentVolumeClaim, writable by uid/gid 1000, that receives the encrypted export of retired `endpoint_keys` rows. |
+| `rekey.archiveExport.mountPath` | `/var/lib/kilocenter/rekey` | Where the claim is mounted in the hook. |
 
 ## How do the health checks work now?
 

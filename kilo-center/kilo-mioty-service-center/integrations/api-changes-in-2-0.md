@@ -33,12 +33,24 @@ Check this list before you point an existing client at KiloCenter 2.0. It is gro
 - **Input limits.** A ulData with a malformed `subpackets` object or more than 200 bytes of `userData` gets a BSSCI protocol error (EPROTO) and is not stored. SCACI numbers out of range, including negative values in unsigned fields, are refused with code 34. MQTT `command/down` payloads are limited to 200 decoded bytes, the radio downlink limit.
 - **Duplicates.** An uplink the base station resends after a session resume merges into the original, because duplicates are recognized by the base station's reception time. SCACI ulData reports `duplicate: true` when an end point reuses a packet counter outside the duplicate window; the uplink is still stored and delivered.
 
+## Which calls are new?
+
+- `UpdatePendingDownlink` replaces the payloads, priority, counters and flags of a downlink that is still `pending`. Once the scheduler has picked it up, revoke it and send a new one. The web interface offers it as **Edit pending downlink**.
+- `ListErrorGroups` returns failures grouped by event type, code and source for a `bucket` (`control_plane`, `base_station`, `endpoint` or `downlink`). It backs the **Errors Center**.
+- `ListCapabilities` returns the named, non-secret feature toggles of the service center; any role may call it.
+- `GetDiagnosticsBundle` downloads a diagnostics archive; administrators only.
+- `GetCEStatus` and `CompleteCEOnboarding` (public) and `ListCEInstances` and `RevokeCEInstance` (administrators) belong to Community Edition onboarding and federation.
+
+The service now offers 126 calls in total; see the [API reference](api-reference/README.md).
+
 ## What new fields and filters can I use?
 
 - **End point:** `last_rssi`, `last_snr` and `last_eq_snr` (the latest reception), `serving_bs_eui` (the base station a downlink queued now would go to, on `GetEndPoint`), and `reattach_pending` (an edit changed attach parameters after the last attach, so the stations hold the earlier profile until you attach again). The end point's **Configuration** tab shows them, and marks an end point "Configuration pending re-attach".
 - **Downlink:** `accepted_at` (when the holding base station accepted it with dlDataQueRsp) and `endpoint_acked_at` (when an uplink with `dlAck` acknowledged it). The downlink results show the second as **Acknowledged by device**.
 - **Uplinks:** `Message.op_id` joins an uplink to its event-log rows. `BaseStationMessage` carries `dl_open`, `dl_ack`, `res_exp`, `op_id` and `format`, and `ListBaseStationMessages` takes the same filters as `ListMessages` (`duplicate`, `dl_open`, `profile`, `mode`).
-- **Base station:** `certificate_expires_at` on the list and the detail. `GetServerCertificateStatusResponse.renewal_names` lists the names a renewed server certificate would carry.
+- **Base station:** `certificate_expires_at` on the list and the detail, plus `tls_cert_fingerprint` (the SHA-256 fingerprint of the issued client certificate) and `session_started_at` (the last completed BSSCI connect handshake). `GetServerCertificateStatusResponse.renewal_names` lists the names a renewed server certificate would carry.
+- **Downlink queue:** `ListDownlinkQueue` takes `status` (one queue state; the default is every in-flight state), `priority`, `que_id` and `bs_eui`, and `GetDownlinkResults` takes `bs_eui` and `que_id`.
+- **Events:** `ListEvents` takes `op_id`, `ep_eui`, `bs_eui`, `outcome` and `search`. Events carry `user_id` and `user_email` of the acting user for operator actions. `AlertSummary.info` is deprecated and always 0, because info events are not alerts.
 - **Profile:** `GetProfile` returns the caller's effective roles in `UserProfile.roles`.
 
 ## What does the MQTT interface add?

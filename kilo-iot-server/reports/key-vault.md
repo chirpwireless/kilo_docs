@@ -72,7 +72,9 @@ Values are stored encrypted. Only users with access to the Key Vault page can re
 
 A key is the one thing you do not want on a screen during a site walk-through or a screen share, so the list never shows one by default. Every key appears as a row of dots, and each row has its own **Show key** button, placed before **Edit** and **Delete**. Click it to reveal that key, and the button becomes **Hide key** to cover it again. Revealing one key does not reveal the others, and the column keeps its width, so the table does not jump around.
 
-The button is available to every user who can open the page, including those with view-only access, because reading a key you are already allowed to see needs no edit rights. Inside the **Add Key Pair** and **Edit Key Pair** dialogs the key field behaves like the one on the device form: a stored key is hidden, the characters show while you type or paste so you can check them against the label, and the field hides them again when you leave it or press Enter.
+The button is available to every user who can open the page, including those with view-only access, because reading a key you are already allowed to see needs no edit rights. Inside the **Add Key Pair** and **Edit Key Pair** dialogs the key field behaves like the one on the device form: a stored key is hidden, the characters show while you type or paste so you can check them against the label, and the field hides them again when you leave it or press Enter. Once the field holds a value, an **eye** button appears at its right edge: select it to show or hide the key on demand, for example to check a stored key against its label. An empty field has no eye, because there is nothing to reveal. A key that was loaded from the vault or scanned from a QR code stays hidden until you press the eye.
+
+**Add Key Pair** (and **Add your first key pair** on an empty vault), **Edit** and **Delete** appear only for users with edit access to the page. A view-only user sees the list and **Show key**, and nothing else.
 
 ---
 
@@ -141,7 +143,7 @@ Remove entries for hardware that has left the deployment — units that were dec
 
 1. Locate the entry.
 2. Choose delete.
-3. Confirm at the prompt: *"Are you sure you want to delete this key pair?"*
+3. Confirm in the dialog titled **Are you sure?**, which reads *"Are you sure you want to delete this key pair?"* Select **Delete** to confirm.
 
 You will see **"Key pair deleted"**. If the deletion does not complete, the page reports **"Failed to delete key pair"**; retry, and if it persists, confirm you still have Edit access to the page.
 

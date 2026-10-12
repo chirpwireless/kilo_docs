@@ -13,24 +13,37 @@ Lens **Live view** lets operators inspect multiple connected cameras in one work
 
 1. Select **Cameras** in Kilo's main navigation to open Lens.
 2. Open **Live view**.
-3. Find cameras by name and use connection-state filters when needed.
-4. Choose a two-, three-, or four-column layout.
+3. Type in **Search cameras...** to find a camera by name, and open **All statuses** to show only cameras in one state, such as **Online** or **Offline**. With no match the page says **No cameras available.** Use the page numbers under the grid when you have many cameras.
+4. Choose a two-, three-, or four-column layout with the column buttons at the right of the filters (*N* **columns**). The default is three.
 5. Start live video on each camera you want to watch.
 
 A preview image and an active live stream are different viewing states. Start the stream when you need continuous video rather than assuming a preview is already live. Each tile has its own viewing controls, so two cameras can be watched together.
 
-Use fullscreen when you need to examine one camera more closely. Return to the grid to compare views. Larger layouts and more simultaneous live streams require more network and viewing-device capacity.
+Select **Toggle fullscreen** on a tile when you need to examine one camera more closely. Return to the grid to compare views. Larger layouts and more simultaneous live streams require more network and viewing-device capacity.
 
 ## Camera controls
 
 Available controls depend on the connected camera:
 
-- **Audio:** listen when an audio stream is available; use mute when you do not need sound.
-- **Talkback:** speak through a compatible camera when two-way audio is available and configured.
+- **Audio:** the speaker button (tooltip **Listen**) unmutes or mutes camera sound when an audio stream is available.
+- **Talkback:** the microphone button (tooltip **Hold to talk**) speaks through a compatible camera when two-way audio is available and configured. See below for how to use it.
 - **Pan, tilt, and zoom:** reposition a camera that exposes supported movement controls.
 - **Presets:** use saved positions on supported cameras; authorized operators can manage those positions and return to the home position.
 
 A camera without a supported capability will not gain physical movement or audio hardware through Lens. States such as **Needs setup** or **Not supported** help distinguish configuration from device capability.
+
+| State | Where you see it | What it means |
+|---|---|---|
+| **Available** | Camera page, **Media capabilities** | The control works now |
+| **Not supported** | **Live audio** or **Talkback** | This camera or its source type cannot do it. Optional detail: **Not supported by this camera type** or **No two-way audio detected on this camera** |
+| **Needs setup** | **Talkback** | The camera can do it but setup is missing. On the live tile a crossed-out microphone shows **Two-way audio needs setup.** Detail may add **Camera cloud password required**. Finish setup in Twin |
+| **Not available** | **Live audio** or **Talkback** | It is supported but unusable right now. Detail may say **No audio track detected**, **Audio codec not supported in the browser** or **Audio transport failed** |
+
+A line such as **Talkback: Needs setup** appears on the tile when talkback is the problem; otherwise **Live audio** states are shown the same way.
+
+### What does the live-stream statistics popup show?
+
+Hover over the small colored status dot beside the **Preview** and **Live** switch in a live tile's top-right corner while a live stream plays. A popup lists the stream's technical values: **Resolution**, **FPS**, **Codec**, **Bitrate** (in kbps), **Total Data**, **Connection** type, **RTT** and **Jitter** (in ms), **Packets Lost**, **Frames Dropped**, and **Key Frames**. Move the pointer away to close it. Use it when video stutters: high **RTT**, **Jitter** or **Packets Lost** point to the network between your browser and the camera. The dot does not react while the tile shows a preview image. If the live connection cannot start, Lens reports **Live connection failed**; check the network path and try **Live** again.
 
 <figure><img src="../../.gitbook/assets/kilo-lens-night-view.jpg" alt="Kilo Lens showing nighttime previews from the Tapo and HiLook cameras"><figcaption><p>Lens displays the images supplied by each camera, including its nighttime view.</p></figcaption></figure>
 
@@ -46,7 +59,7 @@ For a saved arrangement of selected feeds, create a [videowall](videowalls.md). 
 
 ## Listen and speak through a camera
 
-Start the live stream and use its audio control to unmute or mute supported camera audio. For two-way audio, use the talkback control: allow microphone access when your browser asks, press and hold while speaking, and release to stop transmitting. A microphone permission denial, an unsupported camera, or incomplete camera audio setup prevents talkback. Check the displayed capability state before troubleshooting the microphone.
+Start the live stream and use its audio control to unmute or mute supported camera audio. For two-way audio, use the talkback control: allow microphone access when your browser asks, then press and hold the microphone button (**Hold to talk**) while you speak. Release the button, or move the pointer off it, to stop transmitting; the microphone icon is highlighted while you are talking. A microphone permission denial, an unsupported camera, or incomplete camera audio setup prevents talkback. Check the displayed capability state before troubleshooting the microphone.
 
 ## Move a camera and save useful positions
 

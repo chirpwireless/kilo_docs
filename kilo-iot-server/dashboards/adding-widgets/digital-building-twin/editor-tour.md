@@ -33,7 +33,7 @@ Select any object and a properties panel opens with the settings for that specif
 * **Walls** — Length, Height, Thickness, and a **Material** grid (white, brick, concrete, wood, glass, metal, plaster, tile, marble, or a custom color).
 * **Doors and windows** — Width, Height, position along the wall, hinge side and swing direction for doors, sill depth for windows.
 
-Every selected object also gets an inline action badge with quick **Move**, **Duplicate**, and **Delete** buttons. The badge works in the **2D view** as well as in 3D, so you can lay out and rearrange a floor entirely from the top-down plan. The properties panel offers **Duplicate** for every kind of object, not only catalog items.
+Every selected object also gets an inline action badge. For catalog items, doors, and windows it carries **Move**, **Duplicate**, and **Delete** buttons; for walls and other structure it carries **Delete** only. The badge works in the **2D view** as well as in 3D, so you can lay out and rearrange a floor entirely from the top-down plan. The properties panel shows the same **Duplicate** button, again only for catalog items, doors, and windows.
 
 <figure><img src="../../../../.gitbook/assets/kilo-dbt-editor-3d.jpg" alt="The Digital Building Twin editor in 3D view: the scene tree on the left, the floor selector with the 3D / 2D toggle, the Pan, Rotate and Zoom hints at the top, and the Preview, Cancel and Save buttons at the top right"><figcaption></figcaption></figure>
 

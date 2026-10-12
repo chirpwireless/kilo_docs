@@ -120,7 +120,7 @@ Two things to expect once you have answered:
 
 ## When a node fails
 
-If a node errors during execution, you are told in three places at once, so the red outline is no longer the only clue. The failing node is outlined in red on the canvas, with a badge under the outline reading **Execution failed at "{node}"**. A banner above the debug panel tabs shows **Execution error** with the message the executor reported, and the same message appears as a toast. The message names what actually went wrong, so you can often fix the node without opening anything else.
+If a node errors during execution, you are told in three places at once, so the red outline is no longer the only clue. The failing node is outlined in red on the canvas, with the message the executor reported shown in a small box under the outline. A banner above the debug panel tabs is titled **Execution failed at "{node}"** (**Execution error** when the failing node cannot be named) and repeats that message; when the error comes from an expression, a monospace **Expression:** line below shows the expression that failed. The same message also appears as a red toast, written **Execution error: {message}**. The message names what actually went wrong, so you can often fix the node without opening anything else.
 
 Not every error means a step failed. A command the debugger refuses, such as a watch expression that does not parse, a breakpoint that does not exist, or too many commands in a short time, is shown as a toast only. It does not draw a red outline or banner, and it leaves the session where it was, so a typo in the **Evaluate** box never looks like your rule broke. A **recoverable** error keeps the debug session paused and loaded — you can inspect the variables, adjust state, and continue — while an **unrecoverable** error ends the session.
 
@@ -134,9 +134,16 @@ Paste the expression into **Evaluate** on the Watch tab to try it against the cu
 
 ## Session lifecycle
 
-A debug session runs for **30 minutes**, measured from when it starts — stepping through the rule does not extend it. You'll see a warning shortly before it expires, and a notification if it times out, closes (with the reason), or loses its connection. Start a new session to keep debugging.
+A debug session runs for **30 minutes**, measured from when it starts — stepping through the rule does not extend it. You will see these notifications:
 
-Breakpoints are tied to the elements in the diagram you loaded, so reloading the editor can drop them. A notification tells you how many, so you can re-add them.
+* **Debug session expires in {n} seconds** (warning) shortly before the 30 minutes are up.
+* **Debug session timed out** (error) when the time has run out.
+* **Debug session closing: {reason}** (warning) when the platform closes the session, with the reason it gives.
+* **Debug connection error** (error) when the connection to the debugger is lost.
+
+Start a new session to keep debugging.
+
+Breakpoints are tied to the elements in the diagram you loaded, so reloading the editor can drop them. A warning toast, **{n} breakpoint(s) removed after reload**, tells you how many, so you can re-add them.
 
 If starting a session fails, the platform is running its maximum number of debug sessions at that moment. Try again shortly.
 

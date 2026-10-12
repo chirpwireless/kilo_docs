@@ -18,7 +18,7 @@ The endpoint supplies data to a [digital twin](README.md). Name the twin for the
 
 - **A Mioty connector.** Without it, the MIOTY fields are unavailable and the form reports **"Create a Mioty connector first"**. See [MIOTY Connector](../connectors/mioty-connector/README.md).
 - **At least one base station online.** Endpoints attach through base stations. See [MIOTY base stations](../gateways/mioty-base-stations/README.md).
-- **Endpoint credentials from the manufacturer** — the End Point EUI and the Network Session Key, normally on the unit's label or in a shipped provisioning file.
+- **Endpoint credentials from the manufacturer** — the End Point EUI and the Network Key, normally on the unit's label or in a shipped provisioning file.
 
 ## Selecting the connector
 
@@ -28,7 +28,7 @@ On the device form, select the Mioty connector as the connector type. The form t
 
 ## Basic
 
-- **End Point EUI** — the endpoint's unique identifier, exactly 16 hexadecimal characters. This is the address the network knows the unit by. A value that is not 16 hex characters is rejected.
+- **End Point EUI** — the endpoint's unique identifier, exactly 16 hexadecimal characters. This is the address the network knows the unit by. The field's hint reads **16 hex characters (e.g., 01-23-45-67-89-AB-CD-EF or 0123456789ABCDEF)**, so you can type or paste it with or without dashes. A value that is not 16 hex characters is rejected.
 
 ## Network
 
@@ -49,10 +49,12 @@ Both settings are properties of how the unit is configured and specified by the 
 
 Registering a device record and having the base stations serve it are two different things, so the **Connection** tab of a saved MIOTY device carries a **mioty endpoint** panel that shows where the endpoint stands and lets you change it:
 
+While the panel loads it reads **Loading endpoint status…**, and if the platform cannot get the status it reads **Endpoint status unavailable**; reload the page to try again. Once it loads, it shows:
+
 - **Attach status** reads **Attached**, **Detached**, **Attaching** or **Unknown** (Kilo Center may report a state the platform does not know yet), next to **Last seen**, which says **Not heard yet** until the first uplink arrives.
 - **Attach** sends a pending configuration to the base stations or brings a detached endpoint back into service.
-- **Detach** stops service on purpose, and asks you to confirm first because **the base stations stop serving this device: its uplinks are no longer received and no downlinks are sent until it is attached again.** It is the clean way to take an endpoint out of service without deleting its twin, history or rules.
-- **Configuration pending** appears when you have changed settings that the base stations have not received yet. They keep the previous settings until the endpoint is attached again, so click **Attach** after editing a live endpoint.
+- **Detach** stops service on purpose. A dialog titled **Detach the endpoint?** asks you to confirm first because **the base stations stop serving this device: its uplinks are no longer received and no downlinks are sent until it is attached again.** Confirm with **Detach**; if the request fails, a toast reads **Failed to detach the endpoint**. It is the clean way to take an endpoint out of service without deleting its twin, history or rules.
+- **Configuration pending** appears in orange when you have changed settings that the base stations have not received yet, worded **Configuration pending: the base stations keep the previous settings until the endpoint is attached again.** Click **Attach** after editing a live endpoint.
 
 Users with view-only access see the status but not the buttons.
 
@@ -71,10 +73,10 @@ Use the manufacturer's provisioning values. If a parameter is not documented, co
 
 ## Counters
 
-- **Last Packet** — the packet counter position.
-- **Attach** — the attachment counter.
+- **Last Packet Counter** — the packet counter position.
+- **Attach Counter** — the attachment counter.
 
-Both are **0** for a new device, and you enter them only while creating it: after the device is saved they become read-only, so a stray edit cannot misalign a running endpoint. They exist so that a device record can be aligned with an endpoint that already has history — for example when you are migrating a unit that has been running elsewhere. For a unit out of the box, leave them at zero.
+Both are **0** for a new device, and you enter them only while creating it: after the device is saved they become read-only, so a stray edit cannot misalign a running endpoint. A note under the pair says so: **Counters are set when the device is created. KiloCenter keeps them up to date afterwards.** They exist so that a device record can be aligned with an endpoint that already has history — for example when you are migrating a unit that has been running elsewhere. For a unit out of the box, leave them at zero.
 
 Aligning the counters lines up the *record*. It does not move the endpoint onto your network. A MIOTY endpoint attaches to one network at a time, and a unit that was running on another service center is still attached there — it will not appear under your base stations because you created a device record for it. Reset the endpoint so it attaches again, following the manufacturer's procedure for your model. Once a base station picks it up, the device's **Connection** tab moves to *Reached network — waiting for data*. See [Device Diagnostics](device-diagnostics.md) for how that lifecycle reads on the platform.
 
@@ -85,9 +87,9 @@ Aligning the counters lines up the *record*. It does not move the endpoint onto 
 
 ### Add to Vault
 
-Endpoint credentials have a way of ending up out of reach — on a label on a unit that is now sealed inside an enclosure on a pipe rack. Click **Add to Vault** on the device form to store the End Point EUI and Network Session Key pair in Key Vault, where they are recoverable independently of the hardware and the sticker.
+Endpoint credentials have a way of ending up out of reach — on a label on a unit that is now sealed inside an enclosure on a pipe rack. Click **Add to Vault** on the device form to store the End Point EUI and Network Key pair in Key Vault, where they are recoverable independently of the hardware and the sticker.
 
-Do it at commissioning, while the credentials are still in front of you. Recovering a unit whose Network Session Key you no longer have on file means opening the enclosure — and some manufacturers only give the key back over a wired connection, if they give it back at all. See [Key Vault](../reports/key-vault.md).
+Do it at commissioning, while the credentials are still in front of you. Recovering a unit whose Network Key you no longer have on file means opening the enclosure — and some manufacturers only give the key back over a wired connection, if they give it back at all. See [Key Vault](../reports/key-vault.md).
 
 ## Validation — what blocks a save
 
@@ -110,7 +112,7 @@ A MIOTY endpoint's telemetry is **not decoded until a blueprint is selected for 
 
 Blueprint Configuration lives on the same device form. You can pick an existing blueprint from the catalog or author a new one from JSON, and the choice is copied onto the device as its own independent snapshot. That snapshot model is what makes it safe to change catalog templates on a production fleet.
 
-To check a decoder before you rely on it, use **Test decoder** in the blueprint section: paste a **Sample payload (hex or base64)**, choose the **Format** (the uplink's user data format, shown when the blueprint defines more than one) and click **Run test**. The **Decoded result (read-only)** shows what the endpoint's real messages will turn into. The result clears itself whenever you change the payload, the format, the blueprint or the model, so you never read an answer that belongs to an earlier input. See [MIOTY Blueprints](mioty-blueprints.md).
+To check a decoder before you rely on it, use **Test decoder** in the blueprint section: paste a **Sample payload (hex or base64)**, choose the **Format** (helper text **User data format of the uplink (0-n)**, shown when the blueprint defines more than one) and click **Run test**. If the payload cannot be decoded, the result area shows **Decode failed** or the error detail the decoder reports. The **Decoded result (read-only)** shows what the endpoint's real messages will turn into. The result clears itself whenever you change the payload, the format, the blueprint or the model, so you never read an answer that belongs to an earlier input. See [MIOTY Blueprints](mioty-blueprints.md).
 
 ## What's next
 

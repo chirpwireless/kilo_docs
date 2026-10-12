@@ -81,9 +81,21 @@ Take this path when the catalog does not cover your hardware, or when a firmware
 
 That last one is worth understanding rather than working around. The `typeEui` identifies a payload type. If it already exists, the correct move is to use the existing model — and if you need a different decoder for it, add a version to that model.
 
+## Which other messages can the Blueprint Configuration section show?
+
+| Message or control | What it means |
+|---|---|
+| **System catalog is read-only. Switch to Custom to create or edit blueprints.** | You have the **System** toggle selected. Only administrators change System entries; switch to **Custom** to author your own. |
+| **This device model has no default blueprint. Pick a version above.** | The model exists but no version is marked as its default. Choose a **Blueprint Version** yourself. |
+| **+ Add new manufacturer** | Opens **New manufacturer name**; type the name and click **Add**. |
+| **+ Add new model** | Opens **Device model name** and **Device model description (optional)**. A model name that already exists under the manufacturer is flagged: **A device model with this name already exists under this manufacturer**. |
+| **+ New version** | Authors another version under an existing model. **Blueprint version (e.g. 1.0.0)** is flagged if it exists already: **A blueprint with this version already exists for this device model**. The note under the list says **Editing a template updates it for new devices only; devices already attached keep their pinned snapshot.** |
+| **Save Blueprint** / **Save changes** | The button reads **Save Blueprint** for a new blueprint and **Save changes** when you edit an existing one. |
+| **The source blueprint was deleted and no snapshot is pinned to this endpoint.** | The catalog entry is gone and the device never received a snapshot, so there is nothing to show. Pick another blueprint. |
+
 ## Decode preview
 
-In **Test decoder**, enter a known **Sample payload (hex or base64)** and click **Run test**. Read **Decoded result (read-only)** or the error beneath the input. This previews decoding without requiring a live transmission.
+In **Test decoder**, enter a known **Sample payload (hex or base64)** and click **Run test**. Read **Decoded result (read-only)** or the error beneath the input, which says **Decode failed** or gives the decoder's own error detail. This previews decoding without requiring a live transmission.
 
 Use it. A blueprint that parses as JSON is not the same thing as a blueprint that decodes correctly — scaling factors, byte order, and signed values are the classic places a decoder is syntactically perfect and semantically wrong. A sample payload with a known value takes a minute at the bench and saves you from discovering the problem as a temperature chart that reads plausibly and is off by a factor of ten. Take a payload from the device's own documentation, or from a unit you have already commissioned.
 

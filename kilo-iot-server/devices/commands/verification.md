@@ -16,7 +16,7 @@ Configure the check per command in **section 4** of the [command editor](creatin
 
 Fire-and-forget. The command is sent and the platform does not check the result.
 
-With this strategy, an execution is marked **Delivered as soon as the downlink is accepted for delivery — not when the device acts on it.** (The green **Delivered** status means exactly that: sent, but unverified — distinct from **Confirmed**, which only a verification strategy can produce.) There is no guarantee the action had any effect. This is appropriate for non-critical, idempotent actions where a missed command is harmless and will be re-sent anyway, but never rely on it as proof that something physically changed.
+With this strategy, an execution is marked **Delivered as soon as the downlink is accepted for delivery — not when the device acts on it.** (The green **Delivered** status means exactly that: sent, but unverified — distinct from **Confirmed**, which only a verification strategy can produce. The warning the editor shows under this option says the execution is marked *Confirmed*; in the execution list the status you will see is **Delivered**.) There is no guarantee the action had any effect. This is appropriate for non-critical, idempotent actions where a missed command is harmless and will be re-sent anyway, but never rely on it as proof that something physically changed.
 
 ## Wait for next uplink
 

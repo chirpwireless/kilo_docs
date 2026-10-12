@@ -20,7 +20,7 @@ KiloCenter's API is defined across three proto files:
 
 | File | Description |
 |------|-------------|
-| `kilocenter.proto` | Unified backward-compatible service (all 121 RPCs) |
+| `kilocenter.proto` | Unified backward-compatible service (all 126 RPCs) |
 | `core.proto` | Core domain messages (endpoints, base stations, messages, downlinks, events, certificates, blueprints) |
 | `identity.proto` | Identity domain messages (users, organizations, API keys, auth) |
 
@@ -69,7 +69,7 @@ When authentication is enabled (`KILOCENTER_AUTH_ENABLED=true`), three metadata 
 **Identity validation:** When auth establishes identity (JWT or API key), the `x-user-id` and `x-organization-id` headers must *confirm* the authenticated identity — they cannot replace it. A mismatch between header values and the authenticated context returns `PermissionDenied`.
 
 **Public methods** (no headers required):
-`Login`, `RefreshTokens`, `GetAuthSettings`, `ExchangeOIDC`, `ExchangeOAuth2`, `GetReleaseInfo`, `RegisterAccount`
+`Login`, `RefreshTokens`, `GetAuthSettings`, `ExchangeOIDC`, `ExchangeOAuth2`, `GetReleaseInfo`, `RegisterAccount`, `GetCEStatus`, `CompleteCEOnboarding`
 
 **Org-exempt methods** (auth required, no org header):
 `GetSystemStatus`, `GetProfile`, `Logout`, `ChangePassword`, User/Org/Membership CRUD (org context resolved from request fields). Org-exempt calls still need the roles listed in [User Roles and Permissions](../../security/users-and-roles.md#which-roles-does-each-api-call-require).
@@ -112,7 +112,7 @@ With `status` in `update_mask`, `UpdateEndPoint` attaches (`attached`) or detach
 - Any other value, `attaching` included, returns `INVALID_ARGUMENT`.
 - On a server without the attachment service, a status change returns `UNIMPLEMENTED` (`KC-GRPC-ERR-906`) and nothing is saved.
 
-#### Base Stations (9)
+#### Base Stations (12)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
@@ -146,7 +146,7 @@ The `BaseStation` message includes geolocation fields:
 - **Lat/lon pair rule:** `latitude` and `longitude` must both be present in the mask or both omitted. Setting one without the other returns `INVALID_ARGUMENT`. `altitude` is independent.
 - **GPS-authoritative:** When a base station reports geolocation via the BSSCI connect or status handshake, the reported coordinates overwrite any manually set values and `location_source` is set to `"gps"`. Manual updates via `UpdateBaseStation` set `location_source` to `"manual"`.
 
-#### Messages (11)
+#### Messages (12)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
@@ -161,8 +161,9 @@ The `BaseStation` message includes geolocation fields:
 | `StreamBaseStationMessages` | StreamBaseStationMessagesRequest | stream BaseStationMessage | Real-time base station message stream |
 | `ListEndpointMessages` | ListEndpointMessagesRequest | ListEndpointMessagesResponse | Messages for a specific endpoint |
 | `ListBaseStationActivity` | ListBaseStationActivityRequest | ListBaseStationActivityResponse | Unified activity feed (events + messages) for a base station |
+| `ListEndpointActivity` | ListEndpointActivityRequest | ListEndpointActivityResponse | Unified activity feed (events + messages) for an end point, with `start_time` and `end_time` filters |
 
-#### Downlinks (4)
+#### Downlinks (5)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
@@ -170,6 +171,7 @@ The `BaseStation` message includes geolocation fields:
 | `RevokeDownlink` | RevokeDownlinkRequest | RevokeDownlinkResponse | Cancel queued downlink |
 | `ListDownlinkQueue` | ListDownlinkQueueRequest | ListDownlinkQueueResponse | List pending downlinks |
 | `GetDownlinkResults` | GetDownlinkResultsRequest | GetDownlinkResultsResponse | Get downlink transmission results |
+| `UpdatePendingDownlink` | UpdatePendingDownlinkRequest | DownlinkMessage | Replace the payloads, priority, counters and flags of a downlink that is still `pending`; once the scheduler has picked it up the call is refused |
 
 #### UL Transmit (1)
 
@@ -192,13 +194,15 @@ The `BaseStation` message includes geolocation fields:
 | `QueryDLRXStatus` | QueryDLRXStatusRequest | QueryDLRXStatusResponse | Query DL RX status |
 | `GetDLRXStatusQueries` | GetDLRXStatusQueriesRequest | GetDLRXStatusQueriesResponse | List DL RX status queries |
 
-#### System (3)
+#### System (5)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
 | `GetSystemStatus` | Empty | SystemStatus | System health status |
 | `GetStatistics` | GetStatisticsRequest | Statistics | System statistics |
 | `GetReleaseInfo` | Empty | ReleaseInfo | Version, build info, and disclosure metadata |
+| `ListCapabilities` | Empty | ListCapabilitiesResponse | Named, non-secret feature toggles of this service center (`name`, `enabled`); any role may call it |
+| `GetDiagnosticsBundle` | GetDiagnosticsBundleRequest | GetDiagnosticsBundleResponse | Download a diagnostics archive (`archive`, `filename`, `content_type`, `size_bytes`, `generated_at`); Admin only |
 
 `GetReleaseInfo` also returns: `edition`, `license_id`, `license_url`, `source_url`, `documentation_url`, `homepage_url`, `trademark_notice`.
 
@@ -229,7 +233,7 @@ The `BaseStation` message includes geolocation fields:
 | `GetActivityAnalytics` | GetActivityAnalyticsRequest | GetActivityAnalyticsResponse | Activity metrics |
 | `GetSignalQualityAnalytics` | GetSignalQualityAnalyticsRequest | GetSignalQualityAnalyticsResponse | Signal quality metrics |
 
-#### Events & Alerts (8)
+#### Events & Alerts (9)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
@@ -241,6 +245,7 @@ The `BaseStation` message includes geolocation fields:
 | `StreamEndPointEvents` | StreamEndPointEventsRequest | stream Event | Real-time endpoint event stream |
 | `ListAlerts` | ListAlertsRequest | ListAlertsResponse | List alerts |
 | `GetAlertSummary` | GetAlertSummaryRequest | GetAlertSummaryResponse | Alert summary |
+| `ListErrorGroups` | ListErrorGroupsRequest | ListErrorGroupsResponse | Failures grouped by event type, code and source; `bucket` is `control_plane`, `base_station`, `endpoint` or `downlink`. Each group carries `count`, `first_seen`, `last_seen` and the latest `message` and `last_op_id`. This is the data behind the **Errors Center** |
 
 #### SCACI Monitoring (6)
 
@@ -284,7 +289,7 @@ The `BaseStation` message includes geolocation fields:
 | `DeleteDeviceModel` | DeleteDeviceModelRequest | DeleteDeviceModelResponse | Delete device model |
 | `ListDeviceModels` | ListDeviceModelsRequest | ListDeviceModelsResponse | List device models |
 
-#### Blueprints (8)
+#### Blueprints (9)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
@@ -296,6 +301,7 @@ The `BaseStation` message includes geolocation fields:
 | `SetDefaultBlueprint` | SetDefaultBlueprintRequest | SetDefaultBlueprintResponse | Set default blueprint |
 | `SubmitBlueprintToRegistry` | SubmitBlueprintToRegistryRequest | SubmitBlueprintToRegistryResponse | Submit to registry |
 | `CreateDeviceModelWithBlueprint` | CreateDeviceModelWithBlueprintRequest | CreateDeviceModelWithBlueprintResponse | Create device model with default blueprint atomically |
+| `BulkAssignBlueprint` | BulkAssignBlueprintRequest | BulkAssignBlueprintResponse | Re-materialize a blueprint onto the end points of a device model (`device_model_id`) or onto explicit `ep_euis`; `set_as_default` also makes it the model default (custom catalog only). Returns `affected_count`. This is **Migrate Devices** in the web interface |
 
 #### Blueprint Utilities (1)
 
@@ -318,7 +324,7 @@ Cross-tenant RPCs for server administrators. These require authentication but ar
 |-----|---------|----------|-------------|
 | `ListAllBaseStationLocations` | ListAllBaseStationLocationsRequest | ListAllBaseStationLocationsResponse | Returns all base station locations across all tenants |
 
-#### Auth & Session (8)
+#### Auth & Session (7)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
@@ -330,6 +336,17 @@ Cross-tenant RPCs for server administrators. These require authentication but ar
 | `ChangePassword` | ChangePasswordRequest | ChangePasswordResponse | Update password |
 | `ExchangeOIDC` | ExchangeOIDCRequest | LoginResponse | Exchange OIDC code for tokens |
 | `ExchangeOAuth2` | ExchangeOAuth2Request | LoginResponse | Exchange OAuth2 code for tokens |
+
+#### Community Edition Onboarding and Federation (4)
+
+These calls exist in Community Edition mode (`federation.enabled`), where the service center relays uplinks of unknown end points to an Enterprise installation.
+
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `GetCEStatus` | GetCEStatusRequest | GetCEStatusResponse | `onboarding_required`, `ce_id`, `company_name` and `federation_connected`; no role needed |
+| `CompleteCEOnboarding` | CompleteCEOnboardingRequest | CompleteCEOnboardingResponse | Finish the installation by naming the company (`company_name`); no role needed |
+| `ListCEInstances` | ListCEInstancesRequest | ListCEInstancesResponse | Enterprise side: list connected Community instances with status, connection status, active base stations, packets relayed, version and heartbeat; Admin only |
+| `RevokeCEInstance` | RevokeCEInstanceRequest | RevokeCEInstanceResponse | Enterprise side: revoke an instance (`ce_id`, `reason`); Admin only |
 
 #### Self-Service Registration (1)
 

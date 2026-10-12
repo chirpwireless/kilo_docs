@@ -39,7 +39,7 @@ For the hardware/edge-gateway side of the integration — Modbus, BACnet, OPC-UA
 
 1. Navigate to **Connectors** in the sidebar.
 2. Click **Add connector**.
-3. Select **External MQTT** from the **Connector type** dropdown.
+3. Select **External MQTT** from the **Connector type** dropdown and click **Add**. The **Add external MQTT connector** form opens.
 4. Fill in the configuration form:
 
    | Field | Required | Details |
@@ -47,16 +47,17 @@ For the hardware/edge-gateway side of the integration — Modbus, BACnet, OPC-UA
    | **Name** | Yes | Display name for this connector |
    | **Broker URL** | Yes | Full URL with scheme and port. The broker must be network-reachable from the platform — a broker accessible only on an isolated local network will not connect. Accepted schemes: `mqtt://`, `mqtts://`, `tcp://`, `ssl://`. Example: `mqtts://broker.facility.example.com:8883` |
 
-5. Choose an **authentication method** from the tabs:
+5. In **Transport**, decide how the connection is secured and what to read. **Encrypt the connection (TLS)** switches on automatically for `mqtts://` and `ssl://` addresses and adds **CA Certificate** and **Server name (SNI)**. **MQTT version** defaults to 5.0, and **Topics to read** stays empty to read the whole broker. The [External MQTT guide](mqtt/external-mqtt.md#transport-encryption-server-name-version-and-topic-filter) explains each control.
+6. Choose an **authentication method** from the tabs:
 
    | Method | What to fill in |
    |--------|----------------|
    | **Anonymous** | No credentials required |
    | **Basic** | Username and Password (password has a show/hide toggle) |
-   | **Certification** | Three file upload buttons: **CA Certificate**, **Client Certificate**, **Private Key**. Upload each file — do not paste PEM content |
-   | **JWT Token** | Token field (show/hide + copy). The token is the required JWT credential. A Certificate upload field appears in the form — it is optional; the platform submits only the token for JWT authentication |
+   | **Certification** | Two file upload buttons: **Client Certificate** and **Private Key**. Upload each file — do not paste PEM content. Encryption is held on for this method, and the CA Certificate goes in **Transport** |
+   | **JWT Token** | **Token** field with a show/hide button and a copy button. The platform submits only the token for JWT authentication |
 
-6. Click **Add**.
+7. Click **Add connector**. **Test connection** is disabled for now and shows **Coming soon**.
 
 The connector appears in the connectors table. Click its row to open the connector detail page.
 

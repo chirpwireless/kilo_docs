@@ -114,7 +114,7 @@ Clearing an active trigger, removing a watched device, or deleting the trigger c
 | The preview reports a missing or ambiguous input | Every key needs an input. For shared readings, use one provider per shared key or supply that key on every watched device. Review [device selection](triggers/multiple-devices.md). |
 | A warning appears beside a saved trigger | Its telemetry mapping has changed. Review the device's mapping, then edit the trigger and check its readings, devices, and preview before saving. |
 | Saving is disabled | Complete the name, values, duration, and device selection. If the form says the condition cannot be displayed, it cannot safely edit that trigger. |
-| A trigger is missing from the list or Start Event selector | Both currently load only the first page. A notice appears when more triggers exist; the selector cannot choose a trigger beyond that page. |
+| A trigger is missing from the list or Start Event selector | Both currently load only the first page. A notice reads **Showing the first N triggers — a trigger further down the list cannot be picked yet.** in the selector, and **Showing the first N triggers.** on the Triggers tab, when more triggers exist; the selector cannot choose a trigger beyond that page. |
 | The trigger is saved but nothing happens | Connect it to a deployed, running rule. Check incoming readings, the qualifying duration, the rule's schedule, and execution history. Saving a trigger alone sets up no response. |
 | The response happens again | Active triggers can signal again on further readings. Account for repeated execution when configuring commands; alarm notification intervals are separate. |
 

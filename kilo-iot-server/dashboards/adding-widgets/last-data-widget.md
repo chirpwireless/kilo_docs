@@ -23,7 +23,7 @@ The Datasource tab is titled **"Last Data configuration"** with the subtitle **"
 **Adding a data source:**
 
 1. Click **Add datasource**. A **Datasource 1** block appears.
-2. In the block, click **Choose device** and select the device whose sensor you want to display.
+2. In the block, click **Choose device** and select the device whose sensor you want to display. The **Choose a device** dialog (subtitle **Select the device you want to add**) lists every device in your organization as cards in two columns, so a long list stays smooth to scroll. Type in the search box to narrow the cards by name, select one card, and click **Choose**; **Close** leaves without choosing. Devices already used in this widget are grayed out. If nothing matches, the dialog reads **No devices found matching the definition criteria**; if the list cannot be loaded, it reads **Could not load the device list**.
 3. Click **Add metric**. A metric row appears. Each metric row contains:
    - **Data type** — set to Telemetry
    - **Device metric** — the sensor reading to display (any metric type — number, text, or Boolean)

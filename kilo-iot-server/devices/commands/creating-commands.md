@@ -45,7 +45,7 @@ Routing tells the platform *where* and *how* the message is addressed. The field
 
 ### MIOTY devices
 
-A MIOTY downlink is addressed by the endpoint itself, so the editor shows no fPort and no MQTT topic. Where a LoRaWAN command has a **Routing** step, a MIOTY command has **2. Delivery**, which holds one switch for how the device confirms receipt:
+A MIOTY downlink is addressed by the endpoint itself, so the editor shows no fPort and no MQTT topic. Where a LoRaWAN command has a **Routing** step, a MIOTY command has **2. Delivery** ("How the device confirms that it received the command."), which holds one switch labeled **Confirmed downlink**. Its helper text reads: *The device is asked to answer right after it receives the command, so the confirmation comes back at once instead of with its next scheduled uplink.* The switch states are:
 
 * **On — the device answers right after it receives the command.** The confirmation comes back at once.
 * **Off — the confirmation comes with the next scheduled uplink.**
@@ -117,6 +117,28 @@ Click **Save** to add the command to the device. It immediately appears in the *
 
 * Decide how the platform confirms a command worked — see [Confirming Commands](verification.md).
 * Run a command and watch its lifecycle — see [Executing Commands](executing-commands.md).
+
+## Which messages can the command editor show?
+
+Fields turn red and show a message under them while something blocks **Save**. Fix the field and the message disappears.
+
+| Where | Message | What to do |
+|---|---|---|
+| **1. Identity** | **Command name is required** | Enter a name in **Command name**. |
+| **1. Identity** | **A command with this name already exists on this device.** | Names must be unique per device; pick another. |
+| **2. Routing** (MQTT) | **MQTT topic is required** | Fill **MQTT topic**. The helper reads **Full topic as it is published on your broker.**, or, when a topic prefix is shown, **The device must subscribe to the full topic: prefix + this value.** |
+| **2. Routing** (MQTT) | **Heads-up: N other command(s) on this connection use the same topic: …** | Not an error. Two commands publish to the same topic, and the message lists them as device / command. |
+| **2. Routing** (LoRaWAN) | **fPort is required** and **fPort must be an integer between 1 and 223** | Enter a whole number from 1 to 223. **Confirmed downlink** reads **On — wait for MAC ACK** or **Off — fire-and-forget at MAC layer**. |
+| **3. Payload** (parameters) | **Max must be greater than Min** | Raise Max or lower Min on that parameter. |
+| **3. Payload** (parameters) | **Default value … is outside the [min, max] range.** | Pick a default inside the range. |
+| **3. Payload** (encoded) | **Encoder input template must be a JSON object** | The template must be valid JSON in curly braces. |
+| **3. Payload** (encoded) | **Empty template produces an empty downlink. Add at least one key (encoded by the Connection codec), or turn on the custom encoder to build the payload in code.** | Add a key to the template, or switch on the custom encoder. |
+| **3. Payload** (direct) | **Direct payload must be valid JSON** and **Empty payload produces an empty downlink. Add at least one key.** | Fix the JSON or add a key. |
+| **3. Payload** | **Placeholder {{ name }} does not match any parameter defined above.** | Every `{{ placeholder }}` needs a parameter with the same name. |
+| **4. Verification** | **Add at least one expected state to verify the result.** | Click **Add State**. See [Confirming Commands](verification.md). |
+| **4. Verification** | **Expected value is required** | Type a literal value or a `{{ parameter }}`. |
+| **4. Verification** | **This sensor is no longer mapped on the device. Pick another metric.** | The sensor was removed from the device's mapping; choose a mapped one. |
+| **4. Verification** | **No sensors mapped on this device yet** | Map sensors first in the device's **Mapping** tab (the **Mapping section** link under the list opens it). |
 
 ## Parameter and editor actions
 

@@ -38,7 +38,12 @@ Encryption is its own setting, separate from how you sign in. That matters in pr
 
 Below the **Broker URL** field, **Supported ports** lists the ports the platform will connect to. A URL on any other port is flagged and cannot be saved, so a firewall-friendly port is worth choosing before you build the broker side.
 
-If you change the address, server name, CA certificate or encryption on a connector that stores a secret, Kilo asks you to enter the credentials again. A stored secret is only kept while the connection it protects is unchanged.
+If you change the address, server name, CA certificate or encryption on a connector that stores a secret, Kilo asks you to enter the credentials again. A stored secret is only kept while the connection it protects is unchanged. Two red messages in the form tell you when this applies:
+
+- **This address uses an encrypted scheme — turn encryption on or change the address to mqtt://.** The Broker URL starts with `mqtts://` or `ssl://` while **Encrypt the connection (TLS)** is off. Switch encryption on, or use an `mqtt://` address.
+- **The connection now points elsewhere or is sent differently, so enter the credentials again.** You changed the transport of a saved connector, so the stored password, token or key is no longer applied. Re-enter it on the authentication tab; **Save** stays disabled until you do.
+
+The placeholders in the fields show the expected shape: `mqtt://broker.example.com:1883` for **Broker URL**, `broker.example.com` for **Server name (SNI)** and `device/#` for **Topics to read**.
 
 ## Authentication options
 
@@ -48,12 +53,14 @@ The connector supports four authentication methods, selectable on creation:
 |--------|-------------|---------------------|
 | **Anonymous** | Development brokers only. **Do not use for production exposed brokers** — anyone on the internet who finds the broker can publish or subscribe. | None |
 | **Basic** | Username + password authentication. The most common configuration for production deployments; switch on **Encrypt the connection (TLS)** so the credential is protected in transit. | Username, Password |
-| **Certification** | TLS mutual authentication using client certificates. Highest assurance; standard for regulated deployments. | CA Certificate file, Client Certificate file, Private Key file (uploaded as files; do not paste PEM content) |
+| **Certification** | TLS mutual authentication using client certificates. Highest assurance; standard for regulated deployments. | Client Certificate file and Private Key file (uploaded as files; do not paste PEM content). The CA Certificate is set in **Transport**. |
 | **JWT Token** | Token-based authentication compatible with brokers that validate JWTs (e.g. AWS IoT Core with custom authorizers, or other brokers with JWT plugins). | Token |
 
-For Certification, the three uploaded files form the client side of an mTLS exchange; the broker must be configured to trust the CA and to validate the client certificate against it. The Private Key must be unencrypted at upload time.
+Every method except **Anonymous** shows a **Security** heading above its fields. On **Basic** the **Password** field has an eye button that shows or hides what you typed. On **JWT Token** the **Token** field has an eye button and a copy button, and copying shows **Copied to clipboard**.
 
-<figure><img src="../../../.gitbook/assets/connector-external-mqtt-form.jpg" alt="The Add external MQTT connector dialog on the Certification tab, with upload buttons for the CA certificate, client certificate and private key"><figcaption></figcaption></figure>
+For Certification, the **Client Certificate** and **Private Key** files form the client side of an mTLS exchange; the broker must be configured to trust the CA that signed your client certificate and to validate the certificate against it. If your broker's own certificate is not publicly trusted, upload its CA in **Transport** as the **CA Certificate**; with Certification selected, encryption is held on so that field is always available. The Private Key must be unencrypted at upload time.
+
+<figure><img src="../../../.gitbook/assets/connector-external-mqtt-form.jpg" alt="The Add external MQTT connector dialog on the Certification tab, with upload buttons for the client certificate and private key and the CA certificate in the Transport section"><figcaption></figcaption></figure>
 
 ## How do I add an external MQTT connector, step by step?
 
@@ -78,9 +85,18 @@ For Certification, the three uploaded files form the client side of an mTLS exch
 <figure><img src="../../../.gitbook/assets/kilo-mqtt-external-form-tls.jpg" alt="The same form after switching on Encrypt the connection (TLS), which adds a CA Certificate upload button and a Server name (SNI) field"><figcaption><p>With encryption on, the form adds CA Certificate and Server name (SNI) next to the MQTT version and Topics to read controls.</p></figcaption></figure>
 
 6. Choose the authentication tab: **Anonymous**, **Basic**, **Certification**, or **JWT Token**, and complete its fields. The tab text explains the choice; for example **Anonymous** says *No authentication required. The broker must accept anonymous connections.*
-7. Select **Test connection** to check that Kilo can reach the broker, then **Add connector**. **Cancel** closes the form without saving.
+7. Select **Add connector**. The button stays disabled until the name, the Broker URL on a supported port and the credentials of the chosen method are filled in, and while a red message is showing. **Cancel** closes the form without saving. **Test connection** sits between the two buttons but is disabled for now and shows **Coming soon** when you hover it, so you confirm the connection by [publishing a test message](#verification-step) instead.
 
 The connector appears in the connector table. If the broker drops the connection briefly, Kilo reconnects and re-subscribes on its own, so a short broker restart does not leave the connector silently deaf. Click into the detail page to find the **Last data received** indicator.
+
+## How do I change an external MQTT connector later?
+
+On the **Connectors** page, select the connector's name to open its page. For an external MQTT connector the page shows **Edit external MQTT connector**, the same form with the saved values. **Save** replaces **Add connector**. You can rename the connector or change the transport without re-entering a password, token or key, and a stored secret shows only as saved, never as text. Two exceptions apply:
+
+- Changing the address, SNI, CA certificate, encryption or the authentication method while a secret is stored makes the red message above appear, and you enter the credentials again.
+- On **Certification** you can replace just the client certificate or just the private key. The half you do not pick stays as it was.
+
+A saved CA certificate shows as **CA Certificate — saved** with a trash button. Select it to remove the certificate, or pick a new file to replace it.
 
 ## Verification step
 
