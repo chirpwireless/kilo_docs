@@ -4,6 +4,8 @@ description: Kilo provides the IoT infrastructure that lets people, software, an
 
 # Intro to Kilo
 
+Kilo is pronounced **KEE-loh** and takes its name from the kilogram, a unit of measurement. Our slogan is **Measurable IoT**.
+
 Kilo connects devices, cameras, automation, and AI-assisted setup across the physical world. Its products support the path from choosing equipment and connecting it to understanding conditions and acting on them—across industrial sites, property portfolios, transport infrastructure, and distributed operations.
 
 The **[AI Assistant](kilo-iot-server/ai-assistant/README.md)** is like having an experienced integrator by your side. It helps you work through protocols and device compatibility, then takes on platform configuration: adding devices, configuring alarms, and building and deploying automation rules from the outcome you describe. You can begin with an [emulated device](kilo-iot-server/connectors/emulator-connector.md) before any hardware is on site.
