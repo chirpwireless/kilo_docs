@@ -1,5 +1,5 @@
 ---
-description: KiloCenter 2.0 gRPC, MQTT and SCACI changes: breaking changes, new fields and filters, stricter validation, and what your client must update.
+description: "KiloCenter 2.0 gRPC, MQTT and SCACI changes: breaking changes, new fields and filters, stricter validation, and what your client must update."
 ---
 
 # Which KiloCenter 2.0 API changes affect my integration?

@@ -1,5 +1,5 @@
 ---
-description: Use the KiloCenter Logs page: read the Events Log, group failures in the Errors Center, and review who did what in the Audit Log, with filters and roles.
+description: "Use the KiloCenter Logs page: read the Events Log, group failures in the Errors Center, and review who did what in the Audit Log, with filters and roles."
 ---
 
 # How do I use the Audit Log and Errors Center?

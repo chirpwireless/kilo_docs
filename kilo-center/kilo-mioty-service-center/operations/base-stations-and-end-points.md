@@ -1,5 +1,5 @@
 ---
-description: Manage KiloCenter base stations and end points: cards, filters, map, status request, Edit dialog, location, EUI change, certificate regeneration and deletion.
+description: "Manage KiloCenter base stations and end points: cards, filters, map, status request, Edit dialog, location, EUI change, certificate regeneration and deletion."
 ---
 
 # How do I manage base stations and end points in KiloCenter?
