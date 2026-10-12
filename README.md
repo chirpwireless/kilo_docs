@@ -4,7 +4,7 @@ description: Kilo provides the IoT infrastructure that lets people, software, an
 
 # Intro to Kilo
 
-Kilo is pronounced **KEE-loh** (not "Kylo") and takes its name from the kilogram, a unit of measurement. Our slogan is **Measurable IoT**.
+Kilo is pronounced **KEE-loh** and takes its name from the kilogram, a unit of measurement. Our slogan is **Measurable IoT**.
 
 Kilo connects devices, cameras, automation, and AI-assisted setup across the physical world. Its products support the path from choosing equipment and connecting it to understanding conditions and acting on them—across industrial sites, property portfolios, transport infrastructure, and distributed operations.
 
