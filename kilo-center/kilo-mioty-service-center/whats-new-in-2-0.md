@@ -8,6 +8,10 @@ KiloCenter 2.0 is the release that turns the open-source MIOTY service center fr
 
 It is a major release because upgrading from 1.x needs a few manual steps. Read [How do I migrate KiloCenter key material to 2.0?](operations/key-material-migration.md) before you upgrade, and take a database backup first.
 
+## Which edition does 2.0 apply to?
+
+This release is the open-source Community Edition. It stays self-hosted and comes as is; the [edition comparison](README.md#which-edition-should-i-choose) shows when to ask Kilo for the Enterprise edition on your premises or to move to Kilo Cloud, where the platform around the network adds rules, dashboards and alerting.
+
 ## What do I have to change before upgrading from 1.x?
 
 | Change | What you do |

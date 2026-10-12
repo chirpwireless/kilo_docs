@@ -28,7 +28,7 @@ The Enterprise edition of KiloCenter is built into **Kilo Cloud**. Choose Kilo C
 |---|---|
 | **KiloCenter Community Edition** | You need a MIOTY service center, want to operate it yourself, and will integrate its gRPC or MQTT data into your own applications. |
 | **Kilo Cloud** | You want the Enterprise service center managed for you and need rules, visualization, alarms, or other Kilo platform capabilities around MIOTY data. |
-| **Kilo IoT Platform on-premise** | You need the complete enterprise platform within infrastructure you control. |
+| **Enterprise edition on your premises** | You need the Enterprise service center, or the complete Kilo platform, inside infrastructure you control. Kilo installs it on request: [contact Kilo](https://kiloiot.io/contact/). |
 
 See [KiloCenter or Kilo Cloud?](README.md#kilocenter-or-kilo-cloud) for the feature boundary, or start with the [Kilo Cloud MIOTY connector](../../kilo-iot-server/connectors/mioty-connector/README.md).
 

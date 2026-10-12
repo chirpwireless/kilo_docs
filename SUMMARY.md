@@ -206,6 +206,7 @@
   * [Integrations](kilo-center/kilo-mioty-service-center/integrations/README.md)
     * [gRPC First Steps](kilo-center/kilo-mioty-service-center/integrations/grpc-first-steps.md)
     * [MQTT First Steps](kilo-center/kilo-mioty-service-center/integrations/mqtt-first-steps.md)
+    * [API Changes in 2.0](kilo-center/kilo-mioty-service-center/integrations/api-changes-in-2-0.md)
     * [LLM-Assisted Development](kilo-center/kilo-mioty-service-center/integrations/llm-assisted-development.md)
     * [API Reference](kilo-center/kilo-mioty-service-center/integrations/api-reference/README.md)
       * [Go Examples](kilo-center/kilo-mioty-service-center/integrations/api-reference/go-examples.md)
@@ -220,6 +221,8 @@
   * [Operations](kilo-center/kilo-mioty-service-center/operations/README.md)
     * [Operations and Troubleshooting](kilo-center/kilo-mioty-service-center/operations/operations-and-troubleshooting.md)
     * [Key Material Migration](kilo-center/kilo-mioty-service-center/operations/key-material-migration.md)
+    * [Configuration Changes in 2.0](kilo-center/kilo-mioty-service-center/operations/configuration-changes-in-2-0.md)
+    * [Audit Log and Errors Center](kilo-center/kilo-mioty-service-center/operations/audit-log-and-errors-center.md)
 
 * [What is Kilo Connectivity?](kilo-connectivity/what-is-kilo-connectivity/README.md)
   * [Global IoT SIM Cards](kilo-connectivity/what-is-kilo-connectivity/cellular-iot.md)

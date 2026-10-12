@@ -69,6 +69,18 @@ The **Configuration** tab lists the **MIOTY Configuration**: **Short Address (Sh
 
 <figure><img src="../../.gitbook/assets/kc-endpoint-configuration.jpg" alt="The Configuration tab of an end point with the MIOTY Configuration fields, keys shown only as Set or Not set, and the Reception panel with serving base station and last RSSI, SNR and eqSNR"><figcaption></figcaption></figure>
 
+## How do I add or edit an end point and handle its keys?
+
+On **End Points**, select **Add End Point** to register a device, or open an end point and select the pencil icon to edit it. The dialog (**Edit End Point**, "Update MIOTY end point configuration") holds the same MIOTY settings as the **Configuration** tab. Turn on **Pre-Attachment (PreAtt)** to send a new end point to every connected base station as soon as you create it. Select **Create End Point**, or **Save Changes** when editing.
+
+Keys are never shown by default:
+
+- A stored key appears hidden, with the hint "Stored and hidden. Reveal it, or enter a new key to replace it". Select **Reveal key (recorded in the Audit Log)** to fetch it. Only Endpoint Managers and Admins can, and every reveal is written to the [Audit Log](operations/audit-log-and-errors-center.md). **Copy key** works once the key is revealed or you typed a new one.
+- Leave a key field empty to keep the stored key. Type a new key to replace it.
+- To delete a stored **Application Key**, select **Remove key** and confirm "Remove Application Key". The key is deleted when you save, the removal is recorded in the Audit Log, and a removed key cannot be recovered. The network session key is mandatory, so you can replace it but not remove it.
+
+When you change a setting that base stations already hold for an attached end point, the dialog asks "Re-attach Endpoint?" and lists the changed settings. Select **Re-Attach Now** to push the update, or **Later** to keep the end point marked **Configuration pending re-attach** until it is attached again. The mark appears on the end point's detail page.
+
 ## How do I queue and follow a downlink?
 
 Queue the downlink from the end point. Open its **Downlink** tab. **Compose Downlink** shows the last packet counter the end point reported. Enter the **Payload (hex)**, or leave it empty to send an acknowledgement only, then set the **Format** (0 to 255) and the **Priority** (0 is low, 0.5 normal, 1 high). Turn on **Counter Dependent** to bind the downlink to a packet counter, open **Advanced Options** for the response and window flags, and select **Send Downlink**. **Query DL RX Status** asks the end point at which SNR and RSSI it received its downlinks; it answers with a later uplink.
@@ -93,7 +105,9 @@ Open **Logs**. It has three tabs, and each user sees only the event categories t
 
 - **Events Log** lists everything that happened, newest first: service starts, database migrations, base stations going online or offline, attaches and detaches. Filter by time range, operation, category, outcome, `opId`, `epEui` and `bsEui`, or search the text. Expand a row for its details.
 - **Errors Center** groups failures. Choose **Control Plane**, **Base Stations**, **End Points** or **Downlinks**, pick a time range, and each failure appears once with its code, message, related object, first and last time seen and how many times it occurred.
-- **Audit Log** is for administrators; it records who did what, such as revealing a key.
+- **Audit Log** is for administrators; it records who did what, such as revealing a key, creating a user or queueing a downlink.
+
+Each Errors Center sub-tab opens only for the roles that cover its event categories, and its time range resets when you switch sub-tabs. [How do I use the Audit Log and Errors Center?](operations/audit-log-and-errors-center.md) explains every filter, column and role rule.
 
 <figure><img src="../../.gitbook/assets/kc-logs-events.jpg" alt="The Events Log tab with time range, operation, category and outcome filters and a table of service, migration, base station and attach events"><figcaption></figcaption></figure>
 <figure><img src="../../.gitbook/assets/kc-logs-errors-center.jpg" alt="The Errors Center tab with the Control Plane, Base Stations, End Points and Downlinks sub-tabs, a time range filter and a table of failures"><figcaption></figcaption></figure>
