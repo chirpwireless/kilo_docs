@@ -4,7 +4,7 @@ description: The cleanup and the more than fifty bug fixes in KiloCenter 2.0, gr
 
 # What bugs were fixed in KiloCenter 2.0?
 
-KiloCenter 2.0 is a big release for two reasons: the features it adds, and the amount of work under them. The codebase was cleaned up, and **more than fifty bugs** were fixed across uplinks, downlinks, attach and detach, sessions, certificates and the web interface. The product changelog lists each fix; this page groups them by what you notice and says where to look in the web interface to see the effect.
+KiloCenter 2.0 is a big release for two reasons: the features it adds, and the amount of work under them. The codebase was cleaned up, and **more than fifty bugs** were fixed across uplinks, downlinks, attach and detach, sessions, certificates and the web interface. This page groups the fixes by what you notice and says where to look in the web interface to see the effect.
 
 We tested the result end to end with our MIOTY developer kit: real uplinks and downlinks, including acknowledged and revoked downlinks, and every screen of the web interface.
 
@@ -96,4 +96,4 @@ Look at **Certificates**, and at a base station's **Settings** and detail page.
 
 ## Where is the full per-fix list?
 
-This page groups the fixes by what you notice. The product changelog lists each one with its exact wording, error codes and migration numbers. If you upgrade from 1.x, read the [upgrade guide](operations/key-material-migration.md) first, and see [what changed for integrators](integrations/api-changes-in-2-0.md) before you update an integration.
+This page groups the fixes by what you notice. If you upgrade from 1.x, read the [upgrade guide](operations/key-material-migration.md) first, and see [what changed for integrators](integrations/api-changes-in-2-0.md) before you update an integration.
