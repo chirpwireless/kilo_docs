@@ -142,6 +142,14 @@ What changes in 2.0:
 
 Upgrading a self-hosted installation from 1.x needs a few manual steps, mainly setting the master key and converting stored keys with the `rekey` command. The migration guide walks through them.
 
+**Breaking API changes.** The organization quota fields are removed, endpoint keys are masked on every read, every call checks the caller's role and answers `PERMISSION_DENIED` when the role does not cover it, and the web interface's WebSocket connection is replaced by gRPC-web server streams. The API changes page lists every difference.
+
+[→ Upgrade a self-hosted installation from 1.x](../kilo-center/kilo-mioty-service-center/operations/key-material-migration.md)
+
+[→ API changes in KiloCenter 2.0](../kilo-center/kilo-mioty-service-center/integrations/api-changes-in-2-0.md)
+
+[→ Audit Log and Errors Center](../kilo-center/kilo-mioty-service-center/operations/audit-log-and-errors-center.md)
+
 [→ What's new in KiloCenter 2.0](../kilo-center/kilo-mioty-service-center/whats-new-in-2-0.md)
 
 [→ The KiloCenter web interface](../kilo-center/kilo-mioty-service-center/web-interface.md)
