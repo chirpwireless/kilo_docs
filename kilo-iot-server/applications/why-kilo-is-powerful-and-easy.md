@@ -16,7 +16,7 @@ That choice has a cost. A platform that can do anything has more to learn, and a
 
 Two things made the learning curve disappear without removing any of the power.
 
-**Ready-made solutions.** Kilo packages the complete answer to a use case as a ready-made application. You preview it, install it with one click, and see devices, rules, alarms, and a dashboard working immediately. If you like it, you buy the devices and swap the emulator data for real ones; the rest is already set up. You learn by examining something that already works. See [Installing a Solution](installing-a-solution.md).
+**Ready-made solutions.** Kilo packages the complete answer to a use case as a ready-made application. It shows the use case it solves. You preview it, install it with one click, and see devices, rules, alarms, and a dashboard working immediately, with nothing to configure. The install screen lists the devices to buy, and when they arrive the AI chat can connect them to your application. You learn by examining something that already works. See [Installing a Solution](installing-a-solution.md).
 
 **The Kilo AI engine.** The AI engine in Kilo is grounded in your own data. It reads the status of your devices, and it can also help you configure the platform: add devices, create rules, and set up alarms. It works like an experienced integrator sitting next to you. You describe the outcome and it does the configuration with you. See [AI in Kilo](../ai-assistant/README.md).
 
@@ -24,7 +24,7 @@ Two things made the learning curve disappear without removing any of the power.
 
 | If you are... | You can... |
 |---|---|
-| New to IoT | Install a solution, watch it run, and ask the AI engine to explain or adjust it. |
+| New to IoT | Install a solution, buy the devices it lists, and ask the AI chat to connect them and to explain or adjust the setup. |
 | An experienced integrator | Start from a ready-made baseline, then use the full rule and automation toolset to refine it. |
 | Ready to go live | Buy the devices listed on the install screen, swap the Emulator for them, and keep everything else as configured. |
 

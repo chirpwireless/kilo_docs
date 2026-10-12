@@ -4,7 +4,7 @@ description: "Turn a solution's virtual devices into real sensors in Kilo: open 
 
 # How do I swap the Emulator for real devices?
 
-A solution starts life with virtual devices, so you can see everything working with no hardware. The real value arrives when those virtual devices become your real sensors. Kilo is built so that this is a change of data source, not a rebuild. This guide follows the path click by click and describes every tab of the device page.
+A solution starts life with virtual devices standing in for the devices listed on the install screen. The real value arrives when you buy those devices and they replace the virtual ones. You can ask the AI chat to do this (for example, "I got these devices, can you connect them to the application I installed?") or follow the manual steps below. Kilo is built so that this is a change of data source, not a rebuild. This guide follows the path click by click and describes every tab of the device page.
 
 ## How do I get to the device?
 

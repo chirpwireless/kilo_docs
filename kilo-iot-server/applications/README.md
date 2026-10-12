@@ -4,7 +4,7 @@ description: "Install a ready-made IoT solution in one click and get devices, ru
 
 # How do applications and solutions work in Kilo?
 
-Imagine opening Kilo, choosing a solution such as **Building Monitoring**, and pressing **Install solution**. Seconds later you have working virtual devices streaming realistic readings, a rule that reacts to them, an alarm that is ready to notify you, and a live dashboard. Nothing to build first. When your real sensors arrive, you swap the virtual devices for them, and the dashboard, rules, and alarms keep working.
+Imagine opening Kilo, choosing a solution such as **Building Monitoring**, and pressing **Install solution**. Seconds later you have working virtual devices streaming realistic readings, a rule that reacts to them, an alarm that is ready to notify you, and a live dashboard. Nothing to build first, and nothing to configure. The catalog exists to show which use cases Kilo can solve and to make onboarding simple for everyone, including people who are not technical. The install screen tells you which devices to buy; when they arrive, you can ask the AI chat to connect them to the application, and the dashboard, rules, and alarms keep working.
 
 That is what **Applications and Solutions** give you. An **application** is a working bundle of devices, dashboards, rules, and alarms for one job. A **solution** is a ready-made application from the Kilo catalog. Kilo prepares it for one use case and configures it completely, so you can install a copy with one click. If you like it, you buy the devices listed on the install screen and swap the virtual devices for them; everything else is already set up. New applications are added to the catalog with every release, starting with the next one. If you want the full picture, read [What are solutions and applications in Kilo?](what-are-solutions-and-applications.md).
 
@@ -14,7 +14,7 @@ That is what **Applications and Solutions** give you. An **application** is a wo
 
 Setting up a monitoring use case normally means many small decisions: which devices, how their readings are named, which dashboard, which rule, who gets the alarm. Kilo has already made those decisions for each use case in the catalog. A solution packages them: it shows the use case it solves and arrives fully pre-configured with devices, dashboards, rules, and alarms.
 
-* **See it working before you own the hardware.** Every device in a solution starts as a virtual device on the Emulator connector, so the dashboard is alive the moment you install.
+* **See what Kilo can solve.** Every device in a solution starts as a virtual device on the Emulator connector, so the dashboard is alive the moment you install.
 * **Go live without rebuilding anything.** You swap each virtual device for a real LoRaWAN, MIOTY, MQTT, or tracker connection. Mappings, rules, and widgets stay intact. See [How do I swap the Emulator for real devices?](swapping-the-emulator-for-real-devices.md).
 * **Skip the learning curve.** A newcomer can open a finished setup and learn by looking at it. A professional starts from a proven baseline and adjusts it.
 * **Buy only what you need.** The install screen lists the real devices the solution works with, so you know what to buy if you decide to go live.
