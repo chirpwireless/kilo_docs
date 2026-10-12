@@ -18,61 +18,61 @@ gRPC is a high-performance RPC framework that uses Protocol Buffers for serializ
 
 KiloCenter's API is defined across three proto files:
 
-| File               | Description                                                                                            |
-| ------------------ | ------------------------------------------------------------------------------------------------------ |
-| `kilocenter.proto` | Unified backward-compatible service (all 117 RPCs)                                                     |
-| `core.proto`       | Core domain messages (endpoints, base stations, messages, downlinks, events, certificates, blueprints) |
-| `identity.proto`   | Identity domain messages (users, organizations, API keys, auth)                                        |
+| File | Description |
+|------|-------------|
+| `kilocenter.proto` | Unified backward-compatible service (all 121 RPCs) |
+| `core.proto` | Core domain messages (endpoints, base stations, messages, downlinks, events, certificates, blueprints) |
+| `identity.proto` | Identity domain messages (users, organizations, API keys, auth) |
 
 ### Client Generation
 
-**Go (using buf — project default):**
-
-```bash
-cd KC-Core/api/proto && buf generate
-```
-
-Output: `KC-Core/api/gen/` (Go stubs only — `buf.gen.yaml` configures Go plugins).
-
-**Other languages (using protoc):**
-
-```bash
-# Python example
-python -m grpc_tools.protoc \
-  -I KC-Core/api/proto \
-  --python_out=./gen --grpc_python_out=./gen \
-  KC-Core/api/proto/kilocenter.proto \
-  KC-Core/api/proto/core.proto \
-  KC-Core/api/proto/identity.proto
-```
-
-`buf.gen.yaml` only generates Go stubs. For other languages, use protoc or add buf plugins. See [grpc.io/docs/languages](https://grpc.io/docs/languages/) for language-specific guides.
+Proto files ship in the `api/proto/` directory. Use your language's gRPC toolchain to
+generate client stubs. See [grpc.io/docs/languages](https://grpc.io/docs/languages/)
+for per-language quickstarts, or use the [Language Examples](#language-examples) below.
 
 ### Authentication
 
 #### Community Edition
 
-The current Community Edition Docker configuration enables local sign-in in KC-Identity and token validation in KC-Gateway. Authenticate protected API calls through the gateway. The examples omit installation-specific credentials; they do not mean that authentication should be disabled. Keep internal service ports private.
+Community Edition runs single-tenant with organization enforcement off
+(`org_enforcement_enabled: false`). Sign in with `Login` and send the access token in the
+`authorization` header; no organization or user header is needed.
 
 ```bash
-# Supply the authentication required by your installation
-grpcurl -plaintext -d '{}' \
+grpcurl -plaintext -H "authorization: Bearer $ACCESS_TOKEN" -d '{}' \
   localhost:9090 kilocenter.api.v1.KiloCenterService/GetSystemStatus
 ```
+
+#### Roles
+
+Every call except the public ones needs a signed-in user holding a role that covers it; a call
+the roles do not cover returns `PERMISSION_DENIED`. User API keys act with their user's roles;
+service-account API keys act as Base Station Manager and Endpoint Manager in their own
+organization only. The full list of calls per role is in
+[User Roles and Permissions](../../security/users-and-roles.md#which-roles-does-each-api-call-require).
 
 #### Enterprise Edition
 
 When authentication is enabled (`KILOCENTER_AUTH_ENABLED=true`), three metadata headers apply:
 
-| Header              | Required For                                    | Value                                      |
-| ------------------- | ----------------------------------------------- | ------------------------------------------ |
-| `authorization`     | All non-public RPCs                             | `Bearer <JWT_TOKEN>` or `Bearer <API_KEY>` |
-| `x-organization-id` | All non-exempt RPCs                             | UUID of the target organization            |
-| `x-user-id`         | RPCs called without JWT (header-only auth mode) | UUID of the acting user                    |
+| Header | Required For | Value |
+|--------|-------------|-------|
+| `authorization` | All non-public RPCs | `Bearer <JWT_TOKEN>` or `Bearer <API_KEY>` |
+| `x-organization-id` | All non-exempt RPCs | UUID of the target organization |
+| `x-user-id` | RPCs called by user principals (JWT) | UUID of the acting user (must match JWT subject). Required for user principals; must NOT be sent for service-account API keys. |
 
-**Public methods** (no headers required): `Login`, `RefreshTokens`, `GetAuthSettings`, `ExchangeOIDC`, `ExchangeOAuth2`, `GetReleaseInfo`, `RegisterAccount` Source: `KC-Core/pkg/grpc/public_methods.go`
+**Dual bearer auth:** The `authorization` header accepts two token shapes:
 
-**Org-exempt methods** (auth required, no org header): `GetSystemStatus`, `GetProfile`, `Logout`, `ChangePassword`, User/Org/Membership CRUD (org context resolved from request fields) Source: `KC-Core/pkg/grpc/public_methods.go` → `OrgExemptMethods`
+1. **JWT tokens** (format: `header.payload.signature`) — validated via JWKS/HMAC. Tenant, org, and user are extracted from JWT claims.
+2. **Opaque API keys** (any non-JWT shape) — hashed and looked up server-side. Tenant and org come from the key record. User context is set only for user-type keys; a service-account key carries no user identity and acts as Base Station Manager and Endpoint Manager in its own organization.
+
+**Identity validation:** When auth establishes identity (JWT or API key), the `x-user-id` and `x-organization-id` headers must *confirm* the authenticated identity — they cannot replace it. A mismatch between header values and the authenticated context returns `PermissionDenied`.
+
+**Public methods** (no headers required):
+`Login`, `RefreshTokens`, `GetAuthSettings`, `ExchangeOIDC`, `ExchangeOAuth2`, `GetReleaseInfo`, `RegisterAccount`
+
+**Org-exempt methods** (auth required, no org header):
+`GetSystemStatus`, `GetProfile`, `Logout`, `ChangePassword`, User/Org/Membership CRUD (org context resolved from request fields). Org-exempt calls still need the roles listed in [User Roles and Permissions](../../security/users-and-roles.md#which-roles-does-each-api-call-require).
 
 API tokens are created through KC-Web or the `CreateApiKey` RPC.
 
@@ -80,111 +80,310 @@ API tokens are created through KC-Web or the `CreateApiKey` RPC.
 
 #### Endpoints (7)
 
-`CreateEndPoint`, `GetEndPoint`, `UpdateEndPoint`, `DeleteEndPoint`, `ListEndPoints`, `AttachEndPoint`, `DetachEndPoint`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateEndPoint` | CreateEndPointRequest | EndPoint | Register new endpoint |
+| `GetEndPoint` | GetEndPointRequest | EndPoint | Get endpoint details; `reveal_keys` returns the named keys in clear |
+| `UpdateEndPoint` | UpdateEndPointRequest | EndPoint | Update endpoint configuration |
+| `DeleteEndPoint` | DeleteEndPointRequest | Empty | Remove endpoint |
+| `ListEndPoints` | ListEndPointsRequest | ListEndPointsResponse | List endpoints with pagination |
+| `AttachEndPoint` | AttachEndPointRequest | AttachEndPointResponse | Attach endpoint to base station |
+| `DetachEndPoint` | DetachEndPointRequest | DetachEndPointResponse | Detach endpoint from base station |
 
-#### Base Stations (7)
+##### How do I read an endpoint's keys?
 
-`CreateBaseStation`, `GetBaseStation`, `UpdateBaseStation`, `DeleteBaseStation`, `ListBaseStations`, `GetBaseStationStats`, `UpdateBaseStationEui`
+Every call that returns an `EndPoint` returns `nwk_sn_key` and `app_key`
+empty and reports whether each is stored in `nwk_sn_key_set` and
+`app_key_set`. To read a key, call `GetEndPoint` with `reveal_keys` naming it
+(`ENDPOINT_KEY_NWK_SN_KEY`, `ENDPOINT_KEY_APP_KEY`). This needs the Endpoint
+Manager or Admin role, and every reveal of a stored key writes an
+`endpoint.keys_revealed` event to the Audit Log naming the caller, the
+endpoint and the keys, never their values. `UpdateEndPoint` changes a key only
+when its path is in the update mask, so an update that leaves the keys out of
+the mask keeps them. To remove a stored application key, send `app_key` in the
+mask with no value; this writes an `endpoint.keys_removed` event to the Audit
+Log. The network session key cannot be removed, only replaced.
+
+##### UpdateEndPoint Status
+
+With `status` in `update_mask`, `UpdateEndPoint` attaches (`attached`) or detaches (`detached`) the endpoint the same way `AttachEndPoint` and `DetachEndPoint` do: the base stations are sent the attachment or detachment, and application centers receive one `epStat`. The other masked fields are saved first.
+
+- A `status` equal to the endpoint's current status changes nothing.
+- Any other value, `attaching` included, returns `INVALID_ARGUMENT`.
+- On a server without the attachment service, a status change returns `UNIMPLEMENTED` (`KC-GRPC-ERR-906`) and nothing is saved.
+
+#### Base Stations (9)
+
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateBaseStation` | CreateBaseStationRequest | BaseStation | Register new base station |
+| `GetBaseStation` | GetBaseStationRequest | BaseStation | Get base station details |
+| `UpdateBaseStation` | UpdateBaseStationRequest | BaseStation | Update base station configuration |
+| `DeleteBaseStation` | DeleteBaseStationRequest | Empty | Remove base station |
+| `ListBaseStations` | ListBaseStationsRequest | ListBaseStationsResponse | List base stations with pagination |
+| `GetBaseStationStats` | GetBaseStationStatsRequest | GetBaseStationStatsResponse | Get base station statistics |
+| `UpdateBaseStationEui` | UpdateBaseStationEuiRequest | BaseStation | Update base station EUI |
+| `GetBaseStationAvailability` | GetBaseStationAvailabilityRequest | GetBaseStationAvailabilityResponse | Per-bucket availability (online fraction) time series |
+| `GetBaseStationMessagesReceived` | GetBaseStationMessagesReceivedRequest | GetBaseStationMessagesReceivedResponse | Per-bucket received-message (RX uplink) count time series |
+
+##### BaseStation Location Fields
+
+The `BaseStation` message includes geolocation fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `latitude` | `google.protobuf.DoubleValue` | WGS-84 latitude (-90 to 90). Nullable: nil means not set, 0.0 is a valid coordinate. |
+| `longitude` | `google.protobuf.DoubleValue` | WGS-84 longitude (-180 to 180). Nullable: nil means not set, 0.0 is a valid coordinate. |
+| `altitude` | `google.protobuf.DoubleValue` | Altitude in meters. Nullable: nil means not set, 0.0 is a valid value. |
+| `location_source` | `string` | `"gps"` (reported by the base station via BSSCI) or `"manual"` (set via API). Read-only. |
+| `location_updated_at` | `google.protobuf.Timestamp` | Timestamp of the last location change. Read-only. |
+
+##### UpdateBaseStation Location Semantics
+
+`UpdateBaseStationRequest` uses `google.protobuf.FieldMask` via `update_mask` to specify which fields to update. Supported paths: `name`, `description`, `latitude`, `longitude`, `altitude`.
+
+- **Nullable wrappers:** When a field path is included in `update_mask` but the corresponding wrapper value is nil, the stored value is cleared (set to NULL). This allows explicit removal of location data.
+- **Lat/lon pair rule:** `latitude` and `longitude` must both be present in the mask or both omitted. Setting one without the other returns `INVALID_ARGUMENT`. `altitude` is independent.
+- **GPS-authoritative:** When a base station reports geolocation via the BSSCI connect or status handshake, the reported coordinates overwrite any manually set values and `location_source` is set to `"gps"`. Manual updates via `UpdateBaseStation` set `location_source` to `"manual"`.
 
 #### Messages (11)
 
-`GetMessage`, `ListMessages`, `StreamMessages`, `ListBaseStationMessages`, `GetBaseStationMessage`, `GetBaseStationMessageStats`, `SearchBaseStationMessages`, `ExportBaseStationMessages`, `StreamBaseStationMessages`, `ListEndpointMessages`, `ListBaseStationActivity`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `GetMessage` | GetMessageRequest | Message | Get single message by ID |
+| `ListMessages` | ListMessagesRequest | ListMessagesResponse | List messages with filtering |
+| `StreamMessages` | StreamMessagesRequest | stream Message | Real-time message stream |
+| `ListBaseStationMessages` | ListBaseStationMessagesRequest | ListBaseStationMessagesResponse | Messages for a specific base station |
+| `GetBaseStationMessage` | GetBaseStationMessageRequest | GetBaseStationMessageResponse | Single base station message |
+| `GetBaseStationMessageStats` | GetBaseStationMessageStatsRequest | GetBaseStationMessageStatsResponse | Base station message statistics |
+| `SearchBaseStationMessages` | SearchBaseStationMessagesRequest | SearchBaseStationMessagesResponse | Search messages |
+| `ExportBaseStationMessages` | ExportBaseStationMessagesRequest | ExportBaseStationMessagesResponse | Export messages |
+| `StreamBaseStationMessages` | StreamBaseStationMessagesRequest | stream BaseStationMessage | Real-time base station message stream |
+| `ListEndpointMessages` | ListEndpointMessagesRequest | ListEndpointMessagesResponse | Messages for a specific endpoint |
+| `ListBaseStationActivity` | ListBaseStationActivityRequest | ListBaseStationActivityResponse | Unified activity feed (events + messages) for a base station |
 
 #### Downlinks (4)
 
-`SendDownlink`, `RevokeDownlink`, `ListDownlinkQueue`, `GetDownlinkResults`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `SendDownlink` | SendDownlinkRequest | SendDownlinkResponse | Queue downlink message |
+| `RevokeDownlink` | RevokeDownlinkRequest | RevokeDownlinkResponse | Cancel queued downlink |
+| `ListDownlinkQueue` | ListDownlinkQueueRequest | ListDownlinkQueueResponse | List pending downlinks |
+| `GetDownlinkResults` | GetDownlinkResultsRequest | GetDownlinkResultsResponse | Get downlink transmission results |
 
 #### UL Transmit (1)
 
-`SendULTransmit`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `SendULTransmit` | SendULTransmitRequest | SendULTransmitResponse | Transmit uplink via base station |
 
 #### Base Station Control (2)
 
-`RequestBaseStationStatus`, `InitiatePing`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `RequestBaseStationStatus` | BaseStationStatusRequest | BaseStationStatusResponse | Request status from base station |
+| `InitiatePing` | InitiatePingRequest | InitiatePingResponse | Ping base station |
 
 #### DL RX Status (3)
 
-`GetDLRXStatus`, `QueryDLRXStatus`, `GetDLRXStatusQueries`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `GetDLRXStatus` | GetDLRXStatusRequest | GetDLRXStatusResponse | Get downlink RX status |
+| `QueryDLRXStatus` | QueryDLRXStatusRequest | QueryDLRXStatusResponse | Query DL RX status |
+| `GetDLRXStatusQueries` | GetDLRXStatusQueriesRequest | GetDLRXStatusQueriesResponse | List DL RX status queries |
 
 #### System (3)
 
-`GetSystemStatus`, `GetStatistics`, `GetReleaseInfo`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `GetSystemStatus` | Empty | SystemStatus | System health status |
+| `GetStatistics` | GetStatisticsRequest | Statistics | System statistics |
+| `GetReleaseInfo` | Empty | ReleaseInfo | Version, build info, and disclosure metadata |
+
+`GetReleaseInfo` also returns: `edition`, `license_id`, `license_url`, `source_url`, `documentation_url`, `homepage_url`, `trademark_notice`.
 
 #### API Keys (4)
 
-`CreateApiKey`, `GetApiKey`, `DeleteApiKey`, `ListApiKeys`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateApiKey` | CreateApiKeyRequest | CreateApiKeyResponse | Create API key |
+| `GetApiKey` | GetApiKeyRequest | GetApiKeyResponse | Get API key details |
+| `DeleteApiKey` | DeleteApiKeyRequest | DeleteApiKeyResponse | Revoke API key |
+| `ListApiKeys` | ListApiKeysRequest | ListApiKeysResponse | List API keys |
 
 #### Integrations (5)
 
-`CreateIntegration`, `GetIntegration`, `UpdateIntegration`, `DeleteIntegration`, `ListIntegrations`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateIntegration` | CreateIntegrationRequest | Integration | Create integration |
+| `GetIntegration` | GetIntegrationRequest | Integration | Get integration details |
+| `UpdateIntegration` | UpdateIntegrationRequest | Integration | Update integration |
+| `DeleteIntegration` | DeleteIntegrationRequest | Empty | Delete integration |
+| `ListIntegrations` | ListIntegrationsRequest | ListIntegrationsResponse | List integrations |
 
 #### Analytics (3)
 
-`GetAnalyticsOverview`, `GetActivityAnalytics`, `GetSignalQualityAnalytics`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `GetAnalyticsOverview` | GetAnalyticsOverviewRequest | GetAnalyticsOverviewResponse | Dashboard overview |
+| `GetActivityAnalytics` | GetActivityAnalyticsRequest | GetActivityAnalyticsResponse | Activity metrics |
+| `GetSignalQualityAnalytics` | GetSignalQualityAnalyticsRequest | GetSignalQualityAnalyticsResponse | Signal quality metrics |
 
 #### Events & Alerts (8)
 
-`ListEvents`, `ListBaseStationEvents`, `ListEndPointEvents`, `StreamEvents`, `StreamBaseStationEvents`, `StreamEndPointEvents`, `ListAlerts`, `GetAlertSummary`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `ListEvents` | ListEventsRequest | ListEventsResponse | List system events |
+| `ListBaseStationEvents` | ListBaseStationEventsRequest | ListBaseStationEventsResponse | Base station events |
+| `ListEndPointEvents` | ListEndPointEventsRequest | ListEndPointEventsResponse | Endpoint events |
+| `StreamEvents` | StreamEventsRequest | stream Event | Real-time system event stream |
+| `StreamBaseStationEvents` | StreamBaseStationEventsRequest | stream Event | Real-time base station event stream |
+| `StreamEndPointEvents` | StreamEndPointEventsRequest | stream Event | Real-time endpoint event stream |
+| `ListAlerts` | ListAlertsRequest | ListAlertsResponse | List alerts |
+| `GetAlertSummary` | GetAlertSummaryRequest | GetAlertSummaryResponse | Alert summary |
 
 #### SCACI Monitoring (6)
 
-`ListScaciSessions`, `GetScaciSession`, `GetScaciStatistics`, `ListScaciErrors`, `ListScaciQueues`, `GetScaciStatus`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `ListScaciSessions` | ListScaciSessionsRequest | ListScaciSessionsResponse | List SCACI sessions |
+| `GetScaciSession` | GetScaciSessionRequest | GetScaciSessionResponse | Get session details |
+| `GetScaciStatistics` | GetScaciStatisticsRequest | GetScaciStatisticsResponse | SCACI statistics |
+| `ListScaciErrors` | ListScaciErrorsRequest | ListScaciErrorsResponse | SCACI error log |
+| `ListScaciQueues` | ListScaciQueuesRequest | ListScaciQueuesResponse | SCACI queue status |
+| `GetScaciStatus` | GetScaciStatusRequest | GetScaciStatusResponse | SCACI system status |
 
 #### Certificates (6)
 
-`GenerateCertificate`, `DownloadCertificate`, `DownloadBaseStationCertificate`, `GenerateServerCertificates`, `RenewServerCertificates`, `GetServerCertificateStatus`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `GenerateCertificate` | GenerateCertificateRequest | GenerateCertificateResponse | Generate client certificate |
+| `DownloadCertificate` | DownloadCertificateRequest | DownloadCertificateResponse | Download certificate |
+| `DownloadBaseStationCertificate` | DownloadBaseStationCertificateRequest | DownloadCertificateResponse | Download a base station's CA certificate (the service center CA) or its stored client certificate; `FAILED_PRECONDITION` when no copy of the client certificate is stored |
+| `GenerateServerCertificates` | GenerateServerCertificatesRequest | GenerateServerCertificatesResponse | Generate server certificates |
+| `RenewServerCertificates` | RenewServerCertificatesRequest | RenewServerCertificatesResponse | Renew server certificates |
+| `GetServerCertificateStatus` | GetServerCertificateStatusRequest | GetServerCertificateStatusResponse | Certificate status |
 
 #### Manufacturers (5)
 
-`CreateManufacturer`, `GetManufacturer`, `UpdateManufacturer`, `DeleteManufacturer`, `ListManufacturers`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateManufacturer` | CreateManufacturerRequest | CreateManufacturerResponse | Create manufacturer |
+| `GetManufacturer` | GetManufacturerRequest | GetManufacturerResponse | Get manufacturer |
+| `UpdateManufacturer` | UpdateManufacturerRequest | UpdateManufacturerResponse | Update manufacturer |
+| `DeleteManufacturer` | DeleteManufacturerRequest | DeleteManufacturerResponse | Delete manufacturer |
+| `ListManufacturers` | ListManufacturersRequest | ListManufacturersResponse | List manufacturers |
 
 #### Device Models (5)
 
-`CreateDeviceModel`, `GetDeviceModel`, `UpdateDeviceModel`, `DeleteDeviceModel`, `ListDeviceModels`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateDeviceModel` | CreateDeviceModelRequest | CreateDeviceModelResponse | Create device model |
+| `GetDeviceModel` | GetDeviceModelRequest | GetDeviceModelResponse | Get device model |
+| `UpdateDeviceModel` | UpdateDeviceModelRequest | UpdateDeviceModelResponse | Update device model |
+| `DeleteDeviceModel` | DeleteDeviceModelRequest | DeleteDeviceModelResponse | Delete device model |
+| `ListDeviceModels` | ListDeviceModelsRequest | ListDeviceModelsResponse | List device models |
 
 #### Blueprints (8)
 
-`CreateBlueprint`, `GetBlueprint`, `UpdateBlueprint`, `DeleteBlueprint`, `ListBlueprints`, `SetDefaultBlueprint`, `SubmitBlueprintToRegistry`, `CreateDeviceModelWithBlueprint`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateBlueprint` | CreateBlueprintRequest | CreateBlueprintResponse | Create blueprint |
+| `GetBlueprint` | GetBlueprintRequest | GetBlueprintResponse | Get blueprint |
+| `UpdateBlueprint` | UpdateBlueprintRequest | UpdateBlueprintResponse | Update blueprint |
+| `DeleteBlueprint` | DeleteBlueprintRequest | DeleteBlueprintResponse | Delete blueprint |
+| `ListBlueprints` | ListBlueprintsRequest | ListBlueprintsResponse | List blueprints |
+| `SetDefaultBlueprint` | SetDefaultBlueprintRequest | SetDefaultBlueprintResponse | Set default blueprint |
+| `SubmitBlueprintToRegistry` | SubmitBlueprintToRegistryRequest | SubmitBlueprintToRegistryResponse | Submit to registry |
+| `CreateDeviceModelWithBlueprint` | CreateDeviceModelWithBlueprintRequest | CreateDeviceModelWithBlueprintResponse | Create device model with default blueprint atomically |
 
 #### Blueprint Utilities (1)
 
-`DecodePreview`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `DecodePreview` | DecodePreviewRequest | DecodePreviewResponse | Preview blueprint payload decoding |
 
 #### Endpoint Stats (2)
 
-`GetEndPointStats`, `GetEndPointOperations`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `GetEndPointStats` | GetEndPointStatsRequest | GetEndPointStatsResponse | Get endpoint statistics |
+| `GetEndPointOperations` | GetEndPointOperationsRequest | GetEndPointOperationsResponse | Get endpoint operation history |
 
-#### Auth & Session (8) — Enterprise
+#### Global Coverage (1) — Admin Only
 
-`Login`, `RefreshTokens`, `GetProfile`, `GetAuthSettings`, `Logout`, `ChangePassword`, `ExchangeOIDC`, `ExchangeOAuth2`
+Cross-tenant RPCs for server administrators. These require authentication but are org-exempt (no `x-organization-id` header needed). Access is restricted to users with admin privileges.
 
-#### Self-Service Registration (1) — Enterprise
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `ListAllBaseStationLocations` | ListAllBaseStationLocationsRequest | ListAllBaseStationLocationsResponse | Returns all base station locations across all tenants |
 
-`RegisterAccount`
+#### Auth & Session (8)
 
-#### Users (6) — Enterprise
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `Login` | LoginRequest | LoginResponse | Authenticate user |
+| `RefreshTokens` | RefreshTokensRequest | RefreshTokensResponse | Refresh access token |
+| `GetProfile` | GetProfileRequest | GetProfileResponse | Get current user profile |
+| `GetAuthSettings` | GetAuthSettingsRequest | GetAuthSettingsResponse | Get auth configuration |
+| `Logout` | LogoutRequest | LogoutResponse | Invalidate session |
+| `ChangePassword` | ChangePasswordRequest | ChangePasswordResponse | Update password |
+| `ExchangeOIDC` | ExchangeOIDCRequest | LoginResponse | Exchange OIDC code for tokens |
+| `ExchangeOAuth2` | ExchangeOAuth2Request | LoginResponse | Exchange OAuth2 code for tokens |
 
-`CreateUser`, `GetUser`, `UpdateUser`, `DeleteUser`, `ListUsers`, `UpdateUserPassword`
+#### Self-Service Registration (1)
+
+A registered account starts without roles; an administrator grants them in Users & Roles.
+
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `RegisterAccount` | RegisterAccountRequest | LoginResponse | Register new account and receive tokens |
+
+#### Users (6) — Admin Only
+
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateUser` | CreateUserRequest | CreateUserResponse | Create user account |
+| `GetUser` | GetUserRequest | GetUserResponse | Get user details |
+| `UpdateUser` | UpdateUserRequest | UpdateUserResponse | Update user account |
+| `DeleteUser` | DeleteUserRequest | DeleteUserResponse | Delete user account |
+| `ListUsers` | ListUsersRequest | ListUsersResponse | List users |
+| `UpdateUserPassword` | UpdateUserPasswordRequest | UpdateUserPasswordResponse | Update user password (admin) |
 
 #### Organizations (5) — Enterprise
 
-`CreateOrganization`, `GetOrganization`, `UpdateOrganization`, `DeleteOrganization`, `ListOrganizations`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `CreateOrganization` | CreateOrganizationRequest | CreateOrganizationResponse | Create organization |
+| `GetOrganization` | GetOrganizationRequest | GetOrganizationResponse | Get organization details |
+| `UpdateOrganization` | UpdateOrganizationRequest | UpdateOrganizationResponse | Update organization |
+| `DeleteOrganization` | DeleteOrganizationRequest | DeleteOrganizationResponse | Delete organization |
+| `ListOrganizations` | ListOrganizationsRequest | ListOrganizationsResponse | List organizations |
+
+`CreateOrganization` stores the request's `tags` with the organization, and `GetOrganization` and `ListOrganizations` return them in `Organization.tags`. Tags are fixed once the organization exists: an `UpdateOrganization` that sets `tags` is refused with `INVALID_ARGUMENT` (`KC-GRPC-ERR-283`) and changes nothing. An integration that creates organizations can therefore tag each one with its own identifiers and check them before it acts on the organization. An organization created without tags returns none.
 
 #### Organization Memberships (6) — Enterprise
 
-`AddOrganizationUser`, `GetOrganizationUser`, `UpdateOrganizationUser`, `RemoveOrganizationUser`, `ListOrganizationUsers`, `ListUserOrganizations`
+| RPC | Request | Response | Description |
+|-----|---------|----------|-------------|
+| `AddOrganizationUser` | AddOrganizationUserRequest | AddOrganizationUserResponse | Add user to organization |
+| `GetOrganizationUser` | GetOrganizationUserRequest | GetOrganizationUserResponse | Get membership details |
+| `UpdateOrganizationUser` | UpdateOrganizationUserRequest | UpdateOrganizationUserResponse | Update membership |
+| `RemoveOrganizationUser` | RemoveOrganizationUserRequest | RemoveOrganizationUserResponse | Remove from organization |
+| `ListOrganizationUsers` | ListOrganizationUsersRequest | ListOrganizationUsersResponse | List organization members |
+| `ListUserOrganizations` | ListUserOrganizationsRequest | ListUserOrganizationsResponse | List organizations a user belongs to |
 
 ### Streaming RPCs
 
 Five RPCs use server-side streaming to deliver real-time data:
 
-| RPC                         | Use Case                   |
-| --------------------------- | -------------------------- |
-| `StreamMessages`            | Real-time uplink messages  |
-| `StreamBaseStationMessages` | Base station message feed  |
-| `StreamEvents`              | System event notifications |
-| `StreamBaseStationEvents`   | Base station event feed    |
-| `StreamEndPointEvents`      | Endpoint event feed        |
+| RPC | Use Case |
+|-----|----------|
+| `StreamMessages` | Real-time uplink messages |
+| `StreamBaseStationMessages` | Base station message feed |
+| `StreamEvents` | System event notifications |
+| `StreamBaseStationEvents` | Base station event feed |
+| `StreamEndPointEvents` | Endpoint event feed |
 
 ```typescript
 const stream = client.streamMessages(request, metadata);
@@ -193,13 +392,15 @@ stream.on('error', (err) => { /* handle error */ });
 stream.on('end', () => { /* stream closed */ });
 ```
 
+Every stream is server-side, so a gRPC-web client uses its default HTTP
+transport. KC-Gateway does not accept gRPC-web over WebSocket.
+
 ### Pagination
 
 All `List*` RPCs support offset-based pagination via `page_size` and `page_token` fields.
 
-**Standard list RPCs:** default 20, max 100 **High-volume lists** (endpoints, base stations, downlinks): default 100, max 1000
-
-Source: `KC-Core/pkg/grpc/pagination.go`
+**Standard list RPCs:** default 20, max 100
+**High-volume lists** (endpoints, base stations, downlinks): default 100, max 1000
 
 ```protobuf
 message ListEndPointsRequest {
@@ -210,19 +411,50 @@ message ListEndPointsRequest {
 
 ### Error Handling
 
-All errors use gRPC status codes with machine-readable error tokens from `KC-Core/pkg/grpc/errors_catalog.go`.
+All errors use gRPC status codes with machine-readable error tokens.
 
-| gRPC Code                 | HTTP Equiv | Common Causes                          |
-| ------------------------- | ---------- | -------------------------------------- |
-| `INVALID_ARGUMENT` (3)    | 400        | Malformed request, validation failures |
-| `NOT_FOUND` (5)           | 404        | Resource does not exist                |
-| `ALREADY_EXISTS` (6)      | 409        | Duplicate resource                     |
-| `PERMISSION_DENIED` (7)   | 403        | Authorization failure                  |
-| `UNAUTHENTICATED` (16)    | 401        | Missing or invalid token               |
-| `FAILED_PRECONDITION` (9) | 400        | State-based failure                    |
-| `INTERNAL` (13)           | 500        | Server error                           |
+#### Error Response Format
 
-For the full error model and error token ranges, see docs/api.md.
+```json
+{
+  "code": 3,
+  "message": "KC-GRPC-ERR-001: invalid endpoint EUI format",
+  "details": []
+}
+```
+
+#### Common Error Codes
+
+| gRPC Code | HTTP Equiv | Common Causes |
+|-----------|------------|---------------|
+| `INVALID_ARGUMENT` (3) | 400 | Malformed request, validation failures |
+| `NOT_FOUND` (5) | 404 | Resource does not exist |
+| `ALREADY_EXISTS` (6) | 409 | Duplicate resource |
+| `PERMISSION_DENIED` (7) | 403 | Authorization failure |
+| `UNAUTHENTICATED` (16) | 401 | Missing or invalid token |
+| `FAILED_PRECONDITION` (9) | 400 | State-based failure |
+| `INTERNAL` (13) | 500 | Server error |
+
+#### Error Token Ranges
+
+Error tokens follow the pattern `KC-GRPC-ERR-NNN`. The numeric ranges group errors by domain:
+
+| Range | Domain |
+|-------|--------|
+| 001-099 | Core validation |
+| 100-199 | Auth and session |
+| 200-299 | Messaging |
+| 300-399 | Base station |
+| 400-419 | Integration and endpoint stats |
+| 420-42F | Registry provider |
+
+### Health Check
+
+KC-Core implements the standard gRPC Health Checking Protocol:
+
+```bash
+grpcurl -plaintext localhost:9090 grpc.health.v1.Health/Check
+```
 
 ### API Console
 
@@ -235,12 +467,30 @@ grpcui -plaintext localhost:9090
 # grpcurl — command-line client
 grpcurl -plaintext localhost:9090 list
 
+# Describe a service
+grpcurl -plaintext localhost:9090 describe kilocenter.api.v1.KiloCenterService
+
+# Call an RPC with auth headers
+grpcurl -plaintext \
+  -H "authorization: Bearer <token>" \
+  -H "x-organization-id: <org-uuid>" \
+  -H "x-user-id: <user-uuid>" \
+  -d '{}' \
+  localhost:9090 kilocenter.api.v1.KiloCenterService/GetSystemStatus
+
 # Postman — use the gRPC tab with server reflection
 # BloomRPC — desktop gRPC client
 ```
 
+### Language Examples
+
+Runnable code examples for common API calls (system status, endpoint listing, authentication):
+
+- [Go Examples](go-examples.md)
+- [Python Examples](python-examples.md)
+- [JavaScript Examples](javascript-examples.md)
+- [C# Examples](c-examples.md)
+
 ### Further Reading
 
-* Full API reference — request/response contracts and error token ranges
-* Proto source files — canonical API definitions
-* gRPC First Steps — verify connectivity and discover methods
+- [gRPC First Steps](../grpc-first-steps.md) — verify connectivity and discover methods

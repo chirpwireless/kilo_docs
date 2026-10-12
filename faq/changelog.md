@@ -22,6 +22,7 @@ Release 3.11.0 is our biggest release yet. **Solutions** let a specialist packag
 * **Kilo is in the Claude connectors directory** — Add Kilo to Claude from the directory (as a community connector) with one click and sign in with your usual account. Every other MCP client still connects with the same address.
 * **Ask Grok in your Tesla** — Check where a truck last reported, read an office temperature, review building alarms, or run a configured command by voice.
 * **MIOTY devices and base stations in Kilo** — Attach and detach endpoints, test decoders, base station metrics and system information, confirmed downlinks, and validated forms.
+* **MIOTY Service Center 2.0** — The service center behind Kilo's MIOTY support becomes a major release: every stored key is encrypted, every call checks the caller's role, uplinks and downlinks follow the MIOTY BSSCI and SCACI specifications end to end, and the web interface updates live.
 * **External MQTT with encryption, version choice, and topic filters** — Encrypt the connection with TLS and still use a username and password, choose the MQTT version, read only the topics you need, and let the value come from the message body.
 * **Digital Building Twin: move, duplicate, import, and clearer readings** — Work in 2D, import a DXF floor plan (beta), and see readings rounded to two decimals with the camera angle you saved.
 * **Key Vault eye toggle** — Reveal a stored key for one row when you need to check it; keys stay hidden by default.
@@ -117,6 +118,32 @@ MIOTY endpoints and base stations are now managed in Kilo with validated forms. 
 [→ MIOTY devices](../kilo-iot-server/devices/mioty-devices.md)
 
 [→ MIOTY base station monitoring](../kilo-iot-server/gateways/mioty-base-stations/base-station-monitoring.md)
+
+***
+
+**MIOTY Service Center 2.0**
+
+A MIOTY network needs a service center: the server that talks to your base stations, keeps the radio sessions, and hands every message to your applications. Kilo's is **KiloCenter**, and version 2.0 is the release that makes it ready for a team. The **Enterprise edition** is built into Kilo Cloud, so the endpoints you attach in Kilo run on this engine. The **Community edition** is free, open source, and self-hosted, for teams that want to run the network themselves.
+
+<figure><img src="../.gitbook/assets/mioty-connector.jpg" alt="The MIOTY connector in Kilo, which connects Kilo to a KiloCenter service center"><figcaption><p>The MIOTY connector in Kilo connects your account to a service center.</p></figcaption></figure>
+
+What changes in 2.0:
+
+* **Safer by default.** Every endpoint, session and TLS key is encrypted at rest under a master key you control. Every call checks the caller's role, so a Base Station Manager sees base stations and an Endpoint Manager sees endpoints, and endpoint keys are masked until someone with the right role reveals them. Each reveal is recorded in the Audit Log.
+* **Live web interface.** Dashboards, lists and activity refresh within about a second of a message arriving. Each base station and endpoint has an activity table that shows every uplink with its radio metrics, payload and decoded values, and you can queue a downlink, revoke it, and follow it to delivery from the Traffic page.
+* **Follows the specification.** Uplinks, downlinks, attach and detach follow BSSCI v1.0.0 and SCACI v1.0.0. One uplink that several base stations receive is delivered once, with every receiving station listed, and sessions survive a restart and resume.
+* **Dependable downlinks.** A downlink can carry a deadline. When a base station still holds it at the deadline, KiloCenter asks the station to drop it and reports it expired only when the station confirms. A command's reference is accepted once, so your application can safely resend a command it is not sure arrived.
+* **More for integrators.** Uplink messages report `dlOpen`, `responseExp` and `dlAck`, downlink results carry the delivery details, and MQTT gains `event/downlink_queued`.
+
+Upgrading a self-hosted installation from 1.x needs a few manual steps, mainly setting the master key and converting stored keys with the `rekey` command. The migration guide walks through them.
+
+[→ What's new in KiloCenter 2.0](../kilo-center/kilo-mioty-service-center/whats-new-in-2-0.md)
+
+[→ The KiloCenter web interface](../kilo-center/kilo-mioty-service-center/web-interface.md)
+
+[→ Migrate key material to 2.0](../kilo-center/kilo-mioty-service-center/operations/key-material-migration.md)
+
+[→ User roles and permissions](../kilo-center/kilo-mioty-service-center/security/users-and-roles.md)
 
 ***
 

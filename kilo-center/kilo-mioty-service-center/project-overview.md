@@ -325,6 +325,8 @@ KiloCenter implements the MIOTY service-center stack defined by the MIOTY Allian
 
 The community edition focuses on the core service-center stack. Optional MIOTY capabilities such as BSSCI sub-channels, the Variable MAC (VM) attachment, ReCon extensions, and enterprise multi-tenant operation belong to the enterprise offering.
 
+Community edition sign-in uses four roles — Admin, Tenant Manager, Base Station Manager and Endpoint Manager — and every API call checks them; see [User Roles and Permissions](security/users-and-roles.md). Version 2.0 also encrypts every stored key under a master key; see [What's new in KiloCenter 2.0?](whats-new-in-2-0.md).
+
 #### Supported Profiles and Behaviors
 
 

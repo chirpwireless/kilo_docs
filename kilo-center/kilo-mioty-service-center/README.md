@@ -43,6 +43,10 @@ Use **Kilo Cloud** when MIOTY is one part of a broader deployment. The Enterpris
 
 Read the [Project Overview](project-overview.md) for the architecture, components, supported MIOTY behavior, and production-use boundaries.
 
+## What is new in version 2.0?
+
+Version 2.0 adds a live web interface, encrypted key storage, enforced user roles and end-to-end BSSCI and SCACI conformance. It needs a few manual steps when you upgrade from 1.x. Read [What's new in KiloCenter 2.0?](whats-new-in-2-0.md) and take a tour of the [web interface](web-interface.md).
+
 ## Start here
 
 1. Follow [Getting Started](getting-started/README.md) to install Community Edition.

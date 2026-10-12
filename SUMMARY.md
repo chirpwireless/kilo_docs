@@ -186,6 +186,8 @@
 
 * [Kilo MIOTY Service Center](kilo-center/kilo-mioty-service-center/README.md)
   * [Project Overview](kilo-center/kilo-mioty-service-center/project-overview.md)
+  * [What's New in 2.0](kilo-center/kilo-mioty-service-center/whats-new-in-2-0.md)
+  * [Web Interface](kilo-center/kilo-mioty-service-center/web-interface.md)
   * [Next Steps](kilo-center/kilo-mioty-service-center/next-steps.md)
   * [License And Trademarks](kilo-center/kilo-mioty-service-center/license-and-trademarks.md)
   * [Getting Started](kilo-center/kilo-mioty-service-center/getting-started/README.md)
@@ -214,8 +216,10 @@
     * [Security Basics](kilo-center/kilo-mioty-service-center/security/security-basics.md)
     * [Before you install](kilo-center/kilo-mioty-service-center/security/installation-safety.md)
     * [Certificate renewal](kilo-center/kilo-mioty-service-center/security/certificate-renewal.md)
+    * [User Roles and Permissions](kilo-center/kilo-mioty-service-center/security/users-and-roles.md)
   * [Operations](kilo-center/kilo-mioty-service-center/operations/README.md)
     * [Operations and Troubleshooting](kilo-center/kilo-mioty-service-center/operations/operations-and-troubleshooting.md)
+    * [Key Material Migration](kilo-center/kilo-mioty-service-center/operations/key-material-migration.md)
 
 * [What is Kilo Connectivity?](kilo-connectivity/what-is-kilo-connectivity/README.md)
   * [Global IoT SIM Cards](kilo-connectivity/what-is-kilo-connectivity/cellular-iot.md)

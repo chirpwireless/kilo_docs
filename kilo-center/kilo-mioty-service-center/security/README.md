@@ -11,3 +11,4 @@ Follow [Security Basics](security-basics.md) to review default credentials, TLS 
 
 * [Before you install](installation-safety.md)
 * [Renew a server certificate without deleting data](certificate-renewal.md)
+* [User roles and permissions](users-and-roles.md)
