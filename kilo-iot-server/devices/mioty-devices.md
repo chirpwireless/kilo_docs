@@ -24,7 +24,7 @@ The endpoint supplies data to a [digital twin](README.md). Name the twin for the
 
 On the device form, select the Mioty connector as the connector type. The form then presents the MIOTY parameter sections described below.
 
-<figure><img src="../../.gitbook/assets/device-mioty-connection.jpg" alt="The Connection tab of a MIOTY device showing Basic Information, Network Configuration, Communication Settings, Advanced MIOTY Settings and Security Settings"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-mioty-device-connection.jpg" alt="The Connection tab of a saved MIOTY device: Swap connection link, End Point EUI with Add to Vault, Short Address, Carrier Offset, Communication Settings, Advanced MIOTY Settings, counters and masked Network Key"><figcaption></figcaption></figure>
 
 ## Basic
 
@@ -55,6 +55,8 @@ Registering a device record and having the base stations serve it are two differ
 - **Configuration pending** appears when you have changed settings that the base stations have not received yet. They keep the previous settings until the endpoint is attached again, so click **Attach** after editing a live endpoint.
 
 Users with view-only access see the status but not the buttons.
+
+<figure><img src="../../.gitbook/assets/kilo-mioty-device-attach-status.jpg" alt="The mioty endpoint panel of a MIOTY device showing Attach status Attached, Last seen Not heard yet, the Attach and Detach buttons and the Reception panel waiting for first data"><figcaption></figcaption></figure>
 
 ## Advanced MIOTY
 

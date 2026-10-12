@@ -39,6 +39,8 @@ Below the floor buttons, the selector carries two view toggles.
 
 Switches the camera between the **3D view** (orbit the model freely) and the **2D view** (a locked top-down plan). This is the same toggle described in the [Editor tour](editor-tour.md). Draw and lay out in 2D; review in 3D.
 
+<figure><img src="../../../../.gitbook/assets/kilo-dbt-2d-editor-scene.jpg" alt="The Digital Building Twin editor in 2D view: a top-down floor plan with a room selected, its name and material swatches in the properties panel on the right, and live sensor values on the plan"><figcaption></figcaption></figure>
+
 ### Stack / Solo
 
 This toggle controls how floors are shown, and only appears when the model has more than one floor:

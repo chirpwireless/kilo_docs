@@ -10,7 +10,7 @@ Once MIOTY base stations are deployed, the **Mioty Base Stations** tab on the Ga
 
 Click **Gateways** in the left sidebar and open the **Mioty Base Stations** tab.
 
-<figure><img src="../../../.gitbook/assets/mioty-base-stations-table.jpg" alt="The Mioty Base Stations tab listing stations with their EUI, status and BSSCI URL"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/kilo-mioty-base-stations-list.jpg" alt="The Gateways page with the Mioty Base Stations tab selected, listing a station with its name, base station EUI, status, BSSCI URL and a delete button"><figcaption></figcaption></figure>
 
 ### Table columns
 
@@ -32,7 +32,12 @@ Click any row to open that station's detail page. It has two tabs: **Overview** 
 
 ### Overview tab
 
+<figure><img src="../../../.gitbook/assets/kilo-mioty-base-station-overview.jpg" alt="The Overview tab of a base station: the station name and Last seen time at the top left, an empty map with an Add device location button, and the Availability and Messages received charts with 30D, 14D and 7D range buttons"><figcaption></figcaption></figure>
+
 The Overview tab is the operational read on a single station:
+
+- **Availability, %** — a chart of how much of each day the station's BSSCI session was up, with the monthly average shown at the top right. Use the **30D**, **14D** and **7D** buttons to change the range.
+- **Messages received** — a chart of the uplinks the station received, with the total for the range at the top right and the same **30D**, **14D** and **7D** buttons.
 
 - **Status** — an online/offline indicator showing the current state of the station's BSSCI session.
 - **Description** — the notes you captured at registration: mounting details, antenna type, work order.
@@ -43,6 +48,8 @@ The Overview tab is the operational read on a single station:
 - **Map** — once coordinates are set, the station appears as a marker in its real position.
 
 ### Settings tab
+
+<figure><img src="../../../.gitbook/assets/kilo-mioty-base-station-settings.jpg" alt="The Settings tab of a base station with Name, Description, Photos, Select location on map, Latitude, Longitude and Altitude fields, the read-only BS EUI and BSSCI Address, and the Base station certificate panel with Download current certificate and Regenerate certificate"><figcaption></figcaption></figure>
 
 The Settings tab is where you change what the station is and how it authenticates.
 

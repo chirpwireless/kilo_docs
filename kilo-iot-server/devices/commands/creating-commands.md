@@ -12,6 +12,8 @@ To start, open the device's **Commands & States** tab, stay on the **Commands** 
 
 <figure><img src="../../../.gitbook/assets/device-command-editor.jpg" alt="The command editor showing the Identity, Routing, and Payload sections"><figcaption></figcaption></figure>
 
+<figure><img src="../../../.gitbook/assets/kilo-mioty-command-delivery.jpg" alt="The command editor of a MIOTY device: 1. Identity, 2. Delivery with the Confirmed downlink switch, and 3. Payload with Send as-is or Process with encoder"><figcaption></figcaption></figure>
+
 ## 1. Identity
 
 Give the command a clear, action-oriented name — this is what operators see when they execute it.

@@ -46,6 +46,8 @@ Switch to **Select** and click an object to open its properties panel:
 
 The selected object also gets an inline badge floating above it with quick **Move**, **Duplicate**, and **Delete** buttons. **Duplicate** is the fast way to lay out repeated objects — place one desk exactly how you want it, then duplicate it down the row. A duplicate keeps the original's name instead of gaining a "copy" suffix, so copying one window fifty times does not leave fifty names to clean up (rename the ones you will bind sensors to). In the **2D view** the same badge is available, and **Move** works there too: pick the new spot on the plan and an item changes its floor position, while a door or window attaches to whichever wall you pick, the same way it does when first placed.
 
+<figure><img src="../../../../.gitbook/assets/kilo-dbt-2d-move-duplicate.jpg" alt="The Digital Building Twin editor in 2D view with a computer selected: the inline Move, Duplicate and Delete badge above it, and the properties panel with Position, Rotation, Scale and a Duplicate button on the right"><figcaption></figcaption></figure>
+
 ## Parking spots
 
 The **Parking Spot** object (in the **Outdoor** category) has one extra property: a **Spot #** field. Give each bay its real designation — "A12," "L2-44" — and that number shows on the spot in the model. When you duplicate a numbered parking spot, the number increments automatically, so you can lay out a whole row of correctly-numbered bays in seconds. Parking spots and occupancy sensors work well together — see [Binding sensors and colors](binding-sensors-and-colors.md).

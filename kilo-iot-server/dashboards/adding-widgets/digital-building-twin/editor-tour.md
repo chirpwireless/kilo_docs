@@ -35,6 +35,8 @@ Select any object and a properties panel opens with the settings for that specif
 
 Every selected object also gets an inline action badge with quick **Move**, **Duplicate**, and **Delete** buttons. The badge works in the **2D view** as well as in 3D, so you can lay out and rearrange a floor entirely from the top-down plan. The properties panel offers **Duplicate** for every kind of object, not only catalog items.
 
+<figure><img src="../../../../.gitbook/assets/kilo-dbt-editor-3d.jpg" alt="The Digital Building Twin editor in 3D view: the scene tree on the left, the floor selector with the 3D / 2D toggle, the Pan, Rotate and Zoom hints at the top, and the Preview, Cancel and Save buttons at the top right"><figcaption></figcaption></figure>
+
 ## Moving the camera
 
 The editor has two camera modes, switched from the floor selector (see below):

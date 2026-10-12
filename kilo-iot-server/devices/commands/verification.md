@@ -38,6 +38,8 @@ Use this when a device does not volunteer its state in routine uplinks but will 
 
 ## Expected sensor states
 
+<figure><img src="../../../.gitbook/assets/kilo-command-verification-expected-states.jpg" alt="Section 4 Verification of the command editor with Wait for next uplink selected: the Expected sensor states list with the Add State button and the message Add at least one expected state to verify the result, and the Convergence timeout field"><figcaption></figcaption></figure>
+
 Both *Wait for next uplink* and *Query after ack* check the device's reported telemetry against the states you declare here. Click **Add State** to add a row, and fill in the two fields below. Add at least one row — the command will not save without it, and a row only counts when both its **Metric** and its **Expected value** are filled in. The editor flags the incomplete field in place (*Select a metric* or *Expected value is required*) and keeps **Save** disabled, so a half-filled row can no longer be dropped silently and leave the command saved without the check you thought you had.
 
 ### Metric
