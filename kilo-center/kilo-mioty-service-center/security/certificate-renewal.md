@@ -13,6 +13,9 @@ stops. First try this procedure on an isolated copy of your installation. The ce
 server-only behaviour has been tested; every installed container version and recovery arrangement
 must still be checked by its operator.
 
+The **Certificates** page of the web interface shows how long the server certificate and each base station certificate remain valid, and flags one that **Expires soon**.
+<figure><img src="../../../.gitbook/assets/kc-certificates.jpg" alt="The Certificates page with Server Certificate, CA Certificate and base station certificates with their days left, and the Renew Server Certificates button"><figcaption></figcaption></figure>
+
 ## Before changing files
 
 1. Confirm the installation, existing image and intended hostname. Use the same Compose project and

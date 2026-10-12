@@ -27,6 +27,8 @@ It is a major release because upgrading from 1.x needs a few manual steps. Read 
 ## What is new in the web interface?
 
 The [web interface](web-interface.md) shows changes within about a second of a message arriving: dashboards, lists and activity refresh without a manual reload. It adds an activity table on every base station and endpoint, a Traffic page for uplinks and downlinks, blueprint assignment from the endpoint page, an error center and event log, a base station map with certificate status, and a role-aware Users & Roles page.
+<figure><img src="../../.gitbook/assets/kc-dashboard.jpg" alt="The KiloCenter dashboard with base station and end point counts, control plane status, alerts and service center status"><figcaption></figcaption></figure>
+
 
 ## What is new in the service center itself?
 

@@ -31,7 +31,7 @@ These values come from the endpoint provisioning process. The EUI and network se
 ### Register Through KC-Web
 
 1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
-2. Navigate to **Endpoints** in the sidebar.
+2. Select **End Points** in the sidebar.
 3. Click **Add End Point**.
 4. Fill in the required fields:
    * **EUI**: the 16-character hex EUI (e.g., `0011223344556677`)
@@ -44,17 +44,23 @@ These values come from the endpoint provisioning process. The EUI and network se
 
 ### Validate Endpoint State
 
-A new endpoint appears in the **Endpoints** list as detached. It becomes attached when you create it with **Pre-Attachment**, when you attach it (the endpoint's **Attach** action or the `AttachEndPoint` API), when an application center registers it with `preAttach`, or when the endpoint attaches over the air.
+<figure><img src="../../../.gitbook/assets/kc-endpoints.jpg" alt="The End Points list with the Name, EUI, Attach State, Status and Last Seen columns and two attached end points"><figcaption></figcaption></figure>
+
+
+A new endpoint appears in the **End Points** list as detached. It becomes attached when you create it with **Pre-Attachment**, when you attach it (the endpoint's **Attach** action or the `AttachEndPoint` API), when an application center registers it with `preAttach`, or when the endpoint attaches over the air.
 
 KiloCenter sends an attached endpoint to every connected base station and to every base station that connects later. An endpoint you detach, one an application center deregisters, and one that detaches over the air is detached at every connected base station. A base station that was away and resumes its session is sent the detachment when it reconnects; one that starts a new session is not sent the endpoint at all.
 
 ### How Do I Decode an Endpoint's Uplinks with a Blueprint?
 
 1. Under **Blueprints**, upload a blueprint for the device's manufacturer and model.
-2. Open the endpoint and click **Assign Blueprint** under **Blueprint Configuration** (or the **Edit** icon).
+2. Open the endpoint (the **End Point Details** page) and click **Assign Blueprint** under **Blueprint Configuration** (or the **Edit** icon).
 3. In **Blueprint Configuration**, pick the manufacturer and the model, then click **Save Changes**.
 
 The model's default blueprint decodes every uplink received from then on; earlier uplinks keep the decode status they were stored with. Each uplink in the endpoint's **Activity** tab shows its decoded values, or why it was not decoded, below its payload.
+
+After you save, the endpoint's **Configuration** tab shows the short address, class and counters, and reports each key only as **Set** or **Not set**.
+<figure><img src="../../../.gitbook/assets/kc-endpoint-configuration.jpg" alt="The Configuration tab of an end point with MIOTY Configuration fields and the Reception panel"><figcaption></figcaption></figure>
 
 ### Optional MIOTY Profile Fields (Enterprise Edition)
 

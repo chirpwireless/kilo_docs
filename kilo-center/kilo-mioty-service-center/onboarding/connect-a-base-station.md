@@ -22,7 +22,7 @@ Connect a MIOTY base station to your local KiloCenter instance and confirm it is
 Before the hardware can connect, the base station must exist in KiloCenter.
 
 1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
-2. Navigate to **Base Stations** in the sidebar.
+2. Select **Base Stations** in the sidebar. The page shows the station counts, a map and a table of every station.
 3. Click **Add Base Station**.
 4. Enter the base station **EUI** (16-character hex string matching the hardware identity) and a **name**.
 5. Save the base station.
@@ -48,7 +48,15 @@ The base station must trust KiloCenter's CA certificate for TLS to succeed.
 
 #### In KC-Web
 
-Navigate to **Base Stations**. The connected base station should show an **Online** status. Open it: its **Activity** tab lists the station's events (it coming online, going offline) and the uplinks it hears, in the same columns as the Events Log. Administrators also see warnings and errors on the dashboard's **Alerts** card, which links to the full history in **Logs** > **Events Log**.
+Open **Base Stations**. The connected base station should show an **Online** status in the table, next to its **Connection**, **Date Added** and **Last Seen**.
+
+<figure><img src="../../../.gitbook/assets/kc-base-stations-list.jpg" alt="The Base Stations table with an Online station and two Offline stations, showing EUI, connection, date added, last seen and certificate expiry"><figcaption></figcaption></figure>
+
+Select its row to open **Base Station Details**. The **Certificate** panel shows the client certificate, and **Ping** checks the BSSCI session.
+
+<figure><img src="../../../.gitbook/assets/kc-base-station-detail.jpg" alt="Base Station Details with performance metrics, location, availability, the certificate panel and the Ping action"><figcaption></figcaption></figure>
+
+Its **Activity** tab lists the station's events (it coming online, going offline) and the uplinks it hears, in the same columns as the Events Log. Administrators also see warnings and errors on the dashboard's **Alerts** card, which links to the full history in **Logs** > **Events Log**.
 
 If the base station has a location, entered when you added it or reported by its GPS, administrators also see it as a pin on the map at the top of the **Base Stations** page, above the search field. The pin turns from the error color to the success color when the station comes online, without a page reload. Click the pin to open the base station.
 

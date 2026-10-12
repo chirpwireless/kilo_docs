@@ -47,6 +47,8 @@ Read the [Project Overview](project-overview.md) for the architecture, component
 
 Version 2.0 adds a live web interface, encrypted key storage, enforced user roles and end-to-end BSSCI and SCACI conformance. It needs a few manual steps when you upgrade from 1.x. Read [What's new in KiloCenter 2.0?](whats-new-in-2-0.md) and take a tour of the [web interface](web-interface.md).
 
+<figure><img src="../../.gitbook/assets/kc-dashboard.jpg" alt="The KiloCenter Network Overview dashboard with live base station, end point and message counts, control plane status and alerts"><figcaption></figcaption></figure>
+
 ## Start here
 
 1. Follow [Getting Started](getting-started/README.md) to install Community Edition.

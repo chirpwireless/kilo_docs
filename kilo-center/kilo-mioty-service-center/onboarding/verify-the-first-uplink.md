@@ -23,9 +23,15 @@ Confirm that uplink data travels end-to-end from an endpoint through a base stat
 ### Check Uplinks in KC-Web
 
 1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
-2. Navigate to **Endpoints** and select your endpoint. Its **Activity** tab lists the endpoint's events and uplinks in one table, newest first, with the same columns as the Events Log: each uplink is an `ulData` row showing its `opId`, the base stations that received it, and "Uplink #" with the `packetCnt` over its `rssi`, `snr`, `eqSnr`, the `dlOpen`/`dlAck` flags and the payload size. Expand an uplink for every base station's reception and its subpackets, the `ulData` message and, when a blueprint decoded it, the decoded payload. A base station's **Activity** tab shows the same for the uplinks that station heard, each named by its endpoint, and exports them as CSV or JSON.
-3. Open the **Traffic** tab. **Uplink Events** lists each uplink with `rxTime`, the receiving `bsEui`, `packetCnt`, `snr`, `rssi`, `eqSnr`, the `dlOpen`, `responseExp`, `dlAck` and `duplicate` flags and `userData` in hex; expand a row for every base station's reception and its subpackets.
+2. Open **End Points** and select your endpoint. Its **Activity** tab lists the endpoint's events and uplinks in one table, newest first, with the same columns as the Events Log: each uplink is an `ulData` row showing its `opId`, the base stations that received it, and "Uplink #" with the `packetCnt` over its `rssi`, `snr`, `eqSnr`, the `dlOpen`/`dlAck` flags and the payload size. Expand an uplink for every base station's reception and its subpackets, the `ulData` message and, when a blueprint decoded it, the decoded payload. A base station's **Activity** tab shows the same for the uplinks that station heard, each named by its endpoint, and exports them as CSV or JSON.
+3. Open the **Traffic** tab.
+ **Uplink Events** lists each uplink with `rxTime`, the receiving `bsEui`, `packetCnt`, `snr`, `rssi`, `eqSnr`, the `dlOpen`, `responseExp`, `dlAck` and `duplicate` flags and `userData` in hex; expand a row for every base station's reception and its subpackets.
 4. To see the uplinks of every endpoint at once, open **Traffic** in the navigation.
+
+<figure><img src="../../../.gitbook/assets/kc-traffic-uplinks.jpg" alt="The Traffic page on Uplink Events with filters and a table of uplinks with dlAck and dlOpen flags"><figcaption></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/kc-base-station-uplink-expanded.jpg" alt="An expanded uplink showing the receiving base stations and the ulData JSON message"><figcaption></figcaption></figure>
+
 
 If uplinks appear here, your uplink path is working end-to-end. New uplinks appear without a page reload.
 

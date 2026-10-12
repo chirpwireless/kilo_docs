@@ -23,11 +23,15 @@ Both the endpoint and the base station must have bidirectional capability for do
 ### Send a Downlink via KC-Web
 
 1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
-2. Navigate to **Endpoints**, select your bidirectional endpoint and open the **Downlink** tab.
+2. Open **End Points**, select your bidirectional endpoint and open the **Downlink** tab.
 3. Compose the downlink:
    - **Payload (hex)**: the user data as hex (e.g. `01020304`); leave it empty for an acknowledgement-only downlink
    - **Format** and **Priority** (`prio`), and under **Advanced Options** the `responseExp`, `responsePrio`, `dlWindReq`, `expOnly` and `dlRxStatQry` flags
+   - **Counter Dependent**, which binds the downlink to a packet counter
 4. Select **Send Downlink**. The downlink appears under the endpoint's **Traffic** tab > **Downlink Queue**; while no base station has taken it yet you can edit or revoke it there.
+
+
+<figure><img src="../../../.gitbook/assets/kc-endpoint-downlink.jpg" alt="The Downlink tab with Payload hex, Format, Priority, Counter Dependent, Advanced Options and Send Downlink"><figcaption></figcaption></figure>
 
 ### Send a Downlink via gRPC (Alternative)
 
@@ -49,6 +53,9 @@ grpcurl -plaintext \
 #### In KC-Web
 
 Open **Traffic** (in the navigation, or the endpoint's **Traffic** tab) and select **Downlink Results**. A result shows `result` (`sent`, `expired` or `invalid`), and for a sent downlink the transmitting `bsEui`, `txTime` and `packetCnt`; `dlAck` shows when the endpoint acknowledged it in its next uplink. **Downlink Queue** shows the downlinks still waiting for a transmission window.
+<figure><img src="../../../.gitbook/assets/kc-traffic-downlink-results.jpg" alt="Downlink Results listing sent downlinks with the time each was acknowledged"><figcaption></figcaption></figure>
+
+
 
 #### In Logs
 

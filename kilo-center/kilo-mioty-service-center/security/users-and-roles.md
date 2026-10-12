@@ -22,6 +22,9 @@ A user can hold any combination. Holding a role gives access only to your own
 organization's data; roles never open another tenant's base stations,
 endpoints or events.
 
+In the web interface, **Users & Roles** lists every user with the **Tenant Manager**, **Base Station Manager** and **Endpoint Manager** roles in their own columns.
+<figure><img src="../../../.gitbook/assets/kc-users-and-roles.jpg" alt="The Users & Roles page with total, active and inactive users and a table showing an Admin account with all three manager roles"><figcaption></figcaption></figure>
+
 ## What can each role see and do?
 
 | Area | Admin | Tenant Manager | Base Station Manager | Endpoint Manager |

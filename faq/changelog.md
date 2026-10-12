@@ -125,15 +125,19 @@ MIOTY endpoints and base stations are now managed in Kilo with validated forms. 
 
 A MIOTY network needs a service center: the server that talks to your base stations, keeps the radio sessions, and hands every message to your applications. Kilo's is **KiloCenter**, and version 2.0 is the release that makes it ready for a team. The **Enterprise edition** is built into Kilo Cloud, so the endpoints you attach in Kilo run on this engine. The **Community edition** is free, open source, and self-hosted, for teams that want to run the network themselves.
 
-<figure><img src="../.gitbook/assets/mioty-connector.jpg" alt="The MIOTY connector in Kilo, which connects Kilo to a KiloCenter service center"><figcaption><p>The MIOTY connector in Kilo connects your account to a service center.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/kc-dashboard.jpg" alt="The KiloCenter Network Overview dashboard with base station, end point and message counts, the control plane session, alerts and service center status"><figcaption><p>The Community edition's dashboard shows the whole network at a glance and updates live.</p></figcaption></figure>
 
 What changes in 2.0:
 
 * **Safer by default.** Every endpoint, session and TLS key is encrypted at rest under a master key you control. Every call checks the caller's role, so a Base Station Manager sees base stations and an Endpoint Manager sees endpoints, and endpoint keys are masked until someone with the right role reveals them. Each reveal is recorded in the Audit Log.
-* **Live web interface.** Dashboards, lists and activity refresh within about a second of a message arriving. Each base station and endpoint has an activity table that shows every uplink with its radio metrics, payload and decoded values, and you can queue a downlink, revoke it, and follow it to delivery from the Traffic page.
+* **Live web interface.** Dashboards, lists and activity refresh within about a second of a message arriving. Each base station and endpoint has an activity table that shows every uplink with its radio metrics, payload and decoded values, and you can queue a downlink from an end point, then revoke it and follow it to delivery on the Traffic page.
 * **Follows the specification.** Uplinks, downlinks, attach and detach follow BSSCI v1.0.0 and SCACI v1.0.0. One uplink that several base stations receive is delivered once, with every receiving station listed, and sessions survive a restart and resume.
 * **Dependable downlinks.** A downlink can carry a deadline. When a base station still holds it at the deadline, KiloCenter asks the station to drop it and reports it expired only when the station confirms. A command's reference is accepted once, so your application can safely resend a command it is not sure arrived.
 * **More for integrators.** Uplink messages report `dlOpen`, `responseExp` and `dlAck`, downlink results carry the delivery details, and MQTT gains `event/downlink_queued`.
+
+<figure><img src="../.gitbook/assets/kc-traffic-downlink-results.jpg" alt="The Downlink Results tab of the Traffic page listing sent downlinks with the time each one was acknowledged by its end point"><figcaption><p>Every downlink is followed to delivery, and the end point's acknowledgement is shown beside it.</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/kc-base-station-detail.jpg" alt="A base station detail page with performance metrics, availability, the certificate panel and the Ping action"><figcaption><p>Each base station shows its health, its certificate and a Ping action.</p></figcaption></figure>
 
 Upgrading a self-hosted installation from 1.x needs a few manual steps, mainly setting the master key and converting stored keys with the `rekey` command. The migration guide walks through them.
 
