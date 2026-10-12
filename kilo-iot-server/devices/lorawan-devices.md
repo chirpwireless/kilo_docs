@@ -30,7 +30,7 @@ For example, a refrigeration operator can keep **Refrigerator 1** as the lasting
 
 | Control | What to enter or do |
 | --- | --- |
-| **Connector type** | Select the LNS connection in your organisation. If it is missing, follow **Connector section** to create it. A saved physical binding locks the connection and identity during ordinary editing. |
+| **Connector type** | Select the LNS connection in your organization. If it is missing, follow **Connector section** to create it. A saved physical binding locks the connection and identity during ordinary editing. |
 | **Device EUI** | The manufacturer's 8-byte identifier: 16 hexadecimal characters, displayed in byte pairs. This identifies the physical sensor, not the asset's name. It becomes read-only after binding. |
 | **Scan QR code** | Scan a compatible label with your browser's camera. The scanner can fill Device EUI and, when present in the code, AppKey. Review the result. If no camera is available or permission is denied, enter the values manually. |
 | **AppKey** | The sensor's 16-byte activation key, entered as 32 hexadecimal characters. Use the key configured on the hardware. A profile template does not supply your individual sensor's key. Typing reveals the key; leaving the field or pressing Enter hides it again. The eye control reveals/hides a non-empty key, and a key loaded from a QR scan stays hidden. Avoid displaying it in shared screenshots. |

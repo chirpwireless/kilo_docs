@@ -2,7 +2,7 @@
 description: "Draw a motion zone in Twin so a Kilo Lens camera detects movement only in the area you care about, such as a doorway."
 ---
 
-# Motion Zones
+# How do motion zones work in Kilo Lens?
 
 A motion zone limits the part of a camera image used for motion detection. It is useful when a camera sees both an area you care about and normal activity that should not trigger a response.
 
@@ -11,7 +11,7 @@ For example, a street-facing camera may show a pavement, stairs, and an office d
 <figure><img src="../../.gitbook/assets/kilo-lens-motion-zone.jpg" alt="Twin Recording Area editor with a selected region around an office work area"><figcaption><p>This demonstration selects the desk area. For an entrance camera, draw the region around the doorway instead.</p></figcaption></figure>
 
 
-## Configure the detector in Twin
+## How do I configure the motion detector in Twin?
 
 1. Open the camera's Twin and go to **Settings → Recording**.
 2. Choose **Motion** under **When to record**. The motion workflow must be enabled rather than continuous mode.
@@ -22,7 +22,7 @@ For example, a street-facing camera may show a pavement, stairs, and an office d
 
 The area editor offers rectangle (**R**), polygon (**O**), and move/delete (**M**) tools. Use the current camera view to place boundaries accurately. Recheck the area after moving the camera or changing its position.
 
-## Tune and test
+## How do I tune and test motion zones?
 
 Adjust the global pixel-change sensitivity in Twin. A lower threshold detects smaller changes and is more sensitive. Sensitivity is not an independent setting for each zone.
 
@@ -30,7 +30,7 @@ Test movement inside the selected area, then test movement outside it. Confirm t
 
 With no areas configured, detection uses the full frame. With several areas, qualifying movement in any selected area contributes to the camera's motion state. A zone restricts detection, not the picture shown in live video or a saved clip.
 
-## Use motion without saving video
+## Can I use motion without saving video?
 
 Motion telemetry can be used while saving recordings is disabled, provided motion processing remains configured. Enable recording separately when local clips are required. Timetables and external conditions can restrict when processing takes place, so configure them only after the basic behavior is verified.
 

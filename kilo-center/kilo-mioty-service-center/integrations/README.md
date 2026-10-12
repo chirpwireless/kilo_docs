@@ -1,10 +1,10 @@
 ---
-description: Connect Kilo Center’s MIOTY network to your application with gRPC or MQTT, or use Kilo Cloud for dashboards, rules, and alerts.
+description: Connect KiloCenter’s MIOTY network to your application with gRPC or MQTT, or use Kilo Cloud for dashboards, rules, and alerts.
 ---
 
 # Integrations
 
-Connect Kilo Center's MIOTY network to your application through gRPC or MQTT. You can receive endpoint traffic, manage device records, and request downlinks without building the radio-network layer yourself.
+Connect KiloCenter's MIOTY network to your application through gRPC or MQTT. You can receive endpoint traffic, manage device records, and request downlinks without building the radio-network layer yourself.
 
 These interfaces are the handoff from the open-source service center's networking to your application. If you want visualization, rules, and alerts ready in the same platform, [Kilo Cloud](../../../kilo-iot-server/connectors/mioty-connector/README.md) includes the enterprise service center and the wider Kilo IoT capabilities.
 

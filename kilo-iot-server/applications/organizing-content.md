@@ -2,15 +2,15 @@
 description: "Assign operational resources to Kilo applications and understand Default, permissions, and content counts."
 ---
 
-# Organizing Content
+# How do I organize content in an application?
 
 An application's **Content** tab is an inventory of the resources behind a solution. For Building Monitoring, this might include temperature sensors, a facilities dashboard, an overheating rule, and an alarm definition for the response team.
 
-Create the resources through their normal platform workflows, then set their **Application** field. You need permission to edit the resource you are assigning.
+The same Content tab opens on an application installed from a [solution](what-are-solutions-and-applications.md), where everything the solution created is already listed and you can keep adding to it. Create further resources through their normal platform workflows, then set their **Application** field. You need permission to edit the resource you are assigning.
 
 <figure><img src="../../.gitbook/assets/kilo-applications-content.jpg" alt="Kilo Applications: The Content tab groups the application’s devices, dashboards, rules, and alarms."><figcaption><p>The Content tab groups the application’s devices, dashboards, rules, and alarms.</p></figcaption></figure>
 
-## Assign resources
+## How do I assign resources to an application?
 
 | Resource | Where to choose the application |
 |---|---|
@@ -23,7 +23,7 @@ Select `Building Monitoring` in each relevant field. Return to **Applications �
 
 One resource belongs to one application at a time. To move it to another application, change that resource's selector. **Default** means the resource is not assigned to a named application; it is not a second copy or a separate organization.
 
-## Understand what is included
+## What is included in an application?
 
 The Content tab separates **Devices**, **Dashboards**, **Rules**, and **Alarms**. Open a listed item to continue working with that resource. Available actions and visible content depend on your permissions.
 
@@ -31,16 +31,16 @@ A rule evaluates conditions; an alarm definition describes notification behavior
 
 Use the content list to check for missing pieces before handing over the solution. For example, a dashboard with readings is useful for observation, but unattended monitoring also needs configured rules and alarm behavior.
 
-## Preserve resources when reorganizing
+## How do I keep resources when reorganizing?
 
 Moving a resource changes its application association. Deleting an application has broader consequences. Before retiring an application, [review deletion behavior](deleting-an-application.md) and move anything you want to keep to another application or **Default**.
 
-## Find an item in a larger application
+## How do I find an item in a large application?
 
 Long resource lists scroll inside their own content block, and search becomes available when the list is large enough. Physical-device status reflects whether the device is reporting; emulated devices carry an Emulator badge. Open a resource from the application and use its return navigation to get back to the application context.
 
 
-## Selections and resource status
+## What do selections and resource statuses mean?
 
 The Application selector starts at **Default** until you have successfully created a resource with another selection. It remembers the last used selection for your account and organization; changing organizations keeps those choices separate. A searchable selector helps when there are many applications. Creating an application through **Add new application** creates it immediately, even if you later cancel the resource form.
 

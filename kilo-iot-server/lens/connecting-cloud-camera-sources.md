@@ -2,7 +2,7 @@
 description: "Connect supported provider camera sources in Twin, or configure an advanced stream source for Kilo Lens."
 ---
 
-# Provider Camera Sources
+# How do I connect cameras from a provider account?
 
 Twin can obtain a camera feed through a supported provider connection as well as a local RTSP URL. This is useful when a camera is accessed through its provider account. HomeKit accessories use a local pairing workflow. Each Twin still represents one camera.
 
@@ -10,7 +10,7 @@ Twin can obtain a camera feed through a supported provider connection as well as
 
 <figure><img src="../../.gitbook/assets/kilo-twin-provider-setup.jpg" alt="Kilo Twin Camera Connector settings with Ring account fields and the advanced source controls"><figcaption><p>Select a provider to display its connection fields. This example shows the Ring sign-in form; private local-camera values are covered.</p></figcaption></figure>
 
-## Connect an account
+## How do I connect a provider account?
 
 1. In Twin, open **Settings → Camera Connector** and locate **Cloud camera**.
 2. Choose **Cloud provider** and supply the fields for that provider.
@@ -27,7 +27,7 @@ Twin can obtain a camera feed through a supported provider connection as well as
 
 Obtain API credentials through the provider's account tools. These are different from your Twin administrator password and the Lens pairing token. If verification expires, restart the provider connection and request a fresh code.
 
-## Pair a HomeKit accessory
+## How do I pair a HomeKit camera?
 
 1. Choose **HomeKit** as the provider and select **Discover accessories**.
 2. Find the camera under **Discovered accessories** and select **Pair**.
@@ -36,7 +36,7 @@ Obtain API credentials through the provider's account tools. These are different
 
 The Twin must be able to discover and reach the accessory on the local network. Check the accessory's own pairing requirements if discovery or pairing fails.
 
-## Advanced source
+## What is the Advanced source option?
 
 Use **Advanced go2rtc source** when you already have a supported source string and need to configure it directly. This is the name of the advanced stream input shown in Twin.
 

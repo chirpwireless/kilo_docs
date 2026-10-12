@@ -16,7 +16,7 @@ Configure the check per command in **section 4** of the [command editor](creatin
 
 Fire-and-forget. The command is sent and the platform does not check the result.
 
-With this strategy, an execution is marked **Delivered as soon as the downlink is accepted for delivery — not when the device acts on it.** (The green **Delivered** status means exactly that: sent, but unverified — distinct from **Confirmed**, which only a verification strategy can produce.) There is no guarantee the action had any effect. This is appropriate for non-critical, idempotent actions where a missed command is harmless and will be re-sent anyway, but never rely on it as proof that something physically changed.
+With this strategy, an execution is marked **Delivered as soon as the downlink is accepted for delivery — not when the device acts on it.** (The green **Delivered** status means exactly that: sent, but unverified — distinct from **Confirmed**, which only a verification strategy can produce. The warning the editor shows under this option says the execution is marked *Confirmed*; in the execution list the status you will see is **Delivered**.) There is no guarantee the action had any effect. This is appropriate for non-critical, idempotent actions where a missed command is harmless and will be re-sent anyway, but never rely on it as proof that something physically changed.
 
 ## Wait for next uplink
 
@@ -38,7 +38,9 @@ Use this when a device does not volunteer its state in routine uplinks but will 
 
 ## Expected sensor states
 
-Both *Wait for next uplink* and *Query after ack* check the device's reported telemetry against the states you declare here. Click **Add State** to add a row, and fill in the two fields below. Add at least one row — the command will not save without it.
+<figure><img src="../../../.gitbook/assets/kilo-command-verification-expected-states.jpg" alt="Section 4 Verification of the command editor with Wait for next uplink selected: the Expected sensor states list with the Add State button and the message Add at least one expected state to verify the result, and the Convergence timeout field"><figcaption></figcaption></figure>
+
+Both *Wait for next uplink* and *Query after ack* check the device's reported telemetry against the states you declare here. Click **Add State** to add a row, and fill in the two fields below. Add at least one row — the command will not save without it, and a row only counts when both its **Metric** and its **Expected value** are filled in. The editor flags the incomplete field in place (*Select a metric* or *Expected value is required*) and keeps **Save** disabled, so a half-filled row can no longer be dropped silently and leave the command saved without the check you thought you had.
 
 ### Metric
 
@@ -71,8 +73,8 @@ If a command keeps finishing as *Soft warning* even though the device clearly re
 
 The **Convergence timeout** is how long the platform waits for the reported state to match before it gives up.
 
-* Leave it empty to use the platform default of **1.5 × the device's data sending interval**. Set that interval accurately on the device first — where it is missing, the default works out to a 90-minute window, which is far longer than most commands need.
-* Or enter a positive whole number of seconds, up to **86400** (24 hours).
+* Leave it empty to use the platform default of **1.5 × the device's data sending interval**. Set that interval accurately on the device first, because the default follows it.
+* Or enter a positive whole number of seconds, up to **86400** (24 hours). The editor does not flag a value it cannot use: an empty box, zero, a negative number or text silently falls back to the default above, and the server rejects anything over 86400 when you save.
 * If the window passes without a match, the execution is marked **Soft warning** rather than Failed — the platform could not confirm the expected result within the window. Check Details to distinguish missing acknowledgement from missing state feedback. This distinction matters operationally: a soft warning is "we couldn't confirm," not "it definitely failed."
 * Review the execution details before sending the action again, especially if repeating it could have another effect.
 

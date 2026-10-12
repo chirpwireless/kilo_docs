@@ -2,17 +2,17 @@
 description: "Use Kilo Lens camera motion readings in a rule to raise an operational alarm when movement appears in a selected area."
 ---
 
-# Camera Rules and Alerts
+# How do I set up camera rules and alerts?
 
 A Lens camera supplies a motion reading that Kilo's Rules Engine can use like other sensor readings. This makes a camera part of an operational workflow: movement at a selected entrance can cause a rule to raise an alarm for the team responsible for that site.
 
 First [connect the camera](connecting-a-camera.md) and [configure its motion zone](motion-zones.md). You also need permission to create rules and alarm definitions.
 
-## Prepare the alarm definition
+## How do I prepare the alarm definition for a camera alert?
 
 In **Alarm**, create the definition that the rule will raise. For example, name it `Entrance activity` and write a message that identifies the area requiring attention. Configure recipients, channels, schedule, and suppression for the intended response. Follow [Alarm Definitions](../alarm/notification-rules.md) for those settings.
 
-## Build the motion rule
+## How do I build a motion rule for a camera?
 
 1. Open **Rules engine** and create a rule.
 2. Configure **Start** with **Sensor reading**.
@@ -27,7 +27,7 @@ In **Alarm**, create the definition that the rule will raise. For example, name 
 
 <figure><img src="../../.gitbook/assets/kilo-lens-camera-rule.jpg" alt="Kilo rule Start event configured with the Office Entrance camera and Camera motion sensor"><figcaption><p>The camera’s motion reading starts the rule; the following nodes decide how to respond.</p></figcaption></figure>
 
-## Verify before enabling notifications
+## How do I test a camera alert before enabling notifications?
 
 Use the rule's debugging tools with external actions mocked or skipped while checking the flow. Then test the actual camera by moving inside and outside its selected area. Enable intended delivery only after confirming the rule and alarm configuration.
 
@@ -35,7 +35,7 @@ The simple rule above raises an alarm on motion. It does not automatically resol
 
 Manually resolving an incident does not change the camera's reading. A condition that continues to qualify can raise another alarm according to the configured trigger and suppression behavior.
 
-## Monitor the connection as well
+## How do I monitor a camera's connection?
 
 Create a separate rule with **Start → Sensor reading**, select the camera, and choose **Camera status**. This reading is text rather than a boolean. A branch with `vars.value == "offline"` can raise a connection alarm so a missing feed receives attention. Test the recovery path as well as the offline path before enabling notifications.
 

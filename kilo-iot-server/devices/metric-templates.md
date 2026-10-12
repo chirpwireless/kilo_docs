@@ -16,7 +16,9 @@ Go to **Devices → Metrics**.
 
 The list contains every metric available to your organization. Each row shows its normalized key, unit of measurement, value type, and data type.
 
-<figure><img src="../../.gitbook/assets/device-metrics.jpg" alt="The Devices Metrics catalog with search, unit, type and data type filters and a sort control"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-devices-metrics.jpg" alt="The Devices / Metrics page listing metrics with Normalized key, Unit of measurement, Type and Data type columns, search and filter controls, and Add metric at the top right"><figcaption><p>The Metrics catalog. The pencil icon at the end of a row edits a metric and the trash icon deletes it. The number beside the title is the count of metrics.</p></figcaption></figure>
+
+To reach this page, open **Devices** in the main menu and select **Metrics** at the top right, beside **Add device**. The arrow beside the title returns you to the device list.
 
 Use the controls above the list to find a metric:
 
@@ -28,7 +30,7 @@ Use the controls above the list to find a metric:
 
 The unit, type, and data-type filters accept several values at once.
 
-Metrics created by your organization provide **Edit** and **Delete** actions. Metrics supplied by Kilo do not, because their definitions are shared across deployments.
+Metrics created by your organization provide an edit (pencil) and a delete (trash) action at the end of the row. Metrics supplied by Kilo do not, because their definitions are shared across deployments.
 
 ## Create a metric
 
@@ -80,7 +82,7 @@ Normalized keys are created, renamed, and deleted from this field. Keys supplied
 
 Select the unit displayed beside the value, such as °C, %, lx, or mV. Choose an existing unit or select **Create a new unit** and enter the symbol exactly as it should appear.
 
-A unit is required for Telemetry. It is optional for Device metadata and Custom attributes, where values such as a firmware version or asset tag may not have a unit.
+The unit is optional for every data type. Many real readings have none: a door state is true or false, a status is a word, and a metric created from a device's own mapping may carry no unit. Add one when it helps people read the value, and leave it out when it does not.
 
 Units are created, renamed, and deleted from this field. Units supplied by Kilo cannot be renamed or removed.
 
@@ -89,18 +91,25 @@ Units are created, renamed, and deleted from this field. Units supplied by Kilo 
 Metrics are shared across your organization, not configured separately for each device. Editing a metric changes the definition for every device mapped to it.
 
 1. Find the metric under **Devices → Metrics**.
-2. Click **Edit**.
-3. Update the required fields.
+2. Click the pencil icon at the end of its row. The **Edit Metric** dialog opens.
+3. Update the required fields: **Data type**, **Type**, **Normalized key**, and the optional **Unit of measurement**.
+
+<figure><img src="../../.gitbook/assets/kilo-devices-edit-metric.jpg" alt="The Edit Metric dialog with Data type, Type, Normalized key, an optional Unit of measurement, and Cancel and Save buttons"><figcaption><p>The Edit Metric dialog. Its subtitle reminds you that the unit of measurement is optional.</p></figcaption></figure>
+
 4. Click **Save**.
-5. Review the confirmation describing the organization-wide effect and confirm the change.
+5. A confirmation titled **Are you sure you want to edit "{name}"?** explains that *the devices it's assigned to will automatically update their settings to reflect the changes.* Select **Yes, edit** to apply the change, or close the dialog to keep things as they were.
+
+You can change the data type of an existing metric only while no device uses it. If a device is still mapped to the metric, the dialog stays open and says: *This metric is attached to devices. Detach it from all of them to change its data type.* Remove it from those mappings first, then change the type. Saving an edit keeps the metric's description as it was.
 
 If only one device needs a different definition, create a new metric for that device. Replacing its existing template creates a different measurement assignment; it is not the history-preserving source remap used for hardware replacement.
 
 ## Delete a metric
 
-Click **Delete** on a metric created by your organization and confirm the action.
+Click the trash icon on a metric created by your organization and confirm the action.
 
-Kilo refuses to delete a metric that is still mapped to a device. Remove the mapping from every device that uses it, then try again.
+A confirmation titled **Are you sure you want to delete "{name}"?** appears; select **Yes, delete** to remove it.
+
+Kilo refuses to delete a metric that is still mapped to a device. A dialog titled **"{name}" is used in other devices.** explains: *To delete the metric, you need to unbind it from all devices where it is used.* Select **Okay**, remove the mapping from every device that uses it, then try again. The same dialog appears when you try to delete a normalized key or a unit that devices still use, from the key or unit dropdown.
 
 ## Map a device reading to the metric
 
@@ -123,7 +132,8 @@ A unit label does not convert a value. If the replacement reports Fahrenheit or 
 | A metric is missing from a chart or gauge-style Last Data display | Confirm its **Type** is Integer or Float and the device sends a numeric value. |
 | A metric is missing from a device mapping | Confirm its **Data type** is Telemetry. |
 | A normalized key cannot be selected | Another metric may already use it. Search the catalog for that key. |
-| Edit and Delete are unavailable | The metric, key, or unit was supplied by Kilo and cannot be changed. |
+| Save is refused because the metric is attached to devices | The data type cannot change while devices use the metric. Detach it from every device mapping, or create a new metric for the new type. |
+| The edit and delete icons are unavailable | The metric, key, or unit was supplied by Kilo and cannot be changed. |
 | Delete is refused | Remove the metric from every device mapping before deleting it. |
 
 ## See also

@@ -43,6 +43,7 @@ A device is considered **controllable** once it has at least one command defined
 Before you can control a device, make sure:
 
 1. **The device can receive downlinks** — it is connected over MQTT, it is a LoRaWAN device that accepts downlinks, or it is an [emulated device](../emulated-devices.md) with **Support commands** enabled.
+   The **Commands & States** tab itself appears only when commands are enabled for your account.
 2. **At least one command is defined** — an empty device exposes nothing to execute. Start in [Creating Commands](creating-commands.md).
 3. **You have the access to manage or execute commands** — defining commands and dispatching them are governed by your organization's access policy.
 4. **Parameters are valid** — when a command takes inputs (a brightness level, a setpoint), the values must satisfy the limits set on each parameter before the command will send.

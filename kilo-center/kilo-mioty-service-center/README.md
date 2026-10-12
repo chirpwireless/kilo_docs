@@ -8,11 +8,18 @@ Use the current installation examples only in an isolated evaluation environment
 Published credentials, signing-key defaults and network exposure need correction before customer use.
 Changing only the administrator password is insufficient. Read the [installation safety notice](security/installation-safety.md) before running commands.
 
-Kilo Center Community Edition is an **open-source MIOTY service center** for running the networking yourself. Connect **base stations**—MIOTY's radio gateways—register **endpoints**, the sensors or other communicating devices, and exchange their messages with your applications.
+KiloCenter Community Edition is an **open-source MIOTY service center** for running the networking yourself. Connect **base stations**—MIOTY's radio gateways—register **endpoints**, the sensors or other communicating devices, and exchange their messages with your applications.
 
 **Kilo Cloud includes the enterprise version of the service center and the full Kilo IoT platform around it.** The same MIOTY devices can feed widgets and dashboards, run automation rules, and raise alarms with escalation. Choose Cloud when you want to build and operate the application as well as connect the radio network.
 
-The Community Edition is the complete self-hosted service-center path, not a trial. There is no software subscription fee. You provide and operate its infrastructure, and deployments and modifications must follow the [AGPL-3.0-or-later license](license-and-trademarks.md).
+## Which edition should I choose?
+
+**KiloCenter Community Edition comes as is.** It is open source, has no software subscription fee, and is the complete self-hosted service-center path, not a trial. You provide and operate the infrastructure, deployments and modifications must follow the [AGPL-3.0-or-later license](license-and-trademarks.md), and the community supports it through GitHub issues and discussions, with no guaranteed response time.
+
+**If you need more than the Community Edition, you have two options:**
+
+- **The Enterprise edition on your own premises.** Kilo installs it for you on request, with commercial support and the enterprise MIOTY capabilities. [Contact Kilo](https://kiloiot.io/contact/) to ask for it.
+- **Kilo Cloud.** Choose it when you need more than a network server, together with everything the Kilo platform provides: the rules engine, dashboards and visualization, alerting and escalation, device management and access control. The Enterprise edition of the service center is built in, and Kilo operates it.
 
 ## KiloCenter or Kilo Cloud?
 
@@ -42,6 +49,12 @@ Use **Kilo Cloud** when MIOTY is one part of a broader deployment. The Enterpris
 - Source code under AGPL-3.0-or-later
 
 Read the [Project Overview](project-overview.md) for the architecture, components, supported MIOTY behavior, and production-use boundaries.
+
+## What is new in version 2.0?
+
+Version 2.0 adds a live web interface, encrypted key storage, enforced user roles and end-to-end BSSCI and SCACI conformance. It needs a few manual steps when you upgrade from 1.x. It is also a large cleanup, with more than fifty bugs fixed. Read [What's new in KiloCenter 2.0?](whats-new-in-2-0.md), see [what was fixed](whats-fixed-in-2-0.md) and take a tour of the [web interface](web-interface.md).
+
+<figure><img src="../../.gitbook/assets/kc-dashboard.jpg" alt="The KiloCenter Network Overview dashboard with live base station, end point and message counts, control plane status and alerts"><figcaption></figcaption></figure>
 
 ## Start here
 

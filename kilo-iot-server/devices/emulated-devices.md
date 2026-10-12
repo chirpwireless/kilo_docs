@@ -28,6 +28,43 @@ On the device form, open the **Connection** tab and choose the Emulator connecto
 
 Unlike every other connector, the interval here is not a description of a schedule the hardware already keeps — it is the schedule. The platform emits on it.
 
+## What does each tab of the device editor show?
+
+Open **Devices** in the main menu and select **Edit** at the end of a device's row, or open a device from an application's **Content** tab. The **Edit device** page has a row of tabs: **Device info**, **Connection**, **Emulator** (only for emulated devices), **Commands & States** (only when **Support commands** is on and commands are enabled for your account), **Mapping**, **Attributes**, **Calculated data**, and **Logs**. **Attributes** and **Calculated data** appear only when those features are enabled for your account; if you do not see them, they are not switched on yet. The screens below are an emulated device from an installed solution.
+
+### Device info
+
+<figure><img src="../../.gitbook/assets/kilo-solutions-device-info.jpg" alt="The Device info tab of Edit device with an Add photo box, a Device name field, and an Application menu"><figcaption><p>The Device info tab. Select Next to continue to the Connection tab.</p></figcaption></figure>
+
+- **Add photo** accepts a PNG or JPG by drag and drop or by browsing; about 5 MB is the recommended size. A photo makes the device easy to spot in lists.
+- **Device name** (required) is the name shown on dashboards, in rules, and in lists.
+- **Application** adds the device to an application so it travels with that application's dashboards, rules, and alarms. Leave it on **Default** to keep the device standalone. The link under the field opens your applications list.
+
+### Connection
+
+<figure><img src="../../.gitbook/assets/kilo-solutions-device-connection.jpg" alt="The Connection tab of an emulated device showing Connector type Emulator, a Swap connection link, Device ID, Data sending interval, Support commands, device data keys with data types, and a Reception panel reading Receiving and storing LIVE"><figcaption><p>The Connection tab of an emulated device. The Reception panel at the bottom confirms that readings are arriving.</p></figcaption></figure>
+
+- **Swap connection** (top right) starts swapping this device to a real connector. [Going live](#going-live-swapping-to-a-real-device) walks through it.
+- **Connector type** shows the connector in use. For a device that already exists it is read-only, with a link to the **Connector section** for adding new connectors.
+- **Device ID** is the identifier the device reports under, shown grayed out once created.
+- **Data sending interval** sets how often the emulator emits a reading: a number and a unit such as minute.
+- **Support commands** gives the device a **Commands & States** tab.
+- **Use device preset** starts from a real device model instead of hand-typed metrics.
+- Each row holds a **Device data key**, a **Data type** (Integer, Boolean, and so on), an **Emulator** button that opens the generation settings for that metric, and a trash icon that removes the metric. **Add device data key** adds another row, and **Save** stores the changes.
+- The **Reception** panel at the bottom summarizes the live state, for example **Receiving & storing** with a **LIVE** badge, how many sensors are mapped, and when the last value arrived. **Details** expands it.
+
+### Emulator
+
+<figure><img src="../../.gitbook/assets/kilo-solutions-device-emulator.jpg" alt="The Emulator tab listing each device data key with a Value field, Save and Send once buttons"><figcaption><p>The Emulator tab. Each metric has a value box, a Save button, and a Send once button.</p></figcaption></figure>
+
+The tab explains itself: *Manually set the value to test rules and alarms. Data is sent considering the data sending interval. Send once transmits a single reading.* Every metric has a read-only **Device data key**, a **Value** box (a number box showing the placeholder **For example: 42**, or a menu for true and false values), **Save** to pin the value, and **Send once** to transmit a single reading. **Send once** stays disabled until you enter a value.
+
+### Mapping
+
+<figure><img src="../../.gitbook/assets/kilo-solutions-device-mapping.jpg" alt="The Mapping tab with columns Device data key, Value, Last update, Normalized key, Unit, Type and Data type, and a delete icon on each row"><figcaption><p>The Mapping tab shows each metric's latest value and how it maps to a normalized key.</p></figcaption></figure>
+
+The columns are **Device data key** (the raw name), **Value** and **Last update** (the latest reading), **Normalized key** (the shared metric name; see [Metrics](metric-templates.md)), **Unit**, **Type**, and **Data type**. The trash icon on a row removes that metric, and **Save** stores the changes. The line under the title reminds you that these metrics are defined by the device configuration, so you add or rename them on the **Connection** tab.
+
 ## Starting from a device preset
 
 Ticking **Use device preset** opens a list of real sensor models. Pick the one you have — or the one you have on order — and the platform fills in that model's actual measurements for you.
@@ -47,17 +84,26 @@ Without a preset — or alongside one — use **Add device data key** to define 
 
 Use **Float** for decimal readings. Manual **Integer** inputs must be whole numbers: `1.5` is rejected. Enter decimal values with a dot, such as `1.5`, rather than a comma.
 
-## Configure generated behaviour
+## The Mapping tab shows the emulator's own definition
+
+An emulated device's readings live in its emulator configuration, so the **Mapping** tab reads from that configuration rather than from a separate list of sensors. That keeps the two from drifting apart:
+
+- Deleting a row on **Mapping** removes the metric from the emulator configuration, together with its mapping, when you save. It no longer comes back after a save under a new sensor ID without a data key.
+- The **Device data key** column and the platform name are read-only. The key belongs to the emulator configuration, and the platform name is derived from it.
+- There are no **Add new metric** buttons on this tab, because a new metric needs generation settings that only **Connection** collects. Add the key there with **Add device data key**, then return to **Mapping**.
+- Changing which metric a row uses swaps that row's metric cleanly, instead of leaving the old one behind as a second row claiming the same key.
+
+## Configure generated behavior
 
 On **Connection**, click **Emulator** beside a data key to adjust how it behaves:
 
 | Data type | Settings |
 |---|---|
-| Integer or Float | **From**, **To**, **Holds around**, and **Variability**. From must be below To, and the baseline must lie within that range. |
+| Integer or Float | A **Range** with **From** and **To** (values never leave it), a **Baseline** with **Holds around**, and a **Variability** slider from **Steady** to **Jumpy** that sets how widely the value wanders around the baseline. From must be below To, and the baseline must lie within that range. |
 | Boolean | **Default state** and **Activity**: Rare, Occasional, or Frequent changes away from it. |
 | String | **Values & weights** and **Stickiness**, which controls how long a value is held. Use 1–32 nonempty values, each at most 64 characters, with positive whole-number weights totaling 100%. |
 
-Apply the settings, then save the device. Use plausible ranges for the scenario: a refrigeration temperature signal needs different settings from an air-quality signal. **Data sending interval** accepts whole minutes, hours, or days, from one minute to one day.
+Click **Apply** to keep the settings, or **Reset** to return the window to its defaults, then save the device. Use plausible ranges for the scenario: a refrigeration temperature signal needs different settings from an air-quality signal. **Data sending interval** accepts whole minutes, hours, or days, from one minute to one day. A **second** unit (5 seconds minimum) appears in the unit menu only when it is enabled for your account.
 
 An emulator configuration accepts up to **50 signal keys** and **20 preset command definitions**. Each key must be nonempty and at most **256 characters**. Manual text overrides are limited to **256 characters**.
 
@@ -83,6 +129,12 @@ An emulator command changes generated state. Its editor offers **No verification
 ## Going live: swapping to a real device
 
 This is the step the Emulator is built around. When the hardware arrives, open the device's **Connection** tab and change the connector from **Emulator** to the real one — LoRaWAN, for instance — then supply the identifiers the physical device needs.
+
+<figure><img src="../../.gitbook/assets/kilo-solutions-swap-connection.jpg" alt="The Connection tab in swap mode with an empty Connector type menu and a Cancel swap link where Swap connection was"><figcaption><p>Selecting Swap connection puts the tab in swap mode: the link becomes Cancel swap and Connector type opens for a new choice. Nothing changes until you choose a connector and select Save.</p></figcaption></figure>
+
+1. On the **Connection** tab select **Swap connection**. The link becomes **Cancel swap**, and **Connector type** becomes an editable menu.
+2. Open **Connector type** and choose the real connector, for example LoRaWAN or MQTT.
+3. Enter the identifiers the physical device needs, then select **Save**. To back out, select **Cancel swap**.
 
 Everything else about the device stays: its name, its place on your dashboards, the rules bound to it, its alarm definitions and escalation chains. You are replacing the source of the data, not rebuilding the deployment.
 

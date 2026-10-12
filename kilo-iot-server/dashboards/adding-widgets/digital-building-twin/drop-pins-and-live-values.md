@@ -1,14 +1,14 @@
 ---
-description: Drop labelled pins into a Digital Building Twin — show live sensor readings with name, value, color.
+description: Drop labeled pins into a Digital Building Twin — show live sensor readings with name, value, color.
 ---
 
-# Drop-Pins and Live Values
+# How to Show Live Sensor Values in a Digital Building Twin
 
-Conditional color tells an operator *that* something needs attention — a red zone, an amber unit. Sometimes they also need the **number**: not just "the cold store is in breach" but "the cold store is at 13.4 °C." A drop-pin puts that exact reading in the model, anchored to the spot it belongs to.
+Conditional color tells an operator *that* something needs attention — a red zone, an amber unit. Sometimes they also need the **number**: not just "the cold store is in breach" but "the cold store is at 13.4°C." A drop-pin puts that exact reading in the model, anchored to the spot it belongs to.
 
 A pin is a marker placed at a specific point in the scene. It shows the metric's name and its current value with units, and the pin itself takes the same conditional color as the reading — so it's both a label and a status light.
 
-## Pinning a metric
+## How do I pin a metric to the scene?
 
 Pins are created from the Sensors panel, on a metric you've already set up (see [Binding sensors and colors](binding-sensors-and-colors.md)).
 
@@ -20,23 +20,23 @@ Pins are created from the Sensors panel, on a metric you've already set up (see 
 
 A pinned metric then offers two controls: **Re-pin** to move the marker to a new spot, and **Unpin** to remove it.
 
-## What a pin shows
+## What does a pin show?
 
-Each pin is a teardrop marker with a label floating above it. The label carries the metric's name and its current value with units — `Cold Store / Temperature  13.4 °C`. The marker and label are colored by the metric's conditions, exactly the way bound objects are colored: a reading in the "breach" band makes the pin red, a reading in the "compliant" band makes it green.
+Each pin is a teardrop marker with a label floating above it. The label carries the metric's name and its current value with units — for example `Temperature` and `13.4°C`. The device name is dropped from the label when the metric name starts with it. Readings are rounded for display to at most two decimal places, with trailing zeros dropped, so a sensor that reports `15.392933316005998` shows as `15.39°C`; text and other non-numeric readings are shown as they arrive. The marker and label are colored by the metric's conditions, exactly the way bound objects are colored: a reading in the "breach" band makes the pin red, a reading in the "compliant" band makes it green.
 
 So a pin does two jobs at once — it reports the precise number, and it shows status through color without anyone having to read the number at all.
 
-## Pins and floors
+## How do pins work across floors?
 
 A pin belongs to the floor it was placed on. In a multi-floor model, a pin placed on the third floor shows when the third floor is in view and stays out of the way on the others — so a tall building doesn't end up with every floor's pins overlapping. See [Floors and levels](floors-and-levels.md).
 
-## Showing and hiding pins
+## How do I show or hide sensor pins?
 
 The Sensors panel header has a **Show sensor pins** toggle. It appears once at least one metric is pinned, and switches every pin in the model on or off at once.
 
 Turn pins **off** for a clean, color-only view — useful for a wall-display dashboard where the shape and color carry the message. Turn them **on** when operators need the exact figures. Whichever way the toggle is set when you save the widget is how the dashboard tile shows it.
 
-## When to pin
+## When should I use a pin instead of color?
 
 Color-only is enough for many objects — a parking bay doesn't need a number, occupied or free is the whole story. Reach for a pin when the value itself matters:
 

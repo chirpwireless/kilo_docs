@@ -50,7 +50,7 @@ A saved trigger only monitors its condition. It does not contain an alarm, comma
 4. Add the response nodes, then save the rule from the editor toolbar.
 5. Build the rule and deploy its artifact from the **Artifacts** tab.
 
-See [From a trigger to a running rule](triggers.md#from-a-trigger-to-a-running-rule) for the complete workflow.
+See [From a trigger to a running rule](triggers.md#how-do-i-connect-a-trigger-to-a-running-rule) for the complete workflow.
 
 ### "My trigger is missing from the Start Event"
 
@@ -137,7 +137,7 @@ A debug session loads the rule, places execution on the Start Event and waits fo
 2. Press **Run (F10)** to execute until the first breakpoint or the end, or **Step over (F9)** to advance one element.
 3. Check the session is live: the Start Event carries a blue outline, and the debug panel on the right lists your initial variables.
 
-See [Debugging Rules](debugging-rules.md#the-session-starts-paused).
+See [Debugging Rules](debugging-rules.md#why-does-a-debug-session-start-paused).
 
 ### "An element is outlined in red"
 

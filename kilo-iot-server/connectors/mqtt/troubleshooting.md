@@ -2,25 +2,28 @@
 description: Troubleshoot MQTT integrations by failure phase — broker connection, TLS, authentication, topic routing, Last data.
 ---
 
-# MQTT Troubleshooting
+# How to Troubleshoot MQTT Connection and Data Problems
 
 Diagnostic recipes for MQTT integrations on the Kilo IoT Server, organized by where the failure surfaces. Work through these in order — most issues fall into one of the first three phases, and the diagnostic sequence narrows the root cause efficiently.
 
-Before working through the phases below, let the platform tell you which one you are in. A single silent device reports its own state on its **Connection** tab — whether the broker is reachable, whether a publish arrived on an unexpected topic, and whether its values were stored; see [Device Diagnostics](../../devices/device-diagnostics.md). When several devices go quiet at once, open the connector's **Connector diagnostics** area — **Source health** summarizes the broker subscription, **Incoming** shows what is arriving, and **Activity** shows the connector's recent event history. That reading usually points straight at the phase to start from.
+Before working through the phases below, let the platform tell you which one you are in. A single silent device reports its own state on its **Connection** tab — whether the broker is reachable, whether a publish arrived on an unexpected topic, and whether its values were stored; see [Device Diagnostics](../../devices/device-diagnostics.md). When several devices go quiet at once, open the connector from the Connectors list and select its **Diagnostics** tab (MQTT connectors only; opening a connector right after you add it lands here). Three stacked sections appear: **Connection** shows whether the broker link is healthy, with a title and detail line; **Incoming** describes what is arriving, and lists unmatched topics with a count (**seen**) and last-seen time when the connector is still discovering; **Activity** is a timestamped list of recent events, or **No activity yet**. If the panel cannot load it says **Diagnostics unavailable**. That reading usually points straight at the phase to start from.
 
 <figure><img src="../../../.gitbook/assets/connector-mqtt-diagnostics.jpg" alt="The Diagnostics tab of an MQTT connector showing the Connection, Incoming and Activity sections before any device has published"><figcaption></figcaption></figure>
 
-## Phase 1 — Broker connection failures
+## Why Can't My Device Connect to the MQTT Broker?
 
-**Symptom:** the publisher (an edge gateway, a Zigbee2MQTT instance, custom firmware) reports it cannot connect to the broker. **Last data received** never updates.
+**Symptom:** the publisher (an edge gateway, a Zigbee2MQTT instance, custom firmware) reports it cannot connect to the broker. **Last data received** (in the Connectors list) never updates.
 
 | Failure pattern | Root cause | Resolution |
 |-----------------|-----------|------------|
-| `connection refused` / `network unreachable` (Cloud MQTT) | Wrong host, port, or scheme | Verify the publisher uses `mqtts://` on port 1884 — not the default 1883. Re-copy the Broker URL from the connector page. |
+| `connection refused` / `network unreachable` (Cloud MQTT) | Wrong host, port, or scheme | Verify the publisher uses `mqtts://` on port 1884 — not the default 1883. Re-copy the Broker URL from the connector's Settings tab. |
 | `connection refused` / `network unreachable` (External MQTT) | Network reachability | The platform connects out to your broker. Verify the broker is reachable from the public internet (DDNS hostname resolves, port forward active, firewall allows the platform's egress range). |
-| `bad TLS handshake` / `certificate verify failed` | TLS configuration | For Cloud MQTT, the certificate is publicly-trusted — verify the publisher uses the system CA store. For External MQTT, verify CA Certificate, Client Certificate, and Private Key files were uploaded as separate files (not pasted PEM content), and that the Private Key was unencrypted at upload. |
+| `bad TLS handshake` / `certificate verify failed` | TLS configuration | For Cloud MQTT, the certificate is publicly-trusted — verify the publisher uses the system CA store. For External MQTT, verify CA Certificate, Client Certificate, and Private Key files were uploaded as separate files (not pasted PEM content), and that the Private Key is a plain key file without a passphrase. If the broker's certificate names a different host than the URL, set **Server name (SNI)** to the name on the certificate; if a private CA signed it, upload that CA under **CA Certificate**. |
+| Broker closes the connection immediately after connect (External MQTT) | Protocol version mismatch, or the broker's access rules reject the connection | Set **MQTT version** to the version the broker supports (older brokers often need **3.1.1**), and check the broker's access rules for the account Kilo signs in with. |
 | `authentication failed` / `not authorized` | Wrong credentials | Re-verify Username and Password. For Cloud MQTT, if the password was lost, rotate from the connector settings (the original is not retrievable). For Basic auth on External MQTT, check the broker's password file is correct. |
 | `auth failed (JWT)` | Token issues | Verify the JWT is valid (not expired), signed with the correct key for the broker's validator, and has the required claims (subject, topic permissions). |
+
+If your own broker restarts or the network drops for a short time, the External MQTT connection recovers by itself: Kilo reconnects and re-subscribes to your **Topics to read** without any action on your side. Check **Last data received** after the broker is back before assuming anything is wrong.
 
 For Z2M-bridged setups specifically, the Z2M log shows the connection state explicitly:
 
@@ -30,9 +33,9 @@ docker compose logs zigbee2mqtt | grep -E "Connecting|Connected|MQTT|Error"
 
 `Connected to MQTT server` confirms the publisher side. Absence of that line indicates a Phase 1 failure regardless of what the platform shows.
 
-## Phase 2 — Connection succeeds but Last data received does not update
+## Why Does Last Data Received Not Update After a Successful Connection?
 
-**Symptom:** the publisher reports a successful broker connection. Logs show successful publishes. **Last data received** in the Kilo connector page remains empty.
+**Symptom:** the publisher reports a successful broker connection. Logs show successful publishes. **Last data received** in the Connectors list remains empty.
 
 For Cloud MQTT, this is a topic-prefix mismatch. Every published topic must begin with the connector's Topic prefix exactly. Verify:
 
@@ -52,13 +55,13 @@ For External MQTT, this is a reachability or subscription mismatch:
   If **Last data received** still does not update, the platform cannot reach your broker. Investigate firewall rules, IP allowlists, or expired tunneling sessions when using ngrok for testing.
 - For brokers behind NAT with port forwarding, verify the external port is open and forwarded to the broker's host port. Common misconfigurations include forwarding to the wrong host IP, blocking the source IP, or having a firewall rule that supersedes the port forward.
 
-## Phase 3 — Last data received updates but device Mapping tab is empty
+## Why Is the Device Mapping Tab Empty When Data Is Arriving?
 
 **Symptom:** the connector receives messages (Last data received is current), but a registered device's Mapping tab Value column shows nothing.
 
 Two causes are common:
 
-- **Device ID Topic pattern does not match the publishing topic.** Verify the pattern by comparing it byte-for-byte to a topic from the publisher's logs. Common mistakes: leading slash, missing intermediate segments, mismatched case, mismatched plurality (`meter` vs `meters`).
+- **The device ID topic pattern does not match the publishing topic.** Verify the pattern by comparing it character for character to a topic from the publisher's logs. Common mistakes: leading slash, missing intermediate segments, mismatched case, mismatched plurality (`meter` vs `meters`).
 - **Device ID differs from the publisher’s identifier.** Compare the configured ID with the actual topic segment or payload field, including case and spaces. MQTT IDs preserve both. Keep the existing twin when replacing a bound identity: see [MQTT Devices](../../devices/mqtt-devices.md).
 
 To verify what the publisher is actually sending:
@@ -71,9 +74,9 @@ docker compose logs zigbee2mqtt | grep "MQTT publish" | grep -v bridge | tail -5
 mosquitto_sub -h {broker} -p {port} -t '#' -v
 ```
 
-The topic shown in those output lines is the topic your Device ID Topic pattern and Device ID field need to match against.
+The topic shown in those output lines is the topic your device ID topic pattern and device ID need to match against.
 
-## Phase 4 — Mapping tab Value column updates but Logs tab is empty
+## Why Is the Logs Tab Empty While the Mapping Tab Shows Values?
 
 **Symptom:** Open a registered device. Mapping tab shows live values and Last update timestamps. Logs tab is empty.
 
@@ -93,17 +96,17 @@ Resolution: generate a fresh publish after saving Device data keys. Methods:
 
 After at least one publish arrives post-save, the Logs tab populates and continues to receive subsequent traffic.
 
-## Phase 5 — readings rejected during normalization {#phase-5-null-values-in-the-mapping-tab-value-column}
+## Why Are MQTT Readings Rejected During Normalization?
 
 **Symptom:** An incoming key has a value, but its mapped measurement does not receive a fresh history entry.
 
 Check the template's Type against the actual value. For example, `"ON"`/`"OFF"` need String, not Boolean. Incompatible readings are rejected for that measurement; they are not stored as null values. Check device diagnostics for the reason. If changing a template, review the effect on measurement identity first; replacing a template is not the same as correcting the incoming key.
 
-## Phase 6 — Inconsistent or duplicated metric values across multiple devices
+## Why Do Two MQTT Devices Show Each Other's Values?
 
 **Symptom:** two device records appear to receive each other's telemetry, or a single device shows alternating values from different sources.
 
-This is a Device ID Topic pattern collision. If two devices publish to topics that both match a single Device ID Topic pattern at different `{{deviceId}}` values, but the Device ID field on one device record matches both, both publishes route to that record.
+This is a device ID topic collision. If two devices publish to topics that both match a single topic pattern at different `{{deviceId}}` values, but the device ID on one record matches both, both publishes route to that record.
 
 Verify:
 
@@ -111,11 +114,11 @@ Verify:
 - Publishing-side topics produce unique values at the `{{deviceId}}` placeholder position.
 - No publisher is misconfigured to publish under another device's identifier.
 
-## Resetting Cloud MQTT credentials
+## How Do I Reset Cloud MQTT Credentials?
 
 When a credential needs to be rotated:
 
-1. Open the connector detail page.
+1. Open the connector from the Connectors list (the **Settings** tab).
 2. In edit mode, regenerate the password.
 3. Capture the new password immediately; the original is not retrievable after regeneration.
 4. Update every publishing client (firmware configuration, Z2M `configuration.yaml`, edge gateway configuration) with the new password.
@@ -123,11 +126,11 @@ When a credential needs to be rotated:
 
 The username and Topic prefix do not change on rotation.
 
-## Resetting External MQTT credentials
+## How Do I Change External MQTT Credentials?
 
-For Basic auth, change the password on the broker side and update the connector's authentication configuration. For Certification (TLS client cert), reissue the client certificate and re-upload. For JWT, regenerate the token and update the connector. In all cases, no platform-side credential rotation flow exists — the credential is on the broker; the platform stores a reference.
+For Basic auth, change the password on the broker side and update the connector's authentication configuration. For Certification (TLS client cert), reissue the client certificate and re-upload. For JWT, regenerate the token and update the connector. Then open the connector on the **Settings** tab and enter the new credential. A stored secret shows only as saved, never as text, and changing the address, encryption or authentication method asks you to re-enter it (see [External MQTT](external-mqtt.md#how-do-i-change-an-external-mqtt-connector-later)). Change the credential on the broker first, so the connector never holds one the broker rejects.
 
-## Where to go next
+## Where Can I Get More MQTT Help?
 
 - [Topics and device routing](topics-and-device-routing.md) — for routing configuration details.
 - [External MQTT](external-mqtt.md) — for broker-side configuration of self-hosted brokers.

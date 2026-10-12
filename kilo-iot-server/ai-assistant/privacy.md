@@ -8,7 +8,7 @@ The Kilo AI Assistant uses your questions and relevant platform information to h
 
 ## Account access and action confirmations
 
-The built-in assistant uses your signed-in account and selected organisation for its requests. Choose the correct organisation and review its members and permissions before delegating work. Read any **Confirm Action** prompt before approving a change to devices or data; choose **Cancel** if the proposed action is not what you want. Routine setup can proceed without a separate confirmation.
+The built-in assistant uses your signed-in account and selected organization for its requests. Choose the correct organization and review its members and permissions before delegating work. Read any **Confirm Action** prompt before approving a change to devices or data; choose **Cancel** if the proposed action is not what you want. Routine setup can proceed without a separate confirmation.
 
 If the assistant returns information or proposes an action outside the access you expect, stop that task and contact **info [at] kiloiot.de** (replace `[at]` with `@`).
 
