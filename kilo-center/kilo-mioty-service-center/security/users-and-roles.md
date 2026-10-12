@@ -153,7 +153,9 @@ not need to sign in again.
 Self-registration is controlled by `registration_enabled` in the identity
 configuration (`auth.registration_enabled`, or the environment variable
 `KILOCENTER_AUTH_REGISTRATION_ENABLED`). It is on in the shipped Docker Compose
-configuration and off by default everywhere else, including the Helm chart.
+files and in the sample `config.yaml` that a Linux-host or source run uses. The
+built-in default and the Helm chart leave it off, so a Kubernetes installation
+has no **Create one** link until you turn it on.
 Accounts created by an OpenID Connect or OAuth2 sign-in start without roles in
 the same way.
 

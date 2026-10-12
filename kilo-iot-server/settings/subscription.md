@@ -31,9 +31,9 @@ Beyond these ceilings, the plan comparison on the Subscription page also shows w
 
 Data retention is the period of device history available under your subscription. The plan table above lists the standard device-log retention for each tier; Business and Max include 12 months. A digital twin keeps its identity when you replace its physical sensor, but that replacement does not extend the retention period of its earlier readings.
 
-If your organisation needs longer data retention for compliance or operational requirements, contact the Kilo team to discuss an extended retention period and agree suitable terms. On **Settings > Subscription**, choose **Talk to sales** on the Enterprise tier. Include the period you need and the devices and measurements it should cover, so the arrangement can be agreed before you rely on it for record keeping.
+If your organization needs longer data retention for compliance or operational requirements, contact the Kilo team to discuss an extended retention period and agree suitable terms. On **Settings > Subscription**, choose **Talk to sales** on the Enterprise tier. Include the period you need and the devices and measurements it should cover, so the arrangement can be agreed before you rely on it for record keeping.
 
-For example, a pharmaceutical refrigeration operator can keep the same refrigerator twin through probe replacements and discuss a longer period for its temperature records. The required period depends on the organisation's obligations; a sensor replacement alone does not establish compliance or recover expired readings.
+For example, a pharmaceutical refrigeration operator can keep the same refrigerator twin through probe replacements and discuss a longer period for its temperature records. The required period depends on the organization's obligations; a sensor replacement alone does not establish compliance or recover expired readings.
 
 ## Upgrading Your Plan
 

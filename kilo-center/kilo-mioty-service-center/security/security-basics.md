@@ -4,11 +4,11 @@ description: "KiloCenter security basics: default credentials to replace, TLS ce
 
 # Security Basics
 
-Kilo Center security configuration controls access to service interfaces and protects communication with base stations, applications, and operators. The person running the installation is responsible for credentials, certificates, authentication settings, and network exposure.
+KiloCenter security configuration controls access to service interfaces and protects communication with base stations, applications, and operators. The person running the installation is responsible for credentials, certificates, authentication settings, and network exposure.
 
 Use this guide before making a development installation available to other users or networks. Review the active [configuration](../getting-started/configuration-basics.md), replace convenience credentials, and expose only the interfaces required by your deployment. A running local stack is the starting point, not evidence that production access has been configured.
 
-### Goal
+### What does this guide achieve?
 
 Establish a secure baseline for KiloCenter deployments.
 
@@ -66,7 +66,7 @@ For Docker Compose, the files are in the `cert_data` volume mounted at `/app/cer
 * `ca.crt` and `ca.key` -- CA certificate and private key
 * `server.crt` and `server.key` -- server certificate and private key
 
-The server certificate automatically includes `localhost`, `127.0.0.1`, and all local network IPs as Subject Alternative Names (SANs).
+The server certificate names the `-server` hostname (`localhost` by default), `kilocenter.local`, `127.0.0.1` and `0.0.0.0` as Subject Alternative Names (SANs), plus every name or IP address you pass with `-san`. It never lists the host's network interfaces, so add the hostname or IP address your base stations connect to with `-san`.
 
 **Generate a Client Certificate**
 
@@ -81,6 +81,7 @@ docker compose run --rm --no-deps --entrypoint certgen certgen \
 | -------------- | ----------- | ------------------------------------------------------------ |
 | `-dir`         | `certs`     | Output directory for certificate files                       |
 | `-server`      | `localhost` | Server hostname (used as CN and SAN)                         |
+| `-san`         | (empty)     | Further server names and IP addresses, comma-separated, added as SANs |
 | `-days`        | `365`       | Server/client certificate validity in days                   |
 | `-ca-years`    | `20`        | CA certificate validity in years                             |
 | `-ca-only`     | `false`     | Generate only the CA certificate                             |

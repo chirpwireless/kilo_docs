@@ -45,10 +45,10 @@ Fill in the fields from top to bottom:
 * **Popularity.** **High**, **Medium**, or **Low**.
 * **Cross-industry note.** A short note when the same problem appears in other industries.
 * **Related use cases.** Link to similar ones.
-* **Use in Kilo AI.** A listing option for the platform's own catalog. It has no customer-facing recommendation behind it yet.
+* **Use in Kilo AI.** A listing option for the platform's own catalog. Its hint reads *Allow Kilo AI to recommend this application when it matches a customer's needs.*
 
 Select **Add Use case** to save, or **Close** to leave without saving. To change one later, select the arrow on its row; the form is titled **Edit Use case**.
 
 ## How do I delete a use case?
 
-Select the trash icon on its row. Kilo asks whether to delete the use case and names the solutions that implement it: deleting detaches it from them. Confirm with **Yes, detach and delete**.
+Select the trash icon on its row. Kilo asks **Delete the use case «name»?** and explains that the use case stops being available for new publications and Kilo AI recommendations. Confirm with **Yes, delete**. If solutions still implement the use case, the server refuses and a second dialog lists them (**It is implemented by:** followed by their names; deleting detaches it from them). Confirm that one with **Yes, detach and delete**, or select **Cancel** to keep the use case.

@@ -2,7 +2,7 @@
 description: Decode MIOTY payloads in Kilo IoT with blueprints — System vs Custom catalog and per-device snapshots.
 ---
 
-# MIOTY Blueprints
+# How do MIOTY blueprints decode payloads in Kilo?
 
 A MIOTY **blueprint** turns a device's compact radio payload into named fields you can use in Kilo, such as temperature, battery level, or a meter reading. Choose the decoder matching your endpoint, then map those fields to metrics for dashboards, rules, and alarms.
 
@@ -21,7 +21,7 @@ When you select a blueprint for a device, it is **copied onto that device as an 
 The device is not a live pointer into the catalog. It carries its own copy of the decoder. Which means:
 
 - **Editing a catalog blueprint does not change devices already bound to it.** They keep running on the copy they were commissioned with.
-- **Deleting a catalog entry does not break devices already using it.** They keep decoding on their snapshot; the entry simply disappears from the catalog and can no longer be chosen for new devices.
+- **Removing a catalog entry later does not break devices already using it.** They keep decoding on their snapshot; the device form then shows **Pinned snapshot (source template deleted)** and the entry can no longer be chosen for new devices.
 - **Two devices of the same model can run different blueprints.** A pilot batch on a corrected decoder and a production fleet on the proven one is a normal state, not a conflict.
 - **A new version reaches a device only when you explicitly apply it.** Nothing about a catalog edit propagates on its own.
 
@@ -33,8 +33,8 @@ The catalog is split into two, and the two are never mixed in one list — you s
 
 | Catalog | Who can see and use it | Who can change it |
 |---|---|---|
-| **System** | Everyone — manufacturers, models, and blueprints are usable by any organization | Administrators only. Creating, editing, and deleting System entries requires an administrator. |
-| **Custom** | Your organization | Users with the required editing permissions can create, edit, and delete entries |
+| **System** | Everyone — manufacturers, models, and blueprints are usable by any organization | Not in the device form. With **System** selected the form is read-only and says **System catalog is read-only. Switch to Custom to create or edit blueprints.** |
+| **Custom** | Your organization | Users with permission to edit the device can create blueprints and add versions to their own models in the device form |
 
 Using a System blueprint on a device creates **only the snapshot on that device**. Nothing is copied into your Custom catalog, and your Custom catalog stays exactly as you built it.
 
@@ -46,16 +46,16 @@ This is the path for hardware the catalog already covers.
 
 <figure><img src="../../.gitbook/assets/device-mioty-blueprint-config.jpg" alt="The Blueprint Configuration section of a MIOTY device with the Custom and System catalog toggle, the Use existing blueprint checkbox and the Manufacturer dropdown"><figcaption></figcaption></figure>
 
-1. On the device form, find **Blueprint Configuration**.
-2. Turn **Use existing blueprint** **ON**.
-3. Select the catalog — **System** or **Custom**.
+1. On the device form, open the **Connection** tab and find **Blueprint Configuration**.
+2. Use the **Custom / System** toggle first. **Custom** is your organization's catalog; **System** is the shared one. A chip next to the toggle shows which catalog is active.
+3. In **Custom**, tick **Use existing blueprint**. In **System** the pickers are always shown and the checkbox is not.
 4. Select the **Manufacturer**.
 5. Select the **Device Model**. The list narrows to that manufacturer's models.
-6. Select the **Blueprint Version**.
+6. Select the **Blueprint Version**. Each entry reads like `name (version)`.
 
-The decoder specification is displayed read-only for review, and the **Type EUI** auto-fills on the device form and is not editable — it comes from the blueprint. Save the device, and the blueprint is snapshotted onto it.
+The decoder specification appears under **Blueprint specification (read-only)** for review, followed by the **Test decoder** panel, and the **Type EUI** auto-fills on the device form and is not editable — it comes from the blueprint. Save the device, and the blueprint is snapshotted onto it.
 
-Once that has happened the device is labelled **Pinned snapshot**, so you can see at a glance that what you are reading belongs to this device rather than to the shared catalog entry. If the catalog blueprint it was copied from has since been deleted, the label reads **Pinned snapshot (source template deleted)** — the device is unaffected and keeps decoding on its own copy, but the label tells you there is no longer a catalog entry behind it to compare against.
+Once that has happened the device is labeled **Pinned snapshot**, so you can see at a glance that what you are reading belongs to this device rather than to the shared catalog entry. If the catalog blueprint it was copied from has since been deleted, the label reads **Pinned snapshot (source template deleted)** — the device is unaffected and keeps decoding on its own copy, but the label tells you there is no longer a catalog entry behind it to compare against.
 
 The **first blueprint created for a model becomes the default for new devices of that model** — so once a model is set up correctly, commissioning the rest of the fleet is a matter of selecting the model.
 
@@ -63,13 +63,14 @@ The **first blueprint created for a model becomes the default for new devices of
 
 Take this path when the catalog does not cover your hardware, or when a firmware revision decodes differently from the existing entry.
 
-1. Turn **Use existing blueprint** **OFF**.
-2. **Manufacturer** — select an existing one, or click **+ Add new manufacturer** and name it.
-3. **New Device Model** — enter the model name. If it duplicates an existing model, the form flags it — check whether you actually want to add a version to that model instead.
-4. **Blueprint version** — enter a version, for example `1.0.0`. Version deliberately, not incidentally; this string is what your team will use to tell two decoders apart in a year.
-5. **Blueprint JSON** — paste the decoder specification. It must be valid JSON and must contain a `typeEui` of exactly 16 hexadecimal characters.
-6. When the specification is valid, a helper displays the parsed value — **"Type EUI: …"** — confirming what the device will be bound to.
-7. Click **Save Blueprint**. A toast confirms *"Blueprint created"*, and the new model, version, and Type EUI are filled into the device form.
+1. Set the **Custom / System** toggle to **Custom** and clear **Use existing blueprint**. Authoring is not available in the System catalog.
+2. **Manufacturer** — select an existing one, or choose **+ Add new manufacturer**, type a **New manufacturer name**, and click **Add**.
+3. **Device Model** — pick an existing model, or choose **+ Add new model** and fill **Device model name** and the optional **Device model description**. If the name duplicates a model under that manufacturer, the form flags it — check whether you actually want to add a version to that model instead.
+4. For an existing model, a **Blueprint Version** list appears. Pick a version to edit it, or choose **+ New version**. A note reminds you that editing a template updates it for new devices only.
+5. **Blueprint version (e.g. 1.0.0)** — enter a version. Version deliberately, not incidentally; this string is what your team will use to tell two decoders apart in a year. The field is locked while you edit an existing version.
+6. **Blueprint specification (JSON)** — paste the decoder into **Paste blueprint JSON**. It must be valid JSON and must contain a `typeEui` of exactly 16 hexadecimal characters.
+7. When the specification is valid, a helper displays the parsed value — **"Type EUI: …"** — confirming what the device will be bound to.
+8. Check the result in **Test decoder** (below), then click **Save Blueprint** (**Save changes** when you edited an existing version). A toast confirms *"Blueprint created"*, and the new model, version, and Type EUI are filled into the device form.
 
 ### Validation messages
 
@@ -85,7 +86,7 @@ That last one is worth understanding rather than working around. The `typeEui` i
 
 | Message or control | What it means |
 |---|---|
-| **System catalog is read-only. Switch to Custom to create or edit blueprints.** | You have the **System** toggle selected. Only administrators change System entries; switch to **Custom** to author your own. |
+| **System catalog is read-only. Switch to Custom to create or edit blueprints.** | You have the **System** toggle selected. The form does not author System entries; switch to **Custom** to author your own. |
 | **This device model has no default blueprint. Pick a version above.** | The model exists but no version is marked as its default. Choose a **Blueprint Version** yourself. |
 | **+ Add new manufacturer** | Opens **New manufacturer name**; type the name and click **Add**. |
 | **+ Add new model** | Opens **Device model name** and **Device model description (optional)**. A model name that already exists under the manufacturer is flagged: **A device model with this name already exists under this manufacturer**. |
@@ -95,7 +96,7 @@ That last one is worth understanding rather than working around. The `typeEui` i
 
 ## Decode preview
 
-In **Test decoder**, enter a known **Sample payload (hex or base64)** and click **Run test**. Read **Decoded result (read-only)** or the error beneath the input, which says **Decode failed** or gives the decoder's own error detail. This previews decoding without requiring a live transmission.
+In **Test decoder**, enter a known **Sample payload (hex or base64)**, choose the **Format** (the user-data format of the uplink) and click **Run test**. Read **Decoded result (read-only)** or the red error beneath the input, which says **Decode failed** or gives the decoder's own error detail. This previews decoding without requiring a live transmission.
 
 Use it. A blueprint that parses as JSON is not the same thing as a blueprint that decodes correctly — scaling factors, byte order, and signed values are the classic places a decoder is syntactically perfect and semantically wrong. A sample payload with a known value takes a minute at the bench and saves you from discovering the problem as a temperature chart that reads plausibly and is off by a factor of ten. Take a payload from the device's own documentation, or from a unit you have already commissioned.
 
@@ -110,21 +111,11 @@ Because devices run on snapshots, a new blueprint version reaches a device only 
 
 Roll out to one device first and confirm its decoded fields against the live payload before you move the fleet. The snapshot model is what makes this staged rollout possible — the rest of the fleet is untouched while you verify.
 
-## Deleting catalog entries
-
-Users with the required permissions can delete entries from their organization's Custom catalog.
-
-If devices are using the entry, you get a **warning with a count** of the affected devices. Those devices keep working — they are on their snapshots. What changes is the catalog: the entry disappears and can no longer be chosen for new devices.
-
-Read the count before confirming. It is not a blocker, but it tells you how many device records now carry a decoder that no longer has a catalog entry behind it — which matters the next time someone tries to commission a matching unit and finds nothing to select.
-
-Deleting a **System** entry requires an administrator.
-
 ## Tips
 
 - **Author once, commission many.** For a fleet rollout, get the blueprint right on one unit with **Test decoder**, then let the model default carry the rest.
 - **Version on firmware, not on dates.** When a vendor ships a firmware revision that changes the payload, that is a new blueprint version. Name it so the connection is obvious.
-- **Prefer System where it fits.** If the System catalog covers your hardware, use it — you get the decoder without owning its maintenance, and your device still gets its own snapshot.
+- **Prefer System where it fits.** If the System catalog covers your hardware, use it — you get the decoder without owning its maintenance, and your device still gets its own snapshot. To make changes to a System entry, ask your administrator or Kilo.
 - **Map metrics after decoding.** A blueprint produces named fields; metric templates normalize those fields into a vocabulary shared across manufacturers. See [Metrics](metric-templates.md).
 
 ## What's next

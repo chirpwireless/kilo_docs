@@ -8,7 +8,7 @@ Use the current installation examples only in an isolated evaluation environment
 Published credentials, signing-key defaults and network exposure need correction before customer use.
 Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
 
-Kilo Center prerequisites depend on how you install it. Choose a route before preparing the host: the full Docker Compose stack runs packaged services in containers, a source build needs development tools, and Kubernetes uses a cluster and Helm.
+KiloCenter prerequisites depend on how you install it. Choose a route before preparing the host: the full Docker Compose stack runs packaged services in containers, a source build needs development tools, and Kubernetes uses a cluster and Helm.
 
 The list below distinguishes those choices so you can prepare the required runtime, ports, and certificates without installing tools you will not use. Start with [Architecture and Components](architecture-and-components.md) if the service roles are unfamiliar.
 
@@ -53,7 +53,7 @@ The local deployment uses the ports below. Check the mappings for your installat
 | 9090  | KC-Gateway         | External gRPC-web API        |
 | 8086  | KC-Core health     | Health and Prometheus        |
 | 8087  | KC-Gateway health  | Gateway health endpoint      |
-| 5000  | BSSCI              | Base station protocol (TLS)  |
+| 5000  | BSSCI              | Base station protocol (TLS); the default `docker-compose.yml` publishes it as host port 5050 |
 | 5001  | SCACI              | Application center protocol  |
 | 50051 | KC-Core gRPC       | Internal, loopback only      |
 | 5433  | PostgreSQL         | Docker host port mapping     |

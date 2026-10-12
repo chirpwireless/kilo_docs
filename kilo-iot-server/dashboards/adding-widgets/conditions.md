@@ -71,11 +71,11 @@ Examples:
 Control and status sensors often report binary state as an integer: 1 when active or open, 0 when stopped or closed. Number conditions map those values to operational labels:
 
 - Condition "Running" — Number, From 1, To 1 — blue
-- Condition "Stopped" — Number, From 0, To 0 — grey
+- Condition "Stopped" — Number, From 0, To 0 — gray
 
 Operational examples:
-- Pump status: 1 = "Running" (blue), 0 = "Stopped" (grey)
-- Valve position: 1 = "Open" (green), 0 = "Closed" (grey)
+- Pump status: 1 = "Running" (blue), 0 = "Stopped" (gray)
+- Valve position: 1 = "Open" (green), 0 = "Closed" (gray)
 - Equipment interlock: 1 = "Engaged" (green), 0 = "Not engaged" (red)
 
 The same Number condition type handles all of these. The difference is only in the labels and colors you assign.
@@ -147,7 +147,7 @@ The widget shows the right color for each status without any numeric evaluation.
 For sensors that report True/False state (running/stopped, open/closed, active/idle):
 - True = one color and label, False = another color and label
 
-For example, a pump running status: True → blue "Running", False → grey "Idle". Or an equipment safety interlock: True → green "Engaged", False → red "Not engaged".
+For example, a pump running status: True → blue "Running", False → gray "Idle". Or an equipment safety interlock: True → green "Engaged", False → red "Not engaged".
 
 ## See also
 

@@ -2,7 +2,7 @@
 description: "Keep Kilo Lens recordings in your own Amazon S3, Google Cloud, or Walrus storage, encrypted before upload and playable from the platform."
 ---
 
-# Cloud Archive for Camera Recordings
+# What is cloud archive for camera recordings?
 
 Cloud archive keeps a copy of your camera recordings in cloud storage that **you** own. Footage that matters, such as an after-hours entry or a delivery dispute, no longer depends on one disk in a closet at the site. You decide where it lives, how long you keep it, and what you pay for it.
 
@@ -56,7 +56,7 @@ You need Twin **1.1.0 or later** on the camera. With an older Twin, the camera r
 
 ### Step 2: Send a camera's recordings to the connector
 
-1. Open **Cameras**, then select the camera's name, and open the **Storage** tab. [Camera Detail Page: Every Tab Explained](camera-detail-settings.md) shows the whole tab.
+1. Open **Cameras**, then select the camera's name, and open the **Storage** tab. [Camera detail page](camera-detail-settings.md) shows the whole tab.
 2. Scroll to **Cloud backup**. Open **Backup to** and choose your connector instead of **None (local only)**.
 3. Decide what to do with the local copy. Switch on **Delete local clips after upload** to remove the local file once Lens confirms the upload, or leave it off to keep a permanent local backup as well.
 4. Optionally switch on **Limit cloud storage** and set **Maximum cloud storage (MB)**. When this camera's archive passes the limit, Lens removes the oldest cloud backups. Local recordings are not affected.
@@ -74,7 +74,7 @@ Open **Recordings** in the Lens menu. Filter with **All devices** and **Date ran
 
 - **Open a recording.** Select its card on **Recordings**. The recording detail page has **Download**, the removal button, **Export**, the player, **Show live** and **Show playback**, **Media info**, and the **Screenshots** gallery. [Lens Workspace Tour](lens-workspace-tour.md#what-is-on-the-recording-detail-page) walks through the page.
 - **Play.** Recordings play in the Lens player, and you can seek within them. While the stream loads the player says **Loading video...**. If your storage does not support partial reads, the player says **Seeking is not available** and explains that you need storage that serves file parts. Walrus playback needs an aggregator that supports byte ranges. If playback cannot start you see **Playback unavailable. Storage connector could not provide a stream reference.** or **Storage is not responding. Try again.** Reload the page, and check the connector with **Verify**.
-- **Download.** Select **Download** to save the file as MP4 for investigation or evidence. Select **Cancel download** to stop a running download. In Chrome and Edge a save dialog lets you choose the folder. Other browsers keep the file in memory, so they refuse files above 1 GiB with **This file is larger than 1 GiB. Download it in Chrome or Edge.** If the save dialog expired, the toast says **Click Download again to choose where to save it.** Other messages: **Could not save the file. Check the folder permissions and free disk space, then try again.** and **Failed to get download link. Please try again.**
+- **Download.** Select **Download** to save the file as MP4 for investigation or evidence. Select **Cancel download** to stop a running download. In Chrome and Edge a save dialog lets you choose the folder. Other browsers keep the file in memory, so they refuse files above 1 GiB with **This file is larger than 1 GiB. Download it in Chrome or Edge.** If the save dialog expired, the toast says **Click Download again to choose where to save it.** (for a file above 1 GiB, **This file is larger than 1 GiB. Click Download again to choose where to save it.**). Other messages: **Could not save the file. Check the folder permissions and free disk space, then try again.** and **Failed to get download link. Please try again.**
 - **Delete recording.** For Amazon S3 and Google Cloud Storage, this removes the file from your bucket. A dialog titled **Delete recording** says **Once deleted, this action cannot be undone.** Select **Delete recording** to confirm, or **Cancel**. A green toast says **Recording removed** and the page returns to the list. If the removal fails the toast says **Failed to remove the recording. Please try again.** and the recording stays.
 - **Remove from archive.** This button replaces **Delete recording** for a Walrus recording, a recording whose storage period ended, or a recording whose key was erased. The confirmation tells you what happens: for Walrus, **The recording disappears from the archive. The file stays in Walrus until its paid period ends.**; for ended periods, **The recording disappears from the archive. Its storage period has already ended.**; for erased keys, **The recording disappears from the archive. The file stays in your storage.** After confirming, a yellow toast repeats that the file stays (**Walrus keeps files for the paid period. They can't be deleted earlier.** or **The file stays in your storage.**).
 
@@ -85,7 +85,7 @@ You may also see a state label on a recording, on its card and on its detail pag
 | **Unreadable** | The recording was damaged on upload and cannot be played. It still uses space in your storage. Record again |
 | **Archive disconnected — key erased** | You disconnected the storage, so the platform erased its keys and cannot read these files any more. Use **Remove from archive** to clear them from Lens |
 | **Storage period ended** | A Walrus recording whose paid period is over. The storage no longer provides it |
-| **Kept on the camera** | The recording was not uploaded and stays only on the Twin. The line below it gives the reason: **Update the camera to enable the cloud archive.**, **The camera used a key this storage doesn't recognise. Next recordings upload once the camera receives the current key.**, **The camera used a compromised key.**, **The storage was disconnected.**, or **The storage did not accept the upload. Check the storage settings and credentials.** |
+| **Kept on the camera** | The recording was not uploaded and stays only on the Twin. The line below it gives the reason: **Update the camera to enable the cloud archive.**, **The camera used a key this storage doesn't recognize. Next recordings upload once the camera receives the current key.**, **The camera used a compromised key.**, **The storage was disconnected.**, or **The storage did not accept the upload. Check the storage settings and credentials.** |
 
 A recording marked **Unreadable**, **Archive disconnected — key erased** or **Storage period ended** hides **Download**, **Export** and **Capture**, and its card cannot be ticked for export.
 

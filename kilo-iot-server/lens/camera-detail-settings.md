@@ -2,9 +2,9 @@
 description: "Every tab and setting on a Kilo Lens camera page: Details, Recording, Recording Area, and Storage, including cleanup limits and cloud backup."
 ---
 
-# Camera Detail Page: Every Tab Explained
+# What does each tab of the camera page do?
 
-Open **Cameras** in the Lens menu and select a camera's name to open its detail page. This is where you check a camera's health, decide when it records, draw the area that triggers recording, and choose where recordings are kept. Changes are saved in Lens and sent to the camera's Twin.
+Open **Cameras** in the Lens menu and select a camera's name to open its detail page. This is where you check a camera's health, decide when it records, draw the area that triggers recording, and choose where recordings are kept. Changes are saved in Lens and sent to the camera's Twin. The **Details** tab is always there; the **Recording**, **Recording Area**, and **Storage** tabs appear only when your organization has recordings and storage switched on.
 
 <figure><img src="../../.gitbook/assets/kilo-lens-camera-details.jpg" alt="The Details tab of a camera page with the camera preview, Media capabilities, Lens connection, Device details, Device specs, and Storage policy panels"><figcaption><p>The Details tab. The Twin key and device ID in the Lens connection panel are blurred in this screenshot; they identify a real installation and you should not share them.</p></figcaption></figure>
 
@@ -14,7 +14,10 @@ The tab opens with a large picture area and a set of information panels.
 
 - **Preview** and **Live** switch the picture between a regular snapshot and a live stream. A camera that is offline shows **Camera is offline**.
 - The pencil beside **Camera detail** renames the camera.
+- On a camera that reports pan/tilt or zoom, an overlay on the picture holds **Pan up**, **Pan left**, **Pan right**, **Pan down**, **Zoom in**, and **Zoom out**.
+- **Camera controls** appears only for a camera with PTZ support. **Presets** lists each saved position with **Go to** (move there), a star (**Set as default** or **Clear default**; the default carries a **Default** label), and **Delete** (confirm with **Yes, delete**). The list says **No presets saved** when empty. Type a **Preset name** and select **Create preset** to save the current view; **Preset update pending - refresh manually** means the camera has not yet applied the change. **Return Home** moves this camera to its default preset and is grayed out, with the tooltip **Set a default preset to enable Return Home**, until one is set.
 - **Media capabilities** states whether **Live audio** and **Talkback** are available for this camera.
+- **ONVIF details** appears only for an ONVIF-capable camera and lists **PTZ support**, **Zoom**, **Pan/Tilt**, **Presets** (the saved names), and **Default preset**.
 - **Lens connection** shows the **Device ID**, **Name**, **Twin key**, and **Pairing** state. **Reconnect Twin** generates a new one-time token if the Twin lost its pairing. See [Managing Cameras](managing-cameras.md).
 - **Device details** lists **Status**, **Uptime**, **Last Twin activity**, **Stream type**, and whether an **SD** and **HD** stream are **available**.
 - **Device specs** lists the Twin's **Version**, **Hostname**, **Architecture**, **Memory**, **Camera type**, **IP addresses**, and **MAC addresses**. Check **Version** when you want cloud archive, which needs Twin 1.1.0 or later.
@@ -41,10 +44,10 @@ Open the **Recording** tab.
 | **Recording schedule: Timezone** | The time zone the schedule follows, as an IANA name such as `Europe/Berlin` |
 | **Recording schedule: Use schedule** | When on, a weekly timetable appears with two start and end times per weekday, so recording happens only inside those windows |
 | **External recording check URL** | Before recording, Twin sends a POST to this address. A 200 response allows recording; anything else blocks it |
-| **Save test clip** | Saves a short clip immediately and does not wait for motion areas, so you can test your setup. It is available only when **Enable recording** is on and **When to record** is **Motion**; otherwise it stays greyed out. A green message says **Test clip requested.** or a red one says **Could not request a test clip.** |
+| **Save test clip** | Saves a short clip immediately and does not wait for motion areas, so you can test your setup. It is available only when **Enable recording** is on and **When to record** is **Motion**; otherwise it stays grayed out. A green message says **Test clip requested.** or a red one says **Could not request a test clip.** |
 | **Save** | Saves the settings in Lens and sends them to the camera |
 
-When **Enable recording** is off, every other field on the tab is greyed out; switch it on to edit them. If the Twin has not reported its settings yet, a yellow message says **Twin settings aren't available yet. Make sure the Twin is online.** and **Save** stays disabled until it is online. A green message confirms **Recording settings saved and sent to the camera**. If the camera is offline you see **Saved in Lens. Send to camera failed. Try again.** The settings are kept, and you can retry when the Twin is back. A red message, **Could not save recording settings.**, means Lens itself did not save them. [Local Recordings](local-recordings.md) explains these same settings from the Twin side.
+When **Enable recording** is off, every other field on the tab is grayed out; switch it on to edit them. If the Twin has not reported its settings yet, a yellow message says **Twin settings aren't available yet. Make sure the Twin is online.** and **Save** stays disabled until it is online. A green message confirms **Recording settings saved and sent to the camera**. If the camera is offline you see **Saved in Lens. Send to camera failed. Try again.** The settings are kept, and you can retry when the Twin is back. A red message, **Could not save recording settings.**, means Lens itself did not save them. [Local Recordings](local-recordings.md) explains these same settings from the Twin side.
 
 ## How do I limit recording to the area that matters?
 
@@ -64,7 +67,7 @@ Open the **Storage** tab. It has three sections and two buttons.
 
 - **Local disk usage** shows used and total space with a bar, and the percentage used and free.
 - **Saving clips to** and **Writable** show the folder in use and whether the Twin can write to it.
-- **Recording folder override** is an advanced field for a different folder. Leave it empty to use the default; the hint shows the default path. **Test on Twin** stays greyed out until you type a folder. Select it to have the Twin check the folder: a spinner shows while it checks, then **Path OK** (green; hover to see **Writable, free** with the space left) or **Invalid** (red; hover to read **Path is not writable** or the Twin's own error). If the Twin has not reported its disk yet, the usage bar says **Disk usage not available - device has not reported yet.**
+- **Recording folder override** is an advanced field for a different folder. Leave it empty to use the default; the hint shows the default path. **Test on Twin** stays grayed out until you type a folder. Select it to have the Twin check the folder: a spinner shows while it checks, then **Path OK** (green; hover to see **Writable, free** with the space left) or **Invalid** (red; hover to read **Path is not writable** or the Twin's own error). If the Twin has not reported its disk yet, the usage bar says **Disk usage not available - device has not reported yet.**
 
 **Automatic cleanup** removes the oldest recordings so the disk does not fill.
 

@@ -2,7 +2,7 @@
 description: "Connect a camera to Kilo Lens: set its RTSP stream in Twin, pair Twin with a connection token, and verify the link."
 ---
 
-# Connecting a Camera
+# How do I connect a camera to Kilo Lens?
 
 Connecting a camera has two parts: Twin must reach its local video source, then Lens must associate that Twin with your organization. The camera's password belongs in Twin's camera settings; the Lens connection token is a separate credential used for pairing.
 
@@ -10,7 +10,7 @@ Before starting, [install one Twin for this camera](installing-twin.md), have it
 
 For ready-to-adapt stream addresses, see [RTSP Camera URLs](rtsp-camera-urls.md), including Tapo and HiLook/Hikvision examples.
 
-## Configure the local camera
+## How do I configure the local camera for Twin?
 
 1. Open Twin and sign in.
 2. Open **Settings → Camera Connector**.
@@ -21,7 +21,7 @@ For ready-to-adapt stream addresses, see [RTSP Camera URLs](rtsp-camera-urls.md)
 
 Use a name that identifies the camera's location and purpose, such as `Main office entrance`. Copy the **Twin Key** shown by Twin. It is generated for this installation and is not an editable camera serial number.
 
-## Pair Twin with Lens
+## How do I pair Twin with Lens?
 
 1. In Kilo, select **Cameras** to enter Lens.
 2. Choose **Add camera**.
@@ -42,14 +42,14 @@ Use a name that identifies the camera's location and purpose, such as `Main offi
 8. Select **Save** in Twin. Allow Twin to apply the connection settings.
 9. Back in Lens, select **Done**. **Done** is disabled until you have copied the token; if the browser blocks copying, the dialog says **Copying is unavailable here — select the token above and copy it by hand before closing.** If the address cannot be loaded the dialog says **Lens API URL is not configured. Set it in Lens Settings before pairing a camera.** and offers **Retry**; the button then reads **Close**, and you create a new token with **Reconnect Twin** once the address is available. Then check the camera's connection state.
 
-The camera list also shows a **Pairing** column with **Paired**, **Waiting for the Twin**, **Pairing window expired**, or **Unknown**, so you can see which cameras still need their token entered.
+The **Status** badge in the camera list shows **Waiting for the Twin** or **Pairing window expired** for a camera whose token has not been entered yet, so you can see which cameras still need it. The **Paired** state itself is on the camera's page, under **Details → Lens connection**.
 
 Use the API URL supplied for your Lens environment, not the URL of the platform's ordinary web page. A development token and endpoint belong together; do not mix them with production.
 
 
 <figure><img src="../../.gitbook/assets/kilo-twin-hilook-live.jpg" alt="The local Twin dashboard confirms camera and Lens connections"><figcaption><p>Check both connection indicators and the camera picture after pairing.</p></figcaption></figure>
 
-## Verify the result
+## How do I check that the camera is connected?
 
 Open the camera and start live video. An online status confirms the connection, while a successful stream confirms that the full viewing path works. Check both before handing the camera over to operators.
 

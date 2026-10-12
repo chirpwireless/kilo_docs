@@ -43,7 +43,7 @@ While the block is loading you see **Loading reception status…**. If the diagn
 | **Waiting for first data** / **Waiting for the first uplink** / **No uplinks received yet** | The device record exists but the platform has never received anything from it. | Give it one reporting interval to transmit. If the window passes, work through **WHAT TO CHECK** below — and if the unit was ever used on another network, see [Before anything arrives: joining the network](#before-anything-arrives-joining-the-network). |
 | **Reached network — waiting for data** | `Joined the network · no uplinks yet`. For a LoRaWAN device this is good news: credentials are correct and the radio link works. The device has simply not sent a payload yet. | Wait one reporting interval. If it stays here, the device is joining but not transmitting — check its sending schedule and power state. |
 
-**The status keeps itself current.** You do not need to reload the page to see a change. Last-seen time is re-read about every 30 seconds while the page is open, and the label and status dot age on their own clock, so a device that has stopped reporting moves from green to grey in front of you instead of sitting on "Just now" until someone refreshes. A device that sends once a minute stays green between readings. The same live status is used in the Devices list, text widgets, info cards and the devices listed inside an application.
+**The status keeps itself current.** You do not need to reload the page to see a change. Last-seen time is re-read about every 30 seconds while the page is open, and the label and status dot age on their own clock, so a device that has stopped reporting moves from green to gray in front of you instead of sitting on "Just now" until someone refreshes. A device that sends once a minute stays green between readings. The same live status is used in the Devices list, text widgets, info cards and the devices listed inside an application.
 
 One more supporting line appears when a device is configured but idle: `{{count}} sensors configured · 0 receiving values`. Your sensors exist, but none of them is being fed. Treat it the same way as *Data arrives but nothing is stored* — the mapping is where to look.
 
@@ -100,6 +100,9 @@ MQTT integrations have their own reception states, because there are two links t
 | **Broker connected** — *"Your broker is reachable and Kilo is subscribed"* | The connector side is healthy. | Move on to the device side. |
 | **Connecting to your broker…** | The subscription is being established. | Give it a moment. If it persists, verify the connector settings. |
 | **Kilo can't reach your broker** — *"Check the broker URL and credentials in the connector settings."* | The platform cannot establish the subscription, so no device on this connector can deliver data. | Open the connector and correct the broker URL and credentials. See [MQTT Troubleshooting](../connectors/mqtt/troubleshooting.md). |
+| **Kilo hasn't set up this connector on its broker** | The connector was saved, but the platform has not finished creating its subscription. The hint reads *"Re-save the connector to retry the setup."* | Open the connector, click save again, and re-check. |
+| **Kilo can't check this connector's broker link** | The platform could not determine the state of the link. The hint reads *"Re-save the connector to retry the setup, then contact support if it persists."* | Re-save the connector; if the message stays, contact support. |
+| **Waiting for messages from your broker…** | The subscription is live on a connector that uses your own broker; nothing has been delivered yet. The checks listed: your broker is reachable and Kilo is subscribed, the device publishes to the expected topic, the device ID resolves as configured. | Wait one reporting interval, then work through those three checks. |
 | **Waiting for the device to publish to the Kilo broker…** | The subscription is live; this device has not published yet. | Wait one reporting interval, then confirm the device is running and pointed at the right broker. |
 | **A message arrived on a topic this device isn't set up for** — *"Update the topic above, or change where the device publishes."* | A publish reached the platform but its topic does not match this device record. Compare **Published to** against **Expected topic**. | Correct the topic on this tab to match what the device actually publishes, or reconfigure the device to publish to the expected topic. |
 | **No publish topic is configured yet — set one above.** | The device record has no topic to match against. | Set the publish topic on this tab. |
@@ -130,8 +133,8 @@ The Event feed is the message-by-message record behind the summary. Where the pi
 | Column | What it shows |
 |---|---|
 | **Time** | When the platform processed the event |
-| **Stage** | Which step of the pipeline the row describes — Routed, Mapped, or Stored |
-| **Outcome** | Whether that step succeeded — OK, Skipped, or Error |
+| **Stage** | Which step of the pipeline the row describes — Routed, Mapped, Converted, or Stored |
+| **Outcome** | Whether that step succeeded — OK, Skipped, Truncated, Dropped, or Error |
 | **Detail** | The specifics for that step |
 
 Before any data exists you see **No events yet** and *"Events will appear here once the device sends data."* — expected for a device that has not transmitted.
@@ -146,9 +149,12 @@ The feed includes its own legend under the heading **What these statuses mean**:
 |---|---|
 | **Routed** | The message reached the platform and was matched to this device. |
 | **Mapped** | Incoming keys were matched to your configured sensors. |
+| **Converted** | Sensor values were adjusted to the type each sensor expects. |
 | **Stored** | Sensor values were saved to history. |
 | **OK** | This step completed successfully. |
 | **Skipped** | Intentionally not processed (for example, no matching mapping or an unexpected topic). Not necessarily an error. |
+| **Truncated** | The value was adjusted to fit the declared sensor type and saved with some loss. |
+| **Dropped** | The value did not match the declared sensor type and was not saved. |
 | **Error** | This step failed and needs attention. |
 
 **Skipped is the row that misleads people.** It is not a failure — it is the platform telling you it made a deliberate decision. A `Mapped / Skipped` row means a key arrived that no sensor claims; if that key matters to you, map it. If it does not, the row is correct behavior and you can ignore it. An `Error` row is the opposite: something broke and the message did not complete its step. Expand it with **Details** and act on what it reports.
@@ -170,14 +176,17 @@ Connector keys appear in the mapping automatically once the device transmits —
 
 ## Connector diagnostics
 
-Diagnostics also exists one level up. Open a connector and you will find a **Connector diagnostics** area covering every device on it, with a **Source health** summary and two tabs:
+Diagnostics also exists one level up, for MQTT connectors. Open **Connectors**, click a connector, and its page has two tabs: **Settings** and **Diagnostics**. Other connector types show **Settings** only. After you add an MQTT connector the app opens its **Diagnostics** tab straight away.
 
-* **Incoming** — what is arriving on the connector, with a `{{count}} seen` figure.
+The **Diagnostics** tab stacks three sections, each answering a different question about every device on the connector:
+
+* **Connection** — whether the platform can reach and use your broker. A status icon, a title and a line of detail. The states are the connector rows in the table above, plus **Connecting to your broker…** and **Broker connected**.
+* **Incoming** — what is arriving on the connector. When messages show up on a topic no device is set up for, they are listed with a `{{count}} seen` figure so you can tell which topic to add or correct.
 * **Activity** — the connector's recent event history. Before any traffic, it reads **No activity yet**. If the diagnostic data cannot be loaded, it reads **Diagnostics unavailable**.
 
-A **Connect device** action lets you register a device against the connector from here.
+To register a device against the connector, use **Add device** on the connector's row in the Connectors list.
 
-Use connector diagnostics when *several* devices are silent at once — that pattern usually points at the connector or the broker, not the hardware. Use device diagnostics when one device is silent while its neighbors are fine. Connector diagnostics is scoped to MQTT connectors; other connector types show their settings only.
+Use connector diagnostics when *several* devices are silent at once. That pattern usually points at the connector or the broker, not the hardware. Use device diagnostics when one device is silent while its neighbors are fine.
 
 For broker-side, TLS, authentication, and topic-routing problems, see [MQTT Troubleshooting](../connectors/mqtt/troubleshooting.md).
 

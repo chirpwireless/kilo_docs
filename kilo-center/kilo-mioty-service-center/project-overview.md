@@ -43,13 +43,13 @@ A demo environment is available at [https://servicecenter.kiloiot.io/](https://s
 
 > Replace `[at]` with `@` when signing in.
 
-### Production Use Notice
+### Can I use the Community Edition in production?
 
 
 
 The community edition is provided as-is without commercial support. Production use is at your own risk.
 
-For supported production deployments, use Kilo Cloud or the on-premise Kilo IoT Platform (Contact Sales). The Enterprise edition of KiloCenter is built into Kilo Cloud and includes commercial support, SLA-backed operation, multi-tenancy, and optional MIOTY capabilities including BSSCI sub-channels, the Variable MAC (VM) attachment, and ReCon extension support. Kilo Cloud also adds the complete platform around MIOTY data: device management, normalization, dashboards, rules, alarms, audit history, access control, and AI-assisted operations.
+The Community Edition comes as is, under the AGPL license and with community support only. For production, choose the edition that fits: the **Enterprise edition** can be installed on your own premises on request ([contact Kilo](https://kiloiot.io/contact/)), and it brings commercial support, SLA-backed operation, multi-tenancy and optional MIOTY capabilities such as BSSCI sub-channels, the Variable MAC (VM) attachment and ReCon extension support. When you need more than a network server, use **Kilo Cloud**, where the Enterprise edition is built in and the platform adds device management, normalization, dashboards, visualization, rules, alerting, audit history, access control and AI-assisted operations.
 
 ### Features
 
@@ -340,7 +340,7 @@ Community edition sign-in uses four roles — Admin, Tenant Manager, Base Statio
 
 
 
-This repository is not the recommended production rollout vehicle. Use Kilo Cloud or the on-premise Kilo IoT Platform for production deployments that require commercial support, operational guarantees, SLA coverage, multi-tenancy, and optional MIOTY capabilities such as BSSCI sub-channels, Variable MAC (VM), and ReCon extensions. Choose Kilo Cloud when the deployment also needs visual rules, dashboards, historical data, alarms and escalation, audit history, or other platform workflows without building those systems around the Community Edition yourself.
+Which edition to use in production is covered under [Can I use the Community Edition in production?](#can-i-use-the-community-edition-in-production).
 
 #### System Requirements
 
@@ -368,7 +368,7 @@ This repository is not the recommended production rollout vehicle. Use Kilo Clou
 * [Architecture and Components](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/01-architecture-and-components.md)
 * [Docker Compose Installation](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/03-installation-docker-compose.md)
 * [Linux Host Installation](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/04-installation-linux-host.md)
-* [Configuration Basics](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/06-configuration-basics.md)
+* [How do I configure KiloCenter?](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/06-configuration-basics.md)
 * [API Documentation](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/04-Integrations/02-api.md)
 * [MQTT Integration](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/04-Integrations/03-mqtt-first-steps.md)
 * [Security](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/05-Security/01-security-and-tenant-isolation-basics.md)

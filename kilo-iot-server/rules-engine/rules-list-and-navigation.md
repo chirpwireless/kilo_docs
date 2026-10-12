@@ -69,7 +69,7 @@ If no rules exist yet, the page shows a message: *"No rules yet"* with a descrip
 
 The Triggers tab lists the saved conditions in your organization. Use **Add trigger** to define what normalized device data to watch, whether the condition must last for a set duration, and which devices it applies to.
 
-Saving a trigger does not create or run a rule. After creating it, return to the **Rules** tab, add or edit a rule, and select the trigger in that rule's **Start Event**. The trigger is a Start Event source, not a node in the palette. See [From a trigger to a running rule](triggers.md#from-a-trigger-to-a-running-rule) for the complete sequence.
+Saving a trigger does not create or run a rule. After creating it, return to the **Rules** tab, add or edit a rule, and select the trigger in that rule's **Start Event**. The trigger is a Start Event source, not a node in the palette. See [From a trigger to a running rule](triggers.md#how-do-i-connect-a-trigger-to-a-running-rule) for the complete sequence.
 
 ## Artifacts tab
 

@@ -8,9 +8,9 @@ Use the current installation examples only in an isolated evaluation environment
 Published credentials, signing-key defaults and network exposure need correction before customer use.
 Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
 
-Run the open-source Kilo Center MIOTY service center as a container stack. Docker Compose starts the network services and their management console together, giving you a local installation ready to connect a base station and register endpoints.
+Run the open-source KiloCenter MIOTY service center as a container stack. Docker Compose starts the network services and their management console together, giving you a local installation ready to connect a base station and register endpoints.
 
-### Goal
+### What does this guide achieve?
 
 Start a working local stack using Docker Compose. The full stack — including KC-Web — runs entirely in containers. No host Go toolchain or Bun runtime is required.
 
@@ -25,11 +25,13 @@ The `docker compose up` command starts four application services and three infra
 | `mosquitto` | kilocenter-mosquitto | 1883, 9001 (WebSocket) | MQTT broker |
 | `certgen` | kilocenter-certgen | — | One-shot TLS certificate generator |
 | `kc-identity` | kilocenter-identity | 50052 (gRPC, internal), 8088 (health) | Identity, users, organizations |
-| `kilocenter` | kilocenter-app | 50051 (gRPC, internal), 5000 (BSSCI), 5001 (SCACI), 8086 (health) | KC-Core service center engine |
+| `kilocenter` | kilocenter-app | 50051 (gRPC, internal), 5000 in the container (BSSCI; published as host port 5050 by the default `docker-compose.yml` and as 5000 by `docker-compose.prod.yml`), 5001 (SCACI), 8086 (health) | KC-Core service center engine |
 | `kc-gateway` | kilocenter-gateway | 9090 (gRPC-web), 8087 (health) | External API ingress |
 | `kc-web` | kilocenter-web | 80 | Web management interface (nginx) |
 
 Internal gRPC ports (50051, 50052) stay on the Docker network and are not published to the host by default.
+
+BSSCI listens on `5000` inside the container. The default `docker-compose.yml` maps it to host port `5050` (`5050:5000`), so point your base stations at port `5050` of the Docker host. The production file `docker-compose.prod.yml` maps `5000:5000`.
 
 ### Step 1: Configure Environment
 

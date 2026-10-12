@@ -2,17 +2,17 @@
 description: "Manage access to Kilo Lens, reconnect a camera's Twin with a new token, and diagnose connection or playback failures."
 ---
 
-# Access and Troubleshooting
+# How do I troubleshoot Kilo Lens?
 
 Lens cameras belong to an organization. Managing access through Kilo lets a team remove an employee's platform access without reconfiguring each camera's local installation. Keep local Twin administration credentials separate from users' Kilo accounts.
 
-## Required access
+## What access do I need to use Lens?
 
-The Lens workspace requires **Edit** access to Cameras. **View** access is not enough for Recordings, Cameras, Videowalls, or Storage, and a person with **No access** does not see them. Access to related rules, alarms, and devices is controlled separately. If a team member cannot open Lens or select a resource, check their organization and permissions first.
+Every Lens screen requires **Edit** access to Cameras. A member with only **View** access or **No access** does not get Lens, and opening a Lens address shows **You do not have camera management access for this organization.** Access to related rules, alarms, and devices is controlled separately. If a team member cannot open Lens or select a resource, check their organization and permissions first.
 
 Organization membership and subscription capacity are also relevant when adding a camera. A Twin key identifies one installation; it cannot be used to create duplicate camera identities across organizations.
 
-## Reconnect an existing Twin
+## How do I reconnect an existing Twin?
 
 1. Open the camera in Lens.
 2. Choose **Reconnect Twin** and obtain the new connection token.
@@ -22,7 +22,7 @@ Organization membership and subscription capacity are also relevant when adding 
 
 Keep the original Twin configuration volume so its identity remains the same. Reconnection does not require creating another camera record.
 
-## Diagnose a problem
+## How do I diagnose a Lens problem?
 
 | Symptom | What to check |
 |---|---|
@@ -34,6 +34,7 @@ Keep the original Twin configuration volume so its identity remains the same. Re
 | Twin will not start | Supply a first-use username and password, inspect container logs, and check mount permissions. |
 | Twin cannot show the camera | Verify power, the camera's local address, RTSP path, credentials, and supported stream settings. |
 | Pairing reports an existing key | Find the existing camera and use Reconnect Twin; do not copy another instance's configuration. |
+| A camera shows **Waiting for the Twin** or **Pairing window expired** | The one-time token was not entered in time. Open the camera and select **Reconnect Twin** to get a new token, then enter it under **Settings → Lens Connector** in the Twin |
 | Adding a camera is refused | Check camera-management access and available organization device capacity. |
 | Lens cannot reach the service | Check the platform service connection and whether the camera was created before retrying. |
 | Camera is online but video fails | Check the selected video stream, codec settings, and the network path between the browser, cloud, and Twin. |
@@ -42,7 +43,7 @@ Keep the original Twin configuration volume so its identity remains the same. Re
 | Cloud archive says the camera must be updated | Cloud archive needs Twin 1.1.0 or later. Update the Twin container, then check the camera's storage settings. Until then it records locally. |
 | An archived recording plays but will not seek | The storage does not support partial reads. With Walrus, use an aggregator that supports range requests. See [Cloud Archive](cloud-archive.md). |
 | A recording is labeled **Unreadable**, **Archive disconnected — key erased**, or **Storage period ended** | **Unreadable** means the upload was damaged and the file cannot be played; it still uses storage space, so record again. **Archive disconnected — key erased** means storage was disconnected and the platform erased its keys. **Storage period ended** means a Walrus paid period is over. See [Cloud Archive](cloud-archive.md). |
-| A download stops or fails | **Failed to get download link. Please try again.** means the platform could not prepare the file; retry. **Could not save the file. Check the folder permissions and free disk space, then try again.** points to your computer. **This file is larger than 1 GiB. Download it in Chrome or Edge.** needs a different browser. **Click Download again to choose where to save it.** means the save dialog expired; select **Download** again. Select **Cancel download** to stop a running download |
+| A download stops or fails | **Failed to get download link. Please try again.** means the platform could not prepare the file; retry. **Could not save the file. Check the folder permissions and free disk space, then try again.** points to your computer. **This file is larger than 1 GiB. Download it in Chrome or Edge.** needs a different browser. **Click Download again to choose where to save it.** means the save dialog expired; select **Download** again. For a file above 1 GiB the same toast starts with **This file is larger than 1 GiB.** Select **Cancel download** to stop a running download |
 | The player says **Playback unavailable. Storage connector could not provide a stream reference.** or **Storage is not responding. Try again.** | Check the connector with **Verify** on the **Storage connectors** page, confirm its credentials, then reload the recording |
 | **This recording could not be loaded. Reload the page and try again.** | Reload the page. If it persists, contact support |
 | **This browser can't play this recording. Download it instead.** | Use **Download** and open the MP4 file in a local player |
@@ -50,7 +51,7 @@ Keep the original Twin configuration volume so its identity remains the same. Re
 | A camera is **Kept on the camera** instead of uploading | Read the line under the label: update Twin for **Update the camera to enable the cloud archive.**; use **Resend** on the key dialog for key problems; fix credentials for **The storage did not accept the upload.** See [Cloud Archive](cloud-archive.md) |
 | A storage connector shows **Error** or **Disconnected** | Open the **Details** column for the reason, correct the settings with **Edit**, and select **Verify**. For **Disconnected** use **Reconnect**. See [Storage Connectors](storage-connectors.md) |
 | **Disconnect storage** names cameras that still write to it | Open each camera's **Storage** tab and set **Backup to** to another connector or **None (local only)**, then disconnect |
-| **Save test clip** is greyed out | Switch on **Enable recording** and set **When to record** to **Motion** |
+| **Save test clip** is grayed out | Switch on **Enable recording** and set **When to record** to **Motion** |
 
 For **local Twin viewing**, a WebRTC initialization failure causes a switch to SD only if the source exposes an SD stream. Otherwise, Twin reports the stream as unavailable. This recovery behavior belongs to Twin's local dashboard and does not describe the cloud Lens player. Verify camera reachability and source configuration if playback remains unavailable; selecting another viewing mode does not repair a disconnected source.
 

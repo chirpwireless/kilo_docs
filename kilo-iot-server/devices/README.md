@@ -60,7 +60,7 @@ Across multiple refrigerators or sites, consistent metric definitions let the te
 
 ## How long history is retained
 
-History remains subject to the retention period included in your plan or agreed for your organisation. Replacing a probe does not reset that period or extend the lifetime of older readings.
+History remains subject to the retention period included in your plan or agreed for your organization. Replacing a probe does not reset that period or extend the lifetime of older readings.
 
 For longer-term refrigeration records or other compliance and operational needs, contact the team to discuss extended retention. See [Data retention](../settings/subscription.md#data-retention) for plan limits and the request route.
 

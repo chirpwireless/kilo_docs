@@ -2,7 +2,7 @@
 description: "Install a ready-made IoT solution in one click and get devices, rules, alarms, and dashboards already working. Or assemble your own application."
 ---
 
-# Applications and Solutions
+# How do applications and solutions work in Kilo?
 
 Imagine opening Kilo, choosing a solution such as **Building Monitoring**, and pressing **Install solution**. Seconds later you have working virtual devices streaming realistic readings, a rule that reacts to them, an alarm that is ready to notify you, and a live dashboard. Nothing to build first. When your real sensors arrive, you swap the virtual devices for them, and the dashboard, rules, and alarms keep working.
 

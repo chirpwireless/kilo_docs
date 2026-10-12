@@ -4,13 +4,13 @@ description: First steps with KiloCenter MQTT — enable the disabled-by-default
 
 # MQTT First Steps
 
-Kilo Center's **MQTT integration** lets your application react to MIOTY network messages as they arrive and publish requests such as downlinks. It is the message-stream route from the service center into software you operate.
+KiloCenter's **MQTT integration** lets your application react to MIOTY network messages as they arrive and publish requests such as downlinks. It is the message-stream route from the service center into software you operate.
 
 A **broker** forwards published messages to subscribers. **Topics** name those message channels. Subscribe to the service-center events your application needs and publish commands using the documented topic and payload format.
 
-Use this path when your application works with message streams rather than direct [gRPC calls](grpc-first-steps.md). Have Kilo Center and a reachable broker running, then enable MQTT in the configuration used by your installation. The integration is disabled by default; starting a broker alone does not enable it.
+Use this path when your application works with message streams rather than direct [gRPC calls](grpc-first-steps.md). Have KiloCenter and a reachable broker running, then enable MQTT in the configuration used by your installation. The integration is disabled by default; starting a broker alone does not enable it.
 
-### Goal
+### What does this guide achieve?
 
 Enable MQTT integration and validate event consumption and command publishing.
 
@@ -171,6 +171,7 @@ mosquitto_sub -h localhost -p 1883 \
 
 - `epEui` is the endpoint; it is also the device segment of the topic.
 - `bsEui`, `rssi`, `snr`, `eqSnr`, `rxTime`, `rxDuration`, `profile`, `mode` and `subpackets` describe the first reception; `baseStations` lists every base station that received the uplink, each with its own metrics, and a base station that reported downlink reception quality adds `dlRxSnr` and `dlRxRssi`.
+- `cnt` is the end point's uplink packet counter for this message.
 - `data` is base64-encoded payload bytes; `format` is the uplink's payload format number.
 - `rxTime` and `rxDuration` are nanoseconds. `rxTime` is larger than 2^53, so a JavaScript client that needs every nanosecond must read it with a big-integer JSON parser.
 - `subpackets` holds the per-subpacket `snr` (dB), `rssi` (dBm), `frequency` (Hz) and, when the base station reports it, `phase` (degrees).
@@ -365,6 +366,7 @@ Validation rules:
 - the downlink was still in the service center queue when its deadline passed, so no station ever held it;
 - the holding station confirmed that it dropped the downlink, or answered that it does not hold it (`protocol.downlink_expiry.revoke_not_held_codes`);
 - the holding station opened a new session that is not a resumed one, which discards everything the previous session held, a pending result included (BSSCI §1);
+
 Until one of these happens nothing is published, also while the station is offline or keeps refusing the revoke with another code; a connected station is asked again once per `protocol.downlink_expiry.sweep_interval`, and an offline one when it reconnects. Time passing alone never ends a downlink a connected station holds. When the station that held a downlink reports `sent` after it was reported `expired`, it contradicts the report: the result stays `expired`, nothing is published again, and the service center logs a warning and records one `dl_data_sent_after_expiry` event for the endpoint, however often the station repeats it.
 
 **Deleting a base station ends every downlink it held as `expired`**, before or after its deadline: the ones it holds queued, the ones reserved for it and the ones it is asked to drop. Its session is closed first, and a deleted station never connects again, so it can no longer report what became of them, and none is returned to the queue, where the endpoint could receive it a second time from another station. A station that is still powered may nevertheless transmit what it held after it was deleted, so the endpoint may receive a downlink reported `expired`. To avoid that, power the station off, or wait until no downlink is queued at it, before you delete it.

@@ -66,7 +66,8 @@ Unfiltered, the queue lists only the downlinks still in flight. A downlink moves
 | **Queued** | Sent to a base station, which holds it until the end point's downlink window. |
 | **Revoking** | Its lifetime ended while a base station held it; the station was asked to drop it. |
 | **Transmitted** | The base station reported that it transmitted the downlink. |
-| **Delivered** / **Acknowledged** | The end point acknowledged receipt. |
+| **Delivered** | The downlink is recorded as delivered to the end point. |
+| **Acknowledged** | The end point confirmed it: an uplink with the `dlAck` flag acknowledged the downlink sent in its previous window. |
 | **Failed** | The base station reported a transmission failure. |
 | **Expired** | The validity period ended before transmission. |
 | **Revoked** | It was taken back before transmission. |
@@ -93,6 +94,6 @@ Filters: **Time range**, `result` (**Sent**, **Expired**, **Invalid** or **Revok
 2. Open the end point's **Traffic** tab and **Downlink Queue**. The downlink starts as **Pending**, then moves through **Scheduled** and **Reserved** to **Queued** once a base station holds it.
 3. When it is transmitted, it leaves the queue and appears in **Downlink Results** as **Sent** with the transmitting station and time.
 4. The next uplink from the end point carries the acknowledgement. The `dlAck` chip appears on that uplink in **Uplink Events** and the tick appears in **Downlink Results**.
-5. A downlink that never found a window shows **Expired**; the lifetime is `protocol.downlink_expiry.lifetime`, and a command can carry its own deadline. See [Configuration Basics](../getting-started/configuration-basics.md).
+5. A downlink that never found a window shows **Expired**; the lifetime is `protocol.downlink_expiry.lifetime`, and a command can carry its own deadline. See [How do I configure KiloCenter?](../getting-started/configuration-basics.md).
 
 The same states reach your application over MQTT; see [MQTT First Steps](../integrations/mqtt-first-steps.md).

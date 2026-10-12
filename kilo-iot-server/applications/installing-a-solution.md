@@ -21,7 +21,7 @@ The page title becomes **Install** followed by the solution name, with the solut
 * **What will be created.** Four tiles count exactly what you will get. **Virtual devices** (on the Emulator connector), **rules** (processing logic), **alarm rules** (with escalation), and **widgets** (a pre-bound dashboard). Nothing is a surprise.
 * **Devices.** The heading says: to run this application on real data later, you will need these devices. It lists each virtual device by name, so you can see what real hardware the setup stands for.
 * **Data source: Emulator connector.** Explains that the virtual devices stream realistic telemetry through the Emulator connector, so the dashboard goes live instantly with no hardware, and that you can swap any device to a real connector later.
-* **The Backfill toggle.** A switch labelled **Backfill 24h of history, so charts aren't empty on first open**. It is on by default.
+* **The Backfill toggle.** A switch labeled **Backfill 24h of history, so charts aren't empty on first open**. It is on by default.
 * **The footnote.** Under the buttons, a line confirms that installing the solution creates an application based on this solution.
 
 ### Should I leave the Backfill switch on?
@@ -64,9 +64,9 @@ Kilo checks the installation against your plan before it creates anything, and i
 
 * **A plan limit.** A solution counts toward your devices, dashboards, and rules limits, just like things you create by hand. If the solution would exceed one, the install is refused with a message that names the limit, shown as **Installation failed** followed by the reason. Nothing is created. Remove something you no longer need or upgrade your plan, then try again. Emulated devices count as devices, so a solution with many virtual devices needs room for all of them.
 * **Missing permissions.** You need permission to create each kind of resource the solution contains. The message names the missing one.
-* **Another install is already running.** If the same solution is being installed in your organization, or an earlier attempt needs cleanup, you will see: *Another installation of this solution is already running in your organisation, or a failed one needs an operator to clean it up before you can retry.* Use **Go to my applications** to check.
+* **Another install is already running.** If the same solution is being installed in your organization, or an earlier attempt needs cleanup, you will see: *Another installation of this solution is already running in your organization, or a failed one needs an operator to clean it up before you can retry.* Use **Go to my applications** to check.
 * **The catalog is being updated.** *The catalog is being updated — please retry in a minute.*
-* **The install was cancelled.** *Installation cancelled* followed by the reason, with a retry button.
+* **The install was canceled.** *Installation cancelled* followed by the reason, with a retry button.
 
 If something fails halfway, Kilo removes what it had created, so you are not left with half an application. In the rare case that it cannot clean up, you will see *Installation failed and needs manual cleanup — contact support. This solution cannot be reinstalled from here.*
 

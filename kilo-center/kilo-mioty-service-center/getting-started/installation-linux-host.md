@@ -8,9 +8,9 @@ Use the current installation examples only in an isolated evaluation environment
 Published credentials, signing-key defaults and network exposure need correction before customer use.
 Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
 
-Install Kilo Center Community Edition directly on a Linux host when you want to manage its services and dependencies yourself. The result is the same open-source MIOTY networking service, with the processes running on your host rather than inside Docker containers.
+Install KiloCenter Community Edition directly on a Linux host when you want to manage its services and dependencies yourself. The result is the same open-source MIOTY networking service, with the processes running on your host rather than inside Docker containers.
 
-### Goal
+### What does this guide achieve?
 
 Run KiloCenter without Docker by installing all dependencies directly on the host.
 
@@ -39,7 +39,7 @@ This creates four files in `KC-Core/certificates/`:
 - `ca.crt` and `ca.key` -- CA certificate and private key
 - `server.crt` and `server.key` -- server certificate and private key
 
-The server certificate automatically includes `localhost`, `127.0.0.1`, and all local network IPs as SANs.
+The server certificate names the `-server` hostname (`localhost` by default), `kilocenter.local`, `127.0.0.1` and `0.0.0.0` as SANs, plus any names or IP addresses you pass with `-san`. It does not list the host's network interfaces, so pass the name or address your base stations use, for example `-san 192.0.2.10,bssci.example.com`.
 
 KC-Core will fail to start without these files. To renew later without regenerating the CA, use `-server-only`:
 

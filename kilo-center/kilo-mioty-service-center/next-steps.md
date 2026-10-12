@@ -4,7 +4,7 @@ description: KiloCenter next steps — install, onboard a base station, set up i
 
 # Next Steps
 
-### Goal
+### What does this guide achieve?
 
 Move from understanding the product to a running local installation.
 

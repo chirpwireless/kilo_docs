@@ -2,14 +2,14 @@
 description: "Watch several Kilo Lens camera feeds side by side, and use each camera's audio, movement, and saved-position controls."
 ---
 
-# Watching Live Video
+# How do I watch live video in Kilo Lens?
 
 Lens **Live view** lets operators inspect multiple connected cameras in one workspace. It is useful for comparing activity at an entrance, loading area, or remote facility without opening separate manufacturer applications.
 
 
 <figure><img src="../../.gitbook/assets/kilo-lens-live-view.jpg" alt="Kilo Lens Live view showing two connected office cameras"><figcaption><p>Each camera has its own Preview and Live controls.</p></figcaption></figure>
 
-## Open the feeds
+## How do I open live camera feeds?
 
 1. Select **Cameras** in Kilo's main navigation to open Lens.
 2. Open **Live view**.
@@ -21,14 +21,14 @@ A preview image and an active live stream are different viewing states. Start th
 
 Select **Toggle fullscreen** on a tile when you need to examine one camera more closely. Return to the grid to compare views. Larger layouts and more simultaneous live streams require more network and viewing-device capacity.
 
-## Camera controls
+## What controls do the live camera tiles have?
 
 Available controls depend on the connected camera:
 
 - **Audio:** the speaker button (tooltip **Listen**) unmutes or mutes camera sound when an audio stream is available.
 - **Talkback:** the microphone button (tooltip **Hold to talk**) speaks through a compatible camera when two-way audio is available and configured. See below for how to use it.
-- **Pan, tilt, and zoom:** reposition a camera that exposes supported movement controls.
-- **Presets:** use saved positions on supported cameras; authorized operators can manage those positions and return to the home position.
+
+Live tiles carry only the audio and talkback controls. Moving a camera and using presets happens on the camera's own page: open **Cameras**, select the camera, and use **Details → Camera controls** (see [Move a camera and save useful positions](#how-do-i-move-a-camera-and-save-presets)).
 
 A camera without a supported capability will not gain physical movement or audio hardware through Lens. States such as **Needs setup** or **Not supported** help distinguish configuration from device capability.
 
@@ -47,7 +47,7 @@ Hover over the small colored status dot beside the **Preview** and **Live** swit
 
 <figure><img src="../../.gitbook/assets/kilo-lens-night-view.jpg" alt="Kilo Lens showing nighttime previews from the Tapo and HiLook cameras"><figcaption><p>Lens displays the images supplied by each camera, including its nighttime view.</p></figcaption></figure>
 
-## Interpret connection state
+## What do the camera connection states mean?
 
 For a camera reported offline, Lens removes the previous preview snapshot and displays **Camera is offline**. Treat **No preview available** as a missing preview, not as proof of disconnection; inspect the camera's reported state before diagnosing the cause. These messages describe preview availability and do not guarantee immediate detection of every live-stream failure.
 
@@ -55,22 +55,22 @@ An offline camera cannot provide a current live feed. Check power, the local net
 
 For automated attention to a specific area, continue with [Motion Zones](motion-zones.md).
 
-For a saved arrangement of selected feeds, create a [videowall](videowalls.md). Resize its panels to suit the monitoring task, and use [Return All to Home](videowalls.md#restore-normal-coverage-after-following-an-incident) to restore supported cameras after tracking activity.
+For a saved arrangement of selected feeds, create a [videowall](videowalls.md). Resize its panels to suit the monitoring task, and use [Return All to Home](videowalls.md#how-do-i-return-all-cameras-to-home-after-an-incident) to restore supported cameras after tracking activity.
 
-## Listen and speak through a camera
+## How do I listen and speak through a camera?
 
 Start the live stream and use its audio control to unmute or mute supported camera audio. For two-way audio, use the talkback control: allow microphone access when your browser asks, then press and hold the microphone button (**Hold to talk**) while you speak. Release the button, or move the pointer off it, to stop transmitting; the microphone icon is highlighted while you are talking. A microphone permission denial, an unsupported camera, or incomplete camera audio setup prevents talkback. Check the displayed capability state before troubleshooting the microphone.
 
-## Move a camera and save useful positions
+## How do I move a camera and save presets?
 
-**PTZ** means pan, tilt, and zoom. Open a supported camera's controls and use the directional and zoom controls to adjust the view. Save positions you will revisit:
+**PTZ** means pan, tilt, and zoom. Open **Cameras**, select a PTZ-capable camera, and stay on the **Details** tab. A camera that reports pan/tilt or zoom shows an overlay on its picture with **Pan up**, **Pan left**, **Pan right**, **Pan down**, **Zoom in**, and **Zoom out**. Below the picture, the **Camera controls** card lists the camera's presets and the **Return Home** button; it appears only for a camera that supports PTZ. Save positions you will revisit:
 
-1. Move the camera to the required view.
-2. Under **Presets**, enter **Preset name** and select **Create preset**.
+1. Use the overlay to move the camera to the required view.
+2. Under **Presets** (the card says **No presets saved** until you add one), enter **Preset name** and select **Create preset**.
 3. If **Preset update pending - refresh manually** appears, refresh after the camera has applied the update.
 4. Use **Go to** beside a saved preset to recall that position.
 5. Select its star, **Set as default**, to mark the normal monitoring position. The preset receives a **Default** label. **Clear default** removes that designation.
 
-Use **Delete** beside a preset and confirm when a position is no longer needed. If it was the default, choose another default before relying on return-home actions. Recheck motion zones after changing a camera's view.
+Use **Delete** beside a preset and confirm with **Yes, delete** (the dialog asks **Are you sure you want to delete "name" preset?** and adds **Once deleted, this action cannot be undone.**) when a position is no longer needed. **Return Home** moves this one camera to its default preset. It is grayed out with the tooltip **Set a default preset to enable Return Home** until a default exists, so choose another default after deleting the old one before relying on it. Recheck motion zones after changing a camera's view.
 
-The [videowall return-home workflow](videowalls.md#restore-normal-coverage-after-following-an-incident) restores normal coverage after an operator follows activity with one or several cameras.
+The [videowall return-home workflow](videowalls.md#how-do-i-return-all-cameras-to-home-after-an-incident) restores normal coverage after an operator follows activity with one or several cameras.

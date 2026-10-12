@@ -37,6 +37,7 @@ Upgrade KC-Core and KC-Identity together: the internal `GetUserMembership` call 
 | `protocol.delivery.batch_size` | `50` | How many deliveries one poll claims. Helm: `batchSize`. |
 | `protocol.delivery.retry_backoff` | `2s` | The base of the exponential wait between retries of a failed delivery. Helm: `retryBackoff`. |
 | `protocol.delivery.reception_window` | `500ms` | How long a new uplink waits for the receptions of other base stations before it is delivered. Helm: `receptionWindow`. |
+| `grpc.stream_overlap` | `10s` | How far back the live uplink and event streams reach to pick up a row that was stored late (a skewed station clock, a relayed or replayed uplink). |
 | `status.timeout` | `5s` | The time limit of each service-status probe behind the dashboard's **Service Center Status**. |
 | `registry_provider.*` | disabled | Blueprint submission to a GitHub registry; see [How do blueprints and decoders work?](blueprints-and-decoders.md#how-do-i-submit-a-blueprint-to-the-registry). |
 
@@ -98,3 +99,9 @@ The `rekey` block of `values.yaml` controls the pre-upgrade hook. The procedure 
 - BSSCI sessions survive a service center restart or crash, so base stations resume instead of starting over. A base station that starts a new session discards its state, and the downlinks it held are queued again.
 - A base station may complete its own operations out of order. Stations that sent the next uplink before completing the previous one used to be disconnected on every such overlap.
 - Every private key download and every key reveal is written to the [Audit Log](audit-log-and-errors-center.md) before the secret is handed out.
+- The `protocol.roaming.cache_*` and `enable_audit_trail` settings now take effect, and every reception is judged against the tenant of the base station that received it.
+- A downlink result (`dlDataRes`) reaches only the Application Center that queued the downlink, not every Application Center of the tenant. Results of downlinks queued over gRPC or MQTT stay on those channels. A downlink queued before the upgrade whose records name no Application Center, or several, is reported to none; the upgrade preflight lists them (migration 000184).
+- An Application Center's `queId` is unique only among the in-flight downlinks of its own organization, so another organization's use of the same id no longer causes an `EEXIST` refusal (migration 000172).
+- Uplinks are stored over the full 32-bit packet counter range; a counter from 2^31 on used to fail to persist. Migration 000167 widens `packet_cnt` on `messages` and `messages_archive`, which rewrites both tables, so plan time for it on a large installation.
+- One uplink received by several base stations is delivered once, after `protocol.delivery.reception_window` has passed, listing every receiving station. The window must be shorter than `protocol.duplicate_window`. Migration 000186 keeps one record per session and uplink for resumed SCACI sessions.
+- The live uplink and event streams no longer drop late-stored rows. Migration 000185 indexes stored uplinks by storage time and adds `system_events.stored_at`.

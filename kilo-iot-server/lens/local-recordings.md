@@ -2,13 +2,13 @@
 description: "Record video locally for a Kilo Lens camera in Twin, using motion or continuous mode, storage limits, and playback."
 ---
 
-# Local Recordings
+# How do local recordings work in Kilo Lens?
 
 Twin can save video on the Docker host at the camera's site. Local recording is useful when the team needs clips to review after an event or a continuous record for a configured period. Recording is disabled on a new Twin until you enable it.
 
-You can change these settings in the camera's local Twin interface or from the camera's **Recording** and **Storage** tabs in Lens; see [Camera Detail Page: Every Tab Explained](camera-detail-settings.md). Allocate persistent recording storage before enabling them; see [Installing Twin](installing-twin.md).
+You can change these settings in the camera's local Twin interface or from the camera's **Recording** and **Storage** tabs in Lens; see [Camera detail page](camera-detail-settings.md). Allocate persistent recording storage before enabling them; see [Installing Twin](installing-twin.md).
 
-## Choose a recording mode
+## Which recording mode should I choose?
 
 1. Open Twin and go to **Settings → Recording**.
 2. Enable recording.
@@ -35,7 +35,7 @@ In **Recording schedule**, select **Timezone**, enable **Use schedule**, and con
 
 <figure><img src="../../.gitbook/assets/kilo-twin-recording-settings.jpg" alt="Twin recording settings with motion recording enabled and clip timing controls visible"><figcaption><p>Motion recording includes configurable video before and after detected movement.</p></figcaption></figure>
 
-## Control disk use
+## How do I control disk use for recordings?
 
 In **Settings → Storage → Automatic cleanup**, enable one or both limits:
 
@@ -46,7 +46,7 @@ Select **Save**. When both limits are enabled, reaching either limit can remove 
 
 Storage paths are paths inside the container. Keep the recording directory mounted to persistent host storage. A larger disk alone does not change the cleanup limits.
 
-## Review or download a clip
+## How do I review or download a clip?
 
 Open **Recordings** in Twin, select the relevant date range, and open a recording. Use playback to inspect it and the download control to save the clip when needed.
 
@@ -58,7 +58,7 @@ Check the recorded time, picture, and expected pre/post-event context during com
 
 Yes. A local disk is one failure away from losing a clip. With Twin 1.1.0 or later, you can also upload an encrypted copy of each recording to your own Amazon S3, Google Cloud Storage, or Walrus storage and play it back from **Recordings** in Lens. See [Cloud Archive](cloud-archive.md).
 
-## Use an external recording condition
+## How do I record on an external condition?
 
 **External recording check** lets an existing system permit or prevent processing—for example, an occupancy system can enable monitoring while a site is unattended. Enter its endpoint in **External check URL** and save. This is an advanced integration; test ordinary recording before enabling it.
 

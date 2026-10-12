@@ -2,13 +2,13 @@
 description: Import an architectural DXF drawing into a Digital Building Twin — pick each floor plan, review walls, doors and windows, and add all levels at once.
 ---
 
-# Importing a DXF Plan
+# How to Import a DXF Floor Plan into a Digital Building Twin
 
 Most commercial facilities already have an architectural drawing. Rather than redraw a warehouse or office floor wall by wall, you can import that drawing directly. The editor reads **DXF** files — the interchange format every major CAD application can export — recognizes walls, doors and windows, and creates them on the levels you choose. A drawing with several floor plans on one sheet becomes several levels in a single import.
 
 The import is a **beta**. A **Beta** badge sits next to the dialog title, and hovering it shows *DXF import is in beta and may not work perfectly. Check the result after import.* Treat the preview as the proof, and expect that a clean architectural export reads better than a scanned or heavily converted drawing.
 
-## What you need
+## What do I need to import a DXF file?
 
 * A `.dxf` file of the building you want to model. Any CAD package — AutoCAD, BricsCAD, LibreCAD, and others — can export DXF.
 * A **text (ASCII) DXF** file. Binary DXF and DWG files are not supported; if the drawing is a DWG, save it as DXF from your CAD tool first.
@@ -61,7 +61,7 @@ This section lists every floor plan you added. Each row has:
 
 * A **Level** selector. Options read **{name} (new)** for a level that does not exist yet, **{name} (empty)** for an existing level with nothing on it, and **{name} (replace)** for a level that already has content and will be overwritten. Levels already used by another row are disabled.
 * A trash button (**Remove level**) that drops the floor plan from the import.
-* A summary line, for example **12 walls · 3 doors · 4 windows**, or **Recognising walls…** while it works, or **Walls could not be recognised in this area**.
+* A summary line, for example **12 walls · 3 doors · 4 windows**, or **Recognizing walls…** while it works, or **Walls could not be recognized in this area**.
 
 With no selection yet, the section reads *Nothing selected yet. Without a selection the whole drawing is imported as one level.* and shows one **Level** selector for the whole drawing.
 
@@ -70,7 +70,7 @@ When a rectangle is drawn but not yet added, a card appears with its **Level** s
 * **Another floor already goes to this level.** — pick a different level.
 * **Too many walls to import ({count}). Select one floor plan or fewer layers.** — draw a smaller rectangle or switch layers off.
 
-If stairs were found, the card adds **Stairs were recognised and left out**; stairs are not imported.
+If stairs were found, the card adds **Stairs were recognized and left out**; stairs are not imported.
 
 ### Drawing
 
@@ -98,13 +98,13 @@ A checkbox per CAD layer. Clear a layer — dimensions, furniture, hatches — t
 
 If any selected level already has content, clicking **Import levels** first asks **Replace {names}?** and explains *{walls} walls, {openings} doors and windows and {other} other objects on {names} will be deleted. Devices bound to them will be unbound.* Click **Replace** to continue or **Cancel** to go back and choose a different level.
 
-## After importing
+## What can I do after importing a DXF plan?
 
 The imported walls behave exactly like walls you draw by hand. Select any of them to set height, thickness, and material, add doors and windows, and continue building. If the import isn't quite right, **Undo** (Ctrl+Z) reverses it, and you can adjust the drawing units or layers and try again.
 
 A typical workflow: import the shell from DXF, switch to the **2D view** to confirm the layout, then draw any interior partitions the CAD file didn't include and move on to furnishing.
 
-## Tips
+## What are the best tips for importing a DXF plan?
 
 * If the building imports at the wrong size, the **Drawing units** setting is wrong — change it and import again.
 * One drawing with several floor plans on it needs one rectangle per floor; give each a different **Level**.

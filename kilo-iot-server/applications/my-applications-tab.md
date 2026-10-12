@@ -74,7 +74,7 @@ It shows the application's dashboards in one place. A chip row names each dashbo
 * **Dashboards**, with a count.
 * **Rules**, with a count and a short explanation: rules are where the conditions live, and a rule can send a command back to a device and raise one or more alarms.
 * **Alarms**, with a count and their severity label (for example **Low**). An alarm here is a notification recipe, not a trigger; a rule raises it when its condition is met.
-* **Emulator.** Explains how virtual devices run on the Emulator connector, with a **Go to connectors** button for when you are ready to use real hardware. See [How do I swap the Emulator for real devices?](swapping-the-emulator-for-real-devices.md)
+* **Emulator.** Shown only while the application holds at least one emulated device. Explains how virtual devices run on the Emulator connector, with a **Go to connectors** button for when you are ready to use real hardware. See [How do I swap the Emulator for real devices?](swapping-the-emulator-for-real-devices.md)
 
 <figure><img src="../../.gitbook/assets/kilo-solutions-installed-content.jpg" alt="The Content tab of an installed Building Monitoring application with cards for Devices, Dashboards, Emulator, Rules, and Alarms"><figcaption><p>The Content tab of an installed application in a demo organization.</p></figcaption></figure>
 
@@ -88,7 +88,7 @@ Select the **pencil** icon. The **Edit application** dialog shows the **Applicat
 
 ## How do I delete an application?
 
-Select the **trash** icon. Kilo asks **Are you sure you want to delete the application?** and warns that the devices, rules, alarms, and the dashboard linked to the application will be permanently removed from the platform. Select **Yes, delete** to confirm, or **Cancel**.
+Select the **trash** icon. Kilo asks **Are you sure you want to delete the application?** and warns that the devices, rules, alarms, and the dashboard linked to the application will be permanently removed from the platform. In practice rules are stopped and moved to Trash, where you can restore them; devices, dashboards, and alarm definitions are removed for good. Select **Yes, delete** to confirm, or **Cancel**.
 
 <figure><img src="../../.gitbook/assets/kilo-solutions-delete-application.jpg" alt="A confirmation dialog asking whether to delete the application, warning that its devices, rules, alarms, and dashboard are permanently removed, with Cancel and Yes, delete buttons"><figcaption><p>The delete confirmation. Deleting an application removes the resources inside it.</p></figcaption></figure>
 

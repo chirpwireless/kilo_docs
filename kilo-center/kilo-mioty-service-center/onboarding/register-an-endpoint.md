@@ -4,11 +4,11 @@ description: Register a MIOTY endpoint in KiloCenter — required fields (EUI, n
 
 # Register an Endpoint
 
-Registering an **endpoint** gives a physical MIOTY sensor or meter its identity in Kilo Center's network. The service center can then associate arriving messages with that device and send downlinks when its radio class supports them. With communication established, your application can use the messages through the [integration interfaces](../integrations/README.md).
+Registering an **endpoint** gives a physical MIOTY sensor or meter its identity in KiloCenter's network. The service center can then associate arriving messages with that device and send downlinks when its radio class supports them. With communication established, your application can use the messages through the [integration interfaces](../integrations/README.md).
 
 Have the identifiers, network key, and device profile information that match the physical endpoint ready. Complete [Connect a Base Station](connect-a-base-station.md) before testing traffic. Registration creates the record; [receiving an uplink](verify-the-first-uplink.md) verifies that the device can actually communicate through the installation.
 
-### Goal
+### What does this guide achieve?
 
 Create an endpoint in KiloCenter so it can be attached by a base station and exchange traffic.
 
@@ -109,6 +109,6 @@ The carrier offset range a base station tolerates is set by the `wideCarrOff` pr
 | "EUI must be 16 hexadecimal characters" | The EUI is not exactly 16 hex characters |
 | "Short address must be 4 hex characters (0001-FFFF)" or "Short address cannot be zero" | The short address is not four hex characters, or it is `0000` |
 | "Last packet counter is required" or "Attach counter is required" | One of the counters is empty. Enter `0` for a new device |
-| "Duplicate endpoint" error | An endpoint with this EUI already exists |
+| "endpoint already exists" | An endpoint with this EUI is already registered. Open it from the endpoint list instead of creating it again |
 | Endpoint stays detached | It was created without Pre-Attachment and has not been attached or attached over the air |
 | Uplinks not appearing | Network session key mismatch between endpoint hardware and KiloCenter |

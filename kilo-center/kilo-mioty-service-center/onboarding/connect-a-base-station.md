@@ -1,12 +1,12 @@
 ---
-description: Connect a MIOTY base station to KiloCenter — BSSCI on port 5000, server CA certificate, and KC-Web creation steps.
+description: Connect a MIOTY base station to KiloCenter — BSSCI host port, server CA certificate and KC-Web creation steps.
 ---
 
 # Connect a Base Station
 
-A MIOTY base station is the radio gateway between endpoints and Kilo Center. Connecting it to your open-source service-center installation establishes the path that brings radio messages into the network; you can then register endpoints and verify their traffic.
+A MIOTY base station is the radio gateway between endpoints and KiloCenter. Connecting it to your open-source service-center installation establishes the path that brings radio messages into the network; you can then register endpoints and verify their traffic.
 
-### Goal
+### What does this guide achieve?
 
 Connect a MIOTY base station to your local KiloCenter instance and confirm it is online.
 
@@ -14,8 +14,8 @@ Connect a MIOTY base station to your local KiloCenter instance and confirm it is
 
 * KC-Core, KC-Gateway, and KC-Web running (see Installation)
 * TLS certificates generated (see the certificate bootstrap step in your installation guide)
-* BSSCI reachable on port `5000`
-* `protocol.bsci_external_url` (environment variable `KILOCENTER_PROTOCOL_BSCI_EXTERNAL_URL`) set to the address base stations should connect to, for example `tls://bssci.example.com:5000`. If it names `localhost` or a wildcard address, the service center cannot hand out a URL and the **Add Base Station** result shows a warning.
+* BSSCI reachable from the base station. The container always listens on `5000`, but the host port depends on how you installed it: the default `docker-compose.yml` publishes it as host port `5050` (`5050:5000`, because macOS uses 5000 for AirPlay), `docker-compose.prod.yml` publishes `5000:5000`, and a Linux-host run uses `5005` from `KC-Core/config.yaml`. Use the host port in everything you give to base stations.
+* `protocol.bsci_external_url` (environment variable `KILOCENTER_PROTOCOL_BSCI_EXTERNAL_URL`) set to the address base stations should connect to, including the host port, for example `tls://bssci.example.com:5000`. If it names `localhost` or a wildcard address, the service center cannot hand out a URL and the **Add Base Station** result shows a warning.
 * A user with the **Base Station Manager** role or **Admin** (see [User Roles and Permissions](../security/users-and-roles.md))
 
 ### Step 1: How do I add a base station in KiloCenter?
@@ -47,7 +47,7 @@ If certificate generation fails, the dialog shows **Certificate Generation Faile
 Point the base station firmware to your KiloCenter host:
 
 * **Service Center address**: the Service Center URL from the wizard (your KC-Core host name or IP)
-* **Service Center port**: `5000` (BSSCI)
+* **Service Center port**: the host port that publishes BSSCI: `5050` with the default `docker-compose.yml`, `5000` with `docker-compose.prod.yml`, `5005` on a Linux host (BSSCI)
 * **Protocol**: TLS (required)
 
 For AVA base stations, the factory login is `ubuntu` / `123456`. Change these credentials after initial access.

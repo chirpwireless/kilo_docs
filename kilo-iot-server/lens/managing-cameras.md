@@ -2,26 +2,26 @@
 description: "Find, rename, reconnect, and remove cameras on the Kilo Lens Cameras page, and check each camera's connection status."
 ---
 
-# Managing Cameras
+# How do I manage cameras in Kilo Lens?
 
 The **Cameras** page is your inventory of cameras connected through Lens. Use it to find the camera for a named entrance, depot, or floor, check its connection, and maintain its identity without searching through separate manufacturer applications.
 
-## Find and inspect a camera
+## How do I find and inspect a camera?
 
 1. Choose **Cameras** in the main navigation, then **Cameras** inside Lens.
 2. Enter a name in **Search cameras...**. Switch between **List view** and **Grid view** to suit the number of cameras you manage.
-3. Check **Status**, pairing information (**Paired**, **Waiting for the Twin**, **Pairing window expired**, or **Unknown**), and **Last Twin activity**. The page title is **Cameras** with the subtitle **Setup and manage your cameras.** When no camera matches your search, it says **No cameras found.** A registered camera can still be waiting for its Twin to connect.
-4. Open a camera to see **Camera detail**. **Lens connection** shows its device identity, name, Twin key, and pairing state. [Camera Detail Page: Every Tab Explained](camera-detail-settings.md) covers every tab, and [Lens Workspace Tour](lens-workspace-tour.md) shows each screen of the Lens menu.
+3. Check **Status** (**Online**, **Offline**, **Waiting for the Twin**, or **Pairing window expired**) and **Last Twin activity**. The page title is **Cameras** with the subtitle **Setup and manage your cameras.** When no camera matches your search, it says **No cameras found.** A registered camera can still be waiting for its Twin to connect.
+4. Open a camera to see **Camera detail**. **Lens connection** (under **Details**) shows its device identity, name, Twin key, and **Pairing** state, including **Paired**. [Camera detail page](camera-detail-settings.md) covers every tab, and [Lens Workspace Tour](lens-workspace-tour.md) shows each screen of the Lens menu.
 
 An online connection and successful video playback are separate checks. If a feed will not play, confirm local Twin video first, then use [Access and Troubleshooting](access-and-troubleshooting.md). A last-activity time describes the Twin's contact with the platform; it is not evidence that nobody has moved in the scene.
 
 <figure><img src="../../.gitbook/assets/kilo-lens-camera-management.jpg" alt="Kilo camera inventory with status, last activity, and management actions"><figcaption><p>The inventory shows connection state and camera management actions.</p></figcaption></figure>
 
-## Rename a camera
+## How do I rename a camera?
 
 Select **Edit** on the camera's row (or the pencil beside **Camera detail** on its page), enter **Camera name**, and select **Save**. If the platform refuses the change you see **Failed to update camera**. Choose a name that identifies the view, such as an entrance or loading area, rather than only the camera model. Renaming updates the platform device name; it does not require a new Twin or pairing.
 
-## Recover a lost pairing
+## How do I recover a lost pairing?
 
 Use **Reconnect Twin** when this Twin has lost its Lens pairing:
 
@@ -33,7 +33,7 @@ Use **Reconnect Twin** when this Twin has lost its Lens pairing:
 
 Keep the same Twin configuration volume when recovering or upgrading. A new empty volume creates a different Twin identity. Pairing tokens grant connection access: keep them private and do not include them in support screenshots.
 
-## Remove a camera
+## How do I remove a camera?
 
 Choose **Delete** for the camera and review the **Delete camera** confirmation (**Delete** *camera name*?). Select **Delete** to confirm or **Cancel** to keep it. Removing it withdraws its platform connection; check dashboards, rules, and viewing arrangements that use it before confirming. This is different from removing a panel from a videowall, which leaves the camera available for other views.
 

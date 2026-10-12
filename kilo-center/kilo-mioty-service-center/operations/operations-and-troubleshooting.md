@@ -4,9 +4,9 @@ description: KiloCenter operations — health endpoints for KC-Core, KC-Gateway,
 
 # Operations and Troubleshooting
 
-Use these checks to find where a Kilo Center network connection has stopped working: the services, the base-station connection, or the flow of endpoint messages. Checking the path in order helps you restore the communication your downstream application depends on.
+Use these checks to find where a KiloCenter network connection has stopped working: the services, the base-station connection, or the flow of endpoint messages. Checking the path in order helps you restore the communication your downstream application depends on.
 
-### Goal
+### What does this guide achieve?
 
 Run repeatable checks for startup issues, connectivity problems, and message-flow failures.
 
@@ -37,7 +37,7 @@ lsof -i :80     # KC-Web (container mode)
 lsof -i :9090   # KC-Gateway (gRPC-web)
 lsof -i :8086   # KC-Core health
 lsof -i :8087   # KC-Gateway health
-lsof -i :5000   # BSSCI
+lsof -i :5050   # BSSCI (host port of the default docker-compose.yml; 5000 with docker-compose.prod.yml, 5005 on a Linux host)
 lsof -i :5001   # SCACI
 lsof -i :50051  # KC-Core internal gRPC
 lsof -i :5433   # PostgreSQL (Docker)
@@ -120,7 +120,7 @@ stopping the next, so KC-Gateway is gone before KC-Identity and KC-Core shut dow
 | KC-Web shows gRPC errors                 | KC-Gateway not running or wrong port              | Verify KC-Gateway on port 9090; check nginx config in container mode       |
 | `permission denied /var/run/docker.sock` | Docker group membership                           | Run `sudo usermod -aG docker $USER` and re-login                           |
 | `failed to load TLS certificate`         | Missing or invalid certificate files              | Run `certgen` -- see Installation                                          |
-| Base station not connecting              | BSSCI port 5000 not listening                     | Check KC-Core started and TLS certs are configured                         |
+| Base station not connecting              | BSSCI host port not listening (5050 default compose, 5000 prod compose, 5005 Linux host) | Check KC-Core started and TLS certs are configured                         |
 | SCACI not accepting connections          | Missing `scaci_tls` config block                  | Check `config/config.docker.yaml` has `scaci_host` and `scaci_tls` section |
 | KC-Web returns 502 for gRPC calls        | nginx cannot reach `kc-gateway:9090`              | Verify `kc-gateway` is healthy: `docker compose ps`                        |
 | `start-dev.sh` fails                     | Dependencies not running                          | Start `docker compose up -d postgres redis mosquitto` first                |

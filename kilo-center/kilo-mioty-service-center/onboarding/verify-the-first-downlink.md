@@ -4,11 +4,11 @@ description: Send a first MIOTY downlink from KiloCenter to a bidirectional endp
 
 # Verify the First Downlink
 
-A **downlink** lets your application send a message back through Kilo Center to a bidirectional MIOTY endpoint. Use this guide to queue the device-compatible payload and inspect the reported delivery result, completing the return path of the network connection.
+A **downlink** lets your application send a message back through KiloCenter to a bidirectional MIOTY endpoint. Use this guide to queue the device-compatible payload and inspect the reported delivery result, completing the return path of the network connection.
 
 First [verify an uplink](verify-the-first-uplink.md) from the registered endpoint. Both the endpoint and base station must support bidirectional communication. Acceptance into the downlink queue is not delivery confirmation, and delivery confirmation alone does not prove that a physical action occurred. Check device feedback when the payload requests a state change.
 
-### Goal
+### What does this guide achieve?
 
 Queue a downlink command to an endpoint and verify the result.
 
@@ -71,7 +71,7 @@ Look for `dlDataQue`, `dlDataQueRsp`, and `dlDataQueCmp` entries -- these repres
 |---------|-------------|
 | Downlink stays queued | The base station that last heard the endpoint is offline or not bidirectional; the downlink goes out in the endpoint's next downlink window |
 | Downlink refused as not bidirectional | The endpoint is registered without the `bidi` flag |
-| Downlink reported `expired` | No downlink window opened within `protocol.downlink_expiry.lifetime` (see [Configuration Basics](../getting-started/configuration-basics.md)) |
-| Downlink stays **Revoking** in the queue | A base station held it when its deadline passed; it ends when the station answers the revoke or reconnects. If the station refuses revokes with a code other than `protocol.downlink_expiry.revoke_not_held_codes`, see [Configuration Basics](../getting-started/configuration-basics.md) |
+| Downlink reported `expired` | No downlink window opened within `protocol.downlink_expiry.lifetime` (see [How do I configure KiloCenter?](../getting-started/configuration-basics.md)) |
+| Downlink stays **Revoking** in the queue | A base station held it when its deadline passed; it ends when the station answers the revoke or reconnects. If the station refuses revokes with a code other than `protocol.downlink_expiry.revoke_not_held_codes`, see [How do I configure KiloCenter?](../getting-started/configuration-basics.md) |
 | No result returned | Base station did not complete the downlink handshake |
 | Payload rejected | Data not valid base64 or exceeds maximum payload size |

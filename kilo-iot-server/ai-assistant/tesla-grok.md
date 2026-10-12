@@ -38,18 +38,18 @@ For connectors in the car, Tesla requires an **AMD processor**, software **2026.
 
 ## Connect once, then use your voice
 
-1. On your phone or computer, follow [Connect Grok](../api/mcp-server.md#connect-grok) and confirm that Grok can list devices in the intended Kilo organization.
+1. On your phone or computer, follow [Connect Grok](../api/mcp-server.md#how-do-i-connect-grok-to-kilo) and confirm that Grok can list devices in the intended Kilo organization.
 2. In the car, open **App Launcher → Grok**, select **Sign In**, and finish on your phone using that same Grok account. Its connectors become available in the vehicle.
 3. Start a conversation by holding the steering-wheel microphone button. To use **“Hey Grok,”** enable voice activation under **Controls → Audio → Grok Settings**. [Tesla documents these controls](https://www.tesla.com/support/grok).
 4. Ask Grok to use Kilo, naming the site or device: *“Using Kilo, what is the latest temperature in the Berlin office?”*
 
-If you work across several organizations, consider [pinning the MCP connection](../api/mcp-server.md#choosing-the-organization) to the organization you operate from the car. The default connection uses the organization selected in Kilo.
+If you work across several organizations, consider [pinning the MCP connection](../api/mcp-server.md#how-do-i-choose-which-organization-the-mcp-server-uses) to the organization you operate from the car. The default connection uses the organization selected in Kilo.
 
 ## Ask, act, and check the result
 
 You might ask: *“Are the office lights still on?”* After Grok reports the controller's state, continue with *“Run the Office Lights turn-off command, then check the result.”* Grok sends the saved command through Kilo and can retrieve its execution status.
 
-Configure Grok to request approval for consequential actions where its controls support that option. Confirmation wording is managed by Grok; Kilo continues to enforce your device and organization permissions. See [MCP security and permissions](../api/mcp-server.md#security-and-permissions).
+Configure Grok to request approval for consequential actions where its controls support that option. Confirmation wording is managed by Grok; Kilo continues to enforce your device and organization permissions. See [MCP security and permissions](../api/mcp-server.md#is-the-kilo-mcp-server-secure).
 
 Commands run asynchronously. If a request is accepted or queued, ask for its status and the latest device feedback. [Command Verification](../devices/commands/verification.md) explains how delivery and reported equipment state are checked.
 

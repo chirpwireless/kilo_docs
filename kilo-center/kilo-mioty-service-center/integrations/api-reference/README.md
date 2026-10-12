@@ -112,7 +112,7 @@ With `status` in `update_mask`, `UpdateEndPoint` attaches (`attached`) or detach
 - Any other value, `attaching` included, returns `INVALID_ARGUMENT`.
 - On a server without the attachment service, a status change returns `UNIMPLEMENTED` (`KC-GRPC-ERR-906`) and nothing is saved.
 
-#### Base Stations (12)
+#### Base Stations (9)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
@@ -233,16 +233,12 @@ The `BaseStation` message includes geolocation fields:
 | `GetActivityAnalytics` | GetActivityAnalyticsRequest | GetActivityAnalyticsResponse | Activity metrics |
 | `GetSignalQualityAnalytics` | GetSignalQualityAnalyticsRequest | GetSignalQualityAnalyticsResponse | Signal quality metrics |
 
-#### Events & Alerts (9)
+#### Events & Alerts (5)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
 | `ListEvents` | ListEventsRequest | ListEventsResponse | List system events |
-| `ListBaseStationEvents` | ListBaseStationEventsRequest | ListBaseStationEventsResponse | Base station events |
-| `ListEndPointEvents` | ListEndPointEventsRequest | ListEndPointEventsResponse | Endpoint events |
 | `StreamEvents` | StreamEventsRequest | stream Event | Real-time system event stream |
-| `StreamBaseStationEvents` | StreamBaseStationEventsRequest | stream Event | Real-time base station event stream |
-| `StreamEndPointEvents` | StreamEndPointEventsRequest | stream Event | Real-time endpoint event stream |
 | `ListAlerts` | ListAlertsRequest | ListAlertsResponse | List alerts |
 | `GetAlertSummary` | GetAlertSummaryRequest | GetAlertSummaryResponse | Alert summary |
 | `ListErrorGroups` | ListErrorGroupsRequest | ListErrorGroupsResponse | Failures grouped by event type, code and source; `bucket` is `control_plane`, `base_station`, `endpoint` or `downlink`. Each group carries `count`, `first_seen`, `last_seen` and the latest `message` and `last_op_id`. This is the data behind the **Errors Center** |
@@ -324,7 +320,7 @@ Cross-tenant RPCs for server administrators. These require authentication but ar
 |-----|---------|----------|-------------|
 | `ListAllBaseStationLocations` | ListAllBaseStationLocationsRequest | ListAllBaseStationLocationsResponse | Returns all base station locations across all tenants |
 
-#### Auth & Session (7)
+#### Auth & Session (8)
 
 | RPC | Request | Response | Description |
 |-----|---------|----------|-------------|
@@ -392,15 +388,13 @@ A registered account starts without roles; an administrator grants them in Users
 
 ### Streaming RPCs
 
-Five RPCs use server-side streaming to deliver real-time data:
+Three RPCs use server-side streaming to deliver real-time data:
 
 | RPC | Use Case |
 |-----|----------|
 | `StreamMessages` | Real-time uplink messages |
 | `StreamBaseStationMessages` | Base station message feed |
 | `StreamEvents` | System event notifications |
-| `StreamBaseStationEvents` | Base station event feed |
-| `StreamEndPointEvents` | Endpoint event feed |
 
 ```typescript
 const stream = client.streamMessages(request, metadata);

@@ -2,7 +2,7 @@
 description: Connect an AI agent to your Kilo IoT deployment through the MCP server, authorized by your own Kilo sign-in.
 ---
 
-# Kilo IoT MCP Server for AI Agents
+# How to Connect an AI Agent to Kilo With the MCP Server
 
 Connect your preferred AI client to Kilo and use it to work on the deployment: onboard devices, create dashboards, configure alarms, and build and deploy automation rules. You can keep the project conversation in the tool you already use while Kilo supplies the device connections and execution workflows.
 
@@ -20,7 +20,7 @@ https://mcp-auth.kiloiot.io/mcp
 
 You authorize the connection in your browser with your usual Kilo account. There is no API key to mint, no token to paste, and nothing to store on the machine running the client.
 
-## Why it matters
+## Why Use the Kilo MCP Server With an AI Client?
 
 Without MCP, putting an assistant to work against a live deployment means writing an integration first: a key, a client library, a script per question. That is fine for a scheduled job and heavy for an incident at 2 a.m.
 
@@ -28,9 +28,9 @@ With the MCP server connected, the client you already use becomes an operator's 
 
 Because the connection carries your own account, the assistant is not an extra identity to govern. It can do what you can do, in the organization you are working in, and nothing else.
 
-## Add Kilo from the Claude connectors directory
+## How Do I Add Kilo From the Claude Connectors Directory?
 
-Kilo is listed in Claude's connectors directory as **Kilo IoT Platform**, so you can add it without typing a URL. Anthropic marks it as a community connector, which means it passed automated review but is not verified by Anthropic.
+Kilo is listed in Claude's connectors directory as **Kilo IoT Platform**, so you can add it without typing a URL.
 
 1. Open the [Kilo IoT Platform listing](https://claude.ai/directory/kilo-iot-platform), or open **Customize → Connectors** in Claude and search the directory for **Kilo**.
 2. Click **Connect to Claude**.
@@ -41,7 +41,7 @@ The connector works in Claude on the web, Claude Desktop, and mobile, and in Cla
 
 **Claude Team and Enterprise.** An organization Owner adds the connector under **Organization settings → Connectors**. Members then connect from Customize → Connectors and authorize with their own Kilo account, so each person gets only the access their Kilo role allows. On Team, a member without permission sees a **Request** button that asks the Owners.
 
-## Connect Claude Code
+## How Do I Connect Claude Code to Kilo?
 
 **Use the directory connector.** A connector you added in Claude appears in Claude Code automatically when you are signed in with a Claude subscription. Run:
 
@@ -66,7 +66,7 @@ Select **Kilo IoT Platform**, authorize in the browser if asked, and wait until 
 
 If you add Kilo both ways, the server you added directly takes precedence and the directory connector is hidden in `/mcp`.
 
-## Connect Claude Desktop without the directory
+## How Do I Connect Claude Desktop to Kilo Without the Directory?
 
 If you cannot see the directory listing, add Kilo as a custom connector:
 
@@ -77,7 +77,7 @@ If you cannot see the directory listing, add Kilo as a custom connector:
 5. Sign in with your usual Kilo account and approve the request.
 6. Back in Claude, confirm the connector shows as active. Its tools are now available in any conversation.
 
-## Connect Grok
+## How Do I Connect Grok to Kilo?
 
 Connect Grok to Kilo through MCP to check device readings, review alarms, and run commands already configured on your devices. Set up the connection on your phone or computer.
 
@@ -88,23 +88,23 @@ Connect Grok to Kilo through MCP to check device readings, review alarms, and ru
 5. Return to Grok and ask: *“Using Kilo, which organization am I working in? List its devices.”* Check that it identifies the expected organization before continuing.
 6. Try a data request: *“What is the latest office temperature, and when was it reported?”* For control, ask *“List the commands available for Office Lights”*, then request the saved **Turn off** command.
 
-These steps follow [Grok's custom MCP connector instructions](https://docs.x.ai/grok/connectors). In Grok Business or Enterprise, a team administrator must first make the connector available through [Connector Management](https://docs.x.ai/grok/connector-management); each user then authorizes their own Kilo access.
+Grok's own connector settings are the authority for these steps and can change. If your Grok plan is managed by a team administrator, the administrator may need to allow custom connectors first; each user then authorizes their own Kilo access.
 
 For voice access on the road, continue with [Use Kilo in Your Tesla](../ai-assistant/tesla-grok.md).
 
-## Connect another MCP client
+## How Do I Connect ChatGPT, Codex or Cursor to Kilo?
 
 ChatGPT, Codex, Cursor, and other MCP-capable clients follow one of the same two shapes. Where the client has a connector or integrations dialog, add a custom MCP server and paste the endpoint URL, as in the custom connector steps above. Where it is configured from a command line or a config file, register the endpoint as a **Streamable HTTP** server — the transport this endpoint serves — as in the Claude Code steps.
 
 Either way the authorization is the same: the client opens your browser, you sign in with your usual Kilo account, and the connection carries your permissions. Consult your client's own documentation for where it keeps MCP servers; nothing about this endpoint is client-specific.
 
-## What a connected session looks like
+## What Does a Connected MCP Session Look Like?
 
 <figure><img src="../../.gitbook/assets/mcp-claude-session.jpg" alt="A Claude Code session connected to Kilo over MCP, calling the connection_list tool and asking permission before continuing"><figcaption>An authenticated Claude Code session working a live deployment: asked to configure a LoRaWAN sensor, it recommends provisioning through the platform, calls a Kilo tool, and stops for permission before continuing</figcaption></figure>
 
-The client can answer from your actual deployment because it can read the connections and devices available to your account. The approval prompt belongs to the client: Kilo publishes safety information with each tool, and compatible clients can use it to request confirmation. Kilo enforces your account permissions regardless of how the client handles that information. See [Security and permissions](#security-and-permissions).
+The client can answer from your actual deployment because it can read the connections and devices available to your account. The approval prompt belongs to the client: Kilo publishes safety information with each tool, and compatible clients can use it to request confirmation. Kilo enforces your account permissions regardless of how the client handles that information. See [Security and permissions](#is-the-kilo-mcp-server-secure).
 
-## Choosing the organization
+## How Do I Choose Which Organization the MCP Server Uses?
 
 `https://mcp-auth.kiloiot.io/mcp` works against the organization **currently selected in the Kilo web app**. This is the right default for most people: whatever you are working on in the platform is what your client sees.
 
@@ -120,38 +120,38 @@ Replace `{organizationId}` with the organization's ID from the web app. Pinning 
 
 If you are not a member of the organization you pin to, the request is refused.
 
-## What the assistant can do
+## What Can an AI Agent Do Through the Kilo MCP Server?
 
-Once connected, the client sees a set of tools it calls on your behalf. You do not call them yourself — you describe the task, and the client picks the tools it needs.
+Once connected, the client sees a set of tools it calls on your behalf. You do not call them yourself — you describe the task, and the client picks the tools it needs. The table is a summary of the tools the server registers, grouped by area; it includes tools that change or delete things, marked in bold. Which tools your client can actually use depends on your Kilo permissions, and the exact set can grow between releases.
 
 | Area | What the connected client can do |
 |---|---|
-| **Devices** | List devices in the organization, provision LoRaWAN, MQTT and tracker devices, read device profiles, and inspect sensor mappings. `device_list`, `device_provision_lorawan`, `device_provision_mqtt`, `device_provision_tracker`, `device_profile_list`, `sensor_map` |
+| **Devices** | List and inspect devices, read their telemetry and diagnostics, provision LoRaWAN, MQTT and tracker devices, read device profiles, and inspect or add sensor mappings and sensor templates. **Update and delete devices.** `device_list`, `device_get`, `device_telemetry`, `device_diagnostics`, `device_provision_lorawan`, `device_provision_mqtt`, `device_provision_tracker`, `device_profile_list`, `sensor_map`, `sensor_add`, `sensor_template_list`, `sensor_template_create`, **`device_update`**, **`device_delete`** |
 | **MIOTY** | Browse a MIOTY connection's device catalog — manufacturers, device models and their blueprints, across both the System and Custom scopes — and commission an endpoint from it. `mioty_catalog_list`, `device_provision_mioty` |
 | **Hardware** | Search the partner catalog and the open web for equipment that fits a described need, then present a shortlist of those products. These are the two tools that reach outside your organization. `hardware_search`, `recommend_products` |
 | **Commands** | List the commands configured on a device, request execution under the client's approval policy, and inspect the recorded lifecycle state. `device_command_list`, `device_command_execute`, `device_command_status` |
 | **Emulator** | Browse device presets, provision an [emulated device](../devices/emulated-devices.md), read and update its configuration and interval, send a one-off reading, and move a device between the emulator and real hardware — any real device onto the Emulator, and an emulated device onto a real LoRaWAN connection. `emulator_preset_list`, `emulator_preset_get`, `device_provision_emulator`, `emulator_config_get`, `emulator_config_update`, `emulator_send_once`, `device_connection_swap` |
-| **Connectors** | Review the connectors defined in the organization and create a connection for a device to report through. `connector_list`, `connection_create` |
-| **Rules** | Review rules, prepare and deploy automation under the client's approval policy, simulate logic before deployment, and inspect execution history. `rule_list`, `rule_provision`, `rule_simulate`, `rule_execution_history` |
-| **Alarms** | List alarms and summarize alarm activity for a shift or a site. `alarm_list`, `alarm_stats` |
-| **Dashboards** | List dashboards and query the data behind a widget, so the client can reason about the same numbers your operators watch. `dashboard_list`, `widget_data_query` |
-| **Organization** | Read organization details, list teams, invite users, and assign roles. `org_get`, `team_list`, `user_invite`, `user_role_assign` |
+| **Connectors** | Review the connectors defined in the organization, list connections, and create a connection for a device to report through. **Delete a connection.** `connector_list`, `connection_list`, `connection_create`, **`connection_delete`** |
+| **Rules** | Review rules and rule examples, prepare and deploy automation under the client's approval policy, simulate logic before deployment, and inspect execution history. **Update, stop and delete rules.** `rule_list`, `rule_get`, `rule_example_get`, `rule_provision`, `rule_simulate`, `rule_execution_history`, **`rule_update`**, **`rule_stop`**, **`rule_delete`** |
+| **Alarms** | List alarms, read their history, summarize alarm activity for a shift or a site, and manage alarm definitions and notification channels. **Resolve alarms, and create, update or delete alarm definitions.** `alarm_list`, `alarm_get`, `alarm_history`, `alarm_stats`, `alarm_definition_list`, `notification_channel_configure`, `notification_recipient_list`, **`alarm_resolve`**, **`alarm_definition_create`**, **`alarm_definition_update`**, **`alarm_definition_delete`** |
+| **Dashboards** | List dashboards and query the data behind a widget, so the client can reason about the same numbers your operators watch. **Create and update dashboards.** `dashboard_list`, `widget_data_query`, **`dashboard_create`**, **`dashboard_update`** |
+| **Organization** | Read organization details, your own permissions and user records, list teams, invite users, and assign roles. **Update the organization and user records.** `org_get`, `my_permissions`, `user_get`, `team_list`, `user_invite`, `user_role_assign`, **`org_update`**, **`user_update`** |
 
-## How clients distinguish read and write actions
+## How Do MCP Clients Tell Read Actions From Write Actions?
 
 Kilo publishes a title, description, and safety annotations with each MCP tool. Compatible clients can read these annotations before choosing whether to run the tool immediately or ask you to confirm.
 
 | Annotation | Examples | What it tells the client |
 |---|---|---|
 | **Read-only** | List devices, read alarm history, query widget data | The tool does not change your deployment. |
-| **Changes or removes data** | Delete a device, update a dashboard, swap a connection, send a device command | The tool can affect your deployment or equipment, so the client can ask for confirmation. |
+| **Changes or removes data** | Delete a device, rule or connection, resolve an alarm, update a dashboard, swap a connection, send a device command | The tool can affect your deployment or equipment, so the client can ask for confirmation. |
 | **Reaches outside your organization** | Search the partner catalog or the open web for hardware | The tool accesses information beyond your organization's data. |
 
 Creating a device or dashboard changes your organization, but it does not overwrite or stop an existing resource and can be reversed by deleting the new resource. Kilo therefore does not describe creation as destructive.
 
 Safety annotations are information for the client, not an authorization control. Clients decide how to present confirmations. Your Kilo permissions remain the enforced boundary, so a client cannot perform an action that your account is not allowed to perform.
 
-## Security and permissions
+## Is the Kilo MCP Server Secure?
 
 Configure the external client to request approval before consequential tool calls. The MCP server marks device-command execution as destructive; tool annotations describe the operation to the client, but do not enforce a confirmation dialog in every third-party application. The built-in Kilo assistant has its own confirmation workflow. Authentication, organization scope and command authorization remain platform controls.
 
@@ -164,17 +164,17 @@ Command execution is asynchronous. An accepted request is not proof that equipme
 
 Treat an authorized client like a signed-in session: it belongs on machines you control.
 
-## How this differs from the built-in assistant
+## Kilo MCP Server vs the Built-In AI Assistant
 
 Kilo’s built-in [AI Assistant](../ai-assistant/README.md) is like having an experienced integrator by your side: describe the project, and it can register devices, build and deploy rules, and configure alarms. Open it using **AI Chat** in the sidebar; no external AI client connection is needed. That is the fastest path for most people, and it is where confirmation gates, inline charts, and the platform knowledge base live.
 
 The MCP server points the other way: it brings **your own client** to the same deployment. Use it when you want your deployment in the tool you already have open — a terminal beside the code of the integration you are building, or a desktop client where the deployment sits next to your other context. Both talk to the same platform, so which one you use is a question of where you are working.
 
-## How this differs from REST and gRPC
+## Kilo MCP Server vs REST and gRPC
 
 The [Public REST API](public-rest-api.md) and the [gRPC API](grpc-api.md) are for programs you write: a sync job, a reporting pipeline, a SCADA bridge. They authenticate with a scoped [API key](../settings/api-keys.md) that runs unattended. MCP is for an AI client acting on your behalf, authorized by your own sign-in and bounded by your own permissions. If you are writing code, use REST. If you are working with an assistant, use MCP.
 
-## Tips
+## What Are Good Practices for Using Kilo Through MCP?
 
 - **Name the server `kilo` in Claude Code.** The direct-add command does this, and it gives you a short handle when you want to point the client at a specific server.
 - **Start read-only.** Ask for a device list or an alarm summary before you ask for a provisioning run. It is a quick way to confirm the connection landed on the organization you expected.
@@ -182,14 +182,14 @@ The [Public REST API](public-rest-api.md) and the [gRPC API](grpc-api.md) are fo
 - **Pin production, leave staging on the default.** A pinned endpoint cannot be moved by a stray click in the web app's organization switcher.
 - **Reconnect after switching organizations** in the web app if you are using the default endpoint — the existing connection keeps the organization it authorized against.
 
-## Troubleshooting Claude
+## Why Isn't Claude Connecting to Kilo?
 
-- **Kilo does not appear in Claude Code.** Run `/status` and confirm you are signed in with your Claude account rather than an API key, then see [Connect Claude Code](#connect-claude-code).
-- **Claude shows the wrong organization.** The default endpoint follows the organization selected in the Kilo web app. Switch it there and reconnect, or [pin the connection to one organization](#choosing-the-organization).
+- **Kilo does not appear in Claude Code.** Run `/status` and confirm you are signed in with your Claude account rather than an API key, then see [Connect Claude Code](#how-do-i-connect-claude-code-to-kilo).
+- **Claude shows the wrong organization.** The default endpoint follows the organization selected in the Kilo web app. Switch it there and reconnect, or [pin the connection to one organization](#how-do-i-choose-which-organization-the-mcp-server-uses).
 - **Claude says an action is not allowed.** The connection carries your own Kilo permissions. Ask an organization admin to change your role if you need the action.
 - **The authorization page does not open.** Remove the connector in Claude and connect again.
 
-## See also
+## Where Can I Learn More About the Kilo MCP Server?
 
 - [Physical AI Platform for AI Agents](../physical-ai.md) — how models, Kilo, and physical infrastructure divide responsibility.
 - [IoT AI Assistant](../ai-assistant/README.md) — the assistant built into the platform.

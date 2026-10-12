@@ -1,5 +1,5 @@
 ---
-description: Track MIOTY base station status and last seen in Kilo IoT, set coordinates, regenerate certificates, delete.
+description: Track MIOTY base station status in Kilo IoT, set coordinates, regenerate certificates, delete.
 ---
 
 # MIOTY Base Station Monitoring
@@ -17,14 +17,14 @@ Click **Gateways** in the left sidebar and open the **Mioty Base Stations** tab.
 | Column | What it shows |
 |---|---|
 | **Name** | The station name you assigned during registration |
-| **BS EUI** | The station's 16-character hexadecimal identifier |
+| **Base station EUI** | The station's 16-character hexadecimal identifier |
 | **Status** | Current connectivity — online or offline |
 | **BSSCI URL** | The service center endpoint this station holds its session to |
-| **Last seen** | When the station last communicated |
+| *(delete icon)* | Removes the station after confirmation |
 
 Before your first station is registered, the tab shows **"No base stations yet"**.
 
-**Status and last seen read together.** Status tells you the session state right now; last seen tells you how long a problem has been running. A station that went offline four minutes ago during a scheduled reboot and one that went offline nine days ago are the same status and very different incidents.
+**Read status together with Last seen.** Status tells you the session state right now; open the station to see **Last seen** and how long a problem has been running.
 
 ## Base station detail page
 
@@ -42,7 +42,6 @@ The Overview tab is the operational read on a single station:
 - **Status** — an online/offline indicator showing the current state of the station's BSSCI session.
 - **Description** — the notes you captured at registration: mounting details, antenna type, work order.
 - **BSSCI URL** — the service center endpoint for this station. A copy control puts it on the clipboard, with a toast to confirm.
-- **Creation date** — when the station was registered.
 - **Last seen** — the most recent communication from the station.
 - **Reported status** — a collapsible card above the map shows what the station itself last reported, grouped the way Kilo Center shows it. **Performance Metrics** covers **Temperature**, **CPU Load**, **Memory Load**, **Duty Cycle** and **BS Config**. **System Information** covers **System Time**, **Uptime** and **Last Status Update**. A value the station has not reported reads **Not available** rather than a misleading zero, and the EUI and BSSCI address are not repeated here, because the Settings tab shows both. This is the page to open when a station is online but misbehaving: a hot enclosure, a saturated duty cycle or a stale status update points at the cause before anyone drives to the site.
 - **Map** — once coordinates are set, the station appears as a marker in its real position.
@@ -78,6 +77,6 @@ The station must be reconfigured with the new certificate pair; until it is, it 
 
 - **Set coordinates at commissioning, not later.** The map is the fastest way to answer "which station covers this endpoint" during an incident, and it only works if the pins are real. A fleet of stations at 0,0 is a list with extra steps.
 - **Treat regeneration as a planned outage.** Regenerating a certificate does not take the station down by itself, but it does mean the station must be reconfigured before it can reconnect after its next session drop. Schedule it with a technician who can install the new bundle, rather than issuing it and walking away.
-- **Regenerate after physical exposure.** If a station has been accessed by unauthorized personnel, or its `certs.zip` has been handled outside your controls, issue a new pair. The old certificates are what an attacker would present.
-- **Watch last seen across the fleet, not per station.** Several stations going quiet in the same window is rarely a radio problem — look at the site's backhaul or power before you look at the hardware.
+- **Regenerate after physical exposure.** If a station has been accessed by unauthorized personnel, or its certificate archive has been handled outside your controls, issue a new pair. The old certificates are what an attacker would present.
+- **Watch status across the fleet, not per station.** Several stations going offline in the same window is rarely a radio problem — look at the site's backhaul or power before you look at the hardware.
 - **Delete only when the hardware is retired.** A deleted station's endpoints lose the path they were attaching through. If you are relocating a station rather than decommissioning it, update its name and coordinates instead.

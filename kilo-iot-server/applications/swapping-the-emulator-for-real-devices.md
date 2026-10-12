@@ -9,7 +9,7 @@ A solution starts life with virtual devices, so you can see everything working w
 ## How do I get to the device?
 
 1. Open **Applications → My applications** and select your application.
-2. Select the **Content** tab. The **Emulator** card explains the idea: to go live, swap the Emulator for a real connector (LoRaWAN, MIOTY, MQTT, or Traccar), and the device, mappings, rules, and widgets stay intact.
+2. Select the **Content** tab. While the application has at least one emulated device, the **Emulator** card explains the idea: to go live, swap the Emulator for a real connector (LoRaWAN, MIOTY, MQTT, or Traccar), and the device, mappings, rules, and widgets stay intact.
 3. In the **Devices** card, select a device row. The **Edit device** page opens.
 
 <figure><img src="../../.gitbook/assets/kilo-solutions-installed-content.jpg" alt="The Content tab of an installed application with a Devices card, an Emulator card with a Go to connectors button, Rules, and Alarms"><figcaption><p>The Content tab. The Emulator card has a Go to connectors button if you first need to set up the real connector.</p></figcaption></figure>
@@ -37,7 +37,7 @@ The Connection tab is where the swap happens.
 
 <figure><img src="../../.gitbook/assets/kilo-solutions-device-connection.jpg" alt="The Connection tab of a device showing a Connector type of Emulator, a Swap connection link, device settings, four device data keys with data types and Emulator buttons, and a reception status of Receiving and storing LIVE"><figcaption><p>The Connection tab of an emulated device. The Swap connection link is at the top right of the connector area.</p></figcaption></figure>
 
-* **Connector type.** Greyed out and set to **Emulator** while the device is virtual.
+* **Connector type.** Grayed out and set to **Emulator** while the device is virtual.
 * **Swap connection.** The link that starts the swap. Next to it is a note that to add a new connector you go to the **Connector section**.
 * **Device info.** The **Device ID**, the **Data sending interval** (a number plus a unit such as minute), a **Support commands** switch, and a **Use device preset** checkbox.
 * **Device data keys.** One row per reading the device sends, such as temperature, humidity, co2, or equipment_state. Each row has the key name, its **Data type** (for example Integer or Boolean), an **Emulator** button that opens that metric's emulator settings, and a trash icon to remove the row.

@@ -22,12 +22,12 @@ The Datasource tab is titled **"Last Data configuration"** with the subtitle **"
 
 **Adding a data source:**
 
-1. Click **Add datasource**. A **Datasource 1** block appears.
-2. In the block, click **Choose device** and select the device whose sensor you want to display. The **Choose a device** dialog (subtitle **Select the device you want to add**) lists every device in your organization as cards in two columns, so a long list stays smooth to scroll. Type in the search box to narrow the cards by name, select one card, and click **Choose**; **Close** leaves without choosing. Devices already used in this widget are grayed out. If nothing matches, the dialog reads **No devices found matching the definition criteria**; if the list cannot be loaded, it reads **Could not load the device list**.
+1. Click **Add datasource**. A **Datasource 1** block appears. A trash button at the top right of the block removes the whole datasource.
+2. In the block, leave **Source** on **Device** (the only choice today), then click **Choose device** and select the device whose sensor you want to display. The **Choose a device** dialog (subtitle **Select the device you want to add**) lists every device in your organization as cards in two columns, so a long list stays smooth to scroll. Type in the search box to narrow the cards by name, select one card, and click **Choose**; **Close** leaves without choosing. Devices already used in this widget are grayed out. Once a device is chosen, the button is replaced by a **Device** field showing its name, with an edit (pencil) icon at the right edge; click the icon to pick a different device, which clears the metrics you had added. If nothing matches, the dialog reads **No devices found matching the definition criteria**; if the list cannot be loaded, it reads **Could not load the device list**.
 3. Click **Add metric**. A metric row appears. Each metric row contains:
    - **Data type** — set to Telemetry
    - **Device metric** — the sensor reading to display (any metric type — number, text, or Boolean)
-   - **Icon** — a visual indicator for this metric on the widget
+   - **Icon** — a visual indicator for this metric on the widget. The picker appears only when the widget type is **Gauge** or **Tube**; for the other types the row has no icon field.
    - **Conditions button** — labeled **"Conditions: N"** where N is the current count. Click to define what color this reading shows at different values. The default color for the metric is also set here. See [Conditions](conditions.md).
    - **Delete** — remove this metric
 

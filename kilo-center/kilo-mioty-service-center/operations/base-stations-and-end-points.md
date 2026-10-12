@@ -24,7 +24,7 @@ An Admin also sees a **Map** above the table with a pin for every base station o
 
 ## What can I do on a base station page?
 
-* **Request station status** asks the base station to report now instead of waiting for its next periodic report. The page says "Status requested; the metrics update when the base station answers"; if the request fails it says "The status request could not be sent".
+* **Request station status** is the first of the three icon buttons at the top right of the page, left of the pencil (**Edit**) and the trash can (**Delete**). It asks the base station to report now instead of waiting for its next periodic report. The page says "Status requested; the metrics update when the base station answers"; if the request fails it says "The status request could not be sent".
 * **Performance Metrics** shows **Temperature**, **CPU Load**, **Memory Load** and **Duty Cycle**; **System Information** shows **System Time**, **Uptime** and **Last Status Update**; **BS Config** summarizes the station's configuration. A field the station did not report reads **Not available**.
 * **Ping** (under **Actions**) sends a BSSCI ping while the station is online; the toast reads "Ping sent (opId …)".
 * The **Certificate** panel shows the certificate status, the expiry, the fingerprint and the last handshake.
@@ -51,7 +51,7 @@ The same labels appear on the **Base Stations** table, the base station page and
 
 | Status | Meaning |
 |---|---|
-| **Valid** | More than 60 days left. |
+| **Valid** | 60 days or more left. |
 | **Expiring** | Fewer than 60 days left. |
 | **Expires soon** | Fewer than 30 days left. |
 | **Expired** | The expiry date has passed. |

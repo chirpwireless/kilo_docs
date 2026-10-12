@@ -35,7 +35,7 @@ The platform's own catalog publisher also sees:
 
 * **Industry.** The industry the solution belongs to (placeholder *Choose industry*).
 * **Implemented Use cases.** A searchable multi-select (placeholder *Choose Use cases*). Pick the problems this solution solves. See [What are use cases in Kilo?](use-cases.md).
-* **Use in Kilo AI.** A listing option for the platform's own catalog, with the hint *Allow Kilo AI to recommend this application when it matches a customer's needs.* When it is on, Industry and Implemented Use cases become required: *Required when Use in Kilo AI is on*. There is no customer-facing recommendation feature behind this option yet.
+* **Use in Kilo AI.** A listing option for the platform's own catalog, with the hint *Allow Kilo AI to recommend this application when it matches a customer's needs.* When it is on, Industry and Implemented Use cases become required: *Required when Use in Kilo AI is on*.
 * **Show on the landing page.** A listing option for the platform's own website.
 
 At the bottom, **Close** dismisses the dialog and **Save** (**Publish application** on the first publication) publishes. A note on a republication reminds you that saving republishes the current content of the application as a new version of the solution. When the source application was deleted, the note instead says the save updates only the catalog card.
@@ -67,9 +67,9 @@ The application itself remains in My applications, with the status **Not publish
 
 ## What happens if I delete the application I published?
 
-The published solution stays in your customers' catalog. In **My applications**, a section called **Published solutions without an application** lists such solutions, marked **Application deleted · published**. Each has an **Edit card** button so you can still change the card, and you can unpublish it. The note explains: the source application was deleted, and you can still edit the card or unpublish the solution.
+The published solution stays in your customers' catalog. In **My applications**, a section called **Solutions without an application** lists such solutions. Each row is marked **Application deleted · published** or **Application deleted · unpublished**, and has an **Edit card** button so you can still change the card. **Unpublish** appears only on rows marked published. The note explains: the source application was deleted, and you can still edit the card or unpublish the solution.
 
-## Tips for a solution people want to install
+## What makes a solution worth installing?
 
 * Write the description as the problem solved, not the equipment used.
 * Use the About text to explain who it is for, and **How it works right now** for a short installation checklist: where to mount each sensor and how to connect it.

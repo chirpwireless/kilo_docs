@@ -73,8 +73,8 @@ If a command keeps finishing as *Soft warning* even though the device clearly re
 
 The **Convergence timeout** is how long the platform waits for the reported state to match before it gives up.
 
-* Leave it empty to use the platform default of **1.5 × the device's data sending interval**. Set that interval accurately on the device first — where it is missing, the default works out to a 90-minute window, which is far longer than most commands need.
-* Or enter a positive whole number of seconds, up to **86400** (24 hours).
+* Leave it empty to use the platform default of **1.5 × the device's data sending interval**. Set that interval accurately on the device first, because the default follows it.
+* Or enter a positive whole number of seconds, up to **86400** (24 hours). The editor does not flag a value it cannot use: an empty box, zero, a negative number or text silently falls back to the default above, and the server rejects anything over 86400 when you save.
 * If the window passes without a match, the execution is marked **Soft warning** rather than Failed — the platform could not confirm the expected result within the window. Check Details to distinguish missing acknowledgement from missing state feedback. This distinction matters operationally: a soft warning is "we couldn't confirm," not "it definitely failed."
 * Review the execution details before sending the action again, especially if repeating it could have another effect.
 

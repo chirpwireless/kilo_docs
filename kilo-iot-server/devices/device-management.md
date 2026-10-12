@@ -22,7 +22,7 @@ You need permission to edit devices, the replacement hardware's identifiers and 
 
 1. Open **Devices** and select the existing digital device, such as **Refrigerator 1**.
 2. Check its measurement rows and recent **Logs**. Keep the temperature measurement that already contains the refrigerator's history.
-3. Open **Connection**. For a bound LoRaWAN probe, click the X control labelled **Detach physical device** beside **Device EUI**. Detaching takes effect immediately; it is not deferred until the next **Save**. The digital device and its measurement channels remain, while the old physical binding and source mappings are removed.
+3. Open **Connection**. For a bound LoRaWAN probe, click the X control labeled **Detach physical device** beside **Device EUI**. Detaching takes effect immediately; it is not deferred until the next **Save**. The digital device and its measurement channels remain, while the old physical binding and source mappings are removed.
 4. Enter the replacement's **Device EUI**, **AppKey**, and matching device profile. Check its decoder and **Data sending interval**, then click **Save**. For another supported source type, use that connector's identifier and configuration fields.
 5. Open **Mapping**. For each existing measurement, select the replacement's incoming **Connector key** and click **Save**. For example, change the source of the existing temperature measurement from `temp_c` to `temperature`. Check that the new value is in the same unit and format.
 6. Wait for a new transmission. Confirm that **Value** and **Last update** change, and use the **Connection** diagnostics if they do not.
@@ -99,7 +99,7 @@ After saving mappings, allow a fresh message and check **Logs**. A field can app
 
 ## Asset identification {#user-metadata}
 
-Use the device name, photo, and application assignment to identify the monitored asset. Keep calibration certificates, installation notes, and maintenance records in your organisation's record-keeping system; device measurement history is not a maintenance log.
+Use the device name, photo, and application assignment to identify the monitored asset. Keep calibration certificates, installation notes, and maintenance records in your organization's record-keeping system; device measurement history is not a maintenance log.
 
 ## Commands & States tab
 

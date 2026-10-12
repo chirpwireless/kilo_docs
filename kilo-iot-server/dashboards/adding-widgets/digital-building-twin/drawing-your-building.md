@@ -2,13 +2,13 @@
 description: Draw walls, doors, windows, and fences for a Digital Building Twin — 2D plan and 3D views of the same scene.
 ---
 
-# Drawing Your Building
+# How to Draw a Building in a Digital Building Twin
 
 The structure of a Digital Building Twin — its walls, doors, windows, and fences — is what makes the model recognizable as a specific facility. A few minutes of drawing turns a generic box into *your* warehouse, with the loading dock on the east side and the cold store in the corner where it really is. This page covers drawing that structure from scratch.
 
 If you already have an architectural drawing or want to trace the building from a map, you can skip the manual drawing — see [Importing a DXF plan](importing-a-dxf-plan.md) and [Tracing from the map](tracing-from-the-map.md). The three approaches mix freely: import a shell, then draw an interior partition by hand.
 
-## Drawing in 2D or 3D
+## Should I draw in 2D or 3D?
 
 The editor shows the same model two ways, and you can draw in either:
 
@@ -19,9 +19,9 @@ Switch between them with the **3D / 2D** toggle on the floor selector. A common 
 
 <figure><img src="../../../../.gitbook/assets/dbt-2d-plan-properties.jpg" alt="A two-room floor plan in 2D view, with a window selected and its properties panel open on the right"><figcaption></figcaption></figure>
 
-## Drawing a wall
+## How do I draw a wall?
 
-1. On the bottom toolbar, click **Build**. A row of structure tools appears.
+1. On the bottom toolbar, click **Build**. A row of eight buttons appears: **Wall**, **Door**, **Window**, **Fence**, **Trace from map**, **Import from file**, **Flat roof** and **Pitched roof**.
 2. Click **Wall**.
 3. Click once in the scene to set the wall's **start point**.
 4. Move the cursor — a preview of the wall follows, with a live length label in meters.
@@ -30,11 +30,11 @@ Switch between them with the **3D / 2D** toggle on the floor selector. A common 
 
 Wall endpoints snap to a grid, which makes it easy to keep corners square and walls aligned. When a new wall crosses an existing one, or ends on it close to its line, the existing wall is split at that point — so you can later select and color each segment independently.
 
-<figure><img src="../../../../.gitbook/assets/dbt-build-tools.jpg" alt="The Build row of structure tools — Wall, Door, Window, Fence, Flat roof, Pitched roof — above the mode toolbar"><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/dbt-build-tools.jpg" alt="The Build row of eight buttons — Wall, Door, Window, Fence, Trace from map, Import from file, Flat roof, Pitched roof — above the mode toolbar"><figcaption></figcaption></figure>
 
 To stop drawing, press **Escape** or right-click, or click **Build** again to leave the mode.
 
-## Adding doors and windows
+## How do I add doors and windows?
 
 Doors and windows are placed **into** a wall, so draw the walls first.
 
@@ -47,11 +47,20 @@ Select a door or window with the **Select** tool to fine-tune it in the properti
 * **Doors** — Width, Height, position along the wall, **hinge side** (Left / Right), and **swing direction** (Inward / Outward).
 * **Windows** — Width, Height, position along the wall, height off the floor, and sill depth.
 
-## Drawing a fence
+## How do I draw a fence?
 
 A fence is drawn exactly like a wall — click **Build**, click **Fence**, then click a start point and an end point. Fences are useful for the parts of a site that aren't enclosed building: a yard perimeter, a parking-lot boundary, a fenced compound.
 
-## Adjusting walls after drawing
+## How do I add a roof?
+
+**Flat roof** and **Pitched roof** are one-click buttons, not draw tools: click one and the roof is created at once from the walls on the active floor. Roofs sit on walls at the standard 3 m wall height.
+
+* **Flat roof** adds a flat **Roof** over each closed wall outline on the floor. A floor with two separate buildings gets two roofs, named **Roof (1)** and **Roof (2)**.
+* **Pitched roof** adds a single gable **Roof** with one **Roof segment**, sized to the bounding box of all walls on the floor.
+
+Draw the walls first. With no walls on the active floor, the editor shows the warning **Draw walls before adding a roof** and creates nothing. To remove a roof, select it in the **Scene** panel and press **Delete**.
+
+## How do I change a wall's height, thickness or material?
 
 Switch to **Select** and click a wall to open its properties:
 
@@ -62,11 +71,11 @@ Switch to **Select** and click a wall to open its properties:
 
 To remove a wall, select it and press **Delete**, or use the Delete button in the properties panel.
 
-## Naming what you draw
+## How should I name walls and zones?
 
 As the model grows, open the **Scene** panel and give your walls and zones meaningful names — double-click an entry to rename it. "North Dock Wall" is far easier to find later than "Wall 14," and clear names make sensor binding much quicker when you reach that step.
 
-## Tips
+## What are the best tips for drawing a building?
 
 * Draw the outer shell first, then interior partitions. The grid snap keeps everything aligned.
 * Work in 2D for accuracy, then switch to 3D to sanity-check heights and openings.

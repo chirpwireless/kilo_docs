@@ -87,7 +87,7 @@ In encoder mode (and always for LoRaWAN, where downlinks must be raw bytes), you
 
 For encoded MQTT commands, **Custom encoder** is required; there is no fallback to a LoRaWAN codec. An encoded emulator command also requires its own encoder and returns a data object rather than radio bytes.
 
-For MQTT commands that send a payload verbatim (direct mode), you instead provide the target **MQTT topic** and the **Direct payload**, which is sent as written — `{{ parameterName }}` substitution still applies for typed values.
+For MQTT commands that send a payload verbatim (direct mode), you provide the **Direct payload** here, which is sent as written — `{{ parameterName }}` substitution still applies for typed values. The target **MQTT topic** is set in section 2 (Routing), not here.
 
 ## Try Encoder
 
@@ -111,7 +111,7 @@ Open each retained command and check **Routing**, **Payload**, and **Verificatio
 
 ## Saving
 
-Click **Save** to add the command to the device. It immediately appears in the **Commands** list and on the **States** tab, ready to execute. To change it later, reopen it from the Commands list with **Edit**; to remove it, use **Delete** (the platform warns you if other commands reference it as a query command).
+Click **Save** to add the command to the device. It immediately appears in the **Commands** list and on the **States** tab, ready to execute. To change it later, reopen it from the Commands list with **Edit**; to remove it, use **Delete**. Deleting a command that other commands still reference as their query command fails until those references are removed.
 
 ## Next
 

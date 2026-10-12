@@ -87,7 +87,11 @@ The audit events include:
 | `endpoint.keys_revealed` | Someone reveals an end point's network session key or application key |
 | `endpoint.keys_removed` | Someone removes a stored application key |
 | `certificate.private_key_downloaded` | Someone downloads a base station's private key |
-| `downlink.queued`, `downlink.revoke_requested` | A downlink is queued or revoked from the web interface or the API |
+| `downlink.queued`, `downlink.updated`, `downlink.revoke_requested` | An operator queues a downlink, edits a pending one, or asks a base station to revoke one, from the web interface or the API |
+| `organization.created`, `organization.updated`, `organization.deleted` | An organization is added, changed or removed (Enterprise edition) |
+| `organization.member_added`, `organization.member_updated`, `organization.member_removed` | A user joins an organization, has a role or permission changed, or leaves it (Enterprise edition) |
+| `integration.created`, `integration.updated`, `integration.deleted` | An integration is added, changed or removed |
+| `certificate.server_generated`, `certificate.server_renewed` | The server certificate is generated for the first time or renewed |
 
 Entries about keys name who acted and which key of which end point or station, and never contain the key. KiloCenter writes the audit entry before it hands out a secret. If the event store cannot take the record, the request fails and the secret stays protected, so there is no unrecorded reveal or download.
 

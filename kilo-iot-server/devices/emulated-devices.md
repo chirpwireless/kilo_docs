@@ -30,7 +30,7 @@ Unlike every other connector, the interval here is not a description of a schedu
 
 ## What does each tab of the device editor show?
 
-Open **Devices** in the main menu and select **Edit** at the end of a device's row, or open a device from an application's **Content** tab. The **Edit device** page has a row of tabs: **Device info**, **Connection**, **Emulator** (only for emulated devices), **Mapping**, **Attributes**, **Calculated data**, and **Logs**. The screens below are an emulated device from an installed solution.
+Open **Devices** in the main menu and select **Edit** at the end of a device's row, or open a device from an application's **Content** tab. The **Edit device** page has a row of tabs: **Device info**, **Connection**, **Emulator** (only for emulated devices), **Commands & States** (only when **Support commands** is on and commands are enabled for your account), **Mapping**, **Attributes**, **Calculated data**, and **Logs**. **Attributes** and **Calculated data** appear only when those features are enabled for your account; if you do not see them, they are not switched on yet. The screens below are an emulated device from an installed solution.
 
 ### Device info
 
@@ -46,7 +46,7 @@ Open **Devices** in the main menu and select **Edit** at the end of a device's r
 
 - **Swap connection** (top right) starts swapping this device to a real connector. [Going live](#going-live-swapping-to-a-real-device) walks through it.
 - **Connector type** shows the connector in use. For a device that already exists it is read-only, with a link to the **Connector section** for adding new connectors.
-- **Device ID** is the identifier the device reports under, shown greyed once created.
+- **Device ID** is the identifier the device reports under, shown grayed out once created.
 - **Data sending interval** sets how often the emulator emits a reading: a number and a unit such as minute.
 - **Support commands** gives the device a **Commands & States** tab.
 - **Use device preset** starts from a real device model instead of hand-typed metrics.
@@ -93,17 +93,17 @@ An emulated device's readings live in its emulator configuration, so the **Mappi
 - There are no **Add new metric** buttons on this tab, because a new metric needs generation settings that only **Connection** collects. Add the key there with **Add device data key**, then return to **Mapping**.
 - Changing which metric a row uses swaps that row's metric cleanly, instead of leaving the old one behind as a second row claiming the same key.
 
-## Configure generated behaviour
+## Configure generated behavior
 
 On **Connection**, click **Emulator** beside a data key to adjust how it behaves:
 
 | Data type | Settings |
 |---|---|
-| Integer or Float | **From**, **To**, **Holds around**, and **Variability**. From must be below To, and the baseline must lie within that range. |
+| Integer or Float | A **Range** with **From** and **To** (values never leave it), a **Baseline** with **Holds around**, and a **Variability** slider from **Steady** to **Jumpy** that sets how widely the value wanders around the baseline. From must be below To, and the baseline must lie within that range. |
 | Boolean | **Default state** and **Activity**: Rare, Occasional, or Frequent changes away from it. |
 | String | **Values & weights** and **Stickiness**, which controls how long a value is held. Use 1–32 nonempty values, each at most 64 characters, with positive whole-number weights totaling 100%. |
 
-Apply the settings, then save the device. Use plausible ranges for the scenario: a refrigeration temperature signal needs different settings from an air-quality signal. **Data sending interval** accepts whole minutes, hours, or days, from one minute to one day.
+Click **Apply** to keep the settings, or **Reset** to return the window to its defaults, then save the device. Use plausible ranges for the scenario: a refrigeration temperature signal needs different settings from an air-quality signal. **Data sending interval** accepts whole minutes, hours, or days, from one minute to one day. A **second** unit (5 seconds minimum) appears in the unit menu only when it is enabled for your account.
 
 An emulator configuration accepts up to **50 signal keys** and **20 preset command definitions**. Each key must be nonempty and at most **256 characters**. Manual text overrides are limited to **256 characters**.
 

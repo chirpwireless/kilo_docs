@@ -2,7 +2,7 @@
 description: "Field-by-field reference for the Kilo Lens storage connectors: Amazon S3, Google Cloud Storage, and Walrus, with permissions and limits."
 ---
 
-# Storage Connectors for Lens
+# How do storage connectors work in Kilo Lens?
 
 A **storage connector** tells Lens where to keep your camera recordings. This page walks through the form for each connector type, field by field. For why and how the archive works, start with [Cloud Archive](cloud-archive.md).
 
@@ -13,7 +13,7 @@ A **storage connector** tells Lens where to keep your camera recordings. This pa
 
 <figure><img src="../../.gitbook/assets/kilo-lens-storage-connectors-empty.jpg" alt="The Storage connectors page with the message No storage connectors configured yet and an Add storage connector button"><figcaption><p>The Storage connectors page before any connector exists.</p></figcaption></figure>
 
-3. Select **Add storage connector**. On an empty page the button sits in the middle of the page under "Let's add your first storage connector"; once at least one connector exists it moves to the top right of the page header. In the dialog open **Connector type**, pick **Amazon S3**, **Google Cloud Storage**, or **Walrus**, and select **Next**. **Next** stays disabled until you pick a type. **Cancel** closes the dialog without saving. If the list cannot load, the dialog shows **Connector catalog unavailable. Lens Bridge service is offline.** Close it and try again in a few minutes.
+3. Select **Add storage connector**. On an empty page the button sits in the middle of the page under "Let's add your first storage connector"; once at least one connector exists it moves to the top right of the page header. In the dialog open **Connector type**, pick **Amazon S3**, **Google Cloud Storage**, or **Walrus**, and select **Next**. **Next** stays disabled until you pick a type. **Cancel** closes the dialog without saving. If the list cannot load, the dialog shows **Connector catalog unavailable.** followed by a note that the storage service is offline. Close it and try again in a few minutes.
 4. Fill in the fields below and select **Add connector**. If the platform refuses the settings, a red message appears at the bottom of the form, either the provider's explanation or **Failed to create connector. Please try again.** Fix the field it names and select **Add connector** again.
 
 The next step shows the provider's name, a short description, and an **Add connector** button that stays disabled until every required field is filled in. Every form starts with the same note: **Your storage keeps the recordings; the platform keeps the keys and previews and can read the archive. Rotating a key protects future recordings, not past ones.** Read it before you connect storage you care about.

@@ -10,7 +10,7 @@ server renewal does not require deleting Docker volumes, the database or station
 
 Use a maintenance window: base station and application-center connections will pause when KC-Core
 stops. First try this procedure on an isolated copy of your installation. The certificate tool's
-server-only behaviour has been tested; every installed container version and recovery arrangement
+server-only behavior has been tested; every installed container version and recovery arrangement
 must still be checked by its operator.
 
 The **Certificates** page of the web interface shows how long the server certificate and each base station certificate remain valid, and flags one that **Expires soon**.

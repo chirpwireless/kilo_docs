@@ -2,7 +2,7 @@
 description: Reference for each Kilo rules engine node, from Start Event and Script Task to Set Alarm and Execute Command.
 ---
 
-# Node Reference
+# What Does Each Node Do in the Rules Engine?
 
 A **node** is one step or decision in a Kilo automation rule. **Flows** are the arrows connecting nodes: they define the order of work and the available paths. Use this reference to choose each step and configure it in the [visual editor](visual-editor.md).
 
@@ -41,7 +41,7 @@ Select the Start Event on the canvas — a pencil and a bin icon appear beneath 
 
 | Field | Description |
 |---|---|
-| **Device** | Searchable autocomplete dropdown. Placeholder: *Select device*. Lists the devices in your organization. The list loads the first 200 devices; when your organization has more, a grey note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
+| **Device** | Searchable autocomplete dropdown. Placeholder: *Select device*. Lists the devices in your organization. The list loads the first 200 devices; when your organization has more, a gray note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Sensor** | Autocomplete dropdown. Placeholder: *Select sensor*. Disabled until a device is chosen. Shows only sensors belonging to the selected device. |
 
 **Trigger condition** — Shown instead of the Event filter when **Start source** is **Trigger condition**. A single autocomplete, placeholder *Select trigger*, listing the triggers defined on the **Triggers** tab.
@@ -88,7 +88,7 @@ The process variables depend on the **Start source**.
 | `vars.detector_id` | The unique identifier of the trigger |
 | `vars.timestamp` | The original activation time in whole Unix seconds; repeated signals for the same occurrence retain it |
 
-A trigger-started rule does not receive `vars.value`. See [Data available to the rule](triggers.md#data-available-to-the-rule) before converting a sensor-started rule.
+A trigger-started rule does not receive `vars.value`. See [Data available to the rule](triggers.md#what-data-does-a-trigger-started-rule-receive) before converting a sensor-started rule.
 
 The Start Event can also reshape incoming data before the rest of the rule runs:
 
@@ -250,7 +250,7 @@ Conditions are evaluated **top to bottom** as ordered in the Flows list. The fir
 
 The default flow has no condition expression. It executes only when **every other condition evaluates to false**. Every Exclusive Gateway should have a default flow — without one, if no condition matches, the rule execution stalls on that branch.
 
-The default flow covers the case where nothing matched. It does not cover a condition that fails to evaluate: if an expression cannot be evaluated — usually because it references a variable the rule does not have, or returns something other than `true`/`false` — the gateway stops there and the rule goes no further along that path. In a debug session the gateway is outlined in red; see [Debugging Rules](debugging-rules.md#what-the-markers-on-the-canvas-mean).
+The default flow covers the case where nothing matched. It does not cover a condition that fails to evaluate: if an expression cannot be evaluated — usually because it references a variable the rule does not have, or returns something other than `true`/`false` — the gateway stops there and the rule goes no further along that path. In a debug session the gateway is outlined in red; see [Debugging Rules](debugging-rules.md#what-do-the-debug-markers-on-the-canvas-mean).
 
 A gateway also has to branch or merge: give it two or more outgoing flows to make a decision, or two or more incoming flows to bring paths back together. A gateway with one flow in and one flow out is rejected when you build the rule — connect those two nodes directly instead.
 
@@ -366,9 +366,9 @@ The target device must be **controllable** (MQTT, or a Class C LoRaWAN device) a
 | Field | Description |
 |---|---|
 | **Name** | A text field for the node label. If left blank, it fills in with the selected command's name. Example: "Shut intake valve". |
-| **Device** | A searchable autocomplete dropdown listing the devices in your organization. Selects the device the command is sent to. The list loads the first 200 devices; when your organization has more, a grey note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
+| **Device** | A searchable autocomplete dropdown listing the devices in your organization. Selects the device the command is sent to. The list loads the first 200 devices; when your organization has more, a gray note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Command** | An autocomplete dropdown of the chosen device's defined commands. Disabled until a device is selected. |
-| **Parameters** | One row per parameter the selected command expects. Each parameter is supplied as a literal **Value** (validated against the parameter's type and range) or a **CEL Expression** (evaluated at runtime, with `vars` available). |
+| **Parameters** | One row per parameter the selected command expects. Each parameter is supplied as a literal **Value** (validated against the parameter's type and range) or an **Expression** (a CEL expression evaluated at runtime, with `vars` available). Each parameter row has an **Input type** dropdown with these two choices, **Value** and **Expression**. |
 | **Inputs / Outputs** | Optional named CEL expressions for advanced data shaping, the same pattern as other nodes. |
 
 **Save / Cancel** — At the bottom of the panel. Save is disabled until both a device and a command are selected and every parameter is valid.
@@ -409,7 +409,7 @@ The panel header reads **"Data Enrichment"** with the subtext: *"Attach relevant
 | Field | Description |
 |---|---|
 | **Name** | A text field for the node label. Placeholder: *e.g., Attach Room Temperature to Sensor Data*. |
-| **Device** | Searchable autocomplete dropdown. Lists the devices in your organization — the same selector pattern as the Start Event. The list loads the first 200 devices; when your organization has more, a grey note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
+| **Device** | Searchable autocomplete dropdown. Lists the devices in your organization — the same selector pattern as the Start Event. The list loads the first 200 devices; when your organization has more, a gray note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Sensor** | Filtered dropdown. Disabled until a device is selected. Shows only sensors belonging to the chosen device. |
 | **Output variable** | A text field for the variable name under which the fetched data is stored. Placeholder: *User metadata*. After the node executes, the result is available as `vars.<output_variable>`. |
 
@@ -531,4 +531,4 @@ Flows from Exclusive Gateways can have labels and colors (configured in the gate
 
 ## Camera motion as a starting reading
 
-A Lens camera’s motion sensor can be selected in a **Sensor readings** Start event. Its boolean reading can be routed through a gateway before an alarm action. See [Camera Rules and Alerts](../lens/camera-rules-and-alerts.md).
+A Lens camera’s motion sensor can be selected in a **Sensor reading** Start event. Its boolean reading can be routed through a gateway before an alarm action. See [Camera Rules and Alerts](../lens/camera-rules-and-alerts.md).

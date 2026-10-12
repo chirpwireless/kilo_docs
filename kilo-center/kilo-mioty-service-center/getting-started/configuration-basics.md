@@ -2,13 +2,13 @@
 description: KiloCenter configuration files and baseline settings — config.docker.yaml, KC-Core, KC-Gateway, port mappings.
 ---
 
-# Configuration Basics
+# How do I configure KiloCenter?
 
-Kilo Center configuration tells its services how to reach each other, which interfaces to listen on, and which credentials and certificates to use. Review it before connecting radio equipment so traffic reaches the intended installation.
+KiloCenter configuration tells its services how to reach each other, which interfaces to listen on, and which credentials and certificates to use. Review it before connecting radio equipment so traffic reaches the intended installation.
 
 The files and addresses depend on whether you run containers or source processes on the host. Docker service names are meaningful inside the container network; host processes use their corresponding host addresses. Start with a completed [installation](README.md), then use the checks below to confirm the selected configuration and port mappings.
 
-### Goal
+### What does this guide achieve?
 
 Understand and verify baseline runtime configuration for a local deployment.
 
@@ -113,6 +113,14 @@ protocol:
 ```
 
 When a session already holds that many operations, the next one ends its resumability: the service center discards the session, and the Application Center starts a new session when it reconnects. Uplinks and downlink results remain available through MQTT and the API. In the Helm chart the key is `kcCore.config.scaci.resumeMaxPendingOperations`.
+
+### BSSCI External URL
+
+`protocol.bsci_external_url` (environment variable `KILOCENTER_PROTOCOL_BSCI_EXTERNAL_URL`, default `tls://localhost:5000`) is the address base stations are told to connect to. It must be reachable from the base stations and include the host port you publish, for example `tls://sc.example.com:5000`. The web interface shows it as the **Service Center URL** when you add a base station and warns when no reachable address is configured. Its host is also added to the server certificate.
+
+### Blueprint Registry Provider
+
+`registry_provider` lets **Submit to Registry** on a blueprint open a pull request in a GitHub repository. It is off by default (`enabled: false`) and the **System** tab of **Blueprints** then says the registry is not configured. Set `owner`, `repo` and `token` (`KILOCENTER_REGISTRY_PROVIDER_OWNER`, `_REPO`, `_TOKEN`); `api_url`, `base_branch` (`main`), `branch_prefix` (`blueprint/`), `blueprint_path`, `file_extension` (`.json`) and `http_timeout` (30) have defaults. A GitHub App can be used instead of a token. More in [How do blueprints and decoders work?](../operations/blueprints-and-decoders.md#how-do-i-submit-a-blueprint-to-the-registry).
 
 ### Default Credentials
 

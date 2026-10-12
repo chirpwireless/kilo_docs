@@ -2,36 +2,42 @@
 description: "Model a multi-floor building in a Digital Building Twin: add or delete floors, switch levels, and pick a view."
 ---
 
-# Floors and Levels
+# How to Add Floors to a Digital Building Twin
 
-Few facilities are single-storey. An office building has floors stacked on top of each other; a warehouse has a mezzanine; a site has a basement plant room under the ground floor. A Digital Building Twin models all of them in one widget — each floor is its own layer of the same model, with its own walls, objects, and sensor bindings.
+Few facilities are single-story. An office building has floors stacked on top of each other; a warehouse has a mezzanine; a site has a basement plant room under the ground floor. A Digital Building Twin models all of them in one widget — each floor is its own layer of the same model, with its own walls, objects, and sensor bindings.
 
 This page covers adding floors, moving between them, and the two ways to view a multi-floor model.
 
-## The floor selector
+## What does the floor selector show?
 
 A floating stack of floor buttons sits to one side of the editor. It is the control center for everything to do with floors:
 
-* Each floor is a button, labelled **L0**, **L1**, **L2**, and so on. The highest floor is at the top of the stack, the lowest at the bottom — the same order they sit in the real building.
+* Each floor is a button, labeled **L0**, **L1**, **L2**, and so on. The highest floor is at the top of the stack, the lowest at the bottom — the same order they sit in the real building.
 * The **active floor** is highlighted. Everything you draw, place, or bind goes onto the active floor.
 * Click any floor button to make that floor active and bring it into focus.
 
 <figure><img src="../../../../.gitbook/assets/dbt-floor-selector.jpg" alt="The floor selector stack showing floor L0 with the add and duplicate controls and the 3D / 2D toggle"><figcaption></figcaption></figure>
 
-## Adding a floor
+## How do I add a floor?
 
 * Click the **+** button at the **top** of the stack to add a floor **above** the highest one.
 * Click the **+** button at the **bottom** of the stack to add a floor **below** the lowest one.
 
-When you add a floor, the editor gives it a slab (a floor plate) shaped to match the floor nearest it, so a new storey starts with a footprint instead of empty space. From there you draw its walls, place its objects, and bind its sensors independently.
+A new floor gets a slab (a floor plate) traced from the walls of the closest floor that has any, or from that floor's existing slabs, so it starts with a footprint instead of empty space. If no floor has walls or slabs yet, it gets a default 10 m × 7 m plate. From there you draw its walls, place its objects, and bind its sensors independently.
 
-A common pattern for a multi-storey building: add all the floors first, then work through them one at a time — make a floor active, build it out, move to the next.
+A common pattern for a multi-story building: add all the floors first, then work through them one at a time — make a floor active, build it out, move to the next.
 
-## Deleting a floor
+## How do I copy a floor?
+
+Next to each **+** button sits a **Copy floor above** or **Copy floor below** button (a copy icon). It clones the active floor onto a new floor stacked above the highest floor or below the lowest one, together with its walls, doors, windows and placed objects. If the source floor has no slab, a slab is traced from its walls so the copy still has a floor.
+
+Sensor bindings and pins are not copied. A device stays on the floor where you placed it, so bind the copy's sensors yourself.
+
+## How do I delete a floor?
 
 Select the floor in the stack, then click the **delete** icon on its button. A model must keep at least one floor, so the delete control only appears when there is more than one.
 
-## Two ways to view a multi-floor model
+## How do I view a multi-floor model?
 
 Below the floor buttons, the selector carries two view toggles.
 
@@ -50,11 +56,11 @@ This toggle controls how floors are shown, and only appears when the model has m
 
 A typical rhythm: work in **Solo** so each floor is uncluttered while you build it, then switch to **Stack** to see the whole building before you save.
 
-## What the dashboard shows
+## What does the dashboard show for a multi-floor building?
 
 The dashboard tile renders the model from the camera angle, view mode and level you leave the editor with, including the pan offset, and shows it as saved without re-centering on the building. For a multi-floor building, framing the model in **Stack** with a slight 3D tilt gives the dashboard a clear, whole-building view. If a particular floor is what matters most — the production floor, the floor with the critical cold store — frame that one and save.
 
-## Tips
+## What are the best tips for working with floors?
 
 * Name your floors something meaningful in the **Scene** panel — "Ground Floor," "Mezzanine," "Plant Room" — instead of leaving them as L0, L1, L2.
 * Build floor by floor. Switching to **Solo** keeps the floor you're working on free of visual noise.
