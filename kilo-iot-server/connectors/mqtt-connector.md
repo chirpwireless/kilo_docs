@@ -151,7 +151,7 @@ For devices that publish a flat JSON payload on a single topic — such as build
 | Placeholder | Where used | What it does |
 |-------------|-----------|-------------|
 | `{{deviceId}}` | Device ID Topic, telemetry topic templates | Marks the topic segment containing the device identifier |
-| `{{value}}` | Telemetry topic templates | Marks a topic segment whose content is the measurement value itself — for example, `meters/EM-4492/230.5` where `230.5` is the reading. Do not use `{{value}}` for topic segments that name the metric (like `power` or `voltage`) — if the segment is a label rather than a value, use the payload-style approach instead |
+| `{{value}}` | Telemetry topic templates | Marks a topic segment whose content is the measurement value itself — for example, `meters/EM-4492/230.5` where `230.5` is the reading. Do not use `{{value}}` for topic segments that name the metric (like `power` or `voltage`) — if the segment is a label rather than a value, leave `{{value}}` out. The token is optional: a telemetry topic without it reads the value from the message body and stores it under the row's data key, which every telemetry row must have |
 
 ---
 

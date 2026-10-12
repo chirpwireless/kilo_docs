@@ -120,7 +120,9 @@ Two things to expect once you have answered:
 
 ## When a node fails
 
-If a node errors during execution, the failing node is outlined in red on the canvas, so you can see exactly which node went wrong without hunting through a large rule. A **recoverable** error keeps the debug session paused and loaded — you can inspect the variables, adjust state, and continue — while an **unrecoverable** error ends the session.
+If a node errors during execution, you are told in three places at once, so the red outline is no longer the only clue. The failing node is outlined in red on the canvas, with a badge under the outline reading **Execution failed at "{node}"**. A banner above the debug panel tabs shows **Execution error** with the message the executor reported, and the same message appears as a toast. The message names what actually went wrong, so you can often fix the node without opening anything else.
+
+Not every error means a step failed. A command the debugger refuses, such as a watch expression that does not parse, a breakpoint that does not exist, or too many commands in a short time, is shown as a toast only. It does not draw a red outline or banner, and it leaves the session where it was, so a typo in the **Evaluate** box never looks like your rule broke. A **recoverable** error keeps the debug session paused and loaded — you can inspect the variables, adjust state, and continue — while an **unrecoverable** error ends the session.
 
 Most errors come from an expression on the failing node. Open its properties and check three things:
 

@@ -1,5 +1,5 @@
 ---
-description: "Connect existing IP cameras to Kilo for live video, selected motion zones, and camera-driven operational alerts."
+description: "Bring cameras from every site and brand into one Kilo workspace, keep your hardware, and store recordings in your own cloud."
 ---
 
 # Cameras
@@ -10,8 +10,47 @@ Open **Cameras** in the main navigation to use **Lens**, Kilo’s camera monitor
 
 Existing cameras need not become a separate replacement project. A business with different camera brands in New York, Washington, and London can connect compatible RTSP feeds to the same Kilo organization. Operators gain a shared platform for video and IoT information instead of relying on a different manufacturer's application for each installation.
 
+Lens exists for four reasons:
+
+- **One place for every site.** Cameras from different brands and offices appear in one organization, with one access model.
+- **Keep the hardware you own.** Any camera that offers an RTSP stream can connect, so a rollout does not start with a replacement budget.
+- **Smart features without smart cameras.** Motion zones and rules run off the camera, so older cameras gain features through software updates.
+- **Video next to your sensors.** Camera readings use the same rules, alarms, and dashboards as every other device, and recordings can be kept in storage you own.
+
 
 <figure><img src="../../.gitbook/assets/kilo-lens-live-view.jpg" alt="Two different camera brands together in the Kilo Lens workspace"><figcaption><p>Tapo and HiLook cameras connected to the same Kilo organization, shown in Preview mode.</p></figcaption></figure>
+
+## Why use Kilo Lens?
+
+### What problem does Lens solve for companies with several offices?
+
+Picture a company with offices in Berlin, London, Cologne, Amsterdam, and Washington, D.C. Each office bought its cameras at a different time, from a different vendor. The camera industry is as fragmented as IoT, so every vendor ships its own phone app, and security staff end up switching between several of them. Nothing shows all offices together, and nobody can easily answer who has access to which camera.
+
+Lens puts every compatible camera into one Kilo organization. You open one **Live view**, save a [videowall](videowalls.md) for each site, and manage access in one place. Each member of the organization gets **Edit**, **View**, or **No access** to Cameras, and you remove a departing colleague once. Access is set per feature, not per location, so use separate organizations if two sites must never share a camera list.
+
+### Do you have to replace your cameras to use Lens?
+
+No. Lens connects to the RTSP stream that a wide range of IP camera models can provide, and supported ONVIF cameras also expose discovery and camera controls. Check your model's stream settings in [RTSP Camera URLs](rtsp-camera-urls.md) before you buy anything. A site can adopt Lens one camera at a time and keep its existing recorders and wiring.
+
+### How does Lens make a simple camera smart?
+
+Expensive cameras do their analysis on a chip inside the camera. Lens moves that work off the camera. Today, you draw a motion zone on any feed, and Twin watches only that area for changing pixels. A loading-dock camera from several years ago can raise an alarm when someone moves near the door, with no built-in analytics. See [Motion Zones](motion-zones.md).
+
+Detection today is motion inside the zones you draw. It does not recognize people, vehicles, or plates. Understanding what a camera sees is the direction we are building toward, not a feature you can use today.
+
+### Where do you keep the recordings?
+
+You can keep clips on the Twin host, or send an encrypted copy to your own Amazon S3, Google Cloud Storage, or Walrus storage. You pay your storage provider directly, and your own retention policy applies. See [Cloud Archive](cloud-archive.md).
+
+### What changes when video sits next to your sensors?
+
+Each camera becomes a device in Kilo, with a **Camera motion** reading and a **Camera status** reading. Rules, alarms, and dashboards treat them like any temperature or door sensor. Today a rule can combine a camera's motion with a door sensor's state and raise an alarm. Because both live in one platform, later automations can reach across the two kinds of device.
+
+### How does video help physical AI?
+
+Physical AI means AI that acts in the real world, including robots, machines, and buildings. A robot only knows what its own sensors report. Kilo is the operating system that lets those devices share context, and cameras are a rich source of it.
+
+Here is an illustration, not a shipped feature. A security robot patrols a university campus. A wireless sensor on a door on the far side of the campus reports that it opened after hours. Because both are connected to Kilo, the door event is visible to every connected system, and a camera pointed at that door provides the picture. In the same way, a camera that reads a license plate could pass the result to a gate controller. We describe these as examples of what cross-device automation makes possible. Lens does not read plates today. For how Kilo governs AI that acts on devices, see [Physical AI](../physical-ai.md).
 
 ## What does Lens add to the cameras you already have?
 
@@ -79,7 +118,7 @@ Create [videowalls](videowalls.md) to save selected feeds in layouts tailored to
 1. [Install Twin](installing-twin.md) at the camera's site.
 2. [Connect and pair the camera](connecting-a-camera.md) with the correct Kilo organization.
 3. [Open live video](watching-live-video.md).
-4. Configure motion, a rule, and optional [local recording](local-recordings.md).
+4. Configure motion, a rule, and optional [local recording](local-recordings.md) or a [cloud archive](cloud-archive.md).
 
 Download Twin from the official [chirpiot/lens-twin Docker Hub repository](https://hub.docker.com/r/chirpiot/lens-twin). Organization permissions control who can use Lens; [access and troubleshooting](access-and-troubleshooting.md) explains the current requirements.
 

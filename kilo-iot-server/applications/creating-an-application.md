@@ -4,7 +4,7 @@ description: "Create a Kilo application, give it a clear name and description, a
 
 # Creating an Application
 
-Create an application to assemble the resources for an IoT solution your team will use. This guide covers building the application yourself: you create its name and description, then configure and assign its devices, dashboards, rules, and alarms. Applying a prepared template is a planned alternative, explained in [Applications](README.md). Choose a name that tells operators what the solution does, such as **Building Monitoring**.
+Create an application to assemble the resources for an IoT solution your team will use. This guide covers building the application yourself: you create its name and description, then configure and assign its devices, dashboards, rules, and alarms. If you would rather start from a finished setup, [install a solution](installing-a-solution.md) instead; the result is an application just like this one. Choose a name that tells operators what the solution does, such as **Building Monitoring**.
 
 You must be a member of the current organization. Applications have no separate management permission; viewing or editing their devices, dashboards, rules, and alarms still requires the corresponding resource permissions. Check the organization selector before creating the application, particularly if you manage several customers or sites.
 
@@ -28,3 +28,5 @@ Open the application and use its edit action to change **Application name** or *
 You can also create an application from an **Application** selector using **Add new application** while configuring a resource. Complete the resource's own save action after choosing the new application.
 
 Next, [assign the resources](organizing-content.md) that deliver the intended outcome.
+
+For a tour of every element of the My applications list and of the application page, see [How do I use the My applications tab?](my-applications-tab.md).

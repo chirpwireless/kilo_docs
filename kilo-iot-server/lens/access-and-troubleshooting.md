@@ -8,7 +8,7 @@ Lens cameras belong to an organization. Managing access through Kilo lets a team
 
 ## Required access
 
-The current Lens workspace requires permission to manage cameras. Access to related rules, alarms, and devices is controlled separately. If a team member cannot open Lens or select a resource, check their organization and permissions first.
+The Lens workspace requires **Edit** access to Cameras. **View** access is not enough for Recordings, Cameras, Videowalls, or Storage, and a person with **No access** does not see them. Access to related rules, alarms, and devices is controlled separately. If a team member cannot open Lens or select a resource, check their organization and permissions first.
 
 Organization membership and subscription capacity are also relevant when adding a camera. A Twin key identifies one installation; it cannot be used to create duplicate camera identities across organizations.
 
@@ -38,7 +38,10 @@ Keep the original Twin configuration volume so its identity remains the same. Re
 | Lens cannot reach the service | Check the platform service connection and whether the camera was created before retrying. |
 | Camera is online but video fails | Check the selected video stream, codec settings, and the network path between the browser, cloud, and Twin. |
 | No motion readings arrive | Check Motion mode, detector settings, areas, timetable, and external-condition restrictions. |
-| Recordings disappear earlier than expected | Inspect both storage-size and recording-age cleanup limits. |
+| Recordings disappear earlier than expected | Inspect both storage-size and recording-age cleanup limits on the camera's **Storage** tab. The age limit also removes cloud backups, and **Limit cloud storage** removes the oldest cloud copies when the cloud size limit is passed. |
+| Cloud archive says the camera must be updated | Cloud archive needs Twin 1.1.0 or later. Update the Twin container, then check the camera's storage settings. Until then it records locally. |
+| An archived recording plays but will not seek | The storage does not support partial reads. With Walrus, use an aggregator that supports range requests. See [Cloud Archive](cloud-archive.md). |
+| A recording is labeled **Unreadable**, **Archive disconnected — key erased**, or **Storage period ended** | **Unreadable** means the upload was damaged and the file cannot be played; it still uses storage space, so record again. **Archive disconnected — key erased** means storage was disconnected and the platform erased its keys. **Storage period ended** means a Walrus paid period is over. See [Cloud Archive](cloud-archive.md). |
 
 For **local Twin viewing**, a WebRTC initialization failure causes a switch to SD only if the source exposes an SD stream. Otherwise, Twin reports the stream as unavailable. This recovery behavior belongs to Twin's local dashboard and does not describe the cloud Lens player. Verify camera reachability and source configuration if playback remains unavailable; selecting another viewing mode does not repair a disconnected source.
 

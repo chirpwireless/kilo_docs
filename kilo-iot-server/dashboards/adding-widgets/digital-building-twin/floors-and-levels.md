@@ -50,7 +50,7 @@ A typical rhythm: work in **Solo** so each floor is uncluttered while you build 
 
 ## What the dashboard shows
 
-The dashboard tile renders the model from the camera angle and view mode you leave the editor with. For a multi-floor building, framing the model in **Stack** with a slight 3D tilt gives the dashboard a clear, whole-building view. If a particular floor is what matters most — the production floor, the floor with the critical cold store — frame that one and save.
+The dashboard tile renders the model from the camera angle, view mode and level you leave the editor with, including the pan offset, and shows it as saved without re-centering on the building. For a multi-floor building, framing the model in **Stack** with a slight 3D tilt gives the dashboard a clear, whole-building view. If a particular floor is what matters most — the production floor, the floor with the critical cold store — frame that one and save.
 
 ## Tips
 

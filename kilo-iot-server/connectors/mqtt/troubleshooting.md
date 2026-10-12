@@ -18,9 +18,12 @@ Before working through the phases below, let the platform tell you which one you
 |-----------------|-----------|------------|
 | `connection refused` / `network unreachable` (Cloud MQTT) | Wrong host, port, or scheme | Verify the publisher uses `mqtts://` on port 1884 — not the default 1883. Re-copy the Broker URL from the connector page. |
 | `connection refused` / `network unreachable` (External MQTT) | Network reachability | The platform connects out to your broker. Verify the broker is reachable from the public internet (DDNS hostname resolves, port forward active, firewall allows the platform's egress range). |
-| `bad TLS handshake` / `certificate verify failed` | TLS configuration | For Cloud MQTT, the certificate is publicly-trusted — verify the publisher uses the system CA store. For External MQTT, verify CA Certificate, Client Certificate, and Private Key files were uploaded as separate files (not pasted PEM content), and that the Private Key was unencrypted at upload. |
+| `bad TLS handshake` / `certificate verify failed` | TLS configuration | For Cloud MQTT, the certificate is publicly-trusted — verify the publisher uses the system CA store. For External MQTT, verify CA Certificate, Client Certificate, and Private Key files were uploaded as separate files (not pasted PEM content), and that the Private Key was unencrypted at upload. If the broker's certificate names a different host than the URL, set **Server name (SNI)** to the name on the certificate; if a private CA signed it, upload that CA under **CA Certificate**. |
+| Broker closes the connection immediately after connect (External MQTT) | Protocol version mismatch, or the broker's access rules reject the connection | Set **MQTT version** to the version the broker supports (older brokers often need **3.1.1**), and check the broker's access rules for the account Kilo signs in with. |
 | `authentication failed` / `not authorized` | Wrong credentials | Re-verify Username and Password. For Cloud MQTT, if the password was lost, rotate from the connector settings (the original is not retrievable). For Basic auth on External MQTT, check the broker's password file is correct. |
 | `auth failed (JWT)` | Token issues | Verify the JWT is valid (not expired), signed with the correct key for the broker's validator, and has the required claims (subject, topic permissions). |
+
+If your own broker restarts or the network drops for a short time, the External MQTT connection recovers by itself: Kilo reconnects and re-subscribes to your **Topics to read** without any action on your side. Check **Last data received** after the broker is back before assuming anything is wrong.
 
 For Z2M-bridged setups specifically, the Z2M log shows the connection state explicitly:
 

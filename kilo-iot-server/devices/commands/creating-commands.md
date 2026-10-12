@@ -30,7 +30,7 @@ Routing tells the platform *where* and *how* the message is addressed. The field
   * For an External MQTT connection, enter the full topic exactly as it is published on your broker (for example `devices/light-01/cmd`).
   * A topic must be at most 500 characters, must not contain the wildcards `#` or `+`, must not have empty segments (`a//b`), and must not begin with `iot/`, `external/`, or `external-downlink/` — those prefixes are reserved for the platform's own traffic.
 * If another command on the same connection already publishes to the topic you enter, the editor flags the overlap so you can avoid accidentally colliding two actions on one topic.
-* fPort and Confirmed downlink do not apply to MQTT — those are LoRaWAN settings.
+* fPort and Confirmed downlink do not apply to MQTT — those are LoRaWAN settings. (MIOTY has its own **Delivery** switch, described below.)
 
 ### LoRaWAN devices
 
@@ -43,7 +43,12 @@ Routing tells the platform *where* and *how* the message is addressed. The field
 
 ### MIOTY devices
 
-The current command editor does not yet provide a complete MIOTY routing workflow. An **fPort** field is for LoRaWAN and cannot be used to address a MIOTY endpoint. The LoRaWAN instructions are not a MIOTY setup procedure.
+A MIOTY downlink is addressed by the endpoint itself, so the editor shows no fPort and no MQTT topic. Where a LoRaWAN command has a **Routing** step, a MIOTY command has **2. Delivery**, which holds one switch for how the device confirms receipt:
+
+* **On — the device answers right after it receives the command.** The confirmation comes back at once.
+* **Off — the confirmation comes with the next scheduled uplink.**
+
+The editor reminds you that a MIOTY downlink is sent after the next uplink in which the device opens a receive window, so a command is not delivered the instant you press send; plan for the device's reporting rhythm. Both payload modes are offered, and an encoded command always carries its own encoder, because there is no codec on the MIOTY path. All three verification strategies are available. If the service center reports no result before its deadline, the execution says *Delivery outcome unknown: the mioty service center reported no result by the deadline.* instead of guessing. See [MIOTY Devices](../mioty-devices.md).
 
 ### Emulated devices
 

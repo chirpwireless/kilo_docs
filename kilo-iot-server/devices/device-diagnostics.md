@@ -43,6 +43,8 @@ While the block is loading you see **Loading reception status…**. If the diagn
 | **Waiting for first data** / **Waiting for the first uplink** / **No uplinks received yet** | The device record exists but the platform has never received anything from it. | Give it one reporting interval to transmit. If the window passes, work through **WHAT TO CHECK** below — and if the unit was ever used on another network, see [Before anything arrives: joining the network](#before-anything-arrives-joining-the-network). |
 | **Reached network — waiting for data** | `Joined the network · no uplinks yet`. For a LoRaWAN device this is good news: credentials are correct and the radio link works. The device has simply not sent a payload yet. | Wait one reporting interval. If it stays here, the device is joining but not transmitting — check its sending schedule and power state. |
 
+**The status keeps itself current.** You do not need to reload the page to see a change. Last-seen time is re-read about every 30 seconds while the page is open, and the label and status dot age on their own clock, so a device that has stopped reporting moves from green to grey in front of you instead of sitting on "Just now" until someone refreshes. A device that sends once a minute stays green between readings. The same live status is used in the Devices list, text widgets, info cards and the devices listed inside an application.
+
 One more supporting line appears when a device is configured but idle: `{{count}} sensors configured · 0 receiving values`. Your sensors exist, but none of them is being fed. Treat it the same way as *Data arrives but nothing is stored* — the mapping is where to look.
 
 ### Before anything arrives: joining the network

@@ -36,11 +36,11 @@ Registration is a three-step flow. It produces two artifacts you must carry to t
 The second step presents everything the hardware needs. Do not skip past it — this is where the certificate bundle is produced.
 
 1. Copy the **BSSCI Address** using the copy control. A toast confirms: *"Url has been successfully copied"*. This is the service center endpoint your station will hold its session to.
-2. Download **certs.zip**. The bundle contains the certificate pair this station presents when it authenticates over mTLS.
+2. Download **certs.zip**. The bundle contains the certificate pair this station presents when it authenticates over mTLS. This first download is also the only moment the private key (`client.key`) is available, because a later **Download current certificate** returns only `ca.crt` and `client.crt`.
 
 <figure><img src="../../../.gitbook/assets/mioty-bs-add-bssci-certs.jpg" alt="Step two showing the BSSCI address with its copy control and the certs.zip download"><figcaption></figcaption></figure>
 
-Store `certs.zip` with the same care you give any production credential. It identifies the station; anyone holding it can present as that station. If it is ever mishandled, you can issue a fresh pair from the station's Settings — see [Base station monitoring](base-station-monitoring.md).
+Store `certs.zip` with the same care you give any production credential. It identifies the station; anyone holding it can present as that station. If it is ever mishandled or the key is lost, you can issue a fresh pair from the station's Settings — see [Base station monitoring](base-station-monitoring.md).
 
 ### Step 3 — Confirmation
 

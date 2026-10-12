@@ -6,7 +6,7 @@ description: "Open the dashboards linked to a Kilo application, switch between t
 
 The **Dashboard** tab presents the dashboards associated with an application. It gives operators a direct route from a solution's name to the measurements and controls they use, while the **Content** tab provides the underlying resource inventory.
 
-A Building Monitoring application can have separate dashboards for environmental conditions and equipment operation. Associate each dashboard with the application through its **Application** field.
+An application installed from a [solution](installing-a-solution.md) arrives with its dashboard already assigned and bound to its devices. A Building Monitoring application can have separate dashboards for environmental conditions and equipment operation. Associate each dashboard with the application through its **Application** field.
 
 <figure><img src="../../.gitbook/assets/kilo-applications-dashboard-assignment.jpg" alt="Kilo Applications: Choose the application in the dashboard editor."><figcaption><p>Choose the application in the dashboard editor.</p></figcaption></figure>
 

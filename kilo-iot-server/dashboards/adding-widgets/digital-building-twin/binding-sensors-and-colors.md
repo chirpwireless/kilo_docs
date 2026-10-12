@@ -60,7 +60,7 @@ Conditions are evaluated in order, and the **first one that matches wins**. If n
 
 ## Step 5 — Test it
 
-A binding's editor includes a **Value** slider. When the bound sensor isn't sending live data yet, drag the slider and watch the bound objects recolor in real time — it's the fastest way to confirm your conditions before the model goes on a dashboard. Once the device is reporting, the binding shows the real **Current value** and the model reflects live readings.
+A binding's editor includes a **Value** slider. When the bound sensor isn't sending live data yet, drag the slider and watch the bound objects recolor in real time — it's the fastest way to confirm your conditions before the model goes on a dashboard. Once the device is reporting, the binding shows the real **Current value**, rounded to at most two decimals for readability, and the model reflects live readings.
 
 ## Worked examples
 

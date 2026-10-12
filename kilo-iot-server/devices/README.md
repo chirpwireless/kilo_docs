@@ -10,6 +10,18 @@ This is useful whenever the equipment you care about lasts longer than the senso
 
 <figure><img src="../../.gitbook/assets/deviceslist.jpg" alt="Kilo Devices list showing the digital devices in a deployment"><figcaption><p>Each entry is a digital device with its own identity, configuration, and measurements.</p></figcaption></figure>
 
+## What does the Devices page show?
+
+Open **Devices** in the main menu.
+
+<figure><img src="../../.gitbook/assets/kilo-devices-list.jpg" alt="The Devices page with a Search by name box, Metrics and Add device buttons, and a table of devices with Status and Creation date columns and Edit, Clone, and Delete buttons on each row"><figcaption><p>The Devices page in a demo organization. A green dot and a time such as "4 mins ago" mean the device reported recently.</p></figcaption></figure>
+
+- **Add device** (top right) starts the registration flow for a new device. See [Registering Devices](registering-devices.md).
+- **Metrics** opens the shared metric catalog. See [Metrics](metric-templates.md).
+- **Search by name** filters the list as you type.
+- The **Device name** and **Creation date** headers sort the table. The **Status** column shows when each device last reported; the time and the dot update on their own while the page is open, so you do not need to refresh.
+- **Edit** opens the device editor (see [Emulated Devices](emulated-devices.md#what-does-each-tab-of-the-device-editor-show) for a tour of its tabs), **Clone** creates a copy, and **Delete** removes the device after a confirmation.
+
 ## How an IoT digital twin connects to hardware
 
 Three parts work together:

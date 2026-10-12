@@ -6,7 +6,7 @@ description: "Record video locally for a Kilo Lens camera in Twin, using motion 
 
 Twin can save video on the Docker host at the camera's site. Local recording is useful when the team needs clips to review after an event or a continuous record for a configured period. Recording is disabled on a new Twin until you enable it.
 
-These settings and recordings are accessed through the camera's local Twin interface. Allocate persistent recording storage before enabling them; see [Installing Twin](installing-twin.md).
+You can change these settings in the camera's local Twin interface or from the camera's **Recording** and **Storage** tabs in Lens; see [Camera Detail Page: Every Tab Explained](camera-detail-settings.md). Allocate persistent recording storage before enabling them; see [Installing Twin](installing-twin.md).
 
 ## Choose a recording mode
 
@@ -40,7 +40,7 @@ In **Recording schedule**, select **Timezone**, enable **Use schedule**, and con
 In **Settings → Storage → Automatic cleanup**, enable one or both limits:
 
 - **Limit by total size**: set **Maximum recordings folder size (MB)**. The oldest recordings are removed when the folder exceeds this size.
-- **Limit by age**: set **Delete clips older than (days)** to remove recordings after your retention period.
+- **Limit by age**: set **Delete clips older than (days)** in Twin to remove recordings after your retention period. In Lens the same setting is called **Maximum recording age (days)**, and it also applies to cloud backups, so a cloud copy is removed when it reaches the same age.
 
 Select **Save**. When both limits are enabled, reaching either limit can remove a recording. Download clips you must retain separately before cleanup removes them.
 
@@ -53,6 +53,10 @@ Open **Recordings** in Twin, select the relevant date range, and open a recordin
 <figure><img src="../../.gitbook/assets/kilo-lens-local-recordings.jpg" alt="A saved camera clip playing in Twin with a Download button"><figcaption><p>Review the saved clip in Twin or download it for later inspection.</p></figcaption></figure>
 
 Check the recorded time, picture, and expected pre/post-event context during commissioning. A selected motion area determines what triggers a clip; it does not crop the saved image to that area.
+
+## Can I keep a copy of recordings in the cloud?
+
+Yes. A local disk is one failure away from losing a clip. With Twin 1.1.0 or later, you can also upload an encrypted copy of each recording to your own Amazon S3, Google Cloud Storage, or Walrus storage and play it back from **Recordings** in Lens. See [Cloud Archive](cloud-archive.md).
 
 ## Use an external recording condition
 

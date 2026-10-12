@@ -39,6 +39,7 @@ The Overview tab is the operational read on a single station:
 - **BSSCI URL** — the service center endpoint for this station. A copy control puts it on the clipboard, with a toast to confirm.
 - **Creation date** — when the station was registered.
 - **Last seen** — the most recent communication from the station.
+- **Reported status** — a collapsible card above the map shows what the station itself last reported, grouped the way Kilo Center shows it. **Performance Metrics** covers **Temperature**, **CPU Load**, **Memory Load**, **Duty Cycle** and **BS Config**. **System Information** covers **System Time**, **Uptime** and **Last Status Update**. A value the station has not reported reads **Not available** rather than a misleading zero, and the EUI and BSSCI address are not repeated here, because the Settings tab shows both. This is the page to open when a station is online but misbehaving: a hot enclosure, a saturated duty cycle or a stale status update points at the cause before anyone drives to the site.
 - **Map** — once coordinates are set, the station appears as a marker in its real position.
 
 ### Settings tab
@@ -49,13 +50,20 @@ The Settings tab is where you change what the station is and how it authenticate
 
 - **Name** — the station's display name across the fleet view.
 - **Description** — free-text detail.
-- **Coordinates** — latitude, longitude, and altitude. Altitude is worth entering accurately on multi-story or mast installations; a station on a 40 m stack and one at grade cover very different footprints from the same map pin.
+- **Coordinates** — latitude, longitude, and altitude. Altitude is worth entering accurately on multi-story or mast installations; a station on a 40 m stack and one at grade cover very different footprints from the same map pin. Latitude must be between -90 and 90, longitude between -180 and 180, and they are set together (*Set latitude and longitude together*); altitude needs both. Emptying the location clears it. If Kilo Center refuses a save, you see its own message instead of a generic error.
+
+  **A GPS station keeps its own position.** When the station reports a GPS position, the location fields are read-only and say *The location comes from the base station GPS and cannot be changed here.* That prevents a hand-typed pin from overriding the real one. If a GPS-equipped station has no fix yet, the fields stay editable and what you enter is saved as a manual placement, so a station mounted indoors or under cover can still appear on the map.
 
 Click **Save changes**. A toast confirms *"Base station updated"*. If the change cannot be applied, the toast reads *"Failed to update base station"* — the station's stored configuration is unchanged, so correct the input and save again.
 
 **Read-only identity:** the **Base station EUI** is fixed after registration. It has a copy control, with a toast on copy, as does the BSSCI address.
 
-**Regenerate certificate** — issues a fresh `certs.zip` for this station and downloads it. A card remains on the page so you can download the bundle again without repeating the operation. The station must be reconfigured with the new certificate pair; until it is, it cannot re-establish its BSSCI session.
+**Base station certificate** — downloading and issuing are separate actions, so looking at a certificate never replaces it:
+
+- **Download current certificate** returns `ca.crt` and `client.crt` for the certificate already in use. It does not include the private key.
+- **Issue certificate** (first time) and **Regenerate** create a new certificate, after a confirmation that explains the consequence: the base station can no longer connect with its current certificate until the new one is installed. Only this download includes the private key, `client.key`. The page warns *Keep client.key: it cannot be downloaded again.* Store the archive immediately.
+
+The station must be reconfigured with the new certificate pair; until it is, it cannot re-establish its BSSCI session. The registration wizard and Settings share the same certificate panel.
 
 **Delete base station** — removes the station from your organization. You are returned to the gateways list, and a toast confirms *"Base station deleted"*. If the operation fails, the toast reads *"Failed to delete base station"* and the station remains.
 

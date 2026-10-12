@@ -36,6 +36,14 @@ To come back and change the model later, open the dashboard in edit mode and ope
 
 ## What it looks like on the dashboard
 
+The dashboard page itself is where the model lives day to day.
+
+<figure><img src="../../../../.gitbook/assets/kilo-dbt-dashboard.jpg" alt="A dashboard named IP500 demo Office 3D showing a three-dimensional office floor plan with colored rooms and value labels, a camera pan control at the bottom right, and an Actions button at the top right"><figcaption><p>A dashboard with a Digital Building Twin tile. Rooms take their color from sensor readings, and the small labels show live values. The arrow pad at the bottom right of the tile pans the view. This is a demo dashboard.</p></figcaption></figure>
+
+The **Live Data** indicator beside the dashboard title shows that readings are arriving. To change the model, open **Actions** at the top right.
+
+<figure><img src="../../../../.gitbook/assets/kilo-dbt-actions-menu.jpg" alt="The same dashboard with the Actions menu open, listing Share dashboard, Edit dashboard, and Delete dashboard"><figcaption><p>The Actions menu offers Share dashboard, Edit dashboard, and Delete dashboard. Choose Edit dashboard to switch to edit mode and reach the widget settings.</p></figcaption></figure>
+
 Once saved, the widget renders on the dashboard grid like any other tile: it sits in the dashboard's folder hierarchy, follows organization-level sharing and access permissions, and resizes on the grid. The dashboard view is read-only — it shows the model with live colors and value markers, but editing happens only inside the full-screen editor.
 
 If you saved the model in the 2D plan view, the dashboard shows the flat blueprint. If you saved it in the 3D view, the dashboard shows the three-dimensional scene. The camera angle and zoom you leave the editor with are the angle and zoom the dashboard tile opens at.

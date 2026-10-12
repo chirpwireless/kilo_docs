@@ -73,6 +73,7 @@ When a command lands on **Soft warning** or **Failed**, the Details column names
 | Payload too large for the device. | The encoded payload exceeds what the device accepts at its current data rate. |
 | Sent, but the device didn't confirm receipt. | The downlink went out but no acknowledgment came back (confirmed downlinks). |
 | Sent, but the device didn't confirm the expected state in time. | Delivered, but the expected sensor state didn't arrive within the convergence window. |
+| Delivery outcome unknown: the mioty service center reported no result by the deadline. | A MIOTY command left, but the service center gave no result in time. Check the device's next uplink before sending again. |
 | Device offline — command not delivered in time. | The device wasn't reachable within its receive window. |
 | No gateway available to reach the device. | No gateway was in range to transmit the downlink. |
 | Broker authentication failed. | The MQTT connection rejected the publish — check the connector's credentials. |

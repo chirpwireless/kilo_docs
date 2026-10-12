@@ -33,7 +33,7 @@ Select any object and a properties panel opens with the settings for that specif
 * **Walls** — Length, Height, Thickness, and a **Material** grid (white, brick, concrete, wood, glass, metal, plaster, tile, marble, or a custom color).
 * **Doors and windows** — Width, Height, position along the wall, hinge side and swing direction for doors, sill depth for windows.
 
-Every selected object also gets an inline action badge floating above it in the scene, with quick **Move**, **Duplicate**, and **Delete** buttons.
+Every selected object also gets an inline action badge with quick **Move**, **Duplicate**, and **Delete** buttons. The badge works in the **2D view** as well as in 3D, so you can lay out and rearrange a floor entirely from the top-down plan. The properties panel offers **Duplicate** for every kind of object, not only catalog items.
 
 ## Moving the camera
 
@@ -42,7 +42,7 @@ The editor has two camera modes, switched from the floor selector (see below):
 * **3D view** — orbit freely. Left-drag rotates, right-drag pans, the scroll wheel zooms. Hold **Space** to make left-drag pan instead of rotate.
 * **2D view** — a straight top-down plan view. Rotation is locked; you can only pan and zoom. This is the cleaner view for laying out walls and reading a floor plate.
 
-The camera angle and zoom you leave the editor with become the angle the dashboard tile opens at, so frame the view deliberately before you save.
+The camera you leave the editor with is saved with the widget and becomes the view the dashboard tile opens at, so frame it deliberately before you save. The editor remembers the live camera when you switch between **Edit** and **Preview** and when you go from 3D to 2D and back, so a quick check in 2D never costs you your carefully set angle. The pan offset from the arrow controls is saved too, and a scene you save while in 2D still keeps its 3D angle for the next time someone opens it in 3D. The dashboard shows the saved view exactly as framed, without re-centering on the building.
 
 ## The floor selector
 

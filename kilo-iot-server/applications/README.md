@@ -1,60 +1,48 @@
 ---
-description: "Build complete IoT solutions with Kilo Applications: the devices, dashboards, rules, and alarms for one job."
+description: "Install a ready-made IoT solution in one click and get devices, rules, alarms, and dashboards already working. Or assemble your own application."
 ---
 
-# Applications
+# Applications and Solutions
 
-An **application** is an IoT solution assembled for a particular job. It brings together the devices that collect information, the dashboards that show it, the rules that respond, and the alarms that notify people. For example, a **Leak Monitoring** application could contain a building's leak detectors, a floor dashboard, and the rules and notifications that help the maintenance team respond.
+Imagine opening Kilo, choosing a solution such as **Building Monitoring**, and pressing **Install solution**. Seconds later you have working virtual devices streaming realistic readings, a rule that reacts to them, an alarm that is ready to notify you, and a live dashboard. Nothing to build first. When your real sensors arrive, you swap the virtual devices for them, and the dashboard, rules, and alarms keep working.
 
-A dealer is a business that sells and sets up solutions for its customers—for example, leak management, home security, vehicle tracking, or refrigeration monitoring. Each type of solution needs its own devices, dashboards, widgets, rules, and alerts. Applications brings those parts together so the dealer can configure a complete solution around the service they provide.
+That is what **Applications and Solutions** give you. An **application** is a working bundle of devices, dashboards, rules, and alarms for one job. A **solution** is an application that a dealer has prepared and published, so any customer can install a copy of it with one click. If you want the full picture, read [What are solutions and applications in Kilo?](what-are-solutions-and-applications.md).
 
-**The planned template workflow lets the dealer configure the solution once and customers apply it to their own setup.** The customer would choose a prepared solution and have its digital devices, dashboards, widgets, rules, and alarms created together, with their relationships already configured. They would then connect their real equipment, or replace the prepared devices' simulated inputs with real device connections, so the dashboards and automation can use their readings. They would not have to build every view and rule from scratch. That makes it easier for customers to get started, while the dealer can reuse the setup across customers with the same need.
+<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="Two solution cards in the Kilo Solutions tab: Building Monitoring and IP500 demo Smart Office, each showing counts of virtual devices, rules, widgets, and alarms"><figcaption><p>Solution cards show what an install will create. This example comes from a test organization.</p></figcaption></figure>
 
-You can create an application and assemble its resources yourself today. Publishing and applying reusable templates are planned capabilities.
+## Why does installing a prepared solution change how you roll out IoT?
 
-<figure><img src="../../.gitbook/assets/kilo-applications-dashboard.jpg" alt="Kilo application displaying its assigned dashboard"><figcaption><p>An application's Dashboard tab provides a place to use the views configured for that solution.</p></figcaption></figure>
+Setting up a monitoring use case normally means many small decisions: which devices, how their readings are named, which dashboard, which rule, who gets the alarm. A dealer who has done a job many times has already made those decisions. A solution packages them.
 
-## What makes up a solution?
+* **See it working before you own the hardware.** Every device in a solution starts as a virtual device on the Emulator connector, so the dashboard is alive the moment you install.
+* **Go live without rebuilding anything.** You swap each virtual device for a real LoRaWAN, MIOTY, MQTT, or tracker connection. Mappings, rules, and widgets stay intact. See [How do I swap the Emulator for real devices?](swapping-the-emulator-for-real-devices.md).
+* **Skip the learning curve.** A newcomer can open a finished setup and learn by looking at it. A professional starts from a proven baseline and adjusts it.
+* **Roll out repeatedly.** A dealer configures a solution once and every customer installs the same proven setup.
 
-Consider a dealer setting up leak monitoring for a property manager. Each part has a job:
+## Where do you start?
 
-| Part | Example in Leak Monitoring |
+| You want to | Go to |
 |---|---|
-| Devices | Digital devices connected to leak sensors in the building. |
-| Dashboards | A view showing sensor readings and the locations being monitored. |
-| Rules | Conditions that recognize a leak reading and run the configured response. |
-| Alarms | Notification definitions specifying the message, recipients, and delivery behavior. |
+| Understand the vocabulary: application, solution, use case | [What are solutions and applications in Kilo?](what-are-solutions-and-applications.md) |
+| Look through ready-made solutions | [How do I browse and preview solutions?](browsing-and-previewing-solutions.md) |
+| Put a solution to work | [How do I install a solution?](installing-a-solution.md) |
+| Learn every part of the My applications tab | [How do I use the My applications tab?](my-applications-tab.md) |
+| Replace virtual devices with your own | [How do I swap the Emulator for real devices?](swapping-the-emulator-for-real-devices.md) |
+| Prepare a solution for your customers (dealers) | [How do I publish a solution?](publishing-a-solution.md) |
+| Understand how problems and industries are organized | [What are use cases in Kilo?](use-cases.md) |
+| Learn why Kilo can be both unlimited and easy | [Is Kilo powerful and easy to use?](why-kilo-is-powerful-and-easy.md) |
 
-The application brings these configured resources together under a recognizable name. A second application could serve space utilization or vehicle tracking, with its own equipment and workflows. Your team can open the solution it needs without searching through every device, dashboard, rule, and alarm in the organization.
+## What if you want to build your own application?
 
-Creating the application does not configure those relationships automatically. A dashboard still needs widgets bound to the appropriate devices, and a rule must refer to the alarm definition it should use. Configure those connections and assign the resources to the application.
-
-## An application and a template have different roles
-
-An **application** is the setup in your organization: the particular devices, dashboards, rules, and alarms you work with. A **template** is the planned reusable configuration from which a customer could create an application of their own.
-
-The intended workflow is:
-
-1. **The dealer configures the solution once.** They prepare digital devices, dashboards and their widgets, rules, and alarm definitions, including the connections between them.
-2. **The dealer publishes a template.** Customers with the same need can choose that prepared configuration.
-3. **The customer applies the template.** Their own application is created with its digital devices, dashboards, widgets, rules, and alarms already configured together.
-4. **The customer connects real equipment.** They connect their sensors or trackers to the prepared digital devices and adapt installation-specific settings. The configured dashboards and rules then use that equipment's readings without being rebuilt.
-
-Template publishing and installation are planned. This workflow explains where Applications is heading; the current setup steps are below.
-
-## What you can do now
-
-You can create and name an application, assign devices, dashboards, rules, and alarm definitions, view its dashboards, and inspect its content. This is useful when building a solution yourself or maintaining a setup for an operations team.
+You always can. An application you create yourself is exactly the same kind of object as an installed solution; you assemble it from the devices, dashboards, rules, and alarms you already have.
 
 1. [Create an application](creating-an-application.md) for a specific outcome, such as Building Monitoring.
-2. Configure its devices, dashboards, rules, and alarm definitions through their normal platform workflows.
+2. Configure its devices, dashboards, rules, and alarm definitions through their normal workflows.
 3. [Assign those resources](organizing-content.md) using each resource's **Application** field.
 4. Open **Applications → My applications**, select the application, and use **Dashboard** for its views or **Content** for the resources behind them.
 
-An application can contain several dashboards. For example, Building Monitoring could have a daily overview and a detailed environmental view. See [Using Application Dashboards](using-application-dashboards.md) for viewing and editing them.
-
-Applications belong to the current organization. Users still need the relevant permissions to view or manage their contents; assigning a resource to an application does not grant additional access.
+An application can contain several dashboards. See [Using Application Dashboards](using-application-dashboards.md). Applications belong to the current organization; users still need the relevant permissions to view or manage their contents, and assigning a resource to an application grants no additional access.
 
 Content counts show the size of each resource category. **0** means it is empty. A dash means the count is unavailable, for example because access is missing or the category could not be loaded.
 
-When retiring a solution, review [Deleting an Application](deleting-an-application.md) first: deletion also removes its associated resources. Move anything you need to keep to another application or **Default** before deleting.
+When retiring an application, review [Deleting an Application](deleting-an-application.md) first: deletion also removes its associated resources.

@@ -67,10 +67,12 @@ Use the topic telemetry editor when the **value itself appears in a topic segmen
 | --- | --- |
 | **Add new topic** | Adds a row with a pinned **value** segment. Add text/Device ID segments to match the publisher. |
 | **MQTT Topic for telemetry** | For this example, build `meters/{{deviceId}}/voltage/{{value}}`. The value segment identifies the reading `230.5`; it is not the word `voltage`. |
-| **value** segment | Always present in this editor and cannot be removed. It can be repositioned with the segment controls to match the publisher's topic. |
-| **Device data key** | Required for a value-extraction row. Enter the name under which the extracted reading should appear, such as `voltage`. Map this key to a measurement on **Mapping**. |
+| **value** segment | Optional. A caption under the row tells you which mode it is in: **The value is read from the value segment of the topic**, or **No value segment: the value is read from the message payload**. Reposition the segment to match the publisher's topic, remove it when the reading travels in the message body, and add it back at any time. |
+| **Device data key** | Required on every telemetry row, with or without a value segment (a row missing its key shows **Device data key is required** and cannot be saved). Enter the name under which the reading should appear, such as `voltage`. Map this key to a measurement on **Mapping**. |
 | Row remove control | Removes that telemetry rule from the edited configuration. Save to apply the removal. |
 | **Apply all** | Replaces every existing row's topic pattern with the device-ID topic plus a value segment, unless that pattern already contains one. It preserves the rows' data-key names. Review each row afterward and restore different literal segments such as `voltage` or `current` where needed. It does not create rows or save the device. |
+
+Some equipment publishes one reading per topic and puts the value in the message body instead, for example a controller that sends `device/260/ap/5/upload` with the body `0`. For that case, build the topic without a value segment and give the row a data key such as `outlet_state`. Kilo then stores the message body under that key. Before this was optional, such devices could not be set up in the web interface, and opening and saving one configured elsewhere could silently break its telemetry; now stored patterns are shown exactly as they are saved.
 
 In Payload identifier mode, telemetry rows omit Device ID and the message must still contain the identifier at the configured JSON path. A matching topic value takes precedence over a payload field with the same key.
 

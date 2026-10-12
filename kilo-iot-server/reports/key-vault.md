@@ -42,6 +42,17 @@ Click **Add your first key pair** to begin.
 
 ---
 
+## What is on the Key Vault page?
+
+<figure><img src="../../.gitbook/assets/kilo-key-vault.jpg" alt="The Key Vault page with an Add Key Pair button, a search box, a table with DevEUI / EP EUI and AppKey / Network Key columns, and Show key, Edit and Delete buttons on every row"><figcaption><p>The Key Vault page in a demo organization. Every key is a row of dots until you choose Show key; the EUIs are blurred in this screenshot.</p></figcaption></figure>
+
+From top to bottom, left to right:
+
+- **Add Key Pair** (top right) opens the dialog for a new entry.
+- The search box, labeled **Search by EUI or AppKey / Network Key**, filters the table as you type. See [Finding a Key Pair](#finding-a-key-pair).
+- The table has two columns: **DevEUI / EP EUI**, the identifier, and **AppKey / Network Key**, the secret, shown as a row of dots.
+- At the end of each row, **Show key** reveals that row's key (it becomes **Hide key**), **Edit** opens **Edit Key Pair**, and **Delete** removes the entry after confirmation.
+
 <figure><img src="../../.gitbook/assets/key-vault-list.jpg" alt="The Key Vault listing a stored DevEUI and its key, with search, Add Key Pair, Edit and Delete"><figcaption></figcaption></figure>
 
 ## What a Key Pair Contains
@@ -56,6 +67,12 @@ Each entry holds two fields:
 Both fields use the same form regardless of protocol, so a mixed LoRaWAN and MIOTY deployment keeps all of its credentials in one place.
 
 Values are stored encrypted. Only users with access to the Key Vault page can read them back.
+
+### Keys stay hidden until you ask
+
+A key is the one thing you do not want on a screen during a site walk-through or a screen share, so the list never shows one by default. Every key appears as a row of dots, and each row has its own **Show key** button, placed before **Edit** and **Delete**. Click it to reveal that key, and the button becomes **Hide key** to cover it again. Revealing one key does not reveal the others, and the column keeps its width, so the table does not jump around.
+
+The button is available to every user who can open the page, including those with view-only access, because reading a key you are already allowed to see needs no edit rights. Inside the **Add Key Pair** and **Edit Key Pair** dialogs the key field behaves like the one on the device form: a stored key is hidden, the characters show while you type or paste so you can check them against the label, and the field hides them again when you leave it or press Enter.
 
 ---
 

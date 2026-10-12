@@ -22,7 +22,7 @@ A pinned metric then offers two controls: **Re-pin** to move the marker to a new
 
 ## What a pin shows
 
-Each pin is a teardrop marker with a label floating above it. The label carries the metric's name and its current value with units — `Cold Store / Temperature  13.4 °C`. The marker and label are colored by the metric's conditions, exactly the way bound objects are colored: a reading in the "breach" band makes the pin red, a reading in the "compliant" band makes it green.
+Each pin is a teardrop marker with a label floating above it. The label carries the metric's name and its current value with units — `Cold Store / Temperature  13.4 °C`. Readings are rounded for display to at most two decimal places, with trailing zeros dropped, so a sensor that reports `15.392933316005998` shows as `15.39 °C`; text and other non-numeric readings are shown as they arrive. The marker and label are colored by the metric's conditions, exactly the way bound objects are colored: a reading in the "breach" band makes the pin red, a reading in the "compliant" band makes it green.
 
 So a pin does two jobs at once — it reports the precise number, and it shows status through color without anyone having to read the number at all.
 

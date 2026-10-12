@@ -36,7 +36,7 @@ Reopen **Edit** to add more feeds or remove a panel with its delete control. Sav
 
 ## Monitor the selected cameras
 
-Open a saved wall from the Lens sidebar. Each camera offers **Preview** and **Live** viewing modes. Preview displays periodically refreshed images; choose **Live** when you need continuous video. Use **Toggle fullscreen** to inspect a panel more closely.
+Open a saved wall from **Videowalls** in the Lens sidebar, which also holds **Live view**, **Recordings**, **Cameras**, and **Storage**. Each camera offers **Preview** and **Live** viewing modes. Preview displays periodically refreshed images; choose **Live** when you need continuous video. Use **Toggle fullscreen** to inspect a panel more closely.
 
 The wall shows viewer, online-panel, and stream counters. A panel reported offline displays **Camera is offline** in place of its preview snapshot, so the last image is not retained as a current view. **No preview available** identifies a missing preview without establishing the camera's connection state; use the [connection-state guidance](watching-live-video.md#interpret-connection-state) to investigate. The **HD streams** and **SD streams** labels describe the wall's viewing modes; the camera's configured source still determines the actual available image detail.
 

@@ -6,7 +6,7 @@ description: "Assign operational resources to Kilo applications and understand D
 
 An application's **Content** tab is an inventory of the resources behind a solution. For Building Monitoring, this might include temperature sensors, a facilities dashboard, an overheating rule, and an alarm definition for the response team.
 
-Create the resources through their normal platform workflows, then set their **Application** field. You need permission to edit the resource you are assigning.
+The same Content tab opens on an application installed from a [solution](what-are-solutions-and-applications.md), where everything the solution created is already listed and you can keep adding to it. Create further resources through their normal platform workflows, then set their **Application** field. You need permission to edit the resource you are assigning.
 
 <figure><img src="../../.gitbook/assets/kilo-applications-content.jpg" alt="Kilo Applications: The Content tab groups the application’s devices, dashboards, rules, and alarms."><figcaption><p>The Content tab groups the application’s devices, dashboards, rules, and alarms.</p></figcaption></figure>
 

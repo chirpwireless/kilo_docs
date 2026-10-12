@@ -44,7 +44,7 @@ Switch to **Select** and click an object to open its properties panel:
 * **Scale** — a single uniform scale, useful when a catalog object needs to be a little larger or smaller than its default size.
 * **Dimensions** — the object's measured size, shown for reference.
 
-The selected object also gets an inline badge floating above it with quick **Move**, **Duplicate**, and **Delete** buttons. **Duplicate** is the fast way to lay out repeated objects — place one desk exactly how you want it, then duplicate it down the row.
+The selected object also gets an inline badge floating above it with quick **Move**, **Duplicate**, and **Delete** buttons. **Duplicate** is the fast way to lay out repeated objects — place one desk exactly how you want it, then duplicate it down the row. A duplicate keeps the original's name instead of gaining a "copy" suffix, so copying one window fifty times does not leave fifty names to clean up (rename the ones you will bind sensors to). In the **2D view** the same badge is available, and **Move** works there too: pick the new spot on the plan and an item changes its floor position, while a door or window attaches to whichever wall you pick, the same way it does when first placed.
 
 ## Parking spots
 

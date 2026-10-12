@@ -6,11 +6,14 @@ description: Import an architectural DXF drawing into a Digital Building Twin �
 
 Most commercial facilities already have an architectural drawing. Rather than redraw a warehouse or office floor wall by wall, you can import that drawing directly. The editor reads **DXF** files — the interchange format every major CAD application can export — and converts the line work into walls on the current floor.
 
+The import is currently a **beta**: the dialog says *DXF import is in beta and may not work perfectly. Check the result after import.* Treat the preview as the proof, and expect that a clean architectural export reads better than a scanned or heavily converted drawing.
+
 This is the fastest way to a precise model: the geometry comes straight from the architect's plan, already to scale, and you spend your time furnishing and binding sensors rather than tracing.
 
 ## What you need
 
 * A `.dxf` file of the floor you want to model. Any CAD package — AutoCAD, BricsCAD, LibreCAD, and others — can export DXF.
+* A **text (ASCII) DXF** file. Binary DXF and DWG files are not supported; if the drawing is a DWG, save it as DXF from your CAD tool first.
 * The file is read entirely in your browser. Nothing is uploaded until you save the widget.
 
 ## Importing a file
@@ -40,7 +43,7 @@ The sidebar reports what the importer did:
 * **Arcs** and **Circles** — curved entities approximated as wall segments.
 * **Skipped entities** — drawing elements that aren't walls (text, dimensions, hatching) and were left out.
 
-Any **Warnings** explain what was dropped and why. A high skipped count is normal — a CAD drawing carries far more than walls, and only the wall geometry belongs in the building twin.
+Any **Warnings** explain what was dropped and why. Two are worth knowing about: *the file does not declare a unit, using your selection* (so check **Source unit** before you import), and *the drawing has no dimensions or blocks (converted from PDF or exploded) — walls may be recognised inaccurately*, which appears when a plan was flattened by a PDF conversion or by exploding its blocks. For that second case, go back to the original CAD file if you have it. A high skipped count is normal — a CAD drawing carries far more than walls, and only the wall geometry belongs in the building twin.
 
 ## After importing
 

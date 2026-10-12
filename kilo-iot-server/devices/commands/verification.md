@@ -38,7 +38,7 @@ Use this when a device does not volunteer its state in routine uplinks but will 
 
 ## Expected sensor states
 
-Both *Wait for next uplink* and *Query after ack* check the device's reported telemetry against the states you declare here. Click **Add State** to add a row, and fill in the two fields below. Add at least one row — the command will not save without it.
+Both *Wait for next uplink* and *Query after ack* check the device's reported telemetry against the states you declare here. Click **Add State** to add a row, and fill in the two fields below. Add at least one row — the command will not save without it, and a row only counts when both its **Metric** and its **Expected value** are filled in. The editor flags the incomplete field in place (*Select a metric* or *Expected value is required*) and keeps **Save** disabled, so a half-filled row can no longer be dropped silently and leave the command saved without the check you thought you had.
 
 ### Metric
 

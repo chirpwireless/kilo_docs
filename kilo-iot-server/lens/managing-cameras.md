@@ -11,7 +11,7 @@ The **Cameras** page is your inventory of cameras connected through Lens. Use it
 1. Choose **Cameras** in the main navigation, then **Cameras** inside Lens.
 2. Enter a name in **Search cameras...**. Switch between **List view** and **Grid view** to suit the number of cameras you manage.
 3. Check **Status**, pairing information, and **Last Twin activity**. A registered camera can still be waiting for its Twin to connect.
-4. Open a camera to see **Camera detail**. **Lens connection** shows its device identity, name, Twin key, and pairing state.
+4. Open a camera to see **Camera detail**. **Lens connection** shows its device identity, name, Twin key, and pairing state. [Camera Detail Page: Every Tab Explained](camera-detail-settings.md) covers every tab, and [Lens Workspace Tour](lens-workspace-tour.md) shows each screen of the Lens menu.
 
 An online connection and successful video playback are separate checks. If a feed will not play, confirm local Twin video first, then use [Access and Troubleshooting](access-and-troubleshooting.md). A last-activity time describes the Twin's contact with the platform; it is not evidence that nobody has moved in the scene.
 
