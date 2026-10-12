@@ -4,13 +4,13 @@ description: "Delete a Kilo application safely: review its content and move the 
 
 # What happens when I delete an application?
 
-Deleting an application retires its associated solution, not just its name. Use this action only after deciding what should happen to the resources listed in **Content**.
+Deleting an application removes your copy and what is inside it. Decide what should happen to the items listed in **Content** first.
 
 {% hint style="warning" %}
-Deleting an application permanently deletes associated devices and dashboards, removes associated alarm definitions, and stops and moves associated rules to Trash. The confirmation dialog says the rules are "permanently removed"; Trash is the only way back for them. Move resources you need to keep to another application or **Default** before deleting.
+Deleting an application permanently deletes associated devices and dashboards, removes associated alarm definitions, and stops associated rules and moves them to Trash. The confirmation dialog says the rules are "permanently removed", but they can still be restored from Trash (the place where deleted rules wait). Move anything you need to keep to another application or **Default** before deleting.
 {% endhint %}
 
-An application installed from a solution is an ordinary application, so deleting it removes only your copy. The solution in the catalog and other organizations' copies are not affected.
+An application installed from a solution is an ordinary application. Deleting it removes only your copy. It does not touch the solution in the catalog or other organizations' copies.
 
 <figure><img src="../../.gitbook/assets/kilo-applications-delete-confirmation.jpg" alt="Kilo Applications: Review the consequences before confirming application deletion."><figcaption><p>Review the consequences before confirming application deletion.</p></figcaption></figure>
 
@@ -18,22 +18,22 @@ An application installed from a solution is an ordinary application, so deleting
 
 1. Open the application and select **Content**.
 2. Inspect **Devices**, **Dashboards**, **Rules**, and **Alarms**.
-3. Open each resource you want to preserve and change its **Application** assignment.
-4. Save the resource where required, then return to Content to check that it is no longer associated.
-5. Check running rules and dependent dashboards before removing resources that other operational workflows may use.
+3. Open each item you want to keep and change its **Application** assignment.
+4. Save the change, then return to Content to check that the item is no longer listed.
+5. Check running rules and dashboards that other parts of your setup depend on before you remove them.
 
 ## How do I delete the application?
 
-Open the application's delete action, read the confirmation, and confirm only when its remaining contents can be removed. Return to **My applications** and check the result.
+On the application's page, select the trash icon in the top-right corner and read the confirmation. Confirm with **Yes, delete** only when what is left inside can be removed. Return to **My applications** and check the result.
 
-If deletion reports a failure, inspect the application and its resources before retrying. Resource removal may have partly completed. A rule being edited can also prevent the operation; have its editor finish and close the editing session, then retry.
+If deletion reports a failure, inspect the application and what is inside it before retrying. Removal may have partly completed. A rule being edited can also prevent the operation; have its editor finish and close the editing session, then retry.
 
-Do not rely on rule Trash to recover the entire application. It does not restore deleted devices, dashboards, or alarm definitions. See [Trash and Recovery](../rules-engine/trash-and-recovery.md) for the rule-specific restoration process.
+Trash brings back rules only. It does not restore deleted devices, dashboards, or alarm definitions. See [Trash and Recovery](../rules-engine/trash-and-recovery.md) to restore rules.
 
 
 ## What access does deleting an application need?
 
-Deletion requires **Read** access to devices, dashboards, rules, and alarms, plus **Write** access to each category that has resources in this application. A permission refusal occurs before resource removal. Ask an organization administrator to arrange the required access if the message names a missing permission.
+Deleting needs **Read** access (you can see the items) to devices, dashboards, rules, and alarms, plus **Write** access (you can change them) to each kind that has items in this application. Your access depends on your role; ask your organization admin if the message names a missing permission. Nothing is removed when access is refused.
 
 When all removed dashboards share one parent folder and that folder becomes empty, the folder is removed too. A folder that still contains other items remains, and dashboards spread across different parent folders do not cause those folders to be deleted. Move any dashboard you want to keep before confirming deletion.
 

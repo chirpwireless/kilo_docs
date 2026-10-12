@@ -4,7 +4,9 @@ description: "Use cases describe the specific problems a Kilo solution solves, s
 
 # What are use cases in Kilo?
 
-A solution is rarely about a single problem. A shopping-center automation solution might protect against leaks, save energy, and pump out a flooded basement. Each of those is a **use case**.
+This page is for the Kilo team that publishes the catalog. You do not need it to install and use solutions.
+
+A solution is rarely about a single problem. A shopping-center solution might protect against leaks, save energy, and pump out a flooded basement. Each of those is a **use case**.
 
 ## What is a use case in Kilo?
 
@@ -12,7 +14,7 @@ A use case is one clearly described problem or need, in plain words: *Above-grou
 
 ## Who manages use cases?
 
-Use cases are curated by the platform's own catalog publisher, so the **Use cases** tab appears only for that publisher. Most organizations never see it. The tab is documented here so you understand how the catalog is organized.
+Kilo curates the use cases, so the **Use cases** tab appears only for Kilo's own organization. You will not see it. It is documented here so you understand how the catalog is organized.
 
 Today, use cases organize the catalog: when a solution is published, the publisher chooses an industry and picks the use cases it implements, so the catalog is arranged around problems rather than product names.
 
@@ -23,7 +25,7 @@ Open **Applications → Use cases**. The tab has a heading, **Use cases**, and a
 <figure><img src="../../.gitbook/assets/kilo-solutions-use-cases.jpg" alt="The Use cases tab with a search box, Status and Industry filters, an Add Use case button, and a table of use cases with Name, Description, Industry, Applications, and Used in AI columns"><figcaption><p>The Use cases tab of a demo organization. The introduction mentions Kilo AI recommendations, which are not available to customers yet.</p></figcaption></figure>
 
 * **Search.** Finds a use case by name.
-* **Status: All.** A filter with the options **Used in AI** and **Not used in AI**, which reflect the platform's listing option.
+* **Status: All.** A filter with the options **Used in AI** and **Not used in AI**, which reflect the listing option.
 * **Industry: All.** Filters by industry.
 * **Add Use case.** Opens the form below.
 * **Table columns.** **Name**, **Description**, **Industry**, **Applications** (how many applications implement it), and **Used in AI**. Each row ends with an arrow that opens the use case for editing and a trash icon that deletes it.

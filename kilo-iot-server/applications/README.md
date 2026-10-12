@@ -1,48 +1,73 @@
 ---
-description: "Install a ready-made IoT solution in one click and get devices, rules, alarms, and dashboards already working. Or assemble your own application."
+description: "Not sure what you can automate? Preview a ready-made Kilo solution, install it, see how it works, then buy the devices and swap them in."
 ---
 
-# How do applications and solutions work in Kilo?
+# What are applications and solutions in Kilo?
 
-Imagine opening Kilo, choosing a solution such as **Building Monitoring**, and pressing **Install solution**. Seconds later you have working virtual devices streaming realistic readings, a rule that reacts to them, an alarm that is ready to notify you, and a live dashboard. Nothing to build first, and nothing to configure. The catalog exists to show which use cases Kilo can solve and to make onboarding simple for everyone, including people who are not technical. The install screen tells you which devices to buy; when they arrive, you can ask the AI chat to connect them to the application, and the dashboard, rules, and alarms keep working.
+Not sure what you can automate with Kilo, or where to even start? That is what solutions are for.
 
-That is what **Applications and Solutions** give you. An **application** is a working bundle of devices, dashboards, rules, and alarms for one job. A **solution** is a ready-made application from the Kilo catalog. Kilo prepares it for one use case and configures it completely, so you can install a copy with one click. If you like it, you buy the devices listed on the install screen and swap the virtual devices for them; everything else is already set up. New applications are added to the catalog with every release, starting with the next one. If you want the full picture, read [What are solutions and applications in Kilo?](what-are-solutions-and-applications.md).
+Open **Applications** in the left sidebar, then the **Solutions** tab. You see what we have prepared for you: monitoring leaks in a building, security monitoring with video cameras, asset tracking, people counting in a store or a mall, and more. We add new ones with every release.
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="Two solution cards in the Kilo Solutions tab: Building Monitoring and IP500 demo Smart Office, each showing counts of virtual devices, rules, widgets, and alarms"><figcaption><p>Solution cards show what an install will create. This example comes from a test organization.</p></figcaption></figure>
+Every one of these normally comes with a lot of setup. Dashboards to configure, rules to set, alerts to define, devices to add. If you don't even know what can be automated, that can feel intimidating.
 
-## Why does installing a prepared solution change how you roll out IoT?
+So we did it for you. Select **Preview** on a solution, then **Use this solution**, then **Install solution** on the next screen. The solution lands in your workspace (your organization in Kilo) with emulator devices, which are sample devices that send realistic readings. You see what the dashboards will look like, how the rules are configured, and how the alerts work. Everything is already set up, and you can still change all of it to your liking. Alarms notify you by default; add colleagues or channels before you rely on them. Because you start from something that works, you quickly learn how it all fits together and where everything is.
 
-Setting up a monitoring use case normally means many small decisions: which devices, how their readings are named, which dashboard, which rule, who gets the alarm. Kilo has already made those decisions for each use case in the catalog. A solution packages them: it shows the use case it solves and arrives fully pre-configured with devices, dashboards, rules, and alarms.
+Then you think, "This is exactly what I need." The solution even tells you which devices to buy. Order them, and when they arrive, swap the emulator devices for the real ones. You can do the swap yourself, or ask [Kilo's AI chat](../ai-assistant/README.md) to connect them for you. You only need each device's identifiers, such as the ones printed on its label. Once they are in, your use case is running on real data. [How do I swap the emulator for real devices?](swapping-the-emulator-for-real-devices.md)
 
-* **See what Kilo can solve.** Every device in a solution starts as a virtual device on the Emulator connector, so the dashboard is alive the moment you install.
-* **Go live without rebuilding anything.** You swap each virtual device for a real LoRaWAN, MIOTY, MQTT, or tracker connection. Mappings, rules, and widgets stay intact. See [How do I swap the Emulator for real devices?](swapping-the-emulator-for-real-devices.md).
-* **Skip the learning curve.** A newcomer can open a finished setup and learn by looking at it. A professional starts from a proven baseline and adjusts it.
-* **Buy only what you need.** The install screen lists the real devices the solution works with, so you know what to buy if you decide to go live.
+<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="Two solution cards in the Kilo Solutions tab: Building Monitoring and IP500 demo Smart Office, each showing counts of virtual devices, rules, widgets, and alarms"><figcaption><p>Each solution card shows what an install will create.</p></figcaption></figure>
 
-## Where do you start?
+## What is the difference between a solution and an application?
+
+A **solution** is the ready-made template Kilo prepared. An **application** is what you get in your workspace after you install it, with its devices, dashboards, rules, and alarms together in one place. You can also create your own applications from scratch. Once a solution is installed it is an ordinary application, and you can change anything in it. [What are solutions and applications in more detail?](what-are-solutions-and-applications.md)
+
+## What do the words in Kilo mean?
+
+* **Dashboard:** a screen of live charts and numbers.
+* **Device:** a sensor or other piece of hardware that sends readings to Kilo.
+* **Emulator device:** a sample device that sends realistic readings. Some screens call it a virtual device.
+* **Rule:** an instruction that reacts to readings, for example "if it gets too warm, raise an alarm".
+* **Alarm:** the notification that tells you something needs attention. A rule decides when it fires.
+* **Connector:** the link that brings a real device's readings into Kilo, for example LoRaWAN or MQTT.
+* **Organization:** your Kilo workspace.
+
+## How do I get started?
+
+1. Open **Applications** in the left sidebar and stay on the **Solutions** tab.
+2. [Browse and preview](browsing-and-previewing-solutions.md) the solutions until one looks like your problem.
+3. [Install it](installing-a-solution.md): select **Preview**, then **Use this solution**, then **Install solution**. The install screen shows what will be created and which devices you need.
+4. Buy those devices. When they arrive, [swap the emulator devices for the real ones](swapping-the-emulator-for-real-devices.md).
+
+## Where do I find each part?
 
 | You want to | Go to |
 |---|---|
-| Understand the vocabulary: application, solution, use case | [What are solutions and applications in Kilo?](what-are-solutions-and-applications.md) |
+| Get the vocabulary straight: application, solution, use case | [What are solutions and applications in Kilo?](what-are-solutions-and-applications.md) |
 | Look through ready-made solutions | [How do I browse and preview solutions?](browsing-and-previewing-solutions.md) |
 | Put a solution to work | [How do I install a solution?](installing-a-solution.md) |
 | Learn every part of the My applications tab | [How do I use the My applications tab?](my-applications-tab.md) |
 | Replace virtual devices with your own | [How do I swap the Emulator for real devices?](swapping-the-emulator-for-real-devices.md) |
+| Learn why Kilo can be both flexible and easy | [Is Kilo powerful and easy to use?](why-kilo-is-powerful-and-easy.md) |
+| Create your own application | [How do I create an application in Kilo?](creating-an-application.md) |
+| Remove an application | [What happens when I delete an application?](deleting-an-application.md) |
+
+**For the team that publishes the catalog**
+
+| You want to | Go to |
+|---|---|
 | See how a solution is published to the catalog | [How do I publish a solution?](publishing-a-solution.md) |
 | Understand how problems and industries are organized | [What are use cases in Kilo?](use-cases.md) |
-| Learn why Kilo can be both unlimited and easy | [Is Kilo powerful and easy to use?](why-kilo-is-powerful-and-easy.md) |
 
-## What if you want to build your own application?
+## Can I build my own application?
 
-You always can. An application you create yourself is exactly the same kind of object as an installed solution; you assemble it from the devices, dashboards, rules, and alarms you already have.
+Yes. Maybe none of the solutions fits, or you already have devices and want everything for one job in one place. This takes more work than installing a solution. If you are new, install one first and look at how it is set up.
 
-1. [Create an application](creating-an-application.md) for a specific outcome, such as Building Monitoring.
-2. Configure its devices, dashboards, rules, and alarm definitions through their normal workflows.
-3. [Assign those resources](organizing-content.md) using each resource's **Application** field.
-4. Open **Applications → My applications**, select the application, and use **Dashboard** for its views or **Content** for the resources behind them.
+1. [Create an application](creating-an-application.md) and give it a name, such as Building Monitoring.
+2. Set up its devices, dashboards, rules, and alarms the way you normally do.
+3. [Add them to the application](organizing-content.md) with each item's **Application** field.
+4. Open **Applications → My applications**, select your application, and use **Dashboard** for its views or **Content** for the devices, rules, and alarms behind them. A new application is empty until you add things to it.
 
-An application can contain several dashboards. See [Using Application Dashboards](using-application-dashboards.md). Applications belong to the current organization; users still need the relevant permissions to view or manage their contents, and assigning a resource to an application grants no additional access.
+An application can have several dashboards; see [Using Application Dashboards](using-application-dashboards.md). Applications belong to your current organization. You still need the right permissions to see or change what is inside, and adding something to an application gives nobody extra access.
 
-Content counts show the size of each resource category. **0** means it is empty. A dash means the count is unavailable, for example because access is missing or the category could not be loaded.
+Before you delete an application, read [Deleting an Application](deleting-an-application.md): deleting it also deletes what is inside.
 
-When retiring an application, review [Deleting an Application](deleting-an-application.md) first: deletion also removes its associated resources.
+If you do not see **Applications** in the sidebar, your plan may not include it; see [Subscription](../settings/subscription.md).
