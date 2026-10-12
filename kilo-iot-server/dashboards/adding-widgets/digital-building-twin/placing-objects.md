@@ -2,19 +2,19 @@
 description: Place 3D objects — desks, racks, parking bays, AC units — into a Digital Building Twin from the object catalog.
 ---
 
-# Placing Objects
+# How to Place Objects in a Digital Building Twin
 
 Walls make a building; objects make it *the* building. A row of desks turns an empty floor plate into an open-plan office. A parking spot turns an outdoor slab into a bay you can monitor. The objects you place are also what most sensors bind to — a sensor reads "occupied," and the desk it's bound to changes color.
 
 The editor ships with a catalog of more than 60 ready-made 3D objects. This page covers placing them; the full inventory is in the [Object catalog](object-catalog.md).
 
-## Opening the catalog
+## How do I open the object catalog?
 
 1. On the bottom toolbar, click **Furnish**.
 2. A row of five category tabs appears — **Furniture**, **Appliance**, **Kitchen**, **Bathroom**, **Outdoor** — above a scrollable strip of object thumbnails.
 3. Click a category tab to load its objects into the strip. Scroll the strip to browse them.
 
-## Placing an object
+## How do I place an object?
 
 1. With **Furnish** open, click an object's thumbnail in the strip to select it.
 2. Move the cursor into the scene — a preview outline of the object follows it.
@@ -24,15 +24,17 @@ The editor ships with a catalog of more than 60 ready-made 3D objects. This page
 
 Objects snap to a fine grid as you place them, so a row of desks or a line of parking spots lands evenly spaced without fiddling.
 
-### Rotating while you place
+<figure><img src="../../../../.gitbook/assets/dbt-object-catalog.jpg" alt="The Furnish mode open, with the category tabs and the scrollable strip of object thumbnails above the mode toolbar"><figcaption></figcaption></figure>
+
+### How do I rotate an object while placing it?
 
 For objects that sit on the floor, press **R** or **T** while placing to rotate the preview by 45° before you click. This lets you face a desk, angle a vehicle, or orient a rack the right way as you drop it in.
 
-### Wall-mounted objects
+### How do wall-mounted objects work?
 
 Some objects belong on a wall rather than the floor — wall-mounted AC units, TVs, shelves, wall sinks. When you place one of these, it attaches to the wall surface your cursor is over and orients itself to face into the room. Slide the cursor up or down the wall to set its mounting height.
 
-## Adjusting an object after placing
+## How do I adjust an object after placing it?
 
 Switch to **Select** and click an object to open its properties panel:
 
@@ -42,13 +44,15 @@ Switch to **Select** and click an object to open its properties panel:
 * **Scale** — a single uniform scale, useful when a catalog object needs to be a little larger or smaller than its default size.
 * **Dimensions** — the object's measured size, shown for reference.
 
-The selected object also gets an inline badge floating above it with quick **Move**, **Duplicate**, and **Delete** buttons. **Duplicate** is the fast way to lay out repeated objects — place one desk exactly how you want it, then duplicate it down the row.
+The selected catalog item, door, or window also gets an inline badge floating above it with quick **Move**, **Duplicate**, and **Delete** buttons (walls show only **Delete**). **Duplicate** is the fast way to lay out repeated objects — place one desk exactly how you want it, then duplicate it down the row. A duplicate keeps the original's name instead of gaining a "copy" suffix, so copying one window fifty times does not leave fifty names to clean up (rename the ones you will bind sensors to). In the **2D view** the same badge is available, and **Move** works there too: pick the new spot on the plan and an item changes its floor position, while a door or window attaches to whichever wall you pick, the same way it does when first placed.
 
-## Parking spots
+<figure><img src="../../../../.gitbook/assets/kilo-dbt-2d-move-duplicate.jpg" alt="The Digital Building Twin editor in 2D view with a computer selected: the inline Move, Duplicate and Delete badge above it, and the properties panel with Position, Rotation, Scale and a Duplicate button on the right"><figcaption></figcaption></figure>
+
+## How do parking spots work?
 
 The **Parking Spot** object (in the **Outdoor** category) has one extra property: a **Spot #** field. Give each bay its real designation — "A12," "L2-44" — and that number shows on the spot in the model. When you duplicate a numbered parking spot, the number increments automatically, so you can lay out a whole row of correctly-numbered bays in seconds. Parking spots and occupancy sensors work well together — see [Binding sensors and colors](binding-sensors-and-colors.md).
 
-## Tips
+## What are the best tips for placing objects?
 
 * Place the objects that will carry sensors first — the desks, racks, bays, and equipment you actually monitor — then add decorative objects if you want the model to read more naturally.
 * Use **Duplicate** plus the grid snap to lay out repeated objects fast.

@@ -1,50 +1,74 @@
 ---
-description: Manage a registered device in Kilo IoT — info, photos, connection, metrics, and logs from one panel.
+description: Manage a digital twin, replace its physical sensor, reconnect measurements, and review retained history in Kilo IoT Server.
 ---
 
 # Device Management
 
-Once a device is registered, its Digital Twin is a living record that you can update, reconfigure, and inspect at any time. The device detail page is the ongoing management interface — every device property, connection setting, metric mapping, and data log is accessible from there.
+A digital device is the lasting record of the asset or monitoring point you manage. Its physical source can change while the twin keeps its name, measurements, and stored history. Open the device to update its details, replace hardware, check incoming readings, or review history. For the full concept and refrigeration example, see [Devices](README.md).
 
 ## Opening a device's detail page
 
 There are several ways to open the detail page for an existing device:
 
 * **From Devices** — Click any device row in the **Devices** list in the sidebar. The device detail page opens showing that device's current state.
-* **From a connector's device list** — Open the LNS connector's **Connected Devices** tab or the Tracker connector's device page, then click a device row.
+* **From a connector** — Open its connected-device list and select the existing device. **+ Add device** starts a new registration; it is not the replacement workflow.
 * **Edit button** — Click the edit icon (pencil) on any device row to go directly to the device detail page.
+
+## Replace a physical sensor
+
+Use this procedure when the monitored asset stays the same but its hardware needs replacing. For example, keep **Refrigerator 1** when replacing a temperature probe that has failed or no longer meets your calibration requirements.
+
+You need permission to edit devices, the replacement hardware's identifiers and connection settings, and access to the connector it will use. Record the existing measurement names, units, connector keys, and the time of the change. Arrange any necessary monitoring coverage during the replacement: the platform cannot record measurements that no device sends.
+
+1. Open **Devices** and select the existing digital device, such as **Refrigerator 1**.
+2. Check its measurement rows and recent **Logs**. Keep the temperature measurement that already contains the refrigerator's history.
+3. Open **Connection**. For a bound LoRaWAN probe, click the X control labeled **Detach physical device** beside **Device EUI**. Detaching takes effect immediately; it is not deferred until the next **Save**. The digital device and its measurement channels remain, while the old physical binding and source mappings are removed.
+4. Enter the replacement's **Device EUI**, **AppKey**, and matching device profile. Check its decoder and **Data sending interval**, then click **Save**. For another supported source type, use that connector's identifier and configuration fields.
+5. Open **Mapping**. For each existing measurement, select the replacement's incoming **Connector key** and click **Save**. For example, change the source of the existing temperature measurement from `temp_c` to `temperature`. Check that the new value is in the same unit and format.
+6. Wait for a new transmission. Confirm that **Value** and **Last update** change, and use the **Connection** diagnostics if they do not.
+7. In **Logs**, choose a date range spanning the change. Check readings from before and after replacement, then check the dashboard and any rules using those measurements.
+
+**Keep the existing measurement rows.** Change their connector keys instead of removing the rows and creating new ones. Stored history and dashboard/rule references belong to those measurements; reusing a name is not the same as retaining the original measurement.
+
+Detaching hardware is also different from deleting the digital device. If a replacement fails to connect, keep the twin and use [Device Diagnostics](device-diagnostics.md) to check reception and mapping. Earlier readings remain subject to your [retention period](../settings/subscription.md#data-retention).
+
+For an emulator-to-hardware change, use the dedicated [go-live workflow](emulated-devices.md#going-live-swapping-to-a-real-device), which changes the source without first detaching it.
+
+## Swap between an emulator and hardware
+
+**Swap connection** is available when there is an eligible connection involving the emulator: emulator to real hardware, or real hardware to emulator. It is not a physical-to-physical replacement control.
+
+1. Open **Connection** and click **Swap connection**. The connection picker shows eligible destinations and unlocks the target identity fields.
+2. Choose the destination, fill its required configuration, and review mappings and commands for the new source.
+3. Click **Save** to apply the swap. **Cancel swap** exits swap editing before saving and restores the original connection fields.
+4. Confirm the new source supplies the expected readings. Keep the retained measurement identities; generated readings and real readings both remain subject to the history retention period.
+
+For one physical sensor replacing another, use **Detach physical device**, bind the replacement and restore its key mappings. Detach takes effect immediately; it does not wait for the page's Save button. It removes the physical binding and source mappings while retaining the twin and its measurement channels.
 
 ## Device info tab
 
 The Device info tab contains the device's identity and visual reference:
 
-* **Device photos** — Upload, replace, or remove photos of the physical device. Photos help operations teams identify hardware during site visits or troubleshooting.
+* **Device photos** — Upload, replace, or remove photos of the asset or its hardware. A refrigerator photo can remain useful after its probe is replaced.
 * **Device name** — Update the display name at any time. A consistent naming convention (e.g., including location or device type) helps when managing large fleets.
-* **Location** — A device's location is fully editable after it is first set: reassign it when hardware moves between sites, or remove it entirely when a device is pulled from service and awaiting redeployment. See [Locations](../settings/locations.md).
+* **Application** — Choose the solution this device belongs to, or **Default** for no named application.
 
-<figure><img src="../../.gitbook/assets/device-info-tab.png" alt="The Device info tab, showing the device name, description, photos and location fields"><figcaption></figcaption></figure>
+
+**Photo controls:** Use **Add photo** or drag PNG/JPG files onto the upload area. You can keep up to three photos; the UI recommends 5 MB per photo. The first photo is the cover. Use the remove control on a photo to remove it from the edited list, then save. The name is required; **Application** assigns the twin to a named setup, or **Default** leaves it outside a named application. Save profile changes before leaving the page.
 
 ## Connection tab
 
-The Connection tab manages the link between the Digital Twin and the device that feeds it. The available fields depend on the connector type.
-
-<figure><img src="../../.gitbook/assets/device-connection-tab.png" alt="The Connection tab of a device, showing the connector type and its identifier fields"><figcaption></figcaption></figure>
+The Connection tab manages the twin's current data source. The source's hardware identifier belongs here; the asset's lasting name belongs in **Device info**. The available fields depend on the connector type.
 
 ### Connector selection
 
 The **Connector type** dropdown shows available connectors in your organization. A link below the dropdown directs you to the [Connectors](../connectors/) section if you need to add a new connector.
 
-Changing the connector re-binds the device to a different data source, and is offered **only for pairs that involve the Emulator** — emulator to real, or real back to emulator. Swapping directly between two physical connector types is not offered, because the identifiers and payload mappings differ enough that the mapping has to be rebuilt anyway. See [Emulated Devices](emulated-devices.md#going-live-swapping-to-a-real-device).
+Changing the connector re-binds the device to a different data source, and is offered **only for pairs that involve the Emulator** — emulator to real, or real back to emulator. To replace one physical source with another, detach the old source and bind the replacement to this twin. See [Emulated Devices](emulated-devices.md#going-live-swapping-to-a-real-device).
 
 ### For LoRaWAN devices (LNS connector)
 
-* **Device EUI** — The device's unique LoRaWAN identifier. This field is locked once a physical device is bound. To change it, you must first detach the physical device. The DevEUI is matched without regard to upper- or lower-case, so enter it consistently — if a device is added with one casing and a binding or connector key uses another, both still resolve to the same device.
-* **Detach physical device** — Click the detach button (X icon) next to the Device EUI to unbind the physical device from this Digital Twin. The Digital Twin and its history are preserved; only the live connection is severed. You can then re-bind a different physical device.
-* **Use device profile templates** — Toggle this checkbox to switch between template-based and manual configuration:
-  * **Template mode:** Select **Brand**, **Model**, and **Profile** from dropdowns that filter based on your selections.
-  * **Manual mode:** Enter Brand, Model, and Band as free text, choose **Class A** (battery-powered, uplink-first, power-efficient) or **Class C** (continuous listening, can receive downlinks at any time, typically mains-powered), and enter the **AppKey**. For full details on Class A vs Class C, band options, and the template flow, see [Registering Devices](registering-devices.md). Setting a LoRaWAN device to **Class C** also unlocks its **Commands & States** tab, so you can send it downlink commands — see [Device Commands](commands/).
-* **Code functions** — The device's payload codec: JavaScript logic that decodes raw LoRaWAN uplink data into the named fields that appear as connector keys in the Metrics tab. When a device profile template is selected, this field is pre-filled with the template's codec. If the decoded output is missing fields or producing incorrect values, you can edit the code directly. Alternative codecs can often be found in the device manufacturer's documentation or community repositories. For the full codec explanation, see [Registering Devices](registering-devices.md).
-* **Data sending interval** — Where you tell the platform how often this device transmits. A device's transmission schedule is set on the device itself and varies by manufacturer — sometimes preconfigured at the factory, sometimes set during commissioning — so enter the schedule the device is actually configured for. Set a device that transmits once a day to **1 day**, one that transmits monthly to **1 month**. The field defaults to **1 hour**, but that is only a placeholder — the platform cannot read the device's real schedule. If no message arrives within the configured interval, the device is marked offline in the device list; entering the correct schedule keeps a healthy low-frequency device from being flagged. Choose a number and a unit (minute, hour, day, week, or month). On an [emulated device](emulated-devices.md) this field works the other way round: it is the schedule the platform emits on.
+Follow [LoRaWAN Devices](lorawan-devices.md) for every identity, profile, codec and reporting-interval field. Existing physical identifiers are locked; detach before replacing hardware. Keep the same digital device and measurement rows, then restore the source-key mappings.
 
 ### For vehicle trackers (Tracker connector)
 
@@ -52,66 +76,81 @@ Changing the connector re-binds the device to a different data source, and is of
 * **Device model** — Search and select from the tracker model library.
 * **Url for GPS tracker** — The endpoint URL displayed after selecting a model. Copy this URL and configure the physical tracker to send data to it.
 
-## Metrics tab
+## Mapping tab {#metrics-tab}
 
-The Metrics tab maps the device's raw sensor output to your normalized metric templates. This is where you control what data the device contributes to dashboards and automation rules.
+The **Mapping** tab connects incoming data keys to retained measurement channels. Use the same measurement rows when a sensor is replaced: changing an incoming key is different from replacing the measurement itself.
 
-<figure><img src="../../.gitbook/assets/device-metrics-tab.png" alt="The Metrics tab of a device, mapping connector keys to metric templates"><figcaption></figcaption></figure>
+| Column or control | Purpose and configuration |
+| --- | --- |
+| **Device data key** | Select a received source field, such as `temperature` or `vibration.rms`. This is the incoming connector key. Options appear after messages arrive; a blank choice records nothing for this measurement. Save changes to this key with **Save**. |
+| **Value** | Latest received value for the selected source key. This snapshot is not the historical record. |
+| **Last update** | When that source key was last received. An empty value means no corresponding received value is available. |
+| **Normalized key** | Choose the metric template defining the measurement. Only Telemetry templates are offered. A template already assigned to this device is disabled in the dropdown. |
+| **Unit** | The template's unit, shown for reference. Set or change it in [metric templates](metric-templates.md); the mapping does not perform unit conversion. |
+| **Type** | Read-only template value type: Integer, Float, String or Boolean. It controls conversion of incoming readings. |
+| **Data type** | Telemetry in this mapping form. Reported switch states can be recorded as telemetry too. |
+| **Add key** | Add a mapping row, then select a template and an incoming key. |
+| **+ Add new metric** | Opens **Add Metric** from the Normalized key dropdown. Enter a non-empty **Normalized key**, choose **Type** (initially String), and keep **Data type** as Telemetry. **Add** creates the template and selects it; **Cancel** closes without creating it. This compact dialog has no unit selector; use the full metric catalog to configure units. |
+| **Remove** | Removes the row and its measurement assignment immediately on a saved device. This is not the procedure for changing hardware. |
 
-**Table columns:** Metrics template, Unit, Type, Data type, Connector key, Value, Last update, Actions.
+Selecting a template adds its measurement immediately on an existing device. Selecting a different template on an existing row removes the old measurement assignment and creates the new one. Closing the page without clicking Save does not undo those actions. Preserve templates during replacement and change only source-key assignments, then save.
 
-**Working with metric mappings:**
+After saving mappings, allow a fresh message and check **Logs**. A field can appear in the incoming snapshot before its mapping is complete; older messages are not backfilled. Match template types to the actual values: `"ON"` and `"OFF"` are strings, while `true` and `false` are booleans. See [metric templates](metric-templates.md) for conversion and rejection rules.
 
-* **Metrics template** — Select a metric template from the dropdown. Each template can only be assigned once per device. The dropdown shows all available templates from the [Metric Templates](metric-templates.md) area, with already-assigned templates grayed out.
-* **Connector key** — Map the raw key that the device firmware sends (e.g., `temp_c`) to the selected metric template. This is the bridge between the device's native output and your normalized data model.
-* **Value** — Shows the most recent value received for this connector key.
-* **Last update** — Shows when the last value was received.
-* **Add a row** — Click the add button to create a new metric mapping row.
-* **Remove** — Click the remove button on a row to delete that mapping. Removing a metric template row takes effect on the server immediately. Other changes are saved when you click **Save**.
+## Asset identification {#user-metadata}
 
-### User metadata
-
-Below the telemetry metrics table, a separate **User Metadata** section allows you to define custom key-value pairs that are user-assigned properties (not reported by the device). These are useful for operational annotations like installation date, maintenance notes, or asset tags.
+Use the device name, photo, and application assignment to identify the monitored asset. Keep calibration certificates, installation notes, and maintenance records in your organization's record-keeping system; device measurement history is not a maintenance log.
 
 ## Commands & States tab
 
-For devices that can receive downlinks — MQTT devices, Class C LoRaWAN devices, and emulated devices with **Support commands** enabled — a **Commands & States** tab appears. This is where you define the actions a device can perform and dispatch them on demand, turning the Digital Twin from a read-only record into a control surface. The full workflow has its own section: see [Device Commands](commands/).
+For devices that can receive downlinks — MQTT devices, LoRaWAN devices, and emulated devices with **Support commands** enabled — a **Commands & States** tab appears. This is where you define the actions a device can perform and dispatch them on demand, turning the Digital Twin from a read-only record into a control surface. The full workflow has its own section: see [Device Commands](commands/).
 
 ## Logs tab
 
-The Logs tab displays the raw event history received from the device, providing a detailed record of every data point the server has processed. A status indicator in the device header reflects its live connection and logging activity, so you can tell at a glance whether new data is currently flowing in.
+The Logs tab displays stored readings for the digital device's attached measurements, within the available retention period. It can therefore show readings from an earlier physical source as well as its replacement when you keep those measurements. A status indicator in the device header reflects its live connection and logging activity, so you can tell at a glance whether new data is currently flowing in.
 
 **Log entries are grouped by the minute.** All readings received within the same minute are collected under a single group header — so even when several batches arrive in the same minute, the view stays tidy. Click a group header to expand or collapse the readings inside it. Each entry within a group shows:
 
 | Column     | Description                                               |
 | ---------- | --------------------------------------------------------- |
-| **Key**    | The raw key name from the device payload                  |
+| **Key**    | The measurement's normalized key                  |
 | **Type**   | The data type of the value                                |
 | **Value**  | The received value                                        |
-| **Status** | Processing status (currently empty for standard readings) |
 
 **Date filtering:** Click the date button in the top-right corner of the Logs section to open a date range picker. You can select a preset range (e.g., "Last week") or define a custom date range to narrow the log view. This is especially useful for investigating specific incidents or reviewing data from a particular time window.
 
-The logs description notes: _"This tab displays the latest registered data (Telemetry, Metadata) received from the device, including its value, type, and processing status by the platform."_
-
 The Logs tab shows you the readings themselves. If the readings are missing and you need to know *why* — whether messages reached the platform at all, whether their keys matched your sensors, and whether the values were stored — read the reception status, pipeline, and event feed on the **Connection** tab. See [Device Diagnostics](device-diagnostics.md).
+
+The date button shows the current preset or date range. Choose a quick range or a custom start/end range and click **Apply changes**. **Clear filter** resets the selection. Available dates and presets are limited by your plan's retention. **Timestamp** identifies each reading; **Key** is the normalized measurement name, followed by **Type** and **Value**. Expand/collapse the minute groups to inspect individual readings. **No logs found** means no retained readings match the range; check mapping and a fresh message before widening it. If loading fails, reload the page.
 
 ## Copying a device
 
-Click the copy icon on a device row to create a new device pre-filled from that one. The copy carries the original's configuration — its metrics, their data types, its connection settings and, for an emulated device, its reporting interval and emulator specification. What it does not carry is identity: give the copy its own name and its own device identifier before saving.
+Click the copy icon on a device row to create a new device pre-filled from that one. The form arrives carrying the original's **name**, its **metric-template rows**, its **connection selection and settings**, and its **images**. Identity is deliberately not carried: give the copy its own name and its own device identifier before saving.
 
-Building one device carefully and copying it is the fastest way to stand up a site where many devices report the same measurements — twenty cold rooms, a floor of meeting rooms, a row of tanks. It works particularly well with the Emulator, where you can model the whole site before any hardware exists. See [Emulated Devices](emulated-devices.md).
+For a physical device, the copy creates new measurement rows from the selected templates. Open the saved copy and assign its **Connector keys**; pre-filled source mappings are not saved onto the new measurement identities.
+
+An emulator copy also carries its generated signal configuration, reporting interval, command-support setting, and preset commands. Give it a new **Device ID** before saving. See [Copying an emulated device](emulated-devices.md#copying-an-emulated-device).
+
+Copying creates another digital device with its own measurements and history. It does not transfer historical readings. Use the original twin when replacing hardware on the same asset.
 
 ## Common management tasks
 
 | Task                                   | Where           | How                                                                               |
 | -------------------------------------- | --------------- | --------------------------------------------------------------------------------- |
 | Rename a device                        | Device info tab | Edit the Device name field and save                                               |
-| Re-bind to a different physical device | Connection tab  | Detach the current physical device, then enter new identifiers                    |
+| Re-bind to a different physical device | Connection tab  | Detach the current physical device, enter new identifiers, then reconnect existing measurements                    |
 | Change from manual to template profile | Connection tab  | Check "Use device profile templates" and select Brand/Model/Profile               |
-| Add a new measurement type             | Metrics tab     | Add a row, select a metric template, map the connector key                        |
+| Add a new measurement type             | Mapping tab     | Add a row, select a metric template, map the connector key                        |
 | Investigate missing data               | Logs tab        | Filter to the expected time range and review the entries                          |
 | Copy a device configuration            | Device list     | Click the copy icon on a device row to create a new device with the same settings |
 | Delete a device                        | Device list     | Click the delete icon on a device row and confirm                                 |
 
-For metric template setup, see [Metric Templates](metric-templates.md). For organizing devices by location, see [Locations](../settings/locations.md).
+For metric template setup, see [Metrics](metric-templates.md). Use an asset-oriented name and application assignment to keep related devices recognizable.
+
+## Organize the device in an application
+
+On **Device Info**, use **Application** to associate this device with an operational solution. Choose **Default** to leave it outside named applications, then save. The device can belong to one application at a time. See [Organizing Content](../applications/organizing-content.md).
+
+## Protocol setup references
+
+Use [LoRaWAN Devices](lorawan-devices.md) or [MQTT Devices](mqtt-devices.md) for the complete connection fields, then return here for common profile, mapping and history controls.

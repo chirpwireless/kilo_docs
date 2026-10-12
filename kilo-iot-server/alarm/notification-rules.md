@@ -4,9 +4,13 @@ description: Configure alarm definitions in Kilo IoT — severity, escalation, r
 
 # Alarm Definitions
 
-An alarm definition configures the operational response when the [Rules Engine](../rules-engine/README.md) triggers an alarm — severity classification, escalation chain, repeat cadence, delivery channels, scheduling, suppression, and the notification message. Alarm definitions are managed from the **Alarm definitions** tab on the Alarm page.
+An **alarm definition** is a reusable response plan for notifications: what to say, how urgent it is, who receives it, and how it escalates. Configure the facilities team's response once, then use that definition from the rules monitoring different pieces of equipment.
 
-Click **Add alarm rule** to create a new definition, or click **Edit** on an existing one to modify it.
+The definition is separate from both the **alarm event** your team handles and the **rule** that raises it. Configure the condition and response workflow in the [Rules Engine](../rules-engine/README.md); choose this definition in the rule's **Set Alarm** step.
+
+Manage definitions in **Alarm → Alarm definitions**. Click **Add alarm rule** to create one or **Edit** to change one, and make sure the recipients have the [delivery channels](notification-channels.md) they need.
+
+<figure><img src="../../.gitbook/assets/alarm-definitions-list.jpg" alt="The Alarm definitions tab listing a definition with its message, severity, recipients and on-off toggle"><figcaption></figcaption></figure>
 
 ## Definition form fields
 
@@ -93,3 +97,7 @@ To delete a definition permanently, open it in Edit mode and click **Delete alar
 - **Cold-chain temperature exceedance:** Severity Critical. Immediate notification to on-call refrigeration technician. Escalate to shift supervisor, then site manager. Schedule: 24/7. Suppression: 10 minutes.
 - **Server room humidity alarm:** Severity High. Immediate notification to data center operations. Theme: "Humidity exceedance in DC-3." Message: "Rack row B humidity has exceeded the operational threshold."
 - **Pump pressure deviation:** Severity Medium. Business hours only (Mon–Fri 06:00–22:00). Notify maintenance team. One-time notification — do not repeat.
+
+## Group the definition with its solution
+
+Choose **Application** in the alarm definition dialog to associate it with the devices, dashboards, and rules for a use case. Save the definition after changing the field. This association does not automatically connect a rule to the alarm: select the definition in the rule’s alarm action. See [Organizing Content](../applications/organizing-content.md).

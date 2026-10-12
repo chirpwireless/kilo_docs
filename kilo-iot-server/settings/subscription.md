@@ -25,9 +25,24 @@ Kilo IoT Server offers a free tier alongside paid tiers that scale up to a custo
 
 Beyond these ceilings, the plan comparison on the Subscription page also shows which tiers include unlimited gateways, the Notification Center, email and push notifications, and email support. The free tier lets you explore the platform with no payment details required; the **Enterprise** tier carries everything from the other plans with the option to raise specific limits to fit your operation, on individual pricing and terms.
 
+<figure><img src="../../.gitbook/assets/settings-subscription.jpg" alt="The Subscription page comparing plan tiers with the current plan marked and the SMS balance below"><figcaption></figcaption></figure>
+
+## Data retention
+
+Data retention is the period of device history available under your subscription. The plan table above lists the standard device-log retention for each tier; Business and Max include 12 months. A digital twin keeps its identity when you replace its physical sensor, but that replacement does not extend the retention period of its earlier readings.
+
+If your organization needs longer data retention for compliance or operational requirements, contact the Kilo team to discuss an extended retention period and agree suitable terms. On **Settings > Subscription**, choose **Talk to sales** on the Enterprise tier. Include the period you need and the devices and measurements it should cover, so the arrangement can be agreed before you rely on it for record keeping.
+
+For example, a pharmaceutical refrigeration operator can keep the same refrigerator twin through probe replacements and discuss a longer period for its temperature records. The required period depends on the organization's obligations; a sensor replacement alone does not establish compliance or recover expired readings.
+
 ## Upgrading Your Plan
 
-To move onto a paid plan, choose the tier you want on the plan comparison and click **Upgrade Plan**. This takes you straight to the Stripe checkout, where you enter payment details and activate the plan — there is no separate confirmation step in between. All payment processing is handled by Stripe, and plan changes take effect immediately. Plan limits apply from the moment a plan is active.
+To move onto a paid plan, choose the tier you want on the plan comparison and click **Upgrade Plan**. If the organization does not have a paid subscription yet, **Choose payment method** opens:
+
+- **Pay by card** continues to Stripe checkout. The plan activates after the card payment clears.
+- **Pay by invoice (bank transfer)** creates the subscription after you confirm it. This option requires complete company billing details; the invoice and bank-transfer information are sent to the billing email.
+
+Once a paid subscription exists, its payment method stays with it. A card-paid subscription continues through Stripe when you select another plan. An invoice-paid subscription opens an in-platform confirmation and applies the plan change to the existing subscription. See [Billing and Invoices](billing-and-invoices.md) for billing details, invoice payment terms, and plan changes.
 
 For the **Enterprise** tier, click **Talk to sales** to reach the Kilo IoT team for custom pricing and terms.
 
@@ -39,11 +54,13 @@ Each plan caps how much of the platform you can use — devices, custom dashboar
 
 ## Managing an Existing Subscription
 
-Current subscribers see a **Manage my subscription** button. This opens the Stripe customer portal, where you can:
+Current subscribers paying **by card** see a **Manage my subscription** button. This opens the Stripe customer portal, where you can:
 
 - Update your payment method
 - View invoices and payment history
 - Cancel or modify your subscription
+
+Organizations billed **by invoice** manage things differently: their invoices live on an **Invoices** page inside Kilo rather than in the Stripe portal, and plan changes are applied in place instead of going through checkout. See [Billing and Invoices](billing-and-invoices.md).
 
 ## SMS Credits
 

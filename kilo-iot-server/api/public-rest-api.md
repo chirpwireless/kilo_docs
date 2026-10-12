@@ -13,7 +13,7 @@ Use the [API reference](https://api.kiloiot.io/) for the full list of endpoints,
 Requests go to the secured production endpoint and carry two headers:
 
 - `X-API-Key` — a scoped key created in [Settings → API Keys](../settings/api-keys.md).
-- `X-Organization-Id` — the organization the request operates in; it must match the key's organization. Some operations also accept the organization as an `organizationId` query parameter instead of the header.
+- `X-Organization-Id` — the organization the request operates in; it must match the key's organization. Some operations also require an `organizationId` query parameter. Provide that parameter in addition to the header; it does not replace the header.
 
 All traffic is over TLS. Treat the key like a credential — see [Authentication & API keys](authentication-and-api-keys.md).
 
@@ -37,3 +37,5 @@ A minimal authenticated call is in [Examples](examples.md).
 - [gRPC API](grpc-api.md) — when typed clients or service-to-service calls fit better.
 - [Authentication & API keys](authentication-and-api-keys.md)
 - [API Keys](../settings/api-keys.md) — create and manage keys.
+
+For a service move, read [Data and export formats](../../trust-security-compliance/data-and-export-formats.md). A response from one operation is not a complete export of the service.

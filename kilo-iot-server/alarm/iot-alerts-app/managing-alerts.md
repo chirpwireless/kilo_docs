@@ -4,7 +4,11 @@ description: Acknowledge and resolve Kilo alarms from your phone — Inbox, Aler
 
 # Acknowledge and Resolve
 
-The app is built for response, not just receipt. From a responder's phone you can triage incoming events, close the loop on the ones you've handled, and silence a noisy definition without opening a workstation. It has two tabs — **Inbox** and **Alert Definitions** — plus organization and platform switching.
+The IoT Alerts app lets Kilo responders inspect alarm events, stop the sound on their phone, and resolve events after handling them. An **alarm event** is a shared record in the organization's Inbox; the sound and notification on one phone are its local presentation.
+
+**Stop sound** silences the phone without resolving the shared event. **Resolve** updates the event for the organization when the request succeeds. Choose the action that matches your response: silencing a phone does not tell the rest of the team that the issue is handled.
+
+[Set up the app](getting-started.md) and select the correct organization before using its **Inbox** and **Alert Definitions** tabs.
 
 ## Inbox
 

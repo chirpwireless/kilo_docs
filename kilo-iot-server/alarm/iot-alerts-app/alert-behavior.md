@@ -1,5 +1,5 @@
 ---
-description: How Kilo alarm severity decides when a push wakes the phone or arrives as a quiet notification.
+description: How Kilo alarm severity decides whether the IoT Alerts app wakes the phone or sends a quieter notification.
 ---
 
 # When Alerts Wake Your Phone

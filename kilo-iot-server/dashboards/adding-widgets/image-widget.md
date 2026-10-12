@@ -4,13 +4,13 @@ description: Pin live sensor readings onto any image — floor plan, site photo,
 
 # Image Widget
 
-<figure><img src="../../../.gitbook/assets/image-widget.jpg" alt="Image Widget configuration — a photo of silo tanks with sensor pins, beside the live preview"><figcaption></figcaption></figure>
-
-The Image Widget turns a picture into a live dashboard. Upload an image — and it can be **any image at all**: a floor plan, an equipment schematic, a site diagram, a photo of a building, a photo of a piece of equipment such as the silo tanks above — then pin live numeric readings onto it, each one sitting exactly where its sensor is.
+The Image Widget turns a picture into a live dashboard. Upload an image — and it can be **any image at all**: a floor plan, an equipment schematic, a site diagram, a photo of a building, a photo of a piece of equipment such as the silo tanks in the screenshot — then pin live numeric readings onto it, each one sitting exactly where its sensor is.
 
 That is the whole idea: you stop reading a list of device names and instead look at the real place or machine and see what every part of it is doing right now. A plant manager looks at the silo photo and sees which tank is running low; a maintenance engineer looks at an equipment schematic and sees which component is outside tolerance.
 
 Upload a supported image file — a PNG or JPG — of any place, object, or system you want to monitor. Each pinned reading shows its current value, its unit, and an icon, and its color changes as conditions trigger, so status is visible across the whole image at a glance.
+
+<figure><img src="../../../.gitbook/assets/image-widget.jpg" alt="Image Widget configuration — a photo of silo tanks with sensor pins, beside the live preview"><figcaption></figcaption></figure>
 
 ## Configure an Image Widget
 
@@ -23,7 +23,7 @@ Here is a full setup for one real case — monitoring a row of grain silos from 
 5. Under the layer, click **Add datasource** — this creates an empty datasource block. In the block, click **Choose device** and select the first silo's level sensor.
 6. Click **Add metric**. Set **Data type** to **Telemetry**, choose the fill-level reading under **Device metric**, and pick an **Icon**.
 
-   > **Can't find your metric?** The Image Widget only pins numeric metrics. If a reading you expect is missing, its metric **Type** is set to String or Boolean instead of Integer or Float. Open **Metric Templates** (the **Metrics Templates** button on a connection's Connected Devices list), find the metric on the **Metrics** tab, and set its **Type** to Integer or Float — provided the device actually reports a number. See [Metric Templates](../../devices/metric-templates.md).
+   > **Can't find your metric?** The Image Widget only pins numeric metrics. If a reading you expect is missing, the metric is stored as String or Boolean rather than Integer or Float. Open **Devices → Metrics**, find the metric, and change how it is stored to Integer or Float — provided the device actually reports a number. See [Metrics](../../devices/metric-templates.md).
 7. Click **Conditions: N** to open the Conditions modal. Set a **Default color**, then for each band click **Add condition** and fill the row — a **Condition name**, **Data type** set to **Number**, the **From** and **To** values, and a **Color**. The pin's color comes entirely from these conditions. For a silo fill level reported as a percentage, add four:
    - "Critical" — **From** 0, **To** 10 — burgundy (a deep red)
    - "Refill now" — **From** 10, **To** 30 — red

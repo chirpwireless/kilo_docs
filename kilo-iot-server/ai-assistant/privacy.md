@@ -1,52 +1,38 @@
 ---
-description: Privacy of the Kilo IoT AI Assistant — session-scoped auth, permission inheritance, org isolation, data retention.
+description: "Understand what Kilo AI conversations contain, where model requests go, and how conversation deletion differs from account closure."
 ---
 
 # Privacy and Security
 
-## Authentication
+The Kilo AI Assistant uses your questions and relevant platform information to help with your connected devices. For example, a question about a cold room may include its device name and temperature readings in the request sent to the AI model. This page explains the information involved and the choices you control.
 
-Every interaction with the assistant is authenticated using your active session. The assistant inherits your exact permissions and organizational context. It cannot see more data than you can, and it cannot perform any action you couldn't perform yourself.
+## Account access and action confirmations
 
-## Permission inheritance
+The built-in assistant uses your signed-in account and selected organization for its requests. Choose the correct organization and review its members and permissions before delegating work. Read any **Confirm Action** prompt before approving a change to devices or data; choose **Cancel** if the proposed action is not what you want. Routine setup can proceed without a separate confirmation.
 
-The assistant mirrors the access model of the account using it:
+If the assistant returns information or proposes an action outside the access you expect, stop that task and contact **info [at] kiloiot.de** (replace `[at]` with `@`).
 
-- **Organization administrators** can query all organizational data through the assistant, matching the full visibility they already have in the platform interface.
-- **Standard users** see only the devices and data their permissions grant. If a user cannot access a device on the Devices page, the assistant cannot query that device either.
-- **Read-only users** can query freely, but the assistant cannot change anything on their behalf — it can only do what their role already allows. A user who cannot edit a rule in the interface cannot have the assistant edit it either.
+## What a conversation can contain
 
-## Confirmation before consequential actions
+Conversation history can contain your messages, answers, timestamps and information retrieved by the assistant, including device names, readings, rules and alarms. It lets you return to earlier work. Even though chat is not a full archive of device history, a reading included in a conversation can remain part of that conversation.
 
-When your role does allow changes, the assistant still asks before doing anything destructive or hard to reverse. Deleting a device or rule, or resolving an alarm, surfaces an explicit **Confirm Action** / **Cancel** prompt, and the assistant only proceeds once you approve. Routine, safe steps run directly; consequential ones are always gated by your confirmation.
+Anything you type can become conversation content. Keep account passwords, payment details and unrelated secrets out of chat. Enter a model-provider API key in the dedicated settings described in [Managing chats and AI access](managing-chats-and-ai-access.md).
 
-## Organization isolation
+## Where the information goes
 
-Conversations and data queries are strictly scoped to your current organization. The assistant cannot access data from any other organization, even if your account holds membership in multiple organizations. Switching organizations in the platform interface changes the assistant's data scope accordingly.
+An AI model provider is the service that runs the model used to answer your request. Your messages and the information retrieved for the answer can reach that provider.
 
-## What is stored
+- **Kilo's configured provider:** the integrated route uses OpenRouter, which forwards requests to the selected model.
+- **Your own provider credentials:** the selected provider processes the request under the arrangement associated with your credentials. Check its retention, training and location terms.
+- **Your own model endpoint:** the configured address determines where model requests are sent. This does not remove Kilo's own conversation handling. Selecting Ollama's hosted address is different from entering an endpoint you operate yourself.
+- **An external AI application:** an application connected through the [MCP server](../api/mcp-server.md) can send retrieved information to the providers it uses. Review that application's access and privacy settings separately.
 
-- **Chat history:** Your questions, the assistant's responses, timestamps, and session metadata are stored so you can revisit previous conversations.
-- **Privacy:** Chat history is private to your individual account. No other user in your organization can see your conversations with the assistant.
+Provider settings and agreements can differ. Before using information subject to confidentiality or location restrictions, confirm that the chosen arrangement meets them. Disconnecting an application does not erase information it already received.
 
-## What is NOT stored
+## Deleting a conversation or closing an account
 
-- Raw device telemetry is not duplicated or retained by the assistant beyond the scope of your query.
-- Passwords, API credentials, and authentication tokens are never captured.
-- Billing and payment data is not recorded in conversation logs.
+Conversation deletion and account closure are separate actions. Use the chat-management instructions for an individual conversation. Closing an account does not currently automate complete deletion of conversations and related copies across every system.
 
-## How queries are processed
+For a personal-data request or a result covering provider-held copies, email **info [at] kiloiot.de**. Identify the relevant account and the outcome you need without resending the conversation's sensitive contents. The response should explain the result and any records that must remain.
 
-1. Your question is sent to the assistant backend, authenticated with your active session.
-2. A language model interprets the intent of your question.
-3. The assistant queries only the data sources your permissions authorize.
-4. Results are analyzed and a natural-language response is composed.
-5. The response is streamed back to your browser in real time.
-
-Only the question text is sent to the language model for interpretation. Your device telemetry stays within the Kilo IoT infrastructure and is not transmitted to external services for processing.
-
-## Best practices
-
-- Do not share passwords, API keys, or private credentials in the chat. The assistant does not need them and will not use them.
-- Be specific about devices and time ranges to receive precise, relevant answers.
-- All interactions with the assistant are logged for security audit purposes, consistent with the platform's audit trail.
+Read [Privacy and data protection](../../trust-security-compliance/privacy-and-data-protection.md) for your rights and [Data export and switching](../../trust-security-compliance/data-export-deletion-and-switching.md) for company data, retained records and backup handling.

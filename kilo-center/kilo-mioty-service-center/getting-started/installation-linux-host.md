@@ -8,7 +8,9 @@ Use the current installation examples only in an isolated evaluation environment
 Published credentials, signing-key defaults and network exposure need correction before customer use.
 Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
 
-### Goal
+Install KiloCenter Community Edition directly on a Linux host when you want to manage its services and dependencies yourself. The result is the same open-source MIOTY networking service, with the processes running on your host rather than inside Docker containers.
+
+### What does this guide achieve?
 
 Run KiloCenter without Docker by installing all dependencies directly on the host.
 
@@ -16,16 +18,16 @@ Run KiloCenter without Docker by installing all dependencies directly on the hos
 
 Install and start these services on the host:
 
-* **PostgreSQL 18+** -- create a database named `kilocenter`
-* **Redis 7+**
-* **Mosquitto 2.0+**
+- **PostgreSQL 18+** -- create a database named `kilocenter`
+- **Redis 7+**
+- **Mosquitto 2.0+**
 
 ### Step 2: Generate TLS Certificates
 
 Build the certificate generator and generate certificates before configuring or starting KC-Core:
 
 ```bash
-cd kilocenter-modules
+cd kilo-service-center
 go build -o KC-Core/certgen KC-Core/cmd/certgen/main.go
 KC-Core/certgen -dir KC-Core/certificates -days 365 -server your-hostname.example.com
 ```
@@ -34,10 +36,10 @@ Replace `your-hostname.example.com` with the FQDN or IP address that base statio
 
 This creates four files in `KC-Core/certificates/`:
 
-* `ca.crt` and `ca.key` -- CA certificate and private key
-* `server.crt` and `server.key` -- server certificate and private key
+- `ca.crt` and `ca.key` -- CA certificate and private key
+- `server.crt` and `server.key` -- server certificate and private key
 
-The server certificate automatically includes `localhost`, `127.0.0.1`, and all local network IPs as SANs.
+The server certificate names the `-server` hostname (`localhost` by default), `kilocenter.local`, `127.0.0.1` and `0.0.0.0` as SANs, plus any names or IP addresses you pass with `-san`. It does not list the host's network interfaces, so pass the name or address your base stations use, for example `-san 192.0.2.10,bssci.example.com`.
 
 KC-Core will fail to start without these files. To renew later without regenerating the CA, use `-server-only`:
 
@@ -45,45 +47,89 @@ KC-Core will fail to start without these files. To renew later without regenerat
 KC-Core/certgen -dir KC-Core/certificates -days 365 -server your-hostname.example.com -server-only
 ```
 
-See Security for full certgen reference and client certificate generation.
+See [Security](../security/security-basics.md) for full certgen reference and client certificate generation.
 
 ### Step 3: Configure KC-Core
 
-Update `kilocenter-modules/KC-Core/config.yaml` to match your host service addresses. Key settings:
+Update `KC-Core/config.yaml` to match your host service addresses. Key settings:
 
-* `storage.host` and `storage.port` -- PostgreSQL address (typically `localhost:5432` for host install)
-* `storage.username` and `storage.password` -- database credentials
-* BSSCI and SCACI TLS certificate paths
+- `storage.host` and `storage.port` -- PostgreSQL address (typically `localhost:5432` for host install)
+- `storage.username` and `storage.password` -- database credentials
+- BSSCI and SCACI TLS certificate paths
 
-### Step 4: Build and Start KC-Core
+### Step 4: Create the Master Key
 
-From `kilocenter-modules/KC-Core/`:
+KC-Core and KC-Identity encrypt every endpoint, session, message and TLS key
+at rest under a master key read from the `KILOCENTER_MASTER_KEY` environment
+variable, and refuse to start without it. Generate it once and keep it in a
+file only your user can read:
+
+```bash
+mkdir -p ~/.config/kilocenter
+(umask 077 && openssl rand -hex 32 > ~/.config/kilocenter/master.key)
+```
+
+Export it in every shell (or service unit) that starts KC-Core or KC-Identity;
+both must receive the same value:
+
+```bash
+export KILOCENTER_MASTER_KEY="$(cat ~/.config/kilocenter/master.key)"
+```
+
+Back the file up with your other secrets and never replace it for an existing
+database: if it is lost, the stored keys cannot be decrypted and every
+endpoint and base station has to be provisioned again.
+
+### Step 5: Build and Start KC-Core
+
+From `KC-Core/`, with `KILOCENTER_MASTER_KEY` exported:
 
 ```bash
 go build -o kilocenter ./cmd/kilocenter/
 ./kilocenter -config config.yaml
 ```
 
-### Step 5: Build and Start KC-Gateway
+### Step 6: Build and Start KC-Identity
 
-From `kilocenter-modules/KC-Gateway/`:
+From `KC-Identity/`, with `KILOCENTER_MASTER_KEY` exported:
+
+```bash
+go build -o identity ./cmd/identity/
+./identity -config config.yaml
+```
+
+KC-Identity provides user authentication, organization management, and API key services on port 50052.
+
+### Step 7: Build and Start KC-Gateway
+
+From `KC-Gateway/`:
 
 ```bash
 go build -o gateway ./cmd/gateway/
 ./gateway -config config.yaml
 ```
 
-### Step 6: Start KC-Web
+KC-Gateway proxies external gRPC-web requests to KC-Core and KC-Identity. It must be started after both upstream services are healthy.
 
-From `kilo-service-center/KC-Web/`:
+The shipped configurations keep KC-Core and KC-Identity on `localhost`, so the
+internal calls between the three services never leave the host. If you bind
+either service to another address (`grpc.host`) or run them on separate hosts,
+generate a shared secret with `openssl rand -hex 32` and export it as
+`KILOCENTER_INTERNAL_AUTH_PEER_SECRET` for all three: the services refuse to
+start without one of at least 32 characters.
+
+### Step 8: Start KC-Web
+
+From `KC-Web/`:
 
 ```bash
 bun install
 bun run dev
 ```
 
-### Step 7: Validate
+### Step 9: Validate
 
-* KC-Core health: [http://localhost:8086/health](http://localhost:8086/health)
-* KC-Gateway health: [http://localhost:8087/health](http://localhost:8087/health)
-* KC-Web: [http://localhost:5173](http://localhost:5173)
+- KC-Core health: [http://localhost:8086/health](http://localhost:8086/health)
+- KC-Identity health: [http://localhost:8088/health](http://localhost:8088/health)
+- KC-Gateway health: [http://localhost:8087/health](http://localhost:8087/health)
+- KC-Web: [http://localhost:5173](http://localhost:5173)

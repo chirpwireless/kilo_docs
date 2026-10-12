@@ -1,5 +1,5 @@
 ---
-description: Walkthrough — create your first operational alarm, link it to a rule, see it fire in the Inbox, resolve the event.
+description: Create a first Kilo IoT alarm, link it to a rule, see the event arrive in the Inbox, and resolve it there.
 ---
 
 # Your First Alert
@@ -53,6 +53,8 @@ Once the rule fires (either from real sensor data or a test condition), the alar
 - The event shows with **Active** status (warning triangle).
 - Severity is color-coded as **High**.
 - The message matches what you configured in the definition.
+
+<figure><img src="../../.gitbook/assets/alarm-inbox.jpg" alt="A triggered alarm in the Inbox with its message, severity, first and last trigger times and the Mark as resolved action"><figcaption></figcaption></figure>
 
 ## Step 4 — Resolve the alarm
 

@@ -46,8 +46,10 @@ This guide does not prescribe redundancy patterns for Z2M. Z2M redundancy is non
 Once Z2M is publishing, every Zigbee device becomes a regular MQTT publisher from the platform's perspective. The connector-side work is the same as for any other MQTT-publishing gateway:
 
 1. Configure the [MQTT connector](../../connectors/mqtt-connector.md) (Cloud MQTT or External MQTT) and point Z2M at it via `mqtt.server` and `mqtt.base_topic` in `configuration.yaml`.
-2. For each Zigbee device, register a device record with **Device ID** equal to the Z2M friendly name (byte-for-byte; whitespace is stripped on the platform side, so use whitespace-free names such as `LineA-Sensor-12` or `lab_temp_03`).
+2. For each Zigbee device, register a device record with **Device ID** equal to the Z2M friendly name (character for character, including case and any spaces; names without spaces such as `LineA-Sensor-12` or `lab_temp_03` are the easiest to keep in step).
 3. Set the **Device ID Topic** to `zigbee2mqtt/{{deviceId}}`.
 4. Map the payload keys following the two-pass save pattern documented in [Topics and device routing](../../connectors/mqtt/topics-and-device-routing.md), and revisit Mapping iteratively as additional fields appear in live payloads.
+
+<figure><img src="../../../.gitbook/assets/device-mqtt-topic-builder.jpg" alt="The MQTT topic builder on a device Connection tab with a locked connector prefix, a text segment, a Device ID segment and the resolved preview"><figcaption></figcaption></figure>
 
 For a complete Z2M setup reference (`docker-compose.yml`, `configuration.yaml` template, coordinator selection, channel choice), consult the Zigbee2MQTT project's own documentation. Z2M's published topic stream reaches the platform's MQTT connector identically to any other MQTT edge gateway producing flat JSON on the broker.

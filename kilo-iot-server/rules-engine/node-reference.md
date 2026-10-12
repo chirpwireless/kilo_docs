@@ -1,20 +1,20 @@
 ---
-description: Node reference for the Rules Engine — Start, End, Script, Gateway, Set Alarm, Enrichment, Boundary.
+description: Reference for each Kilo rules engine node, from Start Event and Script Task to Set Alarm and Execute Command.
 ---
 
-# Node Reference
+# What Does Each Node Do in the Rules Engine?
 
-Every automation rule is built from a set of node types that you drag onto the visual editor canvas, connect with flows, and configure through a properties panel. This page documents each node type — what it does, when to use it, how it appears on the canvas, and every field in its properties panel.
+A **node** is one step or decision in a Kilo automation rule. **Flows** are the arrows connecting nodes: they define the order of work and the available paths. Use this reference to choose each step and configure it in the [visual editor](visual-editor.md).
 
-This page documents the nodes currently available in the live palette: **Start Event**, **End Event**, **Script Task**, **Exclusive Gateway**, **Set Alarm**, **Execute Command**, **Enrichment**, and **Boundary Error Event**. Transitional or planned nodes are intentionally excluded until they are part of the live editor surface.
+For example, a Script Task calculates a value, an Exclusive Gateway chooses a path, and Set Alarm raises an event using a saved alarm definition. Execute Command uses a command already configured on a device. Create those resources before selecting them in a node.
 
-For an overview of the canvas itself — palette, toolbar, and general editing workflow — see [Visual Editor](visual-editor.md).
+The available types are **Start Event**, **End Event**, **Script Task**, **Exclusive Gateway**, **Set Alarm**, **Execute Command**, **Enrichment**, and **Boundary Error Event**. Each section below explains its role and fields.
 
 ---
 
 ## Start Event
 
-The Start Event is the entry point of every rule. It binds the rule to a specific device and sensor, and fires each time that sensor sends a new reading. Every rule must have exactly one Start Event.
+The Start Event is the entry point of every rule. It decides what sets the rule off — either one device's sensor readings or a saved [trigger](triggers.md) that evaluates a condition for one or more devices. Every rule must have exactly one Start Event.
 
 ### Visual appearance
 
@@ -26,43 +26,69 @@ Every rule begins here. You cannot build a valid rule without a Start Event.
 
 ### Properties panel
 
-Click the Start Event on the canvas to open its properties panel on the right.
+Select the Start Event on the canvas — a pencil and a bin icon appear beneath it. Click the **pencil** to open its properties panel on the right.
 
 **Name** — A text field for the node label. Placeholder: *e.g., Fire Alarm*.
 
-**Event filter** — A section headed "Define which devices can initiate this rule." containing two fields:
+**Start source** — A select with two options that decides what the rest of the panel asks for. A Start Event names one source or the other; markup naming both, or neither, is rejected.
+
+| Option | What the rule starts from |
+|---|---|
+| **Sensor reading** | One device's readings. The rule fires each time that sensor reports. |
+| **Trigger condition** | A saved [trigger](triggers.md). Its condition can act immediately or after a duration and can evaluate one or more devices independently. The trigger signals the rule when the condition qualifies and can signal again while it remains active. The rule must be running, and its schedule and execution-rate limits still apply. |
+
+**Event filter** — Shown when **Start source** is **Sensor reading**. A section headed "Define which devices can initiate this rule." containing two fields:
 
 | Field | Description |
 |---|---|
-| **Device** | Searchable autocomplete dropdown. Placeholder: *Select device*. Lists all devices in your organization. |
+| **Device** | Searchable autocomplete dropdown. Placeholder: *Select device*. Lists the devices in your organization. The list loads the first 200 devices; when your organization has more, a gray note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Sensor** | Autocomplete dropdown. Placeholder: *Select sensor*. Disabled until a device is chosen. Shows only sensors belonging to the selected device. |
+
+**Trigger condition** — Shown instead of the Event filter when **Start source** is **Trigger condition**. A single autocomplete, placeholder *Select trigger*, listing the triggers defined on the **Triggers** tab.
+
+> Only the first page of triggers is loaded, and the field says so when there are more. If the trigger you need is not in the list, that is why — see [Triggers](triggers.md).
 
 **Enable Schedule** — A toggle switch (Off by default). When turned On, the following fields appear:
 
 | Field | Description |
 |---|---|
-| **Time Range** | A select dropdown with preset options: `0:00 – 24:00`, `8:00 – 20:00`, `9:00 – 18:00`, `6:00 – 22:00`. Defines the window during which the rule can fire. Outside this window, incoming sensor data is ignored. |
-| **Time Zone** | A dropdown listing all standard time zones. Defaults to your browser's time zone. |
+| **Time Range** | Appears when Schedule is On, headed *"Time Range. Rule is only active during this period:"*. A **Change schedule** button opens the editor, where you pick the days of the week the rule may run and the **From** and **To** times. Outside that window, the rule does not run. For a trigger source, monitoring and countdowns continue; only the attempted rule run is skipped. |
+| **Time Zone** | A dropdown listing standard time zones, so the window means the same thing regardless of where the viewer is. |
 
-**Inputs** — A list of advanced CEL expressions for data preparation. Each input has:
+**Inputs** — Optional. A list of advanced CEL expressions for data preparation. Most rules leave this empty and read the incoming reading directly. Each input has:
 - An input name (text field)
 - A type indicator (locked to "Expression")
 - A CEL expression field
 - Add new inputs with the **+ Add input** button. Remove an input with its delete button.
 
-**Outputs** — Same structure as Inputs, with its own **+ Add output** button. Use outputs to publish named values into `vars` for downstream nodes.
+**Outputs** — Optional. Same structure as Inputs, with its own **+ Add output** button. Use outputs to publish named values into `vars` for downstream nodes.
 
 **Save / Cancel** — At the bottom of the panel. Click **Save** to apply changes, or **Cancel** to discard.
 
 ### How data flows from the Start Event
 
-When the bound sensor sends a reading, the rule engine makes the data available as process variables:
+The process variables depend on the **Start source**.
+
+**Sensor reading** provides:
 
 | Variable | Contents |
 |---|---|
 | `vars.value` | The sensor's reported value |
 | `vars.sensor_id` | The unique identifier of the sensor |
 | `vars.timestamp` | The reading's timestamp |
+
+**Trigger condition** provides:
+
+| Variable | Contents |
+|---|---|
+| `vars.device_name` | The name of the watched device that satisfied the trigger |
+| `vars.subject_kind` | The watched resource type; currently `device` |
+| `vars.subject_id` | The unique identifier of the watched device |
+| `vars.sensor_id` | The sensor identifier used to associate the run and any alarm with the watched device |
+| `vars.detector_id` | The unique identifier of the trigger |
+| `vars.timestamp` | The original activation time in whole Unix seconds; repeated signals for the same occurrence retain it |
+
+A trigger-started rule does not receive `vars.value`. See [Data available to the rule](triggers.md#what-data-does-a-trigger-started-rule-receive) before converting a sensor-started rule.
 
 The Start Event can also reshape incoming data before the rest of the rule runs:
 
@@ -71,7 +97,7 @@ The Start Event can also reshape incoming data before the rest of the rule runs:
 
 ### Example
 
-A cold-storage compliance rule for a pharmaceutical warehouse binds the Start Event to a temperature probe inside the storage unit. The schedule is set to `0:00 – 24:00` (round-the-clock monitoring) with the facility's local time zone. No inputs are needed — the raw temperature value is enough for the downstream gateway to evaluate.
+A cold-storage compliance rule for a pharmaceutical warehouse binds the Start Event to a temperature probe inside the storage unit. Schedule is left off, since the probe is worth watching around the clock; were it a rule that should only run out of hours, **Change schedule** would set those days and times against the facility's local time zone. No inputs are needed — the raw temperature value is enough for the downstream gateway to evaluate.
 
 ---
 
@@ -191,17 +217,42 @@ When you change which flow is the default, a warning appears: *"When changing th
 
 If the gateway has no outgoing connections yet, the Flows section shows an empty state: *"Draw connections from this gateway on the canvas to add flows."* You must draw connections on the canvas first — flows cannot be added from the properties panel alone.
 
-**Inputs** — Same structure as the Start Event Inputs section (name, type, CEL expression, + Add input).
+**Inputs** — Optional. Same structure as the Start Event Inputs section (name, type, CEL expression, + Add input).
 
-**Outputs** — Same structure as the Start Event Outputs section (name, type, CEL expression, + Add output).
+**Outputs** — Optional. Same structure as the Start Event Outputs section (name, type, CEL expression, + Add output).
 
 **Save / Cancel** — At the bottom of the panel.
+
+### Do I need the Input and Output parameters?
+
+No. Both are optional, and a gateway that simply checks whether a value is above a threshold needs neither — leave them empty and write `vars.value > 70` straight into the flow condition.
+
+Use them when a condition would otherwise be long, or when you repeat the same calculation across several flows.
+
+**An Input** computes a value before the gateway decides and gives it a short name that the gateway's own flow conditions can use. To convert a Celsius reading once and compare it twice, add an input:
+
+| Field | Value |
+| --- | --- |
+| Input name | `tempF` |
+| Expression | `vars.temperature * 1.8 + 32` |
+
+Then write the flow conditions as `vars.tempF > 158` and `vars.tempF > 104` instead of repeating the conversion in each.
+
+An input belongs to the gateway you defined it on. Later nodes cannot read it.
+
+**An Output** works the other way. It is evaluated after the branch is chosen and writes its result into the rule's variables, so nodes further along can use it — an alarm message can reference `vars.tempF` even though the conversion happened at the gateway.
+
+The same holds wherever Inputs and Outputs appear: an input is a helper for the node you are configuring, an output is how that node passes something on.
 
 ### How condition evaluation works
 
 Conditions are evaluated **top to bottom** as ordered in the Flows list. The first condition that returns `true` is the path taken. All remaining conditions are skipped, regardless of whether they would also be true.
 
 The default flow has no condition expression. It executes only when **every other condition evaluates to false**. Every Exclusive Gateway should have a default flow — without one, if no condition matches, the rule execution stalls on that branch.
+
+The default flow covers the case where nothing matched. It does not cover a condition that fails to evaluate: if an expression cannot be evaluated — usually because it references a variable the rule does not have, or returns something other than `true`/`false` — the gateway stops there and the rule goes no further along that path. In a debug session the gateway is outlined in red; see [Debugging Rules](debugging-rules.md#what-do-the-debug-markers-on-the-canvas-mean).
+
+A gateway also has to branch or merge: give it two or more outgoing flows to make a decision, or two or more incoming flows to bring paths back together. A gateway with one flow in and one flow out is rejected when you build the rule — connect those two nodes directly instead.
 
 ### Example
 
@@ -220,6 +271,8 @@ Because conditions are evaluated top-to-bottom, a reading of 90% matches Flow 1 
 ## Set Alarm
 
 The Set Alarm node triggers an alarm based on a pre-configured Alarm Definition. When execution reaches this node, it creates an alarm event that starts the escalation policy, sends notifications through configured channels, and appears in the alarm inbox.
+
+<figure><img src="../../.gitbook/assets/rules-node-properties-set-alarm.jpg" alt="The Set Alarm properties panel with the alarm selector, the CEL motivation message, and the Inputs and Outputs sections"><figcaption></figcaption></figure>
 
 ### Visual appearance
 
@@ -313,9 +366,9 @@ The target device must be **controllable** (MQTT, or a Class C LoRaWAN device) a
 | Field | Description |
 |---|---|
 | **Name** | A text field for the node label. If left blank, it fills in with the selected command's name. Example: "Shut intake valve". |
-| **Device** | A searchable autocomplete dropdown listing the devices in your organization. Selects the device the command is sent to. |
+| **Device** | A searchable autocomplete dropdown listing the devices in your organization. Selects the device the command is sent to. The list loads the first 200 devices; when your organization has more, a gray note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Command** | An autocomplete dropdown of the chosen device's defined commands. Disabled until a device is selected. |
-| **Parameters** | One row per parameter the selected command expects. Each parameter is supplied as a literal **Value** (validated against the parameter's type and range) or a **CEL Expression** (evaluated at runtime, with `vars` available). |
+| **Parameters** | One row per parameter the selected command expects. Each parameter is supplied as a literal **Value** (validated against the parameter's type and range) or an **Expression** (a CEL expression evaluated at runtime, with `vars` available). Each parameter row has an **Input type** dropdown with these two choices, **Value** and **Expression**. |
 | **Inputs / Outputs** | Optional named CEL expressions for advanced data shaping, the same pattern as other nodes. |
 
 **Save / Cancel** — At the bottom of the panel. Save is disabled until both a device and a command are selected and every parameter is valid.
@@ -356,7 +409,7 @@ The panel header reads **"Data Enrichment"** with the subtext: *"Attach relevant
 | Field | Description |
 |---|---|
 | **Name** | A text field for the node label. Placeholder: *e.g., Attach Room Temperature to Sensor Data*. |
-| **Device** | Searchable autocomplete dropdown. Lists all devices in your organization — the same selector pattern as the Start Event. |
+| **Device** | Searchable autocomplete dropdown. Lists the devices in your organization — the same selector pattern as the Start Event. The list loads the first 200 devices; when your organization has more, a gray note under the field reads **Showing the first N devices — search to find one further down the list.** Type part of the name to find the others. |
 | **Sensor** | Filtered dropdown. Disabled until a device is selected. Shows only sensors belonging to the chosen device. |
 | **Output variable** | A text field for the variable name under which the fetched data is stored. Placeholder: *User metadata*. After the node executes, the result is available as `vars.<output_variable>`. |
 
@@ -475,3 +528,7 @@ If you create a flow from a gateway without setting a condition, the build step 
 ### Flow labels and colors
 
 Flows from Exclusive Gateways can have labels and colors (configured in the gateway's properties panel). Use these to make complex diagrams readable at a glance — for example, label one branch "Critical" in red and another "Warning" in amber, with the default "Normal" branch in green.
+
+## Camera motion as a starting reading
+
+A Lens camera’s motion sensor can be selected in a **Sensor reading** Start event. Its boolean reading can be routed through a gateway before an alarm action. See [Camera Rules and Alerts](../lens/camera-rules-and-alerts.md).

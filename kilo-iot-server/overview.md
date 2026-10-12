@@ -14,6 +14,8 @@ Click **Overview** in the sidebar. The `/overview` route loads automatically whe
 
 The Overview page is organized into sections, each designed to surface a different layer of deployment health.
 
+<figure><img src="../.gitbook/assets/img.png" alt="The Overview page showing the My board header, device and gateway summary cards, favorite devices and the notifications feed"><figcaption></figcaption></figure>
+
 ### Header: "My board" and Live Data
 
 At the top of the page, the header displays the title **My board** alongside a **Live Data** button.

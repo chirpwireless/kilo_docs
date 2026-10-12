@@ -1,8 +1,225 @@
 ---
-description: Kilo IoT Server changelog — Scale Log entries for every release, with feature summaries, screenshots, and doc links.
+description: Kilo IoT Server changelog with Scale Log release notes for each version, feature summaries, and doc links.
 ---
 
 # Changelog
+
+<details>
+
+<summary>Scale Log. Release 3.9.0</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0 release banner"><figcaption></figcaption></figure>
+
+Kilo rules automate how a deployment responds to device data. A **trigger** is a saved condition that starts a rule, and it now has two independent controls: it can evaluate one device or several selected devices, and it can act immediately or wait for the condition to remain true. Before 3.9.0, applying one response to 50 devices required 50 rules; now one trigger and rule can cover them while keeping every device's condition and countdown separate. This release also brings all metrics into one searchable page, adds invoice payments and exact values on bar charts, expands the AI assistant, and helps connected AI apps distinguish actions that read data from actions that change it. [kiloiot.io](https://kiloiot.io)
+
+***
+
+#### What's in This Release
+
+* **One rule for up to 500 devices** — Previously, applying the same rule to 50 devices required 50 separate rules. Now one trigger can select those devices, evaluate each one separately, and start the shared rule for whichever device meets the condition.
+* **Wait before a rule runs** — A trigger can require a condition to remain true for 10 seconds to 30 days before starting the rule. For example, a freezer-door rule can ignore a door opened briefly for loading but act when the door remains open for 10 minutes.
+* **All metrics on one page** — A metric is a type of reading, such as temperature or battery level. Metrics that were spread across three tabs are now available in one searchable list at **Devices → Metrics**, where you can also add and edit them.
+* **Pay by invoice instead of by card** — Enter your company details and, when required, your VAT number; then choose bank transfer and receive the invoice information by email. The new **Invoices** page shows which invoices are open or paid and provides the PDF download.
+* **Show values on bar charts** — **Display value on bar** prints each value on its bar. **Show metrics below** adds the current readings beneath the chart.
+* **Add MIOTY devices with the AI assistant** — The assistant can now use an existing MIOTY connection to help you select a device model, enter its identifiers, and create the device with a compatible blueprint when one is needed.
+* **Use your own AI account** — Connect an OpenAI, Anthropic, OpenRouter, Ollama, or compatible account instead of using the monthly message allowance included with your Kilo plan. Ollama model names with version tags are now supported.
+* **Connected AI apps can distinguish read and write actions** — Actions available to ChatGPT, Claude, Cursor, and other connected AI apps now identify whether they only read data or can change or delete something.
+* **Reliability and interface improvements** — Device photos save correctly, the Audit Trail refreshes after permission changes, widget colors work again, log retention follows your plan, and the AI assistant reports completed actions more reliably.
+
+***
+
+**One rule for many devices**
+
+A rule is a flowchart that tells Kilo how to respond to device data. It can evaluate readings, raise an alarm, calculate a value, or send a command to equipment such as a valve or relay. A trigger defines the condition that starts the rule.
+
+Before 3.9.0, a rule could be triggered by only one device. If the same condition and response applied to 50 devices, you needed 50 separate rules. Updating the condition later meant editing every copy.
+
+Now one trigger can select up to **500 devices**, and one rule applies to all of them. Adding another device means updating that trigger instead of creating another rule. The selection belongs to the trigger; it is not a reusable device group elsewhere in Kilo.
+
+Most multi-device triggers are simple: every selected device supplies the same reading and is watched independently. Every watched device has its own trigger state and countdown, so one door remaining open does not affect any other door.
+
+A selected device can also supply a shared reading instead of being watched. For example, 50 doors can each supply their own `door_open` reading while one building controller supplies `heating_on` for every door check. Before you save, **How this trigger will run** shows one row for each watched device and identifies any shared reading in the **Uses** column.
+
+An alarm can also identify the device that triggered the rule. Add `vars.device_name` to the alarm's motivation message so the notification names the affected device.
+
+<figure><img src="../.gitbook/assets/trigger-device-group.jpg" alt="The device picker and the How this trigger will run table, one row per watched device"><figcaption></figcaption></figure>
+
+[→ One Trigger for Multiple Devices](../kilo-iot-server/rules-engine/triggers/multiple-devices.md)
+
+***
+
+**Make a rule wait before it runs**
+
+Before 3.9.0, a rule ran as soon as a device reading crossed the limit you set. An immediate response is useful for urgent conditions such as a water leak, but a brief temperature spike or an open door does not always require action.
+
+A trigger can now require the condition to remain true before the rule starts. Choose **Only if it lasts**, then set a duration in seconds, minutes, hours, or days. New triggers start at 10 minutes; you can set any duration from 10 seconds to 30 days.
+
+For example:
+
+* Ignore a freezer door opened briefly for loading, but run the rule if it remains open for 20 minutes.
+* In an apartment-complex garage, ignore a resident's short visit but raise a security alarm if motion continues for 10 minutes during the overnight rule schedule.
+* Ignore a normal one-minute pump cycle, but act if the pump continues running for two hours.
+* Ignore a short temperature increase, but raise an alarm if a room remains above 25 °C all afternoon.
+
+Two additional behaviors control how the timer works:
+
+* **A gap between device reports does not reset the countdown.** A device that reports every 15 minutes will not cancel a 20-minute wait simply because no new reading arrived between reports.
+* **Clearing the trigger can have its own condition and delay.** Under **Clear behavior**, define when the trigger returns to normal and how long that clear condition must last. This prevents one normal reading from clearing a condition too early.
+
+<figure><img src="../.gitbook/assets/trigger-time-window.jpg" alt="The Create trigger dialog with a temperature condition and Only if it lasts set to 10 minutes"><figcaption></figcaption></figure>
+
+[→ Trigger Timing](../kilo-iot-server/rules-engine/triggers/trigger-timing.md)
+
+***
+
+**All metrics on one page**
+
+A metric defines a type of device reading, such as temperature, humidity, battery level, or whether a door is open. The definition tells Kilo the metric's name, unit, and data type so readings from different device manufacturers can be used consistently in dashboards and rules.
+
+Before 3.9.0, metric definitions were divided across three tabs. They are now managed in one list at **Devices → Metrics**. From this page, you can:
+
+* search by name;
+* filter by unit, type, or data type;
+* select several filter values at once;
+* sort by newest or oldest;
+* add or edit a metric in the same dialog.
+
+Metrics belong to the entire organization. Editing one changes it for every device that uses it, so Kilo now warns you about the wider effect and asks for confirmation before saving.
+
+<figure><img src="../.gitbook/assets/device-metrics.jpg" alt="The Devices Metrics catalog with search, unit, type and data type filters and a sort control"><figcaption></figcaption></figure>
+
+[→ Metrics](../kilo-iot-server/devices/metric-templates.md)
+
+***
+
+**Pay by invoice instead of by card**
+
+Before 3.9.0, Kilo subscriptions could only be paid by card. Organizations that require a company invoice and bank transfer had no alternative payment method.
+
+You can now enter your legal name, registered address, billing email, and VAT number under Organization settings, then select **Pay by invoice (bank transfer)** when choosing a plan. EU VAT numbers are checked through the VIES register, and the form shows whether verification is pending or complete.
+
+When you pay by invoice:
+
+* the invoice information and hosted invoice link are sent to your billing email;
+* the invoice includes a payment page with bank details assigned to your organization so the payment can be matched automatically;
+* the **Invoices** page shows open and paid invoices;
+* upgrades invoice the difference for the remaining period, while downgrade credits are applied to the next invoice;
+* your deployment continues running while a plan change is processed.
+
+Card payments continue to work as before.
+
+<figure><img src="../.gitbook/assets/billing-details.jpg" alt="The Billing details section of Organization settings, with legal name, billing email, company address and tax ID"><figcaption></figcaption></figure>
+
+[→ Billing and Invoices](../kilo-iot-server/settings/billing-and-invoices.md)
+
+***
+
+**Show values on bar charts**
+
+A chart widget displays device readings on a dashboard. Before 3.9.0, values on a bar chart had to be estimated from the chart's scale.
+
+Turn on **Display value on bar** to print the value directly on each bar. This option is available only for bar charts.
+
+Turn on **Show metrics below** to add a row beneath the chart with each metric and its current reading. This can make compact dashboard widgets easier to read.
+
+<figure><img src="../.gitbook/assets/chart-widget.jpg" alt="A Kilo Bar chart with exact values printed on the bars and the current metric shown below"><figcaption></figcaption></figure>
+
+[→ Bar Chart](../kilo-iot-server/dashboards/adding-widgets/chart-widget/bar-chart.md)
+
+***
+
+**Add MIOTY devices with the AI assistant**
+
+MIOTY is a radio protocol designed for large sites and environments with substantial radio interference. To register an endpoint, Kilo needs an existing MIOTY connection, the endpoint's EUI, network session key, short address, and device model. Some endpoints also use an Application Key. A compatible blueprint is optional and converts the raw payload into named readings that Kilo can use.
+
+Before 3.9.0, the AI assistant could create a MIOTY connection, but you still had to register the device manually.
+
+The assistant can now complete the device setup with you. It will:
+
+1. help you select the manufacturer, model, and an available blueprint version when a decoder is needed;
+2. collect and validate the EUI, network session key, and short address as you enter them;
+3. create the device and attach the selected blueprint, if any.
+
+The assistant asks for identifiers that must come from your hardware or vendor documentation; it does not generate them.
+
+<figure><img src="../.gitbook/assets/device-mioty-connection.jpg" alt="The MIOTY device form, showing the End Point EUI, short address and network key that the assistant now collects and enters for you"><figcaption></figcaption></figure>
+
+[→ Building with AI](../kilo-iot-server/ai-assistant/building-with-ai.md)
+
+***
+
+**Use your own AI account**
+
+Each Kilo plan includes a monthly allowance of AI assistant messages. You can instead connect an account from OpenAI, Anthropic, OpenRouter, Ollama, or a custom OpenAI-compatible provider. Messages sent through that connection do not use the allowance included with your Kilo plan.
+
+Open **Connect your AI** from the AI Assistant’s top bar and enter the provider, endpoint, API key, and model name.
+
+Before 3.9.0, Kilo rejected Ollama model names that included a version after a colon, such as `gpt-oss:120b`. The suggested Ollama models were also unavailable to free accounts. Versioned model names are now accepted, and the suggestions have been updated to models that work with a free Ollama account.
+
+Connection errors now distinguish between:
+
+* an API key the provider does not recognize;
+* a valid account that does not include access to the selected model;
+* a model name the provider does not offer.
+
+After you connect, the panel continues to show the endpoint, hidden key, and model name so you can confirm which configuration is in use.
+
+<figure><img src="../.gitbook/assets/ai-connect-your-model.jpg" alt="The Connect your AI panel — provider, base URL, API key, and model ID"><figcaption></figcaption></figure>
+
+[→ Managing Chats and AI Access](../kilo-iot-server/ai-assistant/managing-chats-and-ai-access.md)
+
+***
+
+**Connected AI apps can distinguish read and write actions**
+
+Kilo can connect to AI apps such as ChatGPT, Claude, and Cursor. These apps can answer questions about your devices and, with permission, perform actions such as sending commands to hardware.
+
+Before 3.9.0, the available actions did not have clear titles or identify whether they only read data or changed something. The AI app could not reliably distinguish an action such as listing devices from one that deletes a device.
+
+Each action now identifies whether it reads data, changes or deletes something, or reaches outside your organization. Compatible AI apps can use this information to answer read-only questions directly and request confirmation before performing a change. No additional Kilo configuration is required.
+
+The published action list is generated from the same definitions used by the server. Actions that were listed but not implemented have been removed.
+
+<figure><img src="../.gitbook/assets/mcp-claude-session.jpg" alt="A Claude session connected to Kilo, calling a tool and asking permission before continuing"><figcaption></figcaption></figure>
+
+[→ MCP Server](../kilo-iot-server/api/mcp-server.md)
+
+***
+
+**Reliability and interface improvements**
+
+The AI assistant now reports the outcome of an action more accurately:
+
+* It confirms a reporting-interval change only when the device accepts it.
+* Retrying device registration no longer replaces the name you chose.
+* Device registration no longer adds an unrequested temperature mapping.
+* MIOTY connections no longer show an API key field they do not use.
+* The assistant correctly explains that Kilo can run device commands. When an action must be completed in the web interface, it directs you to the correct screen.
+* A successful device registration no longer displays a contradictory failure message.
+* Confirmation messages display line breaks correctly.
+* Replies no longer repeat the same answer in both text and a widget.
+* Replies that arrive all at once appear immediately without requiring a page reload.
+* Device limits are enforced consistently whether a device is added through the assistant or through a form.
+
+Additional improvements in this release include:
+
+* Device photos save correctly.
+* The Audit Trail refreshes after permission changes, so new entries appear without reloading the page.
+* MIOTY devices clearly show that they use their own copy of a blueprint; editing one device's copy no longer appears to affect other devices.
+* Last Data widget values change color according to their conditions again.
+* Device diagnostics use the correct Kilo terminology.
+* The assistant can retrieve longer periods of device history.
+* Devices that report once a day are no longer marked offline after only a few hours, and the warning identifies its units.
+* Device-log retention follows the limit included with your plan.
+* The support form lets you select a bug report, feature request, or integration request.
+* Emulated devices timestamp their first reading correctly and display properly on mobile screens.
+* The trigger dialog fits on mobile screens, and the AI Assistant icon is easier to see.
+* Empty states are consistent across connectors, devices, rules, rule artifacts, and MIOTY base stations. Device and gateway empty states also link to the shop when no hardware has been added.
+* The Overview page, navigation spacing, Download the app card, Invoices navigation, and Rules Engine screens have been polished, and obsolete front-end code has been removed.
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0"><figcaption></figcaption></figure>
+
+</details>
 
 <details>
 
@@ -10,7 +227,7 @@ description: Kilo IoT Server changelog — Scale Log entries for every release, 
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.8.0.jpg" alt="Kilo IoT Server 3.8.0 release banner"><figcaption></figcaption></figure>
 
-Three big ones in 3.8.0. **First, you no longer need hardware to start** — the **Emulator** builds an entire site with no devices at all, dashboards and rules and escalating alarms included, then hands those same devices over to real sensors the day they arrive. **Second, the AI assistant now operates your equipment**: it lists the commands on a device, runs one after you confirm, and checks that it landed. **And third — the one we are most excited about — connect ChatGPT or Claude over MCP and they control your devices too.** Not a chatbot describing your building: your own AI client, switching relays and changing setpoints on real hardware, inside your own permissions, with every dispatch recorded. Alongside all of it, the platform now tells you what shipped in a **What's New** panel, and MIOTY reaches a wider set of base stations with **BSSCI 1.1**. [kiloiot.io](https://kiloiot.io)
+Three big ones in 3.8.0. **First, you no longer need hardware to start** — the **Emulator** builds an entire site with no devices at all, dashboards and rules and escalating alarms included, then hands those same devices over to real sensors the day they arrive. **Second, the AI assistant now operates your equipment**: it lists the commands on a device, runs one after you confirm, and checks that it landed. **And third — the one we are most excited about — connect ChatGPT or Claude over MCP and they control your devices too.** Your own AI client can switch relays and change setpoints on real hardware, inside your own permissions, with every dispatch recorded. Alongside all of it, the platform now tells you what shipped in a **What's New** panel, and MIOTY reaches a wider set of base stations with **BSSCI 1.1**. [kiloiot.io](https://kiloiot.io)
 
 ***
 
@@ -69,7 +286,7 @@ The guarantees travel with it: existing command definitions only, a confirmation
 
 **AI drives the emulator**
 
-The assistant also learned the Emulator. It can list the available device presets, provision an emulated device, read and update its configuration and interval, send a one-off reading to exercise a rule, and perform the swap to a real connector when the hardware lands. Standing up a test deployment is now a conversation rather than an afternoon.
+The assistant also learned the Emulator. It can list the available device presets, provision an emulated device, read and update its configuration and interval, send a one-off reading to exercise a rule, and take the device live onto a real LoRaWAN connection when the hardware lands. Standing up a test deployment is now a conversation rather than an afternoon.
 
 <figure><img src="../.gitbook/assets/emulator-manual-value.jpg" alt="Sending a one-off reading from an emulated device's Emulator tab"><figcaption></figcaption></figure>
 
@@ -150,7 +367,7 @@ Create a **Mioty connector** and a **Mioty Base Stations** tab appears alongside
 
 Payload decoding is where the design earns its keep. A **blueprint** is a decoder spec bound to a device type, organized as manufacturer → model → version and split into a **System** catalog everyone can use and a **Custom** catalog that is yours. Choose one for a device and the platform takes a *snapshot* of it onto that device. Edit or delete the catalog template afterwards and nothing already in the field changes — those devices keep running on their own copy until you deliberately move them to a new version. Two devices of the same model can run different blueprints. Author a new one from pasted JSON and test the decoder against a sample payload before you save it.
 
-[→ What is MIOTY?](../mioty/README.md) · [→ Mioty Connector](../kilo-iot-server/connectors/mioty-connector.md) · [→ Mioty Base Stations](../kilo-iot-server/gateways/mioty-base-stations/README.md) · [→ Mioty Blueprints](../kilo-iot-server/devices/mioty-blueprints.md)
+[→ What is MIOTY?](../kilo-iot-server/connectors/mioty-connector/what-is-mioty.md) · [→ Mioty Connector](../kilo-iot-server/connectors/mioty-connector/README.md) · [→ Mioty Base Stations](../kilo-iot-server/gateways/mioty-base-stations/README.md) · [→ Mioty Blueprints](../kilo-iot-server/devices/mioty-blueprints.md)
 
 ***
 
@@ -216,7 +433,7 @@ This release also clears a set of layout and navigation issues: dashboards now a
 
 #### What's in This Release
 
-* **AIoT — an AI integrator built into the platform** — Grounded in your live deployment, the assistant answers from your real data and does the work with you: provisioning devices, writing and deploying rules, and building alarms with escalation — confirming before any consequential change and verifying its own results.
+* **AIoT — an AI integrator built into the platform** — Grounded in your live deployment, the assistant does the setup with you: provisioning devices, writing and deploying rules, and building alarms with escalation, with device-data analysis alongside those tasks — confirming before any consequential change and verifying its own results.
 * **Commands in the Rules Engine** — A new **Execute Command** node turns automation two-way: a rule can send a command straight to a device when conditions are met. Sense, decide, act — end to end, with no one in the loop.
 * **Public command APIs** — The device-command endpoints are now part of the public REST API, with new `Commands` read and write scopes for API keys.
 * **iFrame dashboard widget** — Embed an external web page — a BI report, a weather map, live traffic — directly onto a dashboard, beside your device data.
@@ -230,11 +447,11 @@ This release also clears a set of layout and navigation issues: dashboards now a
 
 <figure><img src="../.gitbook/assets/ai-chat-home.jpg" alt="The Kilo AIoT assistant ready to provision devices, deploy rules, and set up alarms"><figcaption></figcaption></figure>
 
-This is the headline of 3.6.0, and it changes what the platform *is*. We were among the first to put an AI chat on top of device data — then we paused, and instead of rushing, we built the infrastructure underneath it properly: an enterprise-grade agent runtime that knows your deployment end to end and does real work inside it. Open it from **AI Chat** in the sidebar and brief it like a colleague.
+The AI Assistant puts an experienced integrator by your side. Protocols, device compatibility, and configuration have long made IoT projects demanding. With 3.6.0, you can describe the result you need and have the assistant carry out device, automation, and alarm setup with you. Open it using **AI Chat** in the sidebar and brief it like a colleague.
 
-It answers from your live data, scoped to your permissions — *"which devices haven't reported in 24 hours?"* — and it acts: describe an automation and it designs the rule, writes the [CEL](https://cel.dev), tests it, and deploys it; ask it to onboard a device or stand up an alarm and it runs the flow, pausing for your **Confirm Action** before anything consequential and reading the result back to check its own work.
+Describe an automation and it designs the rule, writes its [CEL expressions](../kilo-iot-server/rules-engine/cel-reference.md), builds it, and deploys it. Ask it to onboard a device or configure an alarm, then refine the result in the same conversation. You can also ask it to simulate readings and inspect the results. Actions such as deleting a device require **Confirm Action**. Once the setup is running, questions about device readings help you investigate and improve it.
 
-This is the beginning, not the finish line: the architecture is in place, and the assistant's accuracy and reach grow as its agents are trained on more real-world IoT work. We were confident enough in the runtime to open-source it as [Synthetic Brew](https://github.com/syntheticinc/syntheticbrew) — so teams can see how seriously we approach the backend, or bring AI into their own products faster.
+The assistant runs on [SyntheticBrew](https://syntheticbrew.ai/), our own AI agent runtime, which connects the conversation to platform operations and action confirmations.
 
 [→ IoT AI Assistant](../kilo-iot-server/ai-assistant/README.md)
 

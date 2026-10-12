@@ -21,6 +21,12 @@ When you click **Save and Build** in the Build Results Sidebar, the platform val
 | Invalid expression | A CEL expression contains a syntax error | Check the expression for unmatched parentheses, missing quotes around strings, or incorrect operators. See [CEL Reference](cel-reference.md) for valid syntax. |
 | Condition must return bool | A gateway condition expression returns a non-boolean value | Gateway conditions must evaluate to `true` or `false`. Use comparison operators (`>`, `<`, `==`, `!=`, `>=`, `<=`) or logical operators (`&&`, `\|\|`, `!`). |
 | Boundary event not attached | A Boundary Error Event exists on the canvas but is not attached to a task node | Drag the Boundary Error Event onto a Script Task, Set Alarm, or Enrichment node. It must be visually attached to the edge of a task. |
+| Boundary event outgoing target | A Boundary Error Event's outgoing flow points at something other than a task or an End Event | Redirect the error path to a task (the handling step) or to an End Event. |
+| Default flow must not have a condition | The flow marked as the gateway's default still carries a CEL condition | Clear the condition on the default flow. The default runs precisely when nothing else matches, so it takes no expression of its own. |
+| Gateway must split or merge | An Exclusive Gateway has exactly one incoming and one outgoing flow | A gateway has to make a decision (two or more outgoing flows) or bring paths back together (two or more incoming). A pass-through gateway does nothing — delete it and connect the nodes directly. |
+| Duplicate element id | Two elements on the canvas share an identifier | Usually the result of importing or externally editing a diagram. Delete and re-add one of the two elements. |
+| Unsupported input or output parameter | A node's Input or Output parameter is not a CEL expression | Inputs and Outputs accept CEL expressions only. Re-enter the parameter in the properties panel. |
+| Execute Command parameter invalid | An Execute Command node has a parameter with no name, no value, or a name used twice | Open the node's properties panel and give every parameter a unique name and a value or expression. |
 | Unknown element type | An unrecognized node exists on the canvas | Remove the unknown element and replace it with a supported node type from the palette. This can occur if a diagram was imported or modified externally. |
 
 ### Resolving build errors
@@ -32,6 +38,28 @@ When you click **Save and Build** in the Build Results Sidebar, the platform val
 Multiple errors can appear simultaneously. Fix them all before re-attempting the build.
 
 ## Common issues
+
+### "I created a trigger, but nothing happens"
+
+A saved trigger only monitors its condition. It does not contain an alarm, command, or other response, and it is not attached to a rule automatically.
+
+**What to do:**
+1. Return to the **Rules** tab and create or edit the rule that should respond.
+2. Select the Start Event, click its pencil, and set **Start source** to **Trigger condition**.
+3. Select the saved trigger and click **Save** at the bottom of the Start Event panel.
+4. Add the response nodes, then save the rule from the editor toolbar.
+5. Build the rule and deploy its artifact from the **Artifacts** tab.
+
+See [From a trigger to a running rule](triggers.md#how-do-i-connect-a-trigger-to-a-running-rule) for the complete workflow.
+
+### "My trigger is missing from the Start Event"
+
+The **Trigger condition** field appears only after you change the Start Event's **Start source** from **Sensor reading** to **Trigger condition**. It lists saved triggers for the current organization and currently loads only the first page of results.
+
+**What to do:**
+- Confirm that the trigger was created in the same organization as the rule.
+- Confirm that **Trigger condition** is selected as the Start source.
+- If the trigger exists but is beyond the first page, it cannot yet be selected from this field.
 
 ### "The rule is locked and I cannot edit it"
 
@@ -49,7 +77,7 @@ Building and deploying are separate steps. A successful build creates an artifac
 **What to do:**
 1. Go to the **Artifacts** tab on the Rules Engine page.
 2. Find the build you just created.
-3. Click **Deploy** to start the rule processing live sensor data.
+3. Click **Deploy** to start the rule processing its selected sensor or trigger source.
 
 ### "The rule was force-stopped"
 
@@ -98,11 +126,62 @@ Restoring a version does not destroy anything. The restore creates a new current
 2. Find the version that was active before the accidental restore.
 3. View it (eye icon) and click **Restore this version** to make it current again.
 
+## Debug sessions
+
+### "I started a debug session and nothing happens"
+
+A debug session loads the rule, places execution on the Start Event and waits for you. It does not run the rule by itself.
+
+**What to do:**
+1. Look at the bottom of the canvas for the debug toolbar. It floats over the diagram; it is not in the header bar beside Save and Build.
+2. Press **Run (F10)** to execute until the first breakpoint or the end, or **Step over (F9)** to advance one element.
+3. Check the session is live: the Start Event carries a blue outline, and the debug panel on the right lists your initial variables.
+
+See [Debugging Rules](debugging-rules.md#why-does-a-debug-session-start-paused).
+
+### "An element is outlined in red"
+
+A red outline marks the element that raised the most recent error — it is not a breakpoint (a small red dot above the element) and not the current position (a blue outline). Start with the expression on that element.
+
+**What to do:**
+1. Open the element's properties and read its expression.
+2. Check that every name it uses exists in the Variables tab. An expression reading `vars.RH` fails if nothing named `RH` was provided as initial context or produced by an earlier node.
+3. Check the `vars.` prefix is present — `RH > 70` is not the same as `vars.RH > 70`.
+4. Check the expression returns the right type. A gateway condition must produce `true` or `false`.
+5. Paste the expression into **Evaluate** on the Watch tab to test it against the current state.
+
+### "The gateway didn't take any branch"
+
+Two different causes, with different fixes.
+
+**A condition failed to evaluate.** If any condition on the gateway errors — most often because it references a variable that isn't there — the gateway stops with an error and the rule goes no further. It does **not** fall through to the default flow. The gateway will be outlined in red; follow the steps above.
+
+**No condition matched and there is no default.** If every condition returned false and no flow is marked as the default, execution has nowhere to go. Open the gateway, pick the fallback flow, and click **Set as default**.
+
+### "The debug buttons are greyed out"
+
+The step controls are available while the session is paused. They are disabled while the rule is running, while a Side Effect dialog is waiting for an answer, and after a rule failed to load. Stop remains available throughout.
+
+If the rule failed to load, start a new session.
+
+### "My breakpoints disappeared"
+
+Two causes:
+
+- **You used Run ignore breakpoints (F11).** It switches every breakpoint off and leaves them off for the rest of the session. Re-enable them from the Breakpoints tab.
+- **The editor reloaded.** Breakpoints are tied to the elements in the loaded diagram. A notification tells you how many were dropped so you can re-add them.
+
+### "The session ended while I was still working"
+
+A debug session lasts 30 minutes, measured from when it started. Stepping through the rule does not extend it. You get a warning shortly before it expires; start a new session to continue.
+
 ## Subscription limits
 
 Each subscription plan includes a maximum number of active automation rules. These limits affect several operations:
 
 - **Creating rules:** The **Add Rule** button on the Rules tab is disabled when your organization reaches its rule limit. A message explains that the limit has been reached.
+
+<figure><img src="../../.gitbook/assets/rules-limit-reached.jpg" alt="The Rules tab showing the Rule limit reached banner above the rules list, with Add Rule disabled"><figcaption></figcaption></figure>
 - **Restoring from trash:** Restoring a deleted rule counts as adding an active rule. If you are at the limit, the restore will not proceed.
 - **Cloning rules:** Cloning creates a new rule, which counts against the limit.
 

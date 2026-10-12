@@ -12,7 +12,7 @@ Key Vault stores those pairs at the organization level so the credentials surviv
 
 ---
 
-## Why It Matters
+## Why Store Device Keys in a Key Vault?
 
 Radio credentials tend to live in the worst possible places. They arrive on a sticker inside the box, get typed once into a provisioning form, and after that the only copies anyone can reach in a hurry are a label on the unit, a contractor's spreadsheet, or a vendor portal that someone else's account controls.
 
@@ -30,7 +30,7 @@ Key Vault replaces all of that with one encrypted store inside the organization 
 
 ---
 
-## Navigation
+## Where Do I Find Key Vault?
 
 Open the sidebar and go to **Records & Reports** → **Key Vault**.
 
@@ -42,7 +42,20 @@ Click **Add your first key pair** to begin.
 
 ---
 
-## What a Key Pair Contains
+## What is on the Key Vault page?
+
+<figure><img src="../../.gitbook/assets/kilo-key-vault.jpg" alt="The Key Vault page with an Add Key Pair button, a search box, a table with DevEUI / EP EUI and AppKey / Network Key columns, and Show key, Edit and Delete buttons on every row"><figcaption><p>The Key Vault page in a demo organization. Every key is a row of dots until you choose Show key; the EUIs are blurred in this screenshot.</p></figcaption></figure>
+
+From top to bottom, left to right:
+
+- **Add Key Pair** (top right) opens the dialog for a new entry.
+- The search box, labeled **Search by EUI or AppKey / Network Key**, filters the table as you type. See [how to find a key pair](#how-to-find-a-key-pair-in-key-vault).
+- The table has two columns: **DevEUI / EP EUI**, the identifier, and **AppKey / Network Key**, the secret, shown as a row of dots.
+- At the end of each row, **Show key** reveals that row's key (it becomes **Hide key**), **Edit** opens **Edit Key Pair**, and **Delete** removes the entry after confirmation.
+
+<figure><img src="../../.gitbook/assets/key-vault-list.jpg" alt="The Key Vault listing a stored DevEUI and its key, with search, Add Key Pair, Edit and Delete"><figcaption></figcaption></figure>
+
+## What Is a Key Pair in Key Vault?
 
 Each entry holds two fields:
 
@@ -55,9 +68,17 @@ Both fields use the same form regardless of protocol, so a mixed LoRaWAN and MIO
 
 Values are stored encrypted. Only users with access to the Key Vault page can read them back.
 
+### Keys stay hidden until you ask
+
+A key is the one thing you do not want on a screen during a site walk-through or a screen share, so the list never shows one by default. Every key appears as a row of dots, and each row has its own **Show key** button, placed before **Edit** and **Delete**. Click it to reveal that key, and the button becomes **Hide key** to cover it again. Revealing one key does not reveal the others, and the column keeps its width, so the table does not jump around.
+
+The button is available to every user who can open the page, including those with view-only access, because reading a key you are already allowed to see needs no edit rights. Inside the **Add Key Pair** and **Edit Key Pair** dialogs the key field behaves like the one on the device form: a stored key is hidden, the characters show while you type or paste so you can check them against the label, and the field hides them again when you leave it or press Enter. Once the field holds a value, an **eye** button appears at its right edge: select it to show or hide the key on demand, for example to check a stored key against its label. An empty field has no eye, because there is nothing to reveal. A key that was loaded from the vault or scanned from a QR code stays hidden until you press the eye.
+
+**Add Key Pair** (and **Add your first key pair** on an empty vault), **Edit** and **Delete** appear only for users with edit access to the page. A view-only user sees the list and **Show key**, and nothing else.
+
 ---
 
-## Adding a Key Pair
+## How to Add a Key Pair to Key Vault
 
 1. Go to **Records & Reports** → **Key Vault**.
 2. Click **Add Key Pair**.
@@ -67,32 +88,35 @@ Values are stored encrypted. Only users with access to the Key Vault page can re
 
 You will see the confirmation **"Key pair saved to vault"** and the entry appears in the list.
 
-### If saving is blocked
+### If Save is disabled
 
-The form validates both halves before it will accept an entry:
+**Save** stays disabled until the **EUI** holds all 16 hex characters and the **AppKey / Network Key** holds all 32. If the button is gray, count the characters: a truncated paste or a missing character is the usual cause. No error message appears in the dialog; the button simply enables when both fields are complete.
+
+If you click **Save** and **"Failed to save key pair"** appears, the save did not complete. If both fields are correctly formed, see [the entry limit](#how-many-key-pairs-can-i-store-in-key-vault) below — an organization that has reached its entry limit cannot store new pairs.
+
+Duplicate entries are rejected: the same EUI and key combination cannot be stored twice within one organization, so re-entering a pair you already recorded will not create a second copy.
+
+---
+
+## How to Add a Key to Key Vault from the Device Form
+
+The most reliable moment to record a key is the moment you already have it in front of you — while you are configuring the device.
+
+The device form includes an **Add to Vault** button that saves the pair straight from the device you are configuring. For a LoRaWAN device it saves the AppKey; for a MIOTY device it saves the Network Key. No retyping, no separate trip to the vault page, no transcription error.
+
+When the device form is not ready, **Add to Vault** shows one of these messages instead of saving:
 
 | Message | What it means |
 |---|---|
 | *"EUI is incomplete."* | The EUI is shorter than 16 hex characters. Check for a truncated paste or a missing character. |
 | *"AppKey / Network Key is incomplete."* | The key is shorter than 32 hex characters. |
 | *"Enter both EUI and AppKey / Network Key before saving to the vault."* | One of the two fields is empty. A vault entry is only useful as a pair — a lone EUI recovers nothing. |
-| *"Failed to save key pair"* | The save did not complete. If both fields are correctly formed, see [Limits](#limits) below — an organization that has reached its entry limit cannot store new pairs. |
-
-Duplicate entries are rejected: the same EUI and key combination cannot be stored twice within one organization, so re-entering a pair you already recorded will not create a second copy.
-
----
-
-## Adding a Key from the Device Form
-
-The most reliable moment to record a key is the moment you already have it in front of you — while you are configuring the device.
-
-The device form includes an **Add to Vault** button that saves the pair straight from the device you are configuring. For a LoRaWAN device it saves the AppKey; for a MIOTY device it saves the Network Key. No retyping, no separate trip to the vault page, no transcription error.
 
 This is the habit worth building into your commissioning procedure: whoever enters the key into the device form also clicks **Add to Vault** in the same sitting. For the full device registration workflow, see [Registering Devices](../devices/registering-devices.md).
 
 ---
 
-## Finding a Key Pair
+## How to Find a Key Pair in Key Vault
 
 Use **Search by EUI or AppKey / Network Key** above the list. Search matches on partial values, so you do not need the full 16 or 32 characters — the last few characters off a device label are usually enough to locate an entry.
 
@@ -103,7 +127,7 @@ Searching by key value, not just EUI, is useful in the reverse direction — whe
 
 ---
 
-## Editing a Key Pair
+## How to Edit a Key Pair
 
 Correct an entry when a device is re-keyed, or when a transcription error surfaces during a failed join.
 
@@ -116,13 +140,13 @@ You will see **"Key pair updated"**. If the update does not complete, the page r
 
 ---
 
-## Deleting a Key Pair
+## How to Delete a Key Pair
 
 Remove entries for hardware that has left the deployment — units that were decommissioned, returned to the vendor, or lost.
 
 1. Locate the entry.
 2. Choose delete.
-3. Confirm at the prompt: *"Are you sure you want to delete this key pair?"*
+3. Confirm in the dialog titled **Are you sure?**, which reads *"Are you sure you want to delete this key pair?"* Select **Delete** to confirm.
 
 You will see **"Key pair deleted"**. If the deletion does not complete, the page reports **"Failed to delete key pair"**; retry, and if it persists, confirm you still have Edit access to the page.
 
@@ -130,7 +154,7 @@ Deletion is the point of no return for a credential. Once a pair is gone from th
 
 ---
 
-## Access Control
+## Who Can Access Key Vault?
 
 Key Vault has its own **Key Vault** page permission, set independently of every other surface. A user's access to devices, dashboards, or connectors says nothing about their access to the vault — you grant it deliberately.
 
@@ -142,7 +166,7 @@ Because credential access is worth reviewing, pair the permission with the [Audi
 
 ---
 
-## Limits
+## How Many Key Pairs Can I Store in Key Vault?
 
 Each organization can store a fixed number of key pairs. When the limit is reached, saving a new pair fails and an administrator must remove unused entries — decommissioned hardware, returned units, duplicates from a migration — before new pairs can be added.
 
@@ -150,7 +174,7 @@ If **"Failed to save key pair"** appears on a correctly formed entry, the entry 
 
 ---
 
-## Tips and Best Practices
+## Key Vault Best Practices
 
 - **Record at commissioning, not afterward.** The window in which a key is easy to capture is the moment it is in the provisioning form. Use **Add to Vault** on the device form and the vault fills itself as the deployment rolls out. Reconstructing keys after the fact means going back to the label — or to whatever readback the manufacturer supports — on hardware that is already installed.
 - **Make it a line item in the installer's scope.** If contractors commission your sites, "device keys recorded in Key Vault" belongs in the acceptance criteria alongside device registration and signal checks. Handover is when knowledge is cheapest to transfer and most likely to be lost.

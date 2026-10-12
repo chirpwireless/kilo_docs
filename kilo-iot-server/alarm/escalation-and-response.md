@@ -1,5 +1,5 @@
 ---
-description: Build escalation chains in Kilo IoT alarms — ordered steps fire over time until resolution with multi-channel notice.
+description: Set up escalation chains for Kilo IoT alarms so unresolved events notify more recipients and channels over time.
 ---
 
 # Escalation and Response
@@ -26,6 +26,8 @@ Each step is configured with:
 
 - **Notify** — One or more organization members selected from the **Choose recipients** dropdown. Recipients are drawn from the current organization's user list. **Required** — at least one recipient must be selected before the definition can be saved.
 - **Via** — Delivery channels. Email and SMS are selectable in every step. Push notifications appear when enabled for the account and reach responders through the [IoT Alerts App](iot-alerts-app/README.md) (see [Delivery Channels](notification-channels.md)).
+
+<figure><img src="../../.gitbook/assets/alarm-escalation-chain.jpg" alt="The Escalation chain section of an alarm definition with an Immediate step, its Notify recipients dropdown and Via channel, and the Add step control"><figcaption></figcaption></figure>
 
 ### Additional steps
 

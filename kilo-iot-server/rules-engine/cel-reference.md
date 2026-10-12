@@ -4,11 +4,11 @@ description: CEL syntax reference for Kilo IoT rules — Common Expression Langu
 
 # CEL Reference
 
-The Rules Engine uses [CEL (Common Expression Language)](https://cel.dev) for expressions inside the visual workflow editor — gateway conditions, Script Task computations, alarm messages, enrichment lookups, and input/output definitions. CEL is a fast, safe expression language originally designed by Google for evaluating conditions in security policies and infrastructure systems. The full language specification is available on [GitHub](https://github.com/google/cel-spec).
+An **expression** is a short formula that reads workflow data and returns a result, such as whether a temperature exceeds a limit or what text an alarm should contain. Kilo rules use **CEL (Common Expression Language)** for these comparisons, calculations, and text values.
 
-CEL is not a general-purpose programming language. It evaluates expressions and returns results. It cannot access the filesystem, make network calls, create loops, or modify external state. This makes it safe to run user-defined expressions without risk to the platform or to other rules.
+The workflow still lives in the visual editor. CEL appears in specific fields: branch conditions, Script Tasks, alarm messages, enrichment lookups, and input/output definitions. Fetching another sensor's reading is the job of an **Enrichment** node; a CEL expression evaluates the data available to it.
 
-Most Kilo rules use only a few short expressions. The workflow structure remains visual and BPMN-based; CEL is the precision layer that makes those workflows useful in real production scenarios.
+Use this reference when configuring those fields in a [rule](creating-rules.md). The [CEL specification](https://github.com/google/cel-spec) covers the language itself; the examples below explain its use with Kilo workflow variables.
 
 ---
 
@@ -26,13 +26,30 @@ vars["my-sensor"]       // bracket notation required — hyphen in name
 
 Dot notation is convenient for most field names. Bracket notation is required when a field name contains hyphens, spaces, or other special characters, or when the field name is computed dynamically from another expression.
 
-### Always available (after Start Event)
+### Available after the Start Event
+
+**What the Start Event provides depends on its Start source**, so check which kind of rule you are writing before reaching for a variable.
+
+**Start source: Sensor reading**
 
 | Variable | Type | Description |
 |---|---|---|
 | `vars.value` | Varies by sensor | The sensor reading that triggered the rule. Could be a number (temperature, humidity), string (door status), or boolean (motion detected). |
 | `vars.sensor_id` | string | The unique identifier of the sensor that triggered the rule. |
 | `vars.timestamp` | timestamp | The time the sensor reading was recorded. |
+
+**Start source: Trigger condition**
+
+| Variable | Type | Description |
+|---|---|---|
+| `vars.device_name` | string | The name of the device that satisfied the condition. On a [trigger](triggers.md) watching several devices, this identifies the one that fired. |
+| `vars.subject_kind` | string | The type of watched resource. This is currently `device`. |
+| `vars.subject_id` | string | The identifier of the watched device that satisfied the condition. |
+| `vars.sensor_id` | string | The sensor identifier used to associate the run and any alarm with the watched device. |
+| `vars.detector_id` | string | The identifier of the trigger that started the rule. |
+| `vars.timestamp` | int | The original activation time in whole Unix seconds; repeated signals for the same occurrence retain it. |
+
+> **`vars.value` does not exist on a trigger-started rule.** A trigger reports a trigger signal rather than handing the rule one normalized sensor event. This is true for both immediate and duration triggers. An expression referring to `vars.value` will fail on every trigger signal — check this first when converting an existing rule from **Sensor reading**.
 
 ### Available after Script Tasks
 
@@ -53,7 +70,12 @@ After an Enrichment node stores data under a variable name (e.g., `outdoor_temp`
 
 ### Custom variables
 
-Input and output expressions defined on Start Events, Exclusive Gateways, Script Tasks, Set Alarm nodes, and Enrichment nodes can add named values to the workflow context. Any name you define becomes accessible as `vars.<name>` in downstream nodes.
+Input and output expressions on Start Events, Exclusive Gateways, Script Tasks, Set Alarm nodes, and Enrichment nodes let you name a computed value. Choose between them by how far the value needs to travel:
+
+* **Outputs** add the name to the workflow context. It is accessible as `vars.<name>` in every node that runs afterwards.
+* **Inputs** stay on the node you defined them on. They are computed before that node runs and its own expressions can use them — a gateway's inputs are available to that gateway's flow conditions — but later nodes cannot read them.
+
+If a value computed on one node is needed further along the rule, make it an output. See [Node Reference](node-reference.md#do-i-need-the-input-and-output-parameters) for an example.
 
 ---
 

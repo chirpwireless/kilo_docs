@@ -4,9 +4,11 @@ description: What is MQTT? A lightweight pub-sub IoT protocol — brokers, topic
 
 # What MQTT is
 
-MQTT is a lightweight publish-subscribe messaging protocol designed for constrained networks and devices, originally specified by IBM in 1999 for SCADA over satellite links and now standardized as ISO/IEC 20922. Three properties make it the dominant industrial-IoT protocol today: small wire-format overhead suitable for cellular and battery-powered endpoints, decoupled producers and consumers via a central broker, and well-defined delivery guarantees (QoS 0/1/2) that allow integrators to trade throughput for reliability per topic.
+MQTT is a messaging protocol for exchanging small messages between devices and software. A sender **publishes** a message to a named channel called a **topic**. A server called a **broker** receives it and forwards it to clients that **subscribe** to that topic.
 
-If you are integrating an existing MQTT-producing system — a building management system, a fleet of cellular-connected meters, an MQTT-bridged PLC fleet — into the Kilo IoT Server, the orientation below covers the model the platform assumes. If you already operate MQTT in production and want to skip ahead, [Cloud MQTT](cloud-mqtt.md) and [External MQTT](external-mqtt.md) describe the connector configuration directly.
+For example, a building meter can publish its reading to `building-a/meter-1/state`. Kilo receives the message through an [MQTT connector](../mqtt-connector.md) and maps it to the registered device and its readings. The broker transports the message; device routing and decoding determine what the reading means.
+
+Use [Cloud MQTT](cloud-mqtt.md) when Kilo should supply the broker connection details, or [External MQTT](external-mqtt.md) when your deployment already has a broker.
 
 ## Architectural roles
 
@@ -35,7 +37,9 @@ Common conventions in industrial deployments:
 - **Vendor-prefixed schemes** for protocol bridges — e.g. `zigbee2mqtt/{friendlyName}`, `tasmota/{deviceName}/SENSOR`, `mosquitto/+/state`. The Kilo IoT Server supports any topic shape through the **Device ID Topic** pattern field — see [Topics and device routing](topics-and-device-routing.md).
 - **Sparkplug B namespaces** for OPC-UA-style hierarchies — e.g. `spBv1.0/{group}/DDATA/{node}/{device}`. The platform consumes these as ordinary MQTT topics; Sparkplug-specific decoding is handled by the publishing edge gateway.
 
-The platform's connector configuration treats topics as patterns: you specify a Device ID Topic like `plant-3/line-a/{{deviceId}}/data` and the platform extracts the device identifier from the placeholder position when each message arrives.
+The platform's connector configuration treats topics as patterns: on each device you build the topic out of segments and mark the one that carries the device identifier, and the platform extracts the identifier from that position when each message arrives.
+
+<figure><img src="../../../.gitbook/assets/device-mqtt-topic-builder.jpg" alt="The MQTT topic builder on a device Connection tab with a locked connector prefix, a text segment, a Device ID segment and the resolved preview"><figcaption></figcaption></figure>
 
 ## Payloads: structured JSON in practice
 
@@ -55,7 +59,7 @@ A typical industrial telemetry payload:
 
 When mapped to platform metrics, `temperature`, `pressure`, `vibration.rms`, `vibration.peak`, and `status` each become an addressable Connector Key. The Mapping tab links each Connector Key to a normalized metric, which is what then flows into the Digital Twin, the rules engine, and historical storage.
 
-For one-metric-per-topic schemes (legacy bridges, OPC-UA aliasing patterns), the **Telemetry topics** rows on the Topic sub-tab let you map each topic to a named Connector Key explicitly.
+For readings carried in topic segments, configure **Topic Telemetry** on the device's **Connection** tab. JSON payloads normally need no telemetry rows. See [Topics and device routing](topics-and-device-routing.md#topic-telemetry) for the editor's supported patterns.
 
 ## QoS, retained messages, last-will
 

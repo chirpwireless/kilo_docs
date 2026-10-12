@@ -42,7 +42,7 @@ Community forks must not use the KiloCenter name or logo in a way that implies o
 
 ### Enterprise / Managed Cloud
 
-Commercial and managed cloud deployments may be available under separate licensing terms. Contact [kiloiot.io ](https://kiloiot.io/contact/)for details.
+The Enterprise edition of KiloCenter is built into Kilo Cloud and is also available as part of supported enterprise deployments under separate licensing terms. Kilo Cloud combines the MIOTY service center with the full Kilo IoT platform, including rules, dashboards, alarms, access control, and managed operations. See [KiloCenter or Kilo Cloud?](README.md#kilocenter-or-kilo-cloud), or contact [Kilo IoT](https://kiloiot.io/contact/) for details.
 
 ### Legal Attribution
 

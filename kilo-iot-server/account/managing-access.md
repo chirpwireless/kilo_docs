@@ -1,5 +1,5 @@
 ---
-description: Update permissions, revoke pending invitations, or remove members from a Kilo IoT organization — from the Users table.
+description: Update member permissions, revoke pending invitations, and remove users from a Kilo IoT organization's Users page.
 ---
 
 # Managing Access
@@ -24,6 +24,8 @@ The table has four columns:
 Use the **Search users...** input at the top to filter by name or email.
 
 The table sorts the owner first, then other members, then pending invitations.
+
+<figure><img src="../../.gitbook/assets/account-users.jpg" alt="The Users table listing a member with their role and edit and view access"><figcaption></figcaption></figure>
 
 ## Updating Permissions
 

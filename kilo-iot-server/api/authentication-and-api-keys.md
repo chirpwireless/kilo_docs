@@ -4,18 +4,24 @@ description: Authenticate Kilo IoT API requests with scoped keys — X-API-Key a
 
 # Authentication & API Keys
 
-Every API request — REST or gRPC — is authenticated with a **scoped API key**. Create, scope, rotate, and revoke keys in [Settings → API Keys](../settings/api-keys.md); this page covers how requests authenticate.
+An **API key** is the credential an external integration sends to authenticate its requests to Kilo IoT Server. Its **scopes** are the allowed operations, such as reading devices or writing a supported resource. The key is bound to one organization, the shared workspace whose data the integration uses.
+
+Create a key with the required scopes in [Settings → API Keys](../settings/api-keys.md). For REST or gRPC requests authenticated through the public API gateway, supply both the key and its matching organization identifier. The gateway validates the credential, checks the required scopes, and checks the organization match.
 
 ## How requests authenticate
 
 - **`X-API-Key`** — your API key (format `kilo_<key>`). Send it on every request.
-- **`X-Organization-Id`** — the organization the request acts in. It must match the organization the key was created in. Some operations also accept the organization as an `organizationId` query parameter instead of the header.
+- **`X-Organization-Id`** — the organization the request acts in. It must match the organization the key was created in. This header is required by the authentication gateway. If an operation also uses an `organizationId` query parameter, it does not replace the header.
 
 All requests are over TLS.
 
 ## Scopes
 
 Keys are scoped. Most areas have separate **Read** and **Write** scopes; some — such as telemetry and subscription data — are read-only. A key grants only what you select when you create it, so grant only the scopes the integration needs. Each endpoint in the [API reference](https://api.kiloiot.io/) lists the scope it requires.
+
+The **Create API Key** dialog asks for a name, an optional expiry date, and the scopes themselves — every scope starts unchecked, so a key grants nothing until you say so.
+
+<figure><img src="../../.gitbook/assets/api-key-create-scopes.jpg" alt="The Create API Key dialog with the name and expiry fields above the list of read and write scopes"><figcaption></figcaption></figure>
 
 ## Handling keys safely
 

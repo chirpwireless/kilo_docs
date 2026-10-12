@@ -1,25 +1,19 @@
 ---
-description: Global IoT SIM cards from Kilo Connectivity — 2G/3G/4G/LTE-M/NB-IoT/5G via a self-service portal.
+description: Learn what an IoT SIM provides, what to check for international cellular deployments, and where to manage connectivity service.
 ---
 
 # Global IoT SIM Cards
 
-**Global Coverage, One SIM**
+An **IoT SIM** identifies a device's subscription on a cellular network. Used with a compatible modem, it lets a meter, controller, or gateway send data where suitable mobile-network service is available. Kilo Connectivity supplies the SIM service; your equipment and application handle the data itself.
 
-Deploy anywhere with **multi-network coverage** across 2G, 3G, 4G, LTE-M, NB-IoT, and 5G. Our SIMs are pre-configured to connect to hundreds of networks worldwide—so your devices can **boot and operate out of the box**, with no manual intervention or network-specific tuning.
+For a deployment across several countries, verify the destination networks, supported radio technologies, roaming terms, and device compatibility before choosing a plan. Coverage and automatic network selection depend on those conditions; a SIM alone does not guarantee service at every location.
 
-**One Platform for All Your Needs**
-
-Our **self-service connectivity portal** gives you full control over your SIMs, devices, and network usage. Activate and manage devices, monitor data, and troubleshoot connectivity—all from one interface. Advanced business intelligence tools provide real-time insights into performance, cost optimization, and deployment health.
-
-**Built-In Security**
-
-Your IoT infrastructure deserves protection. Kilo Connectivity isolates traffic from public networks, supports secure routing and analytics, and enables SIM-based **Root of Trust** capabilities to help protect your devices against evolving security threats.
+Use the [connectivity platform](../connectivity-platform.md) to manage SIM service and usage, and review [SIM card types](simcardtypes.md) for hardware and environmental requirements. To display readings or automate responses, configure the separate [IoT Server integration](../../kilo-iot-server/connectors/README.md).
 
 ***
 
 #### Designed for Simplicity, Built for Scale
 
-IoT is growing fast, but scaling globally can introduce friction—from managing SIM lifecycles to navigating regulatory and technical fragmentation. With Kilo, you eliminate the complexity of working with multiple suppliers, agreements, and systems.
+Plan the SIM lifecycle from a small connectivity test to deployment and ongoing usage monitoring. Test the modem and SIM together on the intended networks before expanding to more sites.
 
-Whether you're bootstrapping a single device or launching a global fleet, **Kilo Connectivity is built to grow with you**—delivering reliability, flexibility, and control across your entire deployment.
+For larger deployments, confirm service availability and commercial terms for each region before ordering the required SIMs.

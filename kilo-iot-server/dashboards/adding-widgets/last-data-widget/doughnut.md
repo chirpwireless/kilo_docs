@@ -4,11 +4,11 @@ description: Visualize a sensor reading as a proportional ring with the Doughnut
 
 # Doughnut Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-doughnut.jpg" alt="Last Data widget using the Doughnut display type"><figcaption></figcaption></figure>
-
 The Doughnut display draws the reading as a ring that fills proportionally between a minimum and a maximum you define, with the current value in the center. At a glance it answers "how far along is this?" — a quarter full, nearly maxed out — without anyone reading the number.
 
 It suits any reading that lives inside a known range: a fill level, a percentage, a capacity, a value that should sit somewhere within an operating band. The ring's fill makes the position in that range immediate.
+
+<figure><img src="../../../../.gitbook/assets/last-data-doughnut.jpg" alt="Last Data widget using the Doughnut display type"><figcaption></figcaption></figure>
 
 ## When to choose it
 
@@ -28,7 +28,7 @@ Here is a full setup for one real case — a ring that shows an office's tempera
 4. Click **Add metric**. A metric row appears.
 5. In the row, set **Data type** to **Telemetry**, choose the temperature reading under **Device metric**, and pick an **Icon**.
 
-   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change a metric's type, use the **Metrics Templates** button on a connection's Connected Devices list — see [Metric Templates](../../../devices/metric-templates.md).
+   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change how a metric is stored, open **Devices → Metrics** — see [Metrics](../../../devices/metric-templates.md).
 6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), because a house room realistically swings between -5 °C and 40 °C, enter **From** -5 (the coldest you would expect) and **To** 40 (the hottest), and pick a **Color**. Then you can enter the color levels. For example:
 
    Working up from the coldest:

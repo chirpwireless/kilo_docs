@@ -1,12 +1,14 @@
 ---
-description: Design automation rules on the Kilo IoT visual BPMN canvas — drag nodes, draw flows, configure each step in panel.
+description: "Design Kilo IoT rules on the visual BPMN canvas: add nodes, connect them with flows, and configure each step."
 ---
 
 # Visual Editor
 
-The visual editor is where you design automation workflows. It presents a BPMN 2.0 canvas where you place nodes, connect them with flows, and configure each step through a properties panel.
+The visual editor makes an automation's decisions visible to the people who operate it. Draw the steps, connect them with arrows, and follow each possible path from a reading to its response. You can put a threshold check, another sensor's reading, an alarm, and a device command into a workflow your team can inspect together.
 
-This is a visual-first editor, not a drag-and-drop-only rule builder. Most work happens through node placement and form fields, while CEL is used in focused expression fields where the rule needs precise logic.
+The steps are called **nodes** and the arrows are **flows**. Their shapes follow BPMN (Business Process Model and Notation), a standard for workflow diagrams. You can start with the step descriptions in [Node Reference](node-reference.md); no prior BPMN knowledge is needed to follow the editor guide.
+
+Create or open a rule before editing. Most setup uses form fields; short expressions using CEL (Common Expression Language) provide comparisons and calculations where needed.
 
 ## Getting there
 
@@ -23,6 +25,8 @@ The editor has four main areas:
 2. **Canvas** — The central area. Your BPMN diagram lives here.
 3. **Properties panel** — On the right. Opens when you select a node, showing its configuration fields.
 4. **Header bar** — At the top. Shows the rule name, mode selector, autosave status, and action buttons.
+
+<figure><img src="../../.gitbook/assets/rules-visual-editor.jpg" alt="The rule editor with the tool palette on the left, the rule on the canvas and the header bar carrying Save and Build"><figcaption></figcaption></figure>
 
 ## Palette
 
@@ -41,7 +45,7 @@ The palette provides tools and draggable elements you can place on the canvas.
 
 | Element | Description |
 |---|---|
-| **Start Event** | Entry point of the rule — bound to a device and sensor |
+| **Start Event** | Entry point of the rule — starts from one device sensor or a saved trigger condition. One is placed automatically on a new rule. |
 | **End Event** | Terminates a flow path |
 | **Exclusive Gateway** | Decision point — routes to one branch based on conditions |
 | **Script Task** | Evaluates a CEL expression to transform or classify data |

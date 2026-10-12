@@ -1,5 +1,5 @@
 ---
-description: Send downlink commands from Kilo IoT Server to control devices — on/off, dimming, setpoints — over MQTT or LoRaWAN.
+description: Send downlink commands from Kilo IoT Server to control devices — by hand, from a rule, or by asking the AI assistant.
 ---
 
 # Device Commands
@@ -10,6 +10,8 @@ Almost anything a device can be told to do is a command. Switch a relay or smart
 
 <figure><img src="../../../.gitbook/assets/device-command-states.jpg" alt="The Commands & States tab on a device, listing commands and recent executions"><figcaption></figcaption></figure>
 
+Commands belong to the [digital device](../README.md) and operate through its current physical connection. When replacing an actuator, review its command routing, payload, and feedback measurements before sending a command: keeping the twin does not make different hardware models understand the same instructions.
+
 ## Why it matters
 
 Without an integrated command layer, controlling a device means leaving the platform: a separate vendor app, a hand-built MQTT publisher, a script that crafts raw downlink bytes, or a field technician with a laptop. Each of those is an unmanaged path with no audit, no verification, and no shared definition of what "turn it on" actually means for a given model.
@@ -19,7 +21,7 @@ Device Commands collapses that into one modeled, reusable, auditable surface:
 * **Define once, reuse everywhere.** A command is a named action with typed parameters. Operators execute it without ever seeing the raw payload, byte layout, or topic.
 * **Protocol-agnostic control.** The same command concept covers an MQTT downlink to a smart plug and a LoRaWAN downlink to a Class C controller — the platform handles the encoding and delivery for each.
 * **Closed-loop confidence.** Commands can verify that the device actually acted, not just that the message left the building (see [Confirming Commands](verification.md)).
-* **Full execution history.** Every dispatch is recorded with its outcome, giving operations and compliance teams a complete record of who changed what, and when.
+* **Full execution history.** Every dispatch is recorded with the parameters it carried, its outcome, and when it happened — so operations and compliance teams can see exactly what was sent to a device and what came of it.
 
 ## Where commands live
 
@@ -31,7 +33,7 @@ Commands are managed on the device's detail page, under the **Commands & States*
 The **Commands & States** tab appears for devices that can receive downlinks:
 
 * **MQTT devices** — any device connected through an MQTT connector.
-* **Class C LoRaWAN devices** — Class C devices listen continuously and are always ready to receive commands, so the tab becomes available once a device is configured as Class C. (Class A devices only open a brief receive window after each uplink, so they are not eligible for on-demand control.)
+* **LoRaWAN devices** — a saved physical attachment makes commands available. Class A receives downlinks after an uplink; Class C can listen between uplinks. Choose settings and timing that match the hardware.
 * **Emulated devices with Support commands enabled** — an [emulated device](../emulated-devices.md) behaves like controllable hardware, which lets you define and rehearse a full command workflow before the equipment exists.
 
 A device is considered **controllable** once it has at least one command defined — that is also what makes it selectable for a dashboard [Control widget](../../dashboards/adding-widgets/control-widget.md).
@@ -40,7 +42,8 @@ A device is considered **controllable** once it has at least one command defined
 
 Before you can control a device, make sure:
 
-1. **The device can receive downlinks** — it is connected over MQTT, it is a Class C LoRaWAN device, or it is an [emulated device](../emulated-devices.md) with **Support commands** enabled.
+1. **The device can receive downlinks** — it is connected over MQTT, it is a LoRaWAN device that accepts downlinks, or it is an [emulated device](../emulated-devices.md) with **Support commands** enabled.
+   The **Commands & States** tab itself appears only when commands are enabled for your account.
 2. **At least one command is defined** — an empty device exposes nothing to execute. Start in [Creating Commands](creating-commands.md).
 3. **You have the access to manage or execute commands** — defining commands and dispatching them are governed by your organization's access policy.
 4. **Parameters are valid** — when a command takes inputs (a brightness level, a setpoint), the values must satisfy the limits set on each parameter before the command will send.
@@ -52,7 +55,6 @@ There are five ways to send a command to a device:
 * **From the device page** — the **States** tab, where you execute any of the device's commands and review their history.
 * **From a dashboard** — a [Control widget](../../dashboards/adding-widgets/control-widget.md) binds a command to a Switch or Button so anyone with dashboard access can operate the device without opening its detail page.
 * **From a rule** — the [Rules Engine](../../rules-engine/) can now dispatch a command automatically when a condition is met, using an Execute Command node. The same command you run by hand is sent by the rule with no one in the loop — so an out-of-bounds reading at 3 a.m. closes the valve itself. See [Running Device Commands](../../rules-engine/running-device-commands.md).
-
 * **By asking the assistant** — the built-in [IoT AI Assistant](../../ai-assistant/README.md) lists what a device can do, runs one of those commands after showing you what it will send and waiting for your confirmation, then reports whether it was delivered. See [Building with AI](../../ai-assistant/building-with-ai.md).
 * **From your own AI client** — connect ChatGPT, Claude or any other MCP client and it can do the same, scoped to your permissions and recorded like any other dispatch. See [MCP Server](../../api/mcp-server.md).
 

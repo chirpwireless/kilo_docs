@@ -1,10 +1,14 @@
 ---
-description: KiloCenter security basics — default credentials to change, TLS cert paths, and minimum hardening for shared deploys.
+description: "KiloCenter security basics: default credentials to replace, TLS certificates, and network exposure limits."
 ---
 
 # Security Basics
 
-### Goal
+KiloCenter security configuration controls access to service interfaces and protects communication with base stations, applications, and operators. The person running the installation is responsible for credentials, certificates, authentication settings, and network exposure.
+
+Use this guide before making a development installation available to other users or networks. Review the active [configuration](../getting-started/configuration-basics.md), replace convenience credentials, and expose only the interfaces required by your deployment. A running local stack is the starting point, not evidence that production access has been configured.
+
+### What does this guide achieve?
 
 Establish a secure baseline for KiloCenter deployments.
 
@@ -25,15 +29,17 @@ BSSCI requires TLS 1.2 or higher. SCACI requires TLS 1.3 or higher. These requir
 
 KiloCenter uses a self-signed Certificate Authority (CA) to issue all certificates:
 
-| Certificate        | Purpose                                     | Default Validity | Location                  |
-| ------------------ | ------------------------------------------- | ---------------- | ------------------------- |
-| CA certificate     | Root of trust; distributed to base stations | 20 years         | `certificates/ca.crt`     |
-| CA private key     | Signs server and client certificates        | --               | `certificates/ca.key`     |
-| Server certificate | KC-Core BSSCI/SCACI TLS listeners           | 1 year           | `certificates/server.crt` |
-| Server private key | TLS handshake                               | --               | `certificates/server.key` |
-| Client certificate | Per-base-station mutual TLS (optional)      | 1 year           | Generated on demand       |
+| Certificate | Purpose | Default Validity | Location |
+|-------------|---------|-----------------|----------|
+| CA certificate | Root of trust; distributed to base stations | 20 years | `certificates/ca.crt` |
+| CA private key | Signs server and client certificates | -- | `certificates/ca.key` |
+| Server certificate | KC-Core BSSCI/SCACI TLS listeners | 1 year | `certificates/server.crt` |
+| Server private key | TLS handshake | -- | `certificates/server.key` |
+| Client certificate | Per-base-station mutual TLS | 1 year | Generated on demand |
 
 Base stations trust the **CA certificate**, not individual server certificates. This means server certificates can be renewed without touching base stations, as long as the same CA signs them.
+
+A base station's client certificate is bound to that station in every edition. A certificate whose common name is a station EUI (`70-B3-D5-9C-D0-00-09-E6`) connects only as that station. The service center pins the fingerprint of the certificate it issued for a station, or, for a station registered without one, of the first certificate that names it; a later certificate with another fingerprint is refused as if the station were not registered. Replacing a station's certificate therefore means issuing the new one through KiloCenter, which stores its fingerprint.
 
 If you regenerate the CA, all existing server and client certificates become invalid and must be reissued. Back up `ca.key` securely.
 
@@ -60,7 +66,7 @@ For Docker Compose, the files are in the `cert_data` volume mounted at `/app/cer
 * `ca.crt` and `ca.key` -- CA certificate and private key
 * `server.crt` and `server.key` -- server certificate and private key
 
-The server certificate automatically includes `localhost`, `127.0.0.1`, and all local network IPs as Subject Alternative Names (SANs).
+The server certificate names the `-server` hostname (`localhost` by default), `kilocenter.local`, `127.0.0.1` and `0.0.0.0` as Subject Alternative Names (SANs), plus every name or IP address you pass with `-san`. It never lists the host's network interfaces, so add the hostname or IP address your base stations connect to with `-san`.
 
 **Generate a Client Certificate**
 
@@ -75,6 +81,7 @@ docker compose run --rm --no-deps --entrypoint certgen certgen \
 | -------------- | ----------- | ------------------------------------------------------------ |
 | `-dir`         | `certs`     | Output directory for certificate files                       |
 | `-server`      | `localhost` | Server hostname (used as CN and SAN)                         |
+| `-san`         | (empty)     | Further server names and IP addresses, comma-separated, added as SANs |
 | `-days`        | `365`       | Server/client certificate validity in days                   |
 | `-ca-years`    | `20`        | CA certificate validity in years                             |
 | `-ca-only`     | `false`     | Generate only the CA certificate                             |

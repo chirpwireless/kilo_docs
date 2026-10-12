@@ -4,13 +4,13 @@ description: Show a sensor's latest value — number, text, or Boolean — with 
 
 # Value Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-number.jpg" alt="Last Data widget using the Value display type"><figcaption></figcaption></figure>
-
 The Value display shows a reading's latest value as-is — no gauge, no scale, just the value. It works for **any** metric type: a number with its unit, a **text** value shown verbatim, or a **Boolean** shown as `true` or `false`. When a tile holds several metrics, they sit side by side, each with its own color and label, so one compact panel can carry the temperature, humidity, and CO2 of a zone at once.
 
 Reach for Value when the reading itself is the information and there is no range to visualize against — an exact instrument reading an engineer acts on, a text status, an on/off state, or a multi-metric summary where space is tight.
 
 Because there is no scale, Value is the one Last Data display type with no **Value range** to set.
+
+<figure><img src="../../../../.gitbook/assets/last-data-number.jpg" alt="Last Data widget using the Value display type"><figcaption></figcaption></figure>
 
 ## When to choose it
 
@@ -30,7 +30,7 @@ Here is a full setup for one real case — a tile that shows at a glance whether
 4. Click **Add metric**. A metric row appears.
 5. In the row, set **Data type** to **Telemetry**, choose the running-state reading under **Device metric**, and pick an **Icon**.
 
-   > **Note on metric types.** The **Device metric** list offers every metric type. The Value display shows whatever the metric reports — a number, a text value, or a Boolean (`true`/`false`) — so no type conversion is needed here. (The gauge-style displays — Doughnut, Pie, Gauge, Tube, Radial gauge — do need a number: a numeric text value is parsed, and a non-numeric one reads as 0. To change a metric's type, use the **Metrics Templates** button on a connection's Connected Devices list — see [Metric Templates](../../../devices/metric-templates.md).)
+   > **Note on metric types.** The **Device metric** list offers every metric type. The Value display shows whatever the metric reports — a number, a text value, or a Boolean (`true`/`false`) — so no type conversion is needed here. (The gauge-style displays — Doughnut, Pie, Gauge, Tube, Radial gauge — do need a number: a numeric text value is parsed, and a non-numeric one reads as 0. To change how a metric is stored, open **Devices → Metrics** — see [Metrics](../../../devices/metric-templates.md).)
 6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each state click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), because the pump only ever reports 0 or 1, set **From** and **To** to the same number — the value that condition should catch — and pick a **Color**. Then you can enter the two states. For example:
    - "Running" — **From** 1, **To** 1 — blue
    - "Stopped" — **From** 0, **To** 0 — gray

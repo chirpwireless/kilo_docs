@@ -10,7 +10,9 @@ The audit trail currently covers membership events. Device operations, rule chan
 
 ## Where to Find It
 
-Open the sidebar and navigate to **Reports** > **Audit Trail**. The audit trail page opens at `/reports/audit-trail`, scoped to your current organization.
+Open the sidebar and navigate to **Records & Reports** > **Audit Trail**. The audit trail page opens at `/records/audit-trail`, scoped to your current organization — its title reads *{organization} / Audit Trail*.
+
+<figure><img src="../../.gitbook/assets/audit-trail.jpg" alt="The Audit Trail page with its actor filter, event type dropdown and date range control above the event list"><figcaption></figcaption></figure>
 
 ## What Is Logged
 

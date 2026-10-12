@@ -4,7 +4,11 @@ description: Create a new automation rule from scratch in the Kilo IoT Rules Eng
 
 # Creating Rules
 
-This page walks through creating a new automation rule from scratch — from naming it to saving your first version.
+Creating a rule means saving the workflow that Kilo will run in response to a sensor reading or a signal from a saved trigger. Its connected steps define what to check and what to do, such as raise an alarm or run a configured device command. This guide takes you from a new rule to its first saved draft.
+
+If you need to **create a trigger**, use **Rules Engine → Triggers → Add trigger**. A trigger is the separate monitoring condition and can be saved before a rule exists. [Triggers](triggers.md) explains how to connect it to the responding workflow.
+
+Have the source sensor or saved trigger ready, along with any alarm definition or device command the workflow will use. Saving the draft preserves the design; [building and deploying](builds-artifacts-and-deployment.md) are separate steps before it runs.
 
 ## Prerequisites
 
@@ -15,7 +19,9 @@ This page walks through creating a new automation rule from scratch — from nam
 
 ### 1. Open the rule creation page
 
-From the Rules Engine page, click **Add Rule**. This opens a blank rule editor at `/rules/create`.
+From the Rules Engine page, click **Add Rule**. This opens a new rule editor at `/rules/create`, with an empty name field and a starter diagram — a **Start** event already connected to an **End** event.
+
+<figure><img src="../../.gitbook/assets/rules-create-blank.jpg" alt="A new rule in the editor with an empty name field and a Start event connected to an End event"><figcaption></figcaption></figure>
 
 ### 2. Name your rule
 
@@ -32,9 +38,9 @@ Click the three-dot menu (⋮) next to the rule name and select **Edit descripti
 
 ### 4. Build the workflow
 
-The editor opens with a blank BPMN canvas. You need to add at least:
+The editor opens with a Start event and an End event already on the canvas. A complete rule needs at least:
 
-1. A **Start Event** — the trigger that binds the rule to a device and sensor
+1. A **Start Event** — the entry point that uses either one sensor's readings or a saved trigger condition
 2. One or more processing nodes (Script Tasks, Gateways, Enrichment, [Set Alarm](node-reference.md#set-alarm))
 3. An **End Event** — at least one termination point
 
@@ -46,20 +52,30 @@ For a detailed walkthrough of the canvas and available tools, see [Visual Editor
 
 ### 5. Configure the Start Event
 
-Click the Start Event node to open its properties panel on the right. You must configure:
+Select the Start Event node and click the **pencil** icon that appears beneath it — that opens its properties panel on the right. First choose what starts the rule:
+
+- **Start source** — **Sensor reading** uses incoming readings from one selected sensor. **Trigger condition** uses signals from a saved [trigger](triggers.md), including further signals while it remains active. The rule must be running; its schedule and execution-rate limits still apply. A trigger can act immediately or after a duration, and it can evaluate one device or several devices independently.
+
+A Start Event uses one source or the other, never both.
+
+**With Start source set to Sensor reading**, configure:
 
 - **Device** — Select the device that triggers this rule (searchable dropdown)
 - **Sensor** — Select which sensor on that device to monitor (dropdown, enabled after choosing a device)
 
+**With Start source set to Trigger condition**, the Device and Sensor fields are replaced by a single **Trigger condition** selector. Pick the trigger you built on the [Triggers](triggers.md) tab. This is the path for a condition that must be evaluated before the rule starts, whether that condition is immediate or delayed and whether it watches one device or many. The trigger signal does not contain one sensor-event value, so `vars.value` is unavailable; `vars.device_name` identifies the watched device that met the condition.
+
+The selector does not create a trigger. If the trigger does not exist yet, save your work before leaving the editor, open **Rules Engine → Triggers**, create it, and then return to this rule. After selecting it, click **Save** at the bottom of the Start Event panel to apply the source to the diagram.
+
 Optionally, you can:
-- **Enable Schedule** — Toggle to restrict the rule to a specific time window. Choose a time range and time zone.
-- **Add inputs/outputs** — Advanced CEL expressions for data transformation at the trigger level
+- **Enable Schedule** — Toggle to restrict the rule to a specific window. Click **Change schedule** to pick the days and the From/To times, and set the **Time Zone** they are measured in. Schedule is not another start source: it limits when the source you already chose may run the rule. With a duration trigger, the trigger decides when its condition becomes active and the schedule decides whether the rule may run when it processes a signal. Reaching the start of a schedule does not itself run the rule.
+- **Add inputs/outputs** — Advanced CEL expressions for data transformation at the Start Event
 
 See [Node Reference](node-reference.md) for full Start Event configuration details.
 
 ### 6. Save your rule
 
-Click the **Save** button in the top-right corner. The rule is saved as a new version (version 1). The autosave indicator shows "Saved" when the save completes.
+After saving the Start Event panel, click the separate **Save** button in the top-right corner of the editor. The rule is saved as a new version (version 1). The autosave indicator shows "Saved" when the save completes.
 
 After saving, the editor switches from creation mode to edit mode. You now have access to the **History** tab, the **Build** button, and the full actions menu.
 

@@ -4,11 +4,11 @@ description: Track a reading against thresholds with the Gauge — colored bands
 
 # Gauge Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-gauge.jpg" alt="Last Data widget using the Gauge display type"><figcaption></figcaption></figure>
-
-The Gauge display draws each reading as a marker sliding along a horizontal track. The track is scaled between a minimum and a maximum, and every numeric condition you set becomes a colored band along it — so the marker's position shows operational status, not just a value. The figure is shown in full above the track.
+The Gauge display draws each reading as a marker sliding along a horizontal track. The track is scaled between a minimum and a maximum, and every numeric condition you set becomes a colored band along it — so the marker's position shows operational status, not just a value. The numeric value is shown in full above the track.
 
 This is the display for readings where the position against thresholds is the point: whether a value sits inside its safe band, is drifting toward a limit, or has already crossed one.
+
+<figure><img src="../../../../.gitbook/assets/last-data-gauge.jpg" alt="Last Data widget using the Gauge display type"><figcaption></figcaption></figure>
 
 ## When to choose it
 
@@ -28,7 +28,7 @@ Here is a full setup for one real case — watching a sump pit so a pump failure
 4. Click **Add metric**. A metric row appears.
 5. In the row, set **Data type** to **Telemetry**, choose the water-level reading under **Device metric**, and pick an **Icon**.
 
-   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change a metric's type, use the **Metrics Templates** button on a connection's Connected Devices list — see [Metric Templates](../../../devices/metric-templates.md).
+   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change how a metric is stored, open **Devices → Metrics** — see [Metrics](../../../devices/metric-templates.md).
 6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, separate from the metric row's), because the pit is 100 cm deep, enter **From** 0 (the dry floor) and **To** 100 (the overflow point), and pick a **Color**. Then you can enter the color levels. For example:
 
    Working up from the dry floor:

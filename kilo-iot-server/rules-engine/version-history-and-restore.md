@@ -1,5 +1,5 @@
 ---
-description: Browse rule version history in Kilo IoT and restore any previous version — full audit of who changed what and when.
+description: Browse a Kilo IoT rule's version history to see who changed what and when, and restore any earlier version.
 ---
 
 # Version History and Restore
@@ -48,6 +48,8 @@ Each version records how it was created:
 | **restored** | This version was created by restoring a previous version |
 
 Save types help you understand the context around each version. A series of "auto" entries followed by a "manual" entry tells you someone was actively working and then deliberately saved. A "disconnect" entry tells you the session ended unexpectedly — check whether the work in that version is complete.
+
+<figure><img src="../../.gitbook/assets/rules-version-history.jpg" alt="The History tab listing saved versions with their date, save type and author"><figcaption></figcaption></figure>
 
 ## Renaming versions
 

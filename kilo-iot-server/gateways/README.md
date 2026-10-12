@@ -8,6 +8,10 @@ Gateways are the connectivity infrastructure that brings field devices into the 
 
 This section is organized by gateway type. Each category groups the hardware and software that connects a particular field-protocol family into the platform.
 
+In the app, **Gateways** in the sidebar covers the two radio categories: a **LoRaWAN Gateways** tab and a **Mioty Base Stations** tab, each with its own list, location filters, and **Add gateway** action. MQTT edge gateways are not registered here — they publish through an [MQTT connector](../connectors/mqtt-connector.md) instead.
+
+<figure><img src="../../.gitbook/assets/gateways-page-tabs.jpg" alt="The Gateways page on the LoRaWAN Gateways tab, with the Mioty Base Stations tab, location filters and one registered gateway"><figcaption></figcaption></figure>
+
 ## In this section
 
 ### [LoRaWAN gateways](lorawan-gateways/README.md)

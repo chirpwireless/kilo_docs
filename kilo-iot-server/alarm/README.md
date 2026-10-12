@@ -4,9 +4,11 @@ description: Operational alerting in Kilo IoT Server — Inbox, alarm definition
 
 # Alarm
 
-When a cold-storage sensor reports a temperature exceedance at 3 AM, the right person needs to know — immediately, reliably, and through the right channel. The Alarm section in Kilo IoT Server transforms real-time sensor data into structured operational alerts with multi-step escalation, configurable severity policies, and delivery across email, SMS, and push.
+Kilo alarms turn a detected problem into an organized response: notify the right people, escalate through your chosen channels, and keep a shared record until the team resolves it. A cold-room warning can reach the on-call engineer first and the next responder if the event remains unresolved.
 
-> **Trigger logic vs response logic:** The [Rules Engine](../rules-engine/README.md) determines _when_ an alarm is raised — it evaluates sensor data against conditions and fires the alarm when those conditions are met. Alarm Definitions control _what happens after_ the alarm fires: severity classification, repeat cadence, recipient selection, delivery channels, weekly schedules, suppression windows, and escalation chains for unresolved events.
+An **alarm event** is the record of something needing attention. An **alarm definition** stores the message, severity, recipients, escalation, and delivery timing. A **rule** raises an event using that definition when its workflow reaches the alarm step. Reusing definitions keeps the response consistent across devices and rules.
+
+To set up an alert, prepare the definition and its recipients, then connect it to a [Rules Engine](../rules-engine/README.md) response. If the response should wait for a sustained condition, create a separate [trigger](../rules-engine/triggers.md) and use it to start the rule. Follow [Your First Alert](first-operational-alert.md) for the complete setup.
 
 ## Page structure
 
@@ -19,6 +21,8 @@ The Alarm page has three tabs:
 | **Settings** | Manage notification delivery contacts — email and SMS — with per-channel enable/disable toggles. Push notification setup is available when enabled for the account, delivered through the [IoT Alerts App](iot-alerts-app/README.md). |
 
 A **Notification Severity** button in the page header (visible on all tabs) opens a modal for configuring how frequently each severity level re-sends notifications.
+
+<figure><img src="../../.gitbook/assets/alarm-page-tabs.jpg" alt="The Alarm page on the Inbox tab, with the Alarm definitions and Settings tabs, severity and status filters, and a triggered alarm"><figcaption></figcaption></figure>
 
 ## Severity model
 

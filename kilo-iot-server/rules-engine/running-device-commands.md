@@ -4,11 +4,13 @@ description: Make a Kilo rule act on its own — the Execute Command node sends 
 
 # Running Device Commands
 
-This is the change that turns the Rules Engine from a system that *watches* into a system that *acts*. Until now, when a rule detected a problem, the most it could do was raise an alarm and put a human in the loop — someone had to read the alert and go flip the switch. The **Execute Command** node closes that gap. A rule can now send a command straight to a device the moment its conditions are met, with no person in between.
+The **Execute Command** node lets a Kilo rule act on equipment as part of its response. A rule can check conditions, send a setpoint or switch a relay, and continue along the workflow you designed. Operators can see that action in the same diagram as the decisions leading to it.
 
-Consider what that means in practice. A leak sensor trips in a plant room. Before, the rule fired an alarm and an operator scrambled to shut the main valve — minutes of water damage either way. Now the same rule shuts the valve itself in the same evaluation that detected the leak, and *then* raises the alarm so the team knows it happened. Cold storage drifts out of range, and the rule pushes a lower setpoint to the controller before the product is at risk. A tank hits a high-level mark, and the rule closes the inlet. This is closed-loop automation: sense, decide, and act, end to end, in one rule.
+The node uses a **saved device command**: an operation you configured with its parameters and optional verification. Define that command on compatible equipment first, then select it in the rule.
 
-The action runs on the same [Device Commands](../devices/commands/) engine you use by hand — the rule simply dispatches a command you have already defined on the device. So everything that makes manual commands safe (typed parameters, optional verification, a full execution record) applies automatically when a rule fires one.
+Use this node when a rule should request a physical response as well as, or instead of, raising an alarm. For example, a rule could check a tank reading and send a configured inlet-valve command. Whether the valve changes state depends on the equipment and delivery; a successful dispatch alone is not proof of movement.
+
+[Create and test the device command](../devices/commands/README.md) first. The rule selects that command and supplies its inputs. Configure [verification](../devices/commands/verification.md) when the device provides feedback you can compare with the expected result.
 
 ## Before you start
 
@@ -56,28 +58,28 @@ The combination is powerful: an Exclusive Gateway decides *whether* to act, and 
 3. The command is dispatched to the device as a downlink, over MQTT or LoRaWAN, exactly as if it had been run by hand from the device's **States** tab.
 4. The dispatch is recorded in the device's execution history with its outcome (Pending, Confirmed, Delivered, Soft warning, or Failed), so there is a complete audit of every action a rule has taken.
 
-Because the command flows through the standard Device Commands path, any verification configured on that command applies here too — the rule can confirm the device actually acted, not just that the downlink was sent. See [Confirming Commands](../devices/commands/verification.md).
+Because the command flows through the standard Device Commands path, any verification configured on that command applies here too — the command execution can compare reported feedback with the expected state. The workflow continuing past this node is not itself proof of physical execution. See [Confirming Commands](../devices/commands/verification.md).
 
 ## Acting *and* alerting in one rule
 
-Acting on a device does not replace alerting — the two work best together. A single rule can shut the valve **and** raise an alarm, so the situation is contained automatically *and* the right people are told. A common shape:
+Acting on a device does not replace alerting — the two work best together. A single rule can request that a valve closes **and** raise an alarm to tell the right people that a command was sent. A common shape:
 
 | Step | Node | What it does |
 |---|---|---|
 | Detect | Start Event → Exclusive Gateway | Bind to the leak sensor; branch when a leak is detected |
 | Act | Execute Command | Send "close valve" to the shutoff valve |
-| Notify | Set Alarm | Raise a Critical alarm so the team knows the valve was closed and why |
+| Notify | Set Alarm | Raise a Critical alarm explaining why closure was requested |
 
-If the action itself might fail — the device is briefly offline, for instance — attach a [Boundary Error Event](node-reference.md#boundary-error-event) to the Execute Command node and route the error path to a Set Alarm, so a command that does not go through still reaches a human.
+Attach a [Boundary Error Event](node-reference.md#boundary-error-event) to handle errors returned by the command step. Delivery and later verification results belong to the command execution record; an accepted dispatch can still fail to produce the expected device state.
 
 ## A worked example
 
-A cold-chain rule protects a pharmaceutical freezer. The Start Event binds to the freezer's temperature probe. An Exclusive Gateway routes any reading above −15 °C down a "drifting warm" branch. On that branch:
+In this hypothetical example, a cold-chain rule requests a controller adjustment when a freezer reading rises. The Start Event binds to the freezer's temperature probe. An Exclusive Gateway routes any reading above −15 °C down a "drifting warm" branch. On that branch:
 
 1. An **Execute Command** node sends a `set_setpoint` command to the freezer's controller, with the setpoint parameter set as an **Expression** that steps the target down based on how far the reading has drifted — colder correction for a bigger excursion.
-2. A **Set Alarm** node raises a High-severity alarm with a motivation message that includes the live temperature, so the on-call engineer is informed even though the rule has already begun correcting the problem.
+2. A **Set Alarm** node raises a High-severity alarm with a motivation message that includes the live temperature, so the on-call engineer can inspect the excursion and command result.
 
-The product is protected in the moment the drift is detected, and the team still gets the full picture. That is the difference between a platform that tells you something went wrong and one that does something about it.
+The rule combines an attempted correction with notification. Validate the controller command and its verification for the actual installation; the example does not establish that stored goods are protected.
 
 ## Related pages
 

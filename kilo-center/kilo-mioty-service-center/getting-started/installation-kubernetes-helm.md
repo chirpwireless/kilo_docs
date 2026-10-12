@@ -8,18 +8,20 @@ Use the current installation examples only in an isolated evaluation environment
 Published credentials, signing-key defaults and network exposure need correction before customer use.
 Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
 
-### Goal
+Deploy KiloCenter Community Edition into your Kubernetes environment with the supplied Helm chart. This route fits teams that already operate a cluster and want the open-source MIOTY network services managed through that deployment workflow.
+
+### What does this guide achieve?
 
 Deploy KiloCenter to a Kubernetes cluster using the Helm chart included in this repository.
 
 ### Prerequisites
 
-| Requirement         | Minimum version |
-| ------------------- | --------------- |
-| Kubernetes cluster  | 1.25+           |
-| Helm                | 3.x             |
-| External PostgreSQL | 14+             |
-| External Redis      | 7+              |
+| Requirement | Minimum version |
+|---|---|
+| Kubernetes cluster | 1.25+ |
+| Helm | 3.x |
+| External PostgreSQL | 14+ |
+| External Redis | 7+ |
 
 PostgreSQL and Redis are **not** deployed by this chart. Provision them separately (managed services, operators, or standalone) and supply connection details in your values override.
 
@@ -39,20 +41,31 @@ PostgreSQL and Redis are **not** deployed by this chart. Provision them separate
                                     [MQTT clients]
 ```
 
-The chart deploys five services and one MQTT broker:
+The chart deploys four services and one MQTT broker, plus two hook jobs:
 
-| Component     | Port(s)                                                 | Description                                      |
-| ------------- | ------------------------------------------------------- | ------------------------------------------------ |
-| `kc-core`     | 50051 (gRPC), 5000 (BSSCI), 5001 (SCACI), 8086 (health) | Service center engine                            |
-| `kc-gateway`  | 9090 (gRPC-web), 8087 (health)                          | External API ingress                             |
-| `kc-identity` | 50052 (gRPC), 8088 (health)                             | Identity, users, organizations                   |
-| `kc-web`      | 80                                                      | Web management interface (nginx)                 |
-| `mosquitto`   | 1883, 9001 (WebSocket)                                  | MQTT broker                                      |
-| `certgen`     | —                                                       | Pre-install hook that generates TLS certificates |
+| Component | Port(s) | Description |
+|-----------|---------|-------------|
+| `kc-core` | 50051 (gRPC), 5000 (BSSCI), 5001 (SCACI), 8086 (health) | Service center engine |
+| `kc-gateway` | 9090 (gRPC-web), 8087 (health) | External API ingress |
+| `kc-identity` | 50052 (gRPC), 8088 (health) | Identity, users, organizations |
+| `kc-web` | 80 | Web management interface (nginx) |
+| `mosquitto` | 1883, 9001 (WebSocket) | MQTT broker |
+| `certgen` | — | Pre-install hook that generates TLS certificates |
+| `rekey` | — | Pre-upgrade hook that converts stored key material (see Upgrading) |
 
 ### Step 1: Create a Values Override
 
-At minimum, override the database, Redis, and secret settings:
+Generate the key-material master key first. The chart refuses to render
+without it, and KC-Core and KC-Identity encrypt every endpoint, session,
+message and TLS key at rest under it:
+
+```bash
+openssl rand -hex 32
+```
+
+At minimum, override the database, Redis, and secret settings, with the
+master key as `secrets.masterKey` and a second value from the same command as
+`secrets.internalPeerSecret`:
 
 ```yaml
 # my-values.yaml
@@ -65,6 +78,8 @@ redis:
   host: my-redis.default.svc.cluster.local
 
 secrets:
+  masterKey: "<the 64 hex characters from openssl rand -hex 32>"
+  internalPeerSecret: "<another 64 hex characters from openssl rand -hex 32>"
   authHmacSecret: "replace-with-a-random-string-at-least-32-bytes"
   mqttAdminPassword: "strong-mqtt-admin-pw"
   mqttClientPassword: "strong-mqtt-client-pw"
@@ -74,6 +89,10 @@ certgen:
 ```
 
 > **Important:** The `authHmacSecret` is used to sign and verify JWT tokens across KC-Gateway and KC-Identity. It must be at least 32 characters.
+
+> **Internal peer secret.** KC-Gateway, KC-Core and KC-Identity reach each other over the cluster network and trust each other's identity headers only from a peer presenting `secrets.internalPeerSecret`. The chart refuses to render without it, and the services refuse to start with one shorter than 32 characters.
+
+> **Keep the master key.** Store `secrets.masterKey` with your other deployment secrets and pass the same value to every `helm upgrade`. If it is lost, the stored keys cannot be decrypted and every endpoint and base station has to be provisioned again.
 
 ### Step 2: Install
 
@@ -105,18 +124,22 @@ kubectl port-forward svc/kilocenter-kc-web 8080:80
 
 Then open [http://localhost:8080/](http://localhost:8080/) in your browser.
 
-### Default Admin Account
+### What Is the Default Admin Login?
 
 On first startup, a default admin user is created via database migration:
 
-|              |                          |
-| ------------ | ------------------------ |
-| **Email**    | `admin [at] kilocenter.local` |
-| **Password** | `admin123!`              |
+| | |
+|---|---|
+| **Email** | `admin@kilocenter.local` |
+| **Password** | `admin123!` |
 
-> Replace `[at]` with `@` when signing in.
-
-> **Warning:** Change the password or remove this account before any public-facing deployment. The credentials are published in this repository.
+Sign in with this account first and change its password straight away under
+**Change Password** in the user menu, the same way you would set your own
+password on a new router or gateway. Choosing and keeping the installation's
+credentials is part of installing it. The account holds every role (see
+[User Roles and Permissions](../security/users-and-roles.md)); use it to
+create accounts for the people who work with the installation and give each of
+them the roles they need.
 
 ### Ingress
 
@@ -181,7 +204,7 @@ The `certgen` hook generates a self-signed CA and server certificate on first in
 
 ### Configuration Reference
 
-For the full list of configurable parameters, see the Helm chart README.
+For the full list of configurable parameters, see the [Helm chart README](https://github.com/Kiloiot/kilo-service-center/blob/main/helm/kilocenter/README.md).
 
 ### Upgrading
 
@@ -189,19 +212,29 @@ For the full list of configurable parameters, see the Helm chart README.
 helm upgrade kilocenter ./helm/kilocenter -f my-values.yaml
 ```
 
-Set a specific image tag to pin a version:
+Every upgrade runs the `rekey` pre-upgrade hook before the new pods start: it
+migrates the schema to `000143` and converts key material written by earlier
+releases to the authenticated envelope format. An installation from v1.3.0
+or earlier has no `secrets.masterKey` yet; generate one as in Step 1 and add
+it to your values before upgrading. Add `secrets.internalPeerSecret` the same
+way if your values do not set it yet. See
+[Key material migration](../operations/key-material-migration.md) for
+the hook's options, including where it exports retired `endpoint_keys` rows.
+
+An explicit tag selects a named release but can move; it is not an immutable digest or proof of a safe release. The published July release used `v1.3.0`, including the `v` prefix:
 
 ```yaml
 global:
-  imageTag: "1.0.0"
+  imageTag: "v2.0.0"
 ```
 
 ### Troubleshooting
 
-| Symptom                     | Likely Cause                  | Fix                                                                    |
-| --------------------------- | ----------------------------- | ---------------------------------------------------------------------- |
-| Pods in `ImagePullBackOff`  | Missing image pull secret     | Add `global.imagePullSecrets` with your registry credentials           |
-| KC-Core readiness probe 503 | Dependency not ready          | Check KC-Identity and PostgreSQL are running                           |
-| `invalid_token` after login | HMAC secret mismatch          | Ensure `secrets.authHmacSecret` is set (same for gateway and identity) |
-| BSSCI connection refused    | No external service           | Create a LoadBalancer service for ports 5000/5001                      |
-| gRPC-web errors in browser  | CORS or ingress misconfigured | Check `kcGateway.config.corsOrigins` and ingress paths                 |
+| Symptom | Likely Cause | Fix |
+|---------|-------------|-----|
+| Pods in `ImagePullBackOff` | Wrong repository/tag, registry access or connectivity | Check the exact image name against the release first, then registry access; do not assume credentials alone will fix a wrong path |
+| KC-Core readiness probe 503 | PostgreSQL unreachable or the gRPC server not serving yet | `/health/ready` answers only for PostgreSQL and the internal gRPC server; check PostgreSQL connectivity and the KC-Core log. `/health` lists every component, including KC-Identity, MQTT and the BSSCI/SCACI listeners |
+| `invalid_token` after login | HMAC secret mismatch | Ensure `secrets.authHmacSecret` is set (same for gateway and identity) |
+| BSSCI connection refused | No external service | Create a LoadBalancer service for ports 5000/5001 |
+| gRPC-web errors in browser | CORS or ingress misconfigured | Check `kcGateway.config.corsOrigins` and ingress paths |
+| Upgrade fails in the `rekey` hook | Legacy rows under another passphrase, or `endpoint_keys` rows with no export location | Read the hook log (`kubectl logs job/kilocenter-rekey`) and follow [Key material migration](../operations/key-material-migration.md) |

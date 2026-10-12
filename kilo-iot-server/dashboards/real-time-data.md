@@ -22,6 +22,8 @@ On any [dashboard](./), the header shows a **"Live Data"** label with a small ic
 
 The label identifies the dashboard's live-data view; it does not report connection health or prove that a sensor has just sent a reading. Check the widget's last-update time and the device's last-reported time when freshness matters. The label disappears when you enter edit mode (replaced by the dashboard metadata edit icon).
 
+<figure><img src="../../.gitbook/assets/dashboard-live-data.jpg" alt="A dashboard header showing the Live Data indicator beside the dashboard name, with a widget updating"><figcaption></figcaption></figure>
+
 ## How real-time delivery works
 
 The server uses a persistent connection between your browser and the platform to push data updates as they happen:

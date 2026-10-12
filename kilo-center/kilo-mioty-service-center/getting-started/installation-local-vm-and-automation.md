@@ -1,5 +1,5 @@
 ---
-description: Run KiloCenter in a local VM with automated provisioning — repeatable setup for testing and team onboarding via Docker.
+description: Install KiloCenter in a local Linux VM with Docker Compose to get repeatable MIOTY test setups for team onboarding.
 ---
 
 # Installation: Local VM and Automation
@@ -8,7 +8,9 @@ Use the current installation examples only in an isolated evaluation environment
 Published credentials, signing-key defaults and network exposure need correction before customer use.
 Changing only the administrator password is insufficient. Read the [installation safety notice](../security/installation-safety.md) before running commands.
 
-### Goal
+A local virtual machine gives your team a repeatable place to install and exercise KiloCenter Community Edition. Use it to learn MIOTY network setup and test installation changes before applying them to the service center you operate.
+
+### What does this guide achieve?
 
 Create repeatable local environments for testing and team onboarding.
 

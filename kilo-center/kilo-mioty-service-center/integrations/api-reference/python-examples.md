@@ -105,7 +105,11 @@ while True:
 
 #### Community Edition
 
-The current Community Edition Docker configuration enables local sign-in in KC-Identity and token validation in KC-Gateway. Authenticate protected API calls through the gateway. The examples omit installation-specific credentials; they do not mean that authentication should be disabled. Keep internal service ports private.
+Community Edition runs single-tenant with organization enforcement off, so the
+examples above need only the `authorization` header: sign in with `Login` and send
+`Bearer <access_token>`. Each call also needs a role: `GetSystemStatus` is open to
+every role, `ListEndPoints` to Endpoint Managers and administrators. See
+[User Roles and Permissions](../../security/users-and-roles.md).
 
 #### Enterprise: JWT User Principal
 
@@ -131,6 +135,10 @@ resp = client.ListEndPoints(
 #### Enterprise: Service-Account API Key
 
 Requires two headers: `authorization` and `x-organization-id`. Do **not** send `x-user-id` — including it returns `ErrTokenIdentityMismatch` to prevent user injection.
+
+A service-account key acts as a Base Station Manager and Endpoint Manager in the organization it
+was created for, so the call below succeeds for that organization. Calls that need the Admin or
+Tenant Manager role, and any call for another organization, return `PERMISSION_DENIED`.
 
 ```python
 api_key = "your-api-key"

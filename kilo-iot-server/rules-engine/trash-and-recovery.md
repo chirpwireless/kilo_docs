@@ -1,5 +1,5 @@
 ---
-description: Soft-deleted rules go to Trash — review and restore them within the recovery window before removal.
+description: Deleted Kilo IoT rules go to the Trash tab, where you can review and restore them within the retention period.
 ---
 
 # Trash and Recovery
@@ -24,10 +24,14 @@ Any user with edit permissions on the rule can delete it, provided the rule is n
 
 5. Click **Move to trash** to confirm.
 
+<figure><img src="../../.gitbook/assets/rules-delete-confirm.jpg" alt="The delete confirmation dialog explaining that the rule is stored in the trash, with Cancel and Move to trash"><figcaption></figcaption></figure>
+
 The rule is removed from the active Rules list and appears in the Trash tab. If the rule had a running artifact, the artifact is stopped as part of the deletion.
 
 ## The Trash tab
 
+
+<figure><img src="../../.gitbook/assets/rules-trash.jpg" alt="The Trash tab listing a deleted rule with its description, deleted time and the Restore rule action"><figcaption></figcaption></figure>
 ### Getting there
 
 From the Rules Engine page at `/rules`, click the **Trash** tab (the third tab, after Rules and Artifacts).
@@ -60,12 +64,16 @@ Restoring a rule moves it back to the active Rules list, where it can be edited,
 
 5. Click **Restore** to confirm.
 
+<figure><img src="../../.gitbook/assets/rules-restore-confirm.jpg" alt="The restore confirmation dialog explaining that the rule will be activated and moved back to the active rules list"><figcaption></figcaption></figure>
+
+Nothing happens until you confirm — closing the dialog leaves the rule in the trash.
+
 The rule reappears in the Rules tab. It comes back **unlocked**, regardless of its lock state when it was deleted.
 
 ### What a restored rule looks like
 
 - The rule appears in the Rules tab with its original name, description, and full version history intact.
-- The rule is not deployed. Even if the rule had a running artifact before deletion, you need to build and deploy it again to start processing sensor data.
+- The rule is not deployed. Even if it had a running artifact before deletion, you need to build and deploy it again before it can respond to its selected sensor or trigger source.
 - The rule is unlocked, so any team member with edit permissions can immediately open and work on it.
 
 ### Restore limitations
@@ -78,3 +86,7 @@ The rule reappears in the Rules tab. It comes back **unlocked**, regardless of i
 - **Check trash before re-creating a rule.** If a teammate deleted a rule you still need, restoring it is faster than rebuilding from scratch — and preserves the entire version history.
 - **Do not rely on trash as an archive.** The retention window is limited. If you want to preserve a rule long-term but keep it inactive, consider stopping its deployed artifact rather than deleting the rule.
 - **Coordinate deletions with your team.** Soft delete protects against accidents, but communicating intent prevents confusion about why a rule disappeared from the active list.
+
+## Deleting an executing rule
+
+When a rule has an active deployment, deletion includes stopping its execution before moving it to Trash. Review the confirmation before proceeding. If stopping or deletion fails, inspect the reported state and retry after resolving the problem; do not assume a failed deletion stopped the rule. Restoring a rule does not restart the old deployment: review, build, and deploy it again when ready.

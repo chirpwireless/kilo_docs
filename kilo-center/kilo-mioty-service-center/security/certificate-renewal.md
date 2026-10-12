@@ -10,8 +10,19 @@ server renewal does not require deleting Docker volumes, the database or station
 
 Use a maintenance window: base station and application-center connections will pause when KC-Core
 stops. First try this procedure on an isolated copy of your installation. The certificate tool's
-server-only behaviour has been tested; every installed container version and recovery arrangement
+server-only behavior has been tested; every installed container version and recovery arrangement
 must still be checked by its operator.
+
+The **Certificates** page of the web interface shows how long the server certificate and each base station certificate remain valid, and flags one that **Expires soon**.
+<figure><img src="../../../.gitbook/assets/kc-certificates.jpg" alt="The Certificates page with Server Certificate, CA Certificate and base station certificates with their days left, and the Renew Server Certificates button"><figcaption></figcaption></figure>
+
+## Can I renew the server certificate from the web interface?
+
+Yes. An **Admin** can renew it without stopping KC-Core. Open **Certificates**, select **Renew Server Certificates** and read the dialog. It lists the **Names on the new certificate**: the host of `protocol.bsci_external_url`, the names in `certificates.server_names` and every name the current certificate already carries. A new server certificate is issued for those names, valid for `certificates.server_validity_days` (365 by default) and signed by the same CA. The service center serves it from the next connection on, and connected base stations keep their session. A base station that connects by a name missing from the list fails hostname verification, so add the name to `certificates.server_names` and restart KC-Core before you renew. Select **Renew Server Certificates** again to confirm; the page reads "Server certificates renewed".
+
+On a fresh installation without a server certificate the same place shows **Generate Server Certificates** instead ("Server certificates generated"). Renewal needs the CA certificate and the CA private key in the certificates directory; if either is missing, the request fails and you must follow the command-line procedure below or restore them from your backup.
+
+The procedure below stays the right choice when you want a verified, recoverable maintenance window, when the web interface cannot reach KC-Core, or when the hostname must change in a way the dialog does not list.
 
 ## Before changing files
 

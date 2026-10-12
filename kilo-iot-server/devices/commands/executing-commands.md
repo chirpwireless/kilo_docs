@@ -34,7 +34,9 @@ The command is sent to the device and the platform begins tracking it according 
 
 ## When a device is offline
 
-If the device hasn't been heard from within its expected window, a banner appears at the top of the States tab indicating the device is offline, along with when it was last seen. Commands can't be executed against an offline device interactively — but queued commands are sent automatically when the device reconnects, so control intent is never silently lost.
+The States view disables **Execute** when the device's last-seen time is more than 30 minutes ago. The banner shows when it was last seen. This is separate from reception diagnostics, which uses the configured reporting interval: a healthy hourly device can therefore show as offline for interactive commands between reports.
+
+If no last-seen time is available, this banner does not establish reachability. Check the connection and fresh telemetry. After sending, review **Recent executions** for delivery or verification results before deciding whether to send again.
 
 ## Recent executions
 
@@ -55,7 +57,7 @@ The platform collapses the full delivery lifecycle into five clear outcomes:
 * **Pending** — In flight. The command has been dispatched and is moving through delivery and (if configured) verification.
 * **Confirmed** — Verified success. Verification was configured, and the device's reported state matched what was expected.
 * **Delivered** — The downlink was accepted for delivery, but the command uses **No verification**, so the platform isn't checking whether the device acted on it. The command went out; its effect is unverified by design — distinct from the verified **Confirmed**.
-* **Soft warning** — Delivered and acknowledged, but the platform could not confirm the effect within the convergence window. Treat this as "couldn't verify," not "definitely failed" — worth a look, but the command may well have worked.
+* **Soft warning** — Receipt or the expected state was not confirmed in time. Read Details to distinguish missing acknowledgement from missing feedback; the status does not establish that the device acted.
 * **Failed** — The command did not go through. The **Details** column explains why — for example a validation failure or a full device downlink queue.
 
 The **Details** text gives the human-readable reason behind each status, so triaging a problematic command rarely requires leaving the page.
@@ -71,6 +73,7 @@ When a command lands on **Soft warning** or **Failed**, the Details column names
 | Payload too large for the device. | The encoded payload exceeds what the device accepts at its current data rate. |
 | Sent, but the device didn't confirm receipt. | The downlink went out but no acknowledgment came back (confirmed downlinks). |
 | Sent, but the device didn't confirm the expected state in time. | Delivered, but the expected sensor state didn't arrive within the convergence window. |
+| Delivery outcome unknown: the mioty service center reported no result by the deadline. | A MIOTY command left, but the service center gave no result in time. Check the device's next uplink before sending again. |
 | Device offline — command not delivered in time. | The device wasn't reachable within its receive window. |
 | No gateway available to reach the device. | No gateway was in range to transmit the downlink. |
 | Broker authentication failed. | The MQTT connection rejected the publish — check the connector's credentials. |
@@ -89,6 +92,7 @@ You can also dispatch a command by asking. The built-in [IoT AI Assistant](../..
 
 * [Creating Commands](creating-commands.md) — define the actions a device can perform
 * [Confirming Commands](verification.md) — set how the platform verifies a result
+* [Example: Smart Socket](smart-socket-example.md) — build and verify two commands end to end
 * [Control widget](../../dashboards/adding-widgets/control-widget.md) — put a command on a dashboard
 * [Building with AI](../../ai-assistant/building-with-ai.md) — run a command by asking the assistant
 * [MCP Server](../../api/mcp-server.md) — run a command from ChatGPT, Claude or another AI client

@@ -2,15 +2,13 @@
 description: Kilo IoT Server API overview — REST and gRPC access, scoped keys, and cloud or on-premise integration endpoints.
 ---
 
-# Kilo IoT Platform API
+# How Do I Use the Kilo IoT Platform API and MCP?
 
-The Kilo IoT Platform exposes programmatic access so external systems can read and manage your deployment's data and configuration — and now send commands to your devices — covering backend integrations, analytics and reporting pipelines, industrial and automation tooling, and custom applications.
+Kilo's **API** lets your existing applications work with the deployment: read device information, use sensor history in reports, and call the operations exposed by the platform. You can connect business software and custom tools without reproducing the browser workflow.
 
-Use the **[API reference](https://api.kiloiot.io/)** for the complete list of endpoints, request fields, responses, and required scopes. This section covers what the API is for, how to choose a protocol, how requests authenticate, and where to manage keys.
+An **API**, or application programming interface, is the contract your software uses to make those requests. Start with the [Public REST API](public-rest-api.md), which uses HTTP requests and structured responses. The [API reference](https://api.kiloiot.io/) lists the operations and the permission **scopes** each requires. Create an [API key](../settings/api-keys.md), an integration credential, and send it with the matching organization header, choosing only the scopes the integration needs. For conversational setup from an external AI client, use [MCP](mcp-server.md).
 
-> Device control is part of the API: a key with the **Commands** scope can create a device's commands and dispatch them as downlinks (on/off, setpoints, and the like). See [Device Commands](../devices/commands/) for the in-app workflow, and the [API reference](https://api.kiloiot.io/#tag/commands) for the command endpoints.
-
-## What's available
+## Which API Options Does Kilo Offer?
 
 Two protocols are offered on the same secured endpoint:
 
@@ -19,17 +17,17 @@ Two protocols are offered on the same secured endpoint:
 
 Alongside them, a separate endpoint serves AI clients rather than code you write:
 
-- **MCP** — connect an MCP-capable AI client, such as Claude Code or Claude Desktop, to your organization. You authorize it in the browser with your usual Kilo account instead of issuing a key, and it works within your own permissions. See [MCP Server](mcp-server.md).
+- **MCP** — connect an MCP-capable AI client, such as Claude (Kilo is in the [Claude connectors directory](https://claude.ai/directory/kilo-iot-platform)), Claude Code or Claude Desktop, to your organization. You authorize it in the browser with your usual Kilo account instead of issuing a key, and it works within your own permissions. See [MCP Server](mcp-server.md).
 
-## Authentication
+## How Do I Authenticate to the Kilo API?
 
 Requests are authenticated with a scoped API key in the `X-API-Key` header (format `kilo_<key>`), plus your organization context in `X-Organization-Id`. Keys are created and managed in **Settings → API Keys**; the concepts are summarized in [Authentication & API keys](authentication-and-api-keys.md), and the full key-management workflow is in [API Keys](../settings/api-keys.md).
 
-## Cloud and on-premise
+## Is the Kilo API Available on Premise?
 
-Cloud deployments use the managed endpoint above. On-premise installations expose the same API within your own network boundary, where gRPC is a natural fit for internal service-to-service automation — but REST remains available and is still the simplest place to start.
+Cloud deployments use the managed endpoint at `api.kiloiot.io`. On-premise installations expose the same API within your own network boundary, where gRPC is a natural fit for internal service-to-service automation — but REST remains available and is still the simplest place to start.
 
-## In this section
+## Where Can I Learn More About the Kilo API?
 
 - [Public REST API](public-rest-api.md) — the standard integration path.
 - [gRPC API](grpc-api.md) — the advanced / on-premise path (typed, service-to-service).

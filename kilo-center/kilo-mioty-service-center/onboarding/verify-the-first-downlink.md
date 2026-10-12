@@ -1,37 +1,50 @@
 ---
-description: Send and verify the first MIOTY downlink in KiloCenter — queue a command to a bidirectional endpoint, confirm delivery.
+description: Send a first MIOTY downlink from KiloCenter to a bidirectional endpoint and then check the delivery result.
 ---
 
 # Verify the First Downlink
 
-### Goal
+A **downlink** lets your application send a message back through KiloCenter to a bidirectional MIOTY endpoint. Use this guide to queue the device-compatible payload and inspect the reported delivery result, completing the return path of the network connection.
+
+First [verify an uplink](verify-the-first-uplink.md) from the registered endpoint. Both the endpoint and base station must support bidirectional communication. Acceptance into the downlink queue is not delivery confirmation, and delivery confirmation alone does not prove that a physical action occurred. Check device feedback when the payload requests a state change.
+
+### What does this guide achieve?
 
 Queue a downlink command to an endpoint and verify the result.
 
 ### Prerequisites
 
-* Endpoint registered with **bidirectional** flag enabled
-* Base station connected and supporting bidirectional communication
-* At least one successful uplink confirmed (see Verify First Uplink)
+- Endpoint registered with **bidirectional** flag enabled
+- Base station connected and supporting bidirectional communication
+- At least one successful uplink confirmed (see [Verify First Uplink](verify-the-first-uplink.md))
 
 Both the endpoint and the base station must have bidirectional capability for downlinks to work.
 
 ### Send a Downlink via KC-Web
 
 1. Open KC-Web at `http://localhost/` (container) or `http://localhost:5173` (source dev).
-2. Navigate to **Endpoints** and select your bidirectional endpoint.
-3. Use the downlink interface to queue a message:
-   * **Payload**: base64-encoded data (e.g., `AQIDBA==` for bytes `01 02 03 04`)
-   * **Confirmed**: whether to request delivery confirmation
-4. Submit the downlink.
+2. Open **End Points**, select your bidirectional endpoint and open the **Downlink** tab.
+3. Compose the downlink:
+   - **Payload (hex)**: the user data as hex (e.g. `01020304`); leave it empty for an acknowledgement-only downlink
+   - **Format** and **Priority** (`prio`), and under **Advanced Options** the `responseExp`, `responsePrio`, `dlWindReq`, `expOnly` and `dlRxStatQry` flags
+   - **Counter Dependent**, which binds the downlink to a packet counter
+4. Select **Send Downlink**. The downlink appears under the endpoint's **Traffic** tab > **Downlink Queue**; while no base station has taken it yet you can edit or revoke it there.
+
+
+<figure><img src="../../../.gitbook/assets/kc-endpoint-downlink.jpg" alt="The Downlink tab with Payload hex, Format, Priority, Counter Dependent, Advanced Options and Send Downlink"><figcaption></figcaption></figure>
 
 ### Send a Downlink via gRPC (Alternative)
 
+In the JSON form of a gRPC request, `payloads` entries are base64 (`AQIDBA==` is bytes `01 02 03 04`).
+
 ```bash
-grpcurl -plaintext -d '{
-  "endpoint_eui": "<EP_EUI_HEX>",
-  "data": "AQIDBA==",
-  "confirmed": false
+grpcurl -plaintext \
+  -H "authorization: Bearer <JWT_TOKEN>" \
+  -H "x-organization-id: <ORG_ID>" \
+  -d '{
+  "epEui": "<EP_EUI_HEX>",
+  "payloads": ["AQIDBA=="],
+  "priority": 0.5
 }' localhost:9090 kilocenter.api.v1.KiloCenterService/SendDownlink
 ```
 
@@ -39,7 +52,10 @@ grpcurl -plaintext -d '{
 
 #### In KC-Web
 
-Check the endpoint's downlink results view for status updates. A successful downlink shows the delivery status and any confirmation from the endpoint.
+Open **Traffic** (in the navigation, or the endpoint's **Traffic** tab) and select **Downlink Results**. A result shows `result` (`sent`, `expired` or `invalid`), and for a sent downlink the transmitting `bsEui`, `txTime` and `packetCnt`; `dlAck` shows when the endpoint acknowledged it in its next uplink. **Downlink Queue** shows the downlinks still waiting for a transmission window.
+<figure><img src="../../../.gitbook/assets/kc-traffic-downlink-results.jpg" alt="Downlink Results listing sent downlinks with the time each was acknowledged"><figcaption></figcaption></figure>
+
+
 
 #### In Logs
 
@@ -51,9 +67,11 @@ Look for `dlDataQue`, `dlDataQueRsp`, and `dlDataQueCmp` entries -- these repres
 
 ### Troubleshooting
 
-| Symptom                   | Likely Cause                                          |
-| ------------------------- | ----------------------------------------------------- |
-| Downlink stays queued     | Endpoint not attached or not bidirectional            |
-| "Not bidirectional" error | Endpoint or base station `bidi` flag not set          |
-| No result returned        | Base station did not complete the downlink handshake  |
-| Payload rejected          | Data not valid base64 or exceeds maximum payload size |
+| Symptom | Likely Cause |
+|---------|-------------|
+| Downlink stays queued | The base station that last heard the endpoint is offline or not bidirectional; the downlink goes out in the endpoint's next downlink window |
+| Downlink refused as not bidirectional | The endpoint is registered without the `bidi` flag |
+| Downlink reported `expired` | No downlink window opened within `protocol.downlink_expiry.lifetime` (see [How do I configure KiloCenter?](../getting-started/configuration-basics.md)) |
+| Downlink stays **Revoking** in the queue | A base station held it when its deadline passed; it ends when the station answers the revoke or reconnects. If the station refuses revokes with a code other than `protocol.downlink_expiry.revoke_not_held_codes`, see [How do I configure KiloCenter?](../getting-started/configuration-basics.md) |
+| No result returned | Base station did not complete the downlink handshake |
+| Payload rejected | Data not valid base64 or exceeds maximum payload size |

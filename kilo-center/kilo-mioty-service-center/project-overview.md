@@ -18,6 +18,20 @@ It is a MIOTY-native service center built specifically for the MIOTY stack from 
 
 MIOTY is a LPWAN protocol built for interference resilience, long-range communication, and large endpoint fleets. KiloCenter implements the service-center side of that stack with Docker and Linux-host deployment paths, gRPC and MQTT integrations, and a web management console.
 
+### How it relates to Kilo Cloud
+
+KiloCenter Community Edition is the free, open-source, self-hosted service center. Its boundary is the MIOTY network layer: base stations, endpoints, traffic, service-center operations, and interfaces that pass data to another application.
+
+The Enterprise edition of KiloCenter is built into **Kilo Cloud**. Choose Kilo Cloud when the deployment also needs the rest of an IoT platform: normalized device data, visual dashboards, historical charts, a visual rules engine, sustained-condition triggers, alarms and escalation, audit history, access control, and an AI assistant. MIOTY devices then use those features directly instead of requiring separate downstream systems.
+
+| Choose | When it fits |
+|---|---|
+| **KiloCenter Community Edition** | You need a MIOTY service center, want to operate it yourself, and will integrate its gRPC or MQTT data into your own applications. |
+| **Kilo Cloud** | You want the Enterprise service center managed for you and need rules, visualization, alarms, or other Kilo platform capabilities around MIOTY data. |
+| **Enterprise edition on your premises** | You need the Enterprise service center, or the complete Kilo platform, inside infrastructure you control. Kilo installs it on request: [contact Kilo](https://kiloiot.io/contact/). |
+
+See [KiloCenter or Kilo Cloud?](README.md#kilocenter-or-kilo-cloud) for the feature boundary, or start with the [Kilo Cloud MIOTY connector](../../kilo-iot-server/connectors/mioty-connector/README.md).
+
 ### Live Demo
 
 
@@ -29,13 +43,13 @@ A demo environment is available at [https://servicecenter.kiloiot.io/](https://s
 
 > Replace `[at]` with `@` when signing in.
 
-### Production Use Notice
+### Can I use the Community Edition in production?
 
 
 
 The community edition is provided as-is without commercial support. Production use is at your own risk.
 
-For supported production deployments, use Kilo Cloud or the on-premise Kilo IoT Platform (Contact Sales). The enterprise edition includes commercial support, SLA-backed operation, multi-tenancy, and optional MIOTY capabilities including BSSCI sub-channels, the Variable MAC (VM) attachment, and ReCon extension support.
+The Community Edition comes as is, under the AGPL license and with community support only. For production, choose the edition that fits: the **Enterprise edition** can be installed on your own premises on request ([contact Kilo](https://kiloiot.io/contact/)), and it brings commercial support, SLA-backed operation, multi-tenancy and optional MIOTY capabilities such as BSSCI sub-channels, the Variable MAC (VM) attachment and ReCon extension support. When you need more than a network server, use **Kilo Cloud**, where the Enterprise edition is built in and the platform adds device management, normalization, dashboards, visualization, rules, alerting, audit history, access control and AI-assisted operations.
 
 ### Features
 
@@ -311,6 +325,8 @@ KiloCenter implements the MIOTY service-center stack defined by the MIOTY Allian
 
 The community edition focuses on the core service-center stack. Optional MIOTY capabilities such as BSSCI sub-channels, the Variable MAC (VM) attachment, ReCon extensions, and enterprise multi-tenant operation belong to the enterprise offering.
 
+Community edition sign-in uses four roles — Admin, Tenant Manager, Base Station Manager and Endpoint Manager — and every API call checks them; see [User Roles and Permissions](security/users-and-roles.md). Version 2.0 also encrypts every stored key under a master key; see [What's new in KiloCenter 2.0?](whats-new-in-2-0.md).
+
 #### Supported Profiles and Behaviors
 
 
@@ -324,7 +340,7 @@ The community edition focuses on the core service-center stack. Optional MIOTY c
 
 
 
-This repository is not the recommended production rollout vehicle. Use Kilo Cloud or the on-premise Kilo IoT Platform for production deployments that require commercial support, operational guarantees, SLA coverage, multi-tenancy, and optional MIOTY capabilities such as BSSCI sub-channels, Variable MAC (VM), and ReCon extensions.
+Which edition to use in production is covered under [Can I use the Community Edition in production?](#can-i-use-the-community-edition-in-production).
 
 #### System Requirements
 
@@ -352,7 +368,7 @@ This repository is not the recommended production rollout vehicle. Use Kilo Clou
 * [Architecture and Components](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/01-architecture-and-components.md)
 * [Docker Compose Installation](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/03-installation-docker-compose.md)
 * [Linux Host Installation](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/04-installation-linux-host.md)
-* [Configuration Basics](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/06-configuration-basics.md)
+* [How do I configure KiloCenter?](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/02-GettingStarted/06-configuration-basics.md)
 * [API Documentation](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/04-Integrations/02-api.md)
 * [MQTT Integration](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/04-Integrations/03-mqtt-first-steps.md)
 * [Security](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook/05-Security/01-security-and-tenant-isolation-basics.md)

@@ -4,11 +4,11 @@ description: Show a fill level as a vertical sight-glass cylinder with the Tube 
 
 # Tube Display
 
-<figure><img src="../../../../.gitbook/assets/last-data-tube.jpg" alt="Last Data widget using the Tube display type"><figcaption></figcaption></figure>
-
 The Tube display is a vertical cylinder that fills from the bottom as the reading rises between a minimum and a maximum, with tick marks down the side and the value shown on the tube. It reads like a physical sight glass — the fill height *is* the reading.
 
 Tube is the natural choice for anything you already picture as a level. Because the conditions decide the colors, it works equally for "how full" and "how empty" — a tank filling up, or a reserve draining down.
+
+<figure><img src="../../../../.gitbook/assets/last-data-tube.jpg" alt="Last Data widget using the Tube display type"><figcaption></figcaption></figure>
 
 ## Watch a drop, or watch a rise
 
@@ -38,7 +38,7 @@ Here is a complete setup for one real case — monitoring the level in a storage
 4. Click **Add metric**. A metric row appears.
 5. In the row, set **Data type** to **Telemetry**, choose the fill-level reading under **Device metric**, and pick an **Icon**.
 
-   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change a metric's type, use the **Metrics Templates** button on a connection's Connected Devices list — see [Metric Templates](../../../devices/metric-templates.md).
+   > **This display needs a number.** The **Device metric** list offers every metric type, but a gauge fills against a scale — pick a numeric reading here; a non-numeric text value reads as 0. (To show text or an on/off value as-is, use the [Value display](number.md).) To change how a metric is stored, open **Devices → Metrics** — see [Metrics](../../../devices/metric-templates.md).
 6. Click **Conditions: N** to open the Conditions modal. Set a **Default color** — the color the reading falls back to whenever none of your conditions match the current value — then for each band click **Add condition** and fill the row — enter a **Condition name**, set **Data type** to **Number** (the condition's own Data type, not the metric row's), Because for this example our tank is 100cm in Height enter **From** 0cm (Bottom of the tank) and **To** 100cm , and pick a **Color**. Then you can enter the color levels. For example:
 
  Working up from the bottom:

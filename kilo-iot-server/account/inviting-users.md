@@ -1,5 +1,5 @@
 ---
-description: Invite a teammate to your Kilo IoT organization — pick per-surface permissions and send the invite.
+description: Invite a person with an existing Kilo IoT account to your organization and set their access per product area.
 ---
 
 # Inviting Users
@@ -18,6 +18,8 @@ Open the user menu and click **Users**. The organization page opens at `/superIo
 
 2. **Step 1 — Enter the email address.** Type the email address of the person you want to invite. This must be the email associated with their existing Kilo IoT account. Click **Continue**.
 
+   <figure><img src="../../.gitbook/assets/invite-user-email.jpg" alt="Step one of the Invite user to organization dialog with the email field and the Continue button"><figcaption></figcaption></figure>
+
 3. **Step 2 — Assign permissions.** The **Page access** section appears, listing each configurable product surface. For every surface, choose one of three access levels:
 
    - **Edit** — the user can view and make changes
@@ -29,6 +31,8 @@ Open the user menu and click **Users**. The organization page opens at `/superIo
    Two surfaces have restricted options:
    - **Audit Trail** — only View or No access (no Edit option, because the audit trail is read-only for everyone)
    - **API Keys** — only Edit or No access (no View option, because API key management is self-service)
+
+   <figure><img src="../../.gitbook/assets/invite-user-page-access.jpg" alt="Step two of the invite dialog listing each product surface with Edit, View and No access options"><figcaption></figcaption></figure>
 
 4. Click **Send invite**. The system sends an email to the invited user with a link to accept. The invitation is valid for **7 days**.
 

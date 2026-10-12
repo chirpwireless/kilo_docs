@@ -14,9 +14,9 @@ A LoRaWAN gateway is a packet forwarder. It has no session concept with your org
 
 A MIOTY base station is an addressed peer. It holds a persistent, mutually authenticated session to a service center over **BSSCI** — the Base Station Service Center Interface — and both sides present certificates. That has three consequences worth internalizing before you deploy:
 
-- **The station is provisioned, not just pointed.** During registration you receive a certificate pair as **certs.zip**, and the station uses it to prove its identity. There is no unauthenticated path.
+- **The station is provisioned, not just pointed.** During registration you issue a certificate pair (`ca.crt`, `client.crt`, `client.key`), and the station uses it to prove its identity. There is no unauthenticated path.
 - **The station has an identity that must be unique.** Every station is registered under a **BS EUI** — exactly 16 hexadecimal characters, from the hardware label. A duplicate BS EUI within your organization is rejected.
-- **The station needs an address that belongs to you.** That address is the **BSSCI address**, provisioned when you add the [Mioty connector](../../connectors/mioty-connector.md). Without the connector, the **Mioty Base Stations** tab does not appear on the Gateways page.
+- **The station needs an address that belongs to you.** That address is the **BSSCI address**, shown during registration (see the [MIOTY connector](../../connectors/mioty-connector/README.md)). Without the MIOTY feature, the **Mioty Base Stations** tab does not appear on the Gateways page.
 
 <figure><img src="../../../.gitbook/assets/mioty-base-stations-list.jpg" alt="The Mioty Base Stations tab listing a station with its EUI, status and BSSCI address"><figcaption></figcaption></figure>
 
@@ -28,7 +28,7 @@ Station identifiers are accepted across the **full unsigned 64-bit EUI range**, 
 
 ## Where base stations live
 
-Open **Gateways** in the sidebar. Once a Mioty connector exists, the page carries two tabs:
+Open **Gateways** in the sidebar. Once the MIOTY feature is enabled, the page carries two tabs:
 
 - **LoRaWAN Gateways** — your LoRaWAN radio fleet
 - **Mioty Base Stations** — your MIOTY radio fleet

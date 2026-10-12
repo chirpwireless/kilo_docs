@@ -1,102 +1,68 @@
 ---
-description: Register a device in Kilo IoT via LNS, MIOTY, Tracker, MQTT or the Emulator — build its Digital Twin, profile, and metric mappings.
+description: Register a device in Kilo IoT Server through an LNS, MIOTY, Tracker, MQTT, or Emulator connector and map its metrics.
 ---
 
 # Registering Devices
 
-Every device registered on the Kilo IoT Server becomes a Digital Twin — a complete digital representation that mirrors the device's current state, configuration, telemetry history, and behavioral patterns. The Digital Twin persists even when the physical device is offline, giving you a continuous operational view of your entire deployment. Because the physical device binding is optional, you can create and fully configure a device profile before the hardware is connected — so setup and hardware commissioning don't have to happen at the same time. With the [Emulator](emulated-devices.md), you can go further and have the device produce data before the hardware exists at all.
+Registration creates a **Digital Twin**: the lasting digital record of the asset or monitoring point you want to follow. For example, create **Refrigerator 1**, then connect the temperature probe installed inside it. The probe supplies data; the refrigerator's digital record keeps its identity when that probe changes.
 
-Device registration is the process of creating this Digital Twin and linking it to a physical device through a connector. The registration flow guides you through naming the device, binding it to a connector, configuring its communication profile, and mapping the measurements it reports.
+Create the name and optional photo first, then configure the connection and measurements. You can create the record before binding hardware, or use the [Emulator](emulated-devices.md) to generate readings while preparing the deployment. See [Devices](README.md) for how digital twins, sources, and measurements fit together.
+
+If you are replacing hardware on an existing asset, use [Device Management](device-management.md#replace-a-physical-sensor) instead of registering a new twin.
 
 ## Prerequisites
 
 Before registering a device, you need:
 
 - **A connector** — at least one LNS, Mioty, Tracker, MQTT (Cloud or External) or Emulator connector must be set up. See [Connectors](../connectors/) and the [MQTT Connector](../connectors/mqtt-connector.md) documentation.
-- **Device identifiers** — for LoRaWAN devices: the Device EUI and AppKey (typically printed on the device or its packaging). For MIOTY endpoints: the End Point EUI and Network Session Key. For tracker devices: the Unique ID provided by the manufacturer. For MQTT devices: the device-level topic segment the device publishes under, used as the Device ID on the device record; it must match the published segment byte-for-byte (whitespace is stripped on input). **Emulated devices need none of this** — you choose the Device ID yourself.
-- **For MQTT devices only — the device must be publishing before mapping can be completed.** The Connector key dropdown in the Mapping tab populates from payload keys actually received from the device. See the [MQTT-specific behavior section](#mqtt-specific-behavior) below for the two-pass workflow.
+- **Device identifiers** — for LoRaWAN devices: the Device EUI and AppKey (typically printed on the device or its packaging). For MIOTY endpoints: the End Point EUI and Network Session Key. For tracker devices: the Unique ID provided by the manufacturer. For MQTT devices: the device-level topic segment the device publishes under, used as the Device ID on the device record; it must match the published segment exactly, including case and spaces. **Emulated devices need none of this** — you choose the Device ID yourself.
+- **For MQTT devices only — the device must be publishing before mapping can be completed.** The Device data key dropdown in the Mapping tab populates from payload keys actually received from the device. See the [MQTT-specific behavior section](#mqtt-specific-behavior) below for the two-pass workflow.
 
 ## Where to start
 
-There are three entry points for device registration — all open the same Manage Device dialog:
+There are two entry points for device registration — both open the same device form:
 
 1. **Devices** — Click **Devices** in the sidebar. This page shows all devices across all connectors. Click **Add device** in the top-right corner.
-2. **Connector row action** — From the **Connectors** page, click the **+** (Add device) button on any connector row. The dialog opens with that connector pre-selected.
-3. **LNS Connected Devices** — Open the LNS connector, switch to the **Connected Devices** tab, and click **Add device**.
+2. **Connector row action** — From the **Connectors** page, click the **+ Add device** button on any connector row. The page opens with that connector pre-selected.
 
 The device form is laid out for small screens as well as desktop, so you can register hardware from a phone while standing at the installation point.
 
 ## Phase 1 — Create the device profile
 
-The dialog opens in **Add device** mode, showing only the **Device info** section. No tabs or navigation are visible yet — the first step is simply to identify the device.
+The form opens in **Add device** mode, showing only the **Device info** section. No tabs or navigation are visible yet — the first step is simply to identify the device.
 
 - **Device photos** — Optionally upload photos of the physical device for visual identification.
 - **Device name** — Enter a descriptive name (required). Use a naming convention that scales across your deployment — for example, including the location or device type in the name.
 
-Click **Save**. The Digital Twin is created with just the name and optional photo. The dialog automatically transitions to edit mode.
+Click **Save**. The Digital Twin is created with just the name and optional photo. The form automatically transitions to edit mode.
+
+For an asset that will outlast its sensor, use the asset's name here. Keep the probe's hardware identifier in **Connection**. This makes it clear which identity should remain when you replace the probe.
 
 ## Phase 2 — Configure connection, metrics, and logs
 
-After the first save, the dialog reopens with **Device info**, **Connection**, **Metrics** and **Logs** tabs, and a **Next** button for navigating between them. This is where you bind the device to a connector and configure its data. Two more tabs appear when they apply: **Commands & States** on a device that can receive downlinks, and **Emulator** on a device bound to the Emulator connector.
+After the first save, the device form shows **Device info**, **Connection**, **Mapping** and **Logs** tabs, and a **Next** button for navigating between them. This is where you bind the device to a connector and configure its data. Two more tabs appear when they apply: **Commands & States** on a device that can receive downlinks, and **Emulator** on a device bound to the Emulator connector.
 
 ### Connection tab
 
-This tab binds the Digital Twin to the device that feeds it through a connector. The fields change based on the connector type.
+This tab binds the Digital Twin to the device that feeds it through a connector. The dropdown lists the connectors your organization actually has, by name and type, and the fields below it change to match the one you pick.
+
+<figure><img src="../../.gitbook/assets/device-connector-type-list.jpg" alt="The Connection tab of a device with the connector type dropdown open, listing the organization's connectors by name and type"><figcaption></figcaption></figure>
 
 #### For LoRaWAN devices (LNS connector)
 
-1. **Connector type** — Select the LNS connector from the dropdown. If only one LNS connector exists, it may be pre-selected.
-2. **Device EUI** — Enter the device's unique LoRaWAN identifier (8-byte hexadecimal string, displayed as `HH HH HH HH HH HH HH HH`). This is typically printed on the device label or packaging. Once a physical device is bound, this field cannot be changed without detaching the device first.
-
-   **Scan QR code** — Rather than transcribing sixteen hex characters from a label, click **Scan QR code** and point your laptop or phone camera at the QR code on the device or its packaging. The Device EUI is filled in from the code, and where the code also carries the AppKey, that field is populated too. This is the faster and safer path when commissioning devices in bulk — a single mistyped character in a DevEUI produces a device that silently never joins.
-
-   If the browser cannot access a camera, the scanner reports **"QR code scanner is not found. Please try again."** Check that a camera is present and that the browser has been granted camera permission for the site, then try again — or enter the identifiers by hand.
-3. **Use device profile templates** — Check this option to select from a library of known device profiles.
-
-   Device profile templates are convenience presets for known LoRaWAN devices. Each template includes the device's LoRaWAN class, frequency band, and a **codec** — the payload-decoding logic that translates the device's raw binary uplink data into readable fields. Selecting a template is a two-step process:
-
-   - **Brand** — Select the device manufacturer from the autocomplete list.
-   - **Model** — Select the device model. The list filters based on the selected brand.
-   - **Profile** — Select the template profile for this device. Options are derived from the model's supported regional bands.
-
-   Once you select all three, the server fetches the matching template and applies its configuration to the form: the LoRaWAN **class**, **band**, and **codec** are filled in automatically. You can review and adjust these values before saving.
-
-   Templates are provided as convenience helpers. Correct payload decoding is not guaranteed for every firmware version or hardware revision. If a template's codec produces missing or incorrect fields, you can edit the **Code functions** field directly (see below).
-
-   If you do not use a template, configure the profile manually:
-
-   - **Class** — Choose the LoRaWAN device class:
-     - **Class A** — The device sleeps between transmissions and only opens brief receive windows after each uplink. This is extremely power-efficient — most battery-powered sensors use Class A and can run for years on a single battery.
-     - **Class C** — The device keeps its receiver open continuously, allowing it to receive downlink commands from the server at any time. Because the radio is always listening, Class C devices consume significantly more power and are typically mains-powered. Choose Class C for devices that need to respond to commands immediately, such as actuators, switches, or displays.
-   - **Brand** and **Model** — Enter the device manufacturer and model as free text.
-   - **Band** — Select the LoRaWAN frequency band for your region. The band must match your gateway's configuration and your region's radio regulations. Available options: EU868 (Europe), US915 (USA), AU915 (Australia), AS923 (Asia), KR920 (South Korea), IN865 (India), RU864 (Russia), CN470 (China), CN779 (China), EU433 (Europe 433 MHz), ISM2400 (2.4 GHz global). For a complete list of frequency bands by country, see [LoRaWAN Frequencies](../connectors/lns-connector/lorawan-frequencies.md). For an introduction to LoRaWAN, see [What is LoRaWAN?](../connectors/lns-connector/what-is-lorawan.md).
-   - **AppKey** — Enter the device's application key — the LoRaWAN encryption key used for over-the-air activation (OTAA). This is typically provided by the device manufacturer; check the device packaging or official documentation.
+Select the LNS connection and configure the sensor's Device EUI, AppKey, profile, codec and reporting interval. Follow [LoRaWAN Devices](lorawan-devices.md) for the complete field reference and commissioning procedure.
 
 #### Add to Vault
 
-Device credentials have a habit of ending up somewhere impractical: a sticker on a unit that is now mounted six meters up in a warehouse aisle. Click **Add to Vault** on the device form to store the device's EUI and key pair in Key Vault, where they are recoverable independently of the hardware and the label. For a LoRaWAN device, this stores the AppKey against the DevEUI.
-
-Do this at registration, while the credentials are in front of you. Re-provisioning a device whose AppKey you no longer have on file means getting back to the unit itself — and whether the key can be read out of it at that point is down to the manufacturer, and may mean a wired connection to the board. See [Key Vault](../reports/key-vault.md).
+Store the device's EUI/key pair separately in [Key Vault](../reports/key-vault.md). See [LoRaWAN identity and credentials](lorawan-devices.md#identity-and-credentials) for the device controls.
 
 #### Code functions (codec)
 
-The **Code functions** field contains the device's payload codec — JavaScript logic that decodes the device's raw LoRaWAN uplink payload into named fields. These decoded fields become the **connector keys** visible in the Metrics tab.
-
-When you select a device profile template, this field is automatically populated with the template's codec. If you configure manually, this field starts empty — you may need to paste a codec from the device manufacturer's documentation or a community codec repository.
-
-If the decoded output doesn't match what you expect — for example, if fields are missing, values look wrong, or field names don't match your sensor's documentation — you can edit the code directly. The editor is a multiline text area with monospace formatting.
+The LoRaWAN codec translates binary uplinks into named fields. Templates can supply it; a custom profile needs a compatible codec. See [Templates and manual profiles](lorawan-devices.md#templates-and-manual-profiles).
 
 #### Data sending interval
 
-A device transmits on a fixed schedule — every few minutes, once a day, once a month — and that schedule is configured **on the device itself**. It varies from one manufacturer to the next: some devices ship with the interval already set by the manufacturer, others require you to set it when you commission the device. Either way, the schedule is a property of the device. The **Data sending interval** field is where you tell the platform what that schedule is, so it knows when to expect data.
-
-Set it to match how the device is actually configured to transmit. If the device sends once per day, set this to **1 day**; once per month, set it to **1 month**. The field starts at **1 hour** by default only because the platform needs an initial value — it has no way to read the device's real schedule, so treat that default as a placeholder to replace.
-
-If no message arrives within the configured interval, the device is marked offline in the device list and flagged on the Overview page's Devices card. Setting the interval to match the device is what keeps a healthy, low-frequency device from being marked offline simply because it is quiet between scheduled reports.
-
-Choose a number and a unit: **minute**, **hour**, **day**, **week**, or **month**.
-
-> **Emulated devices are the exception.** On a device bound to the Emulator connector, this field is not a description of a schedule the hardware already keeps — it *is* the schedule the platform emits on. See [Emulated Devices](emulated-devices.md).
+Tell the platform the reporting schedule configured on physical hardware. The initial value is 1 hour; select a positive whole number and minute/hour/day/week/month. This does not change the hardware's schedule. For an emulator, it instead controls generation; see [Emulated Devices](emulated-devices.md).
 
 #### For vehicle trackers (Tracker connector)
 
@@ -104,6 +70,10 @@ Choose a number and a unit: **minute**, **hour**, **day**, **week**, or **month*
 2. **Unique ID** — Enter the tracker's unique device identifier.
 3. **Device model** — Search and select from the tracker model library. Start typing to filter the list.
 4. **Url for GPS tracker** — After selecting a model, a panel appears showing the endpoint URL. Click the copy button to copy it, then configure your tracker to send data to this URL.
+
+#### For MQTT devices (Cloud or External MQTT)
+
+Select your MQTT connection, enter the physical Device ID, and configure topic routing on **Connection**. Save and let a message arrive before completing **Mapping**. Follow [MQTT Devices](mqtt-devices.md) for the full workflow and [Topics and device routing](../connectors/mqtt/topics-and-device-routing.md) for advanced options.
 
 #### For MIOTY endpoints (Mioty connector)
 
@@ -115,13 +85,17 @@ Select the Emulator connector and the device generates its own telemetry instead
 
 This is how you build a deployment before the sensors arrive, and swap the same device onto real hardware when they do. See [Emulated Devices](emulated-devices.md).
 
-### Metrics tab
+### Mapping tab
 
-This tab maps the device's raw sensor data to normalized measurement definitions. If metric templates have been configured for the device type, the mappings may populate automatically. Otherwise, you can assign metric templates manually.
+See [mapping controls](device-management.md#metrics-tab) for every column, inline metric creation, and immediate template-change/removal behavior.
+
+This tab maps the device's raw sensor data to normalized measurement definitions. A LoRaWAN profile supplies the network configuration and codec. Add the measurement templates you need, then map their incoming connector keys after the source reports.
 
 #### Connector keys — see what the device sends
 
-Once the device is connected and transmitting, the Metrics tab displays a **connector keys table** showing every field in the device's raw payload. Each row shows the field name (exactly as the device sends it — e.g., `t`, `temp1`, `humidity_pct`), its current value, and the last update timestamp. This is the live payload from the device, updated in real time.
+Once the device is connected and transmitting, the Mapping tab displays a **connector keys table** showing every field in the device's raw payload. Each row shows the field name (exactly as the device sends it — e.g., `t`, `temp1`, `humidity_pct`), its current value, and the last update timestamp. This is the live payload from the device, updated in real time.
+
+Come back to this table whenever you need to know what a device reports and in what form — writing a rule condition, or setting the expected value on a command. See [Payload Decoding and Connector Keys](payload-decoding.md).
 
 #### Mapping raw fields to metric templates
 
@@ -129,8 +103,8 @@ This is where you turn cryptic device output into meaningful, labeled measuremen
 
 To normalize a raw field:
 
-1. **Add a metric** — Click **Add key** and select a metric template from the dropdown (e.g., "Temperature", unit: °C, type: Float). The Unit, Type, and Data type columns auto-fill from the template. If the template you need does not exist, create one in [Metric Templates](metric-templates.md) first.
-2. **Select the connector key** — In the **Connector key** dropdown for that metric, choose the raw field name that corresponds to this measurement (e.g., select `t` for a device that sends temperature as `t`).
+1. **Add a metric** — Click **Add key** and select a metric template from the dropdown (e.g., "Temperature", unit: °C, type: Float). The Unit, Type, and Data type columns auto-fill from the template. If the template you need does not exist, create one in [Metrics](metric-templates.md) first.
+2. **Select the connector key** — In the **Device data key** dropdown for that metric, choose the raw field name that corresponds to this measurement (e.g., select `t` for a device that sends temperature as `t`).
 3. **Save** — The mapping takes effect immediately. Normalized data flows through dashboards, automation rules, alarm evaluations, and historical queries.
 
 If the Connector key is not filled in, the data for that metric will be ignored.
@@ -139,25 +113,19 @@ Repeat for each measurement the device reports. Multiple metrics can be mapped i
 
 #### Any device, any payload format
 
-This workflow accepts data from any device the server can receive — including prototype hardware with evolving payload schemas, sensors from niche manufacturers with undocumented telemetry formats, and legacy field equipment that transmits encoded identifiers rather than human-readable field names. If the device sends data, the connector keys table displays it and you can map it.
-
-For details on setting up metric templates, see [Metric Templates](metric-templates.md).
+A device does not need a library preset to supply measurements. It does need a compatible connector and decoding path: a LoRaWAN codec, a supported MQTT message shape, or the appropriate adapter. Once named fields arrive, map the readings you need. See [LoRaWAN Devices](lorawan-devices.md) and [MQTT Devices](mqtt-devices.md).
 
 #### MQTT-specific behavior
 
-For devices ingested through the [MQTT connector](../connectors/mqtt-connector.md), two registration-flow specifics apply:
-
-- **Connector key dropdown is empty until the first publish arrives.** The dropdown is populated from payload keys actually received from the device, not from a free-text input. For a brand-new MQTT device record, this requires a two-pass save: add a row per metric with the normalized key selected and the Data type set, leave Connector key empty, save, confirm the device is publishing, reopen the device record — the Connector key dropdown is now populated, match each row, save again.
-- **Mapping tab Value column vs Logs tab history.** The Value column is a live snapshot of the most recent payload (updates on every accepted publish, regardless of whether Connector keys are populated). The Logs tab is per-sensor history (populated only by publishes that arrive *after* Connector keys are saved). After completing the second pass, generate a fresh publish to populate the Logs tab — older publishes are not retroactively normalized.
-- **Mapping is iterative.** Initial registration rarely captures every useful payload key. Once live data has been arriving for a representative period, reopen the device record, review the Connector key dropdown and Value column to see what's actually being published, add Mapping rows for any additional fields you want to track, save, and trigger a fresh publish so the Logs tab starts recording history for the new mappings.
-
-See [Topics and device routing](../connectors/mqtt/topics-and-device-routing.md) for the full MQTT-specific registration workflow.
+Save the connection and routing, wait for a received message, then select its **Device data key** for each measurement and save. A fresh message after mapping starts recording history; old messages are not backfilled. See [MQTT Devices](mqtt-devices.md#map-messages-to-retained-measurements).
 
 ### Logs tab
 
-The Logs tab is initially empty. After the device begins sending data, this tab displays the raw event log with timestamps and payload details.
+The Logs tab is initially empty. After the device begins sending data, this tab displays retained measurement values and timestamps.
 
 Click **Save** again to persist the connection and metrics configuration.
+
+If **Save** is unavailable, check your device-edit permission, required fields, and subscription status. Creating an additional digital device also requires capacity in the plan. An existing twin can be saved before attaching hardware.
 
 ## After saving
 
@@ -171,8 +139,12 @@ If the device is registered but no data is arriving, open its **Connection** tab
 
 ## What's next
 
-- **Configure metric templates** before or after registration to control how raw data is normalized. See [Metric Templates](metric-templates.md).
+- **Configure metric templates** before or after registration to control how raw data is normalized. See [Metrics](metric-templates.md).
 - **Edit device properties** at any time through the same dialog. See [Device Management](device-management.md).
 - **Diagnose a silent device** from its Connection tab. See [Device Diagnostics](device-diagnostics.md).
 - **Register a MIOTY endpoint** and its protocol-specific fields. See [MIOTY Devices](mioty-devices.md).
 - **Start without hardware** and swap to the real device when it arrives. See [Emulated Devices](emulated-devices.md).
+
+## Entering secret keys
+
+The **AppKey** field reveals the value while you type. Leaving the field or pressing Enter masks it again; use the eye control when you need to inspect it. A key loaded from a QR code remains masked. Check the value without leaving it visible in screenshots or shared screens.

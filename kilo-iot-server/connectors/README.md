@@ -4,9 +4,9 @@ description: Connect device protocols to Kilo IoT — LNS (LoRaWAN), Tracker (OB
 
 # Connectors
 
-Each connector establishes an organization-level connection to a specific device protocol or data source. Connectors do not create devices — device registration is a separate workflow. A connector enables the server to accept data from devices of that type once they are registered.
+Connectors bring equipment using different communication methods into the same Kilo workspace. Once readings are mapped, a meter, a LoRaWAN sensor, and an MQTT-connected controller can feed the dashboards, rules, and alarm workflows your team already uses.
 
-Without at least one connector, the server has no protocol binding to receive device data through. Every data path — whether LoRaWAN, vehicle tracker, or a future protocol — starts with a connector.
+A **connector** is the configured software connection that receives those messages. A **gateway** or MIOTY **base station** is physical radio equipment; a registered **device** identifies the equipment and its readings. Choose the connection for your hardware, then [register its devices](../devices/registering-devices.md).
 
 ## Connector types
 
@@ -42,6 +42,8 @@ Each connector row has action buttons:
 
 Click anywhere on a connector row to open that connector's detail page, where you can manage gateways (for LNS) or view and manage connected devices.
 
+<figure><img src="../../.gitbook/assets/connectors-list.jpg" alt="The Connectors page listing connectors with last data received, connected device count and row actions"><figcaption></figcaption></figure>
+
 ## Adding a connector
 
 1. From the **Connectors** page, click **Add connector** in the top-right corner.
@@ -54,6 +56,10 @@ Click anywhere on a connector row to open that connector's detail page, where yo
    - **Emulator** — generates device data with no hardware, so you can build and test before your sensors arrive (one per organization)
 3. Click **Add**.
 
+<figure><img src="../../.gitbook/assets/connector-type-list.jpg" alt="The Add connector dialog with the Connector type dropdown open, listing the types still available to this organization"><figcaption></figcaption></figure>
+
+Types that are limited to one per organization disappear from the dropdown once you have one, so the list you see is the set still available to you.
+
 For LNS, Tracker and Emulator connectors, no additional configuration is required during creation — the server handles the integration automatically. For External MQTT, configure broker connection details after creation. For Cloud MQTT, the platform generates and displays credentials immediately after creation.
 
 ## What's next
@@ -63,6 +69,6 @@ Once a connector is in place, you can:
 - **Configure the LNS connector** — manage LoRaWAN gateways and connected devices, and explore LoRaWAN protocol reference material including frequency bands by country. See [LNS Connector](lns-connector/README.md).
 - **Configure the Tracker connector** — onboard vehicle trackers (OBD2, CAN bus, standalone GPS). See [Tracker Connector](tracker-connector.md).
 - **Configure an MQTT connector** — connect PLCs, energy meters, building management systems, or any MQTT-capable hardware. Use External MQTT to connect your own broker, or Cloud MQTT to have the platform provision a broker endpoint for you. See [MQTT Connector](mqtt-connector.md).
-- **Configure the Mioty connector** — bind your organization to the MIOTY service center, get its BSSCI address, and unlock base station registration and MIOTY endpoint fields. See [MIOTY Connector](mioty-connector.md).
+- **Configure the Mioty connector** — bind your organization to the MIOTY service center, get its BSSCI address, and unlock base station registration and MIOTY endpoint fields. See [MIOTY Connector](mioty-connector/README.md).
 - **Add the Emulator connector** — stand up devices that generate their own telemetry, so dashboards, rules and alarms can be built and proven before any hardware is on site. See [Emulator Connector](emulator-connector.md).
 - **Register devices** — add devices through any connector and configure their Digital Twin. See [Registering Devices](../devices/registering-devices.md).

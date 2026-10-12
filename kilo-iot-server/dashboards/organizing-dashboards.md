@@ -23,6 +23,8 @@ If you leave the name blank and try to create, the validation message **"Folder 
 
 Folders appear in the sidebar as expandable groups. Click a folder to expand it and see the dashboards inside.
 
+<figure><img src="../../.gitbook/assets/dashboard-settings-folders.jpg" alt="The Dashboard settings modal with the folder name field and two folders listed alongside a top-level dashboard"><figcaption></figcaption></figure>
+
 ### Folder structure
 
 The folder system supports **one level of nesting** — folders can contain dashboards, but folders cannot contain other folders. This keeps the hierarchy flat and predictable:
