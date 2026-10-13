@@ -4,8 +4,9 @@
  *
  * The changelog is authored in GitBook markdown: one <details> block per release,
  * a <summary> with the version, a banner <figure>, an intro paragraph, and a
- * "What's in This Release" (or "Major Changes") bullet list that maps 1:1 to
- * carousel slides consumed by the Chirp web app.
+ * "What's in This Release" (or "Major Changes") bullet list. Each release becomes an
+ * announcement slide (banner + intro) followed by one slide per bullet; these are
+ * the carousel slides consumed by the Chirp web app.
  *
  * Env (all optional locally, set by the workflow in CI):
  *   GITHUB_REPOSITORY  e.g. "chirpwireless/kilo_docs"
@@ -267,16 +268,28 @@ const parseRelease = (block) => {
     );
   }
   if (!banner) problems.push(`Release ${version}: banner figure not found.`);
+  const bannerReuse = (banner ? slides.filter((slide) => slide.image === banner) : []).map(
+    (slide) => `Release ${version}: "${slide.title}" reuses the release banner; give its section its own screenshot.`
+  );
+
+  // The modal opens on the first slide, so the release itself is announced before any feature.
+  const announcement = {
+    title: summary.replace(/\.\s*Release\s+/i, ' '),
+    description: intro || summary,
+    ...(banner ? { image: banner } : {}),
+    docsUrl: toDocsUrl(CHANGELOG_PATH),
+  };
 
   return {
     version,
     problems,
+    bannerReuse,
     release: {
       version,
       title: summary,
       ...(banner ? { banner } : {}),
       ...(intro ? { intro } : {}),
-      slides,
+      slides: [announcement, ...slides],
     },
   };
 };
@@ -300,7 +313,8 @@ const main = async () => {
 
   // The latest release feeds the in-app modal, so it must parse perfectly.
   // Older entries may predate the current authoring format — warn and skip.
-  const latestProblems = parsed.length > 0 ? parsed[0].problems : [];
+  // Only the latest release must not reuse its banner; older entries keep their published images.
+  const latestProblems = parsed.length > 0 ? [...parsed[0].problems, ...parsed[0].bannerReuse] : [];
   const errors = [...structuralErrors, ...latestProblems];
   if (errors.length > 0) {
     console.error(`changelog feed: ${errors.length} blocking problem(s):\n`);
