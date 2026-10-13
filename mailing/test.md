@@ -11,3 +11,5 @@ This email was sent automatically when a file was merged into the docs repositor
 ![Kilo release banner](https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/Kilo_Scale_Log_Release_3.11.0.jpg)
 
 [Open the changelog](https://docs.kiloiot.io/faq/changelog)
+
+(edited after sending)
