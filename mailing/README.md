@@ -3,11 +3,11 @@
 A file here is the email version of a release, sent to the Kilo mailing list through listmonk
 (https://lists.kiloiot.io). **Merging a new file into `synchronize` sends it.**
 
-Name the file after the release: `mailing/3.12.0.md`. Start it with:
+Name the file after the release: `mailing/X.Y.Z.md`. Start it with:
 
 ```
 ---
-subject: "Kilo 3.12: the headline of this release"
+subject: "Kilo X.Y: the headline of this release"
 preheader: "One short line shown next to the subject in the inbox"
 list: Kilo customers
 send: now            # now | draft | 2026-10-20T10:00:00+02:00
