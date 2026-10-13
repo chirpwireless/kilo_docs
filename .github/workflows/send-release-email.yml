@@ -1,0 +1,43 @@
+name: Send release email
+
+on:
+  push:
+    branches: [synchronize]
+    paths:
+      - 'mailing/*.md'
+
+concurrency:
+  group: release-email
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Find changed release emails
+        id: changed
+        run: |
+          {
+            echo 'files<<EOF'
+            git diff --name-only --diff-filter=AM "${{ github.event.before }}" "${{ github.sha }}" -- 'mailing/*.md' 2>/dev/null \
+              || git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'mailing/*.md'
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Send through listmonk
+        env:
+          FILES: ${{ steps.changed.outputs.files }}
+          LISTMONK_URL: ${{ vars.LISTMONK_URL }}
+          BRAND: ${{ vars.LISTMONK_BRAND }}
+          TEST_EMAILS: ${{ vars.LISTMONK_TEST_EMAILS }}
+          LISTMONK_USER: release-email
+          LISTMONK_TOKEN: ${{ secrets.LISTMONK_TOKEN }}
+        run: node scripts/send-release-email.mjs
