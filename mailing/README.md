@@ -14,8 +14,9 @@ send: now            # now | draft | 2026-10-20T10:00:00+02:00
 ---
 ```
 
-Then write the email in Markdown. Use absolute image URLs, for example
-`https://raw.githubusercontent.com/chirpwireless/kilo_docs/synchronize/.gitbook/assets/<file>.jpg`.
+Then write the email in Markdown. Upload each image in listmonk under **Campaigns → Media** and use its
+`https://lists.kiloiot.io/uploads/<file>` address, so every image comes from our own domain. Never link images from `raw.githubusercontent.com/chirpwireless/...`: the address would publicly tie Kilo to Chirp.
+A plain-text version of the email is generated automatically.
 
 What the workflow (`.github/workflows/send-release-email.yml`) does:
 
