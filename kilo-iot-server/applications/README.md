@@ -14,7 +14,7 @@ So we did it for you. Select **Preview** on a solution, then **Use this solution
 
 Then you think, "This is exactly what I need." The solution even tells you which devices to buy. Order them, and when they arrive, swap the emulator devices for the real ones. You can do the swap yourself, or ask [Kilo's AI chat](../ai-assistant/README.md) to connect them for you. You only need each device's identifiers, which are usually printed on its label or in its manual (a device ID such as an EUI, or a topic). Once they are in, your use case runs on real data. [How do I swap the emulator for real devices?](swapping-the-emulator-for-real-devices.md)
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="Two solution cards in the Kilo Solutions tab: Building Monitoring and IP500 demo Smart Office, each showing counts of virtual devices, rules, widgets, and alarms"><figcaption><p>Each solution card shows what an install will create.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Kilo Solutions tab with six solution cards: Fire &amp; Gas Safety, Smart Building, Cold Chain, Water &amp; Leak, Energy monitoring, and Asset tracking, each showing counts of virtual devices, rules, widgets, and alarms"><figcaption><p>Each solution card shows what an install will create.</p></figcaption></figure>
 
 ## What is the difference between a solution and an application?
 

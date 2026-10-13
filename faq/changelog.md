@@ -36,7 +36,7 @@ We are very excited about this one, because it makes the whole platform easier t
 
 Every one of these normally comes with a lot of setup: dashboards to configure, rules to set, alarms to define, devices to add. If you don't know what can be automated, that is intimidating. So we did it for you. Select **Preview**, then **Use this solution**, then **Install solution**, and the solution lands in your organization with sample devices (some screens call them emulator or virtual devices) that send realistic readings. A **Backfill 24h of history** switch fills the charts with a day of made-up readings, so they are not empty on first open.
 
-<figure><img src="../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Solutions tab in Kilo with five solution cards, each showing counts of virtual devices, rules, widgets, and alarms and a Preview button"><figcaption><p>The Solutions tab. Each card shows what an install creates. This is a demo organization.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Solutions tab in Kilo with six solution cards: Fire &amp; Gas Safety, Smart Building, Cold Chain, Water &amp; Leak, Energy monitoring, and Asset tracking, each showing counts of virtual devices, rules, widgets, and alarms and a Preview button"><figcaption><p>The Solutions tab. Each card shows what an install creates. This is a demo organization.</p></figcaption></figure>
 
 You see what the dashboards look like, how the rules are configured, and how the alarms work. Everything is already set up, and you can still change all of it to your liking. Because you start from something that works, you quickly learn how it all fits together and where everything is.
 
