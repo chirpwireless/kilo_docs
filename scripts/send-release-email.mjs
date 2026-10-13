@@ -4,7 +4,7 @@
  *
  * mailing/<version>.md starts with a front matter block:
  *   ---
- *   subject: "Kilo 3.12: ..."
+ *   subject: "Kilo X.Y: ..."
  *   preheader: "Short line shown next to the subject in the inbox"
  *   list: Kilo customers            # listmonk list name; several: "Kilo customers, Kilo newsletter"
  *   send: now                       # now | draft | 2026-10-20T10:00:00+02:00
