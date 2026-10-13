@@ -6,6 +6,216 @@ description: Kilo IoT Server changelog with Scale Log release notes for each ver
 
 <details>
 
+<summary>Scale Log. Release 3.11.0</summary>
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.11.0.jpg" alt="Kilo IoT Server 3.11.0 release banner"><figcaption></figcaption></figure>
+
+Release 3.11.0 is our biggest release yet, and we could not be more excited to put it in your hands. Months of work are shipping together. **Solutions** show you what the platform can do and arrive ready to run, with sample devices, dashboards, rules, and alarms already set up, so even a non-technical person can install one in a few clicks, see which devices to buy, and have the [AI chat](../kilo-iot-server/ai-assistant/README.md) connect them when they arrive. And the headline: **Lens** brings live video into the platform. Cameras from every site and brand now sit in the same workspace as your sensors, with recordings archived in your own Amazon S3, Google Cloud, or Walrus storage. Video and IoT in one place is only the start; we are heading toward connecting more and more video with your IoT devices. On top of that, Kilo is now in the official Claude connectors directory. Now you can also run and control deployment by voice from your Tesla. MIOTY, external MQTT, and the Digital Building Twin all leveled up!
+
+***
+
+#### What's in This Release
+
+* **Solutions: a ready-made setup for your use case, installed in a few clicks** — Not sure what you can automate? Open **Applications → Solutions** and install a setup we prepared, such as leak monitoring, camera security, asset tracking, or people counting. It arrives with sample devices, dashboards, rules, and alarms already working, and you can change all of it. Once installed it becomes your own application. It tells you which devices to buy; when they arrive, swap the sample devices for real ones, or ask the AI chat to do it. New solutions arrive with every release.
+* **Lens: video feeds meet IoT** — This one is huge. We are bringing video into the platform. Bring RTSP and ONVIF cameras from different brands and sites into Kilo, build videowalls, draw motion zones that make any camera smart, and use camera motion in rules and alarms.
+* **Cloud archive: keep recordings in your own storage** — Never lose a clip again. Store encrypted camera recordings in Amazon S3 or S3-compatible storage, Google Cloud Storage, or Walrus, then play, seek, and download them from Kilo.
+* **Kilo is in the official Claude connectors directory** — We are thrilled to announce it. After review and testing, Kilo is listed in Anthropic's directory. Add it to Claude with one click, sign in with your usual account, and put Claude to work on your real deployment. Every other MCP client still connects with the same address.
+* **Run your deployment from your Tesla** — Your whole setup, by voice, from the driver's seat. Ask Grok where a truck last reported, what the office temperature is, or which building alarms are open. And it is not only information: you can control your setup by voice too. Say "Grok, turn off the light in the office," or run any configured command, hands-free, between site visits!
+* **MIOTY devices and base stations in Kilo** — Attach and detach endpoints, test decoders, base station metrics and system information, confirmed downlinks, and validated forms.
+* **MIOTY Service Center 2.0** — A landmark release for our MIOTY service center. The service center behind Kilo's MIOTY support becomes a major release: every stored key is encrypted, every call checks the caller's role, uplinks and downlinks follow the MIOTY BSSCI and SCACI specifications end to end, and the web interface updates live, on a cleaned-up codebase with more than fifty bug fixes, tested end to end with our developer kit.
+* **External MQTT with encryption, version choice, and topic filters** — Encrypt the connection with TLS and still use a username and password, choose the MQTT version, read only the topics you need, and let the value come from the message body.
+* **Digital Building Twin: move, duplicate, import, and clearer readings** — Work in 2D, import a DXF floor plan (beta), and see readings rounded to two decimals with the camera angle you saved.
+* **Key Vault eye toggle** — Reveal a stored key for one row when you need to check it; keys stay hidden by default.
+* **Reliability and interface improvements** — Edit existing metrics, pick from every device in a long list, see device status update by itself, read the rule debugger's error messages, and get clearer feedback in the command builder.
+
+***
+
+**Solutions: a ready-made setup for your use case, installed in a few clicks**
+
+We are very excited about this one, because it makes the whole platform easier to use. Not sure what you can automate with Kilo, or where to even start? Open **Applications → Solutions** and you see what we have prepared for you: monitoring leaks in a building, security monitoring with video cameras, asset tracking, people counting in a store or a mall, and more.
+
+Every one of these normally comes with a lot of setup: dashboards to configure, rules to set, alarms to define, devices to add. If you don't know what can be automated, that is intimidating. So we did it for you. Select **Preview**, then **Use this solution**, then **Install solution**, and the solution lands in your organization with sample devices (some screens call them emulator or virtual devices) that send realistic readings. A **Backfill 24h of history** switch fills the charts with a day of made-up readings, so they are not empty on first open.
+
+<figure><img src="../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Solutions tab in Kilo with five solution cards, each showing counts of virtual devices, rules, widgets, and alarms and a Preview button"><figcaption><p>The Solutions tab. Each card shows what an install creates. This is a demo organization.</p></figcaption></figure>
+
+You see what the dashboards look like, how the rules are configured, and how the alarms work. Everything is already set up, and you can still change all of it to your liking. Because you start from something that works, you quickly learn how it all fits together and where everything is.
+
+Then you think, "This is exactly what I need." The install screen lists the real devices the solution needs, so you know exactly what to buy. When they arrive, swap the sample devices for the real ones. You can do it yourself with a LoRaWAN, MIOTY, MQTT, or tracker connection, or ask the [AI chat](../kilo-iot-server/ai-assistant/README.md): "I got these devices, can you connect them to the application I installed?" If the real devices report the same readings as the sample ones, your dashboards, rules, and alarms keep working without changes.
+
+<figure><img src="../.gitbook/assets/kilo-solutions-install.jpg" alt="The Install Building Monitoring screen listing virtual devices, rules, alarm rules, widgets, and the Backfill 24h switch"><figcaption><p>The install screen lists everything the solution will create before you commit.</p></figcaption></figure>
+
+So what is the difference between a solution and an application? A **solution** is the ready-made template we prepared. An **application** is what you have in your organization after you install it, with its devices, dashboards, rules, and alarms together. You can also build an application from scratch, and an installed one is edited exactly like one you built. We are adding new solutions with every release, starting with the next. Installing counts against your plan's device, dashboard, and rule limits, and Kilo tells you plainly when a solution does not fit.
+
+[→ What are applications and solutions in Kilo?](../kilo-iot-server/applications/what-are-solutions-and-applications.md)
+
+[→ How do I install a solution?](../kilo-iot-server/applications/installing-a-solution.md)
+
+[→ Is Kilo powerful and easy to use?](../kilo-iot-server/applications/why-kilo-is-powerful-and-easy.md)
+
+***
+
+**Lens: every camera in one workspace**
+
+This is a huge one for us: **we are bringing video feeds into the platform and putting them together with IoT.** A company with offices in Berlin, London, and Washington often has a different camera brand in each, and a different phone app for each brand. Nobody sees all sites together, and nobody can manage who may see what from one place. Lens changes that.
+
+**Lens** connects cameras to Kilo through a small program called **Twin** that runs next to each camera. It speaks RTSP and ONVIF, so you keep the cameras you already own instead of replacing them. In Kilo you can:
+
+* **See sites together.** Build a **videowall** from any cameras and save it for a building, a site, or a shift.
+* **Make any camera smart.** Draw a motion zone around an entrance and use its motion reading in a rule. Detection runs on the video, so an older camera works. This is where we are heading: instead of paying for expensive AI cameras, intelligence grows in the platform.
+* **Combine video with sensors.** A camera becomes a platform device with motion and status readings, so a door sensor, a temperature probe, and the entrance camera can drive the same rule and appear on the same dashboard.
+* **Control who sees what.** Give each person Edit, View, or No access to Cameras through organization permissions.
+
+<figure><img src="../.gitbook/assets/kilo-lens-live-view.jpg" alt="Tapo and HiLook camera feeds together in Kilo Lens"><figcaption><p>Two camera brands in the same Kilo Lens workspace, shown in Preview mode.</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/kilo-lens-videowall-edit.jpg" alt="Editing a Kilo Lens videowall with camera tiles arranged on the grid"><figcaption><p>Arrange any cameras into a videowall.</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/kilo-lens-motion-zone.jpg" alt="A motion zone drawn over a camera view in Kilo Lens"><figcaption><p>Draw a motion zone and use it in rules and alarms.</p></figcaption></figure>
+
+Video also gives automation context. A patrol robot can carry every sensor imaginable and still not know that a door on the far side of a campus just opened. When the door sensor, the camera, and the robot share one platform, each can react to what the others see. Lens is the visual layer of Kilo as an operating system for physical AI, and it is where we are going next: more video, connected to more IoT devices, in one platform. We can't wait to show you what comes next.
+
+[→ Explore Lens](../kilo-iot-server/lens/README.md)
+
+[→ Motion zones](../kilo-iot-server/lens/motion-zones.md)
+
+***
+
+**Cloud archive: keep recordings in your own storage**
+
+Until now, Lens recordings lived on the machine running Twin. Now **Cloud archive** adds a second copy in storage you own. In Lens, open **Storage**, choose **Add storage connector**, and pick **Amazon S3** (or any S3-compatible storage), **Google Cloud Storage**, or **Walrus**. Then, for each camera, keep recording locally and upload a copy to the connector, with an optional cloud size cap that removes the oldest backups first.
+
+Twin encrypts each recording before it leaves your site, and uploads go straight to your storage. You can play archived recordings in Kilo with seeking, download them, and remove them. Your storage keeps the recordings; the platform keeps the keys and previews and can read the archive, and rotating a key protects future recordings, not past ones. You pay your storage provider directly, and your retention rules apply.
+
+<figure><img src="../.gitbook/assets/kilo-lens-storage-connector-s3.jpg" alt="The Add storage connector form for Amazon S3 with bucket, region, and key fields and a note about who holds the keys"><figcaption><p>Connector fields are write-only: Kilo never shows a secret again after you save it.</p></figcaption></figure>
+
+Cloud archive requires Twin 1.1.0 or later. Google Cloud Storage support is newly released.
+
+[→ Cloud archive](../kilo-iot-server/lens/cloud-archive.md)
+
+[→ Storage connectors](../kilo-iot-server/lens/storage-connectors.md)
+
+***
+
+**Kilo is in the Claude connectors directory**
+
+We are thrilled about this one: **Kilo is now in the official Claude connectors directory.** After review and testing, Anthropic lists it, so you can add Kilo to Claude without typing a URL. Open the **Kilo IoT Platform** listing in the Claude connectors directory, click **Connect to Claude**, sign in with your Kilo account, and ask, for example, which devices in your organization stopped reporting. The connector uses your own permissions, so Claude can do what you can do and nothing more. ChatGPT, Codex, Cursor, and other MCP clients keep working with the same endpoint.
+
+[→ Connect Kilo to Claude and other AI clients](../kilo-iot-server/api/mcp-server.md)
+
+***
+
+**Run your deployment from your Tesla**
+
+Your whole IoT setup, one voice command away. Connect Grok to Kilo through MCP once, and the same conversation works in your car. Ask where a truck last reported, what the temperature is in the office, or whether any alarms are open at a building; with a saved command, Grok can also switch equipment off. For fleet, facilities, and operations teams, that means answers and actions between site visits, hands-free, without opening a laptop.
+
+<figure><img src="../.gitbook/assets/tesla-grok-hands-free-hero.jpg" alt="Tesla interior with Grok open on the center touchscreen"><figcaption><p>Grok on a Tesla touchscreen, connected to Kilo from your phone or computer.</p></figcaption></figure>
+
+[→ Use Kilo in your Tesla](../kilo-iot-server/ai-assistant/tesla-grok.md)
+
+***
+
+**MIOTY devices and base stations in Kilo**
+
+MIOTY is now a first-class citizen in Kilo: endpoints and base stations are managed with validated forms. For an endpoint, the device page shows its attach state with **Attach** and **Detach** controls, a test decoder to check a payload, and a clear note about clearing an Application Key. For base stations, the card shows reported Performance Metrics and System Information, a read-only GPS location (or manual placement when there is no fix), and separate certificate downloads. Commands gain a **Delivery** step with a confirmed-downlink option.
+
+[→ MIOTY devices](../kilo-iot-server/devices/mioty-devices.md)
+
+[→ MIOTY base station monitoring](../kilo-iot-server/gateways/mioty-base-stations/base-station-monitoring.md)
+
+***
+
+**MIOTY Service Center 2.0**
+
+This is a landmark release for MIOTY. A MIOTY network needs a service center: the server that talks to your base stations, keeps the radio sessions, and hands every message to your applications. Kilo's is **KiloCenter**, and version 2.0 is the release that makes it ready for a team. The **Enterprise edition** is built into Kilo Cloud, so the endpoints you attach in Kilo run on this engine. The **Community edition** is free, open source and self-hosted, and it comes as is. When you need more, Kilo can install the Enterprise edition on your premises on request, or you can move to Kilo Cloud and add the rules engine, dashboards, visualization and alerting around the network.
+
+<figure><img src="../.gitbook/assets/kc-dashboard.jpg" alt="The KiloCenter Network Overview dashboard with base station, end point and message counts, the control plane session, alerts and service center status"><figcaption><p>The Community edition's dashboard shows the whole network at a glance and updates live.</p></figcaption></figure>
+
+What changes in 2.0:
+
+* **Safer by default.** Every endpoint, session and TLS key is encrypted at rest under a master key you control. Every call checks the caller's role, so a Base Station Manager sees base stations and an Endpoint Manager sees endpoints, and endpoint keys are masked until someone with the right role reveals them. Each reveal is recorded in the Audit Log.
+* **Live web interface.** Dashboards, lists and activity refresh within about a second of a message arriving. Each base station and endpoint has an activity table that shows every uplink with its radio metrics, payload and decoded values, and you can queue a downlink from an end point, then revoke it and follow it to delivery on the Traffic page.
+* **Follows the specification.** Uplinks, downlinks, attach and detach follow BSSCI v1.0.0 and SCACI v1.0.0. One uplink that several base stations receive is delivered once, with every receiving station listed, and sessions survive a restart and resume.
+* **Dependable downlinks.** A downlink can carry a deadline. When a base station still holds it at the deadline, KiloCenter asks the station to drop it and reports it expired only when the station confirms. A command's reference is accepted once, so your application can safely resend a command it is not sure arrived.
+* **Logs you can trust.** The Logs page has an Events Log, an Errors Center that groups failures into Control Plane, Base Stations, End Points and Downlinks, and an Audit Log that administrators use to see who created a user, revealed a key or queued a downlink.
+* **A cleaner, steadier codebase.** Dead code and unused settings are gone, large components are split into focused parts, and more than fifty bugs across uplinks, downlinks, sessions, certificates and the web interface are fixed. That makes 2.0 a big release, not only a feature release. We tested the result end to end with our MIOTY developer kit, from real uplinks and downlinks to every screen of the web interface.
+* **More for integrators.** Uplink messages report `dlOpen`, `responseExp` and `dlAck`, downlink results carry the delivery details, and MQTT gains `event/downlink_queued`.
+
+<figure><img src="../.gitbook/assets/kc-traffic-downlink-results.jpg" alt="The Downlink Results tab of the Traffic page listing sent downlinks with the time each one was acknowledged by its end point"><figcaption><p>Every downlink is followed to delivery, and the end point's acknowledgement is shown beside it.</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/kc-base-station-detail.jpg" alt="A base station detail page with performance metrics, availability, the certificate panel and the Ping action"><figcaption><p>Each base station shows its health, its certificate and a Ping action.</p></figcaption></figure>
+
+Upgrading a self-hosted installation from 1.x needs a few manual steps, mainly setting the master key and converting stored keys with the `rekey` command. The migration guide walks through them.
+
+**Breaking API changes.** The organization quota fields are removed, endpoint keys are masked on every read, every call checks the caller's role and answers `PERMISSION_DENIED` when the role does not cover it, and the web interface's WebSocket connection is replaced by gRPC-web server streams. The API changes page lists every difference.
+
+[→ What's new in KiloCenter 2.0](../kilo-center/kilo-mioty-service-center/whats-new-in-2-0.md)
+
+[→ What bugs were fixed in KiloCenter 2.0?](../kilo-center/kilo-mioty-service-center/whats-fixed-in-2-0.md)
+
+[→ The KiloCenter web interface](../kilo-center/kilo-mioty-service-center/web-interface.md)
+
+[→ Migrate key material to 2.0](../kilo-center/kilo-mioty-service-center/operations/key-material-migration.md)
+
+[→ User roles and permissions](../kilo-center/kilo-mioty-service-center/security/users-and-roles.md)
+
+[→ Audit Log and Errors Center](../kilo-center/kilo-mioty-service-center/operations/audit-log-and-errors-center.md)
+
+[→ Configuration and API changes in 2.0](../kilo-center/kilo-mioty-service-center/operations/configuration-changes-in-2-0.md)
+
+[→ API changes in 2.0](../kilo-center/kilo-mioty-service-center/integrations/api-changes-in-2-0.md)
+
+***
+
+**External MQTT with encryption, version choice, and topic filters**
+
+The external MQTT connector now has a **Transport** section. Turn on **Encrypt the connection (TLS)** together with username and password, set the **Server name (SNI)**, choose the **MQTT version**, and list **Topics to read** instead of subscribing to a whole broker. A telemetry topic no longer needs `{{value}}`: if it is missing, Kilo reads the value from the message body, so devices that publish JSON payloads work without workarounds. A brief broker drop now recovers on its own.
+
+<figure><img src="../.gitbook/assets/kilo-mqtt-external-form-tls.jpg" alt="The Add external MQTT connector form with the Transport section: TLS switch, CA Certificate, Server name, MQTT version, and Topics to read"><figcaption><p>The Transport section of the external MQTT connector.</p></figcaption></figure>
+
+[→ External MQTT](../kilo-iot-server/connectors/mqtt/external-mqtt.md)
+
+[→ Topics and device routing](../kilo-iot-server/connectors/mqtt/topics-and-device-routing.md)
+
+***
+
+**Digital Building Twin: move, duplicate, import, and clearer readings**
+
+In the 2D blueprint, you can now **Move**, **Duplicate**, and **Delete** a selection, and a moved door or window re-attaches to the wall you choose. DXF floor-plan import (beta) warns you about drawings without dimensions. Pin labels show at most two decimals instead of long floating-point numbers, and the camera angle you save is the angle your dashboard opens with.
+
+<figure><img src="../.gitbook/assets/kilo-dbt-dashboard.jpg" alt="A 3D office floor plan on a dashboard with live sensor labels on the rooms"><figcaption><p>A Digital Building Twin on a dashboard in a demo organization.</p></figcaption></figure>
+
+[→ Digital Building Twin](../kilo-iot-server/dashboards/adding-widgets/digital-building-twin/README.md)
+
+***
+
+**Key Vault eye toggle**
+
+Keys in the Key Vault are masked by default. Use the eye on a row to reveal one key when you need to check it, including in view-only access.
+
+<figure><img src="../.gitbook/assets/kilo-key-vault.jpg" alt="The Key Vault list with masked keys and Show key, Edit, and Delete buttons on each row"><figcaption><p>Keys stay masked until you choose Show key on a row.</p></figcaption></figure>
+
+[→ Key Vault](../kilo-iot-server/reports/key-vault.md)
+
+***
+
+**Reliability and interface improvements**
+
+<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.11.0.jpg" alt="Kilo 3.11.0 reliability and interface improvements"><figcaption></figcaption></figure>
+
+* Existing metrics can be edited, and the unit is optional for every data type.
+* Device pickers list every device in the organization, not only the first twenty.
+* Device status refreshes by itself on the Devices page.
+* The rule debugger shows the executor's error message when a step fails.
+* The command builder blocks saving an incomplete expected-state row.
+* Dashboard widgets scale their text and controls more smoothly as you resize them.
+* Alarm inbox lists scroll more easily, and emulator badges no longer overlap widgets.
+* Camera previews, live-view connection, and status reporting are more reliable.
+
+[→ Explore Kilo IoT Server](https://docs.kiloiot.io/kilo-iot-server)
+
+</details>
+
+<details>
+
 <summary>Scale Log. Release 3.9.0</summary>
 
 <figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.9.0.jpg" alt="Kilo IoT Server 3.9.0 release banner"><figcaption></figcaption></figure>
