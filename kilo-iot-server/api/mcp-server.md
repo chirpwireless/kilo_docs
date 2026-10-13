@@ -32,6 +32,8 @@ Because the connection carries your own account, the assistant is not an extra i
 
 Kilo is listed in Claude's connectors directory as **Kilo IoT Platform**, so you can add it without typing a URL.
 
+<figure><img src="../../.gitbook/assets/kilo-claude-directory-listing.jpg" alt="The Kilo IoT Platform listing in the Claude connectors directory, with the Connect to Claude button"><figcaption><p>The Kilo IoT Platform listing in the Claude connectors directory.</p></figcaption></figure>
+
 1. Open the [Kilo IoT Platform listing](https://claude.ai/directory/kilo-iot-platform), or open **Customize → Connectors** in Claude and search the directory for **Kilo**.
 2. Click **Connect to Claude**.
 3. Your browser opens the Kilo sign-in. Sign in with your usual Kilo account and approve the request.
