@@ -24,7 +24,7 @@ Think of a recipe and the dish you cook from it. The solution is the recipe, and
 
 Everything lives on one page. In the left sidebar, select **Applications**. The page is titled **Applications and solutions**, and a row of tabs sits directly under the title.
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Applications and solutions page in Kilo with the tabs Solutions, My applications, and Use cases, and five solution cards below an intro paragraph"><figcaption><p>The Applications and solutions page, opened on the Solutions tab of a demo organization. The left sidebar shows the Applications item selected.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Applications page in Kilo on the Solutions tab, with six solution cards: Fire &amp; Gas Safety, Smart Building, Cold Chain, Water &amp; Leak, Energy monitoring, and Asset tracking below an intro paragraph"><figcaption><p>The Applications and solutions page, opened on the Solutions tab of a demo organization. The left sidebar shows the Applications item selected.</p></figcaption></figure>
 
 | Tab | What it is for | Who sees it |
 |---|---|---|

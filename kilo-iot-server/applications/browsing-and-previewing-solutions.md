@@ -13,7 +13,7 @@ A solution is a complete answer to one problem. Before you install anything, Kil
 
 The tab opens with a heading, **Solutions**, and an introduction: ready-made solutions from Kilo, each with emulator devices, rules, alarms, and a ready-made dashboard. The emulator devices send sample readings, so the dashboard is live the moment you install, with no hardware required. Installed solutions land in **Applications**, where you swap the emulator devices for real ones (LoRaWAN, MIOTY, MQTT, or Traccar) to go live.
 
-<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Solutions tab with five solution cards, each with a photo, counters, and a Preview button"><figcaption><p>Example solution cards on the Solutions tab.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kilo-solutions-catalog.jpg" alt="The Solutions tab with six solution cards: Fire &amp; Gas Safety, Smart Building, Cold Chain, Water &amp; Leak, Energy monitoring, and Asset tracking, each with a photo, counters, and a Preview button"><figcaption><p>Example solution cards on the Solutions tab.</p></figcaption></figure>
 
 ## What is on a solution card?
 
