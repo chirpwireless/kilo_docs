@@ -81,7 +81,7 @@ Kilo supports MIOTY alongside LoRaWAN, so the protocol is a design choice rather
 
 * To bring MIOTY data into your Kilo organization, add the [MIOTY connector](README.md).
 * To register and manage the base stations serving your endpoints, see [MIOTY base stations](../../gateways/mioty-base-stations/README.md).
-* To run your own service center infrastructure, see the [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
+* To run your own service center infrastructure, see the [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md): the free, open-source Community edition, or the Enterprise edition that Kilo licenses and installs on your premises.
 
 Continue with [Core Benefits of MIOTY](core-benefits-of-mioty.md) to see what telegram splitting buys you in practice.
 

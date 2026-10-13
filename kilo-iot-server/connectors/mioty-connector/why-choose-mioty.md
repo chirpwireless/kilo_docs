@@ -71,12 +71,13 @@ There is a second decision behind the protocol one, and it is worth separating: 
 
 A service center moves messages. It manages base stations and endpoints, handles uplinks and downlinks, and hands the data onward. That is a necessary layer and a demanding one — but on its own it gives you telemetry, not answers. Everything you actually want to *do* with a reading — chart it, alert on it, act on it, keep it for an audit — happens somewhere else.
 
-Kilo gives you both paths:
+Kilo gives you three ways to run it:
 
 * **Kilo Center — the Community edition.** Our open-source MIOTY service center. Self-host it, own the infrastructure end to end, and integrate it with whatever you run downstream. It is a MIOTY network server: base stations, endpoints, traffic, and an operator console. See [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
 * **Kilo Cloud — the Enterprise edition, built in.** The Enterprise edition of the service center runs inside Kilo Cloud, so there is no MIOTY infrastructure for you to host at all. Register a [MIOTY connector](README.md), point your base stations at it, and your endpoints arrive on a full IoT platform rather than a bare network server.
+* **Kilo Center — the Enterprise edition on your premises.** When the network has to stay on your own infrastructure, Kilo licenses and installs the Enterprise edition there, with commercial support, multi-tenancy, and the enterprise MIOTY capabilities. [Contact Kilo](https://kiloiot.io/contact/) to ask for it.
 
-That second path is what changes MIOTY from a data feed into an operation. The same readings land in the rules engine, alarms with escalation, dashboards, the Digital Building Twin, multi-tenant access control, and the audit trail — the machinery the rest of your fleet already uses. A MIOTY endpoint and a LoRaWAN sensor become the same kind of object the moment their data is normalized, and a single rule can reason across both.
+The Kilo Cloud path is what changes MIOTY from a data feed into an operation. The same readings land in the rules engine, alarms with escalation, dashboards, the Digital Building Twin, multi-tenant access control, and the audit trail — the machinery the rest of your fleet already uses. A MIOTY endpoint and a LoRaWAN sensor become the same kind of object the moment their data is normalized, and a single rule can reason across both.
 
 ### Starting a MIOTY Deployment on Kilo
 

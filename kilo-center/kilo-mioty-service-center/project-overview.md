@@ -30,7 +30,7 @@ The Enterprise edition of KiloCenter is built into **Kilo Cloud**. Choose Kilo C
 | **Kilo Cloud** | You want the Enterprise service center managed for you and need rules, visualization, alarms, or other Kilo platform capabilities around MIOTY data. |
 | **Enterprise edition on your premises** | You need the Enterprise service center, or the complete Kilo platform, inside infrastructure you control. Kilo installs it on request: [contact Kilo](https://kiloiot.io/contact/). |
 
-See [KiloCenter or Kilo Cloud?](README.md#kilocenter-or-kilo-cloud) for the feature boundary, or start with the [Kilo Cloud MIOTY connector](../../kilo-iot-server/connectors/mioty-connector/README.md).
+See [KiloCenter Community vs Enterprise vs Kilo Cloud](README.md#kilocenter-community-vs-enterprise-vs-kilo-cloud) for the feature boundary, or start with the [Kilo Cloud MIOTY connector](../../kilo-iot-server/connectors/mioty-connector/README.md).
 
 ### Live Demo
 
@@ -46,8 +46,6 @@ A demo environment is available at [https://servicecenter.kiloiot.io/](https://s
 ### Can I use the Community Edition in production?
 
 
-
-The community edition is provided as-is without commercial support. Production use is at your own risk.
 
 The Community Edition comes as is, under the AGPL license and with community support only. For production, choose the edition that fits: the **Enterprise edition** can be installed on your own premises on request ([contact Kilo](https://kiloiot.io/contact/)), and it brings commercial support, SLA-backed operation, multi-tenancy and optional MIOTY capabilities such as BSSCI sub-channels, the Variable MAC (VM) attachment and ReCon extension support. When you need more than a network server, use **Kilo Cloud**, where the Enterprise edition is built in and the platform adds device management, normalization, dashboards, visualization, rules, alerting, audit history, access control and AI-assisted operations.
 
@@ -177,7 +175,7 @@ Prerequisites:
 1. Clone the repository:
 
 ```
-git clone https://github.com/Kiloiot/KiloServiceCenter.git
+git clone https://github.com/Kiloiot/kilo-service-center.git
 cd kilo-service-center
 ```
 
@@ -379,7 +377,7 @@ Which edition to use in production is covered under [Can I use the Community Edi
 
 KiloCenter Community Edition is licensed under the [GNU Affero General Public License v3.0 or later](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/LICENSE).
 
-If you run a modified version as a network service, the AGPL requires you to make the modified source available to users. The source repository is [github.com/Kiloiot/KiloServiceCenter](https://github.com/Kiloiot/KiloServiceCenter).
+If you run a modified version as a network service, the AGPL requires you to make the modified source available to users. The source repository is [github.com/Kiloiot/kilo-service-center](https://github.com/Kiloiot/kilo-service-center).
 
 See [TRADEMARKS.md](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/TRADEMARKS.md) for trademark policy.
 
@@ -389,7 +387,7 @@ Copyright 2024-2026 Tim Kravchunovsky and contributors.
 
 
 
-* **Issues**: [GitHub Issues](https://github.com/Kiloiot/KiloServiceCenter/issues)
+* **Issues**: [GitHub Issues](https://github.com/Kiloiot/kilo-service-center/issues)
 * **Documentation**: [GitBook/](https://github.com/Kiloiot/kilo-service-center/blob/3d0674b296989f1f2337563549e59d6ebd480b65/GitBook)
 * **MIOTY Alliance**: [mioty-alliance.com](https://mioty-alliance.com/)
 
