@@ -99,6 +99,8 @@ Cloud archive requires Twin 1.1.0 or later. Google Cloud Storage support is newl
 
 We are thrilled about this one: **Kilo is now in the official Claude connectors directory.** After review and testing, Anthropic lists it, so you can add Kilo to Claude without typing a URL. Open the **Kilo IoT Platform** listing in the Claude connectors directory, click **Connect to Claude**, sign in with your Kilo account, and ask, for example, which devices in your organization stopped reporting. The connector uses your own permissions, so Claude can do what you can do and nothing more. ChatGPT, Codex, Cursor, and other MCP clients keep working with the same endpoint.
 
+<figure><img src="../.gitbook/assets/mcp-claude-session.jpg" alt="A Claude Code session connected to Kilo over MCP, calling a Kilo tool and asking permission before it continues"><figcaption><p>Claude working on a real Kilo deployment and asking before it continues.</p></figcaption></figure>
+
 [→ Connect Kilo to Claude and other AI clients](../kilo-iot-server/api/mcp-server.md)
 
 ***
@@ -116,6 +118,8 @@ Your whole IoT setup, one voice command away. Connect Grok to Kilo through MCP o
 **MIOTY devices and base stations in Kilo**
 
 MIOTY is now a first-class citizen in Kilo: endpoints and base stations are managed with validated forms. For an endpoint, the device page shows its attach state with **Attach** and **Detach** controls, a test decoder to check a payload, and a clear note about clearing an Application Key. For base stations, the card shows reported Performance Metrics and System Information, a read-only GPS location (or manual placement when there is no fix), and separate certificate downloads. Commands gain a **Delivery** step with a confirmed-downlink option.
+
+<figure><img src="../.gitbook/assets/kilo-mioty-device-attach-status.jpg" alt="A MIOTY endpoint page in Kilo showing Attach status Attached with Attach and Detach controls"><figcaption><p>Attach and detach a MIOTY endpoint right from its device page.</p></figcaption></figure>
 
 [→ MIOTY devices](../kilo-iot-server/devices/mioty-devices.md)
 
@@ -199,7 +203,7 @@ Keys in the Key Vault are masked by default. Use the eye on a row to reveal one 
 
 **Reliability and interface improvements**
 
-<figure><img src="../.gitbook/assets/Kilo_Scale_Log_Release_3.11.0.jpg" alt="Kilo 3.11.0 reliability and interface improvements"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/kilo-devices-edit-metric.jpg" alt="The Edit Metric dialog with Data type, Type, Normalized key, and an optional Unit of measurement"><figcaption><p>Existing metrics can now be edited, and the unit is optional.</p></figcaption></figure>
 
 * Existing metrics can be edited, and the unit is optional for every data type.
 * Device pickers list every device in the organization, not only the first twenty.
