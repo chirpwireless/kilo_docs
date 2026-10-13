@@ -44,9 +44,9 @@ The measured effect is small enough to be worth quoting: Fraunhofer puts the pen
 
 MIOTY is an ETSI standard — **TS 103 357**, TS-UNB — not a proprietary scheme, so endpoints and base stations from different vendors interoperate against a published specification. Endpoints are identified by an **EUI** and their traffic is protected with a **network session key**, while base stations reach the service center over **BSSCI** on a certificate-secured mutual TLS connection. Both hops of the path — over the air and over the backhaul — are authenticated and encrypted.
 
-#### Available Two Ways on Kilo
+#### How Can I Run MIOTY on Kilo?
 
-MIOTY runs on Kilo without you hosting any of it: the Enterprise edition of our service center is built into Kilo Cloud, so endpoints land straight in the rules engine, alarms, and dashboards. If you would rather run the network yourself, the Community edition — [Kilo Center](../../../kilo-center/kilo-mioty-service-center/README.md) — is open source and self-hosted. See [Why Choose MIOTY?](why-choose-mioty.md) for how that choice plays out.
+MIOTY runs on Kilo without you hosting any of it: the Enterprise edition of our service center is built into Kilo Cloud, so endpoints land straight in the rules engine, alarms, and dashboards. If you would rather run the network yourself, the Community edition — [Kilo Center](../../../kilo-center/kilo-mioty-service-center/README.md) — is free, open source, self-hosted, and provided as is. And if the network has to stay on your premises with commercial support, Kilo licenses and installs the Enterprise edition there. See [Why Choose MIOTY?](why-choose-mioty.md) for how that choice plays out.
 
 ***
 

@@ -12,7 +12,7 @@ Move from understanding the product to a running local installation.
 
 Continue with this installation sequence when you want to self-host the free, open-source **KiloCenter Community Edition** and connect its MIOTY data to your own applications.
 
-If you need more than the service center—such as visual rules, sustained-condition triggers, dashboards and charts, alarms and escalation, access control, audit history, or managed operations—use **Kilo Cloud** instead. Its built-in Enterprise edition of KiloCenter provides the MIOTY network layer, while the rest of Kilo turns endpoint data into complete operational workflows. See [KiloCenter or Kilo Cloud?](README.md#kilocenter-or-kilo-cloud).
+If you need more than the service center—such as visual rules, sustained-condition triggers, dashboards and charts, alarms and escalation, access control, audit history, or managed operations—use **Kilo Cloud** instead. Its built-in Enterprise edition of KiloCenter provides the MIOTY network layer, while the rest of Kilo turns endpoint data into complete operational workflows. See [KiloCenter Community vs Enterprise vs Kilo Cloud](README.md#kilocenter-community-vs-enterprise-vs-kilo-cloud).
 
 ### Recommended Sequence
 

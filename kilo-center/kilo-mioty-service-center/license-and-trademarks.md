@@ -18,7 +18,7 @@ The AGPL extends GPL with a network-use clause:
 * If you **run a modified version as a network service**, you must make the complete corresponding source available to users of that service.
 * You may link to the source or provide a direct download — the requirement is that users can obtain it.
 
-Source code is always available at [github.com/Kiloiot/KiloServiceCenter](https://github.com/Kiloiot/KiloServiceCenter).
+Source code is always available at [github.com/Kiloiot/kilo-service-center](https://github.com/Kiloiot/kilo-service-center).
 
 ### Runtime Source Disclosure
 
@@ -42,7 +42,7 @@ Community forks must not use the KiloCenter name or logo in a way that implies o
 
 ### Enterprise / Managed Cloud
 
-The Enterprise edition of KiloCenter is built into Kilo Cloud and is also available as part of supported enterprise deployments under separate licensing terms. Kilo Cloud combines the MIOTY service center with the full Kilo IoT platform, including rules, dashboards, alarms, access control, and managed operations. See [KiloCenter or Kilo Cloud?](README.md#kilocenter-or-kilo-cloud), or contact [Kilo IoT](https://kiloiot.io/contact/) for details.
+The Enterprise edition of KiloCenter is built into Kilo Cloud and is also available as part of supported enterprise deployments under separate licensing terms. Kilo Cloud combines the MIOTY service center with the full Kilo IoT platform, including rules, dashboards, alarms, access control, and managed operations. See [KiloCenter Community vs Enterprise vs Kilo Cloud](README.md#kilocenter-community-vs-enterprise-vs-kilo-cloud), or contact [Kilo IoT](https://kiloiot.io/contact/) for details.
 
 ### Legal Attribution
 

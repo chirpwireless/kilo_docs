@@ -8,7 +8,7 @@ The MIOTY connector brings your radio network into **Kilo Cloud's full IoT platf
 
 MIOTY is a low-power wireless protocol. Its **base stations** are radio gateways, and its **endpoints** are communicating sensors or devices. The connector is the software connection between that network and your Kilo organization. Add it, connect your base stations, and register the endpoints to build the application around their readings.
 
-If you only need networking and want to run it yourself, [Kilo Center Community Edition](../../../kilo-center/kilo-mioty-service-center/README.md) is the open-source service center. Use Kilo Cloud when you also want the enterprise service center and the platform's application capabilities.
+Kilo Center comes three ways. If you only need networking and want to run it yourself, [Kilo Center Community Edition](../../../kilo-center/kilo-mioty-service-center/README.md) is the free, open-source service center, provided as is. If the network must stay on your own infrastructure with commercial support, Kilo licenses and installs the Enterprise edition on your premises. Use Kilo Cloud when you want the Enterprise service center run for you, together with the platform's application capabilities.
 
 For the wireless protocol, see [What is MIOTY?](what-is-mioty.md). For operating your own service center, see [Kilo MIOTY Service Center](../../../kilo-center/kilo-mioty-service-center/README.md).
 

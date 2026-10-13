@@ -1,5 +1,5 @@
 ---
-description: Self-host the free, open-source KiloCenter MIOTY Service Center, or use its Enterprise edition within Kilo Cloud.
+description: Three ways to run KiloCenter MIOTY Service Center - free open-source Community Edition, Enterprise in Kilo Cloud, or Enterprise on your premises.
 ---
 
 # KiloCenter MIOTY Service Center
@@ -21,21 +21,25 @@ KiloCenter Community Edition is an **open-source MIOTY service center** for runn
 - **The Enterprise edition on your own premises.** Kilo installs it for you on request, with commercial support and the enterprise MIOTY capabilities. [Contact Kilo](https://kiloiot.io/contact/) to ask for it.
 - **Kilo Cloud.** Choose it when you need more than a network server, together with everything the Kilo platform provides: the rules engine, dashboards and visualization, alerting and escalation, device management and access control. The Enterprise edition of the service center is built in, and Kilo operates it.
 
-## KiloCenter or Kilo Cloud?
+## KiloCenter Community vs Enterprise vs Kilo Cloud
 
-Choose based on whether you need a MIOTY service center by itself or a complete IoT operations platform around the network.
+Choose based on who runs the service center and whether you need a complete IoT operations platform around the network.
 
-| Need | KiloCenter Community Edition | Kilo Cloud |
-|---|---|---|
-| MIOTY service center | Self-host the free, open-source Community Edition | The Enterprise edition of KiloCenter is built in and managed for you |
-| Base stations, endpoints, uplinks, and downlinks | Included | Included through Kilo's [MIOTY connector](../../kilo-iot-server/connectors/mioty-connector/README.md) |
-| Integrate MIOTY data with another system | Use gRPC or MQTT | Use Kilo APIs and connectors, or work with the data directly in Kilo |
-| Visual dashboards and historical charts | Build or connect a separate application | Included in [Dashboards](../../kilo-iot-server/dashboards/README.md) |
-| Visual automation and sustained-condition triggers | Build or connect a separate automation system | Included in the [Rules Engine](../../kilo-iot-server/rules-engine/README.md) |
-| Operational alarms, notification channels, and escalation | Build or connect a separate alerting system | Included in [Alarms](../../kilo-iot-server/alarm/README.md) |
-| Managed hosting, multi-tenancy, support, and operational guarantees | You own operations | Available with Kilo Cloud and enterprise terms |
+| Need | Community Edition | Enterprise edition on your premises | Kilo Cloud |
+|---|---|---|---|
+| MIOTY service center | Self-host the free, open-source Community Edition | Licensed Enterprise edition, installed by Kilo on your infrastructure | The Enterprise edition is built in and Kilo operates it |
+| Base stations, endpoints, uplinks, and downlinks | Included | Included, with the enterprise MIOTY capabilities | Included through Kilo's [MIOTY connector](../../kilo-iot-server/connectors/mioty-connector/README.md) |
+| Integrate MIOTY data with another system | Use gRPC or MQTT | Use gRPC or MQTT | Use Kilo APIs and connectors, or work with the data directly in Kilo |
+| Visual dashboards and historical charts | Build or connect a separate application | Build or connect a separate application, or license the Kilo platform on-premise | Included in [Dashboards](../../kilo-iot-server/dashboards/README.md) |
+| Visual automation and sustained-condition triggers | Build or connect a separate automation system | Build or connect a separate automation system, or license the Kilo platform on-premise | Included in the [Rules Engine](../../kilo-iot-server/rules-engine/README.md) |
+| Operational alarms, notification channels, and escalation | Build or connect a separate alerting system | Build or connect a separate alerting system, or license the Kilo platform on-premise | Included in [Alarms](../../kilo-iot-server/alarm/README.md) |
+| Multi-tenancy (organizations) | Not included | Included | Included |
+| Hosting and operations | You host and operate it | Runs on your premises under a commercial license | Kilo hosts and operates it |
+| Support | Community support on GitHub, no guaranteed response time | Commercial support from Kilo | Kilo support, with operational guarantees under enterprise terms |
 
 Use **KiloCenter Community Edition** when the MIOTY network server is the product boundary and your team wants to host it, operate it, and connect its data to existing applications.
+
+Use the **Enterprise edition on your premises** when the network must stay on your infrastructure but you need commercial support, multi-tenancy, and the enterprise MIOTY capabilities. [Contact Kilo](https://kiloiot.io/contact/) to license it.
 
 Use **Kilo Cloud** when MIOTY is one part of a broader deployment. The Enterprise edition of the service center runs inside Kilo Cloud, and MIOTY endpoint data enters the same device-management, normalization, dashboard, rules, alarm, audit, and AI workflows as data from Kilo's other supported connectors. Start with the [Kilo IoT Platform overview](../../kilo-iot-server/README.md).
 
