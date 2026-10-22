@@ -1,10 +1,15 @@
 ---
-description: "Kilo Hub is an app for a small computer at your site. It sets up cameras, Zigbee, Thread and a LoRaWAN gateway."
+description: "Kilo Hub runs your site's cameras, Zigbee and LoRaWAN, either on a Raspberry Pi box on site or on a regular PC."
 ---
 
 # What Is Kilo Hub?
 
-Kilo Hub is an app you install on a small computer that stays at your site, such as an office, a shop or a plant room. It sets up the devices in the building that Kilo cannot reach over the internet by itself: IP cameras (cameras that connect to your network instead of to a TV or a video recorder), Zigbee and Thread devices, and a do-it-yourself LoRaWAN gateway. Then it keeps them running.
+Kilo Hub is an app that runs the devices at your site, such as an office, a shop or a plant room, that Kilo cannot reach over the internet by itself: IP cameras (cameras that connect to your network instead of to a TV or a video recorder), Zigbee and Thread devices, and a do-it-yourself LoRaWAN gateway. It sets them up and keeps them running.
+
+You can install it in two ways:
+
+* **On a Raspberry Pi.** A small box that lives on site and manages the site. It records about six or seven cameras, and it is the only option that can also be your LoRaWAN gateway.
+* **On a regular PC** with Windows, Mac or Linux. A PC is far more powerful, so the number of cameras is practically unlimited.
 
 <figure><img src="../../.gitbook/assets/kilo-hub-dashboard.jpg" alt="Kilo Hub dashboard showing this device, cameras recording, LoRaWAN, Zigbee and Thread status"><figcaption><p>The Dashboard shows the machine's resources and the state of every capability at a glance.</p></figcaption></figure>
 
@@ -16,7 +21,7 @@ Kilo runs in the cloud. Many devices sit inside a building and can only be reach
 * A Zigbee or Thread sensor, plug or light talks by radio to a small USB stick plugged into a computer nearby.
 * A LoRaWAN sensor sends its readings by radio to a receiver at the site, called a gateway.
 
-So something at the site has to talk to these devices. That something is the hub: a computer that stays at the site, stays on, and does this work.
+So something at the site has to talk to these devices. That something is the hub: a Raspberry Pi box or a PC that stays at the site, stays on, and does this work.
 
 Normally, someone has to set up each of these by hand on that computer. They install the recording software for every camera, configure the Zigbee radio, and copy the gateway's security certificates into the right place. That means typing many commands into a terminal and editing settings files.
 
@@ -58,9 +63,9 @@ If the hardware for something is missing, its page stays in the menu and tells y
 
 Both work. Pick the one that fits the site.
 
-**A Raspberry Pi** is a small, cheap computer about the size of a deck of cards. It uses very little power, fits on a shelf and can stay switched on all the time. A Raspberry Pi 4 records about six or seven cameras and also runs Zigbee and Thread. If you want to build your own LoRaWAN gateway instead of buying one, the Pi is the only machine that can do it, because only the Pi has a place to fit the LoRaWAN card. See [How Do I Turn a Raspberry Pi into an IoT Hub?](raspberry-pi/README.md)
+**A Raspberry Pi** is a small, cheap box about the size of a deck of cards that lives on site. It uses very little power, fits on a shelf and can stay switched on all the time. A Raspberry Pi 4 records about six or seven cameras and also runs Zigbee and Thread. If you want to build your own LoRaWAN gateway instead of buying one, the Pi is the only machine that can do it, because only the Pi has a place to fit the LoRaWAN card. See [How Do I Turn a Raspberry Pi into an IoT Hub?](raspberry-pi/README.md)
 
-**A Windows, Mac or Linux computer** has more processing power, so it records many more cameras. The limit is its processor, memory and network. It is a good choice if the site already has a PC that runs all day. Zigbee works only on Linux. A computer cannot be a LoRaWAN gateway, so for LoRaWAN sensors you add a ready-made gateway or a Raspberry Pi built as one. See [How Do I Run Kilo Hub on Windows, Mac or Linux?](computer.md)
+**A regular PC** with Windows, Mac or Linux is far more powerful, so the number of cameras is practically unlimited. The only limit is its processor, memory and network. It is a good choice if the site already has a PC that runs all day. Zigbee works only on Linux. A computer cannot be a LoRaWAN gateway, so for LoRaWAN sensors you add a ready-made gateway or a Raspberry Pi built as one. See [How Do I Run Kilo Hub on Windows, Mac or Linux?](computer.md)
 
 You can also combine them at one site, for example a computer for a large number of cameras and a separate LoRaWAN gateway, either bought ready-made or built from a Raspberry Pi.
 
