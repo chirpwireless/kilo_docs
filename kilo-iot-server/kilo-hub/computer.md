@@ -18,10 +18,10 @@ A computer cannot be a LoRaWAN gateway: it has no slot for a concentrator card. 
 |---|---|---|---|
 | Cameras | Yes | Yes | Yes |
 | Zigbee (USB coordinator) | No | No | Yes |
-| Thread (USB radio) | No | No | Yes |
+| Thread border router | No | No | No — Raspberry Pi only |
 | LoRaWAN gateway | No | No | No — Raspberry Pi only |
 
-On Windows and macOS, Docker runs inside a virtual machine that USB radios cannot reach, so Kilo Hub runs Zigbee and Thread only on Linux. The Zigbee page says so on Windows and macOS instead of asking for a dongle that could never work there.
+On Windows and macOS, Docker runs inside a virtual machine that USB radios cannot reach, so Kilo Hub runs Zigbee only on Linux. The Thread border router comes with the Raspberry Pi setup. The Zigbee page says so on Windows and macOS instead of asking for a dongle that could never work there.
 
 ## How do I set up a computer as the site hub?
 

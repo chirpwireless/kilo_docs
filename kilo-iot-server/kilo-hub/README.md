@@ -20,7 +20,7 @@ Without Kilo Hub, each of those pieces is a separate installation: Docker, a con
 |---|---|---|
 | **Cameras** | Finds cameras on the local network and starts one recorder ([Twin](../lens/installing-twin.md)) per camera, ready to pair with Kilo Lens | Raspberry Pi and computers |
 | **Zigbee** | Recognizes the USB coordinator, starts a Zigbee network with its own security key and opens a pairing window | Raspberry Pi and Linux computers |
-| **Thread** | Recognizes the separate Thread radio that Matter devices need, next to the Zigbee radio | Raspberry Pi and Linux computers |
+| **Thread** | Runs a Thread border router for Matter devices on its own radio, next to the Zigbee radio | Raspberry Pi |
 | **LoRaWAN gateway** | Reads the gateway ID from the concentrator card, takes the certificates Kilo issues for it and runs the gateway on Kilo's built-in LoRaWAN Network Server | Raspberry Pi with a concentrator HAT |
 
 Each capability has its own page in the left menu. A capability whose hardware is missing stays in the menu and says what it needs, so a missing radio is never mistaken for a fault.
