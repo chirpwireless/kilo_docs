@@ -16,7 +16,7 @@ Use a USB radio flashed with OpenThread radio co-processor (RCP) firmware, for e
 
 ## How do I set up Thread on a Raspberry Pi?
 
-On a Raspberry Pi prepared with the [setup script](raspberry-pi/README.md#how-do-i-prepare-the-raspberry-pi-for-kilo-hub), the Thread border router (OpenThread) is already installed and starts by itself once a radio has the Thread role.
+On a Raspberry Pi prepared with the [setup script](raspberry-pi/setup.md#how-do-i-prepare-the-pi-for-the-lorawan-card-and-the-radios), the Thread border router (OpenThread) is already installed and starts by itself once a radio has the Thread role.
 
 1. Plug the Thread radio into a USB port, next to the Zigbee coordinator if there is one.
 2. Find its USB serial number: it is the long code at the end of its name in `ls /dev/serial/by-id`.

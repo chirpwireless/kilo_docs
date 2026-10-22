@@ -54,8 +54,12 @@ Every camera in **Your cameras** has three buttons:
 * **Sign-in details** — shows the first sign-in details again.
 * **Remove** — asks what to do with the recordings: **Remove, keep recordings** stops the camera and keeps its recorded video on the machine; **Remove and delete recordings** removes the video as well.
 
+## How many cameras can Kilo Hub record?
+
+It depends on the machine Kilo Hub runs on. A [Raspberry Pi](raspberry-pi/README.md) 4 records about six or seven cameras alongside its other jobs. On a [computer](computer.md) the only limit is its processor, memory and network, so a site with many cameras runs Kilo Hub on a PC or a small server. **Processor load** and **Memory used** on the Dashboard show how much room is left.
+
 ## Tips
 
 * Switch on ONVIF discovery in the camera's own settings to have the scan find it.
-* Check the Dashboard's **Processor load** before adding cameras to a Raspberry Pi; about six is the comfortable limit on a Raspberry Pi 4.
+* Check the Dashboard's **Processor load** before adding cameras to a Raspberry Pi; about six or seven is the limit on a Raspberry Pi 4. For more, run Kilo Hub on a [computer](computer.md).
 * Store the password you choose at the first sign-in in your team's password manager. Kilo Hub does not keep it.

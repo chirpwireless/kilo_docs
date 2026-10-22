@@ -29,7 +29,7 @@ Each capability has its own page in the left menu. A capability whose hardware i
 
 Kilo Hub runs on both, and the choice comes down to radios and camera count.
 
-* **Raspberry Pi** — one small box that does everything: LoRaWAN gateway, cameras, Zigbee and Thread together. A Raspberry Pi 4 records about six cameras comfortably. See [Raspberry Pi](raspberry-pi/README.md).
+* **Raspberry Pi** — one small box that does everything: LoRaWAN gateway, cameras, Zigbee and Thread together. A Raspberry Pi 4 records about six or seven cameras. See [Raspberry Pi](raspberry-pi/README.md).
 * **Windows, macOS or Linux computer** — more processing power, so far more cameras per site, and the starting point for an edge hub in a factory or a commercial building. A computer has no slot for a LoRaWAN concentrator card. See [Windows, Mac and Linux](computer.md).
 
 ## How do I get started with Kilo Hub?

@@ -14,7 +14,7 @@ The gateway connects to Kilo over an encrypted **Basics Station** connection, th
 
 ## What do I need before I start?
 
-* A Raspberry Pi set up as described in [Raspberry Pi](README.md): assembled with the RAK5146 card and a LoRa antenna, prepared with the setup script, and running Kilo Hub.
+* A Raspberry Pi built from the [shopping list](shopping-list.md), [assembled](hardware.md) with the RAK5146 card and a LoRa antenna, and [prepared with the setup script and Kilo Hub](setup.md).
 * A Kilo account with access to **Gateways**.
 * The LoRaWAN region of the installation site, for example **EU868** in Europe or **US915** in North America.
 * An internet connection on the Pi.
@@ -46,7 +46,7 @@ The LoRaWAN Gateway page needs the concentrator card and the Pi setup script. On
 
 <figure><img src="../../../.gitbook/assets/kilo-hub-lorawan-no-radio.jpg" alt="Kilo Hub LoRaWAN Gateway page saying a concentrator such as a RAK5146 on a Raspberry Pi HAT is needed"><figcaption><p>Without a concentrator card, the LoRaWAN Gateway page names the hardware it needs.</p></figcaption></figure>
 
-If the card is fitted but not found, power the Pi off, reseat the card in the HAT and the HAT on the GPIO header, and run the setup script again: it checks that the card answers.
+If the card is fitted but not found, see [Why Isn't My Raspberry Pi Hub Working?](troubleshooting.md#what-if-the-setup-script-says-the-concentrator-did-not-answer)
 
 ## Tips
 

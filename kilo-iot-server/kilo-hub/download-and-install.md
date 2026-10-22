@@ -20,7 +20,7 @@ Open the release page, scroll to **Assets**, and pick the file for the machine. 
 | Mac with Apple silicon (M1 and later) | `Kilo-Hub-<version>-arm64.dmg` |
 | Mac with an Intel processor | `Kilo-Hub-<version>.dmg` |
 | Ubuntu or Debian computer | `kilo-hub_<version>_amd64.deb` |
-| Raspberry Pi (Ubuntu 64-bit, prepared as in [Raspberry Pi](raspberry-pi/README.md)) | `kilo-hub_<version>_arm64.deb` |
+| Raspberry Pi (Ubuntu 64-bit, prepared as in [How Do I Set Up the Raspberry Pi for Kilo Hub?](raspberry-pi/setup.md)) | `kilo-hub_<version>_arm64.deb` |
 | Any other Linux distribution | `Kilo-Hub-<version>.AppImage` (64-bit PC) or `Kilo-Hub-<version>-arm64.AppImage` (ARM) |
 
 Ignore the `.yml` and `.blockmap` files on the page; they are not installers.
@@ -50,7 +50,7 @@ On Ubuntu and Debian, use the `.deb` package. It installs everything Kilo Hub de
 sudo apt install ./kilo-hub_<version>_amd64.deb
 ```
 
-On a Raspberry Pi, run the [setup script](raspberry-pi/README.md#how-do-i-prepare-the-raspberry-pi-for-kilo-hub) first, then install the `arm64` package. Then start **Kilo Hub** from the applications menu.
+On a Raspberry Pi, run the [setup script](raspberry-pi/setup.md#how-do-i-prepare-the-pi-for-the-lorawan-card-and-the-radios) first, then install the `arm64` package. Then start **Kilo Hub** from the applications menu.
 
 On other distributions, use the AppImage:
 

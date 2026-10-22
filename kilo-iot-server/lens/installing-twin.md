@@ -6,6 +6,10 @@ description: "Install one official Twin Docker container per camera, with persis
 
 Twin is the edge digital twin of one camera. Install it on a Docker host at the customer's site so that it can reach the camera locally and connect to Lens in the cloud. A twenty-camera installation uses twenty containers, each with its own configuration and identity.
 
+{% hint style="info" %}
+**Prefer not to use a terminal?** [Kilo Hub](../kilo-hub/README.md) installs Docker, finds the cameras on the network and starts one Twin per camera from a window. Run it on a [Raspberry Pi](../kilo-hub/raspberry-pi/README.md) for up to about six or seven cameras, or on a [computer](../kilo-hub/computer.md) for as many as its hardware can record. This page is the manual route.
+{% endhint %}
+
 <figure><img src="../../.gitbook/assets/kilo-twin-tapo-live.jpg" alt="Twin dashboard showing a connected camera and Lens connection"><figcaption><p>A configured Twin shows the local camera and its connection to Lens.</p></figcaption></figure>
 
 

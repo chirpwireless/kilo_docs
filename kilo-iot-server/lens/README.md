@@ -115,7 +115,7 @@ Create [videowalls](videowalls.md) to save selected feeds in layouts tailored to
 
 ## How do I connect my first camera?
 
-1. [Install Twin](installing-twin.md) at the camera's site.
+1. [Install Twin](installing-twin.md) at the camera's site — or let [Kilo Hub](../kilo-hub/README.md) do it: it finds the cameras and starts one Twin per camera on a Raspberry Pi (about six or seven cameras) or a computer (as many as its hardware can record).
 2. [Connect and pair the camera](connecting-a-camera.md) with the correct Kilo organization.
 3. [Open live video](watching-live-video.md).
 4. Configure motion, a rule, and optional [local recording](local-recordings.md) or a [cloud archive](cloud-archive.md).

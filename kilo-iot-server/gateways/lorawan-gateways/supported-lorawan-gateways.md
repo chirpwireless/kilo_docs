@@ -42,6 +42,10 @@ When selecting gateway hardware, verify:
 4. **Power and connectivity** — Consider both the power source and the backhaul available at the installation site. Some gateways are mains-powered, while others can run from autonomous power systems such as solar. Backhaul options vary by model and may include Ethernet, Wi-Fi, cellular, or satellite.
 5. **Antenna** — External antenna connections provide better range and flexibility than built-in antennas, especially in industrial or multi-building environments.
 
+### Can I build my own LoRaWAN gateway?
+
+Yes. A Raspberry Pi with a RAKwireless Pi HAT and a RAK5146 concentrator card is a Basics Station gateway that Kilo supports, and it can record cameras and run Zigbee at the same time. [How Do I Turn a Raspberry Pi into an IoT Hub?](../../kilo-hub/raspberry-pi/README.md) lists the parts and walks through the build. Buy a ready-made gateway instead when the site needs an outdoor, weatherproof unit or cellular backhaul.
+
 ## Verifying compatibility
 
 If you're unsure whether a specific gateway model is compatible:

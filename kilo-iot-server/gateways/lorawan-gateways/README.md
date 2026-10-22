@@ -25,3 +25,4 @@ The gateway registration documented here is the current user-facing path availab
 - **[Deploying a LoRaWAN gateway](deploying-a-lorawan-gateway.md)** — Register a new gateway, download its certificates, and configure the hardware to connect.
 - **[Monitoring LoRaWAN gateways](lorawan-gateway-monitoring.md)** — View status, availability, traffic, and pings across your gateway fleet. Manage settings, regenerate certificates, and track firmware versions.
 - **[Supported LoRaWAN gateways](supported-lorawan-gateways.md)** — Compatibility requirements for choosing gateway hardware.
+- **[Raspberry Pi IoT hub](../../kilo-hub/raspberry-pi/README.md)** — Build your own gateway from a Raspberry Pi, a Pi HAT and a RAK5146 card, set up from Kilo Hub.

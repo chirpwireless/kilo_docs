@@ -8,7 +8,7 @@ Kilo Hub installs on an ordinary Windows, macOS or Linux computer as well as on 
 
 ## When should a site use a computer instead of a Raspberry Pi?
 
-Choose a computer when the site has more cameras than a Raspberry Pi can record. A Raspberry Pi 4 records about six cameras; a desktop or small server records many more, limited by its processor, memory and network. Many sites already have a machine that runs around the clock, and installing Kilo Hub on it adds no new hardware.
+Choose a computer when the site has more cameras than a Raspberry Pi can record. A Raspberry Pi 4 records about six or seven cameras; on a computer the only limit is its processor, memory and network. Many sites already have a machine that runs around the clock, and installing Kilo Hub on it adds no new hardware.
 
 A computer cannot be a LoRaWAN gateway: it has no slot for a concentrator card. Sites that need LoRaWAN pair the computer with a [Raspberry Pi LoRaWAN gateway](raspberry-pi/lorawan-gateway.md) or a [supported LoRaWAN gateway](../gateways/lorawan-gateways/supported-lorawan-gateways.md).
 

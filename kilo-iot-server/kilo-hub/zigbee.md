@@ -53,6 +53,14 @@ Zigbee2MQTT has its own dashboard for renaming devices, reading every value they
 
 Every installation gets its own token, and the dashboard is reachable only from the machine running Kilo Hub.
 
+## How does Zigbee work on a Raspberry Pi hub?
+
+On a Raspberry Pi prepared with the [setup script](raspberry-pi/setup.md), Zigbee runs as a system service that starts with the Pi:
+
+* The first **Start Zigbee** asks for the Pi's password once: Kilo Hub gives the dongle its Zigbee role and creates the network's settings.
+* After that the network starts by itself at every boot, with or without a screen attached.
+* The dongle keeps its role by serial number, so it can move to another USB port.
+
 ## Tips
 
 * Pair devices where they will be installed. Zigbee builds its mesh through mains-powered devices such as plugs and lights, so place those first and battery sensors after.
