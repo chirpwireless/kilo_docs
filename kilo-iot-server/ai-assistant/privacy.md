@@ -35,4 +35,4 @@ Conversation deletion and account closure are separate actions. Use the chat-man
 
 For a personal-data request or a result covering provider-held copies, email **info [at] kiloiot.de**. Identify the relevant account and the outcome you need without resending the conversation's sensitive contents. The response should explain the result and any records that must remain.
 
-Read [Privacy and data protection](../../trust-security-compliance/privacy-and-data-protection.md) for your rights and [Data export and switching](../../trust-security-compliance/data-export-deletion-and-switching.md) for company data, retained records and backup handling.
+Read [How Does Kilo Handle Personal Data?](../../trust-security-compliance/privacy-and-data-protection.md) for your rights and [How Do I Export My Data or Leave Kilo?](../../trust-security-compliance/data-export-deletion-and-switching.md) for company data, retained records and backup handling.

@@ -52,6 +52,15 @@ The Settings tab lets you manage the gateway's configuration:
 - **Photos** — Upload or manage photos of the gateway for visual identification.
 - **Delete** — Remove the gateway from your organization. This action requires confirmation.
 
+## Why is my gateway offline?
+
+Check, in order:
+
+1. **Power and network at the site.** The gateway needs power and a working internet connection.
+2. **Basics Station settings.** The LNS address and the certificate bundle on the gateway must match what Kilo issued. Download the bundle again if the gateway was reset or re-imaged, or after the certificates were regenerated.
+3. **The gateway's clock.** A gateway with the wrong time fails the encrypted connection to Kilo. Make sure it can reach a time server (NTP).
+4. **Status in Kilo.** The gateway list and detail page show its current status and when it was last seen.
+
 ## Operational tips
 
 - **Check availability regularly** for gateways in critical locations. A gateway serving a cold storage facility or a security zone should maintain near-100% uptime.

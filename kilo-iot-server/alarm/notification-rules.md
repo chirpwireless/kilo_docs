@@ -92,6 +92,16 @@ Each row has:
 
 To delete a definition permanently, open it in Edit mode and click **Delete alarm** at the bottom of the form.
 
+## Why didn't my alarm notify anyone?
+
+Work through these in order:
+
+1. **The alarm never fired.** An alarm definition only sends what a rule raises. Open the rule in the [IoT Rules Engine](../rules-engine/README.md) and check that its condition was actually met.
+2. **The definition is switched off.** Check its toggle in the **Alarm definitions** list. Disabled definitions do not fire even when a rule triggers them.
+3. **It fired outside its schedule.** A definition with a [schedule](#schedule) other than 24/7 stays quiet outside its days and hours.
+4. **It was suppressed as a duplicate.** Within the [suppression](#suppress-duplicates) window, repeats of the same alarm are not sent again.
+5. **The recipient has no working channel.** Check that each person in the escalation chain has a verified contact on an enabled [delivery channel](notification-channels.md). SMS also needs credit.
+
 ## Enterprise examples
 
 - **Cold-chain temperature exceedance:** Severity Critical. Immediate notification to on-call refrigeration technician. Escalate to shift supervisor, then site manager. Schedule: 24/7. Suppression: 10 minutes.

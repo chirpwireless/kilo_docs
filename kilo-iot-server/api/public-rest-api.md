@@ -38,4 +38,4 @@ A minimal authenticated call is in [Examples](examples.md).
 - [Authentication & API keys](authentication-and-api-keys.md)
 - [API Keys](../settings/api-keys.md) — create and manage keys.
 
-For a service move, read [Data and export formats](../../trust-security-compliance/data-and-export-formats.md). A response from one operation is not a complete export of the service.
+For a service move, read the [data and format register](../../trust-security-compliance/data-export-deletion-and-switching.md#data-and-format-register). A response from one operation is not a complete export of the service.

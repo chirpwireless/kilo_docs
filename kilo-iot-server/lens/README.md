@@ -62,6 +62,10 @@ Yes. Different camera brands at different locations usually mean a different app
 
 Many camera systems give access through a shared login on each camera or recorder. In Kilo, access to cameras is set per user: **Edit** opens Lens, while **View** and **No access** do not (see [Roles and Page Access](../account/roles-and-page-access.md)). When someone leaves the team, you remove their access in Kilo once, without changing anything on the cameras. The local Twin administrator login stays separate from users' Kilo accounts (see [Access and Troubleshooting](access-and-troubleshooting.md)).
 
+### What must be settled before cameras record people?
+
+Recording people needs a lawful purpose, notice to the people recorded and limits on access and retention, and Kilo's confirmation that the service is ready for that use. See [What must I settle before cameras record people?](../../trust-security-compliance/privacy-and-data-protection.md#cameras-that-record-people)
+
 ### Can an old camera become a smart camera?
 
 Yes. Lens does not need analytics inside the camera. The camera only has to capture video and offer it as an RTSP stream, which most IP cameras can do, including older models. The processing happens off the camera: Twin, at your site, detects motion inside the zones you draw and can record locally, and Kilo uses each camera's motion reading in rules and alarms together with your other sensors.

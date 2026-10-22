@@ -1,106 +1,48 @@
 ---
-description: "Prepare a personal-data processing agreement for your Kilo deployment and understand responsibilities, providers, privacy requests and leaving the service."
+description: "How to set up a GDPR data processing agreement (DPA) with Kilo: controller and processor roles, what to send, scope."
 ---
 
-# Processing agreements for your Kilo deployment
+# Does Kilo Sign a Data Processing Agreement?
 
-If your organisation uses Kilo to handle information about people, establish how that
-information will be used and protected before introducing it. Personal information
-can include a person's account details, a worker's location or readings that reveal
-someone's presence, even when the device itself has no person's name.
+Yes, on request. Kilo prepares a data processing agreement (DPA) for your specific service, and it is signed once completed; this page explains it but is not the agreement itself. If your organization uses Kilo to handle personal data, ask for one before that data goes in. It is completed for your actual service: the features you use, the people and data involved, and the providers that handle it. A general privacy notice or a security statement does not replace it.
 
-CHIRP USA LLC operates Kilo. This guide explains the information needed to assess a
-processing arrangement. It is not a signed agreement, an approved list of providers
-or confirmation that every requirement has been met for your deployment.
+## Who is the controller and who is the processor?
 
-## Understand each party's role
+* **Your organization is usually the controller.** It decides why personal data is collected and how it is used, for example an employer deciding to track staff locations. It needs its own lawful purpose and must inform the people concerned.
+* **Kilo may act as your processor** for the agreed service. It handles that data on your instructions, under the agreement.
+* **Kilo is also a controller for its own purposes**, such as running your account, billing and protecting the service. The [Privacy Policy](https://kiloiot.io/privacy-policy/) covers those.
 
-A **controller** decides why personal information is collected and the essential
-choices about its use. A **processor** handles that information on the controller's
-instructions. Under the European Union's General Data Protection Regulation (GDPR),
-that processing needs a binding agreement describing the work and protections.
+If you provide a service to another organization that is the real controller, say so; the agreement has to reflect that chain.
 
-Your organisation may be the controller for information collected through its devices.
-Kilo may act as its processor for the agreed service. For example, an employer deciding
-to record staff locations needs its own lawful purpose and information for staff;
-Kilo's handling of those records needs appropriate contractual and security arrangements.
-If you provide a service for another controller, explain that relationship too.
+## What do I send to start a DPA?
 
-Kilo also has its own purposes, such as administering accounts, billing and protecting
-its service. The [Privacy Policy](https://kiloiot.io/privacy-policy/) explains the company's
-processing. A single role label does not settle every use of information.
+Email **info [at] kiloiot.de** (replace `[at]` with `@`) with:
 
-## Prepare the information for an agreement
+1. Your legal organization name, and whether you act for another organization.
+2. The Kilo features you will use, including the AI assistant and any integrations.
+3. Whose data is involved, what data it is and why you need it, including any sensitive categories.
+4. Where data must be stored and from where support may access it.
+5. Your requirements for security, recovery, privacy requests and the end of the service.
+6. Your contacts for privacy, contracts and security incidents.
 
-Contact **info [at] kiloiot.de** (replace `[at]` with `@`) and describe:
+Keep passwords, private keys, data exports, footage and identity documents out of that first email.
 
-1. Your legal organisation and whether you act for another organisation.
-2. The Kilo service and features you want to use, including any assistant or integrations.
-3. The people and information involved, why you need them and any sensitive categories.
-4. Your required storage, support-access and provider locations.
-5. Any security, recovery, privacy-request or end-of-service requirements you must meet.
-6. Your authorised privacy, contract and incident contacts.
+## What does the agreement cover?
 
-Keep passwords, private keys, customer exports, footage and unnecessary identity
-documents out of the first message. The appropriate scope and secure exchange method
-can be established before confidential material is shared.
+What is processed and why, your instructions, confidentiality, security measures, other providers that handle the data, help with privacy requests and data breaches, audit rights, and what happens to the data when the service ends. Check the actual parties, schedules and terms before you sign. A protection the law requires can't be waived by agreeing to go without it.
 
-The agreement needs to identify the processing, instructions, confidentiality,
-security measures, other processors, help with privacy requests and breaches, audit
-rights and what happens to information when the service ends. Confirm the actual
-parties, schedules and effective terms. A privacy notice or a general statement about
-security does not replace that agreement. Identifying a missing safeguard does not
-make it acceptable to process without a legally required protection.
+## Which other providers handle the data?
 
-## Check providers and locations for the actual service
+That depends on the features you use. The AI assistant sends requests to a model provider, alerts go through notification providers, and the platform runs on Hetzner. A provider that processes data for Kilo on your behalf is a **subprocessor**; the agreement needs to name the ones that apply to your service and how new ones are approved. The examples above are not a complete list of subprocessors. See [Where Is Kilo Hosted?](infrastructure-and-subprocessors.md)
 
-The providers involved depend on the features and integrations used. A company
-engaged to process information for a processor is called a **subprocessor**. An
-integration option or software component is not automatically an engaged subprocessor.
-Confirm the actual provider's role and the authorisation arrangements in your agreement.
+If data leaves the European Economic Area, the transfer needs its own legal safeguard. An EU server, an encrypted connection or a provider's name doesn't settle that by itself.
 
-Kilo uses Hetzner for cloud infrastructure. The inspected German computing locations
-do not establish where every backup, support record, assistant-provider copy or remote
-access is located. Ask for the arrangements that apply to your information. Read
-[Infrastructure and providers](infrastructure-and-subprocessors.md) for the verified
-location scope and its limits.
+## What happens with privacy requests and breaches?
 
-Where GDPR international-transfer rules apply, the transfer needs the applicable
-legal safeguards as well as processing terms. An EU server, an encrypted connection
-or a provider's name does not answer that question by itself.
+* If someone asks your organization for their data or its deletion, tell Kilo what you need and when; keep the date you received the request and the result. See [How Does Kilo Handle Personal Data?](privacy-and-data-protection.md)
+* Under GDPR, Kilo must tell you without undue delay after it becomes aware of a personal-data breach affecting your data. Your own duty to inform the authority and the people affected is separate.
+* To report a suspected security problem, see [How Do I Report a Kilo Security Vulnerability?](incident-response-and-vulnerability-reporting.md)
 
-An assistant can send messages and retrieved information to the selected model
-provider. A provider connected through your own account has its own terms. Check the
-actual information path, access, retention and training arrangements before enabling
-it. Disconnecting a provider does not erase information already sent. See
-[Assistant privacy](../kilo-iot-server/ai-assistant/privacy.md).
+## What happens to the data when the service ends?
 
-## Handle privacy requests and incidents
-
-If someone asks your organisation for their information or its deletion, identify the
-relevant account, data and requested action. Explain when you need Kilo's assistance
-and your authority to act. Keep the received date and the result. Use
-[Privacy and data protection](privacy-and-data-protection.md) for the contact process
-and applicable individual-request timing.
-
-For a suspected security incident, use [Report a security vulnerability](incident-response-and-vulnerability-reporting.md).
-Where Kilo acts as a processor, GDPR requires notice to the controller without undue
-delay after awareness of a personal-data breach. This is distinct from the controller's
-own duties to authorities and affected people; it is not a 72-hour waiting period.
-
-## Plan the end of service before it happens
-
-Agree how your organisation will receive or delete the personal information processed
-for it, including supplier copies, backups and any lawful storage exception. Under
-GDPR's processor rules, the controller chooses return or deletion after the processing
-services end, with existing copies deleted unless EU or Member State law requires storage.
-
-Cancelling a subscription, closing a login, requesting personal-data erasure and moving
-company data are different actions. Account closure does not currently automate complete
-deletion across all conversations and systems. Obtain a response describing what has
-been done, anything that remains and why, and the next step.
-
-Read [Data export and switching](data-export-deletion-and-switching.md) and
-[Data and export formats](data-and-export-formats.md) before moving service or ending
-access. A switching retrieval period is not a blanket permission to retain all personal
-information. Confirm a workable arrangement for your deployment before relying on it.
+You choose whether your personal data is returned or deleted, including copies at other providers and in backups, unless EU or member-state law requires it to be kept. Agree this before the end comes. Cancelling a subscription or closing a login is not the same thing; see [How Do I Export My Data or Leave Kilo?](data-export-deletion-and-switching.md)

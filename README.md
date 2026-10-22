@@ -14,7 +14,6 @@ The products serve different parts of that job:
 
 - **[Kilo IoT Server](kilo-iot-server/README.md)** manages connected devices, readings, Lens cameras, dashboards, rules, alarms, and an AI assistant that carries out device and automation setup. **Kilo Cloud** is its hosted offering.
 - **[Kilo Center](kilo-center/kilo-mioty-service-center/README.md)** is an open-source MIOTY service center for networking: connecting base stations, registering endpoints, and enabling communication. Kilo Cloud includes its enterprise version and adds widgets, rules, alarms, and the wider IoT platform.
-- **[Kilo Connectivity](kilo-connectivity/what-is-kilo-connectivity/README.md)** includes cellular IoT SIM services for equipment that connects through mobile networks. Cellular service is separate from the IoT Server's software connectors.
 - **[Kilo Electronics](https://kiloelectronics.com/)** supplies sensors, gateways, and other hardware for a project.
 
 Choose the components your deployment needs. You can bring existing equipment to the IoT Server or begin with an [emulated device](kilo-iot-server/connectors/emulator-connector.md) to try dashboards and rules before connecting hardware.
@@ -31,9 +30,9 @@ The IoT Server also gives AI agents access to supported device operations throug
 
 Kilo Electronics is our hardware distribution business, operating in Germany under **Kilo IoT, GmbH**. [Kilo Electronics](https://kiloelectronics.com/) supplies sensors, gateways, and other IoT hardware to support real deployments.
 
-#### Connectivity — Kilo Connectivity
+#### Connectivity — LoRaWAN, mioty and MQTT
 
-Kilo offers connectivity for device deployments, including cellular IoT SIM services. Check network availability, supported radio technologies, and plan terms for each target country and device before deployment. See [Kilo Connectivity](kilo-connectivity/what-is-kilo-connectivity/README.md).
+Devices reach Kilo through [LoRaWAN gateways, mioty base stations and MQTT edge gateways](kilo-iot-server/gateways/README.md), or connect directly over MQTT and tracker protocols. Kilo includes its own LoRaWAN network server and Kilo Center for mioty, and each source is set up as a [connector](kilo-iot-server/connectors/README.md).
 
 #### IoT Platform — Kilo Cloud
 
