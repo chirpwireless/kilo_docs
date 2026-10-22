@@ -1,38 +1,52 @@
 ---
-description: "Understand personal information in Kilo, make a privacy request, and distinguish account closure from completed deletion."
+description: "How to get a copy of your personal data in Kilo, fix or delete it, and what to settle before cameras record people."
 ---
 
-# Privacy and data protection
+# How Does Kilo Handle Personal Data?
 
-Kilo uses information about people to provide accounts, answer enquiries and operate connected-device services. Device readings can also be personal information: for example, a named worker's location or a sensor record showing when someone enters a room.
+Kilo uses personal data to run accounts, answer questions and operate connected devices. CHIRP USA LLC operates Kilo, and the [Privacy Policy](https://kiloiot.io/privacy-policy/) explains what the company processes and your rights. This page tells you how to use those rights in practice.
 
-CHIRP USA LLC operates the Kilo platform. The [Privacy Policy](https://kiloiot.io/privacy-policy/) explains the company's processing and your rights. If your organisation decides to collect information about other people, it also needs a lawful purpose, suitable access restrictions and clear information for those people.
+Device readings can be personal data too. A named worker's location, or a sensor that shows when someone enters a room, is information about a person even when the device itself has no name on it.
 
-## Make a privacy request
+## How do I get a copy of my data or have it deleted?
 
-Email **info [at] kiloiot.de** (replace `[at]` with `@`). In your message:
+Email **info [at] kiloiot.de** (replace `[at]` with `@`) and include:
 
-1. Identify the service or account and your relationship to it.
-2. Say what you need: a copy of personal information, a correction, deletion, restricted use or another privacy right.
-3. Describe the relevant information without attaching passwords, customer exports or unnecessary identity documents.
-4. If you are acting for someone else or for an organisation, explain your authority. We may need proportionate additional information to verify it before disclosing or changing information.
+1. The account or service, and how you are connected to it, for example as a user or as an administrator.
+2. What you want: a copy of your data, a correction, deletion, restricted use or another privacy right.
+3. Which information it concerns. Don't attach passwords, data exports or identity documents unless asked.
+4. If you are asking for someone else or for an organization, why you are allowed to. You may be asked for proportionate proof before anything is shared or changed.
 
-Where the European Union's General Data Protection Regulation (GDPR) applies, the response about action taken is due without undue delay and normally within one month of receipt. Any necessary extension must be explained within that first month. Qualifying deletion must happen without undue delay; the response deadline is not a waiting period. If a request cannot be fulfilled, the response must explain the reason and the applicable complaint options.
+Where the EU General Data Protection Regulation (GDPR) applies, you get an answer about the action taken without undue delay, normally within one month. If more time is needed, you are told why within that first month. Deletion you are entitled to happens without undue delay; the one-month answer time is not a waiting period. If a request can't be carried out, the answer explains why and where you can complain.
 
-## Understand the outcome
+## Does closing my account delete my data?
 
-A privacy request, cancelling a subscription and closing a login are different actions. Closing an account does not currently automate complete deletion of conversations and information across every system. Ask for the outcome you need and keep the response, including any records that remain, why they remain and the next step.
+Not completely, on its own. Cancelling a subscription, deleting a conversation, closing your account and asking for your data to be erased are different actions:
 
-Read [Data export and switching](data-export-deletion-and-switching.md) before moving company data or ending a service. That guide also explains provider copies and backups.
+* **Delete my account** in [Profile Settings](../kilo-iot-server/settings/profile-settings.md) sends a deletion request that the team handles; it is not immediate.
+* Closing an account does not yet delete every conversation and record across all systems automatically.
+* Backups expire on their own schedule, and deleted data must be kept out of use and must not come back if a backup is restored.
 
-## Before introducing sensitive information
+Ask for the outcome you need, and keep the answer. It should say what was deleted, anything that remains, why it remains and what happens next. To move or delete company data rather than your own, see [How Do I Export My Data or Leave Kilo?](data-export-deletion-and-switching.md)
 
-Check the processing agreement, providers, locations and any restrictions needed for your deployment. An AI provider may receive your messages and information retrieved to answer them. Review its retention and model-training terms; disconnecting an application does not erase information already sent to it. See [AI assistant privacy](../kilo-iot-server/ai-assistant/privacy.md).
+## What happens to data I send to the AI assistant?
 
-Camera use needs its own decisions about the people recorded, purpose, access and retention. See [Video and privacy](video-and-kilo-lens.md).
+The AI assistant sends your messages, and the information it looks up to answer them, to the selected AI model provider. Check that provider's retention and training terms before sharing sensitive information. Disconnecting a provider does not erase what was already sent. See [AI Privacy and Security](../kilo-iot-server/ai-assistant/privacy.md).
 
-## Processing arrangements
+## What must I settle before cameras record people? {#cameras-that-record-people}
 
-If your organisation will use Kilo to handle information about other people, read
-[Processing agreements](processing-agreements.md) to prepare the service scope,
-responsibilities and safeguards needed for that arrangement.
+Before a camera deployment records real people, contact **info [at] kiloiot.de** with a description of the site, the cameras, the purpose, who is recorded, who will have access and how long footage is needed, and get Kilo's confirmation that the service is ready for that use. Keep footage out of that first email.
+
+Your organization must:
+
+* have a lawful purpose for recording;
+* complete the privacy and security assessment for the site before recording starts, including a data protection impact assessment (DPIA) where one is required;
+* tell the people being recorded, for example with signs at the site;
+* control who can watch and export footage;
+* keep only the footage the purpose needs, for no longer than needed.
+
+Discuss any video analytics or processing outside your site separately. General product documentation does not approve a particular camera deployment.
+
+## Does my organization need a processing agreement?
+
+If your organization uses Kilo to handle information about other people, such as employees, tenants or visitors, it needs a data processing agreement with Kilo. See [Does Kilo Sign a Data Processing Agreement?](processing-agreements.md)

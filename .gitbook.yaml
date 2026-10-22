@@ -66,3 +66,50 @@ redirects:
   lorawan-lr-fhss/lorawan/subg/2g4: kilo-iot-server/connectors/lns-connector/lora-2g4.md
   lorawan-lr-fhss/what-is-lr-fhss: kilo-iot-server/connectors/lns-connector/lr-fhss.md
   lorawan-lr-fhss/built-in-lpwan-server: kilo-iot-server/connectors/lns-connector/built-in-lns.md
+
+  # Trust and Security moved under one parent page (old root and /trust-and-security/ URLs)
+  trust-and-security: trust-security-compliance/README.md
+  incident-response-and-vulnerability-reporting: trust-security-compliance/incident-response-and-vulnerability-reporting.md
+  trust-and-security/incident-response-and-vulnerability-reporting: trust-security-compliance/incident-response-and-vulnerability-reporting.md
+  customer-security-guide: trust-security-compliance/customer-security-guide.md
+  trust-and-security/customer-security-guide: trust-security-compliance/customer-security-guide.md
+  privacy-and-data-protection: trust-security-compliance/privacy-and-data-protection.md
+  trust-and-security/privacy-and-data-protection: trust-security-compliance/privacy-and-data-protection.md
+  processing-agreements: trust-security-compliance/processing-agreements.md
+  trust-and-security/processing-agreements: trust-security-compliance/processing-agreements.md
+  infrastructure-and-subprocessors: trust-security-compliance/infrastructure-and-subprocessors.md
+  trust-and-security/infrastructure-and-subprocessors: trust-security-compliance/infrastructure-and-subprocessors.md
+  data-export-deletion-and-switching: trust-security-compliance/data-export-deletion-and-switching.md
+  trust-and-security/data-export-deletion-and-switching: trust-security-compliance/data-export-deletion-and-switching.md
+  compliance-status: trust-security-compliance/README.md
+  trust-and-security/compliance-status: trust-security-compliance/README.md
+  trust-security-compliance/compliance-status: trust-security-compliance/README.md
+  security-controls: trust-security-compliance/customer-security-guide.md
+  trust-and-security/security-controls: trust-security-compliance/customer-security-guide.md
+  trust-security-compliance/security-controls: trust-security-compliance/customer-security-guide.md
+  shared-responsibility: trust-security-compliance/customer-security-guide.md
+  trust-and-security/shared-responsibility: trust-security-compliance/customer-security-guide.md
+  trust-security-compliance/shared-responsibility: trust-security-compliance/customer-security-guide.md
+  video-and-kilo-lens: trust-security-compliance/privacy-and-data-protection.md
+  trust-and-security/video-and-kilo-lens: trust-security-compliance/privacy-and-data-protection.md
+  trust-security-compliance/video-and-kilo-lens: trust-security-compliance/privacy-and-data-protection.md
+  data-and-export-formats: trust-security-compliance/data-export-deletion-and-switching.md
+  trust-and-security/data-and-export-formats: trust-security-compliance/data-export-deletion-and-switching.md
+  trust-security-compliance/data-and-export-formats: trust-security-compliance/data-export-deletion-and-switching.md
+
+  # Removed: docs FAQ
+  help-and-faq: kilo-iot-server/help/get-help.md
+  faq/help-and-faq: kilo-iot-server/help/get-help.md
+
+  # Removed: Kilo Connectivity (cellular SIM service discontinued)
+  what-is-kilo-connectivity: README.md
+  kilo-connectivity/what-is-kilo-connectivity: README.md
+  what-is-kilo-connectivity/cellular-iot: README.md
+  kilo-connectivity/what-is-kilo-connectivity/cellular-iot: README.md
+  what-is-kilo-connectivity/simcardtypes: README.md
+  kilo-connectivity/what-is-kilo-connectivity/simcardtypes: README.md
+  connectivity-platform: README.md
+  kilo-connectivity/connectivity-platform: README.md
+  iot-security: README.md
+  kilo-connectivity/iot-security: README.md
+  kilo-connectivity: README.md
