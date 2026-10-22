@@ -19,7 +19,7 @@ Kilo Hub recognizes the common USB coordinator families and chooses the driver f
 * dresden elektronik ConBee and RaspBee
 * Nordic nRF52840 running ZBOSS
 
-Plug the dongle in before opening the **Zigbee** page. With a single coordinator plugged in, Kilo Hub takes it for Zigbee automatically and remembers it by its serial number. With two coordinator dongles plugged in, Kilo Hub does not guess which one runs Zigbee, so keep only the Zigbee coordinator connected while you set the network up. When no coordinator is found, the page says **No Zigbee coordinator found. Plug in a supported USB dongle and it will appear here.**
+Plug the dongle in before opening the **Zigbee** page. With a single coordinator plugged in, Kilo Hub uses it for Zigbee automatically. With two or more — a Zigbee dongle and a Thread radio, for example — Kilo Hub does not guess: the page lists them under **Radios needing a decision**. Select **Use for Zigbee** on the dongle that runs Zigbee, and Kilo Hub remembers it by its serial number, so it keeps its role after reboots and in any USB port. When no coordinator is found, the page says **No Zigbee coordinator found. Plug in a supported USB dongle and it will appear here.**
 
 ## How do I start the Zigbee network?
 

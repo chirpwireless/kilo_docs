@@ -1,5 +1,5 @@
 ---
-description: Download the Kilo Hub installer for Windows, macOS, Linux or Raspberry Pi OS and get past the first-open prompt.
+description: Download the Kilo Hub installer for Windows, macOS, Linux or a Raspberry Pi and get past the first-open prompt.
 ---
 
 # How Do I Download and Install Kilo Hub?
@@ -20,7 +20,7 @@ Open the release page, scroll to **Assets**, and pick the file for the machine. 
 | Mac with Apple silicon (M1 and later) | `Kilo-Hub-<version>-arm64.dmg` |
 | Mac with an Intel processor | `Kilo-Hub-<version>.dmg` |
 | Ubuntu or Debian computer | `kilo-hub_<version>_amd64.deb` |
-| Raspberry Pi (Raspberry Pi OS 64-bit) | `kilo-hub_<version>_arm64.deb` |
+| Raspberry Pi (Ubuntu 64-bit, prepared as in [Raspberry Pi](raspberry-pi/README.md)) | `kilo-hub_<version>_arm64.deb` |
 | Any other Linux distribution | `Kilo-Hub-<version>.AppImage` (64-bit PC) or `Kilo-Hub-<version>-arm64.AppImage` (ARM) |
 
 Ignore the `.yml` and `.blockmap` files on the page; they are not installers.
@@ -44,13 +44,13 @@ On macOS 13 and later, Kilo Hub sets up its own Docker engine on the Mac (a down
 
 ## How do I install Kilo Hub on Linux or a Raspberry Pi?
 
-On Ubuntu, Debian and Raspberry Pi OS, use the `.deb` package. It installs everything Kilo Hub depends on:
+On Ubuntu and Debian, use the `.deb` package. It installs everything Kilo Hub depends on:
 
 ```sh
 sudo apt install ./kilo-hub_<version>_amd64.deb
 ```
 
-On a Raspberry Pi, use the `arm64` package instead. Then start **Kilo Hub** from the applications menu. The Raspberry Pi needs a screen, keyboard and mouse for this, or a remote desktop session.
+On a Raspberry Pi, run the [setup script](raspberry-pi/README.md#how-do-i-prepare-the-raspberry-pi-for-kilo-hub) first, then install the `arm64` package. Then start **Kilo Hub** from the applications menu.
 
 On other distributions, use the AppImage:
 

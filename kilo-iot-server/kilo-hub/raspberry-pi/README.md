@@ -17,7 +17,7 @@ A typical small site — a retail store, a branch office, a plant room — ends 
 | Single-board computer | Raspberry Pi 4 (4 GB or 8 GB) or Raspberry Pi 5 | Everything |
 | Storage | microSD card, 32 GB or larger | Everything |
 | Power | 5 V / 3 A USB-C power supply | Everything |
-| Operating system | Raspberry Pi OS (64-bit) | Everything |
+| Operating system | Ubuntu 24.04 or 26.04 (64-bit) | Everything |
 | Pi HAT with an mPCIe slot | A RAK Pi HAT for mPCIe concentrators | LoRaWAN gateway |
 | LoRaWAN concentrator | RAK5146 mPCIe card (Semtech SX1303) | LoRaWAN gateway |
 | Antennas | LoRa antenna for your region's band; GPS antenna optional | LoRaWAN gateway |
@@ -33,11 +33,29 @@ Zigbee and Thread need one radio each: a single dongle runs either Zigbee firmwa
 3. Connect the LoRa antenna to the concentrator's antenna connector **before** powering on. Transmitting without an antenna can damage the radio.
 4. Optionally connect the GPS antenna, for accurate gateway time and location.
 5. Plug the Zigbee dongle (and the Thread radio, if used) into USB ports. A short USB extension cable moves the radio away from the Pi's own interference.
-6. Write Raspberry Pi OS (64-bit) to the microSD card, start the Pi with a screen, keyboard and mouse, and connect it to the network — wired Ethernet is best for cameras.
+6. Write Ubuntu 24.04 or 26.04 (64-bit) to the microSD card with Raspberry Pi Imager, start the Pi and connect it to the network — wired Ethernet is best for cameras.
+
+## How do I prepare the Raspberry Pi for Kilo Hub?
+
+One script prepares the Pi: it turns on the interface the concentrator card uses, checks that the card answers, and installs Docker, the gateway software and the Zigbee and Thread radio support. Run it once, from a terminal on the Pi or over SSH:
+
+```sh
+git clone https://github.com/chirpdepin/raspberry-pi-iot-hub.git
+cd raspberry-pi-iot-hub
+sudo ./scripts/install-ubuntu.sh --with-desktop
+```
+
+`--with-desktop` adds the small graphical session Kilo Hub runs in on Ubuntu Server; leave it out on Ubuntu Desktop. If the card does not answer, the script stops and says so: check that the card is seated in the HAT and the HAT on the GPIO header. Reboot when the script asks.
 
 ## How do I install Kilo Hub on the Raspberry Pi?
 
-Download the `arm64` `.deb` package from the [Kilo Hub release page](https://github.com/chirpdepin/raspberry-pi-iot-hub/releases/latest) and install it as described in [Download and Install](../download-and-install.md#how-do-i-install-kilo-hub-on-linux-or-a-raspberry-pi). Start **Kilo Hub** from the applications menu. The Dashboard lists the Pi as the device and shows which capabilities found their hardware.
+Download `kilo-hub_<version>_arm64.deb` from the [Kilo Hub release page](https://github.com/chirpdepin/raspberry-pi-iot-hub/releases/latest) and install it:
+
+```sh
+sudo apt install ./kilo-hub_<version>_arm64.deb
+```
+
+After a reboot with a screen attached, the Pi signs in on its own and Kilo Hub starts. The Dashboard lists the Pi as the device and shows which capabilities found their hardware.
 
 ## What can the Raspberry Pi hub run?
 
