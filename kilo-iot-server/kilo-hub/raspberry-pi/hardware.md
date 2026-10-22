@@ -13,7 +13,7 @@ Assembly takes about fifteen minutes and needs a small screwdriver. Do it with t
 3. Connect the antenna cable to the card's **LoRa** antenna connector — the small round connector that is *not* marked GPS. Press it straight down until it clicks.
 4. If you have a GPS antenna, connect it to the connector marked **GPS**. GPS gives the gateway accurate time and location; the gateway works without it.
 
-<figure><img src="../../../.gitbook/assets/kilo-hub-rak5146-pi-hat-kit.jpg" alt="RAK5146 concentrator card next to the Pi HAT, showing the mPCIe slot the card goes into"><figcaption><p>The card goes into the mPCIe slot on the HAT and is held by one screw.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/kilo-hub-rak5146-pi-hat-kit.png" alt="RAK5146 concentrator card next to the Pi HAT, showing the mPCIe slot the card goes into"><figcaption><p>The card goes into the mPCIe slot on the HAT and is held by one screw.</p></figcaption></figure>
 
 {% hint style="warning" %}
 Never power the Pi with the concentrator card fitted and no antenna connected. A LoRa radio that transmits without an antenna can damage itself.
