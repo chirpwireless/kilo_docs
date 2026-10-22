@@ -29,7 +29,7 @@ On a Raspberry Pi prepared with the [setup script](raspberry-pi/setup.md#how-do-
    The command checks that the radio is plugged in and not already the Zigbee radio, links it as the Thread radio, and the border router starts. The role follows the radio's serial number, so it survives reboots and other USB ports.
 4. Open **Kilo Hub** and select **Thread** in the left menu. The page shows **Thread radio found.**
 
-When no Thread radio is plugged in, the Thread page and the Thread card on the Dashboard both say **Thread needs its own radio. One dongle cannot run Zigbee and Thread at the same time — they use different firmware.**
+When no Thread radio is plugged in, the Thread page and the Thread card on the Dashboard both say that **Thread needs its own radio**: one dongle cannot run Zigbee and Thread at the same time.
 
 <figure><img src="../../.gitbook/assets/kilo-hub-thread-no-radio.jpg" alt="Kilo Hub Thread page explaining that Thread needs its own radio"><figcaption><p>Without a Thread radio, the page explains that Thread and Zigbee need separate radios.</p></figcaption></figure>
 
