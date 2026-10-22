@@ -1,12 +1,16 @@
 ---
-description: Assemble a Raspberry Pi IoT hub — fit the RAK5146 card to the Pi HAT, mount the antenna, case it and add the radios.
+description: "Assemble a Raspberry Pi IoT hub: case it, add the radios and cameras, and fit the LoRaWAN card if you want a gateway."
 ---
 
-# How Do I Assemble a Raspberry Pi LoRaWAN Hub?
+# How Do I Assemble a Raspberry Pi IoT Hub?
 
-Assembly takes about fifteen minutes and needs a small screwdriver. Do it with the Pi unplugged, and fit the antenna before the Pi is ever powered with the card in place.
+Assembly takes about fifteen minutes and needs a small screwdriver. Do it with the Pi unplugged.
+
+The first two sections are only for a Pi you are turning into a LoRaWAN gateway. If you only use the hub for cameras, Zigbee or Thread, skip to [How do I put the hub in its case?](#how-do-i-put-the-hub-in-its-case)
 
 ## How do I fit the concentrator card to the Pi HAT?
+
+Only if you are turning the Pi into a LoRaWAN gateway. Fit the antenna before the Pi is ever powered with the card in place.
 
 1. Hold the RAK5146 card at a slight angle and push its gold edge fully into the mPCIe slot on the Pi HAT.
 2. Press the card down flat and fix it with the screw on the HAT's standoff.
@@ -21,18 +25,19 @@ Never power the Pi with the concentrator card fitted and no antenna connected. A
 
 ## How do I mount the HAT on the Raspberry Pi?
 
+Only if you are turning the Pi into a LoRaWAN gateway.
+
 1. Screw the standoffs that come with the HAT into the Pi's four mounting holes.
 2. Line the HAT's 40-pin socket up with the Pi's 40-pin GPIO header and press it down evenly until it sits fully on the header. Every pin must be inside the socket; a HAT that is one row off does not work.
 3. Fix the HAT to the standoffs with the remaining screws.
 
 ## How do I put the hub in its case?
 
-1. Place the Pi with the HAT in the case.
-2. Bring the antenna cable's SMA end out through the case's antenna opening and tighten its nut.
-3. Screw the LoRa antenna onto the SMA connector on the outside of the case.
-4. Close the case, leaving the ventilation openings clear.
+1. Place the Pi in the case, with the HAT if you fitted one.
+2. With the LoRaWAN card: bring the antenna cable's SMA end out through the case's antenna opening, tighten its nut, and screw the LoRa antenna onto the SMA connector outside the case.
+3. Close the case, leaving the ventilation openings clear.
 
-Mount the antenna upright and as high as practical, away from metal. Range depends far more on where the antenna is than on the gateway.
+With a LoRaWAN antenna, mount it upright and as high as practical, away from metal. Range depends far more on where the antenna is than on the gateway.
 
 ## How do I connect the Zigbee and Thread radios?
 
