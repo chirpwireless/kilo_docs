@@ -30,11 +30,11 @@ Raspberry Pi boards, power supplies and cases are sold by any Raspberry Pi resel
 
 The RF modules category also has a **RAK5146 Pi HAT kit**: the HAT and the card together, which saves matching them yourself.
 
-<figure><img src="../../../.gitbook/assets/kilo-hub-rak-pi-hat.jpg" alt="RAKwireless RAK2287/RAK5146 Pi HAT, an adapter board with a 40-pin header and an mPCIe slot"><figcaption><p>The RAKwireless Pi HAT sits on the Raspberry Pi and holds the concentrator card.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/kilo-hub-rak-pi-hat.png" alt="RAKwireless RAK2287/RAK5146 Pi HAT, an adapter board with a 40-pin header and an mPCIe slot"><figcaption><p>The RAKwireless Pi HAT sits on the Raspberry Pi and holds the concentrator card.</p></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/kilo-hub-rak5146-card.jpg" alt="RAKwireless RAK5146 SPI concentrator card in mPCIe format with a LoRa and a GPS antenna connector"><figcaption><p>The RAK5146 concentrator card. The connector marked GPS is for the optional GPS antenna; the other one is for the LoRa antenna.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/kilo-hub-rak5146-card.png" alt="RAKwireless RAK5146 SPI concentrator card in mPCIe format with a LoRa and a GPS antenna connector"><figcaption><p>The RAK5146 concentrator card. The connector marked GPS is for the optional GPS antenna; the other one is for the LoRa antenna.</p></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/kilo-hub-rak5146-pi-hat-kit.jpg" alt="RAK5146 Pi HAT kit with the concentrator card next to the HAT"><figcaption><p>The RAK5146 Pi HAT kit: card and HAT together.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/kilo-hub-rak5146-pi-hat-kit.png" alt="RAK5146 Pi HAT kit with the concentrator card next to the HAT"><figcaption><p>The RAK5146 Pi HAT kit: card and HAT together.</p></figcaption></figure>
 
 {% hint style="warning" %}
 Buy the card and the antenna for the band used in the country where the hub will run. The band cannot be changed later; everything else about the region is set in Kilo when you register the gateway.
