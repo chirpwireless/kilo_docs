@@ -1,10 +1,10 @@
 ---
-description: Turn a Raspberry Pi into an inexpensive on-site IoT hub — LoRaWAN gateway, camera recorder, Zigbee and Thread.
+description: Turn a Raspberry Pi into a low-cost on-site IoT hub for cameras, Zigbee and Thread, and a LoRaWAN gateway if you want.
 ---
 
 # How Do I Turn a Raspberry Pi into an IoT Hub?
 
-A Raspberry Pi with Kilo Hub is a small, inexpensive hub that sits at the site and does the jobs that usually need three or four separate boxes. Add a LoRaWAN card and an antenna, plug in a Zigbee dongle, point it at the site's IP cameras, and one Pi becomes the site's LoRaWAN gateway, camera recorder and smart-home radio — all set up from one app, without a terminal session per device.
+A Raspberry Pi with Kilo Hub is a small, inexpensive hub that sits at the site and does the jobs that usually need three or four separate boxes. Point it at the site's IP cameras and plug in a Zigbee dongle, and one Pi becomes the site's camera recorder and smart-home radio. Add a LoRaWAN card and an antenna if you also want it to be the site's LoRaWAN gateway. Everything is set up from one app, without a terminal session per device.
 
 This guide walks the whole way, from an empty shopping cart to a hub that is online in Kilo.
 
@@ -24,26 +24,26 @@ A Raspberry Pi hub replaces them with one device that draws a few watts, fits in
 
 | Capability | What it does | Hardware it needs |
 |---|---|---|
-| **LoRaWAN gateway** | Receives LoRaWAN sensors and forwards them to Kilo's built-in LoRaWAN Network Server over an encrypted Basics Station connection | RAKwireless Pi HAT, RAK5146 concentrator card, LoRa antenna |
+| **LoRaWAN gateway** | Receives LoRaWAN sensors and forwards them to Kilo's built-in LoRaWAN Network Server over an encrypted Basics Station connection | Optional add-on: RAKwireless Pi HAT, RAK5146 concentrator card, LoRa antenna |
 | **Cameras** | Finds IP cameras on the network and runs a recorder for each one, so video is recorded on site, ready to connect to Kilo Lens | IP cameras on the same network |
 | **Zigbee** | Runs a Zigbee network for sensors, plugs and lights, with pairing from the app | USB Zigbee coordinator |
 | **Thread** | Runs a Thread border router for Matter devices | A second USB radio with Thread firmware |
 
-A Raspberry Pi 4 records about **six or seven cameras** while also running the gateway and Zigbee; a Raspberry Pi 5 handles more. Kilo Hub shows the remaining capacity as you add cameras.
+A Raspberry Pi 4 records about **six or seven cameras**, also with Zigbee and a gateway running; a Raspberry Pi 5 handles more. Kilo Hub shows the remaining capacity as you add cameras.
 
-You do not need every capability. A Pi with just the LoRaWAN card is a gateway; add a Zigbee dongle or cameras whenever the site needs them.
+Pick only what you need: cameras, Zigbee, Thread, a LoRaWAN gateway, or any mix. You can add the others later.
 
 ## When is a computer the better choice?
 
-When a site has more cameras than a Pi can record, install Kilo Hub on a computer for the cameras — see [Windows, Mac and Linux](../computer.md). On a computer the number of cameras is limited only by its processor, memory and network. Keep the Pi as the LoRaWAN gateway: a computer has no slot for a LoRaWAN card.
+When a site has more cameras than a Pi can record, install Kilo Hub on a computer for the cameras — see [Windows, Mac and Linux](../computer.md). On a computer the number of cameras is limited only by its processor, memory and network. If you want a LoRaWAN gateway, keep it on the Pi: a computer has no slot for a LoRaWAN card.
 
 ## How do I build a Raspberry Pi hub, step by step?
 
 1. **Buy the parts** — [What Do I Need to Build a Raspberry Pi IoT Hub?](shopping-list.md)
-2. **Put it together** — [How Do I Assemble a Raspberry Pi LoRaWAN Hub?](hardware.md)
+2. **Put it together** — [How Do I Assemble a Raspberry Pi IoT Hub?](hardware.md)
 3. **Prepare the Pi and install Kilo Hub** — [How Do I Set Up the Raspberry Pi for Kilo Hub?](setup.md)
 4. **Bring up each capability:**
-   * the gateway — [How Do I Build a Raspberry Pi LoRaWAN Gateway?](lorawan-gateway.md)
+   * the LoRaWAN gateway, if you added the card — [How Do I Build a Raspberry Pi LoRaWAN Gateway?](lorawan-gateway.md)
    * cameras — [How Do I Add IP Cameras with Kilo Hub?](../cameras.md)
    * Zigbee — [How Do I Pair Zigbee Devices with Kilo Hub?](../zigbee.md)
    * Thread — [How Do I Add Thread to Kilo Hub?](../thread.md)

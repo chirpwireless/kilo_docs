@@ -1,25 +1,27 @@
 ---
-description: Everything to buy for a Raspberry Pi IoT hub — Pi, case, power, Pi HAT, RAK5146 card, antenna, Zigbee dongle, cameras.
+description: "What to buy for a Raspberry Pi IoT hub: the Pi itself, then add-ons for cameras, Zigbee, Thread or a LoRaWAN gateway."
 ---
 
 # What Do I Need to Build a Raspberry Pi IoT Hub?
 
-A Raspberry Pi hub is built from standard parts. The tables below list everything, grouped by what it is for. The LoRaWAN parts and the antenna are available in the [Kilo Electronics store](https://kiloelectronics.com/); the links open the store category, so you see every model currently in stock.
+You only buy parts for what you want your Raspberry Pi to do. Every hub starts with the Raspberry Pi itself; each section after that is an add-on. Use the Pi only for cameras, only for Zigbee, or turn it into a LoRaWAN gateway as well. Parts sold in the [Kilo Electronics store](https://kiloelectronics.com/) link to their store category, so you see every model currently in stock.
 
-## What does every Raspberry Pi hub need?
+## What do I need for the Raspberry Pi itself?
 
 | Part | What to buy | Why |
 |---|---|---|
 | Raspberry Pi | Raspberry Pi 4 Model B (4 GB or 8 GB) or Raspberry Pi 5 (4 GB or more) | Runs Kilo Hub. A Pi 5 records more cameras than a Pi 4 |
 | Power supply | The official Raspberry Pi USB-C supply for your model: 15 W (5 V / 3 A) for a Pi 4, 27 W (5 V / 5 A) for a Pi 5 | A weak phone charger makes the Pi reset under load, which looks like random faults |
 | microSD card | 32 GB or larger, A2 rated, from a known brand | Holds the operating system and the camera recordings. A card that keeps up with constant writes lasts longer |
-| Case | A case with room for a Pi HAT on top, an opening for the antenna connector and some ventilation, ideally a fan | Standard Raspberry Pi cases are too low for a HAT |
+| Case | A case with ventilation, ideally a fan. If you turn the Pi into a LoRaWAN gateway, the case also needs room for a Pi HAT on top and an opening for the antenna connector | Standard Raspberry Pi cases are too low for a HAT |
 | Network cable | Cat 5e or better | Wired Ethernet keeps the gateway and cameras online when Wi-Fi is not |
 | For setup | A computer with a microSD card reader; a screen with an HDMI cable (micro-HDMI on the Pi), a USB keyboard and mouse | Writing the operating system, and using Kilo Hub on the Pi |
 
 Raspberry Pi boards, power supplies and cases are sold by any Raspberry Pi reseller.
 
-## What do I need for the LoRaWAN gateway?
+## What do I need to turn my Raspberry Pi into a LoRaWAN gateway?
+
+If you want your Raspberry Pi to be a LoRaWAN gateway for LoRaWAN sensors, you need these parts. If you only use it for cameras, Zigbee or Thread, skip this section.
 
 | Part | What to buy | Where |
 |---|---|---|
@@ -40,7 +42,9 @@ The RF modules category also has a **RAK5146 Pi HAT kit**: the HAT and the card 
 Buy the card and the antenna for the band used in the country where the hub will run. The band cannot be changed later; everything else about the region is set in Kilo when you register the gateway.
 {% endhint %}
 
-## What do I need for Zigbee and Thread?
+## What do I need to connect Zigbee and Thread devices?
+
+If you want the hub to run Zigbee sensors, plugs and lights, or Thread devices, add these.
 
 | Part | What to buy | Why |
 |---|---|---|
@@ -48,7 +52,9 @@ Buy the card and the antenna for the band used in the country where the hub will
 | Thread radio | A second USB radio running OpenThread RCP firmware, for example a Nordic nRF52840 dongle | Thread needs its own radio; one dongle cannot run Zigbee and Thread at the same time |
 | USB extension cables | Two short USB extension cables | Moves the radios away from the Pi and its USB 3 ports, which disturb 2.4 GHz |
 
-## What do I need for cameras?
+## What do I need to record IP cameras?
+
+If you want the hub to record IP cameras on site, add these.
 
 | Part | What to buy | Where |
 |---|---|---|
@@ -57,6 +63,6 @@ Buy the card and the antenna for the band used in the country where the hub will
 
 ## Tips
 
-* Starting with one site? Buy the core parts, the LoRaWAN parts and one Zigbee dongle. Cameras and Thread can be added later without rebuilding anything.
-* Keep the antenna's box: it states the band, which you need when registering the gateway in Kilo.
-* Next: [How Do I Assemble a Raspberry Pi LoRaWAN Hub?](hardware.md)
+* Buy only what you need now. A Zigbee dongle, cameras, Thread or the LoRaWAN parts can be added later without starting over.
+* If you buy the LoRaWAN parts, keep the antenna's box: it states the band, which you need when registering the gateway in Kilo.
+* Next: [How Do I Assemble a Raspberry Pi IoT Hub?](hardware.md)
