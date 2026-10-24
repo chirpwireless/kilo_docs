@@ -47,6 +47,19 @@ const extractUrls = (body) => {
   return { images: [...new Set(images)], links: [...new Set(links)] };
 };
 
+const toPlainText = (markdown) =>
+  markdown
+    .replace(/!\[[^\]]*\]\([^)]*\)\n*/g, '')
+    .replace(/\[\*\*([^\]]*)\*\*\]\(([^)]*)\)/g, '$1: $2')
+    .replace(/\[([^\]]*)\]\(([^)]*)\)/g, '$1: $2')
+    .replace(/ →:/g, ':')
+    .replace(/\*\*([^*]*)\*\*/g, '$1')
+    .replace(/^#+\s*/gm, '')
+    .replace(/\\\n/g, '\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
 const checkUrl = async (url) => {
   for (const method of ['HEAD', 'GET']) {
     try {
@@ -108,7 +121,8 @@ const processFile = async (file) => {
   const preheader = meta.preheader
     ? `<div style="display:none;max-height:0;overflow:hidden;">${meta.preheader}</div>\n\n`
     : '';
-  const payload = { name, subject: meta.subject, lists: listIds, content_type: 'markdown', body: preheader + body, messenger: 'email', type: 'regular', tags: ['release'] };
+  const altbody = `${toPlainText(body)}\n\n--\nUnsubscribe: {{ UnsubscribeURL }}`;
+  const payload = { name, subject: meta.subject, lists: listIds, content_type: 'markdown', body: preheader + body, altbody, messenger: 'email', type: 'regular', tags: ['release'] };
   const campaign = existing ? await api('PUT', `/api/campaigns/${existing.id}`, payload) : await api('POST', '/api/campaigns', payload);
   console.log(`✓ ${existing ? 'updated' : 'created'} campaign "${name}" (id ${campaign.id})`);
 
