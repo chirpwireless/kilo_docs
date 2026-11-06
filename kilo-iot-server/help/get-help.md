@@ -42,4 +42,4 @@ The support dialog is inside Kilo, so it needs you signed in. If you can't get i
 
 * **The verification email didn't arrive.** Check your spam or quarantine folder and the spelling of the address you entered, then request the email again from the sign-in screen.
 * **You forgot your password.** Use the password-reset option on the sign-in screen. The reset link is sent to your email and expires after a short time; request a new one if it no longer works.
-* **Neither helps.** Email **info [at] kiloiot.de** (replace `[at]` with `@`) from the address you signed up with, and say what you tried.
+* **Neither helps.** Email **help [at] kiloiot.de** (replace `[at]` with `@`) from the address you signed up with, and say what you tried.
