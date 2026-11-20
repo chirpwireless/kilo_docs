@@ -71,6 +71,24 @@ For mission-relevant telemetry, configure the gateway with:
 - **Retained "online" messages** — published on connect, replaced by LWT on disconnect. Subscribers (including new ones connecting later) see current connectivity state immediately.
 - **Persistent local store** — the gateway buffers telemetry while disconnected from the broker and replays on reconnection. Most commercial edge gateways support this; verify the buffer size against expected disconnection windows.
 
+## Gateways that poll several devices
+
+One gateway often polls several devices — for example, several Modbus servers behind one router. Kilo treats each polled device as its own digital device, so the gateway has to tell the messages apart. It can do that in one of two ways:
+
+* **A topic of its own per device.** Each device publishes under its own topic, such as `plant-3/line-a/meter-1/data`. Put `{{deviceId}}` in the device's topic pattern.
+* **The device identifier in the message body.** All devices publish to the same topic and every message carries an identifier, such as `{"deviceInfo": {"deviceId": "meter-1"}, ...}`. Choose **Payload** as the source of the device ID and enter the path to the identifier.
+
+One message belongs to one device. A message that lists readings of several devices in a single body is stored for one device, not split between them. The ThingsBoard gateway protocol (`v1/gateway/telemetry`) works that way and is not supported: a message sent to it reaches one device as a whole.
+
+Vendor notes:
+
+* **Teltonika "Data to Server"** — create one collection per Modbus server and set its `Server ID` filter and its own topic, so every collection publishes one device.
+* **Kepware IoT Gateway** — create one MQTT agent per device. The keys carry the channel and device names, for example `Channel1.Device1.Tag1`; map keys on each device separately.
+* **Telegraf** — use the JSON output format.
+* **Binary formats such as Sparkplug B** — configure the gateway to send JSON.
+
+Each value in a message becomes a key of the device, including values inside arrays and `{name, value}` records. See [Payload Decoding and Connector Keys](../../devices/payload-decoding.md#how-keys-are-built-from-a-json-message).
+
 ## In this section
 
 - **[Zigbee2MQTT Hubs](zigbee2mqtt-hubs.md)** — Zigbee2MQTT as one MQTT edge-gateway pattern: hub topology, deployment fit, capacity-validation guidance, and how the resulting MQTT stream feeds the standard device-routing flow.

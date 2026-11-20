@@ -29,7 +29,15 @@ The read-only **Resolved preview** includes the Cloud prefix when applicable and
 | Locked prefix | Cloud MQTT's connection prefix; it cannot be edited or removed here. |
 | **Resolved preview** | Shows the resulting topic using the entered identifier. A value placeholder in telemetry patterns is displayed as `value`, not as a real reading. |
 
-Use `{{deviceId}}` as the identifier placeholder when reading a serialized pattern in these examples. It is not a literal device name. Topic templates are case-sensitive; matching requires the expected segments and positions. Telemetry templates reject `#`, unknown placeholders and unclosed placeholders. The two recognized placeholders are `{{deviceId}}` and `{{value}}`.
+Use `{{deviceId}}` as the identifier placeholder when reading a serialized pattern in these examples. It is not a literal device name. Topic templates are case-sensitive; matching requires the expected segments and positions. Each segment of a topic pattern is plain text, `+` (any single segment), `{{deviceId}}` or `{{value}}`. Telemetry templates reject `#`. A placeholder can appear once per pattern. A segment that mixes text with a placeholder or a wildcard, such as `a{{deviceId}}` or `a+b`, is rejected when you save the device.
+
+## What happens to messages sent to a subtopic of the device topic? {#subtopics}
+
+The device reads its topic with all subtopics below it. With the device topic `meters/{{deviceId}}`, a message to `meters/EM-4492/battery/level` with the body `87` belongs to `EM-4492` and gives the key `battery.level` = 87. The subtopic path becomes the start of every key of that message: for a JSON body `{"temperature": 21.4}` sent to `meters/EM-4492/room`, the key is `room.temperature`.
+
+You do not need `+` or `#` for this, and the form no longer offers them. A pattern saved earlier with `+` still works as before, and a trailing `#` means the same as the implicit subtopics. When several devices of one connection match a topic, the device with the longest matching pattern wins.
+
+A message to a topic that is configured as a command of the device is not a reading and is ignored. A subtopic that is not configured as a command gives keys like any other.
 
 ## How do I read the device ID from the payload?
 
@@ -37,7 +45,7 @@ Use `{{deviceId}}` as the identifier placeholder when reading a serialized patte
 
 1. Choose **Payload**.
 2. Build the message topic without a Device ID segment, for example `building/readings`.
-3. In **Payload template**, enter a dot-separated path, such as `deviceInfo.deviceId`.
+3. In **Payload template**, enter a dot-separated path, such as `deviceInfo.deviceId`. A name that itself contains a dot is tried first as one whole top-level name; otherwise the path is followed through nested objects. Each name must be non-empty and must not contain `[`, `]`, `+` or `#`.
 4. Check **Payload preview**, which illustrates the JSON object around that path.
 5. Set the device's **Device ID** to the value carried at that path and save.
 
