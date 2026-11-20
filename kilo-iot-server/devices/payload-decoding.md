@@ -58,6 +58,16 @@ A value incompatible with its mapped type is not stored for that measurement. Ot
 
 For a relay reporting `ON` and `OFF`, use a String metric or change the decoder to return a Boolean. Set rule conditions and [command verification](commands/verification.md#expected-value) to match the stored measurement type. Unit labels do not convert or rescale values.
 
+## How keys are built from a JSON message {#how-keys-are-built-from-a-json-message}
+
+Every value of an MQTT message becomes a key of the device. Nested objects give dot-separated paths (`vibration.rms`), and the path of the subtopic the message was sent to is put in front of every key ([details](../connectors/mqtt/topics-and-device-routing.md#subtopics)).
+
+* **Arrays.** Each element gets its position in square brackets, counted from zero: `{"TotalTariff": [10, 20]}` gives `TotalTariff[0]` and `TotalTariff[1]`; `{"values": [{"x": 1}, {"x": 2}]}` gives `values[0].x` and `values[1].x`. A message that is an array itself gives `[0]`, `[1]`, and so on.
+* **Name–value records.** An object that has a value field (`value`, `v` or `data`) and a name field (`name`, `tagName`, `id` or `n`, the first one that holds text) is a record named by its name field. Its key is the name: `{"id": "Channel1.Device1.Tag1", "v": "250", "q": true}` gives `Channel1.Device1.Tag1` = `"250"` and `Channel1.Device1.Tag1.q`. This is how Kepware and similar gateways publish tags. If the device ID is read from the same field, that field is not used as a name.
+* **Repeated keys.** When two values would get the same key, the first one is kept; fields come before records. The rest are dropped, and the device's diagnostics report the dropped keys.
+
+A message to a topic that is configured as a command of the device is never a reading, so command echoes do not appear as keys. Existing mappings to keys that used the old names — for example `values[0].v` or a key of an array — need to be moved to the new key names.
+
 ## Testing a mioty decoder before you rely on it
 
 MIOTY devices decode through a blueprint rather than a code function, and blueprints come with **Decode preview** — run the decoder against a sample payload and inspect the fields it produces before you attach it to real devices. See [MIOTY Blueprints](mioty-blueprints.md).
